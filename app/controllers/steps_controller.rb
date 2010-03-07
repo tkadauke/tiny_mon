@@ -37,6 +37,13 @@ class StepsController < ApplicationController
     @step.destroy
     redirect_to :back
   end
+  
+  def sort
+    params[:step].each_with_index do |id, i|
+      Step.find(id).update_attribute(:position, i)
+    end
+    render :nothing => true
+  end
 
 protected
   def find_site

@@ -13,6 +13,8 @@
   <% end %>
 </dl>
 
+<h3><%= t('.log_output') %></h3>
+
 <table class="list">
   <thead>
     <tr>
@@ -23,7 +25,7 @@
   <tbody>
     <% @check_run.log.each do |time, message| %>
       <tr>
-        <td><%= time %></td>
+        <td><%= l(time, :format => :log) %></td>
         <td><code><%= message %></code></td>
       </tr>
     <% end %>

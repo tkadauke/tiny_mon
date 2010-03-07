@@ -11,6 +11,10 @@ class CheckRun < ActiveRecord::Base
     (self.ended_at - self.started_at).to_f
   end
   
+  def self.from_param!(param)
+    find(param)
+  end
+  
 protected
   def update_health_check_status
     health_check.update_attribute(:status, self.status)

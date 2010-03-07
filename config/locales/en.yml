@@ -1,6 +1,7 @@
 --- 
 en: 
   breadcrumb: 
+    check_runs: "Check Runs"
     edit: Edit
     health_checks: "Health Checks"
     home: Home
@@ -13,6 +14,7 @@ en:
       duration: Duration
       duration_in_seconds: "{{seconds}} seconds"
       error_message: "Error Message"
+      log_output: "Log output"
       message: Message
       status: Status
       time: Time
@@ -117,3 +119,6 @@ en:
       steps_for_health_check: "Steps for Health Check {{health_check}}"
     visit_step_form: 
       url: URL
+  time: 
+    formats: 
+      log: "%H:%M:%S"

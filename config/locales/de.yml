@@ -1,0 +1,143 @@
+--- 
+de: 
+  breadcrumb: 
+    check_runs: Testläufe
+    edit: Bearbeiten
+    health_checks: Funktionstests
+    home: Start
+    new: Neu
+    sites: Sites
+    steps: Schritte
+  check_run_mailer: 
+    failure: 
+      subject: "Funktionstest {{health_check}} von site {{site}} ist fehlgeschlagen!"
+  check_runs: 
+    activity: 
+      duration: Dauer
+      duration_in_seconds: "{{duration}} Sekunden"
+      health_check: Funktionstest
+      no_activity_yet: "Bisher keine Aktivität."
+      site: Site
+      status: Status
+      time_ago: "vor {{when}}"
+      when: Wann
+    index: 
+      check_runs_of_health_check_site: "Testläufe von Funktionstest {{health_check}} (Site {{site}})"
+    show: 
+      check_run_of_health_check_site: "Testlauf von {{health_check}} (Site {{site}})"
+      duration: Dauer
+      duration_in_seconds: "{{seconds}} Sekunden"
+      error_message: Fehlermeldung
+      log_output: Log-Ausgabe
+      message: Ausgabe
+      status: Status
+      time: Zeit
+  flash: 
+    notice: 
+      created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
+      created_site: "Site {{site}} wurde erfolgreich erstellt"
+      deleted_site: "Site {{site}} wurde erfolgreich gelöscht"
+      updated_health_check: "Funktionstest {{health_check}} wurde erfolgreich aktualisiert"
+      updated_site: "Site {{site}} wurde erfolgreich aktualisiert"
+  health_checks: 
+    all_checks: 
+      all_health_checks: "Alle Funktionstests"
+    details: 
+      name: Name
+      options: Optionen
+      status: Status
+    edit: 
+      edit_health_check_for_site: "Funktionstest {{health_check}} für Site {{site}} bearbeiten"
+    form: 
+      description: Bescheibung
+      interval: Prüf-Intervall
+      name: Name
+    index: 
+      health_checks_for_site: "Funktionstests für Site {{site}}"
+      new_health_check: "Neuer Funktionstest"
+    list: 
+      no_health_checks_defined: "Keine Funktionstests definiert."
+    new: 
+      new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
+    report: 
+      details: Details
+      overview: Überblick
+    show: 
+      check_is_disabled: "Funktionstest ist inaktiv"
+      check_is_enabled: "Funktionstest ist aktiv"
+      check_runs: Testläufe
+      description: Beschreibung
+      disable: Deaktivieren
+      edit: Bearbeiten
+      edit_steps: "Schritte bearbeiten"
+      enable: Aktivieren
+      last_check_run: "Letzter Testlauf"
+  layouts: 
+    close_flash: Schließen
+    github_project_page: Github-Projektseite
+    guest_greeter: "Willkommen, Gast!"
+    health_checks: Funktionstests
+    help: Hilfe
+    home: Start
+    quick_links: Schnellzugriff
+    report_bugs: "Fehler gefunden? {{report_link}}"
+    report_link_text: Melden!
+    sites: Sites
+    subtitle: Website-Funktionsüberwachung
+    you_are_here: "Sie sind hier: {{bread_crumb}}"
+  sites: 
+    edit: 
+      edit_site: "Site {{site}} bearbeiten"
+    form: 
+      name: Site-Name
+      url: Basis-URL
+    index: 
+      all_sites: "Alle Sites"
+      confirm_delete: "Wollen Sie wirklich diese Site, alle Funktionstests und den Testverlauf entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
+      delete: Entfernen
+      edit: Bearbeiten
+      name: Name
+      new_site: "Neue Site"
+      no_sites_configured: "Keine Sites konfiguriert."
+      options: Optionen
+    new: 
+      new_site: "Neue Site"
+  start: 
+    index: 
+      add_site: "Site hinzufügen"
+      quick_links: Schnellzugriff
+      recent_activity: "Neueste Aktivität"
+  status: 
+    failure: Fehlschlag
+    success: Erfolg
+  steps: 
+    check_content_step_form: 
+      content: Inhalt
+    check_status_step_form: 
+      status: HTTP-Status
+    click_button_step_form: 
+      name: Button-Name
+    click_link_step_form: 
+      name: Link-Name
+    fill_in_step_form: 
+      field: Feld-Name
+      value: Wert
+    form: 
+      cancel: Abbruch
+      please_select: "Bitte wählen ..."
+      type: Typ
+    index: 
+      add_step: "Schritt hinzufügen"
+      are_you_sure: "Sind Se sicher?"
+      delete: Entfernen
+      details: Details
+      edit: Bearbeiten
+      name: Name
+      no_steps_defined: "Keine Schritte definiert."
+      options: Optionen
+      steps_for_health_check: "Schritte für Funktionstest {{health_check}}"
+    visit_step_form: 
+      url: URL
+  time: 
+    formats: 
+      log: "%H:%M:%S"

@@ -1,8 +1,8 @@
 <h2><%= t('.all_health_checks') %></h2>
 
 <p>
-  <%= link_to 'Details', health_checks_path(:report => 'details') %> |
-  <%= link_to 'Overview', health_checks_path(:report => 'overview') %>
+  <%= link_to t('health_checks.report.details'), health_checks_path(:report => 'details') %> |
+  <%= link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview') %>
 </p>
 
 <%= auto_update 'checks' %>

@@ -59,6 +59,9 @@ en:
       no_health_checks_defined: "No health checks defined."
     new: 
       new_health_check_for_site: "New Health Check for site {{site}}"
+    report: 
+      details: Details
+      overview: Overview
     show: 
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"

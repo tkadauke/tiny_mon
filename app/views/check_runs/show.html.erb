@@ -2,7 +2,7 @@
 
 <dl>
   <dt><%= t('.status') %></dt>
-  <dd><%= @check_run.status %></dd>
+  <dd><%= status_icon @check_run.status %> <%= @check_run.status %></dd>
 
   <dt><%= t('.duration') %></dt>
   <dd><%= t('.duration_in_seconds', :seconds => @check_run.duration) %></dd>

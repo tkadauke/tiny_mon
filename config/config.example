@@ -7,3 +7,4 @@ email_authentication: :login
 recipient_email: 
 email_sender_address: tiny_mon@example.com
 host: "tiny-mon"
+language: en

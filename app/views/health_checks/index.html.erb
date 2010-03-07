@@ -1,20 +1,26 @@
-<table class="list">
-  <thead>
-    <tr>
-      <th>Status</th>
-      <th>Name</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @health_checks.each do |health_check| %>
+<h2>Health Checks for Site <%= @site.name %></h2>
+
+<% if @health_checks.empty? %>
+  <p>No health checks defined.</p>
+<% else %>
+  <table class="list">
+    <thead>
       <tr>
-        <td><%= health_check.status %></td>
-        <td><%= link_to health_check.name, site_health_check_path(@site, health_check) %></td>
-        <td><%= link_to 'Edit', edit_site_health_check_path(@site, health_check) %></td>
+        <th>Status</th>
+        <th>Name</th>
+        <th>Options</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @health_checks.each do |health_check| %>
+        <tr>
+          <td><%= health_check.status %></td>
+          <td><%= link_to health_check.name, site_health_check_path(@site, health_check) %></td>
+          <td><%= link_to 'Edit', edit_site_health_check_path(@site, health_check) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <p><%= link_to 'New Health Check', new_site_health_check_path(@site) %></p>

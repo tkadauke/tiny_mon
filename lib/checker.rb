@@ -27,6 +27,8 @@ class Checker
       attrs[:log] = runner.log_entries
       
       check.check_runs.create(attrs)
+    rescue Exception => e
+      puts e.message, e.backtrace
     end
   end
 end

@@ -9,7 +9,7 @@ class Step < ActiveRecord::Base
     ['visit', 'check_status', 'check_content']
   end
   
-  def run!(runner)
+  def run!(session)
     raise NotImplementedError
   end
 end

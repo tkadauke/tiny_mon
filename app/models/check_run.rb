@@ -4,6 +4,7 @@ class CheckRun < ActiveRecord::Base
   serialize :log, Array
   
   after_create :update_health_check_status
+  after_create :send_mail_if_failed
   
   named_scope :recent, :order => 'created_at DESC', :limit => 10
   
@@ -18,5 +19,9 @@ class CheckRun < ActiveRecord::Base
 protected
   def update_health_check_status
     health_check.update_attribute(:status, self.status)
+  end
+  
+  def send_mail_if_failed
+    CheckRunMailer.deliver_failure(self) if self.status == 'failure'
   end
 end

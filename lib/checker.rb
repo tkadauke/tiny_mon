@@ -13,9 +13,13 @@ class Checker
       runner = Runner.new(check)
       attrs = { :started_at => Time.now.to_f, :status => 'success' }
       
+      retry_times = 3
       begin
         runner.run!
       rescue CheckFailed => e
+        retry_times -= 1
+        retry unless retry_times == 0
+        
         attrs[:status] = 'failure'
         attrs[:error_message] = e.message
       end

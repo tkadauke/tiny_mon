@@ -8,6 +8,9 @@ en:
     new: New
     sites: Sites
     steps: Steps
+  check_run_mailer: 
+    failure: 
+      subject: "Health Check {{health_check}} of site {{site}} failed!"
   check_runs: 
     activity: 
       duration: Duration

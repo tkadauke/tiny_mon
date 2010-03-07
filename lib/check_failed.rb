@@ -1,0 +1,2 @@
+class CheckFailed < RuntimeError
+end

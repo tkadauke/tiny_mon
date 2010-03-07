@@ -1,0 +1,9 @@
+<% form_for [@site, @health_check] do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br/>
+  
+  <%= f.label :description %>
+  <%= f.text_area :description %><br/>
+  
+  <%= f.submit %>
+<% end %>

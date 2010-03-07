@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :sites do |sites|
+    sites.resources :health_checks do |checks|
+      checks.resources :steps
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

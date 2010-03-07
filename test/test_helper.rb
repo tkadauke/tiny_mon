@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
+require 'mocha'
 
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -35,4 +36,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def assert_redirected_back(&block)
+    @request.env['Referer'] = 'http://test.host/referer'
+    yield
+    assert_response :redirect
+    assert_redirected_to 'http://test.host/referer'
+  end
 end

@@ -1,0 +1,15 @@
+class Step < ActiveRecord::Base
+  include HasProperties
+  has_properties :in => :data
+  
+  belongs_to :health_check
+  acts_as_list :scope => :health_check
+  
+  def self.available_types
+    ['visit', 'check_status', 'check_content']
+  end
+  
+  def run!(runner)
+    raise NotImplementedError
+  end
+end

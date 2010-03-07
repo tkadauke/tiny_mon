@@ -1,47 +1,27 @@
 <h2><%= @health_check.name %></h2>
 
-<% if @health_check.enabled? %>
-  <%= button_to 'Disable', site_health_check_path(@site, @health_check, :health_check => { :enabled => false }), :method => :put %>
-<% else %>
-  <%= button_to 'Enable', site_health_check_path(@site, @health_check, :health_check => { :enabled => true }), :method => :put %>
-<% end %>
+<dl>
+  <dt>Description</dt>
+  <dd>
+    <%= simple_format @health_check.description %>
+    <p>
+      <%= link_to 'Edit', edit_site_health_check_path(@site, @health_check) %> |
+      <%= link_to 'Edit Steps', site_health_check_steps_path(@site, @health_check) %>
+    </p>
+  </dd>
 
-<% if @health_check.last_check_run %>
-  <p><%= link_to @health_check.status, site_health_check_check_run_path(@site, @health_check, @health_check.last_check_run) %></p>
-<% end %>
+  <% if @health_check.last_check_run %>
+    <dt>Last check run</dt>
+    <dd><%= link_to @health_check.status, site_health_check_check_run_path(@site, @health_check, @health_check.last_check_run) %></dd>
+  <% end %>
 
-<%= simple_format @health_check.description %>
+  <% if @health_check.enabled? %>
+    <dt>Check is enabled</dt>
+    <dd><%= button_to 'Disable', site_health_check_path(@site, @health_check, :health_check => { :enabled => false }), :method => :put %></dd>
+  <% else %>
+    <dt>Check is disabled</dt>
+    <dd><%= button_to 'Enable', site_health_check_path(@site, @health_check, :health_check => { :enabled => true }), :method => :put %></dd>
+  <% end %>
+</dl>
 
-<p><%= link_to 'Edit', edit_site_health_check_path(@site, @health_check) %></p>
-
-<%= image_tag site_health_check_check_runs_path(@site, @health_check, :format => 'png') %>
-
-<h3>Steps</h3>
-
-<table class="list">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Details</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @health_check.steps.each do |step| %>
-      <tr>
-        <td><%= step.class.name %></td>
-        <td><%= render_step_details(step) %></td>
-        <td>
-          <%= link_to 'Edit', edit_site_health_check_step_path(@site, @health_check, step) %>
-          <%= link_to 'Delete', site_health_check_step_path(@site, @health_check, step), :method => :delete, :confirm => 'Are you sure?' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h3>Add Step</h3>
-
-<div id="new_step_container">
-  <%= render :partial => "/steps/form", :locals => { :step => Step.new } %>
-</div>
+<p><%= image_tag site_health_check_check_runs_path(@site, @health_check, :format => 'png') %></p>

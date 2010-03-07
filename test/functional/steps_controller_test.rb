@@ -6,6 +6,12 @@ class StepsControllerTest < ActionController::TestCase
     @health_check = @site.health_checks.create(:name => 'Home Page')
   end
   
+  test "should show index" do
+    step = @health_check.steps.create
+    get :index, , :site_id => @site, :health_check_id => @health_check
+    assert_response :success
+  end
+  
   test "should show new" do
     xhr :get, :new, :site_id => @site, :health_check_id => @health_check, :type => 'visit'
     assert_response :success

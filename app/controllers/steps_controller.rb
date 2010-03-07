@@ -1,6 +1,10 @@
 class StepsController < ApplicationController
   before_filter :find_site
   before_filter :find_health_check
+  
+  def index
+    @steps = @health_check.steps
+  end
 
   def new
     @step = "#{params[:type]}_step".classify.constantize.new

@@ -7,8 +7,8 @@ class StepsControllerTest < ActionController::TestCase
   end
   
   test "should show index" do
-    step = @health_check.steps.create
-    get :index, , :site_id => @site, :health_check_id => @health_check
+    step = VisitStep.create(:health_check => @health_check)
+    get :index, :site_id => @site, :health_check_id => @health_check
     assert_response :success
   end
   
@@ -18,12 +18,27 @@ class StepsControllerTest < ActionController::TestCase
     assert assigns(:step).is_a?(VisitStep)
   end
   
+  test "should show edit" do
+    step = VisitStep.create(:health_check => @health_check)
+    xhr :get, :edit, :site_id => @site, :health_check_id => @health_check, :id => step
+    assert_response :success
+  end
+  
   test "should create step" do
     assert_redirected_back do
       assert_difference 'Step.count' do
         post :create, :site_id => @site, :health_check_id => @health_check, :type => 'visit', :visit_step => { :url => '/' }
         assert assigns(:step).is_a?(VisitStep)
       end
+    end
+  end
+  
+  test "should update step" do
+    step = VisitStep.create(:health_check => @health_check)
+    assert_redirected_back do
+      post :update, :site_id => @site, :health_check_id => @health_check, :id => step, :visit_step => { :url => '/' }
+      assert assigns(:step).is_a?(VisitStep)
+      assert_equal '/', step.reload.url
     end
   end
   

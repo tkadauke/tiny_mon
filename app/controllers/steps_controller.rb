@@ -11,11 +11,23 @@ class StepsController < ApplicationController
     render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
   end
   
+  def edit
+    @step = Step.find(params[:id])
+    render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+  end
+  
   def create
     type_name = "#{params[:type]}_step"
     @step = type_name.classify.constantize.new(params[type_name])
     @step.health_check = @health_check
     if @step.save
+      redirect_to :back
+    end
+  end
+  
+  def update
+    @step = Step.find(params[:id])
+    if @step.update_attributes(params[@step.class.name.underscore])
       redirect_to :back
     end
   end

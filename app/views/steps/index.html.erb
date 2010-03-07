@@ -15,9 +15,9 @@
       <% @steps.each do |step| %>
         <tr>
           <td><%= step.class.name.gsub(/Step$/, '').titleize %></td>
-          <td><%= render_step_details(step) %></td>
+          <td><div id="step_<%= step.id %>"><%= render_step_details(step) %></div></td>
           <td>
-            <%= link_to 'Edit', edit_site_health_check_step_path(@site, @health_check, step) %> |
+            <%= link_to_remote 'Edit', :url => edit_site_health_check_step_path(@site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
             <%= link_to 'Delete', site_health_check_step_path(@site, @health_check, step), :method => :delete, :confirm => 'Are you sure?' %>
           </td>
         </tr>

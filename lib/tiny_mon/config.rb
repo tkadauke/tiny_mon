@@ -1,7 +1,7 @@
 module TinyMon
   class Config
     def self.method_missing(method)
-      if config[method.to_s]
+      if config.has_key?(method.to_s)
         config[method.to_s]
       else
         super

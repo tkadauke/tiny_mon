@@ -1,5 +1,11 @@
 <h2><%= @health_check.name %></h2>
 
+<p><%= @health_check.status %></p>
+
+<%= simple_format @health_check.description %>
+
+<p><%= link_to 'Edit', edit_site_health_check_path(@site, @health_check) %></p>
+
 <h3>Steps</h3>
 
 <table>

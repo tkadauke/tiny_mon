@@ -38,4 +38,12 @@ class SitesControllerTest < ActionController::TestCase
     assert_response :redirect
     assert_equal 'something.com', site.reload.name
   end
+  
+  test "should destroy site" do
+    site = Site.create(:name => 'example.com')
+    assert_difference 'Site.count', -1 do
+      delete :destroy, :id => site
+      assert_response :redirect
+    end
+  end
 end

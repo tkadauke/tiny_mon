@@ -1,18 +1,27 @@
-<table class="list">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @sites.each do |site| %>
+<h2>All Sites</h2>
+
+<% if @sites.empty? %>
+  <p>No sites configured.</p>
+<% else %>
+  <table class="list">
+    <thead>
       <tr>
-        <td><%= link_to site.name, site_health_checks_path(site) %></td>
-        <td><%= link_to 'Edit', edit_site_path(site) %></td>
+        <th>Name</th>
+        <th>Options</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @sites.each do |site| %>
+        <tr>
+          <td><%= link_to site.name, site_health_checks_path(site) %></td>
+          <td>
+            <%= link_to 'Edit', edit_site_path(site) %> |
+            <%= link_to 'Delete', site_path(site), :method => :delete, :confirm => 'Are you sure you want to delete this site, all health checks and check run history? This operation can not be undone.' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
 <p><%= link_to 'New Site', new_site_path %></p>

@@ -6,7 +6,7 @@ class Runner
   end
   
   def run!
-    @session = Session.new(:base_url => @health_check.site.url)
+    @session = Session.new(@health_check.site.url)
     
     @health_check.steps.each do |step|
       step.run!(session)

@@ -114,6 +114,8 @@ en:
       status: "HTTP Status"
     click_button_step_form: 
       name: "Button name"
+    click_link_step_form: 
+      name: "Link name"
     fill_in_step_form: 
       field: "Field name"
       value: Value

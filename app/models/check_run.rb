@@ -5,6 +5,8 @@ class CheckRun < ActiveRecord::Base
   
   after_create :update_health_check_status
   
+  named_scope :recent, :order => 'created_at DESC', :limit => 10
+  
   def duration
     (self.ended_at - self.started_at).to_f
   end

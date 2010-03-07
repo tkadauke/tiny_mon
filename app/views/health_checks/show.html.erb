@@ -6,6 +6,8 @@
 
 <p><%= link_to 'Edit', edit_site_health_check_path(@site, @health_check) %></p>
 
+<%= image_tag site_health_check_check_runs_path(@site, @health_check, :format => 'png') %>
+
 <h3>Steps</h3>
 
 <table>

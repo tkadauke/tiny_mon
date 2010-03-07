@@ -6,8 +6,9 @@ class HealthChecksController < ApplicationController
       @health_checks = @site.health_checks.find(:all, :include => :site)
     else
       @health_checks = HealthCheck.find(:all, :include => :site)
-      render :action => 'all_checks'
+      render :action => 'all_checks' unless request.xhr?
     end
+    render :partial => 'list' if request.xhr?
   end
   
   def new

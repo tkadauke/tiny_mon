@@ -16,6 +16,7 @@ en:
       no_activity_yet: "No activity yet."
       site: Site
       status: Status
+      time_ago: "{{when}} ago"
       when: When
     index: 
       check_runs_of_health_check_site: "Check Runs of Health Check {{health_check}} (Site {{site}})"

@@ -1,0 +1,9 @@
+email_domain: localhost
+email_address: 
+email_port: 25
+email_user_name: 
+email_password: 
+email_authentication: :login
+recipient_email: 
+email_sender_address: tiny_mon@example.com
+host: "tiny-mon"

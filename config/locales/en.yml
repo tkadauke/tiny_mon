@@ -24,6 +24,8 @@ en:
       updated_health_check: "Successfully updated health check {{health_check}}"
       updated_site: "Successfully updated site {{site}}"
   health_checks: 
+    all_checks: 
+      all_health_checks: "All Health Checks"
     edit: 
       edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"
     form: 
@@ -32,8 +34,9 @@ en:
       name: Name
     index: 
       health_checks_for_site: "Health Checks for Site {{site}}"
-      name: Name
       new_health_check: "New Health Check"
+    list: 
+      name: Name
       no_health_checks_defined: "No health checks defined."
       options: Options
       status: Status

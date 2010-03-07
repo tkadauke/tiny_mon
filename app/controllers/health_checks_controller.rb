@@ -2,7 +2,12 @@ class HealthChecksController < ApplicationController
   before_filter :find_site
   
   def index
-    @health_checks = @site.health_checks
+    if @site
+      @health_checks = @site.health_checks.find(:all, :include => :site)
+    else
+      @health_checks = HealthCheck.find(:all, :include => :site)
+      render :action => 'all_checks'
+    end
   end
   
   def new
@@ -39,6 +44,6 @@ class HealthChecksController < ApplicationController
   
 protected
   def find_site
-    @site = Site.find_by_permalink!(params[:site_id])
+    @site = Site.find_by_permalink!(params[:site_id]) if params[:site_id]
   end
 end

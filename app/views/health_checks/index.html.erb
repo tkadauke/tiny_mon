@@ -1,26 +1,5 @@
 <h2><%= t('.health_checks_for_site', :site => @site.name) %></h2>
 
-<% if @health_checks.empty? %>
-  <p><%= t('.no_health_checks_defined') %></p>
-<% else %>
-  <table class="list">
-    <thead>
-      <tr>
-        <th><%= t('.status') %></th>
-        <th><%= t('.name') %></th>
-        <th><%= t('.options') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @health_checks.each do |health_check| %>
-        <tr>
-          <td><%= health_check.status %></td>
-          <td><%= link_to health_check.name, site_health_check_path(@site, health_check) %></td>
-          <td><%= link_to 'Edit', edit_site_health_check_path(@site, health_check) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+<%= render :partial => "list" %>
 
 <p><%= link_to t('.new_health_check'), new_site_health_check_path(@site) %></p>

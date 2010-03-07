@@ -1,6 +1,14 @@
 <h2><%= @health_check.name %></h2>
 
-<p><%= @health_check.status %></p>
+<% if @health_check.enabled? %>
+  <%= button_to 'Disable', site_health_check_path(@site, @health_check, :health_check => { :enabled => false }), :method => :put %>
+<% else %>
+  <%= button_to 'Enable', site_health_check_path(@site, @health_check, :health_check => { :enabled => true }), :method => :put %>
+<% end %>
+
+<% if @health_check.last_check_run %>
+  <p><%= link_to @health_check.status, site_health_check_check_run_path(@site, @health_check, @health_check.last_check_run) %></p>
+<% end %>
 
 <%= simple_format @health_check.description %>
 

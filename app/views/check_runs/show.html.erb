@@ -4,6 +4,10 @@
 
 <p>Duration: <%= @check_run.duration %> seconds</p>
 
+<% if @check_run.error_message %>
+  <p><%= @check_run.error_message %></p>
+<% end %>
+
 <table>
   <thead>
     <tr>

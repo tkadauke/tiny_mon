@@ -7,7 +7,7 @@ class Checker
   end
   
   def self.check_all
-    HealthCheck.all.each do |check|
+    HealthCheck.enabled.each do |check|
       next unless check.check_now?
       
       runner = Runner.new(check)

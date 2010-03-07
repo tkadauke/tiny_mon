@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sites do |sites|
     sites.resources :health_checks do |checks|
       checks.resources :steps
+      checks.resources :check_runs
     end
   end
 

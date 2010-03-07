@@ -1,0 +1,22 @@
+<h2>Check run of <%= @health_check.name %> (site <%= @site.name %>)</h2>
+
+<p>Status: <%= @check_run.status %></p>
+
+<p>Duration: <%= @check_run.duration %> seconds</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @check_run.log.each do |time, message| %>
+      <tr>
+        <td><%= time %></td>
+        <td><code><%= message %></code></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

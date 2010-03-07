@@ -9,7 +9,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306194322) do
+ActiveRecord::Schema.define(:version => 20100307013728) do
+
+  create_table "check_runs", :force => true do |t|
+    t.integer  "health_check_id"
+    t.string   "status"
+    t.text     "log"
+    t.string   "error_message"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "health_checks", :force => true do |t|
     t.integer  "site_id"

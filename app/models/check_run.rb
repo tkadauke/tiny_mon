@@ -6,7 +6,7 @@ class CheckRun < ActiveRecord::Base
   after_create :update_health_check_status
   
   def duration
-    self.ended_at - self.started_at
+    (self.ended_at - self.started_at).to_f
   end
   
 protected

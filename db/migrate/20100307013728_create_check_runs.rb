@@ -5,8 +5,8 @@ class CreateCheckRuns < ActiveRecord::Migration
       t.string :status
       t.text :log
       t.string :error_message
-      t.datetime :started_at
-      t.datetime :ended_at
+      t.decimal :started_at
+      t.decimal :ended_at
       t.timestamps
     end
   end

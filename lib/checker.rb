@@ -9,7 +9,7 @@ class Checker
   def self.check_all
     HealthCheck.all.each do |check|
       runner = Runner.new(check)
-      attrs = { :started_at => Time.now, :status => 'success' }
+      attrs = { :started_at => Time.now.to_f, :status => 'success' }
       
       begin
         runner.run!
@@ -17,7 +17,7 @@ class Checker
         attrs[:status] = 'failure'
         attrs[:error_message] = e.message
       end
-      attrs[:ended_at] = Time.now
+      attrs[:ended_at] = Time.now.to_f
       attrs[:log] = runner.log_entries
       
       check.check_runs.create(attrs)

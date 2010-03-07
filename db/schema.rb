@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 20100307023109) do
     t.string   "status"
     t.text     "log"
     t.string   "error_message"
-    t.datetime "started_at"
-    t.datetime "ended_at"
+    t.decimal  "started_at"
+    t.decimal  "ended_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

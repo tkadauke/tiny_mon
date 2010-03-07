@@ -1,7 +1,17 @@
 <% form_for [@site, @health_check, step], :url => site_health_check_steps_path(@site, @health_check) do |f| %>
-  <%= select_tag :type, options_for_select([['Please select ...', 'nothing']] + Step.available_types, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_site_health_check_step_path(@site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %><br/>
-  
-  <%= render_step_form(f, step) %>
-  
-  <%= f.submit %>
+  <% if step.class.name == 'Step' %>
+    <p class="form_item">
+      <span class="label"><%= f.label :type, t('.type') %></span>
+      <%= select_tag :type, options_for_select([['Please select ...', 'nothing']] + Step.available_types), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_site_health_check_step_path(@site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %>
+    </p>
+  <% else %>
+    <p class="form_item">
+      <span class="label"><%= f.label :type, t('.type') %></span>
+      <%= select_tag :type, options_for_select(Step.available_types, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_site_health_check_step_path(@site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %><br/>
+    </p>
+
+    <%= render_step_form(f, step) %>
+
+    <%= f.submit %>
+  <% end %>
 <% end %>

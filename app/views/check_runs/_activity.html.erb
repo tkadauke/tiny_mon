@@ -6,6 +6,7 @@
       <tr>
         <th><%= t('.status') %></th>
         <th><%= t('.when') %></th>
+        <th><%= t('.duration') %></th>
         <th><%= t('.site') %></th>
         <th><%= t('.health_check') %></th>
       </tr>
@@ -15,6 +16,7 @@
         <tr>
           <td><%= status_icon check_run.status %></td>
           <td><%= link_to time_ago_in_words(check_run.created_at), site_health_check_check_run_path(check_run.health_check.site, check_run.health_check, check_run) %></td>
+          <td><%= t(".duration_in_seconds", :duration => check_run.duration) %></td>
           <td><%= link_to check_run.health_check.site.name, site_path(check_run.health_check.site) %></td>
           <td><%= link_to check_run.health_check.name, site_health_check_path(check_run.health_check.site, check_run.health_check) %></td>
         </tr>

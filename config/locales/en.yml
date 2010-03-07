@@ -10,6 +10,8 @@ en:
     steps: Steps
   check_runs: 
     activity: 
+      duration: Duration
+      duration_in_seconds: "{{duration}} seconds"
       health_check: "Health Check"
       no_activity_yet: "No activity yet."
       site: Site

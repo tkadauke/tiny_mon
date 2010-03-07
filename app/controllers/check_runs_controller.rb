@@ -5,8 +5,8 @@ class CheckRunsController < ApplicationController
   def index
     @check_runs = @health_check.recent_check_runs
     respond_to do |format|
-      format.html
-      format.png { send_data(CheckRunGraph.new(@check_runs).render, :disposition => 'inline', :type => 'image/png', :filename => "check_runs.png") }
+      format.html { render :partial => "/check_runs/activity" if request.xhr? }
+      format.png { send_data(CheckRunGraph.new(@check_runs.reverse).render, :disposition => 'inline', :type => 'image/png', :filename => "check_runs.png") }
     end
   end
   

@@ -1,5 +1,9 @@
-<%= f.label :field %>
-<%= f.text_field :field %><br/>
+<p class="form_item">
+  <span class="label"><%= f.label :field, t('.field') %></span>
+  <%= f.text_field :field %>
+</p>
 
-<%= f.label :value %>
-<%= f.text_field :value %><br/>
+<p class="form_item">
+  <span class="label"><%= f.label :value, t('.value') %></span>
+  <%= f.text_field :value %>
+</p>

@@ -1,9 +1,13 @@
 <% form_for @site do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br/>
-  
-  <%= f.label :url %>
-  <%= f.text_field :url %><br/>
+  <p class="form_item">
+    <span class="label"><%= f.label :name, t('.name') %></span>
+    <%= f.text_field :name %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :url, t('.url') %></span>
+    <%= f.text_field :url %>
+  </p>
   
   <%= f.submit %>
 <% end %>

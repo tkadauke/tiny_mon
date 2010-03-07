@@ -1,12 +1,18 @@
 <% form_for [@site, @health_check] do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br/>
-  
-  <%= f.label :description %>
-  <%= f.text_area :description %><br/>
-  
-  <%= f.label :interval %>
-  <%= f.select :interval, HealthCheck.intervals %><br/>
+  <p class="form_item">
+    <span class="label"><%= f.label :name, t('.name') %></span>
+    <%= f.text_field :name %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :description, t('.description') %></span>
+    <%= f.text_area :description %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :interval, t('.interval') %></span>
+    <%= f.select :interval, HealthCheck.intervals %>
+  </p>
   
   <%= f.submit %>
 <% end %>

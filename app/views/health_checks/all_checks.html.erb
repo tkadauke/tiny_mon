@@ -1,3 +1,8 @@
 <h2><%= t('.all_health_checks') %></h2>
 
+<p>
+  <%= link_to 'Details', health_checks_path(:report => 'details') %> |
+  <%= link_to 'Overview', health_checks_path(:report => 'overview') %>
+</p>
+
 <%= render :partial => "list" %>

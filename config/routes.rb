@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
     end
   end
 
+  map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
+
   map.root :controller => "start"
 
   # The priority is based upon order of creation: first created -> highest priority.

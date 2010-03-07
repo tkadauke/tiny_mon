@@ -5,6 +5,7 @@
   <dd>
     <%= simple_format @health_check.description %>
     <p>
+      <%= link_to t('.check_runs'), site_health_check_check_runs_path(@site, @health_check) %> |
       <%= link_to t('.edit'), edit_site_health_check_path(@site, @health_check) %> |
       <%= link_to t('.edit_steps'), site_health_check_steps_path(@site, @health_check) %>
     </p>

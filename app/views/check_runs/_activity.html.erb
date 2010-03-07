@@ -4,6 +4,7 @@
   <table class="list">
     <thead>
       <tr>
+        <th><%= t('.status') %></th>
         <th><%= t('.when') %></th>
         <th><%= t('.site') %></th>
         <th><%= t('.health_check') %></th>
@@ -12,6 +13,7 @@
     <tbody>
       <% @check_runs.each do |check_run| %>
         <tr>
+          <td><%= status_icon check_run.status %></td>
           <td><%= link_to time_ago_in_words(check_run.created_at), site_health_check_check_run_path(check_run.health_check.site, check_run.health_check, check_run) %></td>
           <td><%= link_to check_run.health_check.site.name, site_path(check_run.health_check.site) %></td>
           <td><%= link_to check_run.health_check.name, site_health_check_path(check_run.health_check.site, check_run.health_check) %></td>

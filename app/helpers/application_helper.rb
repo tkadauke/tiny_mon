@@ -28,4 +28,8 @@ module ApplicationHelper
     end
     breadcrumb
   end
+  
+  def status_icon(status, version = :small)
+    image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
+  end
 end

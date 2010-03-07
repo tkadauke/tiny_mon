@@ -9,6 +9,14 @@ en:
     sites: Sites
     steps: Steps
   check_runs: 
+    activity: 
+      health_check: "Health Check"
+      no_activity_yet: "No activity yet."
+      site: Site
+      status: Status
+      when: When
+    index: 
+      check_runs_of_health_check_site: "Check Runs of Health Check {{health_check}} (Site {{site}})"
     show: 
       check_run_of_health_check_site: "Check run of {{health_check}} (site {{site}})"
       duration: Duration
@@ -47,6 +55,7 @@ en:
     show: 
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"
+      check_runs: "Check Runs"
       description: Description
       disable: Disable
       edit: Edit
@@ -84,15 +93,13 @@ en:
     new: 
       new_site: "New Site"
   start: 
-    activity: 
-      health_check: "Health Check"
-      no_activity_yet: "No activity yet."
-      site: Site
-      when: When
     index: 
       add_site: "Add site"
       quick_links: "Quick links"
       recent_activity: "Recent Activity"
+  status: 
+    failure: Failure
+    success: Success
   steps: 
     check_content_step_form: 
       content: Content

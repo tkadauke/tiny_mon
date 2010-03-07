@@ -7,6 +7,9 @@ class CreateSteps < ActiveRecord::Migration
       t.text :data
       t.timestamps
     end
+    
+    add_index :steps, :health_check_id
+    add_index :steps, :position
   end
 
   def self.down

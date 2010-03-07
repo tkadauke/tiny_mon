@@ -9,6 +9,9 @@ class CreateCheckRuns < ActiveRecord::Migration
       t.decimal :ended_at
       t.timestamps
     end
+    
+    add_index :check_runs, :health_check_id
+    add_index :check_runs, :created_at
   end
 
   def self.down

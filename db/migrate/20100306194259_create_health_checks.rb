@@ -6,6 +6,9 @@ class CreateHealthChecks < ActiveRecord::Migration
       t.text :description
       t.timestamps
     end
+    
+    add_index :health_checks, :site_id
+    add_index :health_checks, :name
   end
 
   def self.down

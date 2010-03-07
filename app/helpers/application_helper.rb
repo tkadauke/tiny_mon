@@ -1,7 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   def auto_update(container)
-    periodically_call_remote(:url => request.request_uri, :update => container, :method => 'get')
+    periodically_call_remote(:url => request.request_uri, :update => container, :method => 'get', :frequency => '60')
   end
 
   def bread_crumb

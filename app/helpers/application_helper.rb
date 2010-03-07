@@ -18,7 +18,7 @@ module ApplicationHelper
         else
           eval("#{elements[i - 1].singularize.camelize}.from_param!('#{elements[i]}')")
         end
-        [next_model, next_model.to_param]
+        [next_model, next_model.respond_to?(:name) ? next_model.name : next_model.to_param]
       rescue Exception => e
         [parent_model, I18n.t("breadcrumb.#{elements[i]}")]
       end

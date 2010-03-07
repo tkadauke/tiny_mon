@@ -2,7 +2,7 @@
   <% if step.class.name == 'Step' %>
     <p class="form_item">
       <span class="label"><%= f.label :type, t('.type') %></span>
-      <%= select_tag :type, options_for_select([['Please select ...', 'nothing']] + Step.available_types), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_site_health_check_step_path(@site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %>
+      <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_site_health_check_step_path(@site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %>
     </p>
   <% else %>
     <% if step.new_record? %>
@@ -15,6 +15,6 @@
     <%= render_step_form(f, step) %>
 
     <%= f.submit %>
-    <%= link_to 'Cancel', request.referer %>
+    <%= link_to t('.cancel'), request.referer %>
   <% end %>
 <% end %>

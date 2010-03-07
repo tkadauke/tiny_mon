@@ -1,14 +1,14 @@
-<h2>Steps for Health Check <%= @health_check.name %></h2>
+<h2><%= t('.steps_for_health_check', :health_check => @health_check.name) %></h2>
 
 <% if @steps.empty?  %>
-  <p>No steps defined.</p>
+  <p><%= t('.no_steps_defined') %></p>
 <% else %>
   <table class="list">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Details</th>
-        <th>Options</th>
+        <th><%= t('.name') %></th>
+        <th><%= t('.details') %></th>
+        <th><%= t('.options') %></th>
       </tr>
     </thead>
     <tbody>
@@ -17,8 +17,8 @@
           <td><%= step.class.name.gsub(/Step$/, '').titleize %></td>
           <td><div id="step_<%= step.id %>"><%= render_step_details(step) %></div></td>
           <td>
-            <%= link_to_remote 'Edit', :url => edit_site_health_check_step_path(@site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
-            <%= link_to 'Delete', site_health_check_step_path(@site, @health_check, step), :method => :delete, :confirm => 'Are you sure?' %>
+            <%= link_to_remote t('.edit'), :url => edit_site_health_check_step_path(@site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
+            <%= link_to t('.delete'), site_health_check_step_path(@site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
           </td>
         </tr>
       <% end %>
@@ -26,7 +26,7 @@
   </table>
 <% end %>
 
-<h3>Add Step</h3>
+<h3><%= t('.add_step') %></h3>
 
 <div id="new_step_container">
   <%= render :partial => "/steps/form", :locals => { :step => Step.new } %>

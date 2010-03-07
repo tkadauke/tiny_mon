@@ -1,25 +1,109 @@
 --- 
 en: 
+  breadcrumb: 
+    edit: Edit
+    health_checks: "Health Checks"
+    home: Home
+    new: New
+    sites: Sites
+    steps: Steps
   check_runs: 
     show: 
-      check_run_of_health_check_site: Check run of {{health_check}} (site {{site}})
-  breadcrumb: 
-    steps: Steps
-    new: New
-    edit: Edit
-    health_checks: Health Checks
-    sites: Sites
-    home: Home
+      check_run_of_health_check_site: "Check run of {{health_check}} (site {{site}})"
+      duration: Duration
+      duration_in_seconds: "{{seconds}} seconds"
+      error_message: "Error Message"
+      message: Message
+      status: Status
+      time: Time
+  health_checks: 
+    edit: 
+      edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"
+    form: 
+      description: Description
+      interval: "Check Interval"
+      name: Name
+    index: 
+      health_checks_for_site: "Health Checks for Site {{site}}"
+      name: Name
+      new_health_check: "New Health Check"
+      no_health_checks_defined: "No health checks defined."
+      options: Options
+      status: Status
+    new: 
+      new_health_check_for_site: "New Health Check for site {{site}}"
+    show: 
+      check_is_disabled: "Check is disabled"
+      check_is_enabled: "Check is enabled"
+      description: Description
+      disable: Disable
+      edit: Edit
+      edit_steps: "Edit Steps"
+      enable: Enable
+      last_check_run: "Last check run"
   layouts: 
-    quick_links: Quick links
-    report_link_text: Report it!
-    help: Help
     close_flash: Close
-    health_checks: Health Checks
-    guest_greeter: Welcome, Guest!
-    you_are_here: "You are here: {{bread_crumb}}"
-    sites: Sites
-    github_project_page: Github project page
-    subtitle: Website Acceptance Monitoring
+    github_project_page: "Github project page"
+    guest_greeter: "Welcome, Guest!"
+    health_checks: "Health Checks"
+    help: Help
     home: Home
-    report_bugs: Found a bug? {{report_link}}
+    quick_links: "Quick links"
+    report_bugs: "Found a bug? {{report_link}}"
+    report_link_text: "Report it!"
+    sites: Sites
+    subtitle: "Website Acceptance Monitoring"
+    you_are_here: "You are here: {{bread_crumb}}"
+  sites: 
+    edit: 
+      edit_site: "Edit Site {{site}}"
+    form: 
+      name: "Site Name"
+      url: "Base URL"
+    index: 
+      all_sites: "All Sites"
+      confirm_delete: "Are you sure you want to delete this site, all health checks and check run history? This operation can not be undone."
+      delete: Delete
+      edit: Edit
+      name: Name
+      new_site: "New Site"
+      no_sites_configured: "No sites configured."
+      options: Options
+    new: 
+      new_site: "New Site"
+  start: 
+    activity: 
+      health_check: "Health Check"
+      no_activity_yet: "No activity yet."
+      site: Site
+      when: When
+    index: 
+      add_site: "Add site"
+      quick_links: "Quick links"
+      recent_activity: "Recent Activity"
+  steps: 
+    check_content_step_form: 
+      content: Content
+    check_status_step_form: 
+      status: "HTTP Status"
+    click_button_step_form: 
+      name: "Button name"
+    fill_in_step_form: 
+      field: "Field name"
+      value: Value
+    form: 
+      cancel: Cancel
+      please_select: "Please select ..."
+      type: Type
+    index: 
+      add_step: "Add Step"
+      are_you_sure: "Are you sure?"
+      delete: Delete
+      details: Details
+      edit: Edit
+      name: Name
+      no_steps_defined: "No steps defined."
+      options: Options
+      steps_for_health_check: "Steps for Health Check {{health_check}}"
+    visit_step_form: 
+      url: URL

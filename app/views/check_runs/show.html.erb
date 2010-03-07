@@ -1,18 +1,23 @@
-<h2>Check run of <%= @health_check.name %> (site <%= @site.name %>)</h2>
+<h2><%= t('.check_run_of_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
 
-<p>Status: <%= @check_run.status %></p>
+<dl>
+  <dt><%= t('.status') %></dt>
+  <dd><%= @check_run.status %></dd>
 
-<p>Duration: <%= @check_run.duration %> seconds</p>
+  <dt><%= t('.duration') %></dt>
+  <dd><%= t('.duration_in_seconds', :seconds => @check_run.duration) %></dd>
 
-<% if @check_run.error_message %>
-  <p><%= @check_run.error_message %></p>
-<% end %>
+  <% if @check_run.error_message %>
+    <dt><%= t('.error_message') %></dt>
+    <dd><%= @check_run.error_message %></dd>
+  <% end %>
+</dl>
 
 <table class="list">
   <thead>
     <tr>
-      <th>Time</th>
-      <th>Message</th>
+      <th><%= t('.time') %></th>
+      <th><%= t('.message') %></th>
     </tr>
   </thead>
   <tbody>

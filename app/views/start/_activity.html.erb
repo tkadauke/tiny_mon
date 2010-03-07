@@ -1,12 +1,12 @@
 <% if @check_runs.empty? %>
-  <p>No activity yet.</p>
+  <p><%= t('.no_activity_yet') %></p>
 <% else %>
   <table class="list">
     <thead>
       <tr>
-        <th>When</th>
-        <th>Site</th>
-        <th>Health Check</th>
+        <th><%= t('.when') %></th>
+        <th><%= t('.site') %></th>
+        <th><%= t('.health_check') %></th>
       </tr>
     </thead>
     <tbody>

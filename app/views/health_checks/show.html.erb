@@ -1,26 +1,26 @@
 <h2><%= @health_check.name %></h2>
 
 <dl>
-  <dt>Description</dt>
+  <dt><%= t('.description') %></dt>
   <dd>
     <%= simple_format @health_check.description %>
     <p>
-      <%= link_to 'Edit', edit_site_health_check_path(@site, @health_check) %> |
-      <%= link_to 'Edit Steps', site_health_check_steps_path(@site, @health_check) %>
+      <%= link_to t('.edit'), edit_site_health_check_path(@site, @health_check) %> |
+      <%= link_to t('.edit_steps'), site_health_check_steps_path(@site, @health_check) %>
     </p>
   </dd>
 
   <% if @health_check.last_check_run %>
-    <dt>Last check run</dt>
+    <dt><%= t('.last_check_run') %></dt>
     <dd><%= link_to @health_check.status, site_health_check_check_run_path(@site, @health_check, @health_check.last_check_run) %></dd>
   <% end %>
 
   <% if @health_check.enabled? %>
-    <dt>Check is enabled</dt>
-    <dd><%= button_to 'Disable', site_health_check_path(@site, @health_check, :health_check => { :enabled => false }), :method => :put %></dd>
+    <dt><%= t('.check_is_enabled') %></dt>
+    <dd><%= button_to t('.disable'), site_health_check_path(@site, @health_check, :health_check => { :enabled => false }), :method => :put %></dd>
   <% else %>
-    <dt>Check is disabled</dt>
-    <dd><%= button_to 'Enable', site_health_check_path(@site, @health_check, :health_check => { :enabled => true }), :method => :put %></dd>
+    <dt><%= t('.check_is_disabled') %></dt>
+    <dd><%= button_to t('.enable'), site_health_check_path(@site, @health_check, :health_check => { :enabled => true }), :method => :put %></dd>
   <% end %>
 </dl>
 

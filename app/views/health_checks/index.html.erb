@@ -1,14 +1,14 @@
-<h2>Health Checks for Site <%= @site.name %></h2>
+<h2><%= t('.health_checks_for_site', :site => @site.name) %></h2>
 
 <% if @health_checks.empty? %>
-  <p>No health checks defined.</p>
+  <p><%= t('.no_health_checks_defined') %></p>
 <% else %>
   <table class="list">
     <thead>
       <tr>
-        <th>Status</th>
-        <th>Name</th>
-        <th>Options</th>
+        <th><%= t('.status') %></th>
+        <th><%= t('.name') %></th>
+        <th><%= t('.options') %></th>
       </tr>
     </thead>
     <tbody>
@@ -23,4 +23,4 @@
   </table>
 <% end %>
 
-<p><%= link_to 'New Health Check', new_site_health_check_path(@site) %></p>
+<p><%= link_to t('.new_health_check'), new_site_health_check_path(@site) %></p>

@@ -1,10 +1,10 @@
-<h2>Quick links</h2>
+<h2><%= t('.quick_links') %></h2>
 
 <ul class="asterisk">
-  <li><%= link_to 'Add site', new_site_path %></li>
+  <li><%= link_to t('.add_site'), new_site_path %></li>
 </ul>
 
-<h2>Recent Activity</h2>
+<h2><%= t('.recent_activity') %></h2>
 
 <%= auto_update 'activity' %>
 <div class="activity">

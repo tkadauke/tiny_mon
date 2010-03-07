@@ -1,13 +1,13 @@
-<h2>All Sites</h2>
+<h2><%= t('.all_sites') %></h2>
 
 <% if @sites.empty? %>
-  <p>No sites configured.</p>
+  <p><%= t('.no_sites_configured') %></p>
 <% else %>
   <table class="list">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Options</th>
+        <th><%= t('.name') %></th>
+        <th><%= t('.options') %></th>
       </tr>
     </thead>
     <tbody>
@@ -15,8 +15,8 @@
         <tr>
           <td><%= link_to site.name, site_health_checks_path(site) %></td>
           <td>
-            <%= link_to 'Edit', edit_site_path(site) %> |
-            <%= link_to 'Delete', site_path(site), :method => :delete, :confirm => 'Are you sure you want to delete this site, all health checks and check run history? This operation can not be undone.' %>
+            <%= link_to t('.edit'), edit_site_path(site) %> |
+            <%= link_to t('.delete'), site_path(site), :method => :delete, :confirm => t('.confirm_delete') %>
           </td>
         </tr>
       <% end %>
@@ -24,4 +24,4 @@
   </table>
 <% end %>
 
-<p><%= link_to 'New Site', new_site_path %></p>
+<p><%= link_to t('.new_site'), new_site_path %></p>

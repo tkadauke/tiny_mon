@@ -1,14 +1,25 @@
-en:
-  layouts:
-    subtitle: "Website Acceptance Monitoring"
-    report_bugs: "Found a bug? {{report_link}}"
-    report_link_text: "Report it!"
-    close_flash: Close
-    github_project_page: "Github project page"
-    guest_greeter: "Welcome, Guest!"
-    home: Home
-    help: Help
-    sites: Sites
-    quick_links: "Quick links"
+--- 
+en: 
+  check_runs: 
+    show: 
+      check_run_of_health_check_site: Check run of {{health_check}} (site {{site}})
+  breadcrumb: 
+    steps: Steps
+    new: New
+    edit: Edit
     health_checks: Health Checks
+    sites: Sites
+    home: Home
+  layouts: 
+    quick_links: Quick links
+    report_link_text: Report it!
+    help: Help
+    close_flash: Close
+    health_checks: Health Checks
+    guest_greeter: Welcome, Guest!
     you_are_here: "You are here: {{bread_crumb}}"
+    sites: Sites
+    github_project_page: Github project page
+    subtitle: Website Acceptance Monitoring
+    home: Home
+    report_bugs: Found a bug? {{report_link}}

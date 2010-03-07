@@ -17,15 +17,16 @@ class SitesController < ApplicationController
   end
   
   def show
-    @site = Site.find(params[:id])
+    @site = Site.find_by_permalink!(params[:id])
+    redirect_to site_health_checks_path(@site)
   end
   
   def edit
-    @site = Site.find(params[:id])
+    @site = Site.find_by_permalink!(params[:id])
   end
   
   def update
-    @site = Site.find(params[:id])
+    @site = Site.find_by_permalink!(params[:id])
     if @site.update_attributes(params[:site])
       redirect_to site_path(@site)
     else
@@ -34,7 +35,7 @@ class SitesController < ApplicationController
   end
   
   def destroy
-    @site = Site.find(params[:id])
+    @site = Site.find_by_permalink!(params[:id])
     @site.destroy
     redirect_to sites_path
   end

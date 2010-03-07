@@ -15,10 +15,10 @@ class CheckRunsController < ApplicationController
   
 protected
   def find_site
-    @site = Site.find(params[:site_id])
+    @site = Site.find_by_permalink!(params[:site_id])
   end
 
   def find_health_check
-    @health_check = @site.health_checks.find(params[:health_check_id])
+    @health_check = @site.health_checks.find_by_permalink!(params[:health_check_id])
   end
 end

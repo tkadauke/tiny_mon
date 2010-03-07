@@ -19,15 +19,15 @@ class HealthChecksController < ApplicationController
   end
   
   def show
-    @health_check = @site.health_checks.find(params[:id])
+    @health_check = @site.health_checks.find_by_permalink!(params[:id])
   end
   
   def edit
-    @health_check = @site.health_checks.find(params[:id])
+    @health_check = @site.health_checks.find_by_permalink!(params[:id])
   end
   
   def update
-    @health_check = @site.health_checks.find(params[:id])
+    @health_check = @site.health_checks.find_by_permalink!(params[:id])
     if @health_check.update_attributes(params[:health_check])
       redirect_to site_health_check_path(@site, @health_check)
     else
@@ -37,6 +37,6 @@ class HealthChecksController < ApplicationController
   
 protected
   def find_site
-    @site = Site.find(params[:site_id])
+    @site = Site.find_by_permalink!(params[:site_id])
   end
 end

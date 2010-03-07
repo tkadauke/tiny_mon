@@ -10,6 +10,7 @@ class SitesController < ApplicationController
   def create
     @site = Site.new(params[:site])
     if @site.save
+      flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
       redirect_to site_health_checks_path(@site)
     else
       render :action => 'new'
@@ -28,6 +29,7 @@ class SitesController < ApplicationController
   def update
     @site = Site.find_by_permalink!(params[:id])
     if @site.update_attributes(params[:site])
+      flash[:notice] = I18n.t('flash.notice.updated_site', :site => @site.name)
       redirect_to site_path(@site)
     else
       render :action => 'edit'
@@ -37,6 +39,7 @@ class SitesController < ApplicationController
   def destroy
     @site = Site.find_by_permalink!(params[:id])
     @site.destroy
+    flash[:notice] = I18n.t('flash.notice.deleted_site', :site => @site.name)
     redirect_to sites_path
   end
 end

@@ -16,6 +16,13 @@ en:
       message: Message
       status: Status
       time: Time
+  flash: 
+    notice: 
+      created_health_check: "Successfully created health check {{health_check}}"
+      created_site: "Successfully created site {{site}}"
+      deleted_site: "Successfully deleted site {{site}}"
+      updated_health_check: "Successfully updated health check {{health_check}}"
+      updated_site: "Successfully updated site {{site}}"
   health_checks: 
     edit: 
       edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"

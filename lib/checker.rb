@@ -8,6 +8,8 @@ class Checker
   
   def self.check_all
     HealthCheck.all.each do |check|
+      next unless check.check_now?
+      
       runner = Runner.new(check)
       attrs = { :started_at => Time.now.to_f, :status => 'success' }
       

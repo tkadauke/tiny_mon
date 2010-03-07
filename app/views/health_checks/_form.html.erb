@@ -5,5 +5,8 @@
   <%= f.label :description %>
   <%= f.text_area :description %><br/>
   
+  <%= f.label :interval %>
+  <%= f.select :interval, HealthCheck.intervals %><br/>
+  
   <%= f.submit %>
 <% end %>

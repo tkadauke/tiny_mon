@@ -8,7 +8,7 @@
   <tbody>
     <% @sites.each do |site| %>
       <tr>
-        <td><%= link_to site.name, site_path(site) %></td>
+        <td><%= link_to site.name, site_health_checks_path(site) %></td>
         <td><%= link_to 'Edit', edit_site_path(site) %></td>
       </tr>
     <% end %>

@@ -35,7 +35,7 @@ class HealthChecksController < ApplicationController
   def update
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
     if @health_check.update_attributes(params[:health_check])
-      flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
+      flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
       redirect_to site_health_check_path(@site, @health_check)
     else
       render :action => 'edit'

@@ -1,6 +1,3 @@
-require 'webrat'
-require 'webrat/mechanize'
-
 class Session < Webrat::Session
   class PageNotFound < CheckFailed; end
   class ServerError < CheckFailed; end
@@ -9,6 +6,9 @@ class Session < Webrat::Session
   attr_accessor :log_entries
   
   def initialize(url)
+    require 'webrat'
+    require 'webrat/mechanize'
+    
     @url = url
     @log_entries = []
     super(Webrat::MechanizeAdapter.new)

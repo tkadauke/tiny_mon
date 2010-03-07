@@ -3,10 +3,112 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>Layout Manager</title>
+    <title>TinyMon</title>
     <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'style' %>
   </head>
   <body>
-    <%= yield %>
+    <!-- wrap start -->
+    <div id="wrap">
+    <div class="wrap_corner_right">
+
+      <!-- topcontent -->
+      <div id="topcontent">
+
+        <!-- header start -->
+        <div id="header">
+
+          <!-- topheader start -->
+          <div id="top_header">
+            <div id="logo">
+              <h1><a href="/">TinyMon</a></h1>
+              <p><%= t('layouts.subtitle') %></p>
+            </div>
+            <div id="center_header">
+              <div id="suggestion">
+                <div class="suggestion_corner_right">
+                  <span><%= t('layouts.report_bugs', :report_link => link_to(t('layouts.report_link_text'), "http://github.com/tkadauke/tiny_mon/issues")) %></span>
+                </div>
+              </div>
+            </div>
+            <div id="right_header">
+              <ul class="action-list">
+                <li><%= t('layouts.guest_greeter') %></li>
+              </ul>
+            </div>
+            <div class="clearer"></div>
+          </div>
+          <!-- topheader end -->
+
+          <!-- menu start -->
+          <div id="menu_container">
+            <div id="menu">
+              <ul>
+                <li><a href="/" class="first"><%= t('layouts.home') %></a></li>
+                <li><a href="/sites"><%= t('layouts.sites') %></a></li>
+                <li><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
+                <li><a href="/help"><%= t('layouts.help') %></a></li>
+              </ul>
+            </div>
+            <div class="clearer"></div>
+          </div>
+          <!-- menu end -->
+
+        </div>
+        <!-- header end -->
+
+      <!-- body start -->
+
+      <div id="body">
+        <% if flash[:error] %>
+          <div id="flash" class="error">
+            <%= flash[:error] %>
+            <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
+          </div>
+        <% elsif flash[:notice] %>
+          <div id="flash" class="notice">
+            <%= flash[:notice] %>
+            <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
+          </div>
+        <% end %>
+        <p><%#= t('layouts.you_are_here', :bread_crumb => bread_crumb) %></p>
+        <%= yield %>
+      <div class="clearer"></div>
+
+      </div>
+      <!-- body end -->
+
+      </div>
+      <!-- topcontent end -->
+
+      <!-- footer start -->
+      <div id="bottomcontent">
+      <div class="bottomcontent_right">
+        <div id="footer">
+        <div class="footer_corner_right">
+          <div class="left">
+          <a href="/"><%= t('layouts.home') %></a> | 
+          <a href="/sites"><%= t('layouts.sites') %></a> |
+          <a href="/health_checks"><%= t('layouts.health_checks') %></a>
+          </div>
+          <div class="clearer"></div>
+        </div>
+        </div>
+      </div>
+      </div>
+      <!-- footer end -->
+
+    </div>
+    </div>
+    <!-- wrap end -->
+
+    <div class="bottom_space">
+      <div id="ads_page_end">
+        <h1><%= t('layouts.quick_links') %></h1>
+        <div id="links">
+          <a href="http://github.com/tkadauke/tiny_ci"><%= t('layouts.github_project_page') %></a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

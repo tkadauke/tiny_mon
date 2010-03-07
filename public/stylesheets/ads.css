@@ -1,0 +1,27 @@
+/* CSS Document */
+
+#ads_page_end {
+	background: #292929;
+	color: #FFFFFF;
+	padding: 20px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin: 30px auto 0 auto;
+	width: 820px;
+}
+
+#ads_page_end h1 {
+	font-size: 1.4em;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	margin: 0;
+	padding: 0 0 20px 0;
+}
+
+#ads_page_end #links a {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#ads_page_end #links a:hover {
+	text-decoration: underline;
+}

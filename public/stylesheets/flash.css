@@ -1,0 +1,4 @@
+#flash { margin-bottom: 1em; padding: 1em; font-weight: bold; }
+#flash a { float: right; }
+#flash.notice { border: 1px solid #0f0; background-color: #C6FFC6; }
+#flash.error { border: 1px solid #f00; background-color: #FFC6C6; }

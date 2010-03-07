@@ -1,0 +1,26 @@
+/* 
+
+	- CSS Document for rounded corners - 
+	
+	source: http://kalsey.com/2003/07/rounded_corners_in_css/
+
+*/
+
+.roundcont {
+	height: 1%;
+}
+
+.roundtop { 
+	background: url(/images/div_yellow_corner_tright.jpg) no-repeat top right; 
+}
+
+.roundbottom {
+	background: url(/images/div_yellow_corner_bright.jpg) no-repeat top right; 
+}
+
+img.corner {
+   width: 10px;
+   height: 10px;
+   border: none;
+   display: block !important;
+}

@@ -1,0 +1,6 @@
+/* Fixing IE bugs */
+
+#header,
+#footer .footer_corner_right {
+	height: 1%;
+}

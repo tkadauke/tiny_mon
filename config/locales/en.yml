@@ -1,5 +1,14 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  layouts:
+    subtitle: "Website Acceptance Monitoring"
+    report_bugs: "Found a bug? {{report_link}}"
+    report_link_text: "Report it!"
+    close_flash: Close
+    github_project_page: "Github project page"
+    guest_greeter: "Welcome, Guest!"
+    home: Home
+    help: Help
+    sites: Sites
+    quick_links: "Quick links"
+    health_checks: Health Checks
+    you_are_here: "You are here: {{bread_crumb}}"

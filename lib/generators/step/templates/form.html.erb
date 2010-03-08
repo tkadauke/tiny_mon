@@ -1,0 +1,6 @@
+<% for attribute in attributes -%>
+<p class="form_item">
+  <span class="label"><%%= f.label :<%= attribute.name %>, t('.<%= attribute.name %>') %></span>
+  <%%= f.text_field :<%= attribute.name %> %>
+</p>
+<% end -%>

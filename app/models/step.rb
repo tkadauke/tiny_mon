@@ -6,7 +6,7 @@ class Step < ActiveRecord::Base
   acts_as_list :scope => :health_check
   
   def self.available_types
-    ['visit', 'check_status', 'check_content', 'fill_in', 'click_button', 'click_link']
+    ['visit', 'check_status', 'check_content', 'fill_in', 'click_button', 'click_link', 'wait']
   end
   
   def run!(session)

@@ -15,7 +15,10 @@ class HealthCheck < ActiveRecord::Base
   end
   
   def check_now?
-    Time.now.min % interval == 0
+    # This is a small and naive optimization to spread the check times more evenly
+    # across the minutes of an hour. Most importantly, this makes sure that not every
+    # check runs on the full hour.
+    (Time.now.min + (interval / 6.375)).to_i % interval == 0
   end
   
   def to_param

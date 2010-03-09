@@ -17,7 +17,7 @@ class Checker
         retry_times = 3
         begin
           runner.run!
-        rescue Timeout::Error, CheckFailed => e
+        rescue Exception => e
           retry_times -= 1
           retry unless retry_times == 0
 

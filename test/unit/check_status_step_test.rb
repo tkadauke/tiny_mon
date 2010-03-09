@@ -11,9 +11,8 @@ class CheckStatusStepTest < ActiveSupport::TestCase
 
   test "should raise if content is not present" do
     session = stub(:response => stub(:code => '404'), :log => nil)
+    session.expects(:fail)
     step = CheckStatusStep.new(:status => 200)
-    assert_raise CheckStatusStep::StatusCheckFailed do
-      step.run!(session)
-    end
+    step.run!(session)
   end
 end

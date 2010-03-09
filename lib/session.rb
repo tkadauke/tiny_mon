@@ -18,6 +18,11 @@ class Session < Webrat::Session
     log_entries << [Time.now, message]
   end
   
+  def fail(exception_class, message)
+    log message
+    raise exception_class, message
+  end
+  
   def visit(url)
     log "getting #{url}"
     super(expand_url(url))

@@ -5,6 +5,9 @@ class CheckContentStep < Step
   
   def run!(session)
     session.log "Checking content for #{content}"
-    raise ContentCheckFailed, "Expected page to contain #{content}" unless session.response.body =~ Regexp.new(Regexp.escape(content))
+    unless session.response.body =~ Regexp.new(Regexp.escape(content))
+      session.log session.response.body
+      session.fail ContentCheckFailed, "Expected page to contain #{content}"
+    end
   end
 end

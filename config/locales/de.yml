@@ -110,6 +110,7 @@ de:
   status: 
     failure: Fehlschlag
     success: Erfolg
+    offline: Deaktiviert
   steps: 
     check_content_step_form: 
       content: Inhalt

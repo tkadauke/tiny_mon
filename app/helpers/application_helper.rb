@@ -29,8 +29,12 @@ module ApplicationHelper
     breadcrumb
   end
   
-  def status_icon(status, version = :small)
-    return if status.blank?
+  def status_icon(model, version = :small)
+    return if model.blank?
+    
+    status = model.status
+    status = 'offline' if model.respond_to?(:enabled?) && !model.enabled?
+    
     image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
   end
 end

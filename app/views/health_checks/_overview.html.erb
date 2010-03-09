@@ -2,7 +2,7 @@
   <% @health_checks.each do |health_check| %>
     <li>
       <div class="status">
-        <%= status_icon health_check.status, :large %>
+        <%= status_icon health_check, :large %>
       </div>
       <div class="details">
         <%= link_to health_check.name, site_health_check_path(health_check.site, health_check) %><br/>

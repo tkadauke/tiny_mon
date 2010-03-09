@@ -110,6 +110,7 @@ en:
   status: 
     failure: Failure
     success: Success
+    offline: Disabled
   steps: 
     check_content_step_form: 
       content: Content

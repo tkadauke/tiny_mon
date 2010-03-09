@@ -10,6 +10,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 
 === Features
 
+- Available in two languages: English and German
 - Automatically updated overview
 - Overview of recent activity
 - Test duration graph

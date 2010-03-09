@@ -138,6 +138,8 @@ de:
       no_steps_defined: "Keine Schritte definiert."
       options: Optionen
       steps_for_health_check: "Schritte für Funktionstest {{health_check}}"
+    submit_form_step_form: 
+      name: Name
     visit_step_form: 
       url: URL
   time: 

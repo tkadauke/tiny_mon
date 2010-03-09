@@ -110,8 +110,8 @@ en:
       recent_activity: "Recent Activity"
   status: 
     failure: Failure
-    success: Success
     offline: Disabled
+    success: Success
   steps: 
     check_content_step_form: 
       content: Content
@@ -138,6 +138,8 @@ en:
       no_steps_defined: "No steps defined."
       options: Options
       steps_for_health_check: "Steps for Health Check {{health_check}}"
+    submit_form_step_form: 
+      name: Name
     visit_step_form: 
       url: URL
   time: 

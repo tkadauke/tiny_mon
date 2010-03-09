@@ -8,7 +8,7 @@ class HealthCheck < ActiveRecord::Base
   
   named_scope :enabled, :conditions => { :enabled => true }
 
-  has_permalink :name
+  has_permalink :name, :scope => :site_id
   
   def self.intervals
     [1, 2, 3, 5, 10, 15, 20, 30, 60]

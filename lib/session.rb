@@ -30,6 +30,18 @@ class Session < Webrat::Session
     raise ServerError, "Internal Server Error when trying to load #{url}"
   end
   
+  def click_link(*args)
+    log "clicking link #{args.first}"
+    super
+    log "now on #{current_url}"
+  end
+  
+  def click_button(*args)
+    log "clicking button #{args.first}"
+    super
+    log "now on #{current_url}"
+  end
+  
 protected
   def expand_url(url)
     if url =~ /^http/

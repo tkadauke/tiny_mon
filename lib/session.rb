@@ -33,13 +33,13 @@ class Session < Webrat::Session
   def click_link(*args)
     log "clicking link #{args.first}"
     super
-    log "now on #{response_location}"
+    log "now on #{current_url}"
   end
   
   def click_button(*args)
     log "clicking button #{args.first}"
     super
-    log "now on #{response_location}"
+    log "now on #{current_url}"
   end
   
 protected

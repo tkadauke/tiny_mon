@@ -3,9 +3,9 @@ class HealthChecksController < ApplicationController
   
   def index
     if @site
-      @health_checks = @site.health_checks.find(:all, :include => :site)
+      @health_checks = @site.health_checks.find(:all, :include => :site, :order => 'health_checks.name ASC')
     else
-      @health_checks = HealthCheck.find(:all, :include => :site)
+      @health_checks = HealthCheck.find(:all, :include => :site, :order => 'sites.name ASC, health_checks.name ASC')
       render :action => 'all_checks' unless request.xhr?
     end
     render :partial => 'list' if request.xhr?

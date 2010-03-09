@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   def index
-    @sites = Site.all
+    @sites = Site.all(:order => 'name ASC')
   end
   
   def new

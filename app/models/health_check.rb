@@ -28,4 +28,24 @@ class HealthCheck < ActiveRecord::Base
   def self.from_param!(param)
     find_by_permalink!(param)
   end
+  
+  def check!
+    runner = Runner.new(self)
+    attrs = { :started_at => Time.now.to_f, :status => 'success' }
+
+    retry_times = 3
+    begin
+      runner.run!
+    rescue Exception => e
+      retry_times -= 1
+      retry unless retry_times == 0
+
+      attrs[:status] = 'failure'
+      attrs[:error_message] = e.message
+    end
+    attrs[:ended_at] = Time.now.to_f
+    attrs[:log] = runner.log_entries
+
+    check_runs.create(attrs)
+  end
 end

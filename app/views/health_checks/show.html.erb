@@ -9,6 +9,7 @@
       <%= link_to t('.edit'), edit_site_health_check_path(@site, @health_check) %> |
       <%= link_to t('.edit_steps'), site_health_check_steps_path(@site, @health_check) %>
     </p>
+    <%= button_to t('.run'), site_health_check_check_runs_path(@site, @health_check), :method => :post %>
   </dd>
 
   <% if @health_check.last_check_run %>

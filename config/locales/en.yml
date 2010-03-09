@@ -72,6 +72,7 @@ en:
       edit_steps: "Edit Steps"
       enable: Enable
       last_check_run: "Last check run"
+      run: Run
   layouts: 
     close_flash: Close
     github_project_page: "Github project page"

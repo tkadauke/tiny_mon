@@ -14,6 +14,11 @@ class CheckRunsController < ApplicationController
     @check_run = @health_check.check_runs.find(params[:id])
   end
   
+  def create
+    @check_run = @health_check.check!
+    redirect_to site_health_check_check_run_path(@site, @health_check, @check_run)
+  end
+  
 protected
   def find_site
     @site = Site.find_by_permalink!(params[:site_id])

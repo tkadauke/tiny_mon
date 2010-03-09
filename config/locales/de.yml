@@ -72,6 +72,7 @@ de:
       edit_steps: "Schritte bearbeiten"
       enable: Aktivieren
       last_check_run: "Letzter Testlauf"
+      run: "Jetzt prüfen"
   layouts: 
     close_flash: Schließen
     github_project_page: Github-Projektseite

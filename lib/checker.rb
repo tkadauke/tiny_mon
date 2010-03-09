@@ -10,24 +10,8 @@ class Checker
     HealthCheck.enabled.each do |check|
       begin
         next unless check.check_now?
-
-        runner = Runner.new(check)
-        attrs = { :started_at => Time.now.to_f, :status => 'success' }
-
-        retry_times = 3
-        begin
-          runner.run!
-        rescue Exception => e
-          retry_times -= 1
-          retry unless retry_times == 0
-
-          attrs[:status] = 'failure'
-          attrs[:error_message] = e.message
-        end
-        attrs[:ended_at] = Time.now.to_f
-        attrs[:log] = runner.log_entries
-
-        check.check_runs.create(attrs)
+        
+        check.check!
       rescue Exception => e
         puts e.message, e.backtrace
       end

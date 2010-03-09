@@ -22,6 +22,6 @@ protected
   end
   
   def send_mail_if_failed
-    CheckRunMailer.deliver_failure(self) if self.status == 'failure'
+    CheckRunMailer.deliver_failure(self) if self.status == 'failure' && health_check.enabled?
   end
 end

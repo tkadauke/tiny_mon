@@ -30,6 +30,7 @@ module ApplicationHelper
   end
   
   def status_icon(status, version = :small)
+    return if status.blank?
     image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
   end
 end

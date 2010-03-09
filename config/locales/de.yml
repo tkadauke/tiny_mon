@@ -45,6 +45,7 @@ de:
     details: 
       name: Name
       options: Optionen
+      site: Site
       status: Status
     edit: 
       edit_health_check_for_site: "Funktionstest {{health_check}} für Site {{site}} bearbeiten"

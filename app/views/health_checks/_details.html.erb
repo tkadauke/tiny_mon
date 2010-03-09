@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th><%= t('.status') %></th>
+      <th><%= t('.site') %></th>
       <th><%= t('.name') %></th>
       <th><%= t('.options') %></th>
     </tr>
@@ -10,6 +11,7 @@
     <% @health_checks.each do |health_check| %>
       <tr>
         <td><%= status_icon health_check %></td>
+        <td><%= link_to health_check.site.name, site_path(health_check.site) %></td>
         <td><%= link_to health_check.name, site_health_check_path(health_check.site, health_check) %></td>
         <td><%= link_to 'Edit', edit_site_health_check_path(health_check.site, health_check) %></td>
       </tr>

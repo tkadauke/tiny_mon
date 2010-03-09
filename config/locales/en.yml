@@ -45,6 +45,7 @@ en:
     details: 
       name: Name
       options: Options
+      site: Site
       status: Status
     edit: 
       edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"

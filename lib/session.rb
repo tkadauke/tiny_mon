@@ -42,6 +42,10 @@ class Session < Webrat::Session
     log "now on #{current_url}"
   end
   
+  def debug_log(*args)
+    log(*args)
+  end
+  
 protected
   def expand_url(url)
     if url =~ /^http/

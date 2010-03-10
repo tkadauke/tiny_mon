@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   
   config.gem "acts_as_list"
   config.gem "gruff"
-  config.gem "webrat"
+  config.gem "webrat", :version => '0.5.3'
   config.gem "mechanize", :lib => false
   config.gem "orderedhash"
 

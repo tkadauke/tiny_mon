@@ -72,6 +72,10 @@ de:
       edit: Bearbeiten
       edit_steps: "Schritte bearbeiten"
       enable: Aktivieren
+      interval: Prüfintervall
+      interval_minutes: 
+        one: "{{count}} Minute"
+        other: "{{count}} Minuten"
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
   layouts: 

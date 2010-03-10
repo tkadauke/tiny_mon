@@ -12,6 +12,9 @@
     <%= button_to t('.run'), site_health_check_check_runs_path(@site, @health_check), :method => :post %>
   </dd>
 
+  <dt><%= t('.interval') %></dt>
+  <dd><%= t('.interval_minutes', :count => @health_check.interval) %></dd>
+
   <% if @health_check.last_check_run %>
     <dt><%= t('.last_check_run') %></dt>
     <dd><%= link_to status_icon(@health_check.last_check_run) + '&nbsp;' + t("status.#{@health_check.last_check_run.status}"), site_health_check_check_run_path(@site, @health_check, @health_check.last_check_run) %></dd>

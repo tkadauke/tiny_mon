@@ -72,6 +72,10 @@ en:
       edit: Edit
       edit_steps: "Edit Steps"
       enable: Enable
+      interval: Check Interval
+      interval_minutes: 
+        one: "{{count}} minute"
+        other: "{{count}} minutes"
       last_check_run: "Last check run"
       run: Run
   layouts: 

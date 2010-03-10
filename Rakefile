@@ -22,6 +22,6 @@ namespace :test do
     sh %{#{rcov} #{test_files.join(' ')}} unless test_files.empty?
 
     test_files = Dir.glob('test/functional/**/*_test.rb')
-    sh %{#{rcov} --html #{test_files.join(' ')}} unless test_files.empty?
+    sh %{#{rcov} --html #{test_files.join(' ')} -v} unless test_files.empty?
   end
 end

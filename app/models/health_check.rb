@@ -10,6 +10,8 @@ class HealthCheck < ActiveRecord::Base
 
   has_permalink :name, :scope => :site_id
   
+  validates_presence_of :site_id, :name
+  
   def self.intervals
     [1, 2, 3, 5, 10, 15, 20, 30, 60]
   end

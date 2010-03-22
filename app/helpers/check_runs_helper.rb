@@ -1,7 +1,7 @@
 module CheckRunsHelper
   def format_log_message(message)
     case message
-    when /<\/html>/
+    when /<html/
       format_embedded_html_page(message)
     else
       content_tag(:code) { message }

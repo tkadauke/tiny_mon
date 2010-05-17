@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require 'config/environment'
+require 'fastercsv'
+require 'uri'
+
+file_name = ARGV.shift
+raise 'No file name given' unless file_name
+
+FasterCSV.parse(File.read(file_name)) do |row|
+  url, text, interval = *row
+  uri = URI.parse(url)
+
+  site = Site.find_by_name(uri.host)
+  unless site
+    puts "Importing up-check for site #{uri.host}"
+    site = Site.create!(:name => uri.host, :url => "#{uri.scheme}://#{uri.host}")
+    health_check = site.health_checks.find_by_name('Up-Check')
+    unless health_check
+      health_check = site.health_checks.create!(:name => 'Up-Check', :interval => interval, :enabled => true)
+      path = [uri.path, uri.query].join('?')
+      VisitStep.create!(:health_check => health_check, :url => path.blank? ? '/' : path)
+      CheckStatusStep.create!(:health_check => health_check, :status => 200)
+      CheckContentStep.create!(:health_check => health_check, :content => text)
+    end
+  end
+end

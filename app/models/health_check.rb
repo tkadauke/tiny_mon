@@ -43,7 +43,7 @@ class HealthCheck < ActiveRecord::Base
       retry unless retry_times == 0
 
       attrs[:status] = 'failure'
-      attrs[:error_message] = e.message
+      attrs[:error_message] = "#{e.class.name}: #{e.message}"
     end
     attrs[:ended_at] = Time.now.to_f
     attrs[:log] = runner.log_entries

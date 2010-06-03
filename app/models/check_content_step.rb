@@ -5,8 +5,15 @@ class CheckContentStep < Step
   
   def run!(session)
     session.log "Checking content for #{content}"
-    unless session.response.body =~ Regexp.new(Regexp.escape(content))
-      session.log session.response.body
+    
+    utf8_body = if ['utf-8', 'utf8'].include?(session.response.encoding.downcase)
+      session.response.body
+    else
+      Iconv.conv('UTF-8//TRANSLIT', session.response.encoding, session.response.body)
+    end
+    
+    unless utf8_body =~ Regexp.new(Regexp.escape(content))
+      session.log utf8_body
       session.fail ContentCheckFailed, "Expected page to contain #{content}"
     end
   end

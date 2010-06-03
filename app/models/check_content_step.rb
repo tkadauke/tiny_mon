@@ -6,7 +6,7 @@ class CheckContentStep < Step
   def run!(session)
     session.log "Checking content for #{content}"
     
-    utf8_body = if ['utf-8', 'utf8'].include?(session.response.encoding.downcase)
+    utf8_body = if session.response.encoding.nil? || ['utf-8', 'utf8'].include?(session.response.encoding.downcase)
       session.response.body
     else
       Iconv.conv('UTF-8//TRANSLIT', session.response.encoding, session.response.body)

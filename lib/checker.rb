@@ -7,10 +7,8 @@ class Checker
   end
 
   def self.check_all
-    HealthCheck.enabled.each do |check|
+    HealthCheck.enabled.select { |check| check.check_now? }.each do |check|
       begin
-        next unless check.check_now?
-        
         check.check!
       rescue Exception => e
         puts e.message, e.backtrace

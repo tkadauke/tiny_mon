@@ -7,6 +7,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Use TinyMon to monitor if your on-site search feature is working as expected
 - Fill in login forms and log in with a test account
 - Do a complete transaction for your online shop
+- Monitor your signup process (e.g. sign up a user, click activation link, check welcome page etc.)
 
 === Features
 
@@ -19,6 +20,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Retry 3 times on failure to avoid false negatives
 - Extreme Feedback Device-like overview
 - Choose check interval per health check
+- Checks IMAP email inboxes (important for monitoring signup processes)
 - Available in two languages: English and German
 
 === Missing Stuff

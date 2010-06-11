@@ -120,10 +120,16 @@ en:
   steps: 
     check_content_step_form: 
       content: Content
+    check_email_step_form:
+      server: Server
+      login: Login
+      password: Password
     check_status_step_form: 
       status: "HTTP Status"
     click_button_step_form: 
       name: "Button name"
+    click_email_link_step_form:
+      link_pattern: "Link pattern"
     click_link_step_form: 
       name: "Link name"
     fill_in_step_form: 
@@ -132,6 +138,7 @@ en:
     form: 
       cancel: Cancel
       please_select: "Please select ..."
+      save: Save
       type: Type
     index: 
       add_step: "Add Step"
@@ -143,6 +150,8 @@ en:
       no_steps_defined: "No steps defined."
       options: Options
       steps_for_health_check: "Steps for Health Check {{health_check}}"
+    select_check_box_step_form:
+      name: Name
     submit_form_step_form: 
       name: Name
     visit_step_form: 

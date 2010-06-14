@@ -14,7 +14,12 @@ class Session < Webrat::Session
     
     @url = url
     @log_entries = []
-    super(Webrat::MechanizeAdapter.new)
+    
+    adapter = Webrat::MechanizeAdapter.new
+    adapter.mechanize.open_timeout = 20
+    adapter.mechanize.open_timeout = 10
+    
+    super(adapter)
   end
   
   def log(message)

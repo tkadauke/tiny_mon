@@ -32,9 +32,18 @@
               </div>
             </div>
             <div id="right_header">
-              <ul class="action-list">
-                <li><%= t('layouts.guest_greeter') %></li>
-              </ul>
+              <% if logged_in? %>
+                <ul class="action-list">
+                  <li><%= t('layouts.user_greeter', :user => current_user.login) %></li>
+                  <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
+                </ul>
+              <% else %>
+                <ul class="action-list">
+                  <li><%= t('layouts.guest_greeter') %></li>
+                  <li><%= link_to t('layouts.login'), login_path %></li>
+                  <li><%= link_to t('layouts.signup'), new_user_path %></li>
+                </ul>
+              <% end %>
             </div>
             <div class="clearer"></div>
           </div>

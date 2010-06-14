@@ -72,7 +72,7 @@ en:
       edit: Edit
       edit_steps: "Edit Steps"
       enable: Enable
-      interval: Check Interval
+      interval: "Check Interval"
       interval_minutes: 
         one: "{{count}} minute"
         other: "{{count}} minutes"
@@ -85,11 +85,15 @@ en:
     health_checks: "Health Checks"
     help: Help
     home: Home
+    login: Login
+    logout: Logout
     quick_links: "Quick links"
     report_bugs: "Found a bug? {{report_link}}"
     report_link_text: "Report it!"
+    signup: Signup
     sites: Sites
     subtitle: "Website Acceptance Monitoring"
+    user_greeter: "Welcome, {{user}}"
     you_are_here: "You are here: {{bread_crumb}}"
   sites: 
     edit: 
@@ -120,15 +124,15 @@ en:
   steps: 
     check_content_step_form: 
       content: Content
-    check_email_step_form:
-      server: Server
+    check_email_step_form: 
       login: Login
       password: Password
+      server: Server
     check_status_step_form: 
       status: "HTTP Status"
     click_button_step_form: 
       name: "Button name"
-    click_email_link_step_form:
+    click_email_link_step_form: 
       link_pattern: "Link pattern"
     click_link_step_form: 
       name: "Link name"
@@ -150,12 +154,47 @@ en:
       no_steps_defined: "No steps defined."
       options: Options
       steps_for_health_check: "Steps for Health Check {{health_check}}"
-    select_check_box_step_form:
+    select_check_box_step_form: 
       name: Name
     submit_form_step_form: 
       name: Name
     visit_step_form: 
       url: URL
+    wait_step_form: 
+      duration: Duration
   time: 
     formats: 
       log: "%H:%M:%S"
+  user_sessions: 
+    new: 
+      login: Login
+      password: Password
+      remember_me: "Remember me"
+      user_name: "User name"
+  users: 
+    edit: 
+      edit_users_profile: "Edit user's profile"
+      email_address: "E-mail address"
+      the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
+      update: Update
+    index: 
+      edit: Edit
+      listing_users: "Listing users"
+      login_name: "Login name"
+      new_account: "New account"
+      options: Options
+      signup: Signup
+      there_are_no_user_accounts_yet: "There are no user accounts yet"
+    new: 
+      create_account: "Create account"
+      create_new_account: "Create new account"
+      email_address: "E-mail address"
+      login_name: "Login name"
+      password: Password
+      password_confirmation: "Password confirmation"
+      please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
+      the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
+      the_nick_name_used_for_logins: "The nick name used for logins"
+    show: 
+      edit_profile: "Edit profile"
+      users_profile: "User's profile"

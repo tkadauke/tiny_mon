@@ -8,6 +8,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
 
+  map.resources :users
+  
+  map.login '/login', :controller => 'user_sessions', :action => 'new', :conditions => { :method => :get }
+  map.connect '/login', :controller => 'user_sessions', :action => 'create', :conditions => { :method => :post }
+  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy', :conditions => { :method => :delete }
+
   map.root :controller => "start"
 
   # The priority is based upon order of creation: first created -> highest priority.

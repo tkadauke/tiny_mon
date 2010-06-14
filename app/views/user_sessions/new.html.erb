@@ -1,0 +1,19 @@
+<h2><%= t('.login') %></h2>
+
+<% form_for @user_session, :url => login_path do |f| %>
+  <%= f.error_messages %>
+  <p class="form_item">
+    <span class="label"><%= f.label :login, t('.user_name') %></span>
+    <%= f.text_field :login %>
+  </p>
+  <p class="form_item">
+    <span class="label"><%= f.label :password, t('.password') %></span>
+    <%= f.password_field :password %>
+  </p>
+
+  <p class="form_item">
+    <%= f.check_box :remember_me %><%= f.label :remember_me, t('.remember_me') %>
+  </p>
+  
+  <%= f.submit t('.login') %>
+<% end %>

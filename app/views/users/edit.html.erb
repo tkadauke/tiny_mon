@@ -1,0 +1,13 @@
+<h2><%= t('.edit_users_profile', :login => @user.login) %></h2>
+
+<% form_for @user do |f| %>
+  <%= f.error_messages %>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :email, t('.email_address') %></span>
+    <span class="desc"><%= t('.the_email_address_is_used_for_notifications') %></span>
+    <%= f.text_field :email %>
+  </p>
+  
+  <%= f.submit t('.update') %>
+<% end %>

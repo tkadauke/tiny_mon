@@ -85,11 +85,15 @@ de:
     health_checks: Funktionstests
     help: Hilfe
     home: Start
+    login: Login
+    logout: Logout
     quick_links: Schnellzugriff
     report_bugs: "Fehler gefunden? {{report_link}}"
     report_link_text: Melden!
+    signup: Registrieren
     sites: Sites
     subtitle: Website-Funktionsüberwachung
+    user_greeter: "Willkommen, {{user}}"
     you_are_here: "Sie sind hier: {{bread_crumb}}"
   sites: 
     edit: 
@@ -115,21 +119,21 @@ de:
       recent_activity: "Neueste Aktivität"
   status: 
     failure: Fehlschlag
-    success: Erfolg
     offline: Deaktiviert
+    success: Erfolg
   steps: 
     check_content_step_form: 
       content: Inhalt
-    check_email_step_form:
-      server: Server
+    check_email_step_form: 
       login: Benutzername
       password: Passwort
+      server: Server
     check_status_step_form: 
       status: HTTP-Status
     click_button_step_form: 
       name: Button-Name
-    click_email_link_step_form:
-      link_pattern: "Link-Muster"
+    click_email_link_step_form: 
+      link_pattern: Link-Muster
     click_link_step_form: 
       name: Link-Name
     fill_in_step_form: 
@@ -142,7 +146,7 @@ de:
       type: Typ
     index: 
       add_step: "Schritt hinzufügen"
-      are_you_sure: "Sind Se sicher?"
+      are_you_sure: "Sind Sie sicher?"
       delete: Entfernen
       details: Details
       edit: Bearbeiten
@@ -150,12 +154,47 @@ de:
       no_steps_defined: "Keine Schritte definiert."
       options: Optionen
       steps_for_health_check: "Schritte für Funktionstest {{health_check}}"
-    select_check_box_step_form:
+    select_check_box_step_form: 
       name: Name
     submit_form_step_form: 
       name: Name
     visit_step_form: 
       url: URL
+    wait_step_form: 
+      duration: Dauer
   time: 
     formats: 
       log: "%H:%M:%S"
+  user_sessions: 
+    new: 
+      login: Benutzername
+      password: Passwort
+      remember_me: "Eingeloggt bleiben"
+      user_name: Benutzername
+  users: 
+    edit: 
+      edit_users_profile: "Benutzerprofil bearbeiten"
+      email_address: E-Mail-Adresse
+      the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
+      update: Aktualisieren
+    index: 
+      edit: Bearbeiten
+      listing_users: "Alle Benutzer"
+      login_name: Benutzername
+      new_account: "Neuer benutzer"
+      options: Optionen
+      signup: Registrieren
+      there_are_no_user_accounts_yet: "Bisher gibt es keine Benutzer"
+    new: 
+      create_account: "Benutzer registrieren"
+      create_new_account: "Neuen Benutzer registrieren"
+      email_address: E-Mail-Adresse
+      login_name: Benutzername
+      password: Passwort
+      password_confirmation: "Passwort wiederholen"
+      please_repeat_the_password_exactly_as_above: "Bitte wiederholen Sie das Passwort exakt wie oben"
+      the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
+      the_nick_name_used_for_logins: "Der Benutzername wird zum Einloggen verwendet"
+    show: 
+      edit_profile: "Profil bearbeiten"
+      users_profile: Benutzerprofil

@@ -1,0 +1,7 @@
+<h2><%= t('.users_profile', :login => @user.login) %></h2>
+
+<ul class="action-list">
+  <% if current_user.can_edit_account?(@user) %>
+    <li><%= link_to t('.edit_profile'), edit_user_path(@user) %></li>
+  <% end %>
+</ul>

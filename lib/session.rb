@@ -17,7 +17,7 @@ class Session < Webrat::Session
     
     adapter = Webrat::MechanizeAdapter.new
     adapter.mechanize.open_timeout = 20
-    adapter.mechanize.open_timeout = 10
+    adapter.mechanize.read_timeout = 10
     
     super(adapter)
   end

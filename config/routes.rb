@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :accounts, :member => { :switch => :post }
+
   map.resources :sites do |sites|
     sites.resources :health_checks do |checks|
       checks.resources :steps, :collection => { :sort => :post }

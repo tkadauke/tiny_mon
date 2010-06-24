@@ -2,7 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class HealthChecksControllerTest < ActionController::TestCase
   def setup
-    @site = Site.create(:name => 'example.com', :url => 'http://www.example.com')
+    @account = Account.create(:name => 'account')
+    @user = @account.users.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
+    @site = @account.sites.create(:name => 'example.com', :url => 'http://www.example.com')
+    
+    login_with @user
   end
   
   test "should get index" do

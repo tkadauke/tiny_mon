@@ -34,7 +34,12 @@
             <div id="right_header">
               <% if logged_in? %>
                 <ul class="action-list">
-                  <li><%= t('layouts.user_greeter', :user => current_user.login) %></li>
+                  <li><%= t('layouts.user_greeter', :user => current_user.full_name) %></li>
+                  <% if current_user.current_account %>
+                    <li><%= link_to current_user.current_account.name, accounts_path %></li>
+                  <% else %>
+                    <li><%= link_to t('layouts.accounts'), accounts_path %></li>
+                  <% end %>
                   <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
                 </ul>
               <% else %>

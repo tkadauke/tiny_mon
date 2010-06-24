@@ -3,8 +3,8 @@
 <% form_for @user_session, :url => login_path do |f| %>
   <%= f.error_messages %>
   <p class="form_item">
-    <span class="label"><%= f.label :login, t('.user_name') %></span>
-    <%= f.text_field :login %>
+    <span class="label"><%= f.label :email, t('.email') %></span>
+    <%= f.text_field :email %>
   </p>
   <p class="form_item">
     <span class="label"><%= f.label :password, t('.password') %></span>

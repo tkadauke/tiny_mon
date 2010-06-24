@@ -1,6 +1,19 @@
 --- 
 en: 
+  accounts: 
+    edit: 
+      edit_account: "Edit Account"
+    form: 
+      name: Name
+    index: 
+      edit: Edit
+      name: Name
+      new_account: "New Account"
+      options: Options
+    new: 
+      new_account: "New Account"
   breadcrumb: 
+    accounts: Accounts
     check_runs: "Check Runs"
     edit: Edit
     health_checks: "Health Checks"
@@ -33,12 +46,19 @@ en:
       status: Status
       time: Time
   flash: 
+    error: 
+      switch_account: "Could not switch Account"
     notice: 
+      created_account: "Successfully created account {{account}}"
       created_health_check: "Successfully created health check {{health_check}}"
       created_site: "Successfully created site {{site}}"
+      created_user: "Successfully created user"
       deleted_site: "Successfully deleted site {{site}}"
+      switched_account: "Successfully switched to account {{account}}"
+      updated_account: "Successfully updated account {{account}}"
       updated_health_check: "Successfully updated health check {{health_check}}"
       updated_site: "Successfully updated site {{site}}"
+      updated_user: "Successfully updated user"
   health_checks: 
     all_checks: 
       all_health_checks: "All Health Checks"
@@ -79,6 +99,7 @@ en:
       last_check_run: "Last check run"
       run: Run
   layouts: 
+    accounts: Accounts
     close_flash: Close
     github_project_page: "Github project page"
     guest_greeter: "Welcome, Guest!"
@@ -115,6 +136,8 @@ en:
   start: 
     index: 
       add_site: "Add site"
+      create_account: "Create account"
+      no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
       recent_activity: "Recent Activity"
   status: 
@@ -167,6 +190,7 @@ en:
       log: "%H:%M:%S"
   user_sessions: 
     new: 
+      email: E-Mail
       login: Login
       password: Password
       remember_me: "Remember me"
@@ -175,6 +199,7 @@ en:
     edit: 
       edit_users_profile: "Edit user's profile"
       email_address: "E-mail address"
+      full_name: "Full name"
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
       update: Update
     index: 
@@ -189,12 +214,12 @@ en:
       create_account: "Create account"
       create_new_account: "Create new account"
       email_address: "E-mail address"
+      full_name: "Full name"
       login_name: "Login name"
       password: Password
       password_confirmation: "Password confirmation"
       please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
-      the_nick_name_used_for_logins: "The nick name used for logins"
     show: 
       edit_profile: "Edit profile"
       users_profile: "User's profile"

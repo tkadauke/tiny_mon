@@ -1,4 +1,6 @@
 class StepsController < ApplicationController
+  before_filter :login_required
+  before_filter :find_account
   before_filter :find_site
   before_filter :find_health_check
   
@@ -12,7 +14,7 @@ class StepsController < ApplicationController
   end
   
   def edit
-    @step = Step.find(params[:id])
+    @step = @health_check.steps.find(params[:id])
     render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
   end
   
@@ -26,7 +28,7 @@ class StepsController < ApplicationController
   end
   
   def update
-    @step = Step.find(params[:id])
+    @step = @health_check.steps.find(params[:id])
     if @step.update_attributes(params[@step.class.name.underscore])
       redirect_to :back
     end
@@ -40,14 +42,18 @@ class StepsController < ApplicationController
   
   def sort
     params[:step].each_with_index do |id, i|
-      Step.find(id).update_attribute(:position, i)
+      @health_check.steps.find(id).update_attribute(:position, i)
     end
     render :nothing => true
   end
 
 protected
+  def find_account
+    @account = current_user.current_account
+  end
+
   def find_site
-    @site = Site.find_by_permalink!(params[:site_id])
+    @site = @account.sites.find_by_permalink!(params[:site_id])
   end
 
   def find_health_check

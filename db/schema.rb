@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100612152324) do
+ActiveRecord::Schema.define(:version => 20100623230551) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "check_runs", :force => true do |t|
     t.integer  "health_check_id"
@@ -23,6 +29,7 @@ ActiveRecord::Schema.define(:version => 20100612152324) do
   end
 
   add_index "check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
+  add_index "check_runs", ["health_check_id", "created_at"], :name => "test"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
 
   create_table "health_checks", :force => true do |t|
@@ -48,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20100612152324) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "permalink"
+    t.integer  "account_id"
   end
 
   add_index "sites", ["name"], :name => "index_sites_on_name"
@@ -64,8 +72,14 @@ ActiveRecord::Schema.define(:version => 20100612152324) do
   add_index "steps", ["health_check_id"], :name => "index_steps_on_health_check_id"
   add_index "steps", ["position"], :name => "index_steps_on_position"
 
+  create_table "user_accounts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
     t.string   "email",                              :null => false
     t.string   "crypted_password",                   :null => false
     t.string   "password_salt",                      :null => false
@@ -81,6 +95,8 @@ ActiveRecord::Schema.define(:version => 20100612152324) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "current_account_id"
+    t.string   "full_name"
   end
 
 end

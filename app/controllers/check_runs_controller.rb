@@ -1,4 +1,6 @@
 class CheckRunsController < ApplicationController
+  before_filter :login_required
+  before_filter :find_account
   before_filter :find_site
   before_filter :find_health_check
   
@@ -20,8 +22,12 @@ class CheckRunsController < ApplicationController
   end
   
 protected
+  def find_account
+    @account = current_user.current_account
+  end
+
   def find_site
-    @site = Site.find_by_permalink!(params[:site_id])
+    @site = @account.sites.find_by_permalink!(params[:site_id])
   end
 
   def find_health_check

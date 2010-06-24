@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
 require 'mocha'
+require "authlogic/test_case"
 
 class ActiveSupport::TestCase
   # Transactional fixtures accelerate your tests by wrapping each test method
@@ -42,5 +43,23 @@ class ActiveSupport::TestCase
     yield
     assert_response :redirect
     assert_redirected_to 'http://test.host/referer'
+  end
+end
+
+
+class ActionController::TestCase
+  setup :activate_authlogic
+  
+  def login_with(user)
+    UserSession.create(user)
+  end
+  
+  def logout
+    UserSession.find.destroy
+  end
+  
+  def assert_access_denied
+    assert_response :redirect
+    assert_equal 'You can not do that', flash[:error]
   end
 end

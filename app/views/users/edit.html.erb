@@ -1,7 +1,12 @@
-<h2><%= t('.edit_users_profile', :login => @user.login) %></h2>
+<h2><%= t('.edit_users_profile', :full_name => @user.full_name) %></h2>
 
 <% form_for @user do |f| %>
   <%= f.error_messages %>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :full_name, t('.full_name') %></span>
+    <%= f.text_field :full_name %>
+  </p>
 
   <p class="form_item">
     <span class="label"><%= f.label :email, t('.email_address') %></span>

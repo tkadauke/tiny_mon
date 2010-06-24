@@ -1,18 +1,20 @@
 class HealthChecksController < ApplicationController
+  before_filter :login_required
+  before_filter :find_account
   before_filter :find_site
   
   def index
     if @site
       @health_checks = @site.health_checks.find(:all, :include => :site, :order => 'health_checks.name ASC')
     else
-      @health_checks = HealthCheck.find(:all, :include => :site, :order => 'sites.name ASC, health_checks.name ASC')
+      @health_checks = @account.health_checks.find(:all, :include => :site, :order => 'sites.name ASC, health_checks.name ASC')
       render :action => 'all_checks' unless request.xhr?
     end
     render :partial => 'list' if request.xhr?
   end
   
   def new
-    @health_check = HealthCheck.new
+    @health_check = @site.health_checks.build
   end
   
   def create
@@ -44,7 +46,11 @@ class HealthChecksController < ApplicationController
   end
   
 protected
+  def find_account
+    @account = current_user.current_account
+  end
+
   def find_site
-    @site = Site.find_by_permalink!(params[:site_id]) if params[:site_id]
+    @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]
   end
 end

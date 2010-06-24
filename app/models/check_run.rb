@@ -6,7 +6,7 @@ class CheckRun < ActiveRecord::Base
   after_create :update_health_check_status
   after_create :send_mail_if_failed
   
-  named_scope :recent, :order => 'created_at DESC', :limit => 10
+  named_scope :recent, :order => 'check_runs.created_at DESC', :limit => 10
   
   def duration
     (self.ended_at - self.started_at).to_f

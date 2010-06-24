@@ -1,0 +1,20 @@
+<% unless @accounts.blank? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t('.name') %></th>
+        <th><%= t('.options') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @accounts.each do |account| %>
+        <tr>
+          <td><%= link_to account.name, switch_account_path(account), :method => :post %></td>
+          <td><%= link_to t('.edit'), edit_account_path(account) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<p><%= link_to t('.new_account'), new_account_path %></p>

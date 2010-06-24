@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = "Account registered!"
+      flash[:notice] = I18n.t('flash.notice.created_user')
       redirect_back_or_default root_path
     else
       render :action => :new
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
+      flash[:notice] = I18n.t('flash.notice.updated_user')
       redirect_to root_path
     else
       render :action => :edit

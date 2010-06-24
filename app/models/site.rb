@@ -1,4 +1,5 @@
 class Site < ActiveRecord::Base
+  belongs_to :account
   has_many :health_checks
   
   has_permalink :name

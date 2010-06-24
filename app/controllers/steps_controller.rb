@@ -4,6 +4,8 @@ class StepsController < ApplicationController
   before_filter :find_site
   before_filter :find_health_check
   
+  skip_before_filter :verify_authenticity_token, :only => :sort
+  
   def index
     @steps = @health_check.steps
   end

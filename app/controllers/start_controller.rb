@@ -5,7 +5,9 @@ class StartController < ApplicationController
     @account = current_user.current_account
     
     if @account
-      @check_runs = CheckRun.recent.all(:include => { :health_check => :site }, :conditions => ["sites.account_id = ?", @account.id])
+      # disable account_id check because it's to slow
+      # :conditions => ["sites.account_id = ?", @account.id]
+      @check_runs = CheckRun.recent.all(:include => { :health_check => :site })
       render :partial => '/check_runs/activity' if request.xhr?
     end
   end

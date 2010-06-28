@@ -21,7 +21,7 @@ class HealthChecksController < ApplicationController
     @health_check = @site.health_checks.build(params[:health_check])
     if @health_check.save
       flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
-      redirect_to site_health_check_path(@site, @health_check)
+      redirect_to account_site_health_check_path(@account, @site, @health_check)
     else
       render :action => 'new'
     end
@@ -39,17 +39,13 @@ class HealthChecksController < ApplicationController
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
     if @health_check.update_attributes(params[:health_check])
       flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
-      redirect_to site_health_check_path(@site, @health_check)
+      redirect_to account_site_health_check_path(@account, @site, @health_check)
     else
       render :action => 'edit'
     end
   end
   
 protected
-  def find_account
-    @account = current_user.current_account
-  end
-
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]
   end

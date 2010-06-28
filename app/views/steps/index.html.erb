@@ -17,8 +17,8 @@
           <td><%= step.class.name.gsub(/Step$/, '').titleize %></td>
           <td><div id="step_<%= step.id %>"><%= render_step_details(step) %></div></td>
           <td>
-            <%= link_to_remote t('.edit'), :url => edit_site_health_check_step_path(@site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
-            <%= link_to t('.delete'), site_health_check_step_path(@site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
+            <%= link_to_remote t('.edit'), :url => edit_account_site_health_check_step_path(@account, @site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
+            <%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
           </td>
         </tr>
       <% end %>
@@ -30,7 +30,7 @@
   Sortable.create('steps', {
     tag: 'tr',
     scroll: window,
-    onUpdate: function() { new Ajax.Request('#{sort_site_health_check_steps_path(@site, @health_check)}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("steps", { name: 'step' }) }); }
+    onUpdate: function() { new Ajax.Request('#{sort_account_site_health_check_steps_path(@account, @site, @health_check)}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("steps", { name: 'step' }) }); }
   });
 } %>
 

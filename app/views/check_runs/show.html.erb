@@ -5,7 +5,7 @@
   <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
 
   <dt><%= t('.duration') %></dt>
-  <dd><%= t('.duration_in_seconds', :seconds => @check_run.duration) %></dd>
+  <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
 
   <% if @check_run.error_message %>
     <dt><%= t('.error_message') %></dt>

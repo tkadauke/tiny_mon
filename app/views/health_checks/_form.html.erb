@@ -1,4 +1,4 @@
-<% form_for [@site, @health_check] do |f| %>
+<% form_for [@account, @site, @health_check] do |f| %>
   <p class="form_item">
     <span class="label"><%= f.label :name, t('.name') %></span>
     <%= f.text_field :name %>

@@ -44,6 +44,19 @@ protected
     !current_user.nil?
   end
 
+  def find_account
+    @account = params[:account_id] ? Account.find(params[:account_id]) : current_user.current_account
+    if current_user.can_switch_to_account?(@account)
+      if current_user.current_account != @account
+        flash[:notice] = I18n.t('flash.notice.switched_account', :account => @account.name)
+        current_user.switch_to_account(@account)
+      end
+    else
+      flash[:error] = I18n.t("flash.error.access_denied")
+      redirect_to root_path
+    end
+  end
+
 private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

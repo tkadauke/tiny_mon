@@ -13,10 +13,10 @@
     <tbody>
       <% @sites.each do |site| %>
         <tr>
-          <td><%= link_to site.name, site_health_checks_path(site) %></td>
+          <td><%= link_to site.name, account_site_health_checks_path(site.account, site) %></td>
           <td>
-            <%= link_to t('.edit'), edit_site_path(site) %> |
-            <%= link_to t('.delete'), site_path(site), :method => :delete, :confirm => t('.confirm_delete') %>
+            <%= link_to t('.edit'), edit_account_site_path(site.account, site) %> |
+            <%= link_to t('.delete'), account_site_path(site.account, site), :method => :delete, :confirm => t('.confirm_delete') %>
           </td>
         </tr>
       <% end %>
@@ -24,4 +24,4 @@
   </table>
 <% end %>
 
-<p><%= link_to t('.new_site'), new_site_path %></p>
+<p><%= link_to t('.new_site'), new_account_site_path(@account) %></p>

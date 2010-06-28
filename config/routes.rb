@@ -1,14 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :accounts, :member => { :switch => :post }
-
-  map.resources :sites do |sites|
-    sites.resources :health_checks do |checks|
-      checks.resources :steps, :collection => { :sort => :post }
-      checks.resources :check_runs
+  map.resources :accounts, :member => { :switch => :post } do |accounts|
+    accounts.resources :sites do |sites|
+      sites.resources :health_checks do |checks|
+        checks.resources :steps, :collection => { :sort => :post }
+        checks.resources :check_runs
+      end
     end
   end
 
   map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
+  map.sites '/sites', :controller => 'sites', :action => 'index'
 
   map.resources :users
   
@@ -57,6 +58,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
 end

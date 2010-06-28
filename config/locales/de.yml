@@ -26,6 +26,7 @@ de:
       subject: "Funktionstest {{health_check}} von site {{site}} ist fehlgeschlagen!"
   check_runs: 
     activity: 
+      account: Konto
       duration: Dauer
       duration_in_seconds: "{{duration}} Sekunden"
       health_check: Funktionstest
@@ -47,6 +48,7 @@ de:
       time: Zeit
   flash: 
     error: 
+      access_denied: "Zugriff verweigert"
       switch_account: "Konnte Konto nicht wechseln"
     notice: 
       created_account: "Konto {{account}} wurde erfolgreich erstellt"

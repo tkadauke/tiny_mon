@@ -14,7 +14,7 @@ class SitesController < ApplicationController
     @site = @account.sites.build(params[:site])
     if @site.save
       flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
-      redirect_to site_health_checks_path(@site)
+      redirect_to account_site_health_checks_path(@account, @site)
     else
       render :action => 'new'
     end
@@ -22,7 +22,7 @@ class SitesController < ApplicationController
   
   def show
     @site = @account.sites.find_by_permalink!(params[:id])
-    redirect_to site_health_checks_path(@site)
+    redirect_to account_site_health_checks_path(@account, @site)
   end
   
   def edit
@@ -33,7 +33,7 @@ class SitesController < ApplicationController
     @site = @account.sites.find_by_permalink!(params[:id])
     if @site.update_attributes(params[:site])
       flash[:notice] = I18n.t('flash.notice.updated_site', :site => @site.name)
-      redirect_to site_path(@site)
+      redirect_to account_site_path(@account, @site)
     else
       render :action => 'edit'
     end
@@ -44,10 +44,5 @@ class SitesController < ApplicationController
     @site.destroy
     flash[:notice] = I18n.t('flash.notice.deleted_site', :site => @site.name)
     redirect_to sites_path
-  end
-
-protected
-  def find_account
-    @account = current_user.current_account
   end
 end

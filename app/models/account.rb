@@ -6,4 +6,8 @@ class Account < ActiveRecord::Base
   
   has_many :sites
   has_many :health_checks, :through => :sites
+  
+  def self.from_param!(param)
+    find(param)
+  end
 end

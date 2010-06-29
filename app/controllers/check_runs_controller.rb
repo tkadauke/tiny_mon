@@ -5,7 +5,7 @@ class CheckRunsController < ApplicationController
   before_filter :find_health_check
   
   def index
-    @check_runs = @health_check.recent_check_runs
+    @check_runs = @health_check.recent_check_runs.find :all, :include => :health_check
     respond_to do |format|
       format.html { render :partial => "/check_runs/activity" if request.xhr? }
       format.png { send_data(CheckRunGraph.new(@check_runs.reverse).render, :disposition => 'inline', :type => 'image/png', :filename => "check_runs.png") }

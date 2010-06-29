@@ -10,4 +10,8 @@ class Account < ActiveRecord::Base
   def self.from_param!(param)
     find(param)
   end
+  
+  def user_accounts_with_users
+    user_accounts.find(:all, :include => :user)
+  end
 end

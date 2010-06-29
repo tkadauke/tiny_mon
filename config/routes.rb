@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
         checks.resources :check_runs
       end
     end
+    
+    accounts.resources :user_accounts
   end
 
   map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'

@@ -9,8 +9,11 @@
     <tbody>
       <% @accounts.each do |account| %>
         <tr>
-          <td><%= link_to account.name, switch_account_path(account), :method => :post %></td>
-          <td><%= link_to t('.edit'), edit_account_path(account) %></td>
+          <td><%= link_to account.name, account_path(account) %></td>
+          <td>
+            <%= link_to t('.switch'), switch_account_path(account), :method => :post %>
+            <%= link_to t('.edit'), edit_account_path(account) %>
+          </td>
         </tr>
       <% end %>
     </tbody>

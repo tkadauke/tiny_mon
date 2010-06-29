@@ -25,5 +25,10 @@
     <%= f.password_field :password_confirmation %>
   </p>
   
-  <%= f.submit t('.create_account') %>
+  <p>
+    <%= f.submit t('.create_account') %>
+    <% unless logged_in? %>
+      | <%= link_to t('.login_instead'), login_path %>
+    <% end %>
+  </p>
 <% end %>

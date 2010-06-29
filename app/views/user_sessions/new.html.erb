@@ -15,5 +15,5 @@
     <%= f.check_box :remember_me %><%= f.label :remember_me, t('.remember_me') %>
   </p>
   
-  <%= f.submit t('.login') %>
+  <p><%= f.submit t('.login') %> | <%= link_to t('.register_instead'), new_user_path %></p>
 <% end %>

@@ -10,8 +10,28 @@ en:
       name: Name
       new_account: "New Account"
       options: Options
+      switch: "Switch account"
     new: 
       new_account: "New Account"
+    show: 
+      account: "Account {{account}}"
+      add_existing: "Add existing user to this account"
+      add_new: "Register new user for this account"
+      really_remove_user_from_account: "Do you really want to remove the user from this account?"
+      remove: Remove
+  activerecord: 
+    attributes: 
+      user_account: 
+        email: "E-mail address"
+        user_id: User
+    errors: 
+      models: 
+        user_account: 
+          attributes: 
+            email: 
+              not_found: "does not belong to an existing user"
+            user_id: 
+              taken: "is already assigned to this account"
   breadcrumb: 
     accounts: Accounts
     check_runs: "Check Runs"
@@ -21,6 +41,8 @@ en:
     new: New
     sites: Sites
     steps: Steps
+    user_accounts: Users
+    users: Users
   check_run_mailer: 
     failure: 
       subject: "Health Check {{health_check}} of site {{site}} failed!"
@@ -55,6 +77,7 @@ en:
       created_health_check: "Successfully created health check {{health_check}}"
       created_site: "Successfully created site {{site}}"
       created_user: "Successfully created user"
+      created_user_account: "Successfully added this user to the account"
       deleted_site: "Successfully deleted site {{site}}"
       switched_account: "Successfully switched to account {{account}}"
       updated_account: "Successfully updated account {{account}}"
@@ -190,6 +213,11 @@ en:
   time: 
     formats: 
       log: "%H:%M:%S"
+  user_accounts: 
+    new: 
+      add: "Add user"
+      email: "E-mail address"
+      error_creating_user_account: "Could not add a user to this account"
   user_sessions: 
     new: 
       email: E-Mail

@@ -10,8 +10,28 @@ de:
       name: Name
       new_account: "Neues Konto"
       options: Optionen
+      switch: "Konto wechseln"
     new: 
       new_account: "Neues Konto"
+    show: 
+      account: "Konto {{account}}"
+      add_existing: "Vorhandenen Benutzer zum Konto hinzufügen"
+      add_new: "Neuen Benutzer für Konto registrieren"
+      really_remove_user_from_account: "Wollen Sie wirklich diesen Benutzer vom Konto entfernen?"
+      remove: Entfernen
+  activerecord: 
+    attributes: 
+      user_account: 
+        email: E-Mail-Adresse
+        user_id: Benutzer
+    errors: 
+      models: 
+        user_account: 
+          attributes: 
+            email: 
+              not_found: "gehört zu keinem registrierten Benutzer"
+            user_id: 
+              taken: "ist bereits diesem Konto zugeordnet"
   breadcrumb: 
     accounts: Konten
     check_runs: Testläufe
@@ -21,6 +41,8 @@ de:
     new: Neu
     sites: Sites
     steps: Schritte
+    user_accounts: Benutzer
+    users: Benutzer
   check_run_mailer: 
     failure: 
       subject: "Funktionstest {{health_check}} von site {{site}} ist fehlgeschlagen!"
@@ -55,6 +77,7 @@ de:
       created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
       created_site: "Site {{site}} wurde erfolgreich erstellt"
       created_user: "Benutzer wurde erfolgreich erstellt"
+      created_user_account: "Benutzer wurde erfolgreich dem Konto hinzugefügt"
       deleted_site: "Site {{site}} wurde erfolgreich gelöscht"
       switched_account: "Erfolgreich zu Konto {{account}} gewechselt"
       updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"
@@ -190,11 +213,17 @@ de:
   time: 
     formats: 
       log: "%H:%M:%S"
+  user_accounts: 
+    new: 
+      add: Hinzufügen
+      email: E-Mail-Adresse
+      error_creating_user_account: "Benutzer konnte dem Konto nicht hinzugefügt werden"
   user_sessions: 
     new: 
       email: E-Mail
-      login: Benutzername
+      login: Login
       password: Passwort
+      register_instead: "Noch nicht registriert?"
       remember_me: "Eingeloggt bleiben"
       user_name: Benutzername
   users: 
@@ -217,6 +246,7 @@ de:
       create_new_account: "Neuen Benutzer registrieren"
       email_address: E-Mail-Adresse
       full_name: "Voller Name"
+      login_instead: "Bereits registriert?"
       login_name: Benutzername
       password: Passwort
       password_confirmation: "Passwort wiederholen"

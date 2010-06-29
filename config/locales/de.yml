@@ -17,6 +17,8 @@ de:
       account: "Konto {{account}}"
       add_existing: "Vorhandenen Benutzer zum Konto hinzufügen"
       add_new: "Neuen Benutzer für Konto registrieren"
+      name: Name
+      options: Optionen
       really_remove_user_from_account: "Wollen Sie wirklich diesen Benutzer vom Konto entfernen?"
       remove: Entfernen
   activerecord: 

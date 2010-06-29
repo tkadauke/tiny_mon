@@ -17,6 +17,8 @@ en:
       account: "Account {{account}}"
       add_existing: "Add existing user to this account"
       add_new: "Register new user for this account"
+      name: Name
+      options: Options
       really_remove_user_from_account: "Do you really want to remove the user from this account?"
       remove: Remove
   activerecord: 
@@ -223,6 +225,7 @@ en:
       email: E-Mail
       login: Login
       password: Password
+      register_instead: "Not registered yet?"
       remember_me: "Remember me"
       user_name: "User name"
   users: 
@@ -245,6 +248,7 @@ en:
       create_new_account: "Create new account"
       email_address: "E-mail address"
       full_name: "Full name"
+      login_instead: "Already registered?"
       login_name: "Login name"
       password: Password
       password_confirmation: "Password confirmation"

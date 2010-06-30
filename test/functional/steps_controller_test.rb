@@ -29,11 +29,10 @@ class StepsControllerTest < ActionController::TestCase
   end
   
   test "should create step" do
-    assert_redirected_back do
-      assert_difference 'Step.count' do
-        post :create, :account_id => @account, :site_id => @site.to_param, :health_check_id => @health_check.to_param, :type => 'visit', :visit_step => { :url => '/' }
-        assert assigns(:step).is_a?(VisitStep)
-      end
+    assert_difference 'Step.count' do
+      post :create, :account_id => @account, :site_id => @site.to_param, :health_check_id => @health_check.to_param, :type => 'visit', :visit_step => { :url => '/' }
+      assert assigns(:step).is_a?(VisitStep)
+      assert_response :redirect
     end
   end
   

@@ -27,19 +27,10 @@ protected
       else
         flash[:error] = t('flash.error.access_denied')
         redirect_to root_path
+        false
       end
     else
-      # taken from ActionController::Base#perform_action
-      begin
-        default_render
-      rescue ActionView::MissingTemplate => e
-        # Was the implicit template missing, or was it another template?
-        if e.path == default_template_name
-          raise ActionController::UnknownAction, "No action responded to #{action_name}. Actions: #{action_methods.sort.to_sentence(:locale => :en)}", caller
-        else
-          raise e
-        end
-      end
+      super
     end
   end
 

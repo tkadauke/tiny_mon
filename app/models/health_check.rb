@@ -12,6 +12,10 @@ class HealthCheck < ActiveRecord::Base
   
   validates_presence_of :site_id, :name
   
+  def steps_with_clone(clone_id)
+    steps.find(:all).collect { |e| e.id == clone_id.to_i ? [e, e.clone] : e }.flatten
+  end
+  
   def self.intervals
     [1, 2, 3, 5, 10, 15, 20, 30, 60]
   end

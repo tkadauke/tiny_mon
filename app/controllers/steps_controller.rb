@@ -11,8 +11,13 @@ class StepsController < ApplicationController
   end
 
   def new
-    @step = "#{params[:type]}_step".classify.constantize.new
-    render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+    if params[:clone]
+      @steps = @health_check.steps_with_clone(params[:clone])
+      render :action => 'index'
+    else
+      @step = "#{params[:type]}_step".classify.constantize.new
+      render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+    end
   end
   
   def edit
@@ -25,7 +30,7 @@ class StepsController < ApplicationController
     @step = type_name.classify.constantize.new(params[type_name])
     @step.health_check = @health_check
     if @step.save
-      redirect_to :back
+      redirect_to account_site_health_check_steps_path(@account, @site, @health_check)
     end
   end
   

@@ -222,6 +222,7 @@ en:
     index: 
       add_step: "Add Step"
       are_you_sure: "Are you sure?"
+      copy: "Copy"
       delete: Delete
       details: Details
       edit: Edit

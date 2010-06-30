@@ -15,11 +15,22 @@
       <% @steps.each do |step| %>
         <tr id="order_<%= step.id %>">
           <td><%= step.class.name.gsub(/Step$/, '').titleize %></td>
-          <td><div id="step_<%= step.id %>"><%= render_step_details(step) %></div></td>
-          <td>
-            <%= link_to_remote t('.edit'), :url => edit_account_site_health_check_step_path(@account, @site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
-            <%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
-          </td>
+          <% if step.new_record? %>
+            <td>
+              <%= render :partial => '/steps/form', :locals => { :step => step } %>
+            </td>
+            <td>
+            </td>
+          <% else %>
+            <td>
+              <div id="step_<%= step.id %>"><%= render_step_details(step) %></div>
+            </td>
+            <td>
+              <%= link_to_remote t('.edit'), :url => edit_account_site_health_check_step_path(@account, @site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
+              <%= link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %> |
+              <%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

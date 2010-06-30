@@ -6,6 +6,7 @@
     </p>
   <% else %>
     <% if step.new_record? %>
+      <%= f.hidden_field :insert_after, :value => step.position unless step.position.blank? %>
       <p class="form_item">
         <span class="label"><%= f.label :type, t('.type') %></span>
         <%= select_tag :type, options_for_select(Step.available_types, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %><br/>
@@ -16,7 +17,7 @@
 
     <p>
       <%= f.submit t('.save') %> |
-      <%= link_to t('.cancel'), request.referer %>
+      <%= link_to t('.cancel'), account_site_health_check_steps_path(@account, @site, @health_check) %>
     </p>
   <% end %>
 <% end %>

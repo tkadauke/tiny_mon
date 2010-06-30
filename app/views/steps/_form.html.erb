@@ -14,7 +14,9 @@
 
     <%= render_step_form(f, step) %>
 
-    <%= f.submit t('.save') %>
-    <%= link_to t('.cancel'), request.referer %>
+    <p>
+      <%= f.submit t('.save') %> |
+      <%= link_to t('.cancel'), request.referer %>
+    </p>
   <% end %>
 <% end %>

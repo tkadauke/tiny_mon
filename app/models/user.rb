@@ -18,4 +18,12 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     PasswordResetsMailer.deliver_password_reset_instructions(self)
   end
+  
+  def self.from_param!(param)
+    find(param)
+  end
+  
+  def name
+    full_name
+  end
 end

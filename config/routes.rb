@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.sites '/sites', :controller => 'sites', :action => 'index'
 
   map.resources :users
+  map.resources :password_resets
   
   map.login '/login', :controller => 'user_sessions', :action => 'new', :conditions => { :method => :get }
   map.connect '/login', :controller => 'user_sessions', :action => 'create', :conditions => { :method => :post }

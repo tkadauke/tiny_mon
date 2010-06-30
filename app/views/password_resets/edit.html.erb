@@ -1,0 +1,16 @@
+<h2><%= t('.change_password') %></h2>
+
+<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+  <%= f.error_messages %>
+  <p class="form_item">
+    <span class="label"><%= f.label :password, t('.password') %></span>
+    <%= f.password_field :password %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :password_confirmation, t('.password_confirmation') %></span>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  
+  <p><%= f.submit t('.update') %></p>
+<% end %>

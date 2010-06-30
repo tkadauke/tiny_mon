@@ -13,4 +13,9 @@ class User < ActiveRecord::Base
   def can_switch_to_account?(account)
     !UserAccount.find_by_user_id_and_account_id(self.id, account.id).nil?
   end
+
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    PasswordResetsMailer.deliver_password_reset_instructions(self)
+  end
 end

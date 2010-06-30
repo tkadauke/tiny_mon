@@ -1,0 +1,12 @@
+<h2><%= t('.forgot_password') %></h2>
+
+<p><%= t('.instructions') %></p>
+
+<% form_tag password_resets_path do %>
+  <p class="form_item">
+    <span class="label"><label><%= t('.email') %></label></span>
+    <%= text_field_tag "email" %>
+  </p>
+
+  <p><%= submit_tag t('.reset') %></p>
+<% end %>

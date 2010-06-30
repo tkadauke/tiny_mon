@@ -1,0 +1,8 @@
+Achtung!
+
+Funktionstest <%= @check_run.health_check.name %> für Site <%= @check_run.health_check.site.name %> ist fehlgeschlagen!
+
+Siehe http://<%= TinyMon::Config.host %><%= account_site_health_check_check_run_path(@check_run.health_check.site.account, @check_run.health_check.site, @check_run.health_check, @check_run) %>
+
+Viele Grüße,
+TinyMon

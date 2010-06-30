@@ -16,7 +16,7 @@ protected
   def login_required
     unless current_user
       store_location
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:error] = I18n.t("flash.error.login_required")
       redirect_to login_path
       return false
     end
@@ -25,7 +25,7 @@ protected
   def guest_required
     if current_user
       store_location
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:error] = I18n.t("flash.error.guest_required")
       redirect_to root_path
       return false
     end

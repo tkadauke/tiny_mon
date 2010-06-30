@@ -75,6 +75,8 @@ en:
   flash: 
     error: 
       access_denied: "Access denied"
+      guest_required: "You must be logged out to access this page"
+      login_required: "You must be logged in to access this page"
       switch_account: "Could not switch Account"
       user_by_email_not_found: "No user was found with that email address"
       user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."

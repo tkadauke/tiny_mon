@@ -6,6 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
+      flash[:notice] = I18n.t("flash.notice.logged_in")
       redirect_to root_path
     else
       render :action => :new
@@ -14,6 +15,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     current_user_session.destroy
-    redirect_to root_path
+    flash[:notice] = I18n.t("flash.notice.logged_out")
+    redirect_to login_path
   end
 end

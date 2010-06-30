@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => [:show, :edit, :update]
   
+  def index
+    redirect_to account_path(current_user.current_account)
+  end
+  
   def new
     @user = User.new
   end

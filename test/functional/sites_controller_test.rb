@@ -35,10 +35,6 @@ class SitesControllerTest < ActionController::TestCase
   end
   
   test "should redirect to health checks when showing site" do
-    # def @controller.redirect_to(*args)
-    #   puts backtrace
-    # end
-    
     site = @account.sites.create(:name => 'example.com', :url => 'http://www.example.com')
     get :show, :account_id => @account, :id => site.to_param
     assert_response :redirect

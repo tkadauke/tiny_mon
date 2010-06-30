@@ -63,3 +63,9 @@ class ActionController::TestCase
     assert_equal 'You can not do that', flash[:error]
   end
 end
+
+# add default routes so that actions in test controllers can be called
+ActionController::Routing::Routes.draw do |map|
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
+end

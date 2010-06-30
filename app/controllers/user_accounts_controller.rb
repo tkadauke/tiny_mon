@@ -18,6 +18,7 @@ class UserAccountsController < ApplicationController
   def destroy
     @user_account = @account.user_accounts.find(params[:id])
     @user_account.destroy
+    flash[:notice] = I18n.t('flash.notice.removed_user_account')
     redirect_to account_path(@account)
   end
 end

@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   
   belongs_to :current_account, :class_name => 'Account'
   
+  validates_presence_of :full_name
+  
   def switch_to_account(account)
     update_attribute(:current_account_id, account.id)
   end

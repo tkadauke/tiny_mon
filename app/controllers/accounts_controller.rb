@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
       flash[:notice] = I18n.t('flash.notice.updated_account', :account => @account.name)
       redirect_to account_path(@account)
     else
-      render edit_account_path(@account)
+      render :action => 'edit'
     end
   end
   

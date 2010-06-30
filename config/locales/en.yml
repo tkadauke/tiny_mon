@@ -278,4 +278,4 @@ en:
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
     show: 
       edit_profile: "Edit profile"
-      users_profile: "User's profile"
+      users_profile: "{{full_name}}'s profile"

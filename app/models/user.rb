@@ -8,14 +8,20 @@ class User < ActiveRecord::Base
   
   validates_presence_of :full_name
   
+  attr_protected :role
+  
+  def after_initialize
+    if self.role.blank?
+      extend Role::User
+    else
+      extend "Role::#{self.role.classify}".constantize
+    end
+  end
+  
   def switch_to_account(account)
     update_attribute(:current_account_id, account.id)
   end
   
-  def can_switch_to_account?(account)
-    !UserAccount.find_by_user_id_and_account_id(self.id, account.id).nil?
-  end
-
   def deliver_password_reset_instructions!
     reset_perishable_token!
     PasswordResetsMailer.deliver_password_reset_instructions(self)

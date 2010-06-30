@@ -1,5 +1,7 @@
 <h2><%= t('.users_profile', :full_name => @user.full_name) %></h2>
 
-<ul class="action-list">
-  <li><%= link_to t('.edit_profile'), edit_user_path(@user) %></li>
-</ul>
+<% if current_user.can_edit_profile?(@user) %>
+  <ul class="action-list">
+    <li><%= link_to t('.edit_profile'), edit_user_path(@user) %></li>
+  </ul>
+<% end %>

@@ -34,8 +34,9 @@ class UserAccountsControllerTest < ActionController::TestCase
   end
   
   test "should remove user account mapping" do
+    second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
     assert_difference 'UserAccount.count', -1 do
-      delete :destroy, :id => UserAccount.first
+      delete :destroy, :id => UserAccount.last
       assert_response :redirect
       assert_not_nil flash[:notice]
     end

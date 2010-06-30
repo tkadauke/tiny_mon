@@ -13,6 +13,26 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user, :logged_in?
 
 protected
+  def method_missing(method, *args)
+    if method.to_s =~ /^can_.*\?$/
+      if current_user.send(method, *args)
+        yield if block_given?
+        true
+      else
+        false
+      end
+    elsif method.to_s =~ /^can_.*\!$/
+      if current_user.send(method.to_s.gsub(/\!$/, '?'), *args)
+        yield if block_given?
+      else
+        flash[:error] = t('flash.error.access_denied')
+        redirect_to root_path
+      end
+    else
+      super
+    end
+  end
+
   def login_required
     unless current_user
       store_location
@@ -46,14 +66,11 @@ protected
 
   def find_account
     @account = params[:account_id] ? Account.find(params[:account_id]) : current_user.current_account
-    if current_user.can_switch_to_account?(@account)
+    can_switch_to_account!(@account) do
       if current_user.current_account != @account
         flash[:notice] = I18n.t('flash.notice.switched_account', :account => @account.name)
         current_user.switch_to_account(@account)
       end
-    else
-      flash[:error] = I18n.t("flash.error.access_denied")
-      redirect_to root_path
     end
   end
 

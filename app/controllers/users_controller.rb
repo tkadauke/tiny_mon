@@ -28,15 +28,15 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = @current_user
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = @current_user
+    @user = User.find(params[:id])
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = I18n.t('flash.notice.updated_user')
       redirect_to root_path

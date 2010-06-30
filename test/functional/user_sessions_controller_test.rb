@@ -28,6 +28,6 @@ class UserSessionsControllerTest < ActionController::TestCase
     
     delete :destroy
     assert_nil UserSession.find
-    assert_redirected_to root_path
+    assert_redirected_to login_path
   end
 end

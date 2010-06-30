@@ -11,13 +11,17 @@
     <% @account.user_accounts_with_users.each do |user_account| %>
       <tr>
         <td><%= link_to user_account.user.full_name, user_path(user_account.user) %></td>
-        <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account') %></td>
+        <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
+          <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account') %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<p>
-  <%= link_to t('.add_existing'), new_account_user_account_path(@account) %> |
-  <%= link_to t('.add_new'), new_user_path %>
-</p>
+<% if current_user.can_add_user_to_account?(@account) %>
+  <p>
+    <%= link_to t('.add_existing'), new_account_user_account_path(@account) %> |
+    <%= link_to t('.add_new'), new_user_path %>
+  </p>
+<% end %>

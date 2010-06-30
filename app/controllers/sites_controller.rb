@@ -3,7 +3,7 @@ class SitesController < ApplicationController
   before_filter :find_account
   
   def index
-    @sites = @account.sites.find(:all, :order => 'name ASC')
+    @sites = @account.sites.find(:all, :include => :account, :order => 'name ASC')
   end
   
   def new

@@ -13,7 +13,7 @@
         </p>
       <% else %>
         <%= f.hidden_field :insert_after, :value => step.position %>
-        <%= hidden_field_tag :type, step.class.name.gsub(/Step$/, '') %>
+        <%= hidden_field_tag :type, step.class.name.underscore.gsub(/_step$/, '') %>
       <% end %>
     <% end %>
 

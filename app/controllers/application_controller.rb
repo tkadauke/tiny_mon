@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   before_filter { I18n.locale = TinyMon::Config.language if TinyMon::Config.language }
+  before_filter :authorize
 
   helper_method :current_user_session, :current_user, :logged_in?
 
@@ -35,21 +36,26 @@ protected
   end
 
   def login_required
-    unless current_user
-      store_location
-      flash[:error] = I18n.t("flash.error.login_required")
-      redirect_to login_path
-      return false
-    end
+    deny_access(I18n.t("flash.error.login_required")) unless current_user
   end
 
   def guest_required
-    if current_user
-      store_location
-      flash[:error] = I18n.t("flash.error.guest_required")
-      redirect_to root_path
-      return false
-    end
+    deny_access(I18n.t("flash.error.guest_required")) if current_user
+  end
+  
+  def deny_access(message = nil)
+    store_location
+    flash[:error] = message || I18n.t("flash.error.access_denied")
+    redirect_to root_path
+    return false
+  end
+  
+  def authorize
+    deny_access unless authorized?
+  end
+  
+  def authorized?
+    true
   end
 
   def store_location

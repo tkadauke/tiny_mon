@@ -1,0 +1,15 @@
+<% form_for [:admin, @footer_link] do |f| %>
+  <%= f.error_messages %>
+  
+  <p class="form_item">
+    <span class="label"><%= f.label :text, t('.text') %></span>
+    <%= f.text_field :text %>
+  </p>
+
+  <p class="form_item">
+    <span class="label"><%= f.label :url, t('.url') %></span>
+    <%= f.text_field :url %>
+  </p>
+  
+  <p><%= f.submit %></p>
+<% end %>

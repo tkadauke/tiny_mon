@@ -34,10 +34,31 @@ en:
               not_found: "does not belong to an existing user"
             user_id: 
               taken: "is already assigned to this account"
+  admin: 
+    footer_links: 
+      edit: 
+        edit_footer_link: "Edit footer link"
+      form: 
+        text: "Link text"
+        url: "Target URL"
+      index: 
+        edit: Edit
+        footer_links: "Footer links"
+        name: "Link text"
+        new_footer_link: "Add footer link"
+        nothing_found: "Nothing found"
+        options: Options
+        really_remove_footer_link: "Do you really want to remove this footer link? This operation can not be undone."
+        remove: Remove
+        url: "Target URL"
+      new: 
+        new_footer_link: "New footer link"
   breadcrumb: 
     accounts: Accounts
+    admin: Administration
     check_runs: "Check Runs"
     edit: Edit
+    footer_links: "Footer links"
     health_checks: "Health Checks"
     home: Home
     login: Login
@@ -81,6 +102,7 @@ en:
       user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
     notice: 
       created_account: "Successfully created account {{account}}"
+      created_footer_link: "Successfully created footer link"
       created_health_check: "Successfully created health check {{health_check}}"
       created_site: "Successfully created site {{site}}"
       created_user: "Successfully created user"
@@ -90,9 +112,11 @@ en:
       logged_out: "Successfully logged out"
       password_instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
       password_updated: "Password successfully updated"
+      removed_footer_link: "Successfully removed footer link"
       removed_user_account: "Successfully removed user from this account"
       switched_account: "Successfully switched to account {{account}}"
       updated_account: "Successfully updated account {{account}}"
+      updated_footer_link: "Successfully updated footer link"
       updated_health_check: "Successfully updated health check {{health_check}}"
       updated_site: "Successfully updated site {{site}}"
       updated_user: "Successfully updated user"
@@ -138,6 +162,7 @@ en:
   layouts: 
     accounts: Accounts
     close_flash: Close
+    edit_footer: "Edit footer"
     github_project_page: "Github project page"
     guest_greeter: "Welcome, Guest!"
     health_checks: "Health Checks"
@@ -222,7 +247,7 @@ en:
     index: 
       add_step: "Add Step"
       are_you_sure: "Are you sure?"
-      copy: "Copy"
+      copy: Copy
       delete: Delete
       details: Details
       edit: Edit

@@ -1,0 +1,37 @@
+<h2><%= t('.footer_links') %></h2>
+
+<% if @footer_links.empty? %>
+  <p><%= t('.nothing_found') %></p>
+<% else %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= t('.name') %></th>
+        <th><%= t('.url') %></th>
+        <th><%= t('.options') %></th>
+      </tr>
+    </thead>
+    <tbody id="links">
+      <% @footer_links.each do |footer_link| %>
+        <tr id="order_<%= footer_link.id %>">
+          <td><%= footer_link.text %></td>
+          <td><%= link_to footer_link.url, footer_link.url %></td>
+          <td>
+            <%= link_to t('.edit'), edit_admin_footer_link_path(footer_link) %> |
+            <%= link_to t('.remove'), admin_footer_link_path(footer_link), :method => :delete, :confirm => t('.really_remove_footer_link') %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= javascript_tag %{
+  Sortable.create('links', {
+    tag: 'tr',
+    scroll: window,
+    onUpdate: function() { new Ajax.Request('#{sort_admin_footer_links_path}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("links", { name: 'link' }) }); }
+  });
+} %>
+
+<p><%= link_to t('.new_footer_link'), new_admin_footer_link_path %></p>

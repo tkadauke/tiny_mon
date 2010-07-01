@@ -34,10 +34,31 @@ de:
               not_found: "gehört zu keinem registrierten Benutzer"
             user_id: 
               taken: "ist bereits diesem Konto zugeordnet"
+  admin: 
+    footer_links: 
+      edit: 
+        edit_footer_link: "Fußzeilen-Link bearbeiten"
+      form: 
+        text: Link-Text
+        url: Ziel-URL
+      index: 
+        edit: Bearbeiten
+        footer_links: Fußzeilen-Links
+        name: Link-Text
+        new_footer_link: "Neuer Fußzeilen-Link"
+        nothing_found: "Bisher sind keine Fußzeilen-Links angelegt."
+        options: Optionen
+        really_remove_footer_link: "Wollen Sie diesen Fußzeilen-Link wirklich entfernen?"
+        remove: Entfernen
+        url: Ziel-URL
+      new: 
+        new_footer_link: "Neuer Fußzeilen-Link"
   breadcrumb: 
     accounts: Konten
+    admin: Administration
     check_runs: Testläufe
     edit: Bearbeiten
+    footer_links: Fußzeile
     health_checks: Funktionstests
     home: Start
     login: Login
@@ -81,6 +102,7 @@ de:
       user_could_not_be_located: "Es tut uns leid, aber wir konnten den Benutzer nicht identifizieren. Bitte versuchen Sie die URL aus der E-Mail in die Adressleiste des Browsers zu kopieren oder starten Sie den Password-Vergessen-Prozess von vorne."
     notice: 
       created_account: "Konto {{account}} wurde erfolgreich erstellt"
+      created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
       created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
       created_site: "Site {{site}} wurde erfolgreich erstellt"
       created_user: "Benutzer wurde erfolgreich erstellt"
@@ -90,9 +112,11 @@ de:
       logged_out: "Erfolgreich ausgeloggt"
       password_instructions_sent: "Anweisungen zur Änderung Ihres Passwortes wurden per E-Mail verschickt. Bitte prüfen Sie Ihren Posteingang."
       password_updated: "Ihr Passwort wurde erfolgreich geändert"
+      removed_footer_link: "Fußzeilen-Link wurde erfolgreich entfernt"
       removed_user_account: "Benutzer wurde erfolgreich vom Konto entfernt"
       switched_account: "Erfolgreich zu Konto {{account}} gewechselt"
       updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"
+      updated_footer_link: "Fußzeilen-Link wurde erfolgreich aktualisiert"
       updated_health_check: "Funktionstest {{health_check}} wurde erfolgreich aktualisiert"
       updated_site: "Site {{site}} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
@@ -138,6 +162,7 @@ de:
   layouts: 
     accounts: Konten
     close_flash: Schließen
+    edit_footer: "Fußzeile bearbeiten"
     github_project_page: Github-Projektseite
     guest_greeter: "Willkommen, Gast!"
     health_checks: Funktionstests
@@ -222,7 +247,7 @@ de:
     index: 
       add_step: "Schritt hinzufügen"
       are_you_sure: "Sind Sie sicher?"
-      copy: "Kopieren"
+      copy: Kopieren
       delete: Entfernen
       details: Details
       edit: Bearbeiten

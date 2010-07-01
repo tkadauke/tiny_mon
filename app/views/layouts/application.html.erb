@@ -121,6 +121,12 @@
         <h1><%= t('layouts.quick_links') %></h1>
         <div id="links">
           <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>
+          <% FooterLink.ordered.each do |link| %>
+            | <%= link_to link.text, link.url %>
+          <% end %>
+          <% if logged_in? && current_user.can_edit_footer_links? %>
+            || <%= link_to t('layouts.edit_footer'), admin_footer_links_path %>
+          <% end %>
         </div>
       </div>
     </div>

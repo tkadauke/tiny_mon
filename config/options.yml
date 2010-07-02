@@ -1,12 +1,24 @@
 - email_enabled:
-    name: 'Email notifications enabled'
-    description: "Whether or not email notifications on check run failures are delivered to you."
+    name:
+      en: "Email notifications enabled"
+      de: "E-Mail-Benachrichtigungen aktivieren"
+    description:
+      en: "Whether or not email notifications on check run failures are delivered to you."
+      de: "Gibt an, ob Benachrichtigungen über fehlgeschlagene Funktionstests per E-Mail an Sie geschickt werden."
     type: Boolean
 - prowl_enabled:
-    name: 'Prowl enabled'
-    description: "Whether or not Prowl notifications on check run failures are delivered to your iPhone."
+    name:
+      en: "Prowl enabled"
+      de: "Prowl aktivieren"
+    description:
+      en: "Whether or not Prowl notifications on check run failures are delivered to your iPhone."
+      de: "Gibt an, ob Benachrichtigungen über fehlgeschlagene Funktionstests mittels Prowl an Ihr iPhone geschickt werden."
     type: Boolean
 - prowl_api_key:
-    name: 'Prowl API Key'
-    description: "Your Prowl API key. Log in to your Prowl account to generate an API key."
+    name:
+      en: "Prowl API Key"
+      de: "Prowl API-Key"
+    description:
+      en: "Your Prowl API key. Log in to your Prowl account to generate an API key."
+      de: "Ihr Prowl API-Key. Besuchen Sie Ihr Prowl-Konto um einen API-Key zu generieren"
     type: String

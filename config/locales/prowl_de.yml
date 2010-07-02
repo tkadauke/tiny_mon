@@ -1,0 +1,8 @@
+de: 
+  prowl: 
+    description: 
+      failure: "Funktionstest {{health_check}} von Site {{site}} ist fehlgeschlagen"
+      success: "Funktionstest {{health_check}} von Site {{site}} war erfolgreich"
+    event: 
+      failure: "Fehler"
+      success: "Erfolg"

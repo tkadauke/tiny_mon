@@ -338,6 +338,9 @@ padding: 3px 3px 0 3px;
   color: #950065;
   display: block;
 }
+.form_item span.check-box-label {
+  color: #950065;
+}
 .form_item span.desc {
   color: #999999;
   display: block;

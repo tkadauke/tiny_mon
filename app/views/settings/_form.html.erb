@@ -1,0 +1,30 @@
+<% config.options.each do |option| %>
+  <% next if option.type == 'Hash' %>
+  <p class="form_item">
+    <% if option.type == 'Boolean' %>
+      <%= f.check_box option.key %>
+      <% if option.name.is_a?(Hash) %>
+        <span class="check-box-label"><%= f.label option.key, option.name[I18n.locale.to_s] %></span>
+      <% else %>
+        <span class="check-box-label"><%= f.label option.key, option.name %></span>
+      <% end %>
+    <% else %>
+      <% if option.name.is_a?(Hash) %>
+        <span class="label"><%= f.label option.key, option.name[I18n.locale.to_s] %></span>
+      <% else %>
+        <span class="label"><%= f.label option.key, option.name %></span>
+      <% end %>
+    <% end %>
+    
+    <% if option.description.is_a?(Hash) %>
+      <span class="desc"><%= option.description[I18n.locale.to_s] %></span>
+    <% elsif option.description %>
+      <span class="desc"><%= option.description %></span>
+    <% end %>
+    <% if option.values %>
+      <%= f.select option.key, option.values %>
+    <% elsif option.type != 'Boolean' %>
+      <%= f.text_field option.key %>
+    <% end %>
+  </p>
+<% end %>

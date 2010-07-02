@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   
   has_many :user_accounts
   has_many :accounts, :through => :user_accounts
+  has_many :config_options
   
   belongs_to :current_account, :class_name => 'Account'
   
@@ -33,5 +34,9 @@ class User < ActiveRecord::Base
   
   def name
     full_name
+  end
+  
+  def config
+    @config ||= User::Configuration.new(self)
   end
 end

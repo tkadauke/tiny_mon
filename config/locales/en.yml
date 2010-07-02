@@ -64,6 +64,7 @@ en:
     login: Login
     new: New
     password_resets: "Reset password"
+    settings: Settings
     sites: Sites
     steps: Steps
     user_accounts: Users
@@ -193,6 +194,10 @@ en:
       forgot_password: "Forgot Password"
       instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
       reset: "Reset my password"
+  settings: 
+    show: 
+      settings: Settings
+      update: Update
   sites: 
     edit: 
       edit_site: "Edit Site {{site}}"
@@ -217,6 +222,7 @@ en:
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
       recent_activity: "Recent Activity"
+      settings: "Edit settings"
   status: 
     failure: Failure
     offline: Disabled
@@ -308,4 +314,5 @@ en:
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
     show: 
       edit_profile: "Edit profile"
+      settings: "Edit settings"
       users_profile: "{{full_name}}'s profile"

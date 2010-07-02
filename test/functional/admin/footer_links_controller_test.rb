@@ -55,6 +55,16 @@ class Admin::FooterLinksControllerTest < ActionController::TestCase
     assert_equal 'wikipedia', @footer_link.reload.text
   end
   
+  test "should destroy footer link" do
+    link = FooterLink.create(:text => 'Google', :url => 'http://www.google.com')
+    
+    assert_difference 'FooterLink.count', -1 do
+      delete :destroy, :id => link
+      assert_response :redirect
+      assert_not_nil flash[:notice]
+    end
+  end
+  
   test "should sort footer links" do
     link = FooterLink.create(:text => 'Google', :url => 'http://www.google.com')
     

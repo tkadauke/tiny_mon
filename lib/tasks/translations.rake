@@ -29,7 +29,7 @@ namespace :translations do
     end
     
     file_types = ['controllers', 'helpers', 'models']
-    Dir[*file_types.collect { |t| "app/#{t}/**/*.rb" }].each do |filename|
+    Dir["lib/**/*.rb", *file_types.collect { |t| "app/#{t}/**/*.rb" }].each do |filename|
       next if ignores.any? { |r| filename =~ r }
       
       content = File.read(filename)

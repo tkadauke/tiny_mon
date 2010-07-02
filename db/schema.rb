@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100701173540) do
+ActiveRecord::Schema.define(:version => 20100702201521) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(:version => 20100701173540) do
   add_index "check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
   add_index "check_runs", ["health_check_id", "created_at"], :name => "test"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
+
+  create_table "config_options", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "footer_links", :force => true do |t|
     t.string   "text"

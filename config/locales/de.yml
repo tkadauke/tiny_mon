@@ -64,6 +64,7 @@ de:
     login: Login
     new: Neu
     password_resets: "Passwort zurücksetzen"
+    settings: Einstellungen
     sites: Sites
     steps: Schritte
     user_accounts: Benutzer
@@ -193,6 +194,10 @@ de:
       forgot_password: "Passwort vergessen"
       instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
       reset: "Passwort zurücksetzen"
+  settings: 
+    show: 
+      settings: Einstellungen
+      update: "Einstellungen speichern"
   sites: 
     edit: 
       edit_site: "Site {{site}} bearbeiten"
@@ -217,6 +222,7 @@ de:
       no_accounts: "Diesem Benutzer sind bisher keine Konten zugewiesen."
       quick_links: Schnellzugriff
       recent_activity: "Neueste Aktivität"
+      settings: "Einstellungen bearbeiten"
   status: 
     failure: Fehlschlag
     offline: Deaktiviert
@@ -308,4 +314,5 @@ de:
       the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
     show: 
       edit_profile: "Profil bearbeiten"
+      settings: "Einstellungen bearbeiten"
       users_profile: "{{full_name}}s Profil"

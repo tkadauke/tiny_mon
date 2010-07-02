@@ -3,5 +3,8 @@
 <% if current_user.can_edit_profile?(@user) %>
   <ul class="action-list">
     <li><%= link_to t('.edit_profile'), edit_user_path(@user) %></li>
+    <% if @user == current_user %>
+      <li><%= link_to t('.settings'), settings_path %></li>
+    <% end %>
   </ul>
 <% end %>

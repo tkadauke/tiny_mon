@@ -35,6 +35,10 @@ class HealthCheck < ActiveRecord::Base
     find_by_permalink!(param)
   end
   
+  def subscribers
+    site.account.users
+  end
+  
   def check!
     runner = Runner.new(self)
     attrs = { :started_at => Time.now.to_f, :status => 'success' }

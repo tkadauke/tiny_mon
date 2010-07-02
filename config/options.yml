@@ -1,0 +1,12 @@
+- email_enabled:
+    name: 'Email notifications enabled'
+    description: "Whether or not email notifications on check run failures are delivered to you."
+    type: Boolean
+- prowl_enabled:
+    name: 'Prowl enabled'
+    description: "Whether or not Prowl notifications on check run failures are delivered to your iPhone."
+    type: Boolean
+- prowl_api_key:
+    name: 'Prowl API Key'
+    description: "Your Prowl API key. Log in to your Prowl account to generate an API key."
+    type: String

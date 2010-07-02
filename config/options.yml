@@ -6,6 +6,7 @@
       en: "Whether or not email notifications on check run failures are delivered to you."
       de: "Gibt an, ob Benachrichtigungen über fehlgeschlagene Funktionstests per E-Mail an Sie geschickt werden."
     type: Boolean
+    default: true
 - prowl_enabled:
     name:
       en: "Prowl enabled"

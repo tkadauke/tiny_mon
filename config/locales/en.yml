@@ -119,6 +119,7 @@ en:
       updated_account: "Successfully updated account {{account}}"
       updated_footer_link: "Successfully updated footer link"
       updated_health_check: "Successfully updated health check {{health_check}}"
+      updated_settings: "Successfully updated settings"
       updated_site: "Successfully updated site {{site}}"
       updated_user: "Successfully updated user"
   health_checks: 

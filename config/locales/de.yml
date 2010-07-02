@@ -119,6 +119,7 @@ de:
       updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"
       updated_footer_link: "Fußzeilen-Link wurde erfolgreich aktualisiert"
       updated_health_check: "Funktionstest {{health_check}} wurde erfolgreich aktualisiert"
+      updated_settings: "Einstellungen wurden erfolgreich aktualisiert"
       updated_site: "Site {{site}} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
   health_checks: 

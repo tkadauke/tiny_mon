@@ -30,5 +30,5 @@
       de: "Prowl API-Key"
     description:
       en: "Your Prowl API key. Log in to your Prowl account to generate an API key."
-      de: "Ihr Prowl API-Key. Besuchen Sie Ihr Prowl-Konto um einen API-Key zu generieren"
+      de: "Ihr Prowl API-Key. Besuchen Sie Ihr Prowl-Konto um einen API-Key zu generieren."
     type: String

@@ -3,24 +3,13 @@
   <p class="form_item">
     <% if option.type == 'Boolean' %>
       <%= f.check_box option.key %>
-      <% if option.name.is_a?(Hash) %>
-        <span class="check-box-label"><%= f.label option.key, option.name[I18n.locale.to_s] %></span>
-      <% else %>
-        <span class="check-box-label"><%= f.label option.key, option.name %></span>
-      <% end %>
+      <span class="check-box-label"><%= f.label option.key, translate_if_possible(option.name) %></span>
     <% else %>
-      <% if option.name.is_a?(Hash) %>
-        <span class="label"><%= f.label option.key, option.name[I18n.locale.to_s] %></span>
-      <% else %>
-        <span class="label"><%= f.label option.key, option.name %></span>
-      <% end %>
+      <span class="label"><%= f.label option.key, translate_if_possible(option.name) %></span>
     <% end %>
     
-    <% if option.description.is_a?(Hash) %>
-      <span class="desc"><%= option.description[I18n.locale.to_s] %></span>
-    <% elsif option.description %>
-      <span class="desc"><%= option.description %></span>
-    <% end %>
+    <span class="desc"><%= translate_if_possible(option.description) %></span>
+    
     <% if option.values %>
       <%= f.select option.key, option.values %>
     <% elsif option.type != 'Boolean' %>

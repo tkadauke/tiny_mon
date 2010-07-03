@@ -5,6 +5,7 @@ de:
       edit_account: "Konto bearbeiten"
     form: 
       name: Kontoname
+      save_account: "Konto speichern"
     index: 
       edit: Bearbeiten
       name: Name
@@ -39,6 +40,7 @@ de:
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
       form: 
+        save_footer_link: "Fußzeilen-Link speichern"
         text: Link-Text
         url: Ziel-URL
       index: 
@@ -136,6 +138,7 @@ de:
       description: Bescheibung
       interval: Prüf-Intervall
       name: Name
+      save_health_check: "Funktionstest speichern"
     index: 
       health_checks_for_site: "Funktionstests für Site {{site}}"
       new_health_check: "Neuer Funktionstest"
@@ -204,6 +207,7 @@ de:
       edit_site: "Site {{site}} bearbeiten"
     form: 
       name: Site-Name
+      save_site: "Site speichern"
       url: Basis-URL
     index: 
       all_sites: "Alle Sites"
@@ -249,7 +253,7 @@ de:
     form: 
       cancel: Abbruch
       please_select: "Bitte wählen ..."
-      save: Speichern
+      save_step: Schritt Speichern
       type: Typ
     index: 
       add_step: "Schritt hinzufügen"

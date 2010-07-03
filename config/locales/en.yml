@@ -5,6 +5,7 @@ en:
       edit_account: "Edit Account"
     form: 
       name: Name
+      save_account: "Save account"
     index: 
       edit: Edit
       name: Name
@@ -39,6 +40,7 @@ en:
       edit: 
         edit_footer_link: "Edit footer link"
       form: 
+        save_footer_link: "Save footer link"
         text: "Link text"
         url: "Target URL"
       index: 
@@ -136,6 +138,7 @@ en:
       description: Description
       interval: "Check Interval"
       name: Name
+      save_health_check: "Save health check"
     index: 
       health_checks_for_site: "Health Checks for Site {{site}}"
       new_health_check: "New Health Check"
@@ -204,6 +207,7 @@ en:
       edit_site: "Edit Site {{site}}"
     form: 
       name: "Site Name"
+      save_site: "Save site"
       url: "Base URL"
     index: 
       all_sites: "All Sites"
@@ -249,7 +253,7 @@ en:
     form: 
       cancel: Cancel
       please_select: "Please select ..."
-      save: Save
+      save_step: "Save Step"
       type: Type
     index: 
       add_step: "Add Step"

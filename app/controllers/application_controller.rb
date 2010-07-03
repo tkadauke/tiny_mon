@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
-  before_filter { I18n.locale = TinyMon::Config.language if TinyMon::Config.language }
+  before_filter :set_language
   before_filter :authorize
 
   helper_method :current_user_session, :current_user, :logged_in?
@@ -32,6 +32,14 @@ protected
       end
     else
       super
+    end
+  end
+  
+  def set_language
+    if logged_in?
+      I18n.locale = current_user.config.language
+    else
+      I18n.locale = TinyMon::Config.language if TinyMon::Config.language
     end
   end
 

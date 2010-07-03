@@ -44,6 +44,7 @@ de:
         text: Link-Text
         url: Ziel-URL
       index: 
+        drag_to_sort: "Ziehen Sie die Pfeile, um die Reihenfolge der Fußzeilen-Links zu ändern"
         edit: Bearbeiten
         footer_links: Fußzeilen-Links
         name: Link-Text
@@ -253,7 +254,7 @@ de:
     form: 
       cancel: Abbruch
       please_select: "Bitte wählen ..."
-      save_step: Schritt Speichern
+      save_step: "Schritt Speichern"
       type: Typ
     index: 
       add_step: "Schritt hinzufügen"
@@ -261,6 +262,7 @@ de:
       copy: Kopieren
       delete: Entfernen
       details: Details
+      drag_to_sort: "Ziehen Sie die Pfeile, um die Reihenfolge der Schritte zu ändern"
       edit: Bearbeiten
       name: Name
       no_steps_defined: "Keine Schritte definiert."

@@ -44,6 +44,7 @@ en:
         text: "Link text"
         url: "Target URL"
       index: 
+        drag_to_sort: "Drag the arrows to reorder footer links"
         edit: Edit
         footer_links: "Footer links"
         name: "Link text"
@@ -261,6 +262,7 @@ en:
       copy: Copy
       delete: Delete
       details: Details
+      drag_to_sort: "Drag the arrows to reorder steps"
       edit: Edit
       name: Name
       no_steps_defined: "No steps defined."

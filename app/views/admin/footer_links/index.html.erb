@@ -6,6 +6,7 @@
   <table class="list">
     <thead>
       <tr>
+        <th>&nbsp;</th>
         <th><%= t('.name') %></th>
         <th><%= t('.url') %></th>
         <th><%= t('.options') %></th>
@@ -14,6 +15,7 @@
     <tbody id="links">
       <% @footer_links.each do |footer_link| %>
         <tr id="order_<%= footer_link.id %>">
+          <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
           <td><%= footer_link.text %></td>
           <td><%= link_to footer_link.url, footer_link.url %></td>
           <td>
@@ -30,6 +32,7 @@
   Sortable.create('links', {
     tag: 'tr',
     scroll: window,
+    handle: 'handle',
     onUpdate: function() { new Ajax.Request('#{sort_admin_footer_links_path}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("links", { name: 'link' }) }); }
   });
 } %>

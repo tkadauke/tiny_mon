@@ -5,8 +5,8 @@
     type: String
     default: en
     values:
-      - en
-      - de
+      English: en
+      Deutsch: de
 - email_enabled:
     name:
       en: "Email notifications enabled"

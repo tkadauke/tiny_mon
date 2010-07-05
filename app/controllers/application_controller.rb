@@ -44,17 +44,17 @@ protected
   end
 
   def login_required
-    deny_access(I18n.t("flash.error.login_required")) unless current_user
+    deny_access(I18n.t("flash.error.login_required"), login_path) unless current_user
   end
 
   def guest_required
     deny_access(I18n.t("flash.error.guest_required")) if current_user
   end
   
-  def deny_access(message = nil)
+  def deny_access(message = nil, path = root_path)
     store_location
     flash[:error] = message || I18n.t("flash.error.access_denied")
-    redirect_to root_path
+    redirect_to path
     return false
   end
   

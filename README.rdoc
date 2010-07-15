@@ -24,6 +24,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Login mechanism
 - Group health checks in accounts
 - Assign any number of users to any number of accounts
+- Prowl notifications
 
 === Missing Stuff
 

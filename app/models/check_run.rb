@@ -3,6 +3,7 @@ class CheckRun < ActiveRecord::Base
   
   serialize :log, Array
   
+  before_create :set_account
   after_create :update_health_check_status
   after_create :notify_subscribers
   
@@ -17,6 +18,10 @@ class CheckRun < ActiveRecord::Base
   end
   
 protected
+  def set_account
+    self.account_id = health_check.site.account_id
+  end
+
   def update_health_check_status
     health_check.update_attribute(:status, self.status)
   end

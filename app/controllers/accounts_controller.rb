@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_filter :login_required
   
   def index
-    @accounts = current_user.accounts
+    @accounts = current_user.accounts.ordered_by_name
   end
   
   def new

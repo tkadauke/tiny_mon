@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th><%= t('.name') %></th>
+      <th><%= t('.role') %></th>
       <th><%= t('.options') %></th>
     </tr>
   </thead>
@@ -11,6 +12,16 @@
     <% @account.user_accounts_with_users.each do |user_account| %>
       <tr>
         <td><%= link_to user_account.user.full_name, user_path(user_account.user) %></td>
+        <% if current_user.can_assign_role_for_user_and_account?(user_account.user, @account) %>
+          <td>
+            <% form_for [@account, user_account] do |f| %>
+              <%= f.select :role, UserAccount.available_roles_for_select %>
+              <%= f.submit t('.change') %>
+            <% end %>
+          </td>
+        <% else%>
+          <td><strong><%= user_account.role %></strong></td>
+        <% end %>
         <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
           <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account') %></td>
         <% end %>

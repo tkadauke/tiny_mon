@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :only => [:show, :edit, :update]
+  before_filter :login_required, :only => [:index, :show, :edit, :update]
   
   def index
     redirect_to account_path(current_user.current_account)

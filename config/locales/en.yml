@@ -1,5 +1,10 @@
 --- 
 en: 
+  account: 
+    role: 
+      admin: Admin
+      observer: Observer
+      user: User
   accounts: 
     edit: 
       edit_account: "Edit Account"
@@ -18,10 +23,12 @@ en:
       account: "Account {{account}}"
       add_existing: "Add existing user to this account"
       add_new: "Register new user for this account"
+      change: Change
       name: Name
       options: Options
       really_remove_user_from_account: "Do you really want to remove the user from this account?"
       remove: Remove
+      role: Role
   activerecord: 
     attributes: 
       user_account: 
@@ -100,17 +107,20 @@ en:
   flash: 
     error: 
       access_denied: "Access denied"
+      assign_roles: "Could not assign account role to user"
       guest_required: "You must be logged out to access this page"
       login_required: "You must be logged in to access this page"
       user_by_email_not_found: "No user was found with that email address"
       user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
     notice: 
+      assign_roles: "Successfully assigned account role to user"
       created_account: "Successfully created account {{account}}"
       created_footer_link: "Successfully created footer link"
       created_health_check: "Successfully created health check {{health_check}}"
       created_site: "Successfully created site {{site}}"
       created_user: "Successfully created user"
       created_user_account: "Successfully added this user to the account"
+      deleted_health_check: "Successfully deleted health check {{health_check}}"
       deleted_site: "Successfully deleted site {{site}}"
       logged_in: "Successfully logged in"
       logged_out: "Successfully logged out"
@@ -129,8 +139,11 @@ en:
     all_checks: 
       all_health_checks: "All Health Checks"
     details: 
+      delete: Delete
+      edit: Edit
       name: Name
       options: Options
+      really_delete_health_check: "Do you really want to delete this health check including all check runs? This operation can not be undone."
       site: Site
       status: Status
     edit: 
@@ -165,6 +178,7 @@ en:
         other: "{{count}} minutes"
       last_check_run: "Last check run"
       run: Run
+      view_steps: "View Steps"
   layouts: 
     accounts: Accounts
     close_flash: Close

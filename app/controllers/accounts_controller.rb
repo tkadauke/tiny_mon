@@ -23,6 +23,7 @@ class AccountsController < ApplicationController
     @account = Account.new(params[:account])
     if @account.save
       current_user.accounts << @account
+      current_user.set_role_for_account(@account, 'admin')
       current_user.switch_to_account @account
       flash[:notice] = I18n.t('flash.notice.created_account', :account => @account.name)
       redirect_to root_path

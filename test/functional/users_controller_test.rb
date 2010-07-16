@@ -1,6 +1,16 @@
 require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class UsersControllerTest < ActionController::TestCase
+  test "should redirect to accounts path on index" do
+    @account = Account.create(:name => 'account')
+    john = User.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
+    login_with john
+
+    get :index
+    assert_response :redirect
+    assert_redirected_to account_path(@account)
+  end
+  
   test "should get new" do
     get :new
     assert_response :success

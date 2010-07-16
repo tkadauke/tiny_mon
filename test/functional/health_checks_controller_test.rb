@@ -76,4 +76,12 @@ class HealthChecksControllerTest < ActionController::TestCase
     post :update, :account_id => @account, :site_id => @site.to_param, :id => health_check.to_param, :health_check => { :name => nil }
     assert_response :success
   end
+  
+  test "should delete health check" do
+    health_check = @site.health_checks.create(:name => 'Home page')
+    assert_difference 'HealthCheck.count', -1 do
+      delete :destroy, :account_id => @account, :site_id => @site.to_param, :id => health_check.to_param
+      assert_response :redirect
+    end
+  end
 end

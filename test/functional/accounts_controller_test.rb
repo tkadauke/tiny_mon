@@ -4,6 +4,7 @@ class AccountsControllerTest < ActionController::TestCase
   def setup
     @account = Account.create(:name => 'account')
     @user = @account.users.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
+    @user.set_role_for_account(@account, 'admin')
     
     login_with @user
   end

@@ -1,8 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../test_helper')
 
 class UserAccountTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "should return available roles" do
+    assert UserAccount.available_roles.is_a?(Array)
   end
 end

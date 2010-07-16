@@ -14,16 +14,20 @@ class HealthChecksController < ApplicationController
   end
   
   def new
-    @health_check = @site.health_checks.build
+    can_create_health_checks!(@account) do
+      @health_check = @site.health_checks.build
+    end
   end
   
   def create
-    @health_check = @site.health_checks.build(params[:health_check])
-    if @health_check.save
-      flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
-      redirect_to account_site_health_check_path(@account, @site, @health_check)
-    else
-      render :action => 'new'
+    can_create_health_checks!(@account) do
+      @health_check = @site.health_checks.build(params[:health_check])
+      if @health_check.save
+        flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
+        redirect_to account_site_health_check_path(@account, @site, @health_check)
+      else
+        render :action => 'new'
+      end
     end
   end
   
@@ -32,16 +36,29 @@ class HealthChecksController < ApplicationController
   end
   
   def edit
-    @health_check = @site.health_checks.find_by_permalink!(params[:id])
+    can_edit_health_checks!(@account) do
+      @health_check = @site.health_checks.find_by_permalink!(params[:id])
+    end
   end
   
   def update
-    @health_check = @site.health_checks.find_by_permalink!(params[:id])
-    if @health_check.update_attributes(params[:health_check])
-      flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
-      redirect_to account_site_health_check_path(@account, @site, @health_check)
-    else
-      render :action => 'edit'
+    can_edit_health_checks!(@account) do
+      @health_check = @site.health_checks.find_by_permalink!(params[:id])
+      if @health_check.update_attributes(params[:health_check])
+        flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
+        redirect_to account_site_health_check_path(@account, @site, @health_check)
+      else
+        render :action => 'edit'
+      end
+    end
+  end
+  
+  def destroy
+    can_delete_health_checks!(@account) do
+      @health_check = @site.health_checks.find_by_permalink!(params[:id])
+      @health_check.destroy
+      flash[:notice] = I18n.t('flash.notice.deleted_health_check', :health_check => @health_check.name)
+      redirect_to account_site_health_checks_path(@account, @site)
     end
   end
   

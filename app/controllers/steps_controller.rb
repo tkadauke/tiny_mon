@@ -11,47 +11,59 @@ class StepsController < ApplicationController
   end
 
   def new
-    if params[:clone]
-      @steps = @health_check.steps_with_clone(params[:clone])
-      render :action => 'index'
-    else
-      @step = "#{params[:type]}_step".classify.constantize.new
-      render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+    can_edit_health_checks!(@account) do
+      if params[:clone]
+        @steps = @health_check.steps_with_clone(params[:clone])
+        render :action => 'index'
+      else
+        @step = "#{params[:type]}_step".classify.constantize.new
+        render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+      end
     end
   end
   
   def edit
-    @step = @health_check.steps.find(params[:id])
-    render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+    can_edit_health_checks!(@account) do
+      @step = @health_check.steps.find(params[:id])
+      render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
+    end
   end
   
   def create
-    type_name = "#{params[:type]}_step"
-    @step = type_name.classify.constantize.new(params[type_name])
-    @step.health_check = @health_check
-    if @step.save
-      redirect_to account_site_health_check_steps_path(@account, @site, @health_check)
+    can_edit_health_checks!(@account) do
+      type_name = "#{params[:type]}_step"
+      @step = type_name.classify.constantize.new(params[type_name])
+      @step.health_check = @health_check
+      if @step.save
+        redirect_to account_site_health_check_steps_path(@account, @site, @health_check)
+      end
     end
   end
   
   def update
-    @step = @health_check.steps.find(params[:id])
-    if @step.update_attributes(params[@step.class.name.underscore])
-      redirect_to :back
+    can_edit_health_checks!(@account) do
+      @step = @health_check.steps.find(params[:id])
+      if @step.update_attributes(params[@step.class.name.underscore])
+        redirect_to :back
+      end
     end
   end
   
   def destroy
-    @step = @health_check.steps.find(params[:id])
-    @step.destroy
-    redirect_to :back
+    can_edit_health_checks!(@account) do
+      @step = @health_check.steps.find(params[:id])
+      @step.destroy
+      redirect_to :back
+    end
   end
   
   def sort
-    params[:step].each_with_index do |id, i|
-      @health_check.steps.find(id).update_attribute(:position, i)
+    can_edit_health_checks!(@account) do
+      params[:step].each_with_index do |id, i|
+        @health_check.steps.find(id).update_attribute(:position, i)
+      end
+      render :nothing => true
     end
-    render :nothing => true
   end
 
 protected

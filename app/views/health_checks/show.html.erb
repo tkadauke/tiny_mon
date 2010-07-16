@@ -5,11 +5,17 @@
   <dd>
     <%= simple_format @health_check.description %>
     <p>
-      <%= link_to t('.check_runs'), account_site_health_check_check_runs_path(@account, @site, @health_check) %> |
-      <%= link_to t('.edit'), edit_account_site_health_check_path(@account, @site, @health_check) %> |
-      <%= link_to t('.edit_steps'), account_site_health_check_steps_path(@account, @site, @health_check) %>
+      <% action_list do |a| %>
+        <% a.link_to t('.check_runs'), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
+        <% if current_user.can_edit_health_checks?(@account) %>
+          <% a.link_to t('.edit'), edit_account_site_health_check_path(@account, @site, @health_check) %>
+          <% a.link_to t('.edit_steps'), account_site_health_check_steps_path(@account, @site, @health_check) %>
+        <% else %>
+          <% a.link_to t('.view_steps'), account_site_health_check_steps_path(@account, @site, @health_check) %>
+        <% end %>
+      <% end %>
     </p>
-    <%= button_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post %>
+    <%= button_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post if current_user.can_run_health_checks?(@account) %>
   </dd>
 
   <dt><%= t('.interval') %></dt>
@@ -20,12 +26,14 @@
     <dd><%= link_to status_icon(@health_check.last_check_run) + '&nbsp;' + t("status.#{@health_check.last_check_run.status}"), account_site_health_check_check_run_path(@account, @site, @health_check, @health_check.last_check_run) %></dd>
   <% end %>
 
-  <% if @health_check.enabled? %>
-    <dt><%= t('.check_is_enabled') %></dt>
-    <dd><%= button_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :method => :put %></dd>
-  <% else %>
-    <dt><%= t('.check_is_disabled') %></dt>
-    <dd><%= button_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :method => :put %></dd>
+  <% if current_user.can_edit_health_checks?(@account) %>
+    <% if @health_check.enabled? %>
+      <dt><%= t('.check_is_enabled') %></dt>
+      <dd><%= button_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :method => :put %></dd>
+    <% else %>
+      <dt><%= t('.check_is_disabled') %></dt>
+      <dd><%= button_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :method => :put %></dd>
+    <% end %>
   <% end %>
 </dl>
 

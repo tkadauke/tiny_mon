@@ -4,6 +4,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   def setup
     @account = Account.create(:name => 'account')
     @user = @account.users.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
+    @user.set_role_for_account(@account, 'admin')
     
     login_with @user
   end
@@ -33,6 +34,14 @@ class UserAccountsControllerTest < ActionController::TestCase
     end
   end
   
+  test "should update user account mapping" do
+    second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
+
+    post :update, :id => UserAccount.last, :user_account => { :role => 'admin' }
+    assert_response :redirect
+    assert_not_nil flash[:notice]
+  end
+
   test "should remove user account mapping" do
     second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
     assert_difference 'UserAccount.count', -1 do

@@ -7,16 +7,20 @@ class SitesController < ApplicationController
   end
   
   def new
-    @site = @account.sites.build
+    can_create_sites!(@account) do
+      @site = @account.sites.build
+    end
   end
   
   def create
-    @site = @account.sites.build(params[:site])
-    if @site.save
-      flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
-      redirect_to account_site_health_checks_path(@account, @site)
-    else
-      render :action => 'new'
+    can_create_sites!(@account) do
+      @site = @account.sites.build(params[:site])
+      if @site.save
+        flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
+        redirect_to account_site_health_checks_path(@account, @site)
+      else
+        render :action => 'new'
+      end
     end
   end
   
@@ -26,23 +30,29 @@ class SitesController < ApplicationController
   end
   
   def edit
-    @site = @account.sites.find_by_permalink!(params[:id])
+    can_edit_sites!(@account) do
+      @site = @account.sites.find_by_permalink!(params[:id])
+    end
   end
   
   def update
-    @site = @account.sites.find_by_permalink!(params[:id])
-    if @site.update_attributes(params[:site])
-      flash[:notice] = I18n.t('flash.notice.updated_site', :site => @site.name)
-      redirect_to account_site_path(@account, @site)
-    else
-      render :action => 'edit'
+    can_edit_sites!(@account) do
+      @site = @account.sites.find_by_permalink!(params[:id])
+      if @site.update_attributes(params[:site])
+        flash[:notice] = I18n.t('flash.notice.updated_site', :site => @site.name)
+        redirect_to account_site_path(@account, @site)
+      else
+        render :action => 'edit'
+      end
     end
   end
   
   def destroy
-    @site = @account.sites.find_by_permalink!(params[:id])
-    @site.destroy
-    flash[:notice] = I18n.t('flash.notice.deleted_site', :site => @site.name)
-    redirect_to sites_path
+    can_delete_sites!(@account) do
+      @site = @account.sites.find_by_permalink!(params[:id])
+      @site.destroy
+      flash[:notice] = I18n.t('flash.notice.deleted_site', :site => @site.name)
+      redirect_to sites_path
+    end
   end
 end

@@ -8,6 +8,18 @@ class UserAccount < ActiveRecord::Base
   
   before_validation_on_create :set_user_from_email
   
+  def after_initialize
+    extend "Role::Account::#{self.role.classify}".constantize
+  end
+  
+  def self.available_roles
+    ['admin', 'user', 'observer']
+  end
+  
+  def self.available_roles_for_select
+    available_roles.collect { |role| [I18n.t("account.role.#{role}"), role] }
+  end
+  
 protected
   def set_user_from_email
     return if email.blank?

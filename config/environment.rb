@@ -26,10 +26,12 @@ Rails::Initializer.run do |config|
   config.gem "mechanize", :lib => false
   config.gem "orderedhash"
   config.gem "authlogic"
+  config.gem "background_lite", :lib => false
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+  config.plugins = [ :background_lite, :all ]
 
   # Skip frameworks you're not going to use. To use Rails without a database,
   # you must remove the Active Record framework.
@@ -40,7 +42,7 @@ Rails::Initializer.run do |config|
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
-  config.time_zone = 'UTC'
+  # config.time_zone = 'UTC'
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

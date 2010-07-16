@@ -7,6 +7,11 @@ class HealthCheck < ActiveRecord::Base
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC'
   
   named_scope :enabled, :conditions => { :enabled => true }
+#  named_scope :due, :conditions => ['enabled = ? and next_check_at < NOW()', true]
+  
+  def self.due
+    enabled.find :all, :conditions => ['next_check_at < ?', Time.now]
+  end
 
   has_permalink :name, :scope => :site_id
   
@@ -39,6 +44,10 @@ class HealthCheck < ActiveRecord::Base
     site.account.users
   end
   
+  def schedule_next!
+    update_attribute(:next_check_at, interval.minutes.from_now)
+  end
+  
   def check!
     runner = Runner.new(self)
     attrs = { :started_at => Time.now.to_f, :status => 'success' }
@@ -57,5 +66,7 @@ class HealthCheck < ActiveRecord::Base
     attrs[:log] = runner.log_entries
 
     check_runs.create(attrs)
+    update_attribute(:last_checked_at, Time.now)
   end
+  background_method :check!
 end

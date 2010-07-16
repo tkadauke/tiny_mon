@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100715221810) do
+ActiveRecord::Schema.define(:version => 20100716204741) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -58,14 +58,28 @@ ActiveRecord::Schema.define(:version => 20100715221810) do
     t.datetime "updated_at"
     t.string   "status"
     t.integer  "interval"
-    t.boolean  "enabled",     :default => false
+    t.boolean  "enabled",         :default => false
     t.string   "permalink"
+    t.datetime "last_checked_at"
+    t.datetime "next_check_at"
   end
 
   add_index "health_checks", ["enabled"], :name => "index_health_checks_on_enabled"
   add_index "health_checks", ["name"], :name => "index_health_checks_on_name"
+  add_index "health_checks", ["next_check_at"], :name => "index_health_checks_on_next_check_at"
   add_index "health_checks", ["site_id"], :name => "index_health_checks_on_site_id"
   add_index "health_checks", ["status"], :name => "index_health_checks_on_status"
+
+  create_table "screenshots", :force => true do |t|
+    t.integer  "check_run_id"
+    t.string   "url"
+    t.string   "checksum"
+    t.string   "format"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "screenshots", ["check_run_id"], :name => "index_screenshots_on_check_run_id"
 
   create_table "sites", :force => true do |t|
     t.string   "name"

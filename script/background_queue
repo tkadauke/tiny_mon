@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require File.dirname(__FILE__) + '/../config/environment'
+require 'drb'
+
+class BackgroundQueue
+  include Singleton
+  
+  def initialize
+    @queue = []
+  end
+  
+  delegate :push, :pop, :to => '@queue'
+  class << self
+    delegate :run, :to => :instance
+  end
+  
+  def run
+    loop do
+      message = pop
+      BackgroundLite::DrbHandler.execute(message) if message
+      sleep 0.1
+    end
+  end
+end
+
+DRb.start_service "druby://localhost:2251", BackgroundQueue.instance
+
+BackgroundQueue.run

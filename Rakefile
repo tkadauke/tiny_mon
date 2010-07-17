@@ -9,6 +9,11 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+begin
+  require 'resque/tasks'
+rescue LoadError
+end
+
 namespace :test do
   desc 'Measure test coverage'
   task :coverage do

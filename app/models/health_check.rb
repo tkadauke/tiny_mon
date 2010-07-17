@@ -7,10 +7,17 @@ class HealthCheck < ActiveRecord::Base
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC'
   
   named_scope :enabled, :conditions => { :enabled => true }
-#  named_scope :due, :conditions => ['enabled = ? and next_check_at < NOW()', true]
+  
+  before_save :set_next_check_at, :if => :enabled_changed?
   
   def self.due
-    enabled.find :all, :conditions => ['next_check_at < ?', Time.now]
+    enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
+  end
+  
+  # This method reenables health checks that got accidentally disabled, for example when
+  # a worker died while performing the check, thus leaving it in a permanently disabled state
+  def self.recover_zombies
+    update_all ['next_check_at = ?', Time.now], ['next_check_at is null and last_checked_at < ?', 1.hour.ago]
   end
 
   has_permalink :name, :scope => :site_id
@@ -25,13 +32,6 @@ class HealthCheck < ActiveRecord::Base
     [1, 2, 3, 5, 10, 15, 20, 30, 60]
   end
   
-  def check_now?
-    # This is a small and naive optimization to spread the check times more evenly
-    # across the minutes of an hour. Most importantly, this makes sure that not every
-    # check runs on the full hour.
-    (Time.now.min + (interval / 6.375)).to_i % interval == 0
-  end
-  
   def to_param
     permalink
   end
@@ -44,8 +44,8 @@ class HealthCheck < ActiveRecord::Base
     site.account.users
   end
   
-  def schedule_next!
-    update_attribute(:next_check_at, interval.minutes.from_now)
+  def prepare_check!
+    update_attribute(:next_check_at, nil)
   end
   
   def check!
@@ -66,7 +66,13 @@ class HealthCheck < ActiveRecord::Base
     attrs[:log] = runner.log_entries
 
     check_runs.create(attrs)
-    update_attribute(:last_checked_at, Time.now)
+  ensure
+    update_attributes(:last_checked_at => Time.now, :next_check_at => interval.minutes.from_now)
   end
   background_method :check!
+  
+protected
+  def set_next_check_at
+    self.next_check_at = 1.minute.from_now if enabled?
+  end
 end

@@ -7,8 +7,9 @@ class Scheduler
   end
 
   def self.check_all
+    HealthCheck.recover_zombies
     HealthCheck.due.each do |check|
-      check.schedule_next!
+      check.prepare_check!
       check.check!
     end
   end

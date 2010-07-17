@@ -5,7 +5,7 @@ class CheckRunsControllerTest < ActionController::TestCase
     @account = Account.create(:name => 'account')
     @user = @account.users.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
     @site = @account.sites.create(:name => 'example.com', :url => 'http://www.example.com')
-    @health_check = @site.health_checks.create(:name => 'Home Page')
+    @health_check = @site.health_checks.create(:name => 'Home Page', :interval => 10)
 
     login_with @user
   end

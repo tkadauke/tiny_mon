@@ -3,5 +3,6 @@ default:
   - :resque:
 
 test:
-  :handler:
-  - :in_process:
+  default:
+    :handler:
+    - :in_process:

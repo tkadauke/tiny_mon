@@ -8,6 +8,8 @@ class HealthCheck < ActiveRecord::Base
   
   named_scope :enabled, :conditions => { :enabled => true }
   
+  validates_presence_of :name, :interval
+  
   before_save :set_next_check_at, :if => :enabled_changed?
   
   def self.due

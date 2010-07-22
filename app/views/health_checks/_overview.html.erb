@@ -5,10 +5,11 @@
         <%= status_icon health_check, :large %>
       </div>
       <div class="details">
-        <%= link_to health_check.name, account_site_health_check_path(health_check.site.account, health_check.site, health_check) %><br/>
-        <span class="secondary">(<%= link_to health_check.site.name, account_site_path(health_check.site.account, health_check.site) %>)</span>
+        <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %><br/>
+        <span class="secondary">(<%= link_to highlight(health_check.site.name, @search_filter.query), account_site_path(health_check.site.account, health_check.site) %>)</span>
       </div>
     </li>
   <% end %>
 </ul>
 <div class="clearer"></div>
+<br/>

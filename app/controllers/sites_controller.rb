@@ -3,7 +3,11 @@ class SitesController < ApplicationController
   before_filter :find_account
   
   def index
-    @sites = @account.sites.find(:all, :include => :account, :order => 'name ASC')
+    @search_filter = SearchFilter.new(params[:search_filter])
+    @sites = @account.sites.find_for_list(@search_filter)
+    render :update do |page|
+      page.replace_html 'sites', :partial => 'index'
+    end if request.xhr?
   end
   
   def new

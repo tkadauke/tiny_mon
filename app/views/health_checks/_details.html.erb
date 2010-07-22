@@ -11,8 +11,8 @@
     <% @health_checks.each do |health_check| %>
       <tr>
         <td><%= status_icon health_check %></td>
-        <td><%= link_to health_check.site.name, account_site_path(health_check.site.account, health_check.site) %></td>
-        <td><%= link_to health_check.name, account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
+        <td><%= link_to highlight(health_check.site.name, @search_filter.query), account_site_path(health_check.site.account, health_check.site) %></td>
+        <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
         <td>
           <% action_list do |a| %>
             <% a.link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>

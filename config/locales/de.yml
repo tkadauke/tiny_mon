@@ -157,7 +157,7 @@ de:
       health_checks_for_site: "Funktionstests für Site {{site}}"
       new_health_check: "Neuer Funktionstest"
     list: 
-      no_health_checks_defined: "Keine Funktionstests definiert."
+      no_health_checks_found: "Keine Funktionstests gefunden."
     new: 
       new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
     report: 
@@ -217,6 +217,9 @@ de:
     show: 
       settings: Einstellungen
       update: "Einstellungen speichern"
+  shared: 
+    filter: 
+      filter: Filter
   sites: 
     edit: 
       edit_site: "Site {{site}} bearbeiten"
@@ -232,6 +235,7 @@ de:
       name: Name
       new_site: "Neue Site"
       no_sites_configured: "Keine Sites konfiguriert."
+      no_sites_found: "Keine Sites gefunden."
       options: Optionen
     new: 
       new_site: "Neue Site"

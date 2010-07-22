@@ -8,10 +8,18 @@ class HealthCheck < ActiveRecord::Base
   
   named_scope :enabled, :conditions => { :enabled => true }
   
-  validates_presence_of :name, :interval
+  has_permalink :name, :scope => :site_id
+  
+  validates_presence_of :site_id, :name, :interval
   
   before_save :set_next_check_at, :if => :enabled_changed?
   
+  def self.find_for_list(filter, find_options)
+    with_search_scope(filter) do
+      find(:all, find_options)
+    end
+  end
+
   def self.due
     enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
   end
@@ -22,10 +30,6 @@ class HealthCheck < ActiveRecord::Base
     update_all ['next_check_at = ?', Time.now], ['next_check_at is null and last_checked_at < ?', 1.hour.ago]
   end
 
-  has_permalink :name, :scope => :site_id
-  
-  validates_presence_of :site_id, :name
-  
   def steps_with_clone(clone_id)
     steps.find(:all).collect { |e| e.id == clone_id.to_i ? [e, e.clone] : e }.flatten
   end
@@ -76,5 +80,12 @@ class HealthCheck < ActiveRecord::Base
 protected
   def set_next_check_at
     self.next_check_at = 1.minute.from_now if enabled?
+  end
+
+  def self.with_search_scope(filter, &block)
+    conditions = filter.empty? ? nil : ['health_checks.name LIKE ? OR sites.name LIKE ?', "%#{filter.query}%", "%#{filter.query}%"]
+    with_scope :find => { :conditions => conditions, :include => :site } do
+      yield
+    end
   end
 end

@@ -157,7 +157,7 @@ en:
       health_checks_for_site: "Health Checks for Site {{site}}"
       new_health_check: "New Health Check"
     list: 
-      no_health_checks_defined: "No health checks defined."
+      no_health_checks_found: "No health checks found."
     new: 
       new_health_check_for_site: "New Health Check for site {{site}}"
     report: 
@@ -217,6 +217,9 @@ en:
     show: 
       settings: Settings
       update: Update
+  shared: 
+    filter: 
+      filter: Filter
   sites: 
     edit: 
       edit_site: "Edit Site {{site}}"
@@ -232,6 +235,7 @@ en:
       name: Name
       new_site: "New Site"
       no_sites_configured: "No sites configured."
+      no_sites_found: "No sites found."
       options: Options
     new: 
       new_site: "New Site"

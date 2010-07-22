@@ -4,13 +4,17 @@ class HealthChecksController < ApplicationController
   before_filter :find_site
   
   def index
+    @search_filter = SearchFilter.new(params[:search_filter])
     if @site
-      @health_checks = @site.health_checks.find(:all, :include => { :site => :account }, :order => 'health_checks.name ASC')
+      @health_checks = @site.health_checks.find_for_list(@search_filter, :order => 'health_checks.name ASC')
     else
-      @health_checks = @account.health_checks.find(:all, :include => { :site => :account }, :order => 'sites.name ASC, health_checks.name ASC')
+      @health_checks = @account.health_checks.find_for_list(@search_filter, :order => 'sites.name ASC, health_checks.name ASC')
       render :action => 'all_checks' unless request.xhr?
     end
-    render :partial => 'list' if request.xhr?
+    
+    render :update do |page|
+      page.replace_html 'checks', :partial => 'list'
+    end if request.xhr?
   end
   
   def new

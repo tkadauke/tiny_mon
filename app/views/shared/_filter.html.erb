@@ -1,0 +1,9 @@
+<% remote_form_for @search_filter, :url => url, :method => :get, :html => { :id => 'filter' } do |f| %>
+  <p class="form_item">
+    <%= f.text_field :query %>
+    <%= f.submit t('.filter') %>
+  </p>
+<% end %>
+
+<%= javascript_tag "$('search_filter_query').focus();" %>
+<%= observe_field 'search_filter_query', :url => url, :method => :get, :with => 'search_filter[query]', :frequency => 0.25 %>

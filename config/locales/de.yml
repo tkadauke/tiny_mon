@@ -190,7 +190,7 @@ de:
       check_is_disabled: "Funktionstest ist inaktiv"
       check_is_enabled: "Funktionstest ist aktiv"
       check_runs: Testläufe
-      comments: "Kommentare {{count}}"
+      comments: "Kommentare ({{count}})"
       description: Beschreibung
       disable: Deaktivieren
       edit: Bearbeiten

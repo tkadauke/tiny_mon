@@ -265,6 +265,8 @@ en:
       new_site: "New Site"
   start: 
     index: 
+      add_existing_user_to_account: "Add existing user to account {{account}}"
+      add_new_user_to_account: "Add new user to account {{account}}"
       add_site: "Add site"
       create_account: "Create account"
       no_accounts: "There are no accounts for this user yet."

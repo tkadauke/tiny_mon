@@ -14,6 +14,9 @@ class CheckRunsController < ApplicationController
   
   def show
     @check_run = @health_check.check_runs.find(params[:id])
+    @comment = @check_run.comments.build
+    @comments = @check_run.latest_comments
+    @comments_count = @check_run.comments.count
   end
   
   def create

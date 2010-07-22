@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100716204741) do
+ActiveRecord::Schema.define(:version => 20100722192709) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,18 @@ ActiveRecord::Schema.define(:version => 20100716204741) do
   add_index "check_runs", ["account_id"], :name => "index_check_runs_on_account_id"
   add_index "check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "check_run_id"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["check_run_id", "created_at"], :name => "index_comments_on_check_run_id_and_created_at"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "config_options", :force => true do |t|
     t.integer  "user_id"

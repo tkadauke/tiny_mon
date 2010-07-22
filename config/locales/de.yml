@@ -67,6 +67,7 @@ de:
     accounts: Konten
     admin: Administration
     check_runs: Testläufe
+    comments: Kommentare
     edit: Bearbeiten
     footer_links: Fußzeile
     health_checks: Funktionstests
@@ -96,14 +97,34 @@ de:
     index: 
       check_runs_of_health_check_site: "Testläufe von Funktionstest {{health_check}} (Site {{site}})"
     show: 
+      all_comments: "Alle Kommentare anzeigen"
       check_run_of_health_check_site: "Testlauf von {{health_check}} (Site {{site}})"
+      comments: "Kommentare ({{count}})"
       duration: Dauer
       duration_in_seconds: "{{seconds}} Sekunden"
       error_message: Fehlermeldung
+      leave_a_comment: "Kommentar schreiben"
       log_output: Log-Ausgabe
       message: Ausgabe
       status: Status
       time: Zeit
+  comments: 
+    form: 
+      error_adding_comment: "Kommentar konnte nicht hinzugefügt werden"
+      save_comment: "Kommentar hinzufügen"
+      text: Text
+      title: Titel
+    index: 
+      comments_by_user: "Kommentare von {{user}}"
+      comments_for_check_run_in_health_check_site: "Kommentare für Testlauf (Funktionstest {{health_check}}, Site {{site}})"
+      comments_for_health_check_site: "Kommentare für Funktionstest {{health_check}} (Site {{site}})"
+      leave_a_comment: "Kommentar schreiben"
+    list: 
+      check_run: "Testlauf #{{check_run}}"
+      no_comments_found: "Keine Kommentare gefunden"
+      user_wrote_time_ago: "{{user}} schrieb vor {{time}}"
+    new: 
+      comment_for_check_run_in_health_check_site: "Neuer Kommentar für Testlauf (Funktionstest {{health_check}}, Site {{site}})"
   flash: 
     error: 
       access_denied: "Zugriff verweigert"
@@ -115,6 +136,7 @@ de:
     notice: 
       assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
       created_account: "Konto {{account}} wurde erfolgreich erstellt"
+      created_comment: "Kommentar wurde erfolgreich hinzugefügt"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
       created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
       created_site: "Site {{site}} wurde erfolgreich erstellt"
@@ -164,9 +186,11 @@ de:
       details: Details
       overview: Überblick
     show: 
+      all_comments: "Alle Kommentare anzeigen"
       check_is_disabled: "Funktionstest ist inaktiv"
       check_is_enabled: "Funktionstest ist aktiv"
       check_runs: Testläufe
+      comments: "Kommentare {{count}}"
       description: Beschreibung
       disable: Deaktivieren
       edit: Bearbeiten
@@ -338,6 +362,9 @@ de:
       please_repeat_the_password_exactly_as_above: "Bitte wiederholen Sie das Passwort exakt wie oben"
       the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
     show: 
+      all_comments_by_user: "Alle Kommentare von {{user}}"
+      comments: "Kommentare ({{count}})"
       edit_profile: "Profil bearbeiten"
+      email: E-Mail-Adresse
       settings: "Einstellungen bearbeiten"
       users_profile: "{{full_name}}s Profil"

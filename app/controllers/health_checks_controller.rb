@@ -37,6 +37,8 @@ class HealthChecksController < ApplicationController
   
   def show
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
+    @comments = @health_check.latest_comments
+    @comments_count = @health_check.comments.count
   end
   
   def edit

@@ -33,6 +33,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @comments = @user.latest_comments
+    @comments_count = @user.comments.count
   end
 
   def edit

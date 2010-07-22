@@ -67,6 +67,7 @@ en:
     accounts: Accounts
     admin: Administration
     check_runs: "Check Runs"
+    comments: Comments
     edit: Edit
     footer_links: "Footer links"
     health_checks: "Health Checks"
@@ -96,14 +97,34 @@ en:
     index: 
       check_runs_of_health_check_site: "Check Runs of Health Check {{health_check}} (Site {{site}})"
     show: 
+      all_comments: "Show all comments"
       check_run_of_health_check_site: "Check run of {{health_check}} (site {{site}})"
+      comments: "Comments ({{count}})"
       duration: Duration
       duration_in_seconds: "{{seconds}} seconds"
       error_message: "Error Message"
+      leave_a_comment: "Leave a comment"
       log_output: "Log output"
       message: Message
       status: Status
       time: Time
+  comments: 
+    form: 
+      error_adding_comment: "Comment could not be added"
+      save_comment: "Add comment"
+      text: Text
+      title: Title
+    index: 
+      comments_by_user: "Comments by {{user}}"
+      comments_for_check_run_in_health_check_site: "Comments for check run (health check {{health_check}}, site {{site}})"
+      comments_for_health_check_site: "Comments for health check {{health_check}} (site {{site}})"
+      leave_a_comment: "Leave a comment"
+    list: 
+      check_run: "Check run #{{check_run}}"
+      no_comments_found: "No comments found"
+      user_wrote_time_ago: "{{user}} wrote {{time}} ago"
+    new: 
+      comment_for_check_run_in_health_check_site: "New comment for check run (health check {{health_check}}, site {{site}})"
   flash: 
     error: 
       access_denied: "Access denied"
@@ -115,6 +136,7 @@ en:
     notice: 
       assign_roles: "Successfully assigned account role to user"
       created_account: "Successfully created account {{account}}"
+      created_comment: "Successfully added comment"
       created_footer_link: "Successfully created footer link"
       created_health_check: "Successfully created health check {{health_check}}"
       created_site: "Successfully created site {{site}}"
@@ -164,9 +186,11 @@ en:
       details: Details
       overview: Overview
     show: 
+      all_comments: "Show all comments"
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"
       check_runs: "Check Runs"
+      comments: "Comments ({{count}})"
       description: Description
       disable: Disable
       edit: Edit
@@ -338,6 +362,9 @@ en:
       please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
     show: 
+      all_comments_by_user: "Show all all of {{user}}'s comments"
+      comments: "Comments ({{count}})"
       edit_profile: "Edit profile"
+      email: "Email address"
       settings: "Edit settings"
       users_profile: "{{full_name}}'s profile"

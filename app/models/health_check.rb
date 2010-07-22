@@ -6,6 +6,9 @@ class HealthCheck < ActiveRecord::Base
   
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC'
   
+  has_many :comments, :through => :check_runs
+  has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments'
+  
   named_scope :enabled, :conditions => { :enabled => true }
   
   has_permalink :name, :scope => :site_id

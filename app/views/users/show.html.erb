@@ -1,5 +1,16 @@
 <h2><%= t('.users_profile', :full_name => @user.full_name) %></h2>
 
+<dl>
+  <dt><%= t('.email') %></dt>
+  <dd><%= @user.email %></dd>
+</dl>
+
+<h3><%= t('.comments', :count => @comments_count) %></h3>
+
+<%= render :partial => "/comments/list" %>
+
+<p><%= link_to t('.all_comments_by_user', :user => @user.full_name), user_comments_path(@user) %></p>
+
 <% if current_user.can_edit_profile?(@user) %>
   <ul class="action-list">
     <li><%= link_to t('.edit_profile'), edit_user_path(@user) %></li>

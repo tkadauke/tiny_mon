@@ -7,7 +7,11 @@ ActionController::Routing::Routes.draw do |map|
     accounts.resources :sites do |sites|
       sites.resources :health_checks do |checks|
         checks.resources :steps, :collection => { :sort => :post }
-        checks.resources :check_runs
+        checks.resources :check_runs do |check_runs|
+          check_runs.resources :comments
+        end
+        
+        checks.resources :comments
       end
     end
     
@@ -17,7 +21,9 @@ ActionController::Routing::Routes.draw do |map|
   map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
   map.sites '/sites', :controller => 'sites', :action => 'index'
 
-  map.resources :users
+  map.resources :users do |users|
+    users.resources :comments
+  end
   map.resources :password_resets
   map.resource :settings
   

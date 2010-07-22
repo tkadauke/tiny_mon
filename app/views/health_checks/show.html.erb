@@ -38,3 +38,9 @@
 </dl>
 
 <p><%= image_tag account_site_health_check_check_runs_path(@account, @site, @health_check, :format => 'png') %></p>
+
+<h3><%= t('.comments', :count => @comments_count) %></h3>
+
+<%= render :partial => "/comments/list" %>
+
+<p><%= link_to t('.all_comments'), account_site_health_check_comments_path(@account, @site, @health_check) %></p>

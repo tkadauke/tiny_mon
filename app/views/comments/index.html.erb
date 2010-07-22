@@ -1,0 +1,17 @@
+<% if @check_run %>
+  <h2><%= t('.comments_for_check_run_in_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+
+  <%= render :partial => "list" %>
+
+  <h3><%= t('.leave_a_comment') %></h3>
+
+  <%= render :partial => "form" %>
+<% elsif @health_check %>
+  <h2><%= t('.comments_for_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+  
+  <%= render :partial => "list" %>
+<% elsif @user %>
+  <h2><%= t('.comments_by_user', :user => @user.full_name) %></h2>
+
+  <%= render :partial => "list" %>
+<% end %>

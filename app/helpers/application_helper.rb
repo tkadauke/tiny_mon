@@ -24,7 +24,11 @@ module ApplicationHelper
       end
         
       breadcrumb += ' &gt; '
-      breadcrumb += "<a href='#{sofar}'>"  + link_text + '</a>'
+      if sofar == request.path
+        breadcrumb += "<strong>"  + link_text + '</strong>'
+      else
+        breadcrumb += "<a href='#{sofar}'>"  + link_text + '</a>'
+      end
     end
     breadcrumb
   end

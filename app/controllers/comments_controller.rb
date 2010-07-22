@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :login_required
-  before_filter :find_parent_models
+  before_filter :find_parent_models, :only => :index
+  before_filter :find_check_run_parent_models, :only => [ :new, :create ]
   
   def index
     if @check_run
@@ -16,17 +17,21 @@ class CommentsController < ApplicationController
   end
   
   def new
-    @comment = @check_run.comments.build(params[:comment])
+    can_create_comments!(@account) do
+      @comment = @check_run.comments.build(params[:comment])
+    end
   end
   
   def create
-    @comment = @check_run.comments.create(params[:comment])
-    @comment.user = current_user
-    if @comment.save
-      flash[:notice] = I18n.t("flash.notice.created_comment")
-      redirect_to account_site_health_check_check_run_path(@account, @site, @health_check, @check_run)
-    else
-      render :action => 'new'
+    can_create_comments!(@account) do
+      @comment = @check_run.comments.create(params[:comment])
+      @comment.user = current_user
+      if @comment.save
+        flash[:notice] = I18n.t("flash.notice.created_comment")
+        redirect_to account_site_health_check_check_run_path(@account, @site, @health_check, @check_run)
+      else
+        render :action => 'new'
+      end
     end
   end
   
@@ -35,11 +40,15 @@ protected
     if params[:user_id]
       find_user
     else
-      find_account
-      find_site
-      find_health_check
-      find_check_run
+      find_check_run_parent_models
     end
+  end
+  
+  def find_check_run_parent_models
+    find_account
+    find_site
+    find_health_check
+    find_check_run
   end
   
   def find_user

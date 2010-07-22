@@ -3,9 +3,11 @@
 
   <%= render :partial => "list" %>
 
-  <h3><%= t('.leave_a_comment') %></h3>
+  <% if current_user.can_create_comments?(@account) %>
+    <h3><%= t('.leave_a_comment') %></h3>
 
-  <%= render :partial => "form" %>
+    <%= render :partial => "form" %>
+  <% end %>
 <% elsif @health_check %>
   <h2><%= t('.comments_for_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
   

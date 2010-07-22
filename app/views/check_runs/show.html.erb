@@ -38,6 +38,8 @@
 
 <p><%= link_to t('.all_comments'), account_site_health_check_check_run_comments_path(@account, @site, @health_check, @check_run) %></p>
 
-<h3><%= t('.leave_a_comment') %></h3>
+<% if current_user.can_create_comments?(@account) %>
+  <h3><%= t('.leave_a_comment') %></h3>
 
-<%= render :partial => "/comments/form" %>
+  <%= render :partial => "/comments/form" %>
+<% end %>

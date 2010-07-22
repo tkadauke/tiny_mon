@@ -269,6 +269,7 @@ en:
       add_new_user_to_account: "Add new user to account {{account}}"
       add_site: "Add site"
       create_account: "Create account"
+      manage_users: "Manage users for account {{account}}"
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
       recent_activity: "Recent Activity"

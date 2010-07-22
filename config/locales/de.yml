@@ -269,6 +269,7 @@ de:
       add_new_user_to_account: "Neuen Benutzer zu Konto {{account}} hinzufügen"
       add_site: "Site hinzufügen"
       create_account: "Konto erstellen"
+      manage_users: "Benutzer für Konto {{account}} verwalten"
       no_accounts: "Diesem Benutzer sind bisher keine Konten zugewiesen."
       quick_links: Schnellzugriff
       recent_activity: "Neueste Aktivität"

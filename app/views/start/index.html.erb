@@ -13,6 +13,9 @@
       <li><%= link_to t('.add_existing_user_to_account', :account => current_user.current_account.name), new_account_user_account_path(current_user.current_account) %></li>
       <li><%= link_to t('.add_new_user_to_account', :account => current_user.current_account.name), new_user_path %></li>
     <% end %>
+    <% if current_user.can_edit_account?(current_user.current_account) %>
+      <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %>
+    <% end %>
   </ul>
 
   <h2><%= t('.recent_activity') %></h2>

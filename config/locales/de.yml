@@ -214,6 +214,7 @@ de:
     home: Start
     login: Login
     logout: Logout
+    overall_status: Gesamtstatus
     quick_links: Schnellzugriff
     report_bugs: "Fehler gefunden? {{report_link}}"
     report_link_text: Melden!
@@ -275,8 +276,10 @@ de:
       recent_activity: "Neueste Aktivität"
       settings: "Einstellungen bearbeiten"
   status: 
+    all_checks_successful: "Alle Funktionstests erfolgreich"
     failure: Fehlschlag
     offline: Deaktiviert
+    one_or_more_checks_failed: "Einer oder mehr Funktionstests fehlgeschlagen"
     success: Erfolg
   steps: 
     check_content_step_form: 

@@ -42,6 +42,12 @@
                   <% end %>
                   <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
                 </ul>
+                
+                <% if current_user.current_account %>
+                  <div class="overall-status">
+                    <%= t('layouts.overall_status') %> <%= overall_status %>
+                  </div>
+                <% end %>
               <% else %>
                 <ul class="action-list">
                   <li><%= t('layouts.guest_greeter') %></li>

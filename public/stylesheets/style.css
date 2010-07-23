@@ -396,3 +396,5 @@ table.list .handle { cursor: move; }
 ul.action-list { margin: 0 0 15px 0; }
 ul.action-list li { display: inline; padding: 0 7px 0 3px; border-right: 1px solid black; }
 ul.action-list li:last-child { border: none; }
+
+.overall-status { float: right; vertical-align: middle; }

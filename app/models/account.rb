@@ -14,6 +14,10 @@ class Account < ActiveRecord::Base
     find(param)
   end
   
+  def all_checks_successful?
+    health_checks.count(:conditions => { :status => 'failure', :enabled => true }) == 0
+  end
+  
   def user_accounts_with_users
     user_accounts.find(:all, :include => :user, :order => 'users.full_name ASC')
   end

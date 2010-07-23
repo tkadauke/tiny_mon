@@ -214,6 +214,7 @@ en:
     home: Home
     login: Login
     logout: Logout
+    overall_status: "Overall Status"
     quick_links: "Quick links"
     report_bugs: "Found a bug? {{report_link}}"
     report_link_text: "Report it!"
@@ -275,8 +276,10 @@ en:
       recent_activity: "Recent Activity"
       settings: "Edit settings"
   status: 
+    all_checks_successful: "All checks successful"
     failure: Failure
     offline: Disabled
+    one_or_more_checks_failed: "One or more checks failed"
     success: Success
   steps: 
     check_content_step_form: 

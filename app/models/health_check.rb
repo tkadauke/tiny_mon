@@ -58,8 +58,16 @@ class HealthCheck < ActiveRecord::Base
   end
   
   def check!
-    runner = Runner.new(self)
-    attrs = { :started_at => Time.now.to_f, :status => 'success' }
+    check_run = check_runs.create(:started_at => Time.now.to_f)
+    do_check(check_run)
+    check_run
+  end
+  
+protected
+  def do_check(check_run)
+    runner = Runner.new(check_run)
+
+    attrs = { :status => 'success' }
 
     retry_times = 3
     begin
@@ -74,13 +82,12 @@ class HealthCheck < ActiveRecord::Base
     attrs[:ended_at] = Time.now.to_f
     attrs[:log] = runner.log_entries
 
-    check_runs.create(attrs)
+    check_run.update_attributes(attrs)
   ensure
     update_attributes(:last_checked_at => Time.now, :next_check_at => interval.minutes.from_now)
   end
-  background_method :check!
-  
-protected
+  background_method :do_check
+
   def set_next_check_at
     self.next_check_at = 1.minute.from_now if enabled?
   end

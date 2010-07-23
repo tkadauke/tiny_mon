@@ -3,7 +3,7 @@ class VisitStep < Step
   
   validates_presence_of :url
   
-  def run!(session)
+  def run!(session, check_run)
     session.visit(self.url)
   end
 end

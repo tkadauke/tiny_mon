@@ -3,7 +3,7 @@ class SelectCheckBoxStep < Step
   
   validates_presence_of :name
   
-  def run!(session)
+  def run!(session, check_run)
     session.check(self.name)
   end
 end

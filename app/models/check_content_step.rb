@@ -5,7 +5,7 @@ class CheckContentStep < Step
   
   validates_presence_of :content
   
-  def run!(session)
+  def run!(session, check_run)
     session.log "Checking content for #{content}"
     
     utf8_body = if session.response.encoding.nil? || ['utf-8', 'utf8'].include?(session.response.encoding.downcase)

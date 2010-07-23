@@ -4,6 +4,7 @@ class CheckRun < ActiveRecord::Base
   belongs_to :deployment
   has_many :comments, :dependent => :delete_all
   has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
+  has_many :screenshots
   
   serialize :log, Array
   

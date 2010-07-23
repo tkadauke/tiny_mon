@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
         checks.resources :steps, :collection => { :sort => :post }
         checks.resources :check_runs do |check_runs|
           check_runs.resources :comments
+          check_runs.resources :screenshots
         end
         
         checks.resources :comments

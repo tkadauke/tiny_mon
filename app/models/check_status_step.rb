@@ -3,7 +3,7 @@ class CheckStatusStep < Step
   
   property :status, :integer
   
-  def run!(session)
+  def run!(session, check_run)
     session.log "Checking status (expecting #{status})"
     unless session.response.code.to_i == self.status
       session.fail StatusCheckFailed, "Expected status #{self.status}, got #{session.response.code}"

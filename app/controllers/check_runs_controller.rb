@@ -14,6 +14,8 @@ class CheckRunsController < ApplicationController
     @comment = @check_run.comments.build
     @comments = @check_run.latest_comments.find(:all, :limit => 5)
     @comments_count = @check_run.comments.count
+    
+    @screenshots = @check_run.screenshots
   end
   
   def create

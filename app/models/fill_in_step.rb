@@ -4,7 +4,7 @@ class FillInStep < Step
   
   validates_presence_of :field
   
-  def run!(session)
+  def run!(session, check_run)
     session.fill_in(self.field, :with => self.value)
   end
 end

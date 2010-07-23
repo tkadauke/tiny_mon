@@ -50,6 +50,12 @@ class Session < Webrat::Session
     log "Now on #{current_url}"
   end
   
+  def take_screenshot
+    log "taking screen shot of URL #{expand_url(current_url)}"
+    renderer = TinyMon::Renderer.new(expand_url(current_url))
+    renderer.render!
+  end
+  
   def debug_log(*args)
     log(*args)
   end

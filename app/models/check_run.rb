@@ -7,8 +7,8 @@ class CheckRun < ActiveRecord::Base
   serialize :log, Array
   
   before_create :set_account
-  after_create :update_health_check_status
-  after_create :notify_subscribers
+  after_update :update_health_check_status
+  after_update :notify_subscribers
   
   named_scope :recent, :order => 'check_runs.created_at DESC', :limit => 10
   

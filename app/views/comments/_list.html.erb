@@ -3,6 +3,7 @@
 <% else %>
   <% @comments.each do |comment| %>
     <p>
+      <%= status_icon comment.check_run %>
       <%= link_to t('.check_run', :check_run => comment.check_run.id), account_site_health_check_check_run_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check, comment.check_run) %> |
       <%= t('.user_wrote_time_ago', :user => link_to(comment.user.full_name, user_path(comment.user)), :time => time_ago_in_words(comment.created_at)) %>:
       <strong><%= comment.title %></strong>

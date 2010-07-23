@@ -177,6 +177,7 @@ en:
     login: Login
     new: New
     password_resets: "Reset password"
+    screenshots: Screenshots
     settings: Settings
     sites: Sites
     steps: Steps
@@ -210,6 +211,7 @@ en:
       log_output: "Log output"
       message: Message
       running: "Health check is running. Please reload this page in a few moments ..."
+      screenshots: Screenshots
       status: Status
       time: Time
   comment_mailer: 
@@ -579,6 +581,9 @@ en:
       forgot_password: "Forgot Password"
       instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
       reset: "Reset my password"
+  screenshots: 
+    show: 
+      screenshot_for_check_run_health_check_site: "Screenshot for check run #{{check_run}} (health check {{health_check}}, site {{site}})"
   settings: 
     show: 
       settings: Settings

@@ -6,6 +6,10 @@ class Screenshot < ActiveRecord::Base
   after_destroy :release
   after_create :retain
   
+  def self.from_param!(param)
+    find(param)
+  end
+  
   def file_name
     # use first two characters of checksum as directory
     checksum.sub(/^(..)(.*)$/, '\1/\2')

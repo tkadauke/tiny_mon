@@ -177,6 +177,7 @@ de:
     login: Login
     new: Neu
     password_resets: "Passwort zurücksetzen"
+    screenshots: "Bildschirmfotos"
     settings: Einstellungen
     sites: Sites
     steps: Schritte
@@ -210,6 +211,7 @@ de:
       log_output: Log-Ausgabe
       message: Ausgabe
       running: "Funktionstest läuft. Bitte laden Sie die Seite in wenigen Augenblicken erneut ..."
+      screenshots: Bildschirmfotos
       status: Status
       time: Zeit
   comment_mailer: 
@@ -579,6 +581,9 @@ de:
       forgot_password: "Passwort vergessen"
       instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
       reset: "Passwort zurücksetzen"
+  screenshots: 
+    show: 
+      screenshot_for_check_run_health_check_site: "Bildschirmfoto von Testlauf #{{check_run}} (Funktionstest {{health_check}}, Site {{site}})"
   settings: 
     show: 
       settings: Einstellungen

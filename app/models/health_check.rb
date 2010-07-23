@@ -65,7 +65,7 @@ class HealthCheck < ActiveRecord::Base
   
 protected
   def do_check(check_run)
-    runner = Runner.new(check_run)
+    runner = Runner.new(check_run.health_check)
 
     attrs = { :status => 'success' }
 

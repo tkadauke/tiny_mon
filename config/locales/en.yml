@@ -128,6 +128,19 @@ en:
       user_wrote_time_ago: "{{user}} wrote {{time}} ago"
     new: 
       comment_for_check_run_in_health_check_site: "New comment for check run (health check {{health_check}}, site {{site}})"
+  errors: 
+    ? "404"
+    : 
+      error_message: "You may have mistyped the address or the page may have moved."
+      title: "The page you were looking for doesn't exist."
+    ? "422"
+    : 
+      error_message: "Maybe you tried to change something you didn't have access to."
+      title: "The change you wanted was rejected."
+    ? "500"
+    : 
+      error_message: "We've been notified about this issue and we'll take a look at it shortly."
+      title: "We're sorry, but something went wrong."
   flash: 
     error: 
       access_denied: "Access denied"

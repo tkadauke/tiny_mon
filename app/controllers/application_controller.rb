@@ -79,6 +79,14 @@ protected
       end
     end
   end
+  
+  def render_optional_error_file(status_code)
+    activate_authlogic
+    set_language
+    
+    status = interpret_status(status_code)
+    render :template => "/errors/#{status[0,3]}.html.erb", :status => status, :layout => 'plain'
+  end
 
 private
   def current_user_session

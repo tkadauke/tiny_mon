@@ -128,6 +128,19 @@ de:
       user_wrote_time_ago: "{{user}} schrieb vor {{time}}"
     new: 
       comment_for_check_run_in_health_check_site: "Neuer Kommentar für Testlauf (Funktionstest {{health_check}}, Site {{site}})"
+  errors: 
+    ? "404"
+    : 
+      error_message: "Möglicherweise haben Sie die Adresse falsch eingetippt, oder die Seite wurde entfernt."
+      title: "Die gewünschte Seite wurde nicht gefunden."
+    ? "422"
+    : 
+      error_message: "Möglicherweise haben Sie versucht, etwas zu ändern, ohne die benötigten Zugriffsrechte zu besitzen."
+      title: "Ihre gewünschte Änderung wurde verweigert."
+    ? "500"
+    : 
+      error_message: "Bitte melden Sie diesen Bug und wir werden uns darum kümmern."
+      title: "Es tut uns leid, aber gerade ist etwas schief gelaufen."
   flash: 
     error: 
       access_denied: "Zugriff verweigert"

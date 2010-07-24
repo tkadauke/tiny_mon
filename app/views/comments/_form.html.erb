@@ -1,5 +1,6 @@
 <% form_for [@account, @site, @health_check, @check_run, @comment] do |f| %>
   <%= f.error_messages :header_message => t('.error_adding_comment') %>
+  
   <p class="form_item">
     <span class="label"><%= f.label :title, t('.title') %></span>
     <%= f.text_field :title %>

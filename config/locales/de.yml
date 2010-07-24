@@ -9,6 +9,7 @@ de:
     edit: 
       edit_account: "Konto bearbeiten"
     form: 
+      could_not_create_account: "Konnte Konto nicht erstellen"
       name: Kontoname
       save_account: "Konto speichern"
     index: 
@@ -31,11 +32,28 @@ de:
       role: Rolle
   activerecord: 
     attributes: 
+      footer_link: 
+        text: Link-Text
+        url: Ziel-URL
+      site: 
+        name: Site-Name
+        url: Basis-URL
+      user: 
+        email: E-Mail
+        full_name: "Voller Name"
+        password: Passwort
+        password_confirmation: "Bestätigung des Passworts"
       user_account: 
         email: E-Mail-Adresse
         user_id: Benutzer
     errors: 
       models: 
+        user: 
+          attributes: 
+            email: 
+              invalid: "muss das Format einer E-Mail-Adresse haben"
+            full_name: 
+              blank: "muss angegeben werden"
         user_account: 
           attributes: 
             email: 
@@ -47,6 +65,7 @@ de:
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
       form: 
+        could_not_create_footer_link: "Konnte Fußzeilen-Link nicht hinzufügen"
         save_footer_link: "Fußzeilen-Link speichern"
         text: Link-Text
         url: Ziel-URL
@@ -63,6 +82,21 @@ de:
         url: Ziel-URL
       new: 
         new_footer_link: "Neuer Fußzeilen-Link"
+  authlogic: 
+    attributes: 
+      user_session: 
+        email: E-Mail
+        password: Passwort
+        remember_me: "Eingeloggt bleiben"
+    error_messages: 
+      consecutive_failed_logins_limit_exceeded: "Maximale Anzahl an fehlgeschlagenen Logins überschritten. Das Benutzerkonto wurde deaktiviert."
+      email_invalid: "muss das Format einer E-Mail-Adresse haben."
+      no_authentication_details: "Sie haben keine Authentifizierungsdetails angegeben."
+      not_active: "Ihr Benutzerkonto ist nicht aktiv"
+      password_blank: "muss angegeben werden"
+      password_invalid: "ist ungültig"
+    models: 
+      user_session: UserSession
   breadcrumb: 
     accounts: Konten
     admin: Administration
@@ -187,6 +221,7 @@ de:
     edit: 
       edit_health_check_for_site: "Funktionstest {{health_check}} für Site {{site}} bearbeiten"
     form: 
+      could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
       description: Bescheibung
       interval: Prüf-Intervall
       name: Name
@@ -244,6 +279,7 @@ de:
   password_resets: 
     edit: 
       change_password: "Passwort ändern"
+      could_not_reset_password: "Konnte Passwort nicht zurücksetzen"
       password: Passwort
       password_confirmation: "Passwort bestätigen"
       update: "Passwort ändern"
@@ -265,6 +301,7 @@ de:
     edit: 
       edit_site: "Site {{site}} bearbeiten"
     form: 
+      could_not_create_site: "Konnte Site nicht erstellen"
       name: Site-Name
       save_site: "Site speichern"
       url: Basis-URL
@@ -350,6 +387,7 @@ de:
       error_creating_user_account: "Benutzer konnte dem Konto nicht hinzugefügt werden"
   user_sessions: 
     new: 
+      could_not_login: "Login war nicht erfolgreich"
       email: E-Mail
       forgot_password: "Passwort vergessen?"
       login: Login
@@ -359,6 +397,7 @@ de:
       user_name: Benutzername
   users: 
     edit: 
+      could_not_update_user: "Konnte Benutzerprofil nicht aktualisieren"
       edit_users_profile: "Benutzerprofil bearbeiten"
       email_address: E-Mail-Adresse
       full_name: "Voller Name"
@@ -373,6 +412,7 @@ de:
       signup: Registrieren
       there_are_no_user_accounts_yet: "Bisher gibt es keine Benutzer"
     new: 
+      could_not_register_user: "Konnte Benutzer nicht registrieren"
       create_account: "Benutzer registrieren"
       create_new_account: "Neuen Benutzer registrieren"
       email_address: E-Mail-Adresse

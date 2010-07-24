@@ -28,7 +28,7 @@ class AccountsController < ApplicationController
       flash[:notice] = I18n.t('flash.notice.created_account', :account => @account.name)
       redirect_to root_path
     else
-      render new_account_path
+      render :action => 'new'
     end
   end
   

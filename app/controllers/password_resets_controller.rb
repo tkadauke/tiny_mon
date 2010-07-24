@@ -27,9 +27,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
-    if @user.save
+    if @user.reset_password!(params[:user][:password], params[:user][:password_confirmation])
       flash[:notice] = I18n.t("flash.notice.password_updated")
       redirect_to root_path
     else

@@ -38,6 +38,18 @@ class User < ActiveRecord::Base
     PasswordResetsMailer.deliver_password_reset_instructions(self)
   end
   
+  def reset_password!(password, password_confirmation)
+    # We need to check for blank password explicitly, because authlogic only performs that check on create.
+    if password.blank? || password_confirmation.blank?
+      errors.add(:password, I18n.t('authlogic.error_messages.password_blank'))
+      return false
+    else
+      self.password = password
+      self.password_confirmation = password_confirmation
+      save
+    end
+  end
+  
   def self.from_param!(param)
     find(param)
   end

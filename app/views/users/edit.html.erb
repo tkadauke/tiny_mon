@@ -1,7 +1,7 @@
 <h2><%= t('.edit_users_profile', :full_name => @user.full_name) %></h2>
 
 <% form_for @user do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages :header_message => t('.could_not_update_user') %>
 
   <p class="form_item">
     <span class="label"><%= f.label :full_name, t('.full_name') %></span>

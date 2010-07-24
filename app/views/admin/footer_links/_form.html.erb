@@ -1,5 +1,5 @@
 <% form_for [:admin, @footer_link] do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages :header_message => t('.could_not_create_footer_link') %>
   
   <p class="form_item">
     <span class="label"><%= f.label :text, t('.text') %></span>

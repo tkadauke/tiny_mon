@@ -1,7 +1,7 @@
 <h2><%= t('.create_new_account') %></h2>
 
 <% form_for @user do |f| %>
-  <%= f.error_messages %>
+  <%= f.error_messages :header_message => t('.could_not_register_user') %>
 
   <p class="form_item">
     <span class="label"><%= f.label :full_name, t('.full_name') %></span>

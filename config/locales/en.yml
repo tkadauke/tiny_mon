@@ -9,6 +9,7 @@ en:
     edit: 
       edit_account: "Edit Account"
     form: 
+      could_not_create_account: "Could not create account"
       name: Name
       save_account: "Save account"
     index: 
@@ -31,11 +32,28 @@ en:
       role: Role
   activerecord: 
     attributes: 
+      footer_link: 
+        text: "Link text"
+        url: "Target URL"
+      site: 
+        name: "Site name"
+        url: "Base URL"
+      user: 
+        email: Email
+        full_name: "Full name"
+        password: Password
+        password_confirmation: "Password confirmation"
       user_account: 
         email: "E-mail address"
         user_id: User
     errors: 
       models: 
+        user: 
+          attributes: 
+            email: 
+              invalid: "should look like an email address"
+            full_name: 
+              blank: "is required"
         user_account: 
           attributes: 
             email: 
@@ -47,6 +65,7 @@ en:
       edit: 
         edit_footer_link: "Edit footer link"
       form: 
+        could_not_create_footer_link: "Could not add footer link"
         save_footer_link: "Save footer link"
         text: "Link text"
         url: "Target URL"
@@ -63,6 +82,21 @@ en:
         url: "Target URL"
       new: 
         new_footer_link: "New footer link"
+  authlogic: 
+    attributes: 
+      user_session: 
+        email: email
+        password: password
+        remember_me: "remember me"
+    error_messages: 
+      consecutive_failed_logins_limit_exceeded: "Consecutive failed logins limit exceeded, account is disabled."
+      email_invalid: "should look like an email address."
+      no_authentication_details: "You did not provide any details for authentication."
+      not_active: "Your account is not active"
+      password_blank: "can not be blank"
+      password_invalid: "is not valid"
+    models: 
+      user_session: UserSession
   breadcrumb: 
     accounts: Accounts
     admin: Administration
@@ -187,6 +221,7 @@ en:
     edit: 
       edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"
     form: 
+      could_not_create_health_check: "Could not create health check"
       description: Description
       interval: "Check Interval"
       name: Name
@@ -244,6 +279,7 @@ en:
   password_resets: 
     edit: 
       change_password: "Change My Password"
+      could_not_reset_password: "Could not reset password"
       password: Password
       password_confirmation: "Confirm password"
       update: "Update my password and log me in"
@@ -265,6 +301,7 @@ en:
     edit: 
       edit_site: "Edit Site {{site}}"
     form: 
+      could_not_create_site: "Could not create site"
       name: "Site Name"
       save_site: "Save site"
       url: "Base URL"
@@ -350,6 +387,7 @@ en:
       error_creating_user_account: "Could not add a user to this account"
   user_sessions: 
     new: 
+      could_not_login: "Login failed"
       email: E-Mail
       forgot_password: "Forgot password?"
       login: Login
@@ -359,6 +397,7 @@ en:
       user_name: "User name"
   users: 
     edit: 
+      could_not_update_user: "Could not update user"
       edit_users_profile: "Edit user's profile"
       email_address: "E-mail address"
       full_name: "Full name"
@@ -373,6 +412,7 @@ en:
       signup: Signup
       there_are_no_user_accounts_yet: "There are no user accounts yet"
     new: 
+      could_not_register_user: "Could not register user"
       create_account: "Create account"
       create_new_account: "Create new account"
       email_address: "E-mail address"

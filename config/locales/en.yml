@@ -354,6 +354,18 @@ en:
     offline: Disabled
     one_or_more_checks_failed: "One or more checks failed"
     success: Success
+  step: 
+    check_content: "Check content"
+    check_email: "Check email"
+    check_status: "Check status"
+    click_button: "Click button"
+    click_email_link: "Click link in email"
+    click_link: "Click link"
+    fill_in: "Fill in field"
+    select_check_box: "Select check box"
+    submit_form: "Submit form"
+    visit: Visit
+    wait: Wait
   steps: 
     check_content_step_form: 
       content: Content

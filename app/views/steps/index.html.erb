@@ -16,7 +16,7 @@
       <% @steps.each do |step| %>
         <tr id="order_<%= step.id %>">
           <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
-          <td><%= step.class.name.gsub(/Step$/, '').titleize %></td>
+          <td><%= t("step.#{step.underscored_class_name}") %></td>
           <% if step.new_record? %>
             <td>
               <%= render :partial => '/steps/form', :locals => { :step => step } %>

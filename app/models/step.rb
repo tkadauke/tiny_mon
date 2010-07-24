@@ -13,6 +13,10 @@ class Step < ActiveRecord::Base
     ['visit', 'check_status', 'check_content', 'fill_in', 'select_check_box', 'click_button', 'click_link', 'wait', 'submit_form', 'check_email', 'click_email_link']
   end
   
+  def self.available_types_with_translations
+    available_types.collect { |t| [I18n.t("step.#{t}"), t] }
+  end
+  
   def run!(session)
     raise NotImplementedError
   end
@@ -22,5 +26,9 @@ class Step < ActiveRecord::Base
     @inserting = true
     
     insert_at_position(insert_after.to_i + 1)
+  end
+  
+  def underscored_class_name
+    self.class.name.gsub(/Step$/, '').underscore
   end
 end

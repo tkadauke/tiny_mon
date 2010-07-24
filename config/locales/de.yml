@@ -354,6 +354,18 @@ de:
     offline: Deaktiviert
     one_or_more_checks_failed: "Einer oder mehr Funktionstests fehlgeschlagen"
     success: Erfolg
+  step: 
+    check_content: "Durchsuche Inhalt"
+    check_email: "Rufe E-Mail ab"
+    check_status: "Prüfe HTTP-Status"
+    click_button: "Klicke Button"
+    click_email_link: "Klicke Link in E-Mail"
+    click_link: "Klicke Link"
+    fill_in: "Fülle Feld aus"
+    select_check_box: "Wähle Check Box"
+    submit_form: "Schicke Formular ab"
+    visit: "Gehe zu"
+    wait: Warte
   steps: 
     check_content_step_form: 
       content: Inhalt

@@ -5,13 +5,15 @@ module TinyMon
     PUBLIC_IMAGE_PATH = 'system'
     IMAGE_PATH = "#{RAILS_ROOT}/public/#{PUBLIC_IMAGE_PATH}"
     
-    def initialize(url)
+    def initialize(url, cookies)
       @url = url
+      @cookies = cookies
     end
     
     def render!
       Dir.create_tmp_dir "renderer", "#{RAILS_ROOT}/tmp" do
-        system "wkhtmltoimage #{@url} image.png"
+        cookie_params = @cookies.collect { |cookie| %{--cookie "#{cookie.name}" "#{cookie.value}"} }.join(" ")
+        system %{wkhtmltoimage #{cookie_params} "#{@url}" image.png}
         
         checksum = Digest::MD5.hexdigest(File.read("image.png"))
         relative_file_path = checksum.sub(/^(..)(.*)$/, '\1/\2')

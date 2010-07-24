@@ -52,7 +52,7 @@ class Session < Webrat::Session
   
   def take_screenshot
     log "taking screen shot of URL #{expand_url(response.uri)}"
-    renderer = TinyMon::Renderer.new(expand_url(response.uri))
+    renderer = TinyMon::Renderer.new(expand_url(response.uri), adapter.mechanize.cookie_jar.cookies(response.uri))
     renderer.render!
   end
   

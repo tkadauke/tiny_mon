@@ -5,7 +5,7 @@ class CheckStatusStepTest < ActiveSupport::TestCase
     session = stub(:response => stub(:code => '200'), :log => nil)
     step = CheckStatusStep.new(:status => 200)
     assert_nothing_raised do
-      step.run!(session)
+      step.run!(session, stub)
     end
   end
 
@@ -13,6 +13,6 @@ class CheckStatusStepTest < ActiveSupport::TestCase
     session = stub(:response => stub(:code => '404'), :log => nil)
     session.expects(:fail)
     step = CheckStatusStep.new(:status => 200)
-    step.run!(session)
+    step.run!(session, stub)
   end
 end

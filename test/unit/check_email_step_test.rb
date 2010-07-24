@@ -4,6 +4,6 @@ class CheckEmailStepTest < ActiveSupport::TestCase
   test "should check email" do
     step = CheckEmailStep.new(:server => 'mail.gmail.com', :login => 'user@gmail.com', :password => 'foo')
     session = mock(:check_email)
-    step.run!(session)
+    step.run!(session, stub)
   end
 end

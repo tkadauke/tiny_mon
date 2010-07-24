@@ -1,5 +1,6 @@
 class Admin::FooterLinksController < ApplicationController
   before_filter :login_required
+  before_filter :can_edit_footer_links!
   
   def index
     @footer_links = FooterLink.ordered
@@ -45,10 +46,5 @@ class Admin::FooterLinksController < ApplicationController
       FooterLink.find(id).update_attribute(:position, i)
     end
     render :nothing => true
-  end
-
-protected
-  def authorized?
-    current_user.can_edit_footer_links?
   end
 end

@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   before_filter :set_language
-  before_filter :authorize
 
   helper_method :current_user_session, :current_user, :logged_in?
 
@@ -58,14 +57,6 @@ protected
     return false
   end
   
-  def authorize
-    deny_access unless authorized?
-  end
-  
-  def authorized?
-    true
-  end
-
   def store_location
     session[:return_to] = request.request_uri
   end

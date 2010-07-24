@@ -11,6 +11,9 @@ class HealthCheck < ActiveRecord::Base
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
   
+  has_many :screenshots, :through => :check_runs
+  has_many :latest_screenshots, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots', :order => 'screenshots.created_at DESC'
+  
   named_scope :enabled, :conditions => { :enabled => true }
   
   validates_presence_of :site_id, :name, :interval

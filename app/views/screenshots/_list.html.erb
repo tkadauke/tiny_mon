@@ -1,0 +1,11 @@
+<ul class="screenshots clearer">
+  <% @screenshots.each do |screenshot| %>
+    <li>
+      <div class="caption">
+        <%= link_to t(".time_ago", :time => time_ago_in_words(screenshot.created_at)), account_site_health_check_check_run_path(@account, @site, @health_check, (@check_run || screenshot.check_run)) %>
+      </div>
+      <%= link_to image_tag(screenshot.public_thumbnail_path), account_site_health_check_check_run_screenshot_path(@account, @site, @health_check, (@check_run || screenshot.check_run), screenshot) %>
+    </li>
+  <% end %>
+</ul>
+<div class="clearer"></div>

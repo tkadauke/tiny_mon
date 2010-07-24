@@ -177,7 +177,7 @@ de:
     login: Login
     new: Neu
     password_resets: "Passwort zurücksetzen"
-    screenshots: "Bildschirmfotos"
+    screenshots: Bildschirmfotos
     settings: Einstellungen
     sites: Sites
     steps: Schritte
@@ -538,6 +538,7 @@ de:
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
       run_at: Zeit
+      screenshots: Bildschirmfotos
       view_steps: "Schritte anzeigen"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
@@ -582,6 +583,8 @@ de:
       instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
       reset: "Passwort zurücksetzen"
   screenshots: 
+    list: 
+      time_ago: "vor {{time}}"
     show: 
       screenshot_for_check_run_health_check_site: "Bildschirmfoto von Testlauf #{{check_run}} (Funktionstest {{health_check}}, Site {{site}})"
   settings: 

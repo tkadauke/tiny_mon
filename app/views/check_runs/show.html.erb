@@ -43,12 +43,7 @@
 <% unless @screenshots.empty? %>
   <h3><%= t('.screenshots') %></h3>
   
-  <ul class="screenshots clearer">
-    <% @screenshots.each do |screenshot| %>
-      <li><%= link_to image_tag(screenshot.public_thumbnail_path), account_site_health_check_check_run_screenshot_path(@account, @site, @health_check, @check_run, screenshot) %></li>
-    <% end %>
-  </ul>
-  <div class="clearer"></div>
+  <%= render :partial => "/screenshots/list" %>
 <% end %>
 
 <h3><%= t('.comments', :count => @comments_count) %></h3>

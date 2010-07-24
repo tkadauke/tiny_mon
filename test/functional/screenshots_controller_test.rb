@@ -21,6 +21,14 @@ class ScreenshotsControllerTest < ActionController::TestCase
 
     login_with @user
   end
+  
+  test "should show all screenshots of health check" do
+    screenshot1 = @check_run.screenshots.create(:checksum => '1234567890abcdef', :file => MockScreenshotFile.new)
+    screenshot2 = @check_run.screenshots.create(:checksum => 'fedcba0987654321', :file => MockScreenshotFile.new)
+    
+    get :index, :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id
+    assert_response :success
+  end
 
   test "should show screenshot" do
     screenshot = @check_run.screenshots.create(:checksum => '1234567890abcdef', :file => MockScreenshotFile.new)

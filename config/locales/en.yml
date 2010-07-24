@@ -538,6 +538,7 @@ en:
       last_check_run: "Last check run"
       run: Run
       run_at: "Run at"
+      screenshots: Screenshots
       view_steps: "View Steps"
     template_form: 
       could_not_create_health_check: "Could not create health check"
@@ -582,6 +583,8 @@ en:
       instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
       reset: "Reset my password"
   screenshots: 
+    list: 
+      time_ago: "{{time}} ago"
     show: 
       screenshot_for_check_run_health_check_site: "Screenshot for check run #{{check_run}} (health check {{health_check}}, site {{site}})"
   settings: 

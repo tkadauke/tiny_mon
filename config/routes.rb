@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
         end
         
         checks.resources :comments
+        checks.resources :screenshots
       end
       sites.resources :health_check_imports
       sites.resources :deployments

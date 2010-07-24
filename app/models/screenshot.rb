@@ -6,57 +6,15 @@ class Screenshot < ActiveRecord::Base
   after_destroy :release
   after_create :retain
   
+  attr_writer :file
+  
   def self.from_param!(param)
     find(param)
   end
   
-  def file_name
-    # use first two characters of checksum as directory
-    checksum.sub(/^(..)(.*)$/, '\1/\2')
+  def file
+    @file ||= ScreenshotFile.new(checksum)
   end
   
-  def file_path
-    "#{file_path_prefix}.png"
-  end
-  
-  def thumbnail_path
-    "#{file_path_prefix}-thumb.png"
-  end
-  
-  def public_path
-    "/#{TinyMon::Renderer::PUBLIC_IMAGE_PATH}/#{file_name}.png"
-  end
-  
-  def public_thumbnail_path
-    "/#{TinyMon::Renderer::PUBLIC_IMAGE_PATH}/#{file_name}-thumb.png"
-  end
-
-protected
-  def file_path_prefix
-    "#{TinyMon::Renderer::IMAGE_PATH}/#{file_name}"
-  end
-
-  def ref_counter_file
-    "#{file_path_prefix}.count"
-  end
-  
-  def retain
-    FileUtils.touch ref_counter_file
-    
-    count = File.read(ref_counter_file).to_i
-    File.open(ref_counter_file, 'w') { |file| file.puts count + 1 }
-  end
-  
-  def release
-    FileUtils.touch ref_counter_file
-
-    count = File.read(ref_counter_file).to_i
-    if count <= 1
-      FileUtils.rm_f file_path
-      FileUtils.rm_f thumbnail_path
-      FileUtils.rm_f ref_counter_file
-    else
-      File.open(ref_counter_file, 'w') { |file| file.puts count - 1 }
-    end
-  end
+  delegate :file_name, :file_path, :thumbnail_path, :public_path, :public_thumbnail_path, :retain, :release, :to => :file
 end

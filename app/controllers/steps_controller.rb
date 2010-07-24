@@ -36,6 +36,9 @@ class StepsController < ApplicationController
       @step.health_check = @health_check
       if @step.save
         redirect_to account_site_health_check_steps_path(@account, @site, @health_check)
+      else
+        index
+        render :action => 'index'
       end
     end
   end

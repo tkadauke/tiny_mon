@@ -3,6 +3,8 @@ class CheckContentStep < Step
 
   property :content, :string
   
+  validates_presence_of :content
+  
   def run!(session)
     session.log "Checking content for #{content}"
     

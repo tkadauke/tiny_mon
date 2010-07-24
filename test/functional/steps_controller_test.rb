@@ -23,7 +23,7 @@ class StepsControllerTest < ActionController::TestCase
   end
   
   test "should show edit" do
-    step = VisitStep.create(:health_check => @health_check)
+    step = VisitStep.create(:health_check => @health_check, :url => '/')
     xhr :get, :edit, :account_id => @account, :site_id => @site.to_param, :health_check_id => @health_check.to_param, :id => step
     assert_response :success
   end
@@ -37,7 +37,7 @@ class StepsControllerTest < ActionController::TestCase
   end
   
   test "should update step" do
-    step = VisitStep.create(:health_check => @health_check)
+    step = VisitStep.create(:health_check => @health_check, :url => '/')
     assert_redirected_back do
       post :update, :account_id => @account, :site_id => @site.to_param, :health_check_id => @health_check.to_param, :id => step, :visit_step => { :url => '/' }
       assert assigns(:step).is_a?(VisitStep)

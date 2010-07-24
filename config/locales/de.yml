@@ -32,12 +32,30 @@ de:
       role: Rolle
   activerecord: 
     attributes: 
+      check_content_step: 
+        content: Inhalt
+      check_email_step: 
+        login: Benutzername
+        password: Passwort
+        server: Server
+      click_button_step: 
+        name: Button-Name
+      click_email_link_step: 
+        link_pattern: Link-Muster
+      click_link_step: 
+        name: Link-Name
+      fill_in_step: 
+        field: Feld-Name
       footer_link: 
         text: Link-Text
         url: Ziel-URL
+      select_check_box_step: 
+        name: Name
       site: 
         name: Site-Name
         url: Basis-URL
+      submit_form_step: 
+        name: Name
       user: 
         email: E-Mail
         full_name: "Voller Name"
@@ -46,6 +64,8 @@ de:
       user_account: 
         email: E-Mail-Adresse
         user_id: Benutzer
+      visit_step: 
+        url: URL
     errors: 
       models: 
         user: 
@@ -354,6 +374,7 @@ de:
       value: Wert
     form: 
       cancel: Abbruch
+      could_not_create_step: "Konnte Schritt nicht hinzufügen"
       please_select: "Bitte wählen ..."
       save_step: "Schritt Speichern"
       type: Typ

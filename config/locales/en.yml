@@ -32,12 +32,30 @@ en:
       role: Role
   activerecord: 
     attributes: 
+      check_content_step: 
+        content: Content
+      check_email_step: 
+        login: Login
+        password: Password
+        server: Server
+      click_button_step: 
+        name: "Button name"
+      click_email_link_step: 
+        link_pattern: "Link pattern"
+      click_link_step: 
+        name: "Link name"
+      fill_in_step: 
+        field: "Field name"
       footer_link: 
         text: "Link text"
         url: "Target URL"
+      select_check_box_step: 
+        name: Name
       site: 
         name: "Site name"
         url: "Base URL"
+      submit_form_step: 
+        name: Name
       user: 
         email: Email
         full_name: "Full name"
@@ -46,6 +64,8 @@ en:
       user_account: 
         email: "E-mail address"
         user_id: User
+      visit_step: 
+        url: URL
     errors: 
       models: 
         user: 

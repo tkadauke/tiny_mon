@@ -1,4 +1,6 @@
 <% form_for [@account, @site, @health_check, step], :url => step.new_record? ? account_site_health_check_steps_path(@account, @site, @health_check) : account_site_health_check_step_path(@account, @site, @health_check, step) do |f| %>
+  <%= f.error_messages :header_message => t('.could_not_create_step') %>
+  
   <% if step.class.name == 'Step' %>
     <p class="form_item">
       <span class="label"><%= f.label :type, t('.type') %></span>

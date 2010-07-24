@@ -2,7 +2,7 @@ class CheckRun < ActiveRecord::Base
   belongs_to :health_check
   belongs_to :account
   has_many :comments
-  has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC', :limit => 5
+  has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
   
   serialize :log, Array
   

@@ -37,7 +37,7 @@ class HealthChecksController < ApplicationController
   
   def show
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
-    @comments = @health_check.latest_comments
+    @comments = @health_check.latest_comments.find(:all, :limit => 5)
     @comments_count = @health_check.comments.count
   end
   

@@ -7,7 +7,7 @@ class HealthCheck < ActiveRecord::Base
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC'
   
   has_many :comments, :through => :check_runs
-  has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments'
+  has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
   
   named_scope :enabled, :conditions => { :enabled => true }
   

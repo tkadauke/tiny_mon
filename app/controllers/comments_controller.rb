@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   
   def create
     can_create_comments!(@account) do
-      @comment = @check_run.comments.create(params[:comment])
+      @comment = @check_run.comments.new(params[:comment])
       @comment.user = current_user
       if @comment.save
         flash[:notice] = I18n.t("flash.notice.created_comment")

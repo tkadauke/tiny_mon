@@ -1,0 +1,16 @@
+Hallo,
+
+<%= @comment.user.full_name %> hat Testlauf #<%= @comment.check_run.id %> von Funktionstest <%= @comment.check_run.health_check.name %> (Site <%= @comment.check_run.health_check.site.name %>) kommentiert:
+
+------------
+<%- if @comment.title -%>
+<%= @comment.title %>
+
+<%- end -%>
+<%= @comment.text %>
+------------
+
+Siehe http://<%= TinyMon::Config.host %><%= account_site_health_check_check_run_path(@comment.check_run.health_check.site.account, @comment.check_run.health_check.site, @comment.check_run.health_check, @comment.check_run) %>
+
+Viele Grüße,
+TinyMon

@@ -108,6 +108,9 @@ en:
       message: Message
       status: Status
       time: Time
+  comment_mailer: 
+    comment: 
+      subject: "New Comment on Health Check {{health_check}}: {{title}}"
   comments: 
     form: 
       error_adding_comment: "Comment could not be added"

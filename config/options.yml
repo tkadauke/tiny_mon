@@ -32,3 +32,12 @@
       en: "Your Prowl API key. Log in to your Prowl account to generate an API key."
       de: "Ihr Prowl API-Key. Besuchen Sie Ihr Prowl-Konto um einen API-Key zu generieren."
     type: String
+- notify_comments:
+    name:
+      en: "Notify me of comments"
+      de: "Mich über Kommentare benachrichtigen"
+    description:
+      en: "Whether or not to send an email to you, when someone posts a comment to a check run"
+      de: "Gibt an, ob eine E-Mail an Sie geschickt werden soll, wenn jemand einen Testlauf kommentiert"
+    type: Boolean
+    default: true

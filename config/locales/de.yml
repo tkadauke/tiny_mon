@@ -108,6 +108,9 @@ de:
       message: Ausgabe
       status: Status
       time: Zeit
+  comment_mailer: 
+    comment: 
+      subject: "Neuer Kommentar für Funktionstest {{health_check}}: {{title}}"
   comments: 
     form: 
       error_adding_comment: "Kommentar konnte nicht hinzugefügt werden"

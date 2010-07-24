@@ -41,18 +41,18 @@ class Session < Webrat::Session
   def click_link(*args)
     log "Clicking link #{args.first}"
     super
-    log "Now on #{current_url}"
+    log "Now on #{response.uri}"
   end
   
   def click_button(*args)
     log "Clicking button #{args.first}"
     super
-    log "Now on #{current_url}"
+    log "Now on #{response.uri}"
   end
   
   def take_screenshot
-    log "taking screen shot of URL #{expand_url(current_url)}"
-    renderer = TinyMon::Renderer.new(expand_url(current_url))
+    log "taking screen shot of URL #{expand_url(response.uri)}"
+    renderer = TinyMon::Renderer.new(expand_url(response.uri))
     renderer.render!
   end
   

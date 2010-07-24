@@ -365,12 +365,17 @@ de:
       status: HTTP-Status
     click_button_step_form: 
       name: Button-Name
+      name_specifying_button: "ID, Titel oder Text, womit der Button eindeutig identifiziert wird"
     click_email_link_step_form: 
       link_pattern: Link-Muster
+      substring_of_url: "Teil des URL-Strings"
     click_link_step_form: 
       name: Link-Name
+      name_specifying_link: "ID, Titel oder Text, womit der Link eindeutig identifiziert wird"
+    email_must_be_checked_before_this_step: "Vor diesem Schritt muss eine E-Mail geladen worden sein."
     fill_in_step_form: 
       field: Feld-Name
+      name_specifying_field: "ID, Titel oder Text, womit das Textfeld eindeutig identifiziert wird"
       value: Wert
     form: 
       cancel: Abbruch
@@ -390,14 +395,19 @@ de:
       no_steps_defined: "Keine Schritte definiert."
       options: Optionen
       steps_for_health_check: "Schritte für Funktionstest {{health_check}}"
+    page_must_be_loaded_before_this_step: "Vor diesem Schritt muss eine Seite geladen worden sein."
     select_check_box_step_form: 
       name: Name
+      name_specifying_check_box: "ID, Titel oder Text, womit die Check Box eindeutig identifiziert wird"
     submit_form_step_form: 
       name: Name
+      name_specifying_form: "ID, Titel oder Text, womit das Formular eindeutig identifiziert wird"
     visit_step_form: 
+      relative_or_absolute: "Relative oder absolute URLs. Relative URLs beziehen sich auf die Basis-URL der Site."
       url: URL
     wait_step_form: 
       duration: Dauer
+      duration_in_seconds: "Wartezeit in Sekunden"
   time: 
     formats: 
       log: "%H:%M:%S"

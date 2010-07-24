@@ -365,15 +365,21 @@ en:
       status: "HTTP Status"
     click_button_step_form: 
       name: "Button name"
+      name_specifying_button: "ID, title or text that uniquely identifies the button"
     click_email_link_step_form: 
       link_pattern: "Link pattern"
+      substring_of_url: "Substring of URL"
     click_link_step_form: 
       name: "Link name"
+      name_specifying_link: "ID, title or text that uniquely identifies the link"
+    email_must_be_checked_before_this_step: "An email must have been loaded before this step."
     fill_in_step_form: 
       field: "Field name"
+      name_specifying_field: "ID, title or text that uniquely identifies the text field"
       value: Value
     form: 
       cancel: Cancel
+      could_not_create_step: "Could not add step"
       please_select: "Please select ..."
       save_step: "Save Step"
       type: Type
@@ -389,14 +395,19 @@ en:
       no_steps_defined: "No steps defined."
       options: Options
       steps_for_health_check: "Steps for Health Check {{health_check}}"
+    page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
     select_check_box_step_form: 
       name: Name
+      name_specifying_check_box: "ID, title or text that uniquely identifies the check box"
     submit_form_step_form: 
       name: Name
+      name_specifying_form: "ID, title or text that uniquely identifies the form"
     visit_step_form: 
+      relative_or_absolute: "Relative or absolute URL. Relative URLs are with respect to the site's base URL."
       url: URL
     wait_step_form: 
       duration: Duration
+      duration_in_seconds: "Delay in seconds"
   time: 
     formats: 
       log: "%H:%M:%S"

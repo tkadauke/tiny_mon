@@ -1,5 +1,6 @@
 <p class="form_item">
   <span class="label"><%= f.label :field, t('.field') %></span>
+  <span class="desc"><%= t('.name_specifying_field') %></span>
   <%= f.text_field :field %>
 </p>
 
@@ -7,3 +8,5 @@
   <span class="label"><%= f.label :value, t('.value') %></span>
   <%= f.text_field :value %>
 </p>
+
+<p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

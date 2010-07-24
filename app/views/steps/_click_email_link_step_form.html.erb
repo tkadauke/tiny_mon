@@ -1,4 +1,7 @@
 <p class="form_item">
   <span class="label"><%= f.label :link_pattern, t('.link_pattern') %></span>
+  <span class="desc"><%= t('.substring_of_url') %></span>
   <%= f.text_field :link_pattern %>
 </p>
+
+<p><%= t('steps.email_must_be_checked_before_this_step') %></p>

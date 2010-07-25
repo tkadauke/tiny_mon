@@ -50,3 +50,7 @@ Rails::Initializer.run do |config|
 end
 
 Rails.backtrace_cleaner.remove_silencers!
+
+Dir["#{RAILS_ROOT}/lib/core_ext/**/*.rb"].each do |file|
+  require file
+end

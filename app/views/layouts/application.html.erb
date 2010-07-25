@@ -112,7 +112,7 @@
           <a href="/health_checks"><%= t('layouts.health_checks') %></a>
           </div>
           <div class="right">
-            <%= t('layouts.version', :version => TinyMon::Version.version, :revision => link_to(TinyMon::Version.build[0..7], "http://github.com/tkadauke/tiny_mon/commit/#{TinyMon::Version.build}")) %>
+            <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link) %>
           </div>
           <div class="clearer"></div>
         </div>

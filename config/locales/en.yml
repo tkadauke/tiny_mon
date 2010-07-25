@@ -276,7 +276,6 @@ en:
       view_steps: "View Steps"
   layouts: 
     accounts: Accounts
-    version: "Version {{version}}, revision {{revision}}"
     close_flash: Close
     edit_footer: "Edit footer"
     github_project_page: "Github project page"
@@ -292,7 +291,9 @@ en:
     signup: Signup
     sites: Sites
     subtitle: "Website Acceptance Monitoring"
+    unknown_build: unknown
     user_greeter: "Welcome, {{user}}"
+    version: "Version {{version}}, revision {{revision}}"
     you_are_here: "You are here: {{bread_crumb}}"
   password_reset_mailer: 
     subject: "Password Reset Instructions"

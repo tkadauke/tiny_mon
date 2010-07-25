@@ -276,7 +276,6 @@ de:
       view_steps: "Schritte anzeigen"
   layouts: 
     accounts: Konten
-    version: "Version {{version}}, Revision {{revision}}"
     close_flash: Schließen
     edit_footer: "Fußzeile bearbeiten"
     github_project_page: Github-Projektseite
@@ -292,7 +291,9 @@ de:
     signup: Registrieren
     sites: Sites
     subtitle: Website-Funktionsüberwachung
+    unknown_build: unbekannt
     user_greeter: "Willkommen, {{user}}"
+    version: "Version {{version}}, Revision {{revision}}"
     you_are_here: "Sie sind hier: {{bread_crumb}}"
   password_reset_mailer: 
     subject: "Anweisungen zur Änderung Ihres Passwortes"

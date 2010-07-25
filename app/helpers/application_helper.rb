@@ -49,4 +49,13 @@ module ApplicationHelper
       image_tag "icons/large/failure.png", :alt => I18n.t("status.one_or_more_checks_failed"), :title => I18n.t("status.one_or_more_checks_failed")
     end
   end
+  
+  def revision_link
+    build = TinyMon::Version.build
+    if build == 'unknown'
+      I18n.t('layouts.unknown_build')
+    else
+      link_to(build[0..7], "http://github.com/tkadauke/tiny_mon/commit/#{TinyMon::Version.build}")
+    end
+  end
 end

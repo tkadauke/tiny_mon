@@ -286,7 +286,6 @@ en:
     home: Home
     login: Login
     logout: Logout
-    overall_status: "Overall Status"
     quick_links: "Quick links"
     report_bugs: "Found a bug? {{report_link}}"
     report_link_text: "Report it!"

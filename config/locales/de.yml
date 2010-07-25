@@ -286,7 +286,6 @@ de:
     home: Start
     login: Login
     logout: Logout
-    overall_status: Gesamtstatus
     quick_links: Schnellzugriff
     report_bugs: "Fehler gefunden? {{report_link}}"
     report_link_text: Melden!

@@ -276,6 +276,7 @@ de:
       view_steps: "Schritte anzeigen"
   layouts: 
     accounts: Konten
+    version: "Version {{version}}, Revision {{revision}}"
     close_flash: Schließen
     edit_footer: "Fußzeile bearbeiten"
     github_project_page: Github-Projektseite

@@ -21,3 +21,5 @@ dl dd { margin-left: 12em; top: -1em; position: relative; margin-bottom: -0.5em;
 /*dl dd * { vertical-align: top; }*/
 
 table { margin-bottom: 1em; }
+
+sup { font-size: 0.8em; vertical-align: super; }

@@ -21,7 +21,7 @@
           <!-- topheader start -->
           <div id="top_header">
             <div id="logo">
-              <h1><a href="/">TinyMon</a></h1>
+              <h1><a href="/">TinyMon</a><sup>&beta;</sup></h1>
               <p><%= t('layouts.subtitle') %></p>
             </div>
             <div id="center_header">
@@ -110,6 +110,9 @@
           <a href="/"><%= t('layouts.home') %></a> | 
           <a href="/sites"><%= t('layouts.sites') %></a> |
           <a href="/health_checks"><%= t('layouts.health_checks') %></a>
+          </div>
+          <div class="right">
+            <%= t('layouts.version', :version => TinyMon::Version.version, :revision => link_to(TinyMon::Version.build[0..7], "http://github.com/tkadauke/tiny_mon/commit/#{TinyMon::Version.build}")) %>
           </div>
           <div class="clearer"></div>
         </div>

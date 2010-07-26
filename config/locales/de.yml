@@ -227,6 +227,14 @@ de:
       updated_settings: "Einstellungen wurden erfolgreich aktualisiert"
       updated_site: "Site {{site}} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
+  health_check: 
+    interval: 
+      hours:
+        one: "1 Stunde"
+        other: "{{count}} Stunden"
+      minutes:
+        one: "1 Minute"
+        other: "{{count}} Minuten"
   health_checks: 
     all_checks: 
       all_health_checks: "Alle Funktionstests"

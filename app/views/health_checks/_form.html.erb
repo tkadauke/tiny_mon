@@ -13,7 +13,7 @@
 
   <p class="form_item">
     <span class="label"><%= f.label :interval, t('.interval') %></span>
-    <%= f.select :interval, HealthCheck.intervals %>
+    <%= f.select :interval, HealthCheck.intervals_with_units %>
   </p>
   
   <p><%= f.submit t('.save_health_check') %></p>

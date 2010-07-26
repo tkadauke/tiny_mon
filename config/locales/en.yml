@@ -227,6 +227,14 @@ en:
       updated_settings: "Successfully updated settings"
       updated_site: "Successfully updated site {{site}}"
       updated_user: "Successfully updated user"
+  health_check: 
+    interval: 
+      hours: 
+        one: "1 hour"
+        other: "{{count}} hours"
+      minutes: 
+        one: "1 minute"
+        other: "{{count}} minutes"
   health_checks: 
     all_checks: 
       all_health_checks: "All Health Checks"

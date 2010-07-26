@@ -38,7 +38,11 @@ class HealthCheck < ActiveRecord::Base
   end
   
   def self.intervals
-    [1, 2, 3, 5, 10, 15, 20, 30, 60]
+    [1, 2, 3, 5, 10, 15, 20, 30, 60, 120, 180, 240, 360, 720, 1440]
+  end
+  
+  def self.intervals_with_units
+    self.intervals.collect { |interval| [interval >= 60 ? I18n.t('health_check.interval.hours', :count => interval / 60) : I18n.t('health_check.interval.minutes', :count => interval), interval] }
   end
   
   def to_param

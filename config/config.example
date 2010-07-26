@@ -8,3 +8,6 @@ recipient_email:
 email_sender_address: tiny_mon@example.com
 host: "tiny-mon"
 language: en
+
+exception_recipients: tiny_mon@example.de
+exception_sender_address: '"Application Error" <app.error@example.com>'

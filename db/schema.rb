@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100722192709) do
+ActiveRecord::Schema.define(:version => 20100726200828) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(:version => 20100722192709) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-    t.integer  "interval"
+    t.integer  "interval",        :default => 60
     t.boolean  "enabled",         :default => false
     t.string   "permalink"
     t.datetime "last_checked_at"

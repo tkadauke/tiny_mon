@@ -32,7 +32,9 @@
 
 <% if current_user.can_add_user_to_account?(@account) %>
   <p>
-    <%= link_to t('.add_existing'), new_account_user_account_path(@account) %> |
-    <%= link_to t('.add_new'), new_user_path %>
+    <% action_list do |a| %>
+      <% a.link_to t('.add_existing'), new_account_user_account_path(@account) %>
+      <% a.link_to t('.add_new'), new_user_path if @account == current_user.current_account %>
+    <% end %>
   </p>
 <% end %>

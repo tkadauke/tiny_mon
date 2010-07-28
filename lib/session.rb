@@ -39,15 +39,15 @@ class Session < Webrat::Session
   end
   
   def click_link(*args)
-    log "clicking link #{args.first}"
+    log "Clicking link #{args.first}"
     super
-    log "now on #{current_url}"
+    log "Now on #{current_url}"
   end
   
   def click_button(*args)
-    log "clicking button #{args.first}"
+    log "Clicking button #{args.first}"
     super
-    log "now on #{current_url}"
+    log "Now on #{current_url}"
   end
   
   def debug_log(*args)

@@ -34,7 +34,7 @@ de:
     attributes: 
       check_content_step: 
         content: Inhalt
-      check_current_url:
+      check_current_url: 
         url: URL
       check_email_step: 
         login: Benutzername
@@ -162,6 +162,7 @@ de:
       leave_a_comment: "Kommentar schreiben"
       log_output: Log-Ausgabe
       message: Ausgabe
+      running: "Funktionstest läuft. Bitte laden Sie die Seite in wenigen Augenblicken erneut ..."
       status: Status
       time: Zeit
   comment_mailer: 

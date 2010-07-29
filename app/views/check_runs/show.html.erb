@@ -1,45 +1,49 @@
 <h2><%= t('.check_run_of_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
 
-<dl>
-  <dt><%= t('.status') %></dt>
-  <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
+<% if @check_run.status.blank? %>
+  <p><%= t('.running') %> <%= image_tag 'spinner.gif' %></p>
+<% else %>
+  <dl>
+    <dt><%= t('.status') %></dt>
+    <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
 
-  <dt><%= t('.duration') %></dt>
-  <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
+    <dt><%= t('.duration') %></dt>
+    <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
 
-  <% if @check_run.error_message %>
-    <dt><%= t('.error_message') %></dt>
-    <dd><%= @check_run.error_message %></dd>
-  <% end %>
-</dl>
-
-<h3><%= t('.log_output') %></h3>
-
-<table class="list">
-  <thead>
-    <tr>
-      <th><%= t('.time') %></th>
-      <th><%= t('.message') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @check_run.log.each do |time, message| %>
-      <tr>
-        <td><%= l(time, :format => :log) %></td>
-        <td><%= format_log_message message %></td>
-      </tr>
+    <% if @check_run.error_message %>
+      <dt><%= t('.error_message') %></dt>
+      <dd><%= @check_run.error_message %></dd>
     <% end %>
-  </tbody>
-</table>
+  </dl>
 
-<h3><%= t('.comments', :count => @comments_count) %></h3>
+  <h3><%= t('.log_output') %></h3>
 
-<%= render :partial => "/comments/list" %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= t('.time') %></th>
+        <th><%= t('.message') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @check_run.log.each do |time, message| %>
+        <tr>
+          <td><%= l(time, :format => :log) %></td>
+          <td><%= format_log_message message %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<p><%= link_to t('.all_comments'), account_site_health_check_check_run_comments_path(@account, @site, @health_check, @check_run) %></p>
+  <h3><%= t('.comments', :count => @comments_count) %></h3>
 
-<% if current_user.can_create_comments?(@account) %>
-  <h3><%= t('.leave_a_comment') %></h3>
+  <%= render :partial => "/comments/list" %>
 
-  <%= render :partial => "/comments/form" %>
+  <p><%= link_to t('.all_comments'), account_site_health_check_check_run_comments_path(@account, @site, @health_check, @check_run) %></p>
+
+  <% if current_user.can_create_comments?(@account) %>
+    <h3><%= t('.leave_a_comment') %></h3>
+
+    <%= render :partial => "/comments/form" %>
+  <% end %>
 <% end %>

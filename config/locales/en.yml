@@ -34,7 +34,7 @@ en:
     attributes: 
       check_content_step: 
         content: Content
-      check_current_url:
+      check_current_url: 
         url: URL
       check_email_step: 
         login: Login
@@ -162,6 +162,7 @@ en:
       leave_a_comment: "Leave a comment"
       log_output: "Log output"
       message: Message
+      running: "Health check is running. Please reload this page in a few moments ..."
       status: Status
       time: Time
   comment_mailer: 

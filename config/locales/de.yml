@@ -34,6 +34,8 @@ de:
     attributes: 
       check_content_step: 
         content: Inhalt
+      check_current_url:
+        url: URL
       check_email_step: 
         login: Benutzername
         password: Passwort
@@ -229,10 +231,10 @@ de:
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
   health_check: 
     interval: 
-      hours:
+      hours: 
         one: "1 Stunde"
         other: "{{count}} Stunden"
-      minutes:
+      minutes: 
         one: "1 Minute"
         other: "{{count}} Minuten"
   health_checks: 
@@ -365,6 +367,7 @@ de:
     success: Erfolg
   step: 
     check_content: "Durchsuche Inhalt"
+    check_current_url: "Aktuelle URL prüfen"
     check_email: "Rufe E-Mail ab"
     check_status: "Prüfe HTTP-Status"
     click_button: "Klicke Button"
@@ -378,6 +381,9 @@ de:
   steps: 
     check_content_step_form: 
       content: Inhalt
+    check_current_url_step_form: 
+      absolute_url: "Bitte geben Sie die volle URL inklusive Protokoll und Domain an"
+      url: URL
     check_email_step_form: 
       login: Benutzername
       password: Passwort

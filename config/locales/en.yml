@@ -34,6 +34,8 @@ en:
     attributes: 
       check_content_step: 
         content: Content
+      check_current_url:
+        url: URL
       check_email_step: 
         login: Login
         password: Password
@@ -365,6 +367,7 @@ en:
     success: Success
   step: 
     check_content: "Check content"
+    check_current_url: "Check current URL"
     check_email: "Check email"
     check_status: "Check status"
     click_button: "Click button"
@@ -378,6 +381,9 @@ en:
   steps: 
     check_content_step_form: 
       content: Content
+    check_current_url_step_form: 
+      absolute_url: "Please enter the absolute URL, including protocol and domain name"
+      url: URL
     check_email_step_form: 
       login: Login
       password: Password

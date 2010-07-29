@@ -34,7 +34,7 @@ module ApplicationHelper
   end
   
   def status_icon(model, version = :small)
-    return if model.blank?
+    return if model.blank? || model.status.blank?
     
     status = model.status
     status = 'offline' if model.respond_to?(:enabled?) && !model.enabled?

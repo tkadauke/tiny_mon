@@ -13,7 +13,7 @@ class CheckRun < ActiveRecord::Base
   named_scope :recent, :order => 'check_runs.created_at DESC', :limit => 10
   
   def duration
-    (self.ended_at - self.started_at).to_f
+    (self.ended_at - self.started_at).to_f rescue nil
   end
   
   def self.from_param!(param)

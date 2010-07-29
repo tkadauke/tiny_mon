@@ -4,7 +4,7 @@ class HealthCheck < ActiveRecord::Base
   has_many :check_runs
   has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
   
-  has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC'
+  has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'
   
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'

@@ -129,6 +129,10 @@ de:
         url: Ziel-URL
       new: 
         new_footer_link: "Neuer Fußzeilen-Link"
+    index: 
+      accounts: Konten
+      admin_area: Admin-Bereich
+      footer_links: Fußzeilen-Links
   authlogic: 
     attributes: 
       user_session: 

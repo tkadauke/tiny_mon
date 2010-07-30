@@ -4,6 +4,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :accounts
   end
   
+  map.admin '/admin', :controller => 'admin'
+  
   map.resources :accounts, :member => { :switch => :post } do |accounts|
     accounts.resources :sites do |sites|
       sites.resources :health_checks do |checks|

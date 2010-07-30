@@ -129,6 +129,10 @@ en:
         url: "Target URL"
       new: 
         new_footer_link: "New footer link"
+    index: 
+      accounts: Accounts
+      admin_area: "Admin Area"
+      footer_links: "Footer Links"
   authlogic: 
     attributes: 
       user_session: 

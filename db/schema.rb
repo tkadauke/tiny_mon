@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730192155) do
+ActiveRecord::Schema.define(:version => 20100730233138) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -77,7 +77,10 @@ ActiveRecord::Schema.define(:version => 20100730192155) do
     t.text     "steps_template"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
+
+  add_index "health_check_templates", ["account_id"], :name => "index_health_check_templates_on_account_id"
 
   create_table "health_checks", :force => true do |t|
     t.integer  "site_id"

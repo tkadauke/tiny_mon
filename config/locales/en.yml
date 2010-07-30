@@ -343,6 +343,7 @@ en:
     list: 
       no_health_checks_found: "No health checks found."
     new: 
+      account_templates: "Account templates"
       all_templates: "All Templates"
       create_template: "Create new template"
       my_templates: "My Templates"

@@ -46,4 +46,17 @@ class Role::UserTest < ActiveSupport::TestCase
   test "should not be able to do anything else" do
     assert ! @user.can_do_whatever_he_wants?
   end
+  
+  test "should be able to delete own health check templates" do
+    assert @user.can_delete_health_check_template?(stub(:user => @user))
+  end
+  
+  test "should be able to edit own health check template" do
+    assert @user.can_edit_health_check_template?(stub(:user => @user))
+  end
+
+  test "should be able to edit health check templates from own account" do
+    @user.expects(:user_account_for => stub(:can_edit_health_check_template? => true))
+    assert @user.can_edit_health_check_template?(stub(:user => stub, :account => stub))
+  end
 end

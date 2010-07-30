@@ -1,5 +1,6 @@
 class HealthCheckTemplate < ActiveRecord::Base
   belongs_to :user
+  belongs_to :account
   
   named_scope :public_templates, :conditions => 'public'
   

@@ -9,6 +9,7 @@
   <p>
     <% action_list do |a| %>
       <% a.link_to t(".my_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'mine') %>
+      <% a.link_to t(".account_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'account') %>
       <% a.link_to t(".public_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'public') %>
       <% a.link_to t(".all_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'all') %>
     <% end %>

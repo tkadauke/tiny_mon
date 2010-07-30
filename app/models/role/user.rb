@@ -22,7 +22,8 @@ module Role::User
   delegate_to_account :edit_account, :add_user_to_account,
                       :create_health_checks, :edit_health_checks, :delete_health_checks, :run_health_checks,
                       :create_sites, :edit_sites, :delete_sites,
-                      :create_comments
+                      :create_comments,
+                      :create_health_check_templates
   
   def can_remove_user_from_account?(user, account)
     user != self && can_add_user_to_account?(account)
@@ -32,5 +33,9 @@ module Role::User
     user != self && can_add_user_to_account?(account)
   end
   
-  allow_if_owner :create_health_check_template, :destroy_health_check_template
+  def can_edit_health_check_template?(template)
+    self == template.user || user_account_for(template.account).can_edit_health_check_template?
+  end
+  
+  allow_if_owner :delete_health_check_template
 end

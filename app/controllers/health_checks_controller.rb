@@ -87,6 +87,8 @@ protected
       @health_check_templates = case params[:filter]
       when 'mine'
         current_user.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+      when 'account'
+        @account.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
       when 'public'
         HealthCheckTemplate.public_templates.paginate(:order => 'name ASC', :page => params[:page])
       else

@@ -343,6 +343,7 @@ de:
     list: 
       no_health_checks_found: "Keine Funktionstests gefunden."
     new: 
+      account_templates: "Vorlagen des Kontos"
       all_templates: "Alle Vorlagen"
       create_template: "Vorlage erstellen"
       my_templates: "Meine Vorlagen"
@@ -356,7 +357,7 @@ de:
       description: Beschreibung
       details: Details
       interval: Intervall
-      interval_minutes:
+      interval_minutes: 
         one: "1 Minute"
         other: "{{count}} Minuten"
       name: Name

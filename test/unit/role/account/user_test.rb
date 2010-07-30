@@ -40,6 +40,14 @@ class Role::Account::UserTest < ActiveSupport::TestCase
   test "should not be able to do anything else" do
     assert ! @user.can_do_whatever_he_wants?
   end
+
+  test "should be able to create health check templates" do
+    assert @user.can_create_health_check_templates?
+  end
+  
+  test "should be able to edit health check templates" do
+    assert @user.can_edit_health_check_template?
+  end
   
   test "should not catch other methods" do
     assert_raise NoMethodError do

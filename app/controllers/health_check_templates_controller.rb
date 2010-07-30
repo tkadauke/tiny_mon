@@ -1,5 +1,6 @@
 class HealthCheckTemplatesController < ApplicationController
   before_filter :login_required
+  before_filter :check_account_permissions
   
   def index
     @health_check_templates = current_user.health_check_templates
@@ -17,6 +18,7 @@ class HealthCheckTemplatesController < ApplicationController
   def create
     @health_check_template = HealthCheckTemplate.new(params[:health_check_template])
     @health_check_template.user = current_user
+    @health_check_template.account = current_user.current_account
     if @health_check_template.save
       flash[:notice] = I18n.t("flash.notice.created_health_check_template")
       redirect_to health_check_templates_path
@@ -43,5 +45,10 @@ class HealthCheckTemplatesController < ApplicationController
       @health_check_template.destroy
       flash[:notice] = I18n.t("flash.notice.deleted_health_check_template")
     end
+  end
+
+protected
+  def check_account_permissions
+    deny_access unless current_user.can_create_health_check_templates?(current_user.current_account)
   end
 end

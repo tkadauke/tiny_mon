@@ -107,6 +107,9 @@ en:
           other: "{{count}} health checks"
         name: Name
         no_users: "no users yet"
+        screenshots_count: 
+          one: "1 screenshot"
+          other: "{{count}} screenshots"
         sites_count: 
           one: "1 site"
           other: "{{count}} sites"

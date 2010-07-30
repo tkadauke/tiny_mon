@@ -107,6 +107,9 @@ de:
           other: "{{count}} Funktionsteste"
         name: Name
         no_users: "bisher keine Benutzer"
+        screenshots_count: 
+          one: "1 Screenshot"
+          other: "{{count}} Screenshots"
         sites_count: 
           one: "1 Site"
           other: "{{count}} Sites"

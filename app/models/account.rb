@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
   has_many :health_check_imports
   has_many :check_runs
   has_many :comments
+  has_many :screenshots, :through => :check_runs
   
   named_scope :ordered_by_name, :order => 'name ASC'
   

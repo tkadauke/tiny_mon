@@ -31,4 +31,6 @@ module Role::User
   def can_assign_role_for_user_and_account?(user, account)
     user != self && can_add_user_to_account?(account)
   end
+  
+  allow_if_owner :create_health_check_template, :destroy_health_check_template
 end

@@ -164,6 +164,7 @@ de:
     comments: Kommentare
     edit: Bearbeiten
     footer_links: Fußzeile
+    health_check_templates: Vorlagen
     health_checks: Funktionstests
     home: Start
     login: Login
@@ -250,10 +251,12 @@ de:
       created_comment: "Kommentar wurde erfolgreich hinzugefügt"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
       created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
+      created_health_check_template: "Funktionstest-Vorlage wurde erfolgreich erstellt"
       created_site: "Site {{site}} wurde erfolgreich erstellt"
       created_user: "Benutzer wurde erfolgreich erstellt"
       created_user_account: "Benutzer wurde erfolgreich dem Konto hinzugefügt"
       deleted_health_check: "Funktionstest {{health_check}} wurde erfolgreich entfernt"
+      deleted_health_check_template: "Funktionstest-Vorlage wurde erfolgreich gelöscht"
       deleted_site: "Site {{site}} wurde erfolgreich gelöscht"
       logged_in: "Erfolgreich eingeloggt"
       logged_out: "Erfolgreich ausgeloggt"
@@ -265,6 +268,7 @@ de:
       updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"
       updated_footer_link: "Fußzeilen-Link wurde erfolgreich aktualisiert"
       updated_health_check: "Funktionstest {{health_check}} wurde erfolgreich aktualisiert"
+      updated_health_check_template: "Funktionstest-Vorlage wurde erfolgreich aktualisiert"
       updated_settings: "Einstellungen wurden erfolgreich aktualisiert"
       updated_site: "Site {{site}} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
@@ -276,6 +280,40 @@ de:
       minutes: 
         one: "1 Minute"
         other: "{{count}} Minuten"
+  health_check_templates: 
+    edit: 
+      could_not_update_template: "Konnte Funktionstest-Vorlage nicht aktualisieren"
+      edit_template: "Funktionstest-Vorlage {{template}} bearbeiten"
+    form: 
+      describe_the_template: "Beschreibung für die Vorlange"
+      description: Beschreibung
+      description_template: "Beschreibung des Funktionstests"
+      interval: Intervall
+      interval_for_generated_health_checks: "Das Intervall für den aus der Vorlage generierten Funktionstest"
+      name: Name
+      name_template: "Name des Funktionstests"
+      public: Öffentlich
+      save_template: "Vorlage speichern"
+      see_help_for_more_info: "Siehe die Hilfe für weitere Informationen"
+      steps_template: Schritte
+      template_for_health_check_description: "Beschreibung des Funktionstests mit Platzhaltern"
+      template_for_health_check_name: "Name des Funktionstests mit Platzhaltern"
+      template_for_health_check_steps: "Schritte des Funktionstests mit Platzhaltern"
+      template_name: "Name der Vorlage"
+      variables: Variablen
+      who_can_see_and_use_this_template: "Soll die Vorlage für alle Benutzer sichtbar und verwendbar sein?"
+    index: 
+      delete: Löschen
+      edit: Bearbeiten
+      my_templates: "Meine Vorlagen"
+      name: Name
+      new_health_check_template: "Neue Funktionstest-Vorlage"
+      nothing_found: "Nichts gefunden."
+      options: Optionen
+      really_delete_template: "Wollen Sie wirklich diese Vorlage löschen? Diese Operation kann nicht rückgängig gemacht werden."
+    new: 
+      could_not_create_template: "Konnte Funktionstest-Vorlage nicht erstellen"
+      new_template: "Neue Funktionstest-Vorlage"
   health_checks: 
     all_checks: 
       all_health_checks: "Alle Funktionstests"
@@ -297,11 +335,15 @@ de:
       save_health_check: "Funktionstest speichern"
     index: 
       health_checks_for_site: "Funktionstests für Site {{site}}"
+      new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check: "Neuer Funktionstest"
     list: 
       no_health_checks_found: "Keine Funktionstests gefunden."
     new: 
+      new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
+      new_health_check_from_template: "Neuer Funktionstest aus Vorlage {{template}}"
+      no_templates_found: "Keine Vorlagen gefunden."
     report: 
       details: Details
       overview: Überblick
@@ -323,6 +365,9 @@ de:
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
       view_steps: "Schritte anzeigen"
+    template_form: 
+      could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
+      save_health_check: "Funktionstest speichern"
   layouts: 
     accounts: Konten
     admin: Admin

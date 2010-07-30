@@ -1,3 +1,25 @@
-<h2><%= t('.new_health_check_for_site', :site => @site.name) %></h2>
-
-<%= render :partial => "form" %>
+<% if @health_check_template %>
+  <h2><%= t(".new_health_check_from_template", :template => @health_check_template.name) %></h2>
+  
+  <%= render :partial => "template_form" %>
+<% elsif params[:template] %>
+  <h2><%= t(".new_from_template") %></h2>
+  
+  <% if current_user.available_health_check_templates.empty? %>
+    <p><%= t(".no_templates_found") %></p>
+  <% else %>
+    <ul class="asterisk">
+      <% current_user.available_health_check_templates.each do |template| %>
+        <li>
+          <%= link_to template.name, new_account_site_health_check_path(@account, @site, :template => template.id) %><br/>
+          <%=h template.description %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+<% else %>
+  <h2><%= t('.new_health_check_for_site', :site => @site.name) %></h2>
+  
+  <%= render :partial => "form" %>
+<% end %>

@@ -19,13 +19,15 @@ class HealthChecksController < ApplicationController
   
   def new
     can_create_health_checks!(@account) do
+      @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
       @health_check = @site.health_checks.build
     end
   end
   
   def create
     can_create_health_checks!(@account) do
-      @health_check = @site.health_checks.build(params[:health_check])
+      @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
+      @health_check = @site.health_checks.build(params[:health_check].merge(:template => @health_check_template))
       if @health_check.save
         flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
         redirect_to account_site_health_check_path(@account, @site, @health_check)

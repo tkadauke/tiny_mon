@@ -1,0 +1,49 @@
+<p class="form_item">
+  <span class="label"><%= f.label :name, t('.name') %></span>
+  <span class="desc"><%= t(".template_name") %></span>
+  <%= f.text_field :name %>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :description, t(".description") %></span>
+  <span class="desc"><%= t(".describe_the_template") %></span>
+  <%= f.text_area :description, :rows => 5 %>
+</p>
+
+<p class="form_item">
+  <%= f.check_box :public %>
+  <span class="check-box-label"><%= f.label :public, t(".public") %></span>
+  <span class="desc"><%= t(".who_can_see_and_use_this_template") %></span>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :variables, t(".variables") %></span>
+  <span class="desc"><%= t(".see_help_for_more_info") %></span>
+  <%= f.text_area :variables, :cols => 80, :style => 'font-family: "Courier New", Courier, monospace' %>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :name_template, t(".name_template") %></span>
+  <span class="desc"><%= t(".template_for_health_check_name") %></span>
+  <%= f.text_field :name_template %>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :description_template, t(".description_template") %></span>
+  <span class="desc"><%= t(".template_for_health_check_description") %></span>
+  <%= f.text_area :description_template, :rows => 5 %>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :interval, t(".interval") %></span>
+  <span class="desc"><%= t(".interval_for_generated_health_checks") %></span>
+  <%= f.select :interval, HealthCheck.intervals_with_units %>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :steps_template, t(".steps_template") %></span>
+  <span class="desc"><%= t(".template_for_health_check_steps") %></span>
+  <%= f.text_area :steps_template, :cols => 80, :style => 'font-family: "Courier New", Courier, monospace' %>
+</p>
+
+<p><%= f.submit t('.save_template') %></p>

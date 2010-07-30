@@ -164,6 +164,7 @@ en:
     comments: Comments
     edit: Edit
     footer_links: "Footer links"
+    health_check_templates: Templates
     health_checks: "Health Checks"
     home: Home
     login: Login
@@ -250,10 +251,12 @@ en:
       created_comment: "Successfully added comment"
       created_footer_link: "Successfully created footer link"
       created_health_check: "Successfully created health check {{health_check}}"
+      created_health_check_template: "Successfully created health check template"
       created_site: "Successfully created site {{site}}"
       created_user: "Successfully created user"
       created_user_account: "Successfully added this user to the account"
       deleted_health_check: "Successfully deleted health check {{health_check}}"
+      deleted_health_check_template: "Successfully deleted health check template"
       deleted_site: "Successfully deleted site {{site}}"
       logged_in: "Successfully logged in"
       logged_out: "Successfully logged out"
@@ -265,6 +268,7 @@ en:
       updated_account: "Successfully updated account {{account}}"
       updated_footer_link: "Successfully updated footer link"
       updated_health_check: "Successfully updated health check {{health_check}}"
+      updated_health_check_template: "Successfully updated health check template"
       updated_settings: "Successfully updated settings"
       updated_site: "Successfully updated site {{site}}"
       updated_user: "Successfully updated user"
@@ -276,6 +280,40 @@ en:
       minutes: 
         one: "1 minute"
         other: "{{count}} minutes"
+  health_check_templates: 
+    edit: 
+      could_not_update_template: "Could not create health check template"
+      edit_template: "Edit template {{template}}"
+    form: 
+      describe_the_template: "Description for the template"
+      description: Description
+      description_template: "Health check's description"
+      interval: Interval
+      interval_for_generated_health_checks: "Interval for generated health checks"
+      name: Name
+      name_template: "Health check's name"
+      public: Public
+      save_template: "Save template"
+      see_help_for_more_info: "See the help for more info"
+      steps_template: "Health check steps"
+      template_for_health_check_description: "Description for the health check with placeholders"
+      template_for_health_check_name: "Name for the health check with placeholders"
+      template_for_health_check_steps: "Steps for the health check with placeholders"
+      template_name: "Health check's name"
+      variables: Variables
+      who_can_see_and_use_this_template: "Should this template be visible to and usable by every user?"
+    index: 
+      delete: Delete
+      edit: Edit
+      my_templates: "My Templates"
+      name: Name
+      new_health_check_template: "New health check template"
+      nothing_found: "Nothing found."
+      options: Options
+      really_delete_template: "Do you really want to delete this template? This operation can not be undone."
+    new: 
+      could_not_create_template: "Could not create template"
+      new_template: "New health check template"
   health_checks: 
     all_checks: 
       all_health_checks: "All Health Checks"
@@ -297,11 +335,15 @@ en:
       save_health_check: "Save health check"
     index: 
       health_checks_for_site: "Health Checks for Site {{site}}"
+      new_from_template: "New from template"
       new_health_check: "New Health Check"
     list: 
       no_health_checks_found: "No health checks found."
     new: 
+      new_from_template: "New health check from template"
       new_health_check_for_site: "New Health Check for site {{site}}"
+      new_health_check_from_template: "New health check from template {{template}}"
+      no_templates_found: "No templates found."
     report: 
       details: Details
       overview: Overview
@@ -323,6 +365,9 @@ en:
       last_check_run: "Last check run"
       run: Run
       view_steps: "View Steps"
+    template_form: 
+      could_not_create_health_check: "Could not create health check"
+      save_health_check: "Save health check"
   layouts: 
     accounts: Accounts
     admin: Admin

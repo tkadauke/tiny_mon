@@ -7,6 +7,14 @@ module Role::Base
         end
       end
     end
+    
+    def allow_if_owner(*things)
+      things.each do |thing|
+        define_method "can_#{thing}?" do |model|
+          model.user == self
+        end
+      end
+    end
   end
   
   def method_missing(method, *args)

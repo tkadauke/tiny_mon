@@ -11,12 +11,15 @@ class HealthCheck < ActiveRecord::Base
   
   named_scope :enabled, :conditions => { :enabled => true }
   
-  has_permalink :name, :scope => :site_id
-  
   validates_presence_of :site_id, :name, :interval
   
+  attr_accessor :template, :template_data
+
   before_save :set_next_check_at, :if => :enabled_changed?
+  before_validation :get_info_from_template
   
+  has_permalink :name, :scope => :site_id
+
   def self.find_for_list(filter, find_options)
     with_search_scope(filter) do
       find(:all, find_options.merge(:include => {:site => :account}))
@@ -65,6 +68,15 @@ class HealthCheck < ActiveRecord::Base
     check_run = check_runs.create(:started_at => Time.now.to_f)
     do_check(check_run)
     check_run
+  end
+  
+  def get_info_from_template
+    return unless template && template_data && new_record?
+    
+    self.name = template.evaluate_name(template_data)
+    self.description = template.evaluate_description(template_data)
+    self.interval = template.interval
+    self.steps = template.evaluate_steps(template_data)
   end
   
 protected

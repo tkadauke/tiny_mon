@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730153654) do
+ActiveRecord::Schema.define(:version => 20100730192155) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,20 @@ ActiveRecord::Schema.define(:version => 20100730153654) do
     t.string   "text"
     t.string   "url"
     t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "health_check_templates", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "public",               :default => false
+    t.string   "name"
+    t.text     "description"
+    t.text     "variables"
+    t.string   "name_template"
+    t.text     "description_template"
+    t.integer  "interval"
+    t.text     "steps_template"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

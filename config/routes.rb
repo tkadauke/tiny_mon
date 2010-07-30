@@ -21,6 +21,8 @@ ActionController::Routing::Routes.draw do |map|
     
     accounts.resources :user_accounts
   end
+  
+  map.resources :health_check_templates
 
   map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
   map.sites '/sites', :controller => 'sites', :action => 'index'

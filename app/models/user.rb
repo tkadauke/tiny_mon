@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
   
+  has_many :health_check_templates
+  
   belongs_to :current_account, :class_name => 'Account'
   
   validates_presence_of :full_name
@@ -78,6 +80,10 @@ class User < ActiveRecord::Base
     with_search_scope(filter) do
       paginate(options.merge(:order => 'users.created_at DESC'))
     end
+  end
+  
+  def available_health_check_templates
+    @available_health_check_templates ||= HealthCheckTemplate.find(:all, :conditions => ['user_id = ? or public', self.id], :order => 'name ASC')
   end
 
 protected

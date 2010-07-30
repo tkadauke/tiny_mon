@@ -14,4 +14,7 @@
   <%= render :partial => "list" %>
 </div>
 
-<p><%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site) %></p>
+<p>
+  <%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site) %> |
+  <%= link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select') %>
+</p>

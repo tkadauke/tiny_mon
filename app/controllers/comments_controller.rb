@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     elsif @health_check
       @comments = @health_check.comments
     elsif @user
-      @comments = @user.comments
+      @comments = @user.comments_for_user(current_user)
     else
       raise ActiveRecord::RecordNotFound
     end

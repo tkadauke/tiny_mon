@@ -33,8 +33,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @comments = @user.latest_comments.find(:all, :limit => 5)
-    @comments_count = @user.comments.count
+    @comments = @user.latest_comments_for_user(current_user, :limit => 5)
+    @comments_count = @user.comments_count_for_user(current_user)
   end
 
   def edit

@@ -483,9 +483,12 @@ en:
       please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
     show: 
+      accounts: Accounts
       all_comments_by_user: "Show all all of {{user}}'s comments"
       comments: "Comments ({{count}})"
       edit_profile: "Edit profile"
       email: "Email address"
+      full_name: "Full name"
+      no_accounts: "none yet"
       settings: "Edit settings"
       users_profile: "{{full_name}}'s profile"

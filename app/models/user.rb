@@ -61,4 +61,16 @@ class User < ActiveRecord::Base
   def config
     @config ||= User::Configuration.new(self)
   end
+  
+  def latest_comments_for_user(user, options = {})
+    latest_comments.find(:all, options.merge(:conditions => ['account_id in (?)', user.accounts.map(&:id)]))
+  end
+
+  def comments_count_for_user(user)
+    latest_comments.count(:conditions => ['account_id in (?)', user.accounts.map(&:id)])
+  end
+  
+  def comments_for_user(user, options = {})
+    comments.find(:all, options.merge(:conditions => ['account_id in (?)', user.accounts.map(&:id)]))
+  end
 end

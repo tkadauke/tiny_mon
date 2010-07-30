@@ -1,15 +1,39 @@
 <h2><%= t('.users_profile', :full_name => @user.full_name) %></h2>
 
 <dl>
-  <dt><%= t('.email') %></dt>
-  <dd><%= @user.email %></dd>
+  <dt><%= t('.full_name') %></dt>
+  <dd><%= @user.full_name %></dd>
+  <% if current_user.can_see_email?(@user) %>
+    <dt><%= t('.email') %></dt>
+    <dd><%= @user.email %></dd>
+  <% end %>
+  <dt><%= t('.accounts') %></dt>
+  <dd>
+    <% if @user.accounts.empty? %>
+      <%= t('.no_accounts') %>
+    <% else %>
+      <ul>
+        <% @user.accounts.each do |account| %>
+          <li>
+            <% if current_user.can_see_account?(account) %>
+              <%= link_to account.name, account_path(account) %>
+            <% else %>
+              <%= account.name %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </dd>
 </dl>
 
-<h3><%= t('.comments', :count => @comments_count) %></h3>
+<% unless @comments.empty? %>
+  <h3><%= t('.comments', :count => @comments_count) %></h3>
 
-<%= render :partial => "/comments/list" %>
+  <%= render :partial => "/comments/list" %>
 
-<p><%= link_to t('.all_comments_by_user', :user => @user.full_name), user_comments_path(@user) %></p>
+  <p><%= link_to t('.all_comments_by_user', :user => @user.full_name), user_comments_path(@user) %></p>
+<% end %>
 
 <% if current_user.can_edit_profile?(@user) %>
   <ul class="action-list">

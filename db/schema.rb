@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100726200828) do
+ActiveRecord::Schema.define(:version => 20100730153654) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -41,8 +41,11 @@ ActiveRecord::Schema.define(:version => 20100726200828) do
     t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
+  add_index "comments", ["account_id", "created_at"], :name => "index_comments_on_account_id_and_created_at"
+  add_index "comments", ["account_id"], :name => "index_comments_on_account_id"
   add_index "comments", ["check_run_id", "created_at"], :name => "index_comments_on_check_run_id_and_created_at"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 

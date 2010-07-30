@@ -13,14 +13,15 @@ module TinyMon
     def render!
       Dir.create_tmp_dir "renderer", "#{RAILS_ROOT}/tmp" do
         cookie_params = @cookies.collect { |cookie| %{--cookie "#{cookie.name}" "#{cookie.value}"} }.join(" ")
-        system %{wkhtmltoimage #{cookie_params} "#{@url}" image.png}
+        system %{wkhtmltoimage #{cookie_params} "#{@url}" screenshot.png}
+        system %{pngcrush screenshot.png crushed.png}
         
-        checksum = Digest::MD5.hexdigest(File.read("image.png"))
+        checksum = Digest::MD5.hexdigest(File.read("crushed.png"))
         relative_file_path = checksum.sub(/^(..)(.*)$/, '\1/\2')
         absolute_file_path = File.join(IMAGE_PATH, relative_file_path)
         
         FileUtils.mkdir_p(File.dirname(absolute_file_path))
-        FileUtils.mv "image.png", absolute_file_path + '.png'
+        FileUtils.mv "crushed.png", absolute_file_path + '.png'
         
         system "convert -resize 180 #{absolute_file_path}.png #{absolute_file_path}-thumb.png"
         

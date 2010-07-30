@@ -325,6 +325,7 @@ en:
       view_steps: "View Steps"
   layouts: 
     accounts: Accounts
+    admin: Admin
     close_flash: Close
     edit_footer: "Edit footer"
     github_project_page: "Github project page"

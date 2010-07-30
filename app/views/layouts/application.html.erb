@@ -40,6 +40,9 @@
                   <% else %>
                     <li><%= link_to t('layouts.accounts'), accounts_path %></li>
                   <% end %>
+                  <% if current_user.can_enter_admin_area? %>
+                    <li><%= link_to t('layouts.admin'), admin_path %></li>
+                  <% end %>
                   <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
                 </ul>
                 

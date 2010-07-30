@@ -1,0 +1,24 @@
+<%= will_paginate @users %>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th><%= t('.email') %></th>
+      <th><%= t('.accounts') %></th>
+      <th><%= t('.options') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to highlight(user.full_name, @search_filter.query), user_path(user) %></td>
+        <td><%= mail_to user.email, highlight(user.email, @search_filter.query) %></td>
+        <td><%= user.accounts.count %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @users %>

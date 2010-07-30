@@ -133,6 +133,15 @@ en:
       accounts: Accounts
       admin_area: "Admin Area"
       footer_links: "Footer Links"
+      users: Users
+    users: 
+      index: 
+        accounts: Accounts
+        all_users: "All Users"
+        email: Email
+        name: Name
+        no_users: "No users found."
+        options: Options
   authlogic: 
     attributes: 
       user_session: 

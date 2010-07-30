@@ -1,6 +1,6 @@
 class Admin::AccountsController < ApplicationController
   before_filter :login_required
-  before_filter :can_edit_footer_links!
+  before_filter :can_see_all_accounts!
   
   def index
     @search_filter = SearchFilter.new(params[:search_filter])

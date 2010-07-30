@@ -133,6 +133,15 @@ de:
       accounts: Konten
       admin_area: Admin-Bereich
       footer_links: Fußzeilen-Links
+      users: Benutzer
+    users: 
+      index: 
+        accounts: Konten
+        all_users: "Alle Benutzer"
+        email: E-Mail
+        name: Name
+        no_users: "Keine Benutzer gefunden."
+        options: Optionen
   authlogic: 
     attributes: 
       user_session: 
@@ -512,7 +521,7 @@ de:
       please_repeat_the_password_exactly_as_above: "Bitte wiederholen Sie das Passwort exakt wie oben"
       the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
     show: 
-      accounts: Kontent
+      accounts: Konten
       all_comments_by_user: "Alle Kommentare von {{user}}"
       comments: "Kommentare ({{count}})"
       edit_profile: "Profil bearbeiten"

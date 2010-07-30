@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :footer_links, :collection => { :sort => :post }
     admin.resources :accounts
+    admin.resources :users
   end
   
   map.admin '/admin', :controller => 'admin'

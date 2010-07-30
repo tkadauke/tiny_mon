@@ -73,4 +73,18 @@ class User < ActiveRecord::Base
   def comments_for_user(user, options = {})
     comments.find(:all, options.merge(:conditions => ['account_id in (?)', user.accounts.map(&:id)]))
   end
+  
+  def self.paginate_for_list(filter, options = {})
+    with_search_scope(filter) do
+      paginate(options.merge(:order => 'users.created_at DESC'))
+    end
+  end
+
+protected
+  def self.with_search_scope(filter, &block)
+    conditions = filter.empty? ? nil : ['users.full_name LIKE ? OR users.email LIKE ?', "%#{filter.query}%", "%#{filter.query}%"]
+    with_scope :find => { :conditions => conditions } do
+      yield
+    end
+  end
 end

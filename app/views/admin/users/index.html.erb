@@ -1,0 +1,11 @@
+<h2><%= t('.all_users') %></h2>
+
+<% if @users.empty? %>
+  <p><%= t('.no_users') %></p>
+<% else %>
+  <%= render :partial => "/shared/filter", :locals => { :url => admin_users_path } %>
+  
+  <div id="users">
+    <%= render :partial => "index" %>
+  </div>
+<% end %>

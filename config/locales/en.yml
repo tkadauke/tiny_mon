@@ -352,6 +352,16 @@ en:
       no_templates_found: "No templates found."
       public_templates: "Public Templates"
       template_created_by: "Template created by {{user}}"
+    preview: 
+      description: Description
+      details: Details
+      interval: Interval
+      interval_minutes: 
+        one: "1 minute"
+        other: "{{count}} minutes"
+      name: Name
+      preview: Preview
+      steps: Steps
     report: 
       details: Details
       overview: Overview
@@ -375,6 +385,7 @@ en:
       view_steps: "View Steps"
     template_form: 
       could_not_create_health_check: "Could not create health check"
+      preview: Preview
       save_health_check: "Save health check"
   layouts: 
     accounts: Accounts

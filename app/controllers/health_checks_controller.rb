@@ -28,11 +28,17 @@ class HealthChecksController < ApplicationController
     can_create_health_checks!(@account) do
       @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
       @health_check = @site.health_checks.build(params[:health_check].merge(:template => @health_check_template))
-      if @health_check.save
-        flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
-        redirect_to account_site_health_check_path(@account, @site, @health_check)
-      else
+      if params[:commit] == I18n.t("health_checks.template_form.preview")
+        @health_check.get_info_from_template
+        @preview = true
         render :action => 'new'
+      else
+        if @health_check.save
+          flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
+          redirect_to account_site_health_check_path(@account, @site, @health_check)
+        else
+          render :action => 'new'
+        end
       end
     end
   end

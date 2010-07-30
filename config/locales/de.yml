@@ -352,6 +352,16 @@ de:
       no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
       template_created_by: "Erstellt von {{user}}"
+    preview: 
+      description: Beschreibung
+      details: Details
+      interval: Intervall
+      interval_minutes:
+        one: "1 Minute"
+        other: "{{count}} Minuten"
+      name: Name
+      preview: Vorschau
+      steps: Schritte
     report: 
       details: Details
       overview: Überblick
@@ -375,6 +385,7 @@ de:
       view_steps: "Schritte anzeigen"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
+      preview: Vorschau
       save_health_check: "Funktionstest speichern"
   layouts: 
     accounts: Konten

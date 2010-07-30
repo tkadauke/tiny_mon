@@ -1,0 +1,33 @@
+<h3><%= t(".preview") %></h3>
+
+<dl>
+  <dt><%= t('.name') %></dt>
+  <dd><%= simple_format @health_check.name %></dd>
+
+  <dt><%= t('.description') %></dt>
+  <dd><%= simple_format @health_check.description %></dd>
+
+  <dt><%= t('.interval') %></dt>
+  <dd><%= t('.interval_minutes', :count => @health_check.interval) %></dd>
+</dl>
+
+<h3><%= t(".steps") %></h3>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th><%= t('.name') %></th>
+      <th><%= t('.details') %></th>
+    </tr>
+  </thead>
+  <tbody id="steps">
+    <% @health_check.steps.each_with_index do |step, i| %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= t("step.#{step.underscored_class_name}") %></td>
+        <td><%= render_step_details(step) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

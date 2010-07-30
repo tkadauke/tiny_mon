@@ -51,6 +51,9 @@ en:
       footer_link: 
         text: "Link text"
         url: "Target URL"
+      health_check_template: 
+        name: Name
+        name_template: "Health check's name"
       select_check_box_step: 
         name: Name
       site: 

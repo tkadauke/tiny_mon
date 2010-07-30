@@ -51,6 +51,9 @@ de:
       footer_link: 
         text: Link-Text
         url: Ziel-URL
+      health_check_template: 
+        name: Name
+        name_template: "Name des Funktionstests"
       select_check_box_step: 
         name: Name
       site: 

@@ -3,6 +3,8 @@ class HealthCheckTemplate < ActiveRecord::Base
   
   named_scope :public_templates, :conditions => 'public'
   
+  validates_presence_of :user_id, :name, :name_template, :interval
+  
   def self.from_param!(param)
     find(param)
   end

@@ -1,0 +1,22 @@
+<%= will_paginate @accounts %>
+
+<table class="list">
+  <thead>
+    <tr>
+      <th><%= t('.name') %></th>
+      <th><%= t('.users') %></th>
+      <th><%= t('.options') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= link_to highlight(account.name, @search_filter.query), admin_account_path(account) %></td>
+        <td><%= account.users.count %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @accounts %>

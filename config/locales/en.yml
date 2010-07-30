@@ -83,6 +83,31 @@ en:
             user_id: 
               taken: "is already assigned to this account"
   admin: 
+    accounts: 
+      index: 
+        all_accounts: "All accounts"
+        name: Name
+        no_accounts: "There are no accounts yet"
+        options: Options
+        users: Users
+      show: 
+        account: "Account {{account}}"
+        check_runs_count: 
+          one: "1 check run"
+          other: "{{count}} check runs"
+        comments_count: 
+          one: "1 comment"
+          other: "{{count}} comments"
+        health_checks_count: 
+          one: "1 health check"
+          other: "{{count}} health checks"
+        name: Name
+        no_users: "no users yet"
+        sites_count: 
+          one: "1 site"
+          other: "{{count}} sites"
+        statistics: Statistics
+        users: "Users ({{count}})"
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"

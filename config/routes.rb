@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.namespace :admin do |admin|
     admin.resources :footer_links, :collection => { :sort => :post }
+    admin.resources :accounts
   end
   
   map.resources :accounts, :member => { :switch => :post } do |accounts|

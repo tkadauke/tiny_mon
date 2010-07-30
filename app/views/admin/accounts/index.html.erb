@@ -1,0 +1,11 @@
+<h2><%= t('.all_accounts') %></h2>
+
+<% if @accounts.empty? %>
+  <p><%= t('.no_accounts') %></p>
+<% else %>
+  <%= render :partial => "/shared/filter", :locals => { :url => admin_accounts_path } %>
+  
+  <div id="accounts">
+    <%= render :partial => "index" %>
+  </div>
+<% end %>

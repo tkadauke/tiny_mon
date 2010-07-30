@@ -83,6 +83,31 @@ de:
             user_id: 
               taken: "ist bereits diesem Konto zugeordnet"
   admin: 
+    accounts: 
+      index: 
+        all_accounts: "Alle Konten"
+        name: Name
+        no_accounts: "Es gibt bisher keine Konten."
+        options: Optionen
+        users: Benutzer
+      show: 
+        account: "Konto {{account}}"
+        check_runs_count: 
+          one: "1 Testlauf"
+          other: "{{count}} Testläufe"
+        comments_count: 
+          one: "1 Kommentar"
+          other: "{{count}} Kommentare"
+        health_checks_count: 
+          one: "1 Funktionstest"
+          other: "{{count}} Funktionsteste"
+        name: Name
+        no_users: "bisher keine Benutzer"
+        sites_count: 
+          one: "1 Site"
+          other: "{{count}} Sites"
+        statistics: Statistiken
+        users: Benutzer
     footer_links: 
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"

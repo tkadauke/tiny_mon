@@ -82,8 +82,8 @@ class User < ActiveRecord::Base
     end
   end
   
-  def available_health_check_templates
-    @available_health_check_templates ||= HealthCheckTemplate.find(:all, :conditions => ['user_id = ? or public', self.id], :order => 'name ASC')
+  def available_health_check_templates(options = {})
+    HealthCheckTemplate.paginate(options.update(:conditions => ['user_id = ? or public', self.id], :order => 'name ASC'))
   end
 
 protected

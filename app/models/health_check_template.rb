@@ -1,6 +1,8 @@
 class HealthCheckTemplate < ActiveRecord::Base
   belongs_to :user
   
+  named_scope :public_templates, :conditions => 'public'
+  
   def self.from_param!(param)
     find(param)
   end

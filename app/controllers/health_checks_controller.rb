@@ -19,7 +19,7 @@ class HealthChecksController < ApplicationController
   
   def new
     can_create_health_checks!(@account) do
-      @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
+      find_templates
       @health_check = @site.health_checks.build
     end
   end
@@ -73,5 +73,19 @@ class HealthChecksController < ApplicationController
 protected
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]
+  end
+  
+  def find_templates
+    @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
+    if !@health_check_template
+      @health_check_templates = case params[:filter]
+      when 'mine'
+        current_user.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+      when 'public'
+        HealthCheckTemplate.public_templates.paginate(:order => 'name ASC', :page => params[:page])
+      else
+        current_user.available_health_check_templates(:page => params[:page]) # already ordered and paginated
+      end
+    end
   end
 end

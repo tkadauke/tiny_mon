@@ -340,10 +340,15 @@ de:
     list: 
       no_health_checks_found: "Keine Funktionstests gefunden."
     new: 
+      all_templates: "Alle Vorlagen"
+      create_template: "Vorlage erstellen"
+      my_templates: "Meine Vorlagen"
       new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
       new_health_check_from_template: "Neuer Funktionstest aus Vorlage {{template}}"
       no_templates_found: "Keine Vorlagen gefunden."
+      public_templates: "Öffentliche Vorlagen"
+      template_created_by: "Erstellt von {{user}}"
     report: 
       details: Details
       overview: Überblick

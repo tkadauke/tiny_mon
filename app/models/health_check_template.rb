@@ -25,18 +25,21 @@ class HealthCheckTemplate < ActiveRecord::Base
   end
   
   def steps
-    YAML.load(steps_template)
+    YAML.load(steps_template || {}.to_yaml)
   end
   
   def fields
-    YAML.load(variables)
+    YAML.load(variables || {}.to_yaml)
+  end
+  
+  def validate_health_check_data(health_check, data)
+    data.validate_against_fields(fields)
   end
 
 private
   def evaluate_string(string, data)
-    data.stringify_keys!
     (string || "").gsub(/\{\{(.*?)\}\}/) do
-      data[$1]
+      data.data[$1]
     end
   end
 end

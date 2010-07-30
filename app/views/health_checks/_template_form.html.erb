@@ -1,9 +1,9 @@
 <% form_for [@account, @site, @health_check] do |f| %>
-  <%= f.error_messages :header_message => t('.could_not_create_health_check') %>
-  
   <%= hidden_field_tag :template, @health_check_template.id %>
   
-  <% f.fields_for :template_data do |data| %>
+  <% f.fields_for :template_data, @health_check.template_data do |data| %>
+    <%= data.error_messages :header_message => t('.could_not_create_health_check') unless @health_check.template_data.errors.empty? %>
+    
     <% @health_check_template.fields.each do |hash| %>
       <% name, field = hash.keys.first, hash.values.first %>
       <p class="form_item">

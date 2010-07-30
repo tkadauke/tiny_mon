@@ -20,4 +20,18 @@ class HealthCheckTest < ActiveSupport::TestCase
     assert_equal 1440, health_check.interval
     assert health_check.steps.first.is_a?(VisitStep)
   end
+  
+  test "should validate template data" do
+    template = HealthCheckTemplate.new(
+      :name_template => 'Visit {{target}}/foo',
+      :variables => ['target' => { 'name' => 'target', 'type' => 'string', 'required' => true }].to_yaml,
+      :interval => 1
+    )
+    data = { }
+    
+    health_check = HealthCheck.new(:template => template, :template_data => data, :site_id => 1)
+    health_check.valid?
+    
+    assert ! health_check.template_data.errors.empty?
+  end
 end

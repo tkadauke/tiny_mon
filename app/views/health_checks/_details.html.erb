@@ -16,7 +16,7 @@
         <td>
           <% action_list do |a| %>
             <% a.link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
-            <% a.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :destroy, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %>
+            <% a.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %>
           <% end %>
         </td>
       </tr>

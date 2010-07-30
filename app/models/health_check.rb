@@ -19,6 +19,10 @@ class HealthCheck < ActiveRecord::Base
   before_validation :get_info_from_template
   
   has_permalink :name, :scope => :site_id
+  
+  def after_initialize
+    self.template_data = HealthCheckTemplateData.new(self.template_data || {})
+  end
 
   def self.find_for_list(filter, find_options)
     with_search_scope(filter) do
@@ -77,6 +81,10 @@ class HealthCheck < ActiveRecord::Base
     self.description = template.evaluate_description(template_data)
     self.interval = template.interval
     self.steps = template.evaluate_steps(template_data)
+  end
+  
+  def validate
+    template.validate_health_check_data(self, template_data) if template && template_data && new_record?
   end
   
 protected

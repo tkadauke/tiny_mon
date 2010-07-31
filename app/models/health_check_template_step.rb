@@ -59,4 +59,10 @@ class HealthCheckTemplateStep < ActiveRecord::Base
     return nil if input[self.condition_parameter] == self.condition_value
     build_steps_without_condition(input)
   end
+  
+  def build_steps_for_each_element_in_array(input)
+    input[self.condition_parameter].sort_by(&:first).map do |index, value|
+      build_steps_without_condition(input.merge('element' => value))
+    end
+  end
 end

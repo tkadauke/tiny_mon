@@ -34,7 +34,13 @@ class HealthCheckTemplate < ActiveRecord::Base
 
   def self.evaluate_string(string, data)
     (string || "").gsub(/\{\{(.*?)\}\}/) do
-      data.data[$1]
+      value = data.data[$1]
+      case value
+      when Hash
+        value.sort_by { |x| x.first.to_i }.collect { |x| x.last }.join(', ')
+      else
+        value
+      end
     end
   end
 end

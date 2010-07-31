@@ -286,6 +286,7 @@ en:
   health_check_template: 
     variable: 
       type: 
+        array: Array
         string: String
   health_check_template_steps: 
     form: 
@@ -344,6 +345,8 @@ en:
   health_checks: 
     all_checks: 
       all_health_checks: "All Health Checks"
+    array_variable: 
+      add_more: "Add More"
     details: 
       delete: Delete
       edit: Edit

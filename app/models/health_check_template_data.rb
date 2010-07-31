@@ -28,4 +28,8 @@ class HealthCheckTemplateData
       end
     end
   end
+
+  def merge(hash)
+    self.class.new(self.data.merge(hash))
+  end
 end

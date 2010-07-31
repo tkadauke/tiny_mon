@@ -286,6 +286,7 @@ de:
   health_check_template: 
     variable: 
       type: 
+        array: "Mehrere Werte"
         string: Zeichenkette
   health_check_template_steps: 
     form: 
@@ -344,6 +345,8 @@ de:
   health_checks: 
     all_checks: 
       all_health_checks: "Alle Funktionstests"
+    array_variable: 
+      add_more: "Weiteres Feld"
     details: 
       delete: Entfernen
       edit: Bearbeiten

@@ -8,7 +8,7 @@ class HealthCheckTemplateVariable < ActiveRecord::Base
   acts_as_list :scope => :health_check_template
   
   def self.available_types
-    ['string']
+    ['string', 'array']
   end
   
   def self.available_types_with_translations

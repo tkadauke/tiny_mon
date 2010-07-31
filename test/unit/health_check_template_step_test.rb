@@ -37,4 +37,15 @@ class HealthCheckTemplateStepTest < ActiveSupport::TestCase
     
     assert_nil template_step.build_steps(data)
   end
+  
+  test "should build steps from array parameter" do
+    template_step = HealthCheckTemplateStep.new(:step_type => 'visit', :step_data => { :url => 'http://{{element}}' }, :condition => 'for_each_element_in_array', :condition_parameter => 'domains')
+    data = HealthCheckTemplateData.new('domains' => { '0' => 'www.google.com', '1' => 'www.wikipedia.org', '2' => 'www.tinymon.org' })
+    
+    steps = template_step.build_steps(data)
+    assert steps.is_a?(Array)
+    assert_equal 'http://www.google.com', steps[0].url
+    assert_equal 'http://www.wikipedia.org', steps[1].url
+    assert_equal 'http://www.tinymon.org', steps[2].url
+  end
 end

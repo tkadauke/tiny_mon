@@ -29,7 +29,7 @@
     tag: 'dl',
     scroll: window,
     handle: 'handle',
-    onUpdate: function() { var i = 1; $A(Sortable.sequence('variables')).each(function(id) { $("variable_" + id).down('input[type="hidden"]').value = i++; } ) }
+    onUpdate: function() { var i = 1; $A(Sortable.sequence('variables')).each(function(id) { $("variable_" + id).down('input.position').value = i++; } ) }
   });
 } %>
 

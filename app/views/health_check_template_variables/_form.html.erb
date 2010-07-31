@@ -1,7 +1,7 @@
 <% f.fields_for :variables, :child_index => child_index do |fields| %>
-  <% div_id = "variable_#{rand(1_000_000)}" %>
-  <dl id="<%= div_id %>">
-    <%= fields.hidden_field :position %>
+  <% variable_id = "variable_#{rand(1_000_000)}" %>
+  <dl id="<%= variable_id %>">
+    <%= fields.hidden_field :position, :class => 'position' %>
     <dt>
       <% if fields.object.new_record? %>
         &nbsp;
@@ -11,7 +11,7 @@
     </dt>
     <dd>
       <% if fields.object.new_record? %>
-        <%= link_to_function t(".remove"), "$('#{div_id}').remove();" %>
+        <%= link_to_function t(".remove"), "$('#{variable_id}').remove();" %>
       <% else %>
         <%= fields.check_box '_delete' %> <%= fields.label '_delete', t(".delete") %>
       <% end %>

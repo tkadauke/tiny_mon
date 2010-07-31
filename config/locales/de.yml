@@ -291,7 +291,7 @@ de:
     form: 
       condition: Bedingung
       delete: Löschen
-      drag_to_sort: "Ziehe Sie hier, um die Schritte der Vorlage zu sortierne"
+      drag_to_sort: "Ziehen Sie hier, um die Schritte der Vorlage zu sortieren"
       new_step: "Neuer Schritt"
       remove: Entfernen
       step_data: Schritt-Parameter

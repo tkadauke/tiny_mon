@@ -3,7 +3,9 @@ class HealthCheckTemplateVariable < ActiveRecord::Base
   
   validates_presence_of :name, :display_name, :type
   
-  acts_as_list
+  belongs_to :health_check_template
+  
+  acts_as_list :scope => :health_check_template
   
   def self.available_types
     ['string']

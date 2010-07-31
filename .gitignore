@@ -1,5 +1,11 @@
 log/*
 db/*.sqlite3
 config/config.yml
+config/database.yml
 .DS_Store
 test/coverage
+Capfile
+config/deploy.rb
+config/production
+doc/TODO
+public/system

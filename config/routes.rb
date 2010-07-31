@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :health_check_templates
+  map.resources :health_check_template_variables
 
   map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
   map.sites '/sites', :controller => 'sites', :action => 'index'

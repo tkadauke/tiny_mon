@@ -283,6 +283,20 @@ de:
       minutes: 
         one: "1 Minute"
         other: "{{count}} Minuten"
+  health_check_template: 
+    variable: 
+      type: 
+        string: Zeichenkette
+  health_check_template_variables: 
+    form: 
+      delete: Löschen
+      description: Beschreibung
+      display_name: Anzeigename
+      name: Variablenname
+      new_variable: "Neue Variable"
+      remove: Entfernen
+      required: Pflichtfeld
+      type: Typ
   health_check_templates: 
     edit: 
       could_not_update_template: "Konnte Funktionstest-Vorlage nicht aktualisieren"

@@ -4,12 +4,11 @@
   <% f.fields_for :template_data, @health_check.template_data do |data| %>
     <%= data.error_messages :header_message => t('.could_not_create_health_check') unless @health_check.template_data.errors.empty? %>
     
-    <% @health_check_template.fields.each do |hash| %>
-      <% name, field = hash.keys.first, hash.values.first %>
+    <% @health_check_template.variables.each do |variable| %>
       <p class="form_item">
-        <span class="label"><%= data.label name, field['name'] %></span>
-        <span class="desc"><%=h field['description'] %></span>
-        <%= data.text_field name %>
+        <span class="label"><%= data.label variable.name, variable.display_name %></span>
+        <span class="desc"><%=h variable.description %></span>
+        <%= data.text_field variable.name %>
       </p>
     <% end %>
   <% end %>

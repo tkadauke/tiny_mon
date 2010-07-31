@@ -17,10 +17,10 @@
 </p>
 
 <p class="form_item">
-  <span class="label"><%= f.label :variables, t(".variables") %></span>
-  <span class="desc"><%= t(".see_help_for_more_info") %></span>
-  <%= f.text_area :variables, :cols => 80, :style => 'font-family: "Courier New", Courier, monospace' %>
+  <span class="label"><label><%= t(".variables") %></label></span>
 </p>
+
+<%= render :partial => "/health_check_template_variables/form", :locals => { :f => f, :child_index => nil } %>
 
 <p class="form_item">
   <span class="label"><%= f.label :name_template, t(".name_template") %></span>

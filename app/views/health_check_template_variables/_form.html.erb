@@ -1,0 +1,32 @@
+<% f.fields_for :variables, :child_index => child_index do |fields| %>
+  <% div_id = "variable_#{rand(1_000_000)}" %>
+  <dl id="<%= div_id %>">
+    <dt>&nbsp;</dt>
+    <dd>
+      <% if fields.object.new_record? %>
+        <%= link_to_function t(".remove"), "$('#{div_id}').remove();" %>
+      <% else %>
+        <%= fields.check_box '_delete' %> <%= fields.label '_delete', t(".delete") %>
+      <% end %>
+    </dd>
+
+    <dt><%= fields.label :name, t(".name") %></dt>
+    <dd><%= fields.text_field :name %></dd>
+
+    <dt><%= fields.label :display_name, t(".display_name") %></dt>
+    <dd><%= fields.text_field :display_name %></dd>
+
+    <dt><%= fields.label :description, t(".description") %></dt>
+    <dd><%= fields.text_field :description %></dd>
+
+    <dt><%= fields.label :type, t(".type") %></dt>
+    <dd><%= fields.select :type, HealthCheckTemplateVariable.available_types_with_translations %></dd>
+
+    <dt><%= fields.label :required, t(".required") %></dt>
+    <dd><%= fields.check_box :required %></dd>
+  </dl>
+<% end %>
+
+<div id="replace-variable">
+  <p><%= link_to_remote t('.new_variable'), :url => new_health_check_template_variable_path(:sequence => child_index.nil? ? @health_check_template.variables.size : child_index.to_i + 1), :method => :get %></p>
+</div>

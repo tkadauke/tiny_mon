@@ -9,7 +9,7 @@ class HealthCheckTest < ActiveSupport::TestCase
       :name_template => 'Visit {{target}}/foo',
       :interval => 1440,
       :steps_template => ['visit' => { 'url' => '{{target}}/foo' }].to_yaml, 
-      :variables => ['target' => { 'name' => 'target', 'type' => 'string' }].to_yaml
+      :variables => [HealthCheckTemplateVariable.new(:name => 'target', :type => 'string')]
     )
     data = { 'target' => 'http://www.example.com' }
     
@@ -24,7 +24,7 @@ class HealthCheckTest < ActiveSupport::TestCase
   test "should validate template data" do
     template = HealthCheckTemplate.new(
       :name_template => 'Visit {{target}}/foo',
-      :variables => ['target' => { 'name' => 'target', 'type' => 'string', 'required' => true }].to_yaml,
+      :variables => [HealthCheckTemplateVariable.new(:name => 'target', :type => 'string', :required => true)],
       :interval => 1
     )
     data = { }

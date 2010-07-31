@@ -8,6 +8,7 @@ class HealthCheckTemplatesController < ApplicationController
   
   def new
     @health_check_template = HealthCheckTemplate.new
+    @health_check_template.variables.build
   end
   
   def edit
@@ -44,6 +45,7 @@ class HealthCheckTemplatesController < ApplicationController
     can_delete_health_check_template!(@health_check_template) do
       @health_check_template.destroy
       flash[:notice] = I18n.t("flash.notice.deleted_health_check_template")
+      redirect_to health_check_templates_path
     end
   end
 

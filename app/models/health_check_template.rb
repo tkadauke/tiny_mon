@@ -6,6 +6,13 @@ class HealthCheckTemplate < ActiveRecord::Base
   
   validates_presence_of :user_id, :name, :name_template, :interval
   
+  has_many :variables, :class_name => 'HealthCheckTemplateVariable', :dependent => :delete_all
+  accepts_nested_attributes_for :variables, :allow_destroy => true
+  
+  def after_initialize
+    self.variables ||= []
+  end
+  
   def self.from_param!(param)
     find(param)
   end
@@ -19,7 +26,7 @@ class HealthCheckTemplate < ActiveRecord::Base
   end
   
   def evaluate_steps(data)
-    steps.collect do |hash|
+    (steps || {}).collect do |hash|
       name, params = hash.keys.first, hash.values.first
       
       evaluated_params = params.inject({}) { |hash, pair| key, value = *pair; hash[key] = evaluate_string(value, data); hash }
@@ -31,12 +38,8 @@ class HealthCheckTemplate < ActiveRecord::Base
     YAML.load(steps_template || {}.to_yaml)
   end
   
-  def fields
-    YAML.load(variables || {}.to_yaml)
-  end
-  
   def validate_health_check_data(health_check, data)
-    data.validate_against_fields(fields)
+    data.validate_against_variables(variables)
   end
 
 private

@@ -283,6 +283,20 @@ en:
       minutes: 
         one: "1 minute"
         other: "{{count}} minutes"
+  health_check_template: 
+    variable: 
+      type: 
+        string: String
+  health_check_template_variables: 
+    form: 
+      delete: Delete
+      description: Description
+      display_name: "Display name"
+      name: "Variable name"
+      new_variable: "New Variable"
+      remove: Remove
+      required: "Required field"
+      type: Type
   health_check_templates: 
     edit: 
       could_not_update_template: "Could not create health check template"

@@ -17,11 +17,10 @@ class HealthCheckTemplateData
     @errors ||= ActiveRecord::Errors.new(self)
   end
   
-  def validate_against_fields(fields)
-    fields.each do |hash|
-      name, params = hash.keys.first, hash.values.first
-      if params['required'] && data[name].blank?
-        self.errors.add_to_base([params['name'], I18n.t("activerecord.errors.messages.blank")].join(' '))
+  def validate_against_variables(variables)
+    variables.each do |variable|
+      if variable.required? && data[variable.name].blank?
+        self.errors.add_to_base([variable.display_name, I18n.t("activerecord.errors.messages.blank")].join(' '))
       end
     end
   end

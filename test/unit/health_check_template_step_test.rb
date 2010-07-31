@@ -48,4 +48,17 @@ class HealthCheckTemplateStepTest < ActiveSupport::TestCase
     assert_equal 'http://www.wikipedia.org', steps[1].url
     assert_equal 'http://www.tinymon.org', steps[2].url
   end
+
+  test "should build steps from hash parameter" do
+    template_step = HealthCheckTemplateStep.new(:step_type => 'fill_in', :step_data => { :field => '{{key}}', :value => '{{value}}' }, :condition => 'for_each_key_value_in_hash', :condition_parameter => 'fields')
+    data = HealthCheckTemplateData.new('fields' => { '0' => { 'key' => 'login', 'value' => 'someuser' }, '1' => { 'key' => 'password', 'value' => 'somepassword' } })
+    
+    steps = template_step.build_steps(data)
+    assert steps.is_a?(Array)
+    
+    assert_equal 'login', steps[0].field
+    assert_equal 'someuser', steps[0].value
+    assert_equal 'password', steps[1].field
+    assert_equal 'somepassword', steps[1].value
+  end
 end

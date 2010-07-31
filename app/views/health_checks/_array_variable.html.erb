@@ -4,8 +4,8 @@
     <%= f.label variable.name, variable.display_name %>
     <%= link_to_function t(".add_more"), %{
       input = new Element('input', {
-        type: 'text', id: 'health_check_template_data_target_url_' + #{array_id}_index,
-        name: 'health_check[template_data][target_url][' + #{array_id}_index + ']',
+        type: 'text', id: 'health_check_template_data_#{variable.name}_' + #{array_id}_index,
+        name: 'health_check[template_data][#{variable.name}][' + #{array_id}_index + ']',
         size: 30
       });
       remove_link = new Element('a', {
@@ -16,8 +16,8 @@
       });
       element.insert({ bottom: input });
       element.insert({ bottom: remove_link });
+      element.insert({ bottom: '<br/>' });
       $('#{array_id}').insert({ bottom: element });
-      $('#{array_id}').insert({ bottom: ' ' });
       #{array_id}_index++;
     } %>
   </span>
@@ -26,7 +26,10 @@
   <% array = (f.object.send(variable.name) || { '0' => "" }); index = 0 %>
   <% array.sort_by { |x| x.first.to_i }.collect { |x| x.last }.each_with_index do |value, index| %>
     <% f.fields_for variable.name do |fields| %>
-      <span id="<%= [array_id, index].join('_') %>"><%= fields.text_field index.to_s, :value => value %><%= link_to_function '[X]', "$('#{[array_id, index].join('_')}').remove()" %></span>
+      <span id="<%= [array_id, index].join('_') %>">
+        <%= fields.text_field index.to_s, :value => value %><%= link_to_function '[X]', "$('#{[array_id, index].join('_')}').remove()" %>
+        <br/>
+      </span>
     <% end %>
   <% end %>
   <%= javascript_tag %{var #{array_id}_index = #{array.keys.size};} %>

@@ -61,8 +61,15 @@ class HealthCheckTemplateStep < ActiveRecord::Base
   end
   
   def build_steps_for_each_element_in_array(input)
-    input[self.condition_parameter].sort_by(&:first).map do |index, value|
+    (input[self.condition_parameter] || {}).sort_by(&:first).map do |index, value|
       build_steps_without_condition(input.merge('element' => value))
+    end
+  end
+  
+  def build_steps_for_each_key_value_in_hash(input)
+    (input[self.condition_parameter] || {}).sort_by(&:first).map do |index, pair|
+      key, value = pair['key'], pair['value']
+      build_steps_without_condition(input.merge('key' => key, 'value' => value))
     end
   end
 end

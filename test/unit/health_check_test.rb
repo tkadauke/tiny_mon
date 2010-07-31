@@ -8,7 +8,7 @@ class HealthCheckTest < ActiveSupport::TestCase
     template = HealthCheckTemplate.new(
       :name_template => 'Visit {{target}}/foo',
       :interval => 1440,
-      :steps_template => ['visit' => { 'url' => '{{target}}/foo' }].to_yaml, 
+      :steps => [HealthCheckTemplateStep.new(:step_type => 'visit', :step_data => { 'url' => '{{target}}/foo' })], 
       :variables => [HealthCheckTemplateVariable.new(:name => 'target', :type => 'string')]
     )
     data = { 'target' => 'http://www.example.com' }

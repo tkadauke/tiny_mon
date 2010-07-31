@@ -14,7 +14,7 @@ class HealthCheckTemplateTest < ActiveSupport::TestCase
   end
   
   test "should evaluate steps" do
-    template = HealthCheckTemplate.new(:steps_template => ['visit' => { 'url' => '{{target}}/foo' }].to_yaml, :variables => [HealthCheckTemplateVariable.new(:name => 'target', :type => 'string')])
+    template = HealthCheckTemplate.new(:steps => [HealthCheckTemplateStep.new(:step_type => 'visit', :step_data => { 'url' => '{{target}}/foo' })], :variables => [HealthCheckTemplateVariable.new(:name => 'target', :type => 'string')])
     data = HealthCheckTemplateData.new(:target => 'http://www.example.com')
     steps = template.evaluate_steps(data)
     assert steps.first.is_a?(VisitStep)

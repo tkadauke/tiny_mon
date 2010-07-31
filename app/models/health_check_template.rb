@@ -17,32 +17,22 @@ class HealthCheckTemplate < ActiveRecord::Base
   end
   
   def evaluate_name(data)
-    evaluate_string(name_template, data)
+    self.class.evaluate_string(name_template, data)
   end
   
   def evaluate_description(data)
-    evaluate_string(description_template, data)
+    self.class.evaluate_string(description_template, data)
   end
   
   def evaluate_steps(data)
-    (steps || {}).collect do |hash|
-      name, params = hash.keys.first, hash.values.first
-      
-      evaluated_params = params.inject({}) { |hash, pair| key, value = *pair; hash[key] = evaluate_string(value, data); hash }
-      step_model = "#{name}_step".classify.constantize.new(evaluated_params)
-    end
+    steps.collect { |step| step.build_steps(data) }.flatten.compact
   end
-  
-  # def steps
-  #   YAML.load(steps_template || {}.to_yaml)
-  # end
   
   def validate_health_check_data(health_check, data)
     data.validate_against_variables(variables)
   end
 
-private
-  def evaluate_string(string, data)
+  def self.evaluate_string(string, data)
     (string || "").gsub(/\{\{(.*?)\}\}/) do
       data.data[$1]
     end

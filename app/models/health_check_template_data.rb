@@ -17,6 +17,10 @@ class HealthCheckTemplateData
     @errors ||= ActiveRecord::Errors.new(self)
   end
   
+  def [](index)
+    data[index]
+  end
+  
   def validate_against_variables(variables)
     variables.each do |variable|
       if variable.required? && data[variable.name].blank?

@@ -6,7 +6,7 @@
       <% if fields.object.new_record? %>
         &nbsp;
       <% else %>
-        <span class="handle" title="<%#= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</span>
+        <span class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</span>
       <% end %>
     </dt>
     <dd>
@@ -21,6 +21,7 @@
     <dd>
       <%= fields.select :condition, HealthCheckTemplateStep.condition_types_with_translations, :include_blank => true %>
       <%= fields.text_field :condition_parameter %>
+      <%= fields.text_field :condition_value %>
     </dd>
     
     <% step_data_id = "step_data_#{rand(1_000_000)}" %>

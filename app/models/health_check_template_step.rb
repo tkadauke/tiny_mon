@@ -26,4 +26,37 @@ class HealthCheckTemplateStep < ActiveRecord::Base
   def self.condition_types_with_translations
     condition_types
   end
+  
+  def build_steps(input)
+    if self.condition.blank?
+      build_steps_without_condition(input)
+    else
+      send("build_steps_#{self.condition}", input)
+    end
+  end
+  
+  def build_steps_without_condition(input)
+    evaluated_params = step_data.data.inject({}) { |hash, pair| key, value = *pair; hash[key] = HealthCheckTemplate.evaluate_string(value, input); hash }
+    step_model = "#{step_type}_step".classify.constantize.new(evaluated_params)
+  end
+  
+  def build_steps_if_variable_set(input)
+    return nil if input[self.condition_parameter].blank?
+    build_steps_without_condition(input)
+  end
+  
+  def build_steps_if_variable_unset(input)
+    return nil unless input[self.condition_parameter].blank?
+    build_steps_without_condition(input)
+  end
+  
+  def build_steps_if_variable_equals(input)
+    return nil unless input[self.condition_parameter] == self.condition_value
+    build_steps_without_condition(input)
+  end
+  
+  def build_steps_if_variable_not_equal(input)
+    return nil if input[self.condition_parameter] == self.condition_value
+    build_steps_without_condition(input)
+  end
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731140955) do
+ActiveRecord::Schema.define(:version => 20100731174601) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -71,9 +71,10 @@ ActiveRecord::Schema.define(:version => 20100731140955) do
     t.string   "condition"
     t.string   "condition_parameter"
     t.string   "step_type"
-    t.text     "step_data"
+    t.text     "step_data_hash"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "condition_value"
   end
 
   add_index "health_check_template_steps", ["health_check_template_id"], :name => "index_steps_on_health_check_template_id"
@@ -100,7 +101,6 @@ ActiveRecord::Schema.define(:version => 20100731140955) do
     t.string   "name_template"
     t.text     "description_template"
     t.integer  "interval"
-    t.text     "steps_template"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"

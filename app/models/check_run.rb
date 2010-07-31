@@ -1,7 +1,7 @@
 class CheckRun < ActiveRecord::Base
   belongs_to :health_check
   belongs_to :account
-  has_many :comments
+  has_many :comments, :dependent => :delete_all
   has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
   
   serialize :log, Array

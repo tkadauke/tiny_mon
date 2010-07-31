@@ -1,7 +1,7 @@
 class HealthCheck < ActiveRecord::Base
   belongs_to :site
   has_many :steps, :order => 'position ASC'
-  has_many :check_runs
+  has_many :check_runs, :dependent => :destroy
   has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
   
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'

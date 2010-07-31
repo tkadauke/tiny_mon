@@ -1,6 +1,6 @@
 class Site < ActiveRecord::Base
   belongs_to :account
-  has_many :health_checks
+  has_many :health_checks, :dependent => :destroy
   
   has_permalink :name
   

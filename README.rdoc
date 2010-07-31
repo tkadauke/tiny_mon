@@ -19,18 +19,21 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Email on failure
 - Retry 3 times on failure to avoid false negatives
 - Extreme Feedback Device-like overview
-- Choose check interval per health check
+- Choose check interval per health check (every minute to once a day)
 - Checks IMAP email inboxes (important for monitoring signup processes)
 - Login mechanism
 - Group health checks in accounts
 - Assign any number of users to any number of accounts
 - Prowl notifications
+- Create similar health checks from templates
+- Even create your own flexible health check templates with a nice user interface
+- Start as many workers as you want when using Resque
 
 === Missing Stuff
 
 - Configuration has to be done by hand
 - Some step types might be missing
-- Alerts other than by email (e.g. SMS)
+- Alerts other than by email and Prowl (e.g. SMS)
 - Limit the number of alerts
 - Nice way of distributing the application
 - Nice way to setup the database

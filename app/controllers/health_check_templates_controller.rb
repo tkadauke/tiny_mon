@@ -9,6 +9,7 @@ class HealthCheckTemplatesController < ApplicationController
   def new
     @health_check_template = HealthCheckTemplate.new
     @health_check_template.variables.build
+    @health_check_template.steps.build
   end
   
   def edit

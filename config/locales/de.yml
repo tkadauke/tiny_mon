@@ -287,6 +287,15 @@ de:
     variable: 
       type: 
         string: Zeichenkette
+  health_check_template_steps: 
+    form: 
+      condition: Bedingung
+      delete: Löschen
+      drag_to_sort: "Ziehe Sie hier, um die Schritte der Vorlage zu sortierne"
+      new_step: "Neuer Schritt"
+      remove: Entfernen
+      step_data: Schritt-Parameter
+      step_type: Schritt-Typ
   health_check_template_variables: 
     form: 
       delete: Löschen

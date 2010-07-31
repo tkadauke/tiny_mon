@@ -9,9 +9,8 @@ class HealthCheckTemplate < ActiveRecord::Base
   has_many :variables, :class_name => 'HealthCheckTemplateVariable', :order => 'position ASC', :dependent => :delete_all
   accepts_nested_attributes_for :variables, :allow_destroy => true
   
-  def after_initialize
-    self.variables ||= []
-  end
+  has_many :steps, :class_name => 'HealthCheckTemplateStep', :order => 'position ASC', :dependent => :delete_all
+  accepts_nested_attributes_for :steps, :allow_destroy => true
   
   def self.from_param!(param)
     find(param)
@@ -34,9 +33,9 @@ class HealthCheckTemplate < ActiveRecord::Base
     end
   end
   
-  def steps
-    YAML.load(steps_template || {}.to_yaml)
-  end
+  # def steps
+  #   YAML.load(steps_template || {}.to_yaml)
+  # end
   
   def validate_health_check_data(health_check, data)
     data.validate_against_variables(variables)

@@ -1,0 +1,46 @@
+<% f.fields_for :steps, :child_index => child_index do |fields| %>
+  <% step_id = "step_#{rand(1_000_000)}" %>
+  <dl id="<%= step_id %>">
+    <%= fields.hidden_field :position, :class => 'position' %>
+    <dt>
+      <% if fields.object.new_record? %>
+        &nbsp;
+      <% else %>
+        <span class="handle" title="<%#= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</span>
+      <% end %>
+    </dt>
+    <dd>
+      <% if fields.object.new_record? %>
+        <%= link_to_function t(".remove"), "$('#{step_id}').remove();" %>
+      <% else %>
+        <%= fields.check_box '_delete' %> <%= fields.label '_delete', t(".delete") %>
+      <% end %>
+    </dd>
+
+    <dt><%= t(".condition") %></dt>
+    <dd>
+      <%= fields.select :condition, HealthCheckTemplateStep.condition_types_with_translations, :include_blank => true %>
+      <%= fields.text_field :condition_parameter %>
+    </dd>
+    
+    <% step_data_id = "step_data_#{rand(1_000_000)}" %>
+    
+    <dt><%= t(".step_type") %></dt>
+    <%# HACK: get index of step model %>
+    <% step_index = f.instance_variable_get(:@nested_child_index)['health_check_template[steps_attributes]'] || child_index %>
+    <dd><%= fields.select :step_type, Step.available_types_with_translations, { :include_blank => true }, :onchange => "if (this.value != '') { new Ajax.Updater('#{step_data_id}', #{new_health_check_template_step_data_path.inspect}, { method: 'get', parameters: { step_type: this.value, step_index: #{step_index} } }) }" %></dd>
+    
+    <dt><%= t(".step_data") %></dt>
+    <dd id="<%= step_data_id %>">
+      <% if fields.object.step_type %>
+        <% fields.fields_for :step_data, fields.object.step_data do |data| %>
+          <%= render :partial => "/health_check_template_step_data/form", :locals => { :f => data, :step_type => fields.object.step_type } %>
+        <% end %>
+      <% end %>
+    </dd>
+  </dl>
+<% end %>
+
+<div id="replace-step">
+  <p><%= link_to_remote t('.new_step'), :url => new_health_check_template_step_path(:sequence => child_index.nil? ? @health_check_template.steps.size : child_index.to_i + 1), :method => :get %></p>
+</div>

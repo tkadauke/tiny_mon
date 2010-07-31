@@ -287,6 +287,15 @@ en:
     variable: 
       type: 
         string: String
+  health_check_template_steps: 
+    form: 
+      condition: Condition
+      delete: Delete
+      drag_to_sort: "Drag here to sort steps from this template"
+      new_step: "New Step"
+      remove: Remove
+      step_data: "Step parameters"
+      step_type: "Step type"
   health_check_template_variables: 
     form: 
       delete: Delete

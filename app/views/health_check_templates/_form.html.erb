@@ -51,10 +51,17 @@
   <%= f.select :interval, HealthCheck.intervals_with_units %>
 </p>
 
-<p class="form_item">
-  <span class="label"><%= f.label :steps_template, t(".steps_template") %></span>
-  <span class="desc"><%= t(".template_for_health_check_steps") %></span>
-  <%= f.text_area :steps_template, :cols => 80, :style => 'font-family: "Courier New", Courier, monospace' %>
-</p>
+<div id="steps">
+  <%= render :partial => "/health_check_template_steps/form", :locals => { :f => f, :child_index => nil } %>
+</div>
+
+<%= javascript_tag %{
+  Sortable.create('steps', {
+    tag: 'dl',
+    scroll: window,
+    handle: 'handle',
+    onUpdate: function() { var i = 1; $A(Sortable.sequence('steps')).each(function(id) { $("step_" + id).down('input.position').value = i++; } ) }
+  });
+} %>
 
 <p><%= f.submit t('.save_template') %></p>

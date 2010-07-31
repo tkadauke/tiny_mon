@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731024505) do
+ActiveRecord::Schema.define(:version => 20100731140955) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(:version => 20100731024505) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "health_check_template_steps", :force => true do |t|
+    t.integer  "health_check_template_id"
+    t.integer  "position"
+    t.string   "condition"
+    t.string   "condition_parameter"
+    t.string   "step_type"
+    t.text     "step_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "health_check_template_steps", ["health_check_template_id"], :name => "index_steps_on_health_check_template_id"
 
   create_table "health_check_template_variables", :force => true do |t|
     t.integer  "health_check_template_id"

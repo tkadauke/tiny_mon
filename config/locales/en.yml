@@ -321,9 +321,11 @@ en:
       could_not_update_template: "Could not create health check template"
       edit_template: "Edit template {{template}}"
     form: 
+      about_the_template: "About the template"
       describe_the_template: "Description for the template"
       description: Description
       description_template: "Health check's description"
+      health_check_fields: "Fields for the generated health check"
       interval: Interval
       interval_for_generated_health_checks: "Interval for generated health checks"
       name: Name
@@ -331,11 +333,13 @@ en:
       public: Public
       save_template: "Save template"
       see_help_for_more_info: "See the help for more info"
+      steps: "Steps for the generated health check"
       steps_template: "Health check steps"
       template_for_health_check_description: "Description for the health check with placeholders"
       template_for_health_check_name: "Name for the health check with placeholders"
       template_for_health_check_steps: "Steps for the health check with placeholders"
       template_name: "Health check's name"
+      template_variables: "Template variables"
       variables: Variables
       who_can_see_and_use_this_template: "Should this template be visible to and usable by every user?"
     index: 

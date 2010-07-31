@@ -321,9 +321,11 @@ de:
       could_not_update_template: "Konnte Funktionstest-Vorlage nicht aktualisieren"
       edit_template: "Funktionstest-Vorlage {{template}} bearbeiten"
     form: 
+      about_the_template: "Information zur Vorlage"
       describe_the_template: "Beschreibung für die Vorlange"
       description: Beschreibung
       description_template: "Beschreibung des Funktionstests"
+      health_check_fields: "Felder für den generierten Funktionstest"
       interval: Intervall
       interval_for_generated_health_checks: "Das Intervall für den aus der Vorlage generierten Funktionstest"
       name: Name
@@ -331,11 +333,13 @@ de:
       public: Öffentlich
       save_template: "Vorlage speichern"
       see_help_for_more_info: "Siehe die Hilfe für weitere Informationen"
+      steps: Schritte
       steps_template: Schritte
       template_for_health_check_description: "Beschreibung des Funktionstests mit Platzhaltern"
       template_for_health_check_name: "Name des Funktionstests mit Platzhaltern"
       template_for_health_check_steps: "Schritte des Funktionstests mit Platzhaltern"
       template_name: "Name der Vorlage"
+      template_variables: "Variablen für die Vorlage"
       variables: Variablen
       who_can_see_and_use_this_template: "Soll die Vorlage für alle Benutzer sichtbar und verwendbar sein?"
     index: 

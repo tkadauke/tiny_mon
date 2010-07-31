@@ -1,3 +1,5 @@
+<h3><%= t(".about_the_template") %></h3>
+
 <p class="form_item">
   <span class="label"><%= f.label :name, t('.name') %></span>
   <span class="desc"><%= t(".template_name") %></span>
@@ -16,9 +18,7 @@
   <span class="desc"><%= t(".who_can_see_and_use_this_template") %></span>
 </p>
 
-<p class="form_item">
-  <span class="label"><label><%= t(".variables") %></label></span>
-</p>
+<h3><%= t(".template_variables") %></h3>
 
 <div id="variables">
   <%= render :partial => "/health_check_template_variables/form", :locals => { :f => f, :child_index => nil } %>
@@ -32,6 +32,8 @@
     onUpdate: function() { var i = 1; $A(Sortable.sequence('variables')).each(function(id) { $("variable_" + id).down('input.position').value = i++; } ) }
   });
 } %>
+
+<h3><%= t(".health_check_fields") %></h3>
 
 <p class="form_item">
   <span class="label"><%= f.label :name_template, t(".name_template") %></span>
@@ -50,6 +52,8 @@
   <span class="desc"><%= t(".interval_for_generated_health_checks") %></span>
   <%= f.select :interval, HealthCheck.intervals_with_units %>
 </p>
+
+<h3><%= t(".steps") %></h3>
 
 <div id="steps">
   <%= render :partial => "/health_check_template_steps/form", :locals => { :f => f, :child_index => nil } %>

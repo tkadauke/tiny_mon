@@ -284,6 +284,13 @@ en:
         one: "1 minute"
         other: "{{count}} minutes"
   health_check_template: 
+    condition: 
+      for_each_element_in_array: "For each element 'element' in array"
+      for_each_key_value_in_hash: "For each 'key' and 'value' in mapping"
+      if_variable_equals: "If variable is equal to"
+      if_variable_not_equal: "If variable is not equal to"
+      if_variable_set: "If variable is set"
+      if_variable_unset: "If variable is not set"
     variable: 
       type: 
         array: Array
@@ -364,6 +371,8 @@ en:
       interval: "Check Interval"
       name: Name
       save_health_check: "Save health check"
+    hash_variable: 
+      add_more: "Add another mapping"
     index: 
       health_checks_for_site: "Health Checks for Site {{site}}"
       new_from_template: "New from template"

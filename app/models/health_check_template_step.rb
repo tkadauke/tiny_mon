@@ -24,7 +24,7 @@ class HealthCheckTemplateStep < ActiveRecord::Base
   end
   
   def self.condition_types_with_translations
-    condition_types
+    condition_types.collect { |t| [I18n.t("health_check_template.condition.#{t}"), t] }
   end
   
   def build_steps(input)

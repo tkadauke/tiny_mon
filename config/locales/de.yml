@@ -284,6 +284,13 @@ de:
         one: "1 Minute"
         other: "{{count}} Minuten"
   health_check_template: 
+    condition: 
+      for_each_element_in_array: "Für jedes 'element' mehrerer Elemente"
+      for_each_key_value_in_hash: "Für jeden 'key' und 'value' einer Zuordnung"
+      if_variable_equals: "Falls Variable gleich ist wie"
+      if_variable_not_equal: "Falls Variable nicht gleich ist wie"
+      if_variable_set: "Falls Variable belegt ist"
+      if_variable_unset: "Falls Variable nicht belegt ist"
     variable: 
       type: 
         array: "Mehrere Werte"
@@ -347,7 +354,7 @@ de:
     all_checks: 
       all_health_checks: "Alle Funktionstests"
     array_variable: 
-      add_more: "Weiteres Feld"
+      add_more: "Weiteres Feld hinzufügen"
     details: 
       delete: Entfernen
       edit: Bearbeiten
@@ -364,6 +371,8 @@ de:
       interval: Prüf-Intervall
       name: Name
       save_health_check: "Funktionstest speichern"
+    hash_variable: 
+      add_more: "Weitere Zuordnung hinzufügen"
     index: 
       health_checks_for_site: "Funktionstests für Site {{site}}"
       new_from_template: "Neuer Funktionstest aus Vorlage"

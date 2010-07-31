@@ -20,7 +20,18 @@
   <span class="label"><label><%= t(".variables") %></label></span>
 </p>
 
-<%= render :partial => "/health_check_template_variables/form", :locals => { :f => f, :child_index => nil } %>
+<div id="variables">
+  <%= render :partial => "/health_check_template_variables/form", :locals => { :f => f, :child_index => nil } %>
+</div>
+
+<%= javascript_tag %{
+  Sortable.create('variables', {
+    tag: 'dl',
+    scroll: window,
+    handle: 'handle',
+    onUpdate: function() { var i = 1; $A(Sortable.sequence('variables')).each(function(id) { $("variable_" + id).down('input[type="hidden"]').value = i++; } ) }
+  });
+} %>
 
 <p class="form_item">
   <span class="label"><%= f.label :name_template, t(".name_template") %></span>

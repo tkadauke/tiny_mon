@@ -292,6 +292,7 @@ de:
       delete: Löschen
       description: Beschreibung
       display_name: Anzeigename
+      drag_to_sort: "Ziehen Sie hier, um die Variablen zu sortieren"
       name: Variablenname
       new_variable: "Neue Variable"
       remove: Entfernen

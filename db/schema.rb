@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731005409) do
+ActiveRecord::Schema.define(:version => 20100731024505) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20100731005409) do
     t.boolean  "required"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   add_index "health_check_template_variables", ["health_check_template_id"], :name => "index_variables_on_health_check_template_id"

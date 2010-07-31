@@ -6,7 +6,7 @@ class HealthCheckTemplate < ActiveRecord::Base
   
   validates_presence_of :user_id, :name, :name_template, :interval
   
-  has_many :variables, :class_name => 'HealthCheckTemplateVariable', :dependent => :delete_all
+  has_many :variables, :class_name => 'HealthCheckTemplateVariable', :order => 'position ASC', :dependent => :delete_all
   accepts_nested_attributes_for :variables, :allow_destroy => true
   
   def after_initialize

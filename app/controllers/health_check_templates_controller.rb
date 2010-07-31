@@ -3,7 +3,7 @@ class HealthCheckTemplatesController < ApplicationController
   before_filter :check_account_permissions
   
   def index
-    @health_check_templates = current_user.health_check_templates
+    @health_check_templates = current_user.health_check_templates.find(:all, :order => 'name ASC')
   end
   
   def new

@@ -292,6 +292,7 @@ en:
       delete: Delete
       description: Description
       display_name: "Display name"
+      drag_to_sort: "Drag here to sort the variables"
       name: "Variable name"
       new_variable: "New Variable"
       remove: Remove

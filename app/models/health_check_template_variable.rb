@@ -3,6 +3,8 @@ class HealthCheckTemplateVariable < ActiveRecord::Base
   
   validates_presence_of :name, :display_name, :type
   
+  acts_as_list
+  
   def self.available_types
     ['string']
   end

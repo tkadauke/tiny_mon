@@ -1,4 +1,6 @@
-<% unless @accounts.blank? %>
+<% if @accounts.blank? %>
+  <%= render :partial => "no_account" %>
+<% else %>
   <table>
     <thead>
       <tr>

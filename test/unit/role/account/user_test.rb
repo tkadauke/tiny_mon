@@ -49,6 +49,14 @@ class Role::Account::UserTest < ActiveSupport::TestCase
     assert @user.can_edit_health_check_template?
   end
   
+  test "should be able to import health checks" do
+    assert @user.can_create_health_check_imports?
+  end
+  
+  test "should be able to destroy imported health checks" do
+    assert @user.can_delete_health_check_imports?
+  end
+  
   test "should not catch other methods" do
     assert_raise NoMethodError do
       @user.foobar

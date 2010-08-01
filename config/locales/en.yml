@@ -167,6 +167,7 @@ en:
     comments: Comments
     edit: Edit
     footer_links: "Footer links"
+    health_check_imports: Import
     health_check_templates: Templates
     health_checks: "Health Checks"
     home: Home
@@ -255,11 +256,13 @@ en:
       created_footer_link: "Successfully created footer link"
       created_health_check: "Successfully created health check {{health_check}}"
       created_health_check_template: "Successfully created health check template"
+      created_import: "Successfully imported health checks"
       created_site: "Successfully created site {{site}}"
       created_user: "Successfully created user"
       created_user_account: "Successfully added this user to the account"
       deleted_health_check: "Successfully deleted health check {{health_check}}"
       deleted_health_check_template: "Successfully deleted health check template"
+      deleted_import: "Successfully deleted imported health checks"
       deleted_site: "Successfully deleted site {{site}}"
       logged_in: "Successfully logged in"
       logged_out: "Successfully logged out"
@@ -283,6 +286,26 @@ en:
       minutes: 
         one: "1 minute"
         other: "{{count}} minutes"
+  health_check_imports: 
+    index: 
+      delete: Delete
+      description: Description
+      imported_at: "Imported {{time}} ago"
+      imports_for_site: "Imports for site {{site}}"
+      nothing_found: "No imports found"
+      options: Options
+      really_delete_import: "Do you really want to delete all health checks that are associated with this import? This operation can not be undone."
+      when: When
+      who: Who
+    new: 
+      could_not_import: "Could not import"
+      csv_data: "CSV Data"
+      description: Description
+      field_names: "The fields are (in this order): {{fields}}"
+      import: Import
+      instructions: "Copy the health checks into the field below as CSV data"
+      new_import: "New Import"
+      preview: Preview
   health_check_template: 
     condition: 
       for_each_element_in_array: "For each element 'element' in array"
@@ -387,6 +410,7 @@ en:
       account_templates: "Account templates"
       all_templates: "All Templates"
       create_template: "Create new template"
+      import: Import
       my_templates: "My Templates"
       new_from_template: "New health check from template"
       new_health_check_for_site: "New Health Check for site {{site}}"

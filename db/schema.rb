@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731174601) do
+ActiveRecord::Schema.define(:version => 20100801002911) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(:version => 20100731174601) do
     t.datetime "updated_at"
   end
 
+  create_table "health_check_imports", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "site_id"
+    t.integer  "user_id"
+    t.integer  "health_check_template_id"
+    t.string   "description"
+    t.text     "csv_data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "health_check_template_steps", :force => true do |t|
     t.integer  "health_check_template_id"
     t.integer  "position"
@@ -115,11 +126,12 @@ ActiveRecord::Schema.define(:version => 20100731174601) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-    t.integer  "interval",        :default => 60
-    t.boolean  "enabled",         :default => false
+    t.integer  "interval",               :default => 60
+    t.boolean  "enabled",                :default => false
     t.string   "permalink"
     t.datetime "last_checked_at"
     t.datetime "next_check_at"
+    t.integer  "health_check_import_id"
   end
 
   add_index "health_checks", ["enabled"], :name => "index_health_checks_on_enabled"

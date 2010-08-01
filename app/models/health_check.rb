@@ -1,5 +1,7 @@
 class HealthCheck < ActiveRecord::Base
   belongs_to :site
+  belongs_to :health_check_import
+  
   has_many :steps, :order => 'position ASC'
   has_many :check_runs, :dependent => :destroy
   has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50

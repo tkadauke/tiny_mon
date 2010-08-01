@@ -17,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
         
         checks.resources :comments
       end
+      sites.resources :health_check_imports
     end
     
     accounts.resources :user_accounts

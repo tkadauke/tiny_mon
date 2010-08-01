@@ -290,7 +290,7 @@ en:
     choose_template_for_account: 
       account_templates: "Account templates"
       all_templates: "All Templates"
-      choose_template: "Choose template"
+      choose_template: "Choose template for import"
       create_template: "Create new template"
       my_templates: "My Templates"
       no_templates_found: "No templates found."
@@ -299,7 +299,7 @@ en:
     choose_template_for_site: 
       account_templates: "Account templates"
       all_templates: "All Templates"
-      choose_template: "Choose template"
+      choose_template: "Choose template for import"
       create_template: "Create new template"
       my_templates: "My Templates"
       no_templates_found: "No templates found."
@@ -433,6 +433,7 @@ en:
       add_more: "Add another mapping"
     index: 
       health_checks_for_site: "Health Checks for Site {{site}}"
+      import: Import
       new_from_template: "New from template"
       new_health_check: "New Health Check"
     list: 
@@ -555,6 +556,7 @@ en:
       add_new_user_to_account: "Add new user to account {{account}}"
       add_site: "Add site"
       create_account: "Create account"
+      import: Import
       manage_users: "Manage users for account {{account}}"
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"

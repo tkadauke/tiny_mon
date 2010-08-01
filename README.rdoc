@@ -27,6 +27,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Prowl notifications
 - Create similar health checks from templates
 - Even create your own flexible health check templates with a nice user interface
+- Import health checks from CSV files
 - Start as many workers as you want when using Resque
 
 === Missing Stuff

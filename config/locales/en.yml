@@ -687,7 +687,7 @@ en:
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
     show: 
       accounts: Accounts
-      all_comments_by_user: "Show all all of {{user}}'s comments"
+      all_comments_by_user: "Show all of {{user}}'s comments"
       comments: "Comments ({{count}})"
       edit_profile: "Edit profile"
       email: "Email address"

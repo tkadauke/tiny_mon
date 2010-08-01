@@ -9,13 +9,19 @@
         <th>&nbsp;</th>
         <th><%= t('.name') %></th>
         <th><%= t('.details') %></th>
-        <th><%= t('.options') %></th>
+        <% if current_user.can_edit_health_checks?(@account) %>
+          <th><%= t('.options') %></th>
+        <% end %>
       </tr>
     </thead>
     <tbody id="steps">
-      <% @steps.each do |step| %>
+      <% @steps.each_with_index do |step, i| %>
         <tr id="order_<%= step.id %>">
-          <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
+          <% if current_user.can_edit_health_checks?(@account) %>
+            <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
+          <% else %>
+            <td><%= i + 1 %></td>
+          <% end %>
           <td><%= t("step.#{step.underscored_class_name}") %></td>
           <% if step.new_record? %>
             <td>
@@ -27,11 +33,15 @@
             <td>
               <div id="step_<%= step.id %>"><%= render_step_details(step) %></div>
             </td>
-            <td>
-              <%= link_to_remote t('.edit'), :url => edit_account_site_health_check_step_path(@account, @site, @health_check, step), :update => "step_#{step.id}", :method => :get %> |
-              <%= link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %> |
-              <%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
-            </td>
+            <% if current_user.can_edit_health_checks?(@account) %>
+              <td>
+                <% action_list do |a| %>
+                  <% a.link_to_remote t('.edit'), :url => edit_account_site_health_check_step_path(@account, @site, @health_check, step), :update => "step_#{step.id}", :method => :get %>
+                  <% a.link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %>
+                  <% a.link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
+                <% end %>
+              </td>
+            <% end %>
           <% end %>
         </tr>
       <% end %>
@@ -39,17 +49,19 @@
   </table>
 <% end %>
 
-<%= javascript_tag %{
-  Sortable.create('steps', {
-    tag: 'tr',
-    scroll: window,
-    handle: 'handle',
-    onUpdate: function() { new Ajax.Request('#{sort_account_site_health_check_steps_path(@account, @site, @health_check)}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("steps", { name: 'step' }) }); }
-  });
-} %>
+<% if current_user.can_edit_health_checks?(@account) %>
+  <%= javascript_tag %{
+    Sortable.create('steps', {
+      tag: 'tr',
+      scroll: window,
+      handle: 'handle',
+      onUpdate: function() { new Ajax.Request('#{sort_account_site_health_check_steps_path(@account, @site, @health_check)}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("steps", { name: 'step' }) }); }
+    });
+  } %>
 
-<h3><%= t('.add_step') %></h3>
+  <h3><%= t('.add_step') %></h3>
 
-<div id="new_step_container">
-  <%= render :partial => "/steps/form", :locals => { :step => @step || Step.new } %>
-</div>
+  <div id="new_step_container">
+    <%= render :partial => "/steps/form", :locals => { :step => @step || Step.new } %>
+  </div>
+<% end %>

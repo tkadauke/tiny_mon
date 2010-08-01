@@ -10,4 +10,6 @@
   </div>
 <% end %>
 
-<p><%= link_to t('.new_site'), new_account_site_path(@account) %></p>
+<% if current_user.can_create_sites?(@account) %>
+  <p><%= link_to t('.new_site'), new_account_site_path(@account) %></p>
+<% end %>

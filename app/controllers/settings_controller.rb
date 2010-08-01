@@ -1,4 +1,7 @@
 class SettingsController < ApplicationController
+  before_filter :login_required
+  before_filter :can_edit_settings!
+  
   def show
     @config = current_user.config
   end

@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_filter :login_required
+  before_filter :can_see_account_details!
   
   def index
     @accounts = current_user.accounts.ordered_by_name

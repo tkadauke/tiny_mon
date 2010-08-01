@@ -4,7 +4,9 @@
       <th><%= t('.status') %></th>
       <th><%= t('.site') %></th>
       <th><%= t('.name') %></th>
-      <th><%= t('.options') %></th>
+      <% if current_user.can_edit_health_checks?(@account) %>
+        <th><%= t('.options') %></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -13,12 +15,14 @@
         <td><%= status_icon health_check %></td>
         <td><%= link_to highlight(health_check.site.name, @search_filter.query), account_site_path(health_check.site.account, health_check.site) %></td>
         <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
-        <td>
-          <% action_list do |a| %>
-            <% a.link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
-            <% a.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %>
-          <% end %>
-        </td>
+        <% if current_user.can_edit_health_checks?(@account) %>
+          <td>
+            <% action_list do |a| %>
+              <% a.link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
+              <% a.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %>
+            <% end %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

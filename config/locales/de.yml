@@ -245,6 +245,7 @@ de:
     error: 
       access_denied: "Zugriff verweigert"
       assign_roles: "Konnte die Rolle dem Benutzer nicht zuteilen"
+      create_account_first: "Sie müssen zuerst einem Konto zugewiesen sein"
       guest_required: "Sie müssen ausgeloggt sein, um auf diese Seite zuzugreifen"
       login_required: "Sie müssen eingeloggt sein, um auf diese Seite zuzugreifen"
       user_by_email_not_found: "Es wurde kein Benutzer mit dieser E-Mail-Adresse gefunden"

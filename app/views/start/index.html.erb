@@ -1,27 +1,35 @@
-<% if logged_in? && current_user.accounts.empty? %>
+<% if current_user.accounts.empty? %>
+  <h2><%= t('.quick_links') %></h2>
+
+  <ul class="asterisk">
+    <li><%= link_to t('.settings'), settings_path %></li>
+  </ul>
+  
   <p>
     <%= t('.no_accounts') %>
     <%= link_to t('.create_account'), new_account_path %>
   </p>
 <% else %>
-  <h2><%= t('.quick_links') %></h2>
+  <% if current_user.role != 'locked' %>
+    <h2><%= t('.quick_links') %></h2>
 
-  <ul class="asterisk">
-    <% if current_user.can_create_sites?(current_user.current_account) %>
-      <li><%= link_to t('.add_site'), new_account_site_path(current_user.current_account) %></li>
-    <% end %>
-    <% if current_user.can_create_health_check_imports?(current_user.current_account) %>
-      <li><%= link_to t(".import"), new_health_check_import_path %></li>
-    <% end %>
-    <li><%= link_to t('.settings'), settings_path %></li>
-    <% if current_user.can_add_user_to_account?(current_user.current_account) %>
-      <li><%= link_to t('.add_existing_user_to_account', :account => current_user.current_account.name), new_account_user_account_path(current_user.current_account) %></li>
-      <li><%= link_to t('.add_new_user_to_account', :account => current_user.current_account.name), new_user_path %></li>
-    <% end %>
-    <% if current_user.can_edit_account?(current_user.current_account) %>
-      <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %>
-    <% end %>
-  </ul>
+    <ul class="asterisk">
+      <% if current_user.can_create_sites?(current_user.current_account) %>
+        <li><%= link_to t('.add_site'), new_account_site_path(current_user.current_account) %></li>
+      <% end %>
+      <% if current_user.can_create_health_check_imports?(current_user.current_account) %>
+        <li><%= link_to t(".import"), new_health_check_import_path %></li>
+      <% end %>
+      <li><%= link_to t('.settings'), settings_path %></li>
+      <% if current_user.can_add_user_to_account?(current_user.current_account) %>
+        <li><%= link_to t('.add_existing_user_to_account', :account => current_user.current_account.name), new_account_user_account_path(current_user.current_account) %></li>
+        <li><%= link_to t('.add_new_user_to_account', :account => current_user.current_account.name), new_user_path %></li>
+      <% end %>
+      <% if current_user.can_edit_account?(current_user.current_account) %>
+        <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %>
+      <% end %>
+    </ul>
+  <% end %>
 
   <h2><%= t('.recent_activity') %></h2>
 

@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  before_filter :guest_required, :only => [ :new, :create ]
+
   def new
     @user_session = UserSession.new
   end

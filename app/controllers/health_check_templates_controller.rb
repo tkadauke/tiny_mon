@@ -1,5 +1,6 @@
 class HealthCheckTemplatesController < ApplicationController
   before_filter :login_required
+  before_filter :find_account
   before_filter :check_account_permissions
   
   def index
@@ -52,6 +53,6 @@ class HealthCheckTemplatesController < ApplicationController
 
 protected
   def check_account_permissions
-    deny_access unless current_user.can_create_health_check_templates?(current_user.current_account)
+    deny_access unless current_user.can_create_health_check_templates?(@account)
   end
 end

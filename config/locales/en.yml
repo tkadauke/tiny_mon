@@ -245,6 +245,7 @@ en:
     error: 
       access_denied: "Access denied"
       assign_roles: "Could not assign account role to user"
+      create_account_first: "You need to be assigned to an account first"
       guest_required: "You must be logged out to access this page"
       login_required: "You must be logged in to access this page"
       user_by_email_not_found: "No user was found with that email address"

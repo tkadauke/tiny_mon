@@ -38,5 +38,7 @@ module Role::User
     self == template.user || user_account_for(template.account).can_edit_health_check_template?
   end
   
+  allow :edit_settings, :see_account_details
+  
   allow_if_owner :delete_health_check_template
 end

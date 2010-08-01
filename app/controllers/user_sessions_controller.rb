@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = I18n.t("flash.notice.logged_in")
-      redirect_to root_path
+      redirect_back_or_default root_path
     else
       render :action => :new
     end

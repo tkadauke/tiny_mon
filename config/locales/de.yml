@@ -553,6 +553,9 @@ de:
     new: 
       new_site: "Neue Site"
   start: 
+    dashboard: 
+      recent_activity: "Neueste Aktivität"
+      upcoming_checks: "Geplante Testläufe"
     index: 
       add_existing_user_to_account: "Vorhandenen Benutzer zu Konto {{account}} hinzufügen"
       add_new_user_to_account: "Neuen Benutzer zu Konto {{account}} hinzufügen"
@@ -562,8 +565,13 @@ de:
       manage_users: "Benutzer für Konto {{account}} verwalten"
       no_accounts: "Diesem Benutzer sind bisher keine Konten zugewiesen."
       quick_links: Schnellzugriff
-      recent_activity: "Neueste Aktivität"
       settings: "Einstellungen bearbeiten"
+    upcoming_checks: 
+      health_check: Funktionstest
+      in_time: "In {{time}}"
+      no_upcoming_checks: "Keine geplanten Testläufe."
+      site: Site
+      when: Wann
   status: 
     all_checks_successful: "Alle Funktionstests erfolgreich"
     failure: Fehlschlag

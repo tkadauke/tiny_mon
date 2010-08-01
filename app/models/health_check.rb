@@ -26,6 +26,10 @@ class HealthCheck < ActiveRecord::Base
     self.template_data = HealthCheckTemplateData.new(self.template_data || {})
   end
 
+  def self.upcoming(options = {})
+    find :all, options.merge(:conditions => ["enabled and next_check_at > ?", Time.now], :order => 'next_check_at ASC')
+  end
+  
   def self.find_for_list(filter, find_options)
     with_search_scope(filter) do
       find(:all, find_options.merge(:include => {:site => :account}))

@@ -31,10 +31,8 @@
     </ul>
   <% end %>
 
-  <h2><%= t('.recent_activity') %></h2>
-
-  <%= auto_update 'activity' %>
-  <div id="activity">
-    <%= render :partial => "/check_runs/activity" %>
+  <%= auto_update 'dashboard' %>
+  <div id="dashboard">
+    <%= render :partial => "dashboard" %>
   </div>
 <% end %>

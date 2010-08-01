@@ -553,6 +553,9 @@ en:
     new: 
       new_site: "New Site"
   start: 
+    dashboard: 
+      recent_activity: "Recent Activity"
+      upcoming_checks: "Upcoming Checks"
     index: 
       add_existing_user_to_account: "Add existing user to account {{account}}"
       add_new_user_to_account: "Add new user to account {{account}}"
@@ -562,8 +565,13 @@ en:
       manage_users: "Manage users for account {{account}}"
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
-      recent_activity: "Recent Activity"
       settings: "Edit settings"
+    upcoming_checks: 
+      health_check: "Health Check"
+      in_time: "In {{time}}"
+      no_upcoming_checks: "No upcoming checks."
+      site: Site
+      when: When
   status: 
     all_checks_successful: "All checks successful"
     failure: Failure

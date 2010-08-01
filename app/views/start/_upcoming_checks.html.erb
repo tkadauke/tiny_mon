@@ -1,0 +1,23 @@
+<% if @upcoming_health_checks.empty? %>
+  <p><%= t('.no_upcoming_checks') %></p>
+<% else %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= t('.when') %></th>
+        <th><%= t('.site') %></th>
+        <th><%= t('.health_check') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @upcoming_health_checks.each do |health_check| %>
+        <tr>
+          <td><%= distance_of_time_in_words(Time.now, health_check.next_check_at) %></td>
+          <td><%= link_to t(".in_time", :when => distance_of_time_in_words(Time.now, health_check.next_check_at)), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
+          <td><%= link_to health_check.site.name, account_site_path(health_check.site.account, health_check.site) %></td>
+          <td><%= link_to health_check.name, account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -11,6 +11,7 @@ de:
     form: 
       could_not_create_account: "Konnte Konto nicht erstellen"
       name: Kontoname
+      name_hint: "Zum Beispiel der Name Ihrer Organisation. Hinweis: Alle Benutzer des Kontos können alle Funktionstests sehen"
       save_account: "Konto speichern"
     index: 
       edit: Bearbeiten

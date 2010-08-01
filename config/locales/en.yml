@@ -11,6 +11,7 @@ en:
     form: 
       could_not_create_account: "Could not create account"
       name: Name
+      name_hint: "For example your organization's name. Note that every user in an account can see all health checks"
       save_account: "Save account"
     index: 
       edit: Edit

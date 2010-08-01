@@ -80,7 +80,7 @@ protected
         end
       end
     else
-      flash[:notice] = I18n.t("flash.error.create_account_first")
+      flash[:error] = I18n.t("flash.error.create_account_first")
       redirect_to new_account_path
     end
   end

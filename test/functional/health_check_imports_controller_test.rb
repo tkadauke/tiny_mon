@@ -17,12 +17,42 @@ class HealthCheckImportsControllerTest < ActionController::TestCase
     login_with @user
   end
   
-  test "should get new" do
+  test "should choose template for site" do
+    get :new, :account_id => @account.id, :site_id => @site.permalink
+    assert_response :success
+  end
+  
+  test "should choose template for account" do
+    get :new
+    assert_response :success
+  end
+  
+  test "should filter templates by user" do
+    get :new, :filter => 'mine'
+    assert_response :success
+  end
+  
+  test "should filter templates by account" do
+    get :new, :filter => 'account'
+    assert_response :success
+  end
+  
+  test "should show public templates" do
+    get :new, :filter => 'public'
+    assert_response :success
+  end
+  
+  test "should get new for site" do
     get :new, :account_id => @account.id, :site_id => @site.permalink, :template => @health_check_template.id
     assert_response :success
   end
   
-  test "should get preview" do
+  test "should get new for account" do
+    get :new, :template => @health_check_template.id
+    assert_response :success
+  end
+  
+  test "should get preview for site" do
     csv = [['www.google.com'].to_csv, ['www.wikipedia.org'].to_csv].join
     
     assert_no_difference 'HealthCheck.count' do
@@ -34,7 +64,18 @@ class HealthCheckImportsControllerTest < ActionController::TestCase
     end
   end
   
-  test "should import" do
+  test "should get preview for account" do
+    csv = [['first_site', 'Google', 'http://www.google.com'].to_csv, ['second_site', 'Wikipedia', 'http://www.wikipedia.org'].to_csv].join
+    
+    assert_no_difference 'HealthCheck.count' do
+      post :create, :commit => 'Preview', :health_check_import => { :health_check_template_id => @health_check_template.id, :csv_data => csv }
+      assert_response :success
+      assert_template 'new'
+      assert assigns(:preview)
+    end
+  end
+  
+  test "should import for site" do
     csv = [['www.google.com'].to_csv, ['www.wikipedia.org'].to_csv].join
     
     assert_difference 'HealthCheck.count', 2 do
@@ -45,7 +86,19 @@ class HealthCheckImportsControllerTest < ActionController::TestCase
     end
   end
   
-  test "should not import when import is invalid" do
+  test "should import for account" do
+    csv = [['first_site', 'Google', 'http://www.google.com'].to_csv, ['second_site', 'Wikipedia', 'http://www.wikipedia.org'].to_csv].join
+    
+    assert_difference 'Site.count', 2 do
+      assert_difference 'HealthCheck.count', 2 do
+        post :create, :commit => 'Import', :health_check_import => { :health_check_template_id => @health_check_template.id, :csv_data => csv }
+        assert_response :redirect
+        assert ! assigns(:preview)
+      end
+    end
+  end
+  
+  test "should not import for site when import is invalid" do
     csv = [['www.google.com'].to_csv, ['www.wikipedia.org'].to_csv].join
     
     assert_no_difference 'HealthCheck.count', 2 do
@@ -57,7 +110,18 @@ class HealthCheckImportsControllerTest < ActionController::TestCase
     end
   end
   
-  test "should destroy import" do
+  test "should not import for account when import is invalid" do
+    csv = [['first_site', 'Google', 'http://www.google.com'].to_csv, ['second_site', 'Wikipedia', 'http://www.wikipedia.org'].to_csv].join
+    
+    assert_no_difference 'HealthCheck.count', 2 do
+      post :create, :commit => 'Import', :health_check_import => { :health_check_template_id => @health_check_template.id }
+      assert_response :success
+      assert_template 'new'
+      assert ! assigns(:preview)
+    end
+  end
+  
+  test "should destroy import for site" do
     import = @site.health_check_imports.create!(:user => @user, :account => @account, :csv_data => '"foo"', :health_check_template => @health_check_template)
     assert_difference 'HealthCheckImport.count', -1 do
       delete :destroy, :account_id => @account.id, :site_id => @site.permalink, :id => import.id
@@ -65,7 +129,15 @@ class HealthCheckImportsControllerTest < ActionController::TestCase
     end
   end
   
-  test "should destroy imported health checks" do
+  test "should destroy import for account" do
+    import = @site.health_check_imports.create!(:user => @user, :account => @account, :csv_data => '"foo"', :health_check_template => @health_check_template)
+    assert_difference 'HealthCheckImport.count', -1 do
+      delete :destroy, :id => import.id
+      assert_response :redirect
+    end
+  end
+  
+  test "should destroy imported health checks for site" do
     import = @site.health_check_imports.create!(:user => @user, :account => @account, :csv_data => '"foo"', :health_check_template => @health_check_template)
     
     assert_equal 1, import.health_checks.count

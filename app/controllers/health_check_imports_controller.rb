@@ -5,19 +5,23 @@ class HealthCheckImportsController < ApplicationController
 
   before_filter :check_account_permissions
   
-  before_filter :find_health_check_template, :only => [ :new ]
-  
   def index
-    @health_check_imports = @site.health_check_imports
+    if @site
+      @health_check_imports = @site.health_check_imports
+    else
+      @health_check_imports = @account.health_check_imports
+    end
   end
   
   def new
+    find_templates
     @health_check_import = HealthCheckImport.new(:health_check_template => @health_check_template)
   end
   
   def create
     @health_check_import = HealthCheckImport.new(params[:health_check_import])
-    if params[:commit] == I18n.t("health_check_imports.new.preview")
+    @health_check_template ||= @health_check_import.health_check_template
+    if params[:commit] == I18n.t("health_check_imports.form.preview")
       @preview = true
       render :action => 'new'
     else
@@ -39,17 +43,33 @@ class HealthCheckImportsController < ApplicationController
     can_delete_health_check_imports!(@health_check_import.account) do
       @health_check_import.destroy
       flash[:notice] = I18n.t("flash.notice.deleted_import")
-      redirect_to account_site_health_check_imports_path(@account, @site)
+      if @site
+        redirect_to account_site_health_check_imports_path(@account, @site)
+      else
+        redirect_to health_check_imports_path
+      end
     end
   end
   
 protected
   def find_site
-    @site = @account.sites.find_by_permalink!(params[:site_id])
+    @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]
   end
   
-  def find_health_check_template
-    @health_check_template = HealthCheckTemplate.find(params[:template])
+  def find_templates
+    @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
+    if !@health_check_template
+      @health_check_templates = case params[:filter]
+      when 'mine'
+        current_user.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+      when 'account'
+        @account.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+      when 'public'
+        HealthCheckTemplate.public_templates.paginate(:order => 'name ASC', :page => params[:page])
+      else
+        current_user.available_health_check_templates(:page => params[:page]) # already ordered and paginated
+      end
+    end
   end
 
   def check_account_permissions

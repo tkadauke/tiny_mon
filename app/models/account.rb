@@ -7,6 +7,7 @@ class Account < ActiveRecord::Base
   has_many :sites
   has_many :health_checks, :through => :sites
   has_many :health_check_templates
+  has_many :health_check_imports
   has_many :check_runs
   has_many :comments
   

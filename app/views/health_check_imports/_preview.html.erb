@@ -1,0 +1,24 @@
+<h3><%= t(".preview") %></h3>
+
+<table class="list">
+  <thead>
+    <tr>
+      <% if @site.blank? %>
+        <th><%= t(".site") %></th>
+        <th><%= t(".url") %></th>
+      <% end %>
+      <% @health_check_import.headers.each do |header| %>
+        <th><%=h header.display_name %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @health_check_import.rows.each do |row| %>
+      <tr>
+        <% row.each do |cell| %>
+          <td><%=h cell %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

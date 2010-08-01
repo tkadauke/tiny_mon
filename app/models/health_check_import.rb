@@ -8,7 +8,7 @@ class HealthCheckImport < ActiveRecord::Base
   
   after_create :import!
   
-  validates_presence_of :user_id, :site_id, :account_id, :health_check_template_id, :csv_data
+  validates_presence_of :user_id, :account_id, :health_check_template_id, :csv_data
   
   def rows
     @rows ||= FasterCSV.parse(csv_data)
@@ -19,8 +19,24 @@ class HealthCheckImport < ActiveRecord::Base
   end
   
   def import!
+    if site
+      import_to_site!
+    else
+      import_to_account!
+    end
+  end
+  
+  def import_to_site!
     rows.each do |row|
       site.health_checks.create(:template => health_check_template, :template_data => row_to_template_data(row), :health_check_import => self)
+    end
+  end
+  
+  def import_to_account!
+    rows.each do |row|
+      site_name, site_url = row.shift, row.shift
+      import_site = account.sites.find_or_create_by_name_and_url(site_name, site_url)
+      import_site.health_checks.create(:template => health_check_template, :template_data => row_to_template_data(row), :health_check_import => self)
     end
   end
   

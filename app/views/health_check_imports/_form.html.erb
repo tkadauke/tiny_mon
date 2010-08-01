@@ -1,0 +1,18 @@
+<%= f.error_messages :header_message => t('.could_not_import') %>
+
+<%= f.hidden_field :health_check_template_id %>
+
+<p class="form_item">
+  <span class="label"><%= f.label :description, t('.description') %></span>
+  <%= f.text_field :description %>
+</p>
+
+<p class="form_item">
+  <span class="label"><%= f.label :csv_data, t('.csv_data') %></span>
+  <%= f.text_area :csv_data, :cols => 110, :style => 'font-family: "Courier New", Courier, monospace' %>
+</p>
+
+<p>
+  <%= f.submit t('.preview') %>
+  <%= f.submit t(".import") if @preview %>
+</p>

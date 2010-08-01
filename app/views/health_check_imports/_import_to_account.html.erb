@@ -1,0 +1,11 @@
+<h2><%= t(".new_import", :template => @health_check_template.name) %></h2>
+
+<p><%= t(".instructions") %></p>
+
+<p><%= t(".field_names", :fields => @health_check_import.headers.map(&:display_name).join(', ')) %></p>
+
+<%= render :partial => 'preview' if @preview %>
+
+<% form_for [@health_check_import] do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+<% end %>

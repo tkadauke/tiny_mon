@@ -287,25 +287,56 @@ de:
         one: "1 Minute"
         other: "{{count}} Minuten"
   health_check_imports: 
-    index: 
-      delete: Löschen
-      description: Beschreibung
-      imported_at: "Importiert vor {{time}}"
-      imports_for_site: "Importe für Site {{site}}"
-      nothing_found: "Keine Importe gefunden"
-      options: Optionen
-      really_delete_import: "Wollen Sie wirklich alle bei diesem Import erstellten Funktionstests löschen? Diese Operation kann nicht rückgängig gemacht werden."
-      when: Wann
-      who: Wer
-    new: 
+    choose_template_for_account: 
+      account_templates: "Vorlagen des Kontos"
+      all_templates: "Alle Vorlagen"
+      choose_template: "Vorlage wählen"
+      create_template: "Vorlage erstellen"
+      my_templates: "Meine Vorlagen"
+      no_templates_found: "Keine Vorlagen gefunden."
+      public_templates: "Öffentliche Vorlagen"
+      template_created_by: "Erstellt von {{user}}"
+    choose_template_for_site: 
+      account_templates: "Vorlagen des Kontos"
+      all_templates: "Alle Vorlagen"
+      choose_template: "Vorlage wählen"
+      create_template: "Vorlage erstellen"
+      my_templates: "Meine Vorlagen"
+      no_templates_found: "Keine Vorlagen gefunden."
+      public_templates: "Öffentliche Vorlagen"
+      template_created_by: "Erstellt von {{user}}"
+    form: 
       could_not_import: "Konnte nicht importieren"
       csv_data: CSV-Daten
       description: Beschreibung
-      field_names: "Die Felder sind (in dieser Reihenfolge): {{fields}}"
       import: Importieren
-      instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
-      new_import: "Neuer Import von Funktionstests"
       preview: Vorschau
+    import_to_account: 
+      field_names: "Die Felder sind (in dieser Reihenfolge): Site-Name, Basis-URL der Site, {{fields}}"
+      instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
+      new_import: "Neuer Import von Funktionstests aus Vorlage {{template}}"
+    import_to_site: 
+      field_names: "Die Felder sind (in dieser Reihenfolge): {{fields}}"
+      instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
+      new_import: "Neuer Import von Funktionstests aus Vorlage {{template}}"
+    index: 
+      all_imports_for_account: "Alle Importe für dieses Konto anzeigen"
+      delete: Löschen
+      description: Beschreibung
+      imported_at: "Importiert vor {{time}}"
+      imports_for_account: "Importe für Konto {{account}}"
+      imports_for_site: "Importe für Site {{site}}"
+      new_import: "Neuer Import"
+      nothing_found: "Keine Importe gefunden"
+      options: Optionen
+      really_delete_import: "Wollen Sie wirklich alle bei diesem Import erstellten Funktionstests löschen? Diese Operation kann nicht rückgängig gemacht werden."
+      site: Site
+      when: Wann
+      who: Wer
+    preview: 
+      preview: Vorschau
+      site: Site
+      url: URL
   health_check_template: 
     condition: 
       for_each_element_in_array: "Für jedes 'element' mehrerer Elemente"

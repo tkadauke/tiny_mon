@@ -287,25 +287,56 @@ en:
         one: "1 minute"
         other: "{{count}} minutes"
   health_check_imports: 
-    index: 
-      delete: Delete
-      description: Description
-      imported_at: "Imported {{time}} ago"
-      imports_for_site: "Imports for site {{site}}"
-      nothing_found: "No imports found"
-      options: Options
-      really_delete_import: "Do you really want to delete all health checks that are associated with this import? This operation can not be undone."
-      when: When
-      who: Who
-    new: 
+    choose_template_for_account: 
+      account_templates: "Account templates"
+      all_templates: "All Templates"
+      choose_template: "Choose template"
+      create_template: "Create new template"
+      my_templates: "My Templates"
+      no_templates_found: "No templates found."
+      public_templates: "Public Templates"
+      template_created_by: "Template created by {{user}}"
+    choose_template_for_site: 
+      account_templates: "Account templates"
+      all_templates: "All Templates"
+      choose_template: "Choose template"
+      create_template: "Create new template"
+      my_templates: "My Templates"
+      no_templates_found: "No templates found."
+      public_templates: "Public Templates"
+      template_created_by: "Template created by {{user}}"
+    form: 
       could_not_import: "Could not import"
       csv_data: "CSV Data"
       description: Description
-      field_names: "The fields are (in this order): {{fields}}"
       import: Import
-      instructions: "Copy the health checks into the field below as CSV data"
-      new_import: "New Import"
       preview: Preview
+    import_to_account: 
+      field_names: "The fields are (in this order): Site name, Site's Base URL, {{fields}}"
+      instructions: "Copy the health checks into the field below as CSV data"
+      new_import: "New Import from health check template {{template}}"
+    import_to_site: 
+      field_names: "The fields are (in this order): {{fields}}"
+      instructions: "Copy the health checks into the field below as CSV data"
+      new_import: "New Import from health check template {{template}}"
+    index: 
+      all_imports_for_account: "Show all imports for this account"
+      delete: Delete
+      description: Description
+      imported_at: "Imported {{time}} ago"
+      imports_for_account: "Imports for account {{account}}"
+      imports_for_site: "Imports for site {{site}}"
+      new_import: "New Import"
+      nothing_found: "No imports found"
+      options: Options
+      really_delete_import: "Do you really want to delete all health checks that are associated with this import? This operation can not be undone."
+      site: Site
+      when: When
+      who: Who
+    preview: 
+      preview: Preview
+      site: Site
+      url: URL
   health_check_template: 
     condition: 
       for_each_element_in_array: "For each element 'element' in array"

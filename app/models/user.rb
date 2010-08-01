@@ -85,6 +85,11 @@ class User < ActiveRecord::Base
   def available_health_check_templates(options = {})
     HealthCheckTemplate.paginate(options.update(:conditions => ['user_id = ? or account_id in (?) or public', self.id, accounts.map(&:id)], :order => 'name ASC'))
   end
+  
+  def shares_accounts_with?(user)
+    # This can probably be done more efficiently
+    !(self.accounts & user.accounts).empty?
+  end
 
 protected
   def self.with_search_scope(filter, &block)

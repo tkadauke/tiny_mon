@@ -1,6 +1,10 @@
 module Role::User
   include Role::Base
   
+  def can_see_profile?(user)
+    user == self || self.shares_accounts_with?(user)
+  end
+  
   def can_edit_profile?(user)
     user == self
   end

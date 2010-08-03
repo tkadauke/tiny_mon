@@ -27,7 +27,7 @@ class HealthCheck < ActiveRecord::Base
   end
 
   def self.upcoming(options = {})
-    find :all, options.merge(:conditions => ["enabled and next_check_at > ?", Time.zone.now], :order => 'next_check_at ASC')
+    find :all, options.merge(:conditions => ["enabled and next_check_at > ?", Time.now], :order => 'next_check_at ASC')
   end
   
   def self.find_for_list(filter, find_options)

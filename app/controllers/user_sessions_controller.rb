@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   before_filter :guest_required, :only => [ :new, :create ]
+  skip_before_filter :verify_authenticity_token, :only => :create
 
   def new
     @user_session = UserSession.new

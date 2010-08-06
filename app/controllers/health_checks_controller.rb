@@ -55,6 +55,12 @@ class HealthChecksController < ApplicationController
     end
   end
   
+  def edit_multiple
+    can_edit_health_checks!(@account) do
+      @health_checks = @account.health_checks.find(params[:health_check_ids])
+    end
+  end
+  
   def update
     can_edit_health_checks!(@account) do
       @health_check = @site.health_checks.find_by_permalink!(params[:id])
@@ -64,6 +70,18 @@ class HealthChecksController < ApplicationController
       else
         render :action => 'edit'
       end
+    end
+  end
+  
+  def update_multiple
+    can_edit_health_checks!(@account) do
+      @health_checks = @account.health_checks.find(params[:health_check_ids])
+      updated = @health_checks.map do |health_check|
+        health_check.bulk_update(params[:health_check])
+      end
+      
+      flash[:notice] = I18n.t("flash.notice.bulk_updated_health_checks", :count => updated.count(true))
+      redirect_to health_checks_path
     end
   end
   

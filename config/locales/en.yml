@@ -167,6 +167,7 @@ en:
     check_runs: "Check Runs"
     comments: Comments
     edit: Edit
+    edit_multiple: "Bulk edit"
     footer_links: "Footer links"
     health_check_imports: Import
     health_check_templates: Templates
@@ -253,6 +254,9 @@ en:
       user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
     notice: 
       assign_roles: "Successfully assigned account role to user"
+      bulk_updated_health_checks: 
+        one: "Successfully updated 1 health check"
+        other: "Successfully updated {{count}} health checks"
       created_account: "Successfully created account {{account}}"
       created_comment: "Successfully added comment"
       created_footer_link: "Successfully created footer link"
@@ -416,15 +420,34 @@ en:
     array_variable: 
       add_more: "Add More"
     details: 
+      all: "Select all"
       delete: Delete
       edit: Edit
+      edit_checked: "Edit Selected"
+      invert: "Invert selection"
       name: Name
+      none: "Select none"
       options: Options
       really_delete_health_check: "Do you really want to delete this health check including all check runs? This operation can not be undone."
       site: Site
       status: Status
     edit: 
       edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"
+    edit_multiple: 
+      check_fields_you_want_to_change: "Check the fields you want to change."
+      description: Description
+      edit_multiple_health_checks: 
+        one: "Edit 1 health check"
+        other: "Edit {{count}} health checks"
+      enabled: Enabled
+      interval: Interval
+      name: Name
+      ? "no"
+      : "No"
+      show_all: "Show all {{count}} health checks"
+      update_health_checks: "Update health checks"
+      ? "yes"
+      : "Yes"
     form: 
       could_not_create_health_check: "Could not create health check"
       description: Description

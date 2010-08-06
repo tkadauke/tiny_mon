@@ -167,6 +167,7 @@ de:
     check_runs: Testläufe
     comments: Kommentare
     edit: Bearbeiten
+    edit_multiple: Massenbearbeitung
     footer_links: Fußzeile
     health_check_imports: Importieren
     health_check_templates: Vorlagen
@@ -253,6 +254,9 @@ de:
       user_could_not_be_located: "Es tut uns leid, aber wir konnten den Benutzer nicht identifizieren. Bitte versuchen Sie die URL aus der E-Mail in die Adressleiste des Browsers zu kopieren oder starten Sie den Password-Vergessen-Prozess von vorne."
     notice: 
       assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
+      bulk_updated_health_checks: 
+        one: "1 Funktionstest wurde erfolgreich aktualisiert"
+        other: "{{count}} Funktionstests wurden erfolgreich aktualisiert"
       created_account: "Konto {{account}} wurde erfolgreich erstellt"
       created_comment: "Kommentar wurde erfolgreich hinzugefügt"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
@@ -416,15 +420,34 @@ de:
     array_variable: 
       add_more: "Weiteres Feld hinzufügen"
     details: 
+      all: "Alle wählen"
       delete: Entfernen
       edit: Bearbeiten
+      edit_checked: "Ausgewählte bearbeiten"
+      invert: "Auswahl umkehren"
       name: Name
+      none: "Keinen wählen"
       options: Optionen
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
       site: Site
       status: Status
     edit: 
       edit_health_check_for_site: "Funktionstest {{health_check}} für Site {{site}} bearbeiten"
+    edit_multiple: 
+      check_fields_you_want_to_change: "Wählen Sie die Felder an, die Sie ändern möchten."
+      description: Beschreibung
+      edit_multiple_health_checks: 
+        one: "1 Funktionstest bearbeiten"
+        other: "{{count}} Funktionstests bearbeiten"
+      enabled: Aktiviert
+      interval: Interval
+      name: Name
+      ? "no"
+      : Nein
+      show_all: "Alle {{count}} Funktionstests anzeigen"
+      update_health_checks: "Funktionstests aktualisieren"
+      ? "yes"
+      : Ja
     form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
       description: Bescheibung

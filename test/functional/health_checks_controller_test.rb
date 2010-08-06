@@ -84,4 +84,38 @@ class HealthChecksControllerTest < ActionController::TestCase
       assert_response :redirect
     end
   end
+  
+  test "should edit multiple health checks" do
+    health_check1 = @site.health_checks.create(:name => 'Home page', :interval => 1)
+    health_check2 = @site.health_checks.create(:name => 'About page', :interval => 1)
+    
+    post :edit_multiple, :health_check_ids => [health_check1.id, health_check2.id]
+    assert_response :success
+  end
+  
+  test "should update multiple health checks" do
+    health_check1 = @site.health_checks.create(:name => 'Home page', :interval => 1)
+    health_check2 = @site.health_checks.create(:name => 'About page', :interval => 1)
+
+    put :update_multiple, :health_check_ids => [health_check1.id, health_check2.id], :health_check => { :bulk_update_interval => '1', :interval => 60 }
+    
+    assert_response :redirect
+    assert_not_nil flash[:notice]
+    
+    assert_equal 60, health_check1.reload.interval
+    assert_equal 60, health_check2.reload.interval
+  end
+  
+  test "should not update unselected fields when updating multiple health checks" do
+    health_check1 = @site.health_checks.create(:name => 'Home page', :interval => 1)
+    health_check2 = @site.health_checks.create(:name => 'About page', :interval => 1)
+
+    put :update_multiple, :health_check_ids => [health_check1.id, health_check2.id], :health_check => { :bulk_update_interval => '0', :interval => 60 }
+    
+    assert_response :redirect
+    assert_not_nil flash[:notice]
+    
+    assert_equal 1, health_check1.reload.interval
+    assert_equal 1, health_check2.reload.interval
+  end
 end

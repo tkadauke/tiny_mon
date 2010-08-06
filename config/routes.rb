@@ -30,8 +30,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :health_check_imports
 
-  map.health_checks '/health_checks', :controller => 'health_checks', :action => 'index'
-  map.sites '/sites', :controller => 'sites', :action => 'index'
+  map.resources :health_checks, :collection => { :edit_multiple => :post, :update_multiple => :put }
+  map.resources :sites
 
   map.resources :users do |users|
     users.resources :comments

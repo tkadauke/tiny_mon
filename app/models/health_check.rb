@@ -94,6 +94,15 @@ class HealthCheck < ActiveRecord::Base
     template.validate_health_check_data(self, template_data) if template && template_data && new_record?
   end
   
+  def bulk_update(attributes)
+    selections = attributes.inject({}) { |hash, pair| hash[pair.first] = pair.last if pair.first =~ /^bulk_update/; hash }.with_indifferent_access
+    values = attributes.inject({}) { |hash, pair| hash[pair.first] = pair.last if pair.first !~ /^bulk_update/; hash }.with_indifferent_access
+    
+    values.reject! { |name, v| selections["bulk_update_#{name}"] != '1' }
+    
+    update_attributes(values)
+  end
+  
 protected
   def do_check(check_run)
     runner = Runner.new(check_run.health_check)

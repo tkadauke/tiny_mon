@@ -2,7 +2,7 @@
   <%= f.error_messages :header_message => t('.could_not_create_health_check') %>
   
   <p class="form_item">
-    <span class="label"><%= f.label :name, t('.name') %></span>
+    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
     <%= f.text_field :name %>
   </p>
 
@@ -12,7 +12,7 @@
   </p>
 
   <p class="form_item">
-    <span class="label"><%= f.label :interval, t('.interval') %></span>
+    <span class="label"><%= f.label :interval, t('.interval'), :class => 'required' %></span>
     <%= f.select :interval, HealthCheck.intervals_with_units %>
   </p>
   

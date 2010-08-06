@@ -2,7 +2,7 @@
   <%= f.error_messages :header_message => t('.error_creating_user_account') %>
   
   <p class="form_item">
-    <span class="label"><%= f.label :email, t('.email') %></span>
+    <span class="label"><%= f.label :email, t('.email'), :class => 'required' %></span>
     <%= f.text_field :email %>
   </p>
   

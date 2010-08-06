@@ -1,5 +1,5 @@
 <p class="form_item">
-  <span class="label"><%= f.label :duration, t('.duration') %></span>
+  <span class="label"><%= f.label :duration, t('.duration'), :class => 'required' %></span>
   <span class="desc"><%= t('.duration_in_seconds') %></span>
   <%= f.text_field :duration %>
 </p>

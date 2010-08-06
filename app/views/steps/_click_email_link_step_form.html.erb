@@ -1,5 +1,5 @@
 <p class="form_item">
-  <span class="label"><%= f.label :link_pattern, t('.link_pattern') %></span>
+  <span class="label"><%= f.label :link_pattern, t('.link_pattern'), :class => 'required' %></span>
   <span class="desc"><%= t('.substring_of_url') %></span>
   <%= f.text_field :link_pattern %>
 </p>

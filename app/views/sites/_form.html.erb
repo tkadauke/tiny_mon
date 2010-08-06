@@ -2,12 +2,12 @@
   <%= f.error_messages :header_message => t('.could_not_create_site') %>
   
   <p class="form_item">
-    <span class="label"><%= f.label :name, t('.name') %></span>
+    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
     <%= f.text_field :name %>
   </p>
 
   <p class="form_item">
-    <span class="label"><%= f.label :url, t('.url') %></span>
+    <span class="label"><%= f.label :url, t('.url'), :class => 'required' %></span>
     <%= f.text_field :url %>
   </p>
   

@@ -10,7 +10,7 @@
     <% if step.new_record? %>
       <% if step.position.blank? %>
         <p class="form_item">
-          <span class="label"><%= f.label :type, t('.type') %></span>
+          <span class="label"><%= f.label :type, t('.type'), :class => 'required' %></span>
           <%= select_tag :type, options_for_select(Step.available_types_with_translations, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { new Ajax.Updater('new_step_container', #{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, { method: 'get', parameters: { type: this.value } }) }" %><br/>
         </p>
       <% else %>

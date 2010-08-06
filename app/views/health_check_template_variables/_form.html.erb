@@ -17,16 +17,16 @@
       <% end %>
     </dd>
 
-    <dt><%= fields.label :name, t(".name") %></dt>
+    <dt><%= fields.label :name, t(".name"), :class => 'required' %></dt>
     <dd><%= fields.text_field :name %></dd>
 
-    <dt><%= fields.label :display_name, t(".display_name") %></dt>
+    <dt><%= fields.label :display_name, t(".display_name"), :class => 'required' %></dt>
     <dd><%= fields.text_field :display_name %></dd>
 
     <dt><%= fields.label :description, t(".description") %></dt>
     <dd><%= fields.text_field :description %></dd>
 
-    <dt><%= fields.label :type, t(".type") %></dt>
+    <dt><%= fields.label :type, t(".type"), :class => 'required' %></dt>
     <dd><%= fields.select :type, HealthCheckTemplateVariable.available_types_with_translations %></dd>
 
     <dt><%= fields.label :required, t(".required") %></dt>

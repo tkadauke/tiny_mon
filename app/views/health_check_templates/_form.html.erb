@@ -1,7 +1,7 @@
 <h3><%= t(".about_the_template") %></h3>
 
 <p class="form_item">
-  <span class="label"><%= f.label :name, t('.name') %></span>
+  <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
   <span class="desc"><%= t(".template_name") %></span>
   <%= f.text_field :name %>
 </p>
@@ -36,7 +36,7 @@
 <h3><%= t(".health_check_fields") %></h3>
 
 <p class="form_item">
-  <span class="label"><%= f.label :name_template, t(".name_template") %></span>
+  <span class="label"><%= f.label :name_template, t(".name_template"), :class => 'required' %></span>
   <span class="desc"><%= t(".template_for_health_check_name") %></span>
   <%= f.text_field :name_template %>
 </p>
@@ -48,7 +48,7 @@
 </p>
 
 <p class="form_item">
-  <span class="label"><%= f.label :interval, t(".interval") %></span>
+  <span class="label"><%= f.label :interval, t(".interval"), :class => 'required' %></span>
   <span class="desc"><%= t(".interval_for_generated_health_checks") %></span>
   <%= f.select :interval, HealthCheck.intervals_with_units %>
 </p>

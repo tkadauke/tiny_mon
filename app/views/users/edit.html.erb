@@ -4,12 +4,12 @@
   <%= f.error_messages :header_message => t('.could_not_update_user') %>
 
   <p class="form_item">
-    <span class="label"><%= f.label :full_name, t('.full_name') %></span>
+    <span class="label"><%= f.label :full_name, t('.full_name'), :class => 'required' %></span>
     <%= f.text_field :full_name %>
   </p>
 
   <p class="form_item">
-    <span class="label"><%= f.label :email, t('.email_address') %></span>
+    <span class="label"><%= f.label :email, t('.email_address'), :class => 'required' %></span>
     <span class="desc"><%= t('.the_email_address_is_used_for_notifications') %></span>
     <%= f.text_field :email %>
   </p>

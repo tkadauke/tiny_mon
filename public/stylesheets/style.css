@@ -401,3 +401,5 @@ ul.action-list li:last-child { border: none; }
 .overall-status { float: right; vertical-align: middle; }
 
 table.edit-multiple tr td { vertical-align: top; }
+
+label.required:after { content: "*"; }

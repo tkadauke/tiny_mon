@@ -1,5 +1,5 @@
 <p class="form_item">
-  <span class="label"><%= f.label :url, t('.url') %></span>
+  <span class="label"><%= f.label :url, t('.url'), :class => 'required' %></span>
   <span class="desc"><%= t('.relative_or_absolute') %></span>
   <%= f.text_field :url %>
 </p>

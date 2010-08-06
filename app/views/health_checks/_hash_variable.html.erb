@@ -1,7 +1,7 @@
 <% hash_id = "hash_#{rand(1_000_000)}" %>
 <p class="form_item" id="<%= hash_id %>">
   <span class="label">
-    <%= f.label variable.name, variable.display_name %>
+    <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'required' : '' %>
     <%= link_to_function t(".add_more"), %{
       input_key = new Element('input', {
         type: 'text', id: 'health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_key',

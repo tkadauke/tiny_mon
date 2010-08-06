@@ -1,7 +1,7 @@
 <% array_id = "array_#{rand(1_000_000)}" %>
 <p class="form_item" id="<%= array_id %>">
   <span class="label">
-    <%= f.label variable.name, variable.display_name %>
+    <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'required' : '' %>
     <%= link_to_function t(".add_more"), %{
       input = new Element('input', {
         type: 'text', id: 'health_check_template_data_#{variable.name}_' + #{array_id}_index,

@@ -609,6 +609,7 @@ en:
       deployment_url: "Callback-URL for marking site with deployment"
       edit_site: "Edit Site"
       site: "Site {{site}}"
+      status: "Overall status"
       token: "Deployment token"
     tabs: 
       deployments: Deployments

@@ -3,6 +3,9 @@
 <%= render :partial => "tabs" %>
 
 <dl>
+  <dt><%= t(".status") %></dt>
+  <dd><%= overall_status(@site) %></dd>
+  
   <dt><%= t(".base_url") %></dt>
   <dd><%=h @site.url %></dd>
   

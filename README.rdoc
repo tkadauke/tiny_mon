@@ -30,6 +30,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Import health checks from CSV files
 - Start as many workers as you want when using Resque
 - Bulk update health checks
+- Mark your check runs with the currently deployed revision to quickly identify bad deployments
 
 === Missing Stuff
 

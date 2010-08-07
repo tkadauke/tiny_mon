@@ -28,7 +28,8 @@ module Role::User
                       :create_sites, :edit_sites, :delete_sites,
                       :create_comments,
                       :create_health_check_templates,
-                      :create_health_check_imports, :delete_health_check_imports
+                      :create_health_check_imports, :delete_health_check_imports,
+                      :create_deployments
   
   def can_remove_user_from_account?(user, account)
     user != self && can_add_user_to_account?(account)

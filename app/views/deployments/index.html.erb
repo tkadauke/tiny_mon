@@ -31,4 +31,6 @@
   <%= will_paginate @deployments %>
 <% end %>
 
-<p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site) %></p>
+<% if current_user.can_create_deployments?(@account) %>
+  <p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site) %></p>
+<% end %>

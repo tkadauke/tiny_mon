@@ -523,6 +523,7 @@ en:
       comments: "Comments ({{count}})"
       description: Description
       disable: Disable
+      duration: Duration
       edit: Edit
       edit_steps: "Edit Steps"
       enable: Enable
@@ -532,6 +533,7 @@ en:
         other: "{{count}} minutes"
       last_check_run: "Last check run"
       run: Run
+      run_at: "Run at"
       view_steps: "View Steps"
     template_form: 
       could_not_create_health_check: "Could not create health check"

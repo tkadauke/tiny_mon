@@ -37,7 +37,48 @@
   <% end %>
 </dl>
 
-<p><%= image_tag account_site_health_check_check_runs_path(@account, @site, @health_check, :format => 'png') %></p>
+<% if @health_check.enabled? %>
+  <div id="graph" style="width: 800px; height: 300px; margin-bottom: 10px;"></div>
+
+  <% check_runs = @health_check.recent_check_runs %>
+  <script language="javascript" type="text/javascript">
+    Event.observe(window, 'load', function() {
+      var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
+      var d1 = <%= check_runs.collect { |run| [run.created_at.to_time.to_i * 1000, run.duration] }.to_json %>;
+      var ids = <%= check_runs.inject({}) { |hash, run| hash[run.created_at.to_time.to_i * 1000] = run.id; hash }.to_json %>;
+      var data = [{ data: d1, label: "Duration" }];
+    
+      new Proto.Chart($("graph"), data, {
+        legend: { show: true },
+        xaxis: { mode: "time" },
+        mouse: {
+          track: true,
+          fixedPosition: false,
+          sensibility: 10000,
+          trackFormatter: function(obj) { return <%= t(".run_at").inspect %> + ': ' + new Date(parseInt(obj.x)).toISOString() + '<br/>' + <%= t(".duration").inspect %> + ': ' + obj.y + 's'; }
+        },
+        allowDataClick: true,
+        grid: {
+  				drawYAxis: true,
+  				drawXAxis: true,
+  				clickable: true
+  			}
+      });
+    
+      currentPoint = null;
+    
+      $('graph').observe('ProtoChart:hit', function(e) {
+  			currentPoint = e.memo[0];
+  		});
+		
+  		$('graph').observe('ProtoChart:plotclick', function(e) {
+  		  if (currentPoint) {
+    		  document.location.href = base_url + '/' + ids[currentPoint.x];
+  		  }
+  		});
+    });
+  </script>
+<% end %>
 
 <h3><%= t('.comments', :count => @comments_count) %></h3>
 

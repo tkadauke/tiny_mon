@@ -403,3 +403,14 @@ ul.action-list li:last-child { border: none; }
 table.edit-multiple tr td { vertical-align: top; }
 
 label.required:after { content: "*"; }
+
+.mouseValHolder {
+	padding: 5px;
+	border: 1px solid #808080;
+	background: #F0F0F0;
+	opacity:0.7;
+	background-color:#000;
+	color:#fff;
+	height: 30px;
+	width: 200px;
+}

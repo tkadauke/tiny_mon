@@ -523,6 +523,7 @@ de:
       comments: "Kommentare ({{count}})"
       description: Beschreibung
       disable: Deaktivieren
+      duration: Dauer
       edit: Bearbeiten
       edit_steps: "Schritte bearbeiten"
       enable: Aktivieren
@@ -532,6 +533,7 @@ de:
         other: "{{count}} Minuten"
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
+      run_at: Zeit
       view_steps: "Schritte anzeigen"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"

@@ -35,7 +35,7 @@ class HealthChecksController < ApplicationController
       else
         if @health_check.save
           flash[:notice] = I18n.t('flash.notice.created_health_check', :health_check => @health_check.name)
-          redirect_to account_site_health_check_path(@account, @site, @health_check)
+          redirect_to account_site_health_check_steps_path(@account, @site, @health_check)
         else
           render :action => 'new'
         end

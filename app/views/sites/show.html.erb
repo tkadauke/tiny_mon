@@ -11,15 +11,17 @@
     <% if @site.current_deployment %>
       <p><%= link_to deployment_title(@site.current_deployment), account_site_deployment_path(@account, @site, @site.current_deployment) %></p>
     <% end %>
-    
-    <form>
-      <span><%= t(".token") %></span><br/>
-      <%= text_field_tag nil, @site.deployment_token, :size => 80 %>
-    </form><br/>
-    <form>
-      <span><%= t(".deployment_url") %></span><br/>
-      <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :size => 80 %>
-    </form>
+
+    <% if current_user.can_see_deployment_tokens?(@account) %>
+      <form>
+        <span><%= t(".token") %></span><br/>
+        <%= text_field_tag nil, @site.deployment_token, :size => 80 %>
+      </form><br/>
+      <form>
+        <span><%= t(".deployment_url") %></span><br/>
+        <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :size => 80 %>
+      </form>
+    <% end %>
   </dd>
 </dl>
 

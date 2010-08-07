@@ -5,5 +5,5 @@ module Role::Account::User
         :create_sites, :edit_sites, :delete_sites, :create_comments,
         :create_health_check_templates, :edit_health_check_template,
         :create_health_check_imports, :delete_health_check_imports,
-        :create_deployments
+        :create_deployments, :see_deployment_tokens
 end

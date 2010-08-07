@@ -35,7 +35,7 @@ class DeploymentsController < ApplicationController
 protected
   def find_site_by_token_or_login_required
     if params[:token].blank?
-      [:verify_authenticity_token, :login_required, :find_account, :find_site, :can_create_deployments!].each do |filter|
+      [:verify_authenticity_token, :login_required, :find_account, :find_site, :check_permissions].each do |filter|
         return false if send(filter) == false
       end
     else
@@ -46,5 +46,9 @@ protected
   
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id])
+  end
+  
+  def check_permissions
+    can_create_deployments!(@account)
   end
 end

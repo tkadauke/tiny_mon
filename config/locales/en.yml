@@ -166,6 +166,7 @@ en:
     admin: Administration
     check_runs: "Check Runs"
     comments: Comments
+    deployments: Deployments
     edit: Edit
     edit_multiple: "Bulk edit"
     footer_links: "Footer links"
@@ -201,6 +202,7 @@ en:
       all_comments: "Show all comments"
       check_run_of_health_check_site: "Check run of {{health_check}} (site {{site}})"
       comments: "Comments ({{count}})"
+      deployment: Deployment
       duration: Duration
       duration_in_seconds: "{{seconds}} seconds"
       error_message: "Error Message"
@@ -230,6 +232,29 @@ en:
       user_wrote_time_ago: "{{user}} wrote {{time}} ago"
     new: 
       comment_for_check_run_in_health_check_site: "New comment for check run (health check {{health_check}}, site {{site}})"
+  deployment: 
+    revision_and_time: "Revision {{revision}} ({{time}} ago)"
+  deployments: 
+    index: 
+      checks: Checks
+      count_checks: 
+        one: "1 check"
+        other: "{{count}} checks"
+      deployments_of_site: "Deployments of site {{site}}"
+      mark_deployment: "Mark site with deployment"
+      no_deployments_found: "No deployments found for this site."
+      revision: Revision
+      time_ago: "{{time}} ago"
+      when: When
+    new: 
+      mark_deploment_of_site: "Mark site {{site}} with new deployment"
+      mark_deployment: "Mark site"
+      optional_revision_number: "You can optionally specify the deployment's revision"
+      revision: Revision
+      schedule_checks_in: "Schedule checks in"
+      when_to_schedule_checks_in: "When to schedule all of the site's health checks in minutes from now. Leave blank to schedule no checks."
+    show: 
+      check_runs_of_deployment: "Check runs of deployment"
   errors: 
     ? "404"
     : 
@@ -259,6 +284,7 @@ en:
         other: "Successfully updated {{count}} health checks"
       created_account: "Successfully created account {{account}}"
       created_comment: "Successfully added comment"
+      created_deployment: "Successfully marked site with new deployment"
       created_footer_link: "Successfully created footer link"
       created_health_check: "Successfully created health check {{health_check}}"
       created_health_check_template: "Successfully created health check template"
@@ -575,6 +601,17 @@ en:
       options: Options
     new: 
       new_site: "New Site"
+    show: 
+      base_url: "Base URL"
+      deployment: Deployment
+      deployment_url: "Callback-URL for marking site with deployment"
+      edit_site: "Edit Site"
+      site: "Site {{site}}"
+      token: "Deployment token"
+    tabs: 
+      deployments: Deployments
+      health_checks: "Health checks"
+      information: Information
   start: 
     dashboard: 
       recent_activity: "Recent Activity"

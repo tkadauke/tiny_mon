@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
         checks.resources :comments
       end
       sites.resources :health_check_imports
+      sites.resources :deployments
     end
     
     accounts.resources :user_accounts
@@ -32,6 +33,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :health_checks, :collection => { :edit_multiple => :post, :update_multiple => :put }
   map.resources :sites
+  map.mark_deployment '/deployments/:token', :controller => 'deployments', :action => 'create', :conditions => { :method => :post }
 
   map.resources :users do |users|
     users.resources :comments

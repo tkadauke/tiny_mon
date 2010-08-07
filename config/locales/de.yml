@@ -166,6 +166,7 @@ de:
     admin: Administration
     check_runs: Testläufe
     comments: Kommentare
+    deployments: Deployments
     edit: Bearbeiten
     edit_multiple: Massenbearbeitung
     footer_links: Fußzeile
@@ -201,6 +202,7 @@ de:
       all_comments: "Alle Kommentare anzeigen"
       check_run_of_health_check_site: "Testlauf von {{health_check}} (Site {{site}})"
       comments: "Kommentare ({{count}})"
+      deployment: Deployment
       duration: Dauer
       duration_in_seconds: "{{seconds}} Sekunden"
       error_message: Fehlermeldung
@@ -230,6 +232,29 @@ de:
       user_wrote_time_ago: "{{user}} schrieb vor {{time}}"
     new: 
       comment_for_check_run_in_health_check_site: "Neuer Kommentar für Testlauf (Funktionstest {{health_check}}, Site {{site}})"
+  deployment: 
+    revision_and_time: "Revision {{revision}} (vor {{time}})"
+  deployments: 
+    index: 
+      checks: Testläufe
+      count_checks: 
+        one: "1 Testlauf"
+        other: "{{count}} Testläufe"
+      deployments_of_site: "Deployments von Site {{site}}"
+      mark_deployment: "Site mit neuem Deployment markieren"
+      no_deployments_found: "Bisher wurde die Site nicht mit Deployments markiert."
+      revision: Revision
+      time_ago: "vor {{time}}"
+      when: Wann
+    new: 
+      mark_deploment_of_site: "Site {{site}} mit neuem Deployment markieren"
+      mark_deployment: Markieren
+      optional_revision_number: "Optionale Revision des Deployments"
+      revision: Revision
+      schedule_checks_in: "Testläufe planen"
+      when_to_schedule_checks_in: "Anzahl der Minuten, wann Testläufe für diese Site geplant werden sollen. Wenn nicht ausgefüllt, werden keine Testläufe geplant."
+    show: 
+      check_runs_of_deployment: "Testläufe vom Deployment"
   errors: 
     ? "404"
     : 
@@ -259,6 +284,7 @@ de:
         other: "{{count}} Funktionstests wurden erfolgreich aktualisiert"
       created_account: "Konto {{account}} wurde erfolgreich erstellt"
       created_comment: "Kommentar wurde erfolgreich hinzugefügt"
+      created_deployment: "Site wurde erfolgreich mit Deployment markiert"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
       created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
       created_health_check_template: "Funktionstest-Vorlage wurde erfolgreich erstellt"
@@ -575,6 +601,17 @@ de:
       options: Optionen
     new: 
       new_site: "Neue Site"
+    show: 
+      base_url: Basis-URL
+      deployment: Deployment
+      deployment_url: "Callback-URL zur Deployment-Markierung"
+      edit_site: "Site bearbeiten"
+      site: "Site {{site}}"
+      token: Deployment-Token
+    tabs: 
+      deployments: Deployments
+      health_checks: Funktionstests
+      information: Information
   start: 
     dashboard: 
       recent_activity: "Neueste Aktivität"

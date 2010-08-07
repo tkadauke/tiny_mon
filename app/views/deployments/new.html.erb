@@ -1,0 +1,17 @@
+<h2><%= t(".mark_deploment_of_site", :site => @site.name) %></h2>
+
+<% form_for [@account, @site, @deployment] do |f| %>
+  <p class="form_item">
+    <span class="label"><%= f.label :revision, t(".revision") %></span>
+    <span class="desc"><%= t(".optional_revision_number") %></span>
+    <%= f.text_field :revision %>
+  </p>
+  
+  <p class="form_item">
+    <span class="label"><%= f.label :schedule_checks_in, t(".schedule_checks_in") %></span>
+    <span class="desc"><%= t(".when_to_schedule_checks_in") %></span>
+    <%= f.text_field :schedule_checks_in %>
+  </p>
+  
+  <p><%= f.submit t(".mark_deployment") %></p>
+<% end %>

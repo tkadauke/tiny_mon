@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100801002911) do
+ActiveRecord::Schema.define(:version => 20100807011752) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -27,11 +27,13 @@ ActiveRecord::Schema.define(:version => 20100801002911) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
+    t.integer  "deployment_id"
   end
 
   add_index "check_runs", ["account_id", "created_at"], :name => "index_check_runs_on_account_id_and_created_at"
   add_index "check_runs", ["account_id"], :name => "index_check_runs_on_account_id"
   add_index "check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
+  add_index "check_runs", ["deployment_id"], :name => "index_new_check_runs_on_deployment_id"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
 
   create_table "comments", :force => true do |t|
@@ -56,6 +58,15 @@ ActiveRecord::Schema.define(:version => 20100801002911) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "deployments", :force => true do |t|
+    t.integer  "site_id"
+    t.string   "revision"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deployments", ["site_id"], :name => "index_deployments_on_site_id"
 
   create_table "footer_links", :force => true do |t|
     t.string   "text"
@@ -158,8 +169,10 @@ ActiveRecord::Schema.define(:version => 20100801002911) do
     t.datetime "updated_at"
     t.string   "permalink"
     t.integer  "account_id"
+    t.string   "deployment_token"
   end
 
+  add_index "sites", ["deployment_token"], :name => "index_sites_on_deployment_token"
   add_index "sites", ["name"], :name => "index_sites_on_name"
 
   create_table "steps", :force => true do |t|

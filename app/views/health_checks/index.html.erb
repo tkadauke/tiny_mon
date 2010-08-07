@@ -1,5 +1,7 @@
 <h2><%= t('.health_checks_for_site', :site => @site.name) %></h2>
 
+<%= render :partial => "/sites/tabs" %>
+
 <%= render :partial => "/shared/filter", :locals => { :url => account_site_health_checks_path(@account, @site, :report => params[:report]) } %>
 
 <p>

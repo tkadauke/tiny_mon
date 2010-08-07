@@ -30,7 +30,6 @@ class SitesController < ApplicationController
   
   def show
     @site = @account.sites.find_by_permalink!(params[:id])
-    redirect_to account_site_health_checks_path(@account, @site)
   end
   
   def edit

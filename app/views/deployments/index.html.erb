@@ -1,0 +1,32 @@
+<h2><%= t(".deployments_of_site", :site => @site.name) %></h2>
+
+<%= render :partial => "/sites/tabs" %>
+
+<% if @deployments.empty? %>
+  <p><%= t(".no_deployments_found") %></p>
+<% else %>
+  <%= will_paginate @deployments %>
+
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= t(".when") %></th>
+        <th><%= t(".revision") %></th>
+        <th><%= t(".checks") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @deployments.each do |deployment| %>
+        <tr>
+          <td><%= link_to t(".time_ago", :time => time_ago_in_words(deployment.created_at)), account_site_deployment_path(@account, @site, deployment) %></td>
+          <td><%= link_to deployment.revision, account_site_deployment_path(@account, @site, deployment) %></td>
+          <td><%= t(".count_checks", :count => deployment.check_runs.count) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @deployments %>
+<% end %>
+
+<p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site) %></p>

@@ -1,1 +1,28 @@
-<h2><%= @site.name %></h2>
+<h2><%= t('.site', :site => @site.name) %></h2>
+
+<%= render :partial => "tabs" %>
+
+<dl>
+  <dt><%= t(".base_url") %></dt>
+  <dd><%=h @site.url %></dd>
+  
+  <dt><%= t(".deployment") %></dt>
+  <dd>
+    <% if @site.current_deployment %>
+      <p><%= link_to deployment_title(@site.current_deployment), account_site_deployment_path(@account, @site, @site.current_deployment) %></p>
+    <% end %>
+    
+    <form>
+      <span><%= t(".token") %></span><br/>
+      <%= text_field_tag nil, @site.deployment_token, :size => 80 %>
+    </form><br/>
+    <form>
+      <span><%= t(".deployment_url") %></span><br/>
+      <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :size => 80 %>
+    </form>
+  </dd>
+</dl>
+
+<% if current_user.can_edit_sites?(@account) %>
+  <p><%= link_to t(".edit_site"), edit_account_site_path(@account, @site) %></p>
+<% end %>

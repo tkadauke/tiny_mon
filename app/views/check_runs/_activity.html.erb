@@ -17,7 +17,7 @@
           <td><%= status_icon check_run %></td>
           <td><%= link_to t(".time_ago", :when => time_ago_in_words(check_run.created_at)), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %></td>
           <td><%= t(".duration_in_seconds", :duration => "%5.1f" % check_run.duration) %></td>
-          <td><%= link_to check_run.health_check.site.name, account_site_path(check_run.health_check.site.account, check_run.health_check.site) %></td>
+          <td><%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %></td>
           <td><%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %></td>
         </tr>
       <% end %>

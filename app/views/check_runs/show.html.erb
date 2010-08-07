@@ -9,6 +9,11 @@
 
     <dt><%= t('.duration') %></dt>
     <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
+    
+    <% if @check_run.deployment %>
+      <dt><%= t(".deployment") %></dt>
+      <dd><%= link_to deployment_title(@check_run.deployment), account_site_deployment_path(@account, @site, @check_run.deployment) %>
+    <% end %>
 
     <% if @check_run.error_message %>
       <dt><%= t('.error_message') %></dt>

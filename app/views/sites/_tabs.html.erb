@@ -1,0 +1,7 @@
+<p>
+  <% action_list do |a| %>
+    <% a.link_to t(".information"), account_site_path(@account, @site) %>
+    <% a.link_to t(".health_checks"), account_site_health_checks_path(@account, @site) %>
+    <% a.link_to t(".deployments"), account_site_deployments_path(@account, @site) %>
+  <% end %>
+</p>

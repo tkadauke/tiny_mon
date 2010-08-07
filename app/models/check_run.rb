@@ -1,12 +1,14 @@
 class CheckRun < ActiveRecord::Base
   belongs_to :health_check
   belongs_to :account
+  belongs_to :deployment
   has_many :comments, :dependent => :delete_all
   has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
   
   serialize :log, Array
   
   before_create :set_account
+  before_create :set_deployment
   after_update :update_health_check_status
   after_update :notify_subscribers
   
@@ -23,6 +25,10 @@ class CheckRun < ActiveRecord::Base
 protected
   def set_account
     self.account_id = health_check.site.account_id
+  end
+  
+  def set_deployment
+    self.deployment = health_check.site.current_deployment
   end
 
   def update_health_check_status

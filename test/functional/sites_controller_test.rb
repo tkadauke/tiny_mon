@@ -34,10 +34,10 @@ class SitesControllerTest < ActionController::TestCase
     end
   end
   
-  test "should redirect to health checks when showing site" do
+  test "should show site" do
     site = @account.sites.create(:name => 'example.com', :url => 'http://www.example.com')
     get :show, :account_id => @account, :id => site.to_param
-    assert_response :redirect
+    assert_response :success
   end
   
   test "should show edit" do

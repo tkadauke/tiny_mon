@@ -76,9 +76,13 @@ class HealthCheck < ActiveRecord::Base
   
   def check!
     check_run = check_runs.create(:started_at => Time.now.to_f)
-    update_attribute(:next_check_at, interval.minutes.from_now)
+    schedule_next_check(interval.minutes.from_now)
     do_check(check_run)
     check_run
+  end
+  
+  def schedule_next_check(timestamp)
+    update_attribute(:next_check_at, timestamp)
   end
   
   def get_info_from_template

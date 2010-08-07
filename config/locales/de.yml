@@ -244,6 +244,7 @@ de:
       mark_deployment: "Site mit neuem Deployment markieren"
       no_deployments_found: "Bisher wurde die Site nicht mit Deployments markiert."
       revision: Revision
+      status: Status
       time_ago: "vor {{time}}"
       when: Wann
     new: 
@@ -599,6 +600,7 @@ de:
       no_sites_configured: "Keine Sites konfiguriert."
       no_sites_found: "Keine Sites gefunden."
       options: Optionen
+      status: Status
     new: 
       new_site: "Neue Site"
     show: 

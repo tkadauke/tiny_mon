@@ -42,11 +42,11 @@ module ApplicationHelper
     image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
   end
   
-  def overall_status
-    if current_user.current_account.all_checks_successful?
-      image_tag "icons/large/success.png", :alt => I18n.t("status.all_checks_successful"), :title => I18n.t("status.all_checks_successful")
+  def overall_status(model = current_user.current_account, version = :large)
+    if model.all_checks_successful?
+      image_tag "icons/#{version}/success.png", :alt => I18n.t("status.all_checks_successful"), :title => I18n.t("status.all_checks_successful")
     else
-      image_tag "icons/large/failure.png", :alt => I18n.t("status.one_or_more_checks_failed"), :title => I18n.t("status.one_or_more_checks_failed")
+      image_tag "icons/#{version}/failure.png", :alt => I18n.t("status.one_or_more_checks_failed"), :title => I18n.t("status.one_or_more_checks_failed")
     end
   end
   

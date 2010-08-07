@@ -16,4 +16,8 @@ class Deployment < ActiveRecord::Base
       health_check.schedule_next_check(schedule_checks_in.to_i.minutes.from_now)
     end
   end
+  
+  def all_checks_successful?
+    check_runs.count(:conditions => { :status => 'failure' }) == 0
+  end
 end

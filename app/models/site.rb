@@ -18,6 +18,10 @@ class Site < ActiveRecord::Base
     deployments.last
   end
   
+  def all_checks_successful?
+    health_checks.count(:conditions => { :status => 'failure', :enabled => true }) == 0
+  end
+  
   def self.from_param!(param)
     find_by_permalink!(param)
   end

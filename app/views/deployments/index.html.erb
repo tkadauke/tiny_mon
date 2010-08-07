@@ -10,6 +10,7 @@
   <table class="list">
     <thead>
       <tr>
+        <th><%= t(".status") %></th>
         <th><%= t(".when") %></th>
         <th><%= t(".revision") %></th>
         <th><%= t(".checks") %></th>
@@ -18,6 +19,7 @@
     <tbody>
       <% @deployments.each do |deployment| %>
         <tr>
+          <td><%= overall_status(deployment, :small) %></td>
           <td><%= link_to t(".time_ago", :time => time_ago_in_words(deployment.created_at)), account_site_deployment_path(@account, @site, deployment) %></td>
           <td><%= link_to deployment.revision, account_site_deployment_path(@account, @site, deployment) %></td>
           <td><%= t(".count_checks", :count => deployment.check_runs.count) %></td>

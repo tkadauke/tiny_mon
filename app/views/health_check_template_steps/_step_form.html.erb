@@ -1,3 +1,3 @@
-<% fake_form_for_health_check_template_step do |f| %>
-  <%= render :partial => "form", :locals => { :f => f, :child_index => child_index } %>
+<%= fake_form_for_health_check_template_step do |f| %>
+  <%= render "form", :f => f, :child_index => child_index %>
 <% end %>

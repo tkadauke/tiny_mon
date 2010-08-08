@@ -11,31 +11,27 @@ class Account < ActiveRecord::Base
   has_many :check_runs
   has_many :comments
   
-  named_scope :ordered_by_name, :order => 'name ASC'
+  scope :ordered_by_name, order('name ASC')
   
   def self.from_param!(param)
     find(param)
   end
   
   def all_checks_successful?
-    health_checks.count(:conditions => { :status => 'failure', :enabled => true }) == 0
+    health_checks.failed.count == 0
   end
   
   def user_accounts_with_users
-    user_accounts.find(:all, :include => :user, :order => 'users.full_name ASC')
+    user_accounts.includes(:user).order('users.full_name ASC')
   end
 
-  def self.paginate_for_list(filter, options = {})
-    with_search_scope(filter) do
-      paginate(options.merge(:order => 'accounts.name ASC'))
-    end
+  def self.filter_for_list(filter)
+    with_search_scope(filter).order('accounts.name ASC')
   end
 
 protected
   def self.with_search_scope(filter, &block)
     conditions = filter.empty? ? nil : ['accounts.name LIKE ?', "%#{filter.query}%"]
-    with_scope :find => { :conditions => conditions } do
-      yield
-    end
+    where(conditions)
   end
 end

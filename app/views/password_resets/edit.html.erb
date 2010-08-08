@@ -1,6 +1,6 @@
 <h2><%= t('.change_password') %></h2>
 
-<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+<%= form_for @user, :url => password_reset_path, :method => :put do |f| %>
   <%= f.error_messages :header_message => t('.could_not_reset_password') %>
   
   <p class="form_item">

@@ -11,7 +11,10 @@ class HealthCheck < ActiveRecord::Base
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
   
-  named_scope :enabled, :conditions => { :enabled => true }
+  scope :enabled, where(:enabled => true)
+  scope :upcoming, lambda { where("enabled and next_check_at > ?", Time.now).order('next_check_at ASC') }
+  scope :due, lambda { enabled.where('next_check_at is not null and next_check_at < ?', Time.now) }
+  scope :failed, enabled.where(:status => 'failure')
   
   validates_presence_of :site_id, :name, :interval
   
@@ -26,18 +29,8 @@ class HealthCheck < ActiveRecord::Base
     self.template_data = HealthCheckTemplateData.new(self.template_data || {})
   end
 
-  def self.upcoming(options = {})
-    find :all, options.merge(:conditions => ["enabled and next_check_at > ?", Time.now], :order => 'next_check_at ASC')
-  end
-  
-  def self.find_for_list(filter, find_options)
-    with_search_scope(filter) do
-      find(:all, find_options.merge(:include => {:site => :account}))
-    end
-  end
-
-  def self.due
-    enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
+  def self.filter_for_list(filter)
+    with_search_scope(filter).includes(:site => :account)
   end
   
   # This method reenables health checks that got accidentally disabled, for example when
@@ -47,7 +40,7 @@ class HealthCheck < ActiveRecord::Base
   end
 
   def steps_with_clone(clone_id)
-    steps.find(:all).collect { |e| e.id == clone_id.to_i ? [e, e.clone] : e }.flatten
+    steps.collect { |e| e.id == clone_id.to_i ? [e, e.clone] : e }.flatten
   end
   
   def self.intervals
@@ -151,8 +144,6 @@ protected
       ['health_checks.name LIKE ? OR sites.name LIKE ?', "%#{sql_like}%", "%#{sql_like}%"]
     end
     
-    with_scope :find => { :conditions => conditions } do
-      yield
-    end
+    where(conditions)
   end
 end

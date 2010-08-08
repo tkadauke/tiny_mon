@@ -12,7 +12,7 @@ class CheckRun < ActiveRecord::Base
   after_update :update_health_check_status
   after_update :notify_subscribers
   
-  named_scope :recent, :order => 'check_runs.created_at DESC', :limit => 10
+  scope :recent, order('check_runs.created_at DESC').limit(10)
   
   def duration
     (self.ended_at - self.started_at).to_f rescue 0.0

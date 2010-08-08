@@ -8,6 +8,8 @@ class Comment < ActiveRecord::Base
   
   after_create :notify_subscribers
   
+  scope :visible_to, lambda { |user| where('account_id in (?)', user.accounts.map(&:id)) }
+  
 protected
   def notify_subscribers
     TinyMon::CommentNotifier.new(self).notify!

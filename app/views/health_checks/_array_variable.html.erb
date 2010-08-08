@@ -25,7 +25,7 @@
   
   <% array = (f.object.send(variable.name) || { '0' => "" }); index = 0 %>
   <% array.sort_by { |x| x.first.to_i }.collect { |x| x.last }.each_with_index do |value, index| %>
-    <% f.fields_for variable.name do |fields| %>
+    <%= f.fields_for variable.name do |fields| %>
       <span id="<%= [array_id, index].join('_') %>">
         <%= fields.text_field index.to_s, :value => value %><%= link_to_function '[X]', "$('#{[array_id, index].join('_')}').remove()" %>
         <br/>

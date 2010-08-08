@@ -1,4 +1,4 @@
-<% form_tag edit_multiple_health_checks_path do %>
+<%= form_tag edit_multiple_health_checks_path do %>
   <table class="list">
     <thead>
       <tr>
@@ -18,7 +18,7 @@
         <tr>
           <td></td>
           <td colspan="4">
-            <% action_list do |a| %>
+            <%= action_list do |a| %>
               <% a.link_to_function t(".all"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = true })} %>
               <% a.link_to_function t(".none"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = false })} %>
               <% a.link_to_function t(".invert"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = !element.checked })} %>
@@ -40,7 +40,7 @@
           <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
           <% if current_user.can_edit_health_checks?(@account) %>
             <td>
-              <% action_list do |a| %>
+              <%= action_list do |a| %>
                 <% a.link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
                 <% a.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %>
               <% end %>

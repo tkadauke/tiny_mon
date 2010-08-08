@@ -1,91 +1,60 @@
-ActionController::Routing::Routes.draw do |map|
-  map.namespace :admin do |admin|
-    admin.resources :footer_links, :collection => { :sort => :post }
-    admin.resources :accounts
-    admin.resources :users
-  end
-  
-  map.admin '/admin', :controller => 'admin'
-  
-  map.resources :accounts, :member => { :switch => :post } do |accounts|
-    accounts.resources :sites do |sites|
-      sites.resources :health_checks do |checks|
-        checks.resources :steps, :collection => { :sort => :post }
-        checks.resources :check_runs do |check_runs|
-          check_runs.resources :comments
-        end
-        
-        checks.resources :comments
+TinyMon::Application.routes.draw do
+  namespace :admin do
+    resources :footer_links do
+      collection do
+        post :sort
       end
-      sites.resources :health_check_imports
-      sites.resources :deployments
     end
+    resources :accounts
+    resources :users
+  end
+  match '/admin' => 'admin#index', :as => :admin
+  
+  resources :accounts do
+    resources :sites do
+      resources :health_checks do
+        resources :steps do
+          collection do
+            post :sort
+          end
+        end
+        resources :check_runs do
+          resources :comments
+        end
+        resources :comments
+      end
+      resources :health_check_imports
+      resources :deployments
+    end
+    resources :user_accounts
     
-    accounts.resources :user_accounts
+    member do
+      post :switch
+    end
   end
   
-  map.resources :health_check_templates
-  map.resources :health_check_template_variables
-  map.resources :health_check_template_steps
-  map.resource :health_check_template_step_data, :controller => '/health_check_template_step_data'
-
-  map.resources :health_check_imports
-
-  map.resources :health_checks, :collection => { :edit_multiple => :post, :update_multiple => :put }
-  map.resources :sites
-  map.mark_deployment '/deployments/:token', :controller => 'deployments', :action => 'create', :conditions => { :method => :post }
-
-  map.resources :users do |users|
-    users.resources :comments
+  resources :health_check_templates
+  resources :health_check_template_variables
+  resources :health_check_template_steps
+  resource :health_check_template_step_data, :to => 'health_check_template_step_data'
+  resources :health_check_imports
+  resources :health_checks do
+    collection do
+      put :update_multiple
+      post :edit_multiple
+    end
   end
-  map.resources :password_resets
-  map.resource :settings
   
-  map.login '/login', :controller => 'user_sessions', :action => 'new', :conditions => { :method => :get }
-  map.connect '/login', :controller => 'user_sessions', :action => 'create', :conditions => { :method => :post }
-  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy', :conditions => { :method => :delete }
-
-  map.root :controller => "start"
-
-  # The priority is based upon order of creation: first created -> highest priority.
-
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+  resources :sites
+  match '/deployments/:token' => 'deployments#create', :as => :mark_deployment, :via => :post
+  resources :users do
+    resources :comments
+  end
+  resources :password_resets
+  resource :settings
   
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
-
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  #map.connect ':controller/:action/:id'
-  #map.connect ':controller/:action/:id.:format'
+  match '/login' => 'user_sessions#new', :as => :login, :via => :get
+  match '/login' => 'user_sessions#create', :via => :post
+  match '/logout' => 'user_sessions#destroy', :as => :logout, :via => :delete
+  root :to => 'start#index'
 end

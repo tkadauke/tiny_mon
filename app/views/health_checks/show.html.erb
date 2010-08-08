@@ -5,7 +5,7 @@
   <dd>
     <%= simple_format @health_check.description %>
     <p>
-      <% action_list do |a| %>
+      <%= action_list do |a| %>
         <% a.link_to t('.check_runs'), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
         <% if current_user.can_edit_health_checks?(@account) %>
           <% a.link_to t('.edit'), edit_account_site_health_check_path(@account, @site, @health_check) %>
@@ -45,7 +45,7 @@
     Event.observe(window, 'load', function() {
       var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
       var d1 = <%= check_runs.collect { |run| [run.created_at.to_time.to_i * 1000, run.duration] }.to_json %>;
-      var ids = <%= check_runs.inject({}) { |hash, run| hash[run.created_at.to_time.to_i * 1000] = run.id; hash }.to_json %>;
+      var ids = <%= check_runs.inject({}) { |hash, run| hash[run.created_at.to_time.to_i * 1000] = run.id; hash }.to_json.html_safe %>;
       var data = [{ data: d1, label: "Duration" }];
     
       new Proto.Chart($("graph"), data, {
@@ -55,27 +55,27 @@
           track: true,
           fixedPosition: false,
           sensibility: 10000,
-          trackFormatter: function(obj) { return <%= t(".run_at").inspect %> + ': ' + new Date(parseInt(obj.x)).toISOString() + '<br/>' + <%= t(".duration").inspect %> + ': ' + obj.y + 's'; }
+          trackFormatter: function(obj) { return <%= t(".run_at").inspect.html_safe %> + ': ' + new Date(parseInt(obj.x)).toISOString() + '<br/>' + <%= t(".duration").inspect.html_safe %> + ': ' + obj.y + 's'; }
         },
         allowDataClick: true,
         grid: {
-  				drawYAxis: true,
-  				drawXAxis: true,
-  				clickable: true
-  			}
+          drawYAxis: true,
+          drawXAxis: true,
+          clickable: true
+        }
       });
     
       currentPoint = null;
     
       $('graph').observe('ProtoChart:hit', function(e) {
-  			currentPoint = e.memo[0];
-  		});
-		
-  		$('graph').observe('ProtoChart:plotclick', function(e) {
-  		  if (currentPoint) {
-    		  document.location.href = base_url + '/' + ids[currentPoint.x];
-  		  }
-  		});
+        currentPoint = e.memo[0];
+      });
+    
+      $('graph').observe('ProtoChart:plotclick', function(e) {
+        if (currentPoint) {
+          document.location.href = base_url + '/' + ids[currentPoint.x];
+        }
+      });
     });
   </script>
 <% end %>

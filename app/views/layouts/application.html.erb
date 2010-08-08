@@ -7,6 +7,7 @@
     <%= javascript_include_tag :defaults %>
     <%= javascript_include_tag 'ProtoChart/ProtoChart' %>
     <%= stylesheet_link_tag 'style' %>
+    <%= csrf_meta_tag %>
   </head>
   <body>
     <!-- wrap start -->
@@ -28,14 +29,14 @@
             <div id="center_header">
               <div id="suggestion">
                 <div class="suggestion_corner_right">
-                  <span><%= t('layouts.report_bugs', :report_link => link_to(t('layouts.report_link_text'), "http://github.com/tkadauke/tiny_mon/issues")) %></span>
+                  <span><%= t('layouts.report_bugs', :report_link => link_to(t('layouts.report_link_text'), "http://github.com/tkadauke/tiny_mon/issues")).html_safe %></span>
                 </div>
               </div>
             </div>
             <div id="right_header">
               <% if logged_in? %>
                 <ul class="action-list">
-                  <li><%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))) %></li>
+                  <li><%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %></li>
                   <% if current_user.can_see_account_details? %>
                     <% if current_user.current_account %>
                       <li><%= link_to current_user.current_account.name, accounts_path %></li>
@@ -97,7 +98,7 @@
             <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
           </div>
         <% end %>
-        <p><%= t('layouts.you_are_here', :bread_crumb => bread_crumb) %></p>
+        <p><%= t('layouts.you_are_here', :bread_crumb => bread_crumb).html_safe %></p>
         <%= yield %>
       <div class="clearer"></div>
 
@@ -118,7 +119,7 @@
           <a href="/health_checks"><%= t('layouts.health_checks') %></a>
           </div>
           <div class="right">
-            <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link) %>
+            <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %>
           </div>
           <div class="clearer"></div>
         </div>

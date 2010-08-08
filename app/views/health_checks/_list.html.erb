@@ -2,8 +2,8 @@
   <p><%= t('.no_health_checks_found') %></p>
 <% else %>
   <% if params[:report] == 'overview' %>
-    <%= render :partial => "overview" %>
+    <%= render "overview" %>
   <% else %>
-    <%= render :partial => "details" %>
+    <%= render "details" %>
   <% end %>
 <% end %>

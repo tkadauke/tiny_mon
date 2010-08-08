@@ -19,7 +19,7 @@ class Site < ActiveRecord::Base
   end
   
   def all_checks_successful?
-    health_checks.count(:conditions => { :status => 'failure', :enabled => true }) == 0
+    health_checks.failed.count == 0
   end
   
   def self.from_param!(param)
@@ -27,17 +27,13 @@ class Site < ActiveRecord::Base
   end
   
   def self.find_for_list(filter)
-    with_search_scope(filter) do
-      find(:all, :include => :account, :order => 'sites.name ASC')
-    end
+    with_search_scope(filter).includes(:account).order('sites.name ASC')
   end
 
 protected
   def self.with_search_scope(filter, &block)
     conditions = filter.empty? ? nil : ['sites.name LIKE ?', "%#{filter.query}%"]
-    with_scope :find => { :conditions => conditions } do
-      yield
-    end
+    where(conditions)
   end
   
   def set_deployment_token

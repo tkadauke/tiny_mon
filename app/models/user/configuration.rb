@@ -69,7 +69,7 @@ class User
 
   private
     def config_file_name
-      "#{RAILS_ROOT}/config/options.yml"
+      "#{Rails.root}/config/options.yml"
     end
   
     def get_config_option(key)

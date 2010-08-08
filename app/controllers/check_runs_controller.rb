@@ -12,7 +12,7 @@ class CheckRunsController < ApplicationController
   def show
     @check_run = @health_check.check_runs.find(params[:id])
     @comment = @check_run.comments.build
-    @comments = @check_run.latest_comments.find(:all, :limit => 5)
+    @comments = @check_run.latest_comments.limit(5)
     @comments_count = @check_run.comments.count
   end
   

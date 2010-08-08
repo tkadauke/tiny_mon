@@ -6,7 +6,7 @@ class UserAccount < ActiveRecord::Base
   
   attr_accessor :email
   
-  before_validation_on_create :set_user_from_email
+  before_validation :set_user_from_email, :on => :create
   
   def after_initialize
     extend "Role::Account::#{self.role.classify}".constantize

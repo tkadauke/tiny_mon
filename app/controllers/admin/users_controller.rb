@@ -4,7 +4,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
-    @users = User.paginate_for_list(@search_filter, :page => params[:page])
+    @users = User.filter_for_list(@search_filter).paginate(:page => params[:page])
     render :update do |page|
       page.replace_html 'users', :partial => 'index'
     end if request.xhr?

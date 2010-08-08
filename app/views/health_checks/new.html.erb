@@ -7,7 +7,7 @@
   <h2><%= t(".new_from_template") %></h2>
   
   <p>
-    <% action_list do |a| %>
+    <%= action_list do |a| %>
       <% a.link_to t(".my_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'mine') %>
       <% a.link_to t(".account_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'account') %>
       <% a.link_to t(".public_templates"), new_account_site_health_check_path(@account, @site, :template => 'select', :filter => 'public') %>
@@ -23,7 +23,7 @@
     <ul class="asterisk">
       <% @health_check_templates.each do |template| %>
         <li>
-          <% action_list do |a| %>
+          <%= action_list do |a| %>
             <% a.link_to template.name, new_account_site_health_check_path(@account, @site, :template => template.id) %>
             <% a.link_to t(".import"), new_account_site_health_check_import_path(@account, @site, :template => template.id) if current_user.can_create_health_check_imports?(@account) %>
           <% end %><br/>

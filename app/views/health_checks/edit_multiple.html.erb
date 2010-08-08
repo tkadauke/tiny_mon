@@ -1,6 +1,6 @@
 <h2><%= t('.edit_multiple_health_checks', :count => @health_checks.size) %></h2>
 
-<% form_for :health_check, :url => update_multiple_health_checks_path, :html => { :method => :put } do |f| %>
+<%= form_for :health_check, :url => update_multiple_health_checks_path, :html => { :method => :put } do |f| %>
   <ul class="asterisk" id="health_check_list">
     <% @health_checks.each_with_index do |health_check, i| %>
       <li<%= ' style="display: none"' if i >= 10 %>>

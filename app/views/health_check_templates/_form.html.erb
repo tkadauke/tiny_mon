@@ -21,7 +21,7 @@
 <h3><%= t(".template_variables") %></h3>
 
 <div id="variables">
-  <%= render :partial => "/health_check_template_variables/form", :locals => { :f => f, :child_index => nil } %>
+  <%= render "/health_check_template_variables/form", :f => f, :child_index => nil %>
 </div>
 
 <%= javascript_tag %{

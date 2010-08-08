@@ -2,7 +2,7 @@ class HealthCheckTemplate < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
   
-  named_scope :public_templates, :conditions => 'public'
+  scope :public_templates, where('public')
   
   validates_presence_of :user_id, :name, :name_template, :interval
   

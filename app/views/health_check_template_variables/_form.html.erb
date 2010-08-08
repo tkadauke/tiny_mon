@@ -1,4 +1,4 @@
-<% f.fields_for :variables, :child_index => child_index do |fields| %>
+<%= f.fields_for :variables, :child_index => child_index do |fields| %>
   <% variable_id = "variable_#{rand(1_000_000)}" %>
   <dl id="<%= variable_id %>">
     <%= fields.hidden_field :position, :class => 'position' %>
@@ -13,7 +13,7 @@
       <% if fields.object.new_record? %>
         <%= link_to_function t(".remove"), "$('#{variable_id}').remove();" %>
       <% else %>
-        <%= fields.check_box '_delete' %> <%= fields.label '_delete', t(".delete") %>
+        <%#= fields.check_box '_delete' %> <%#= fields.label '_delete', t(".delete") %>
       <% end %>
     </dd>
 
@@ -35,5 +35,5 @@
 <% end %>
 
 <div id="replace-variable">
-  <p><%= link_to_remote t('.new_variable'), :url => new_health_check_template_variable_path(:sequence => child_index.nil? ? @health_check_template.variables.size : child_index.to_i + 1), :method => :get %></p>
+  <p><%= link_to t('.new_variable'), new_health_check_template_variable_path(:sequence => child_index.nil? ? @health_check_template.variables.size : child_index.to_i + 1), :method => :get, :remote => true %></p>
 </div>

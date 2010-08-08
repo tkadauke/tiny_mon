@@ -15,7 +15,7 @@
         <tr>
           <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
           <td>
-            <% action_list do |a| %>
+            <%= action_list do |a| %>
               <% a.link_to t(".edit"), edit_health_check_template_path(health_check_template) %>
               <% a.link_to t(".delete"), health_check_template_path(health_check_template), :method => :delete, :confirm => t(".really_delete_template") %>
             <% end %>

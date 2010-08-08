@@ -6,10 +6,10 @@ class HealthChecksController < ApplicationController
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
     if @site
-      @health_checks = @site.health_checks.find_for_list(@search_filter, :order => 'health_checks.name ASC')
+      @health_checks = @site.health_checks.filter_for_list(@search_filter).order('health_checks.name ASC')
     else
-      @health_checks = @account.health_checks.find_for_list(@search_filter, :order => 'sites.name ASC, health_checks.name ASC')
-      render :action => 'all_checks' unless request.xhr?
+      @health_checks = @account.health_checks.filter_for_list(@search_filter).order('sites.name ASC, health_checks.name ASC')
+      render 'all_checks' unless request.xhr?
     end
     
     render :update do |page|
@@ -45,7 +45,7 @@ class HealthChecksController < ApplicationController
   
   def show
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
-    @comments = @health_check.latest_comments.find(:all, :limit => 5)
+    @comments = @health_check.latest_comments.limit(5)
     @comments_count = @health_check.comments.count
   end
   
@@ -57,7 +57,7 @@ class HealthChecksController < ApplicationController
   
   def edit_multiple
     can_edit_health_checks!(@account) do
-      @health_checks = @account.health_checks.find(params[:health_check_ids], :include => :site, :order => 'sites.name ASC, health_checks.name ASC')
+      @health_checks = @account.health_checks.order('sites.name ASC, health_checks.name ASC').includes(:site).find(params[:health_check_ids])
     end
   end
   
@@ -102,16 +102,18 @@ protected
   def find_templates
     @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
     if !@health_check_template
-      @health_check_templates = case params[:filter]
+      scope = case params[:filter]
       when 'mine'
-        current_user.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+        current_user.health_check_templates
       when 'account'
-        @account.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+        @account.health_check_templates
       when 'public'
-        HealthCheckTemplate.public_templates.paginate(:order => 'name ASC', :page => params[:page])
+        HealthCheckTemplate.public_templates
       else
-        current_user.available_health_check_templates(:page => params[:page]) # already ordered and paginated
+        current_user.available_health_check_templates
       end
+      
+      @health_check_templates = scope.order('name ASC').paginate(:page => params[:page])
     end
   end
 end

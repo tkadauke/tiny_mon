@@ -1,7 +1,7 @@
 module ActionListHelper
   def action_list(&block)
     yield builder = ActionListBuilder.new(self)
-    concat(builder.build!)
+    builder.build!
   end
   
   class ActionListBuilder
@@ -19,7 +19,7 @@ module ActionListHelper
     end
     
     def build!
-      @items.join(' | ')
+      @items.join(' | ').html_safe
     end
   end
 end

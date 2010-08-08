@@ -31,7 +31,7 @@
   <%#  %>
   <% hash = (f.object.send(variable.name) || { '0' => { 'key' => '', 'value' => '' } }); index = 0 %>
   <% hash.sort_by { |x| x.first.to_i }.collect { |x| x.last }.each_with_index do |value, index| %>
-    <% f.fields_for variable.name do |pair| %>
+    <%= f.fields_for variable.name do |pair| %>
       <span id="<%= [hash_id, index].join('_') %>">
         <%- pair.fields_for index.to_s do |fields| -%>
           <%= fields.text_field 'key', :value => value['key'] %><%= fields.text_field 'value', :value => value['value'] %><%= link_to_function '[X]', "$('#{[hash_id, index].join('_')}').remove()" %><br/>

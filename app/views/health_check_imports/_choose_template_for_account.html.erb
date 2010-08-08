@@ -1,7 +1,7 @@
 <h2><%= t(".choose_template") %></h2>
 
 <p>
-  <% action_list do |a| %>
+  <%= action_list do |a| %>
     <% a.link_to t(".my_templates"), new_health_check_import_path(:template => 'select', :filter => 'mine') %>
     <% a.link_to t(".account_templates"), new_health_check_import_path(:template => 'select', :filter => 'account') %>
     <% a.link_to t(".public_templates"), new_health_check_import_path(:template => 'select', :filter => 'public') %>

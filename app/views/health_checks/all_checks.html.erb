@@ -1,9 +1,9 @@
 <h2><%= t('.all_health_checks') %></h2>
 
-<%= render :partial => "/shared/filter", :locals => { :url => health_checks_path(:report => params[:report]) } %>
+<%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
 
 <p>
-  <% action_list do |a| %>
+  <%= action_list do |a| %>
     <% a.link_to t('health_checks.report.details'), health_checks_path(:report => 'details') %>
     <% a.link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview') %>
   <% end %>
@@ -11,5 +11,5 @@
 
 <%#= auto_update 'checks' %>
 <div id="checks">
-  <%= render :partial => "list" %>
+  <%= render "list" %>
 </div>

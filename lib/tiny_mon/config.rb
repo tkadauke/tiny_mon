@@ -9,7 +9,7 @@ module TinyMon
     end
   
     def self.config
-      YAML.load(File.read("#{RAILS_ROOT}/config/config.yml"))
+      YAML.load(File.read("#{Rails.root}/config/config.yml"))
     end
   end
 end

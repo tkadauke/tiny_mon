@@ -1,4 +1,4 @@
-<% f.fields_for :steps, :child_index => child_index do |fields| %>
+<%= f.fields_for :steps, :child_index => child_index do |fields| %>
   <% step_id = "step_#{rand(1_000_000)}" %>
   <dl id="<%= step_id %>">
     <%= fields.hidden_field :position, :class => 'position' %>
@@ -34,8 +34,8 @@
     <dt><%= t(".step_data") %></dt>
     <dd id="<%= step_data_id %>">
       <% if fields.object.step_type %>
-        <% fields.fields_for :step_data, fields.object.step_data do |data| %>
-          <%= render :partial => "/health_check_template_step_data/form", :locals => { :f => data, :step_type => fields.object.step_type } %>
+        <%= fields.fields_for :step_data, fields.object.step_data do |data| %>
+          <%= render "/health_check_template_step_data/form", :f => data, :step_type => fields.object.step_type %>
         <% end %>
       <% end %>
     </dd>
@@ -43,5 +43,5 @@
 <% end %>
 
 <div id="replace-step">
-  <p><%= link_to_remote t('.new_step'), :url => new_health_check_template_step_path(:sequence => child_index.nil? ? @health_check_template.steps.size : child_index.to_i + 1), :method => :get %></p>
+  <p><%= link_to t('.new_step'), new_health_check_template_step_path(:sequence => child_index.nil? ? @health_check_template.steps.size : child_index.to_i + 1), :method => :get, :remote => true %></p>
 </div>

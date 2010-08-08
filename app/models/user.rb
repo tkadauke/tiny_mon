@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    PasswordResetsMailer.deliver_password_reset_instructions(self)
+    PasswordResetsMailer.password_reset_instructions(self).deliver
   end
   
   def reset_password!(password, password_confirmation)
@@ -64,26 +64,24 @@ class User < ActiveRecord::Base
     @config ||= User::Configuration.new(self)
   end
   
-  def latest_comments_for_user(user, options = {})
-    latest_comments.find(:all, options.merge(:conditions => ['account_id in (?)', user.accounts.map(&:id)]))
+  def latest_comments_for_user(user)
+    latest_comments.visible_to(user)
   end
 
   def comments_count_for_user(user)
-    latest_comments.count(:conditions => ['account_id in (?)', user.accounts.map(&:id)])
+    comments.visible_to(user).count
   end
   
-  def comments_for_user(user, options = {})
-    comments.find(:all, options.merge(:conditions => ['account_id in (?)', user.accounts.map(&:id)]))
+  def comments_for_user(user)
+    comments.visible_to(user)
   end
   
-  def self.paginate_for_list(filter, options = {})
-    with_search_scope(filter) do
-      paginate(options.merge(:order => 'users.created_at DESC'))
-    end
+  def self.filter_for_list(filter)
+    with_search_scope(filter).order('users.created_at DESC')
   end
   
-  def available_health_check_templates(options = {})
-    HealthCheckTemplate.paginate(options.update(:conditions => ['user_id = ? or account_id in (?) or public', self.id, accounts.map(&:id)], :order => 'name ASC'))
+  def available_health_check_templates
+    HealthCheckTemplate.where('user_id = ? or account_id in (?) or public', self.id, accounts.map(&:id))
   end
   
   def shares_accounts_with?(user)
@@ -94,8 +92,6 @@ class User < ActiveRecord::Base
 protected
   def self.with_search_scope(filter, &block)
     conditions = filter.empty? ? nil : ['users.full_name LIKE ? OR users.email LIKE ?', "%#{filter.query}%", "%#{filter.query}%"]
-    with_scope :find => { :conditions => conditions } do
-      yield
-    end
+    where(conditions)
   end
 end

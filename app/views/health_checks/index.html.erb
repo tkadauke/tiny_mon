@@ -5,7 +5,7 @@
 <%= render :partial => "/shared/filter", :locals => { :url => account_site_health_checks_path(@account, @site, :report => params[:report]) } %>
 
 <p>
-  <% action_list do |a| %>
+  <%= action_list do |a| %>
     <% a.link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details') %>
     <% a.link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %>
   <% end %>
@@ -18,7 +18,7 @@
 
 <% if current_user.can_create_health_checks?(@account) %>
   <p>
-    <% action_list do |a| %>
+    <%= action_list do |a| %>
       <% a.link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site) %>
       <% a.link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select') %>
       <% a.link_to t('.import'), new_account_site_health_check_import_path(@account, @site, :template => 'select') if current_user.can_create_health_check_imports?(@account) %>

@@ -18,7 +18,7 @@
           <td><%= link_to highlight(site.name, @search_filter.query), account_site_health_checks_path(site.account, site) %></td>
           <% if current_user.can_edit_sites?(@account) %>
             <td>
-              <% action_list do |a| %>
+              <%= action_list do |a| %>
                 <% a.link_to t('.edit'), edit_account_site_path(site.account, site) %>
                 <% a.link_to t('.delete'), account_site_path(site.account, site), :method => :delete, :confirm => t('.confirm_delete') if current_user.can_delete_sites?(@account) %>
               <% end %>

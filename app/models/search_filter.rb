@@ -1,4 +1,7 @@
 class SearchFilter
+  include ActiveModel::Conversion
+  extend ActiveModel::Naming
+  
   attr_accessor :query
   
   def initialize(attributes = {})
@@ -13,5 +16,9 @@ class SearchFilter
   
   def id
     1
+  end
+  
+  def persisted?
+    false
   end
 end

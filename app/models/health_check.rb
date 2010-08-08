@@ -17,6 +17,7 @@ class HealthCheck < ActiveRecord::Base
   scope :failed, enabled.where(:status => 'failure')
   
   validates_presence_of :site_id, :name, :interval
+  validate :validate_template_data
   
   attr_accessor :template, :template_data
 
@@ -25,7 +26,9 @@ class HealthCheck < ActiveRecord::Base
   
   has_permalink :name, :scope => :site_id
   
-  def after_initialize
+  after_initialize :set_template_data
+  
+  def set_template_data
     self.template_data = HealthCheckTemplateData.new(self.template_data || {})
   end
 
@@ -87,7 +90,7 @@ class HealthCheck < ActiveRecord::Base
     self.steps = template.evaluate_steps(template_data)
   end
   
-  def validate
+  def validate_template_data
     template.validate_health_check_data(self, template_data) if template && template_data && new_record?
   end
   

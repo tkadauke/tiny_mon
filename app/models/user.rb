@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   
   attr_protected :role
   
-  def after_initialize
+  after_initialize :extend_role
+  
+  def extend_role
     if self.role.blank?
       extend Role::User
     else

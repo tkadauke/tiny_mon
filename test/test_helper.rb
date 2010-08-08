@@ -40,7 +40,6 @@ class ActionController::TestCase
 end
 
 # add default routes so that actions in test controllers can be called
-ActionController::Routing::Routes.draw do |map|
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+TinyMon::Application.routes do |map|
+  match '/:controller(/:action(/:id(.:format)))'
 end

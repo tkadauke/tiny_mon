@@ -7,7 +7,7 @@ module ApplicationHelper
   def bread_crumb
     breadcrumb = %{<a href="/">#{I18n.t('breadcrumb.home')}</a>}
     sofar = ''
-    elements = request.request_uri.split('?').first.split('/')
+    elements = request.fullpath.split('?').first.split('/')
     parent_model = nil
     for i in 1...elements.size
       sofar += '/' + elements[i]

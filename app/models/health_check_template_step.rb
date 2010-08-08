@@ -7,6 +7,8 @@ class HealthCheckTemplateStep < ActiveRecord::Base
   
   acts_as_list :scope => :health_check_template
   
+  before_save :set_step_data_hash
+  
   def step_data
     @step_data ||= HealthCheckTemplateStepData.new(self.step_data_hash)
   end
@@ -15,10 +17,6 @@ class HealthCheckTemplateStep < ActiveRecord::Base
     @step_data = HealthCheckTemplateStepData.new(value)
   end
   
-  def before_save
-    self.step_data_hash = self.step_data.data
-  end
-
   def self.condition_types
     ['if_variable_set', 'if_variable_unset', 'if_variable_equals', 'if_variable_not_equal', 'for_each_element_in_array', 'for_each_key_value_in_hash']
   end
@@ -71,5 +69,10 @@ class HealthCheckTemplateStep < ActiveRecord::Base
       key, value = pair['key'], pair['value']
       build_steps_without_condition(input.merge('key' => key, 'value' => value))
     end
+  end
+  
+protected
+  def set_step_data_hash
+    self.step_data_hash = self.step_data.data
   end
 end

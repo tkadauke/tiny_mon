@@ -8,7 +8,9 @@ class UserAccount < ActiveRecord::Base
   
   before_validation :set_user_from_email, :on => :create
   
-  def after_initialize
+  after_initialize :extend_role
+  
+  def extend_role
     extend "Role::Account::#{self.role.classify}".constantize
   end
   

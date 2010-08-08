@@ -7,6 +7,11 @@
     values:
       English: en
       Deutsch: de
+- time_zone:
+    name:
+      en: "Time zone"
+      de: "Zeitzone"
+    type: Timezone
 - email_enabled:
     name:
       en: "Email notifications enabled"

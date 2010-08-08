@@ -33,7 +33,7 @@
     <tbody>
       <% @check_run.log.each do |time, message| %>
         <tr>
-          <td><%= l(time, :format => :log) %></td>
+          <td><%= l(time.in_time_zone, :format => :log) %></td>
           <td><%= format_log_message message %></td>
         </tr>
       <% end %>

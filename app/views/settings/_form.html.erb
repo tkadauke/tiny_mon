@@ -12,6 +12,8 @@
     
     <% if option.values %>
       <%= f.select option.key, option.values.sort %>
+    <% elsif option.type == 'Timezone' %>
+      <%= f.time_zone_select option.key %>
     <% elsif option.type != 'Boolean' %>
       <%= f.text_field option.key %>
     <% end %>

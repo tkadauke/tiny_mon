@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   before_filter :set_language
+  before_filter :set_time_zone
 
   helper_method :current_user_session, :current_user, :logged_in?
 
@@ -39,6 +40,12 @@ protected
       I18n.locale = current_user.config.language
     else
       I18n.locale = TinyMon::Config.language if TinyMon::Config.language
+    end
+  end
+  
+  def set_time_zone
+    if logged_in?
+      Time.zone = current_user.config.time_zone
     end
   end
 

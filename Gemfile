@@ -24,5 +24,5 @@ gem "permalink_fu"
 gem 'capistrano'
 
 group :test do
-  gem "mocha"
+  gem "mocha", '0.9.8'
 end

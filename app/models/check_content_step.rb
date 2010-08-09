@@ -1,3 +1,5 @@
+require 'iconv'
+
 class CheckContentStep < Step
   class ContentCheckFailed < CheckFailed; end
 

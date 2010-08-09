@@ -22,7 +22,7 @@ de:
     new: 
       new_account: "Neues Konto"
     show: 
-      account: "Konto {{account}}"
+      account: "Konto %{account}"
       add_existing: "Vorhandenen Benutzer zum Konto hinzufügen"
       add_new: "Neuen Benutzer für Konto registrieren"
       change: Ändern
@@ -95,21 +95,21 @@ de:
         options: Optionen
         users: Benutzer
       show: 
-        account: "Konto {{account}}"
+        account: "Konto %{account}"
         check_runs_count: 
           one: "1 Testlauf"
-          other: "{{count}} Testläufe"
+          other: "%{count} Testläufe"
         comments_count: 
           one: "1 Kommentar"
-          other: "{{count}} Kommentare"
+          other: "%{count} Kommentare"
         health_checks_count: 
           one: "1 Funktionstest"
-          other: "{{count}} Funktionsteste"
+          other: "%{count} Funktionsteste"
         name: Name
         no_users: "bisher keine Benutzer"
         sites_count: 
           one: "1 Site"
-          other: "{{count}} Sites"
+          other: "%{count} Sites"
         statistics: Statistiken
         users: Benutzer
     footer_links: 
@@ -184,27 +184,27 @@ de:
     users: Benutzer
   check_run_mailer: 
     failure: 
-      subject: "Funktionstest {{health_check}} von site {{site}} ist fehlgeschlagen!"
+      subject: "Funktionstest %{health_check} von site %{site} ist fehlgeschlagen!"
   check_runs: 
     activity: 
       account: Konto
       duration: Dauer
-      duration_in_seconds: "{{duration}} Sekunden"
+      duration_in_seconds: "%{duration} Sekunden"
       health_check: Funktionstest
       no_activity_yet: "Bisher keine Aktivität."
       site: Site
       status: Status
-      time_ago: "vor {{when}}"
+      time_ago: "vor %{when}"
       when: Wann
     index: 
-      check_runs_of_health_check_site: "Testläufe von Funktionstest {{health_check}} (Site {{site}})"
+      check_runs_of_health_check_site: "Testläufe von Funktionstest %{health_check} (Site %{site})"
     show: 
       all_comments: "Alle Kommentare anzeigen"
-      check_run_of_health_check_site: "Testlauf von {{health_check}} (Site {{site}})"
-      comments: "Kommentare ({{count}})"
+      check_run_of_health_check_site: "Testlauf von %{health_check} (Site %{site})"
+      comments: "Kommentare (%{count})"
       deployment: Deployment
       duration: Dauer
-      duration_in_seconds: "{{seconds}} Sekunden"
+      duration_in_seconds: "%{seconds} Sekunden"
       error_message: Fehlermeldung
       leave_a_comment: "Kommentar schreiben"
       log_output: Log-Ausgabe
@@ -214,7 +214,7 @@ de:
       time: Zeit
   comment_mailer: 
     comment: 
-      subject: "Neuer Kommentar für Funktionstest {{health_check}}: {{title}}"
+      subject: "Neuer Kommentar für Funktionstest %{health_check}: %{title}"
   comments: 
     form: 
       error_adding_comment: "Kommentar konnte nicht hinzugefügt werden"
@@ -222,33 +222,33 @@ de:
       text: Text
       title: Titel
     index: 
-      comments_by_user: "Kommentare von {{user}}"
-      comments_for_check_run_in_health_check_site: "Kommentare für Testlauf (Funktionstest {{health_check}}, Site {{site}})"
-      comments_for_health_check_site: "Kommentare für Funktionstest {{health_check}} (Site {{site}})"
+      comments_by_user: "Kommentare von %{user}"
+      comments_for_check_run_in_health_check_site: "Kommentare für Testlauf (Funktionstest %{health_check}, Site %{site})"
+      comments_for_health_check_site: "Kommentare für Funktionstest %{health_check} (Site %{site})"
       leave_a_comment: "Kommentar schreiben"
     list: 
-      check_run: "Testlauf #{{check_run}}"
+      check_run: "Testlauf #%{check_run}"
       no_comments_found: "Keine Kommentare gefunden"
-      user_wrote_time_ago: "{{user}} schrieb vor {{time}}"
+      user_wrote_time_ago: "%{user} schrieb vor %{time}"
     new: 
-      comment_for_check_run_in_health_check_site: "Neuer Kommentar für Testlauf (Funktionstest {{health_check}}, Site {{site}})"
+      comment_for_check_run_in_health_check_site: "Neuer Kommentar für Testlauf (Funktionstest %{health_check}, Site %{site})"
   deployment: 
-    revision_and_time: "Revision {{revision}} (vor {{time}})"
+    revision_and_time: "Revision %{revision} (vor %{time})"
   deployments: 
     index: 
       checks: Testläufe
       count_checks: 
         one: "1 Testlauf"
-        other: "{{count}} Testläufe"
-      deployments_of_site: "Deployments von Site {{site}}"
+        other: "%{count} Testläufe"
+      deployments_of_site: "Deployments von Site %{site}"
       mark_deployment: "Site mit neuem Deployment markieren"
       no_deployments_found: "Bisher wurde die Site nicht mit Deployments markiert."
       revision: Revision
       status: Status
-      time_ago: "vor {{time}}"
+      time_ago: "vor %{time}"
       when: Wann
     new: 
-      mark_deploment_of_site: "Site {{site}} mit neuem Deployment markieren"
+      mark_deploment_of_site: "Site %{site} mit neuem Deployment markieren"
       mark_deployment: Markieren
       optional_revision_number: "Optionale Revision des Deployments"
       revision: Revision
@@ -282,43 +282,43 @@ de:
       assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
       bulk_updated_health_checks: 
         one: "1 Funktionstest wurde erfolgreich aktualisiert"
-        other: "{{count}} Funktionstests wurden erfolgreich aktualisiert"
-      created_account: "Konto {{account}} wurde erfolgreich erstellt"
+        other: "%{count} Funktionstests wurden erfolgreich aktualisiert"
+      created_account: "Konto %{account} wurde erfolgreich erstellt"
       created_comment: "Kommentar wurde erfolgreich hinzugefügt"
       created_deployment: "Site wurde erfolgreich mit Deployment markiert"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
-      created_health_check: "Funktionstest {{health_check}} wurde erfolgreich erstellt"
+      created_health_check: "Funktionstest %{health_check} wurde erfolgreich erstellt"
       created_health_check_template: "Funktionstest-Vorlage wurde erfolgreich erstellt"
       created_import: "Import wurder erfolgreich abgeschlossen"
-      created_site: "Site {{site}} wurde erfolgreich erstellt"
+      created_site: "Site %{site} wurde erfolgreich erstellt"
       created_user: "Benutzer wurde erfolgreich erstellt"
       created_user_account: "Benutzer wurde erfolgreich dem Konto hinzugefügt"
-      deleted_health_check: "Funktionstest {{health_check}} wurde erfolgreich entfernt"
+      deleted_health_check: "Funktionstest %{health_check} wurde erfolgreich entfernt"
       deleted_health_check_template: "Funktionstest-Vorlage wurde erfolgreich gelöscht"
       deleted_import: "Importierte Funktionstests wurden erfolgreich gelöscht"
-      deleted_site: "Site {{site}} wurde erfolgreich gelöscht"
+      deleted_site: "Site %{site} wurde erfolgreich gelöscht"
       logged_in: "Erfolgreich eingeloggt"
       logged_out: "Erfolgreich ausgeloggt"
       password_instructions_sent: "Anweisungen zur Änderung Ihres Passwortes wurden per E-Mail verschickt. Bitte prüfen Sie Ihren Posteingang."
       password_updated: "Ihr Passwort wurde erfolgreich geändert"
       removed_footer_link: "Fußzeilen-Link wurde erfolgreich entfernt"
       removed_user_account: "Benutzer wurde erfolgreich vom Konto entfernt"
-      switched_account: "Erfolgreich zu Konto {{account}} gewechselt"
-      updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"
+      switched_account: "Erfolgreich zu Konto %{account} gewechselt"
+      updated_account: "Konto %{account} wurde erfolgreich aktualisiert"
       updated_footer_link: "Fußzeilen-Link wurde erfolgreich aktualisiert"
-      updated_health_check: "Funktionstest {{health_check}} wurde erfolgreich aktualisiert"
+      updated_health_check: "Funktionstest %{health_check} wurde erfolgreich aktualisiert"
       updated_health_check_template: "Funktionstest-Vorlage wurde erfolgreich aktualisiert"
       updated_settings: "Einstellungen wurden erfolgreich aktualisiert"
-      updated_site: "Site {{site}} wurde erfolgreich aktualisiert"
+      updated_site: "Site %{site} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
   health_check: 
     interval: 
       hours: 
         one: "1 Stunde"
-        other: "{{count}} Stunden"
+        other: "%{count} Stunden"
       minutes: 
         one: "1 Minute"
-        other: "{{count}} Minuten"
+        other: "%{count} Minuten"
   health_check_imports: 
     choose_template_for_account: 
       account_templates: "Vorlagen des Kontos"
@@ -328,7 +328,7 @@ de:
       my_templates: "Meine Vorlagen"
       no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von {{user}}"
+      template_created_by: "Erstellt von %{user}"
     choose_template_for_site: 
       account_templates: "Vorlagen des Kontos"
       all_templates: "Alle Vorlagen"
@@ -337,7 +337,7 @@ de:
       my_templates: "Meine Vorlagen"
       no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von {{user}}"
+      template_created_by: "Erstellt von %{user}"
     form: 
       could_not_import: "Konnte nicht importieren"
       csv_data: CSV-Daten
@@ -345,20 +345,20 @@ de:
       import: Importieren
       preview: Vorschau
     import_to_account: 
-      field_names: "Die Felder sind (in dieser Reihenfolge): Site-Name, Basis-URL der Site, {{fields}}"
+      field_names: "Die Felder sind (in dieser Reihenfolge): Site-Name, Basis-URL der Site, %{fields}"
       instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
-      new_import: "Neuer Import von Funktionstests aus Vorlage {{template}}"
+      new_import: "Neuer Import von Funktionstests aus Vorlage %{template}"
     import_to_site: 
-      field_names: "Die Felder sind (in dieser Reihenfolge): {{fields}}"
+      field_names: "Die Felder sind (in dieser Reihenfolge): %{fields}"
       instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
-      new_import: "Neuer Import von Funktionstests aus Vorlage {{template}}"
+      new_import: "Neuer Import von Funktionstests aus Vorlage %{template}"
     index: 
       all_imports_for_account: "Alle Importe für dieses Konto anzeigen"
       delete: Löschen
       description: Beschreibung
-      imported_at: "Importiert vor {{time}}"
-      imports_for_account: "Importe für Konto {{account}}"
-      imports_for_site: "Importe für Site {{site}}"
+      imported_at: "Importiert vor %{time}"
+      imports_for_account: "Importe für Konto %{account}"
+      imports_for_site: "Importe für Site %{site}"
       new_import: "Neuer Import"
       nothing_found: "Keine Importe gefunden"
       options: Optionen
@@ -406,7 +406,7 @@ de:
   health_check_templates: 
     edit: 
       could_not_update_template: "Konnte Funktionstest-Vorlage nicht aktualisieren"
-      edit_template: "Funktionstest-Vorlage {{template}} bearbeiten"
+      edit_template: "Funktionstest-Vorlage %{template} bearbeiten"
     form: 
       about_the_template: "Information zur Vorlage"
       describe_the_template: "Beschreibung für die Vorlange"
@@ -459,19 +459,19 @@ de:
       site: Site
       status: Status
     edit: 
-      edit_health_check_for_site: "Funktionstest {{health_check}} für Site {{site}} bearbeiten"
+      edit_health_check_for_site: "Funktionstest %{health_check} für Site %{site} bearbeiten"
     edit_multiple: 
       check_fields_you_want_to_change: "Wählen Sie die Felder an, die Sie ändern möchten."
       description: Beschreibung
       edit_multiple_health_checks: 
         one: "1 Funktionstest bearbeiten"
-        other: "{{count}} Funktionstests bearbeiten"
+        other: "%{count} Funktionstests bearbeiten"
       enabled: Aktiviert
       interval: Interval
       name: Name
       ? "no"
       : Nein
-      show_all: "Alle {{count}} Funktionstests anzeigen"
+      show_all: "Alle %{count} Funktionstests anzeigen"
       update_health_checks: "Funktionstests aktualisieren"
       ? "yes"
       : Ja
@@ -484,7 +484,7 @@ de:
     hash_variable: 
       add_more: "Weitere Zuordnung hinzufügen"
     index: 
-      health_checks_for_site: "Funktionstests für Site {{site}}"
+      health_checks_for_site: "Funktionstests für Site %{site}"
       import: Importieren
       new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check: "Neuer Funktionstest"
@@ -497,18 +497,18 @@ de:
       import: Importieren
       my_templates: "Meine Vorlagen"
       new_from_template: "Neuer Funktionstest aus Vorlage"
-      new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
-      new_health_check_from_template: "Neuer Funktionstest aus Vorlage {{template}}"
+      new_health_check_for_site: "Neuer Funktionstest für Site %{site}"
+      new_health_check_from_template: "Neuer Funktionstest aus Vorlage %{template}"
       no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von {{user}}"
+      template_created_by: "Erstellt von %{user}"
     preview: 
       description: Beschreibung
       details: Details
       interval: Intervall
       interval_minutes: 
         one: "1 Minute"
-        other: "{{count}} Minuten"
+        other: "%{count} Minuten"
       name: Name
       preview: Vorschau
       steps: Schritte
@@ -520,7 +520,7 @@ de:
       check_is_disabled: "Funktionstest ist inaktiv"
       check_is_enabled: "Funktionstest ist aktiv"
       check_runs: Testläufe
-      comments: "Kommentare ({{count}})"
+      comments: "Kommentare (%{count})"
       description: Beschreibung
       disable: Deaktivieren
       duration: Dauer
@@ -529,8 +529,8 @@ de:
       enable: Aktivieren
       interval: Prüfintervall
       interval_minutes: 
-        one: "{{count}} Minute"
-        other: "{{count}} Minuten"
+        one: "%{count} Minute"
+        other: "%{count} Minuten"
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
       run_at: Zeit
@@ -552,15 +552,15 @@ de:
     login: Login
     logout: Logout
     quick_links: Schnellzugriff
-    report_bugs: "Fehler gefunden? {{report_link}}"
+    report_bugs: "Fehler gefunden? %{report_link}"
     report_link_text: Melden!
     signup: Registrieren
     sites: Sites
     subtitle: Website-Funktionsüberwachung
     unknown_build: unbekannt
-    user_greeter: "Willkommen, {{user}}"
-    version: "Version {{version}}, Revision {{revision}}"
-    you_are_here: "Sie sind hier: {{bread_crumb}}"
+    user_greeter: "Willkommen, %{user}"
+    version: "Version %{version}, Revision %{revision}"
+    you_are_here: "Sie sind hier: %{bread_crumb}"
   password_reset_mailer: 
     subject: "Anweisungen zur Änderung Ihres Passwortes"
   password_resets: 
@@ -586,7 +586,7 @@ de:
       filter: Filter
   sites: 
     edit: 
-      edit_site: "Site {{site}} bearbeiten"
+      edit_site: "Site %{site} bearbeiten"
     form: 
       could_not_create_site: "Konnte Site nicht erstellen"
       name: Site-Name
@@ -610,7 +610,7 @@ de:
       deployment: Deployment
       deployment_url: "Callback-URL zur Deployment-Markierung"
       edit_site: "Site bearbeiten"
-      site: "Site {{site}}"
+      site: "Site %{site}"
       status: Gesamtstatus
       token: Deployment-Token
     tabs: 
@@ -622,18 +622,18 @@ de:
       recent_activity: "Neueste Aktivität"
       upcoming_checks: "Geplante Testläufe"
     index: 
-      add_existing_user_to_account: "Vorhandenen Benutzer zu Konto {{account}} hinzufügen"
-      add_new_user_to_account: "Neuen Benutzer zu Konto {{account}} hinzufügen"
+      add_existing_user_to_account: "Vorhandenen Benutzer zu Konto %{account} hinzufügen"
+      add_new_user_to_account: "Neuen Benutzer zu Konto %{account} hinzufügen"
       add_site: "Site hinzufügen"
       create_account: "Konto erstellen"
       import: Importieren
-      manage_users: "Benutzer für Konto {{account}} verwalten"
+      manage_users: "Benutzer für Konto %{account} verwalten"
       no_accounts: "Diesem Benutzer sind bisher keine Konten zugewiesen."
       quick_links: Schnellzugriff
       settings: "Einstellungen bearbeiten"
     upcoming_checks: 
       health_check: Funktionstest
-      in_time: "In {{time}}"
+      in_time: "In %{time}"
       no_upcoming_checks: "Keine geplanten Testläufe."
       site: Site
       when: Wann
@@ -699,7 +699,7 @@ de:
       name: Name
       no_steps_defined: "Keine Schritte definiert."
       options: Optionen
-      steps_for_health_check: "Schritte für Funktionstest {{health_check}}"
+      steps_for_health_check: "Schritte für Funktionstest %{health_check}"
     page_must_be_loaded_before_this_step: "Vor diesem Schritt muss eine Seite geladen worden sein."
     select_check_box_step_form: 
       name: Name
@@ -761,11 +761,11 @@ de:
       the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
     show: 
       accounts: Konten
-      all_comments_by_user: "Alle Kommentare von {{user}}"
-      comments: "Kommentare ({{count}})"
+      all_comments_by_user: "Alle Kommentare von %{user}"
+      comments: "Kommentare (%{count})"
       edit_profile: "Profil bearbeiten"
       email: E-Mail-Adresse
       full_name: "Voller Name"
       no_accounts: "bisher keine"
       settings: "Einstellungen bearbeiten"
-      users_profile: "{{full_name}}s Profil"
+      users_profile: "%{full_name}s Profil"

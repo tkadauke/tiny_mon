@@ -1,8 +1,8 @@
 en: 
   prowl: 
     description: 
-      failure: "Health check {{health_check}} of site {{site}} failed"
-      success: "Health check {{health_check}} of site {{site}} succeeded"
+      failure: "Health check %{health_check} of site %{site} failed"
+      success: "Health check %{health_check} of site %{site} succeeded"
     event: 
       failure: "Failure"
       success: "Success"

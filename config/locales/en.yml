@@ -22,7 +22,7 @@ en:
     new: 
       new_account: "New Account"
     show: 
-      account: "Account {{account}}"
+      account: "Account %{account}"
       add_existing: "Add existing user to this account"
       add_new: "Register new user for this account"
       change: Change
@@ -95,23 +95,23 @@ en:
         options: Options
         users: Users
       show: 
-        account: "Account {{account}}"
+        account: "Account %{account}"
         check_runs_count: 
           one: "1 check run"
-          other: "{{count}} check runs"
+          other: "%{count} check runs"
         comments_count: 
           one: "1 comment"
-          other: "{{count}} comments"
+          other: "%{count} comments"
         health_checks_count: 
           one: "1 health check"
-          other: "{{count}} health checks"
+          other: "%{count} health checks"
         name: Name
         no_users: "no users yet"
         sites_count: 
           one: "1 site"
-          other: "{{count}} sites"
+          other: "%{count} sites"
         statistics: Statistics
-        users: "Users ({{count}})"
+        users: "Users (%{count})"
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"
@@ -184,27 +184,27 @@ en:
     users: Users
   check_run_mailer: 
     failure: 
-      subject: "Health Check {{health_check}} of site {{site}} failed!"
+      subject: "Health Check %{health_check} of site %{site} failed!"
   check_runs: 
     activity: 
       account: Account
       duration: Duration
-      duration_in_seconds: "{{duration}} seconds"
+      duration_in_seconds: "%{duration} seconds"
       health_check: "Health Check"
       no_activity_yet: "No activity yet."
       site: Site
       status: Status
-      time_ago: "{{when}} ago"
+      time_ago: "%{when} ago"
       when: When
     index: 
-      check_runs_of_health_check_site: "Check Runs of Health Check {{health_check}} (Site {{site}})"
+      check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
     show: 
       all_comments: "Show all comments"
-      check_run_of_health_check_site: "Check run of {{health_check}} (site {{site}})"
-      comments: "Comments ({{count}})"
+      check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
+      comments: "Comments (%{count})"
       deployment: Deployment
       duration: Duration
-      duration_in_seconds: "{{seconds}} seconds"
+      duration_in_seconds: "%{seconds} seconds"
       error_message: "Error Message"
       leave_a_comment: "Leave a comment"
       log_output: "Log output"
@@ -214,7 +214,7 @@ en:
       time: Time
   comment_mailer: 
     comment: 
-      subject: "New Comment on Health Check {{health_check}}: {{title}}"
+      subject: "New Comment on Health Check %{health_check}: %{title}"
   comments: 
     form: 
       error_adding_comment: "Comment could not be added"
@@ -222,33 +222,33 @@ en:
       text: Text
       title: Title
     index: 
-      comments_by_user: "Comments by {{user}}"
-      comments_for_check_run_in_health_check_site: "Comments for check run (health check {{health_check}}, site {{site}})"
-      comments_for_health_check_site: "Comments for health check {{health_check}} (site {{site}})"
+      comments_by_user: "Comments by %{user}"
+      comments_for_check_run_in_health_check_site: "Comments for check run (health check %{health_check}, site %{site})"
+      comments_for_health_check_site: "Comments for health check %{health_check} (site %{site})"
       leave_a_comment: "Leave a comment"
     list: 
-      check_run: "Check run #{{check_run}}"
+      check_run: "Check run #%{check_run}"
       no_comments_found: "No comments found"
-      user_wrote_time_ago: "{{user}} wrote {{time}} ago"
+      user_wrote_time_ago: "%{user} wrote %{time} ago"
     new: 
-      comment_for_check_run_in_health_check_site: "New comment for check run (health check {{health_check}}, site {{site}})"
+      comment_for_check_run_in_health_check_site: "New comment for check run (health check %{health_check}, site %{site})"
   deployment: 
-    revision_and_time: "Revision {{revision}} ({{time}} ago)"
+    revision_and_time: "Revision %{revision} (%{time} ago)"
   deployments: 
     index: 
       checks: Checks
       count_checks: 
         one: "1 check"
-        other: "{{count}} checks"
-      deployments_of_site: "Deployments of site {{site}}"
+        other: "%{count} checks"
+      deployments_of_site: "Deployments of site %{site}"
       mark_deployment: "Mark site with deployment"
       no_deployments_found: "No deployments found for this site."
       revision: Revision
       status: Status
-      time_ago: "{{time}} ago"
+      time_ago: "%{time} ago"
       when: When
     new: 
-      mark_deploment_of_site: "Mark site {{site}} with new deployment"
+      mark_deploment_of_site: "Mark site %{site} with new deployment"
       mark_deployment: "Mark site"
       optional_revision_number: "You can optionally specify the deployment's revision"
       revision: Revision
@@ -282,43 +282,43 @@ en:
       assign_roles: "Successfully assigned account role to user"
       bulk_updated_health_checks: 
         one: "Successfully updated 1 health check"
-        other: "Successfully updated {{count}} health checks"
-      created_account: "Successfully created account {{account}}"
+        other: "Successfully updated %{count} health checks"
+      created_account: "Successfully created account %{account}"
       created_comment: "Successfully added comment"
       created_deployment: "Successfully marked site with new deployment"
       created_footer_link: "Successfully created footer link"
-      created_health_check: "Successfully created health check {{health_check}}"
+      created_health_check: "Successfully created health check %{health_check}"
       created_health_check_template: "Successfully created health check template"
       created_import: "Successfully imported health checks"
-      created_site: "Successfully created site {{site}}"
+      created_site: "Successfully created site %{site}"
       created_user: "Successfully created user"
       created_user_account: "Successfully added this user to the account"
-      deleted_health_check: "Successfully deleted health check {{health_check}}"
+      deleted_health_check: "Successfully deleted health check %{health_check}"
       deleted_health_check_template: "Successfully deleted health check template"
       deleted_import: "Successfully deleted imported health checks"
-      deleted_site: "Successfully deleted site {{site}}"
+      deleted_site: "Successfully deleted site %{site}"
       logged_in: "Successfully logged in"
       logged_out: "Successfully logged out"
       password_instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
       password_updated: "Password successfully updated"
       removed_footer_link: "Successfully removed footer link"
       removed_user_account: "Successfully removed user from this account"
-      switched_account: "Successfully switched to account {{account}}"
-      updated_account: "Successfully updated account {{account}}"
+      switched_account: "Successfully switched to account %{account}"
+      updated_account: "Successfully updated account %{account}"
       updated_footer_link: "Successfully updated footer link"
-      updated_health_check: "Successfully updated health check {{health_check}}"
+      updated_health_check: "Successfully updated health check %{health_check}"
       updated_health_check_template: "Successfully updated health check template"
       updated_settings: "Successfully updated settings"
-      updated_site: "Successfully updated site {{site}}"
+      updated_site: "Successfully updated site %{site}"
       updated_user: "Successfully updated user"
   health_check: 
     interval: 
       hours: 
         one: "1 hour"
-        other: "{{count}} hours"
+        other: "%{count} hours"
       minutes: 
         one: "1 minute"
-        other: "{{count}} minutes"
+        other: "%{count} minutes"
   health_check_imports: 
     choose_template_for_account: 
       account_templates: "Account templates"
@@ -328,7 +328,7 @@ en:
       my_templates: "My Templates"
       no_templates_found: "No templates found."
       public_templates: "Public Templates"
-      template_created_by: "Template created by {{user}}"
+      template_created_by: "Template created by %{user}"
     choose_template_for_site: 
       account_templates: "Account templates"
       all_templates: "All Templates"
@@ -337,7 +337,7 @@ en:
       my_templates: "My Templates"
       no_templates_found: "No templates found."
       public_templates: "Public Templates"
-      template_created_by: "Template created by {{user}}"
+      template_created_by: "Template created by %{user}"
     form: 
       could_not_import: "Could not import"
       csv_data: "CSV Data"
@@ -345,20 +345,20 @@ en:
       import: Import
       preview: Preview
     import_to_account: 
-      field_names: "The fields are (in this order): Site name, Site's Base URL, {{fields}}"
+      field_names: "The fields are (in this order): Site name, Site's Base URL, %{fields}"
       instructions: "Copy the health checks into the field below as CSV data"
-      new_import: "New Import from health check template {{template}}"
+      new_import: "New Import from health check template %{template}"
     import_to_site: 
-      field_names: "The fields are (in this order): {{fields}}"
+      field_names: "The fields are (in this order): %{fields}"
       instructions: "Copy the health checks into the field below as CSV data"
-      new_import: "New Import from health check template {{template}}"
+      new_import: "New Import from health check template %{template}"
     index: 
       all_imports_for_account: "Show all imports for this account"
       delete: Delete
       description: Description
-      imported_at: "Imported {{time}} ago"
-      imports_for_account: "Imports for account {{account}}"
-      imports_for_site: "Imports for site {{site}}"
+      imported_at: "Imported %{time} ago"
+      imports_for_account: "Imports for account %{account}"
+      imports_for_site: "Imports for site %{site}"
       new_import: "New Import"
       nothing_found: "No imports found"
       options: Options
@@ -406,7 +406,7 @@ en:
   health_check_templates: 
     edit: 
       could_not_update_template: "Could not create health check template"
-      edit_template: "Edit template {{template}}"
+      edit_template: "Edit template %{template}"
     form: 
       about_the_template: "About the template"
       describe_the_template: "Description for the template"
@@ -459,19 +459,19 @@ en:
       site: Site
       status: Status
     edit: 
-      edit_health_check_for_site: "Edit Health Check {{health_check}} for Site {{site}}"
+      edit_health_check_for_site: "Edit Health Check %{health_check} for Site %{site}"
     edit_multiple: 
       check_fields_you_want_to_change: "Check the fields you want to change."
       description: Description
       edit_multiple_health_checks: 
         one: "Edit 1 health check"
-        other: "Edit {{count}} health checks"
+        other: "Edit %{count} health checks"
       enabled: Enabled
       interval: Interval
       name: Name
       ? "no"
       : "No"
-      show_all: "Show all {{count}} health checks"
+      show_all: "Show all %{count} health checks"
       update_health_checks: "Update health checks"
       ? "yes"
       : "Yes"
@@ -484,7 +484,7 @@ en:
     hash_variable: 
       add_more: "Add another mapping"
     index: 
-      health_checks_for_site: "Health Checks for Site {{site}}"
+      health_checks_for_site: "Health Checks for Site %{site}"
       import: Import
       new_from_template: "New from template"
       new_health_check: "New Health Check"
@@ -497,18 +497,18 @@ en:
       import: Import
       my_templates: "My Templates"
       new_from_template: "New health check from template"
-      new_health_check_for_site: "New Health Check for site {{site}}"
-      new_health_check_from_template: "New health check from template {{template}}"
+      new_health_check_for_site: "New Health Check for site %{site}"
+      new_health_check_from_template: "New health check from template %{template}"
       no_templates_found: "No templates found."
       public_templates: "Public Templates"
-      template_created_by: "Template created by {{user}}"
+      template_created_by: "Template created by %{user}"
     preview: 
       description: Description
       details: Details
       interval: Interval
       interval_minutes: 
         one: "1 minute"
-        other: "{{count}} minutes"
+        other: "%{count} minutes"
       name: Name
       preview: Preview
       steps: Steps
@@ -520,7 +520,7 @@ en:
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"
       check_runs: "Check Runs"
-      comments: "Comments ({{count}})"
+      comments: "Comments (%{count})"
       description: Description
       disable: Disable
       duration: Duration
@@ -529,8 +529,8 @@ en:
       enable: Enable
       interval: "Check Interval"
       interval_minutes: 
-        one: "{{count}} minute"
-        other: "{{count}} minutes"
+        one: "%{count} minute"
+        other: "%{count} minutes"
       last_check_run: "Last check run"
       run: Run
       run_at: "Run at"
@@ -552,15 +552,15 @@ en:
     login: Login
     logout: Logout
     quick_links: "Quick links"
-    report_bugs: "Found a bug? {{report_link}}"
+    report_bugs: "Found a bug? %{report_link}"
     report_link_text: "Report it!"
     signup: Signup
     sites: Sites
     subtitle: "Website Acceptance Monitoring"
     unknown_build: unknown
-    user_greeter: "Welcome, {{user}}"
-    version: "Version {{version}}, revision {{revision}}"
-    you_are_here: "You are here: {{bread_crumb}}"
+    user_greeter: "Welcome, %{user}"
+    version: "Version %{version}, revision %{revision}"
+    you_are_here: "You are here: %{bread_crumb}"
   password_reset_mailer: 
     subject: "Password Reset Instructions"
   password_resets: 
@@ -586,7 +586,7 @@ en:
       filter: Filter
   sites: 
     edit: 
-      edit_site: "Edit Site {{site}}"
+      edit_site: "Edit Site %{site}"
     form: 
       could_not_create_site: "Could not create site"
       name: "Site Name"
@@ -610,7 +610,7 @@ en:
       deployment: Deployment
       deployment_url: "Callback-URL for marking site with deployment"
       edit_site: "Edit Site"
-      site: "Site {{site}}"
+      site: "Site %{site}"
       status: "Overall status"
       token: "Deployment token"
     tabs: 
@@ -622,18 +622,18 @@ en:
       recent_activity: "Recent Activity"
       upcoming_checks: "Upcoming Checks"
     index: 
-      add_existing_user_to_account: "Add existing user to account {{account}}"
-      add_new_user_to_account: "Add new user to account {{account}}"
+      add_existing_user_to_account: "Add existing user to account %{account}"
+      add_new_user_to_account: "Add new user to account %{account}"
       add_site: "Add site"
       create_account: "Create account"
       import: Import
-      manage_users: "Manage users for account {{account}}"
+      manage_users: "Manage users for account %{account}"
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
       settings: "Edit settings"
     upcoming_checks: 
       health_check: "Health Check"
-      in_time: "In {{time}}"
+      in_time: "In %{time}"
       no_upcoming_checks: "No upcoming checks."
       site: Site
       when: When
@@ -699,7 +699,7 @@ en:
       name: Name
       no_steps_defined: "No steps defined."
       options: Options
-      steps_for_health_check: "Steps for Health Check {{health_check}}"
+      steps_for_health_check: "Steps for Health Check %{health_check}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
     select_check_box_step_form: 
       name: Name
@@ -761,11 +761,11 @@ en:
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
     show: 
       accounts: Accounts
-      all_comments_by_user: "Show all of {{user}}'s comments"
-      comments: "Comments ({{count}})"
+      all_comments_by_user: "Show all of %{user}'s comments"
+      comments: "Comments (%{count})"
       edit_profile: "Edit profile"
       email: "Email address"
       full_name: "Full name"
       no_accounts: "none yet"
       settings: "Edit settings"
-      users_profile: "{{full_name}}'s profile"
+      users_profile: "%{full_name}'s profile"

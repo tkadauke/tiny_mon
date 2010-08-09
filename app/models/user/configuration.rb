@@ -1,5 +1,8 @@
 class User
   class Configuration
+    include ActiveModel::Conversion
+    extend ActiveModel::Naming
+
     class Option
       attr_reader :key, :name, :description, :type, :default, :values
       

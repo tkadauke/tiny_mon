@@ -23,12 +23,6 @@ class PasswordResetsControllerTest < ActionController::TestCase
     assert_nil flash[:error]
   end
   
-  test "should not get edit without perishable token" do
-    get :edit, :id => nil
-    assert_response :redirect
-    assert_not_nil flash[:error]
-  end
-  
   test "should deliver password reset instructions" do
     post :create, :email => 'john.doe@example.com'
     assert_response :redirect

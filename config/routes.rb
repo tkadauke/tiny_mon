@@ -57,4 +57,6 @@ TinyMon::Application.routes.draw do
   match '/login' => 'user_sessions#create', :via => :post
   match '/logout' => 'user_sessions#destroy', :as => :logout, :via => :delete
   root :to => 'start#index'
+
+  match '/:controller(/:action(/:id))' if Rails.env.test?
 end

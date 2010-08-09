@@ -1,6 +1,6 @@
 <h2><%= t('.settings') %></h2>
 
-<%= form_for :config, :url => settings_path do |f| %>
-  <%= render :partial => "/settings/form", :locals => { :config => @config, :f => f } %>
+<%= form_for :config, @configuration, :url => settings_path do |f| %>
+  <%= render :partial => "/settings/form", :locals => { :config => @configuration, :f => f } %>
   <p><%= f.submit t('.update') %></p>
 <% end %>

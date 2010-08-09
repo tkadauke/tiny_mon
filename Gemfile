@@ -11,7 +11,7 @@ gem "acts_as_list"
 gem "webrat", '0.5.3'
 gem "mechanize", :require => false
 gem "orderedhash"
-gem "authlogic"
+gem "authlogic", '2.1.6'
 gem "background_lite", '0.1.0'
 gem "will_paginate"
 gem "fastercsv"

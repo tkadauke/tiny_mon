@@ -35,7 +35,16 @@ class HealthCheckImport < ActiveRecord::Base
   def import_to_account!
     rows.each do |row|
       site_name, site_url = row.shift, row.shift
-      import_site = account.sites.find_or_create_by_name_and_url(site_name, site_url)
+      # TODO: replace with find_or_create_by_name_and_url as soon as this is fixed in Rails
+      # See: http://rails.lighthouseapp.com/projects/8994/tickets/5268-rails3-find_by_property1_and_property2-for-has_many-associations-was-broken-after-upgrade-to-rc
+      #   import_site = account.sites.find_or_create_by_name_and_url(site_name, site_url)
+      
+      import_site = if site = account.sites.find_by_name_and_url(site_name, site_url)
+        site
+      else
+        account.sites.create(:name => site_name, :url => site_url)
+      end
+      
       import_site.health_checks.create(:template => health_check_template, :template_data => row_to_template_data(row), :health_check_import => self)
     end
   end

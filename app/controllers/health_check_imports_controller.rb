@@ -31,7 +31,11 @@ class HealthCheckImportsController < ApplicationController
       
       if @health_check_import.save
         flash[:notice] = I18n.t("flash.notice.created_import")
-        redirect_to account_site_health_checks_path(@account, @site)
+        if @site
+          redirect_to account_site_health_checks_path(@account, @site)
+        else
+          redirect_to health_checks_path
+        end
       else
         render :action => 'new'
       end
@@ -59,19 +63,21 @@ protected
   def find_templates
     @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
     if !@health_check_template
-      @health_check_templates = case params[:filter]
+      scope = case params[:filter]
       when 'mine'
-        current_user.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+        current_user.health_check_templates
       when 'account'
-        @account.health_check_templates.paginate(:order => 'name ASC', :page => params[:page])
+        @account.health_check_templates
       when 'public'
-        HealthCheckTemplate.public_templates.paginate(:order => 'name ASC', :page => params[:page])
+        HealthCheckTemplate.public_templates
       else
-        current_user.available_health_check_templates(:page => params[:page]) # already ordered and paginated
+        current_user.available_health_check_templates
       end
+      
+      @health_check_templates = scope.order('name ASC').paginate(:page => params[:page])
     end
   end
-
+  
   def check_account_permissions
     deny_access unless current_user.can_create_health_check_imports?(@account)
   end

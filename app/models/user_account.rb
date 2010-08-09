@@ -11,7 +11,8 @@ class UserAccount < ActiveRecord::Base
   after_initialize :extend_role
   
   def extend_role
-    extend "Role::Account::#{self.role.classify}".constantize
+    role = read_attribute(:role)
+    extend "Role::Account::#{role.classify}".constantize if role
   end
   
   def self.available_roles

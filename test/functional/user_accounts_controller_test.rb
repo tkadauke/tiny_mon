@@ -10,7 +10,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, :account_id => @account
     assert_response :success
   end
   
@@ -18,7 +18,7 @@ class UserAccountsControllerTest < ActionController::TestCase
     second_user = User.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
     assert_difference 'UserAccount.count' do
       assert !second_user.can_switch_to_account?(@account)
-      post :create, :user_account => { :email => 'jane.doe@example.com' }
+      post :create, :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
       assert_response :redirect
       assert_not_nil flash[:notice]
       assert second_user.can_switch_to_account?(@account)
@@ -27,7 +27,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   
   test "should not create user account mapping if user does not exist" do
     assert_no_difference 'UserAccount.count' do
-      post :create, :user_account => { :email => 'foo@bar.com' }
+      post :create, :account_id => @account, :user_account => { :email => 'foo@bar.com' }
       assert_response :success
       assert_nil flash[:notice]
       assert assigns(:user_account).errors.on(:email)
@@ -37,7 +37,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   test "should update user account mapping" do
     second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
 
-    post :update, :id => UserAccount.last, :user_account => { :role => 'admin' }
+    post :update, :account_id => @account, :id => UserAccount.last, :user_account => { :role => 'admin' }
     assert_response :redirect
     assert_not_nil flash[:notice]
   end
@@ -45,7 +45,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   test "should remove user account mapping" do
     second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
     assert_difference 'UserAccount.count', -1 do
-      delete :destroy, :id => UserAccount.last
+      delete :destroy, :account_id => @account, :id => UserAccount.last
       assert_response :redirect
       assert_not_nil flash[:notice]
     end

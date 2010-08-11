@@ -370,6 +370,8 @@ en:
       preview: Preview
       site: Site
       url: URL
+    show:
+      health_checks_for_import: "Health checks for import"
   health_check_template: 
     condition: 
       for_each_element_in_array: "For each element 'element' in array"

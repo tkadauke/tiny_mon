@@ -13,6 +13,12 @@ class HealthCheckImportsController < ApplicationController
     end
   end
   
+  def show
+    @health_check_import = HealthCheckImport.find(params[:id])
+    @health_checks = @health_check_import.health_checks
+    @search_filter = SearchFilter.new
+  end
+  
   def new
     find_templates
     @health_check_import = HealthCheckImport.new(:health_check_template => @health_check_template)

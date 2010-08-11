@@ -40,6 +40,10 @@ class HealthCheckImport < ActiveRecord::Base
     end
   end
   
+  def self.from_param!(param)
+    find(param)
+  end
+  
 private
   def row_to_template_data(row)
     data_hash = {}

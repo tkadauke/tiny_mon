@@ -370,6 +370,8 @@ de:
       preview: Vorschau
       site: Site
       url: URL
+    show:
+      health_checks_for_import: "Funktionstests für Import"
   health_check_template: 
     condition: 
       for_each_element_in_array: "Für jedes 'element' mehrerer Elemente"

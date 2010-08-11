@@ -3,7 +3,7 @@
 <dl>
   <dt><%= t('.description') %></dt>
   <dd>
-    <%= simple_format @health_check.description %>
+    <%= simple_format auto_link(@health_check.description) %>
     <p>
       <% action_list do |a| %>
         <% a.link_to t('.check_runs'), account_site_health_check_check_runs_path(@account, @site, @health_check) %>

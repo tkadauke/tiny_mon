@@ -669,6 +669,7 @@ en:
     fill_in: "Fill in field"
     select_check_box: "Select check box"
     submit_form: "Submit form"
+    take_screenshot: "Take screenshot"
     visit: Visit
     wait: Wait
   steps: 

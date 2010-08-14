@@ -669,6 +669,7 @@ de:
     fill_in: "Fülle Feld aus"
     select_check_box: "Wähle Check Box"
     submit_form: "Schicke Formular ab"
+    take_screenshot: "Screenshot erstellen"
     visit: "Gehe zu"
     wait: Warte
   steps: 

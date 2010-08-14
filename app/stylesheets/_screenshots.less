@@ -1,0 +1,37 @@
+@import "_core";
+
+#canvas {
+  .screenshots {
+    .clearfix;
+    
+    li {
+      float: left;
+      margin-right: 1em;
+      margin-bottom: 1em;
+      
+      height: 12em;
+      overflow: hidden;
+      
+      img {
+        border: 2px solid transparent;
+      }
+      
+      :hover {
+        overflow: visible;
+        
+        a {
+          position: relative;
+          z-index: 100;
+          
+          img {
+            border: 2px solid #012C54;
+          }
+        }
+      }
+    }
+  }
+  
+  .screenshot {
+    max-width: 100%;
+  }
+}

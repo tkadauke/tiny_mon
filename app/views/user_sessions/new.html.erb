@@ -1,6 +1,6 @@
 <h2><%= t('.login') %></h2>
 
-<% form_for @user_session, :url => login_path do |f| %>
+<% form_for @user_session, :url => login_path, :html => { :class => 'form' } do |f| %>
   <%= f.error_messages :header_message => t('.could_not_login') %>
   <p class="form_item">
     <span class="label"><%= f.label :email, t('.email') %></span>

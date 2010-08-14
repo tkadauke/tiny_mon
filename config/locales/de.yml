@@ -562,7 +562,7 @@ de:
     unknown_build: unbekannt
     user_greeter: "Willkommen, {{user}}"
     version: "Version {{version}}, Revision {{revision}}"
-    you_are_here: "Sie sind hier: {{bread_crumb}}"
+    you_are_here: "Sie sind hier"
   password_reset_mailer: 
     subject: "Anweisungen zur Änderung Ihres Passwortes"
   password_resets: 

@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def bread_crumb
-    breadcrumb = %{<a href="/">#{I18n.t('breadcrumb.home')}</a>}
+    items = [%{<a href="/">#{I18n.t('breadcrumb.home')}</a>}]
     sofar = ''
     elements = request.request_uri.split('?').first.split('/')
     parent_model = nil
@@ -23,14 +23,16 @@ module ApplicationHelper
         [parent_model, I18n.t("breadcrumb.#{elements[i]}")]
       end
         
-      breadcrumb += ' &gt; '
       if sofar == request.path
-        breadcrumb += "<strong>"  + link_text + '</strong>'
+        items << "<strong>"  + link_text + '</strong>'
       else
-        breadcrumb += "<a href='#{sofar}'>"  + link_text + '</a>'
+        items << "<a href='#{sofar}'>"  + link_text + '</a>'
       end
     end
-    breadcrumb
+    
+    content_tag :ul do
+      items.collect { |item| content_tag(:li) { item } }
+    end
   end
   
   def status_icon(model, version = :small)

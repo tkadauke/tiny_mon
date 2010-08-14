@@ -562,7 +562,7 @@ en:
     unknown_build: unknown
     user_greeter: "Welcome, {{user}}"
     version: "Version {{version}}, revision {{revision}}"
-    you_are_here: "You are here: {{bread_crumb}}"
+    you_are_here: "You are here"
   password_reset_mailer: 
     subject: "Password Reset Instructions"
   password_resets: 

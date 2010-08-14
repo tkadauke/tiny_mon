@@ -3,7 +3,7 @@
 <dl>
   <dt><%= t('.description') %></dt>
   <dd>
-    <%= simple_format auto_link(@health_check.description) %>
+    <%= simple_format auto_link(@health_check.description) unless @health_check.description.blank? %>
     <p>
       <% action_list do |a| %>
         <% a.link_to t('.check_runs'), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
@@ -38,7 +38,7 @@
 </dl>
 
 <% if @health_check.enabled? %>
-  <div id="graph" style="width: 800px; height: 300px; margin-bottom: 10px;"></div>
+  <div id="graph" style="width: 100%; height: 300px; margin-bottom: 10px;"></div>
 
   <% check_runs = @health_check.recent_check_runs %>
   <script language="javascript" type="text/javascript">

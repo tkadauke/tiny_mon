@@ -1,0 +1,74 @@
+@import "_core";
+
+#canvas {
+  form {
+    input, textarea, select { font-size: 1.2em; }
+  }
+  
+  form.form {
+    background-color: #FFE0B4;
+    border: 1px solid #FFBF64;
+    padding: 1em;
+    margin-bottom: 1em;
+    display: inline-block;
+    
+    span.label, span.desc {
+      display: block;
+    }
+    
+    label.required:after {
+      content: "*";
+      color: #FF1300;
+    }
+    
+    span.desc {
+      color: #714200;
+      font-size: 0.9em;
+    }
+    
+    * {
+      margin-top: 0 !important;
+    }
+    
+    input[type="text"], input[type="password"], textarea, select {
+      margin-left: 2em;
+    }
+    
+    p {
+      .clearfix;
+      display: block;
+    }
+    
+    >p:last-child {
+      margin-bottom: 0 !important;
+    }
+    
+    .edit-multiple td {
+      padding-bottom: 1em;
+    }
+    
+    dl {
+      background: inherit !important;
+      
+      input[type="text"], input[type="password"], textarea, select {
+        margin: 0;
+      }
+    }
+    
+    .errorExplanation {
+      background-color: #FFBAB4;
+      border: 2px solid #FF1300;
+      color: red;
+      padding: 1em;
+      margin-bottom: 1em;
+    }
+    
+    .fieldWithErrors label {
+      color: #FF1300;
+    }
+    
+    .fieldWithErrors input {
+      border: 2px solid #FF1300;
+    }
+  }
+}

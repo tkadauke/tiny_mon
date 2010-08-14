@@ -9,3 +9,4 @@ config/deploy.rb
 config/production
 doc/TODO
 public/system
+public/stylesheets/*

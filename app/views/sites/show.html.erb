@@ -7,7 +7,7 @@
   <dd><%= overall_status(@site) %></dd>
   
   <dt><%= t(".base_url") %></dt>
-  <dd><%=h @site.url %></dd>
+  <dd><%= link_to h(@site.url), @site.url %></dd>
   
   <dt><%= t(".deployment") %></dt>
   <dd>

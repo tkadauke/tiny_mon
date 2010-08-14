@@ -1,6 +1,10 @@
 class UserAccountsController < ApplicationController
   before_filter :find_account
   
+  def index
+    redirect_to account_path(@account)
+  end
+  
   def new
     can_add_user_to_account!(@account) do
       @user_account = @account.user_accounts.build

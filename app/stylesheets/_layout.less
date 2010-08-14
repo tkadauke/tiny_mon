@@ -1,0 +1,142 @@
+@import "_core";
+
+.corset {
+  width: 100em;
+  margin: auto;
+}
+
+body {
+  background-color: #333;
+}
+
+#body {
+  background-color: #fff;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#header {
+  background-color: #67AFF1;
+  
+  #top_header {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+  
+  #logo {
+    margin-top: 1em;
+    float: left;
+    
+    h1 {
+      font-size: 4em;
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      
+      a {
+        color: #222;
+      }
+    
+      sup {
+        color: #FF1300;
+      }
+    }
+    
+    p {
+      font-size: 2em;
+      font-family: "Georgia", serif;
+    }
+  }
+  
+  #center_header {
+    float: left;
+    width: 20em;
+    margin-left: 5em;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 1em;
+    
+    background-color: #AED1F1;
+    
+    border: 2px solid #012C54;
+    border-top: none;
+    .rounded_corners_bottom;
+  }
+  
+  #right_header {
+    float: right;
+    font-size: 1.6em;
+    margin-top: 1em;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    
+    a {
+      color: #012C54;
+      text-decoration: underline;
+    }
+
+    a:visited {
+      color: #012C54;
+    }
+    
+    .overall-status {
+      margin-top: 1em;
+      float: right;
+    }
+  }
+  
+  #menu ul {
+    .clearfix;
+    
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    
+    li {
+      float: left;
+      list-style-type: none;
+      font-size: 1.6em;
+      background-color: #012C54;
+      padding: 0.5em 0;
+    
+      a {
+        color: #AED1F1;
+        padding: 0.5em 1em;
+      }
+    
+      margin-right: 1em;
+      
+      .rounded_corners_top;
+    }
+  }
+  
+  a {
+    text-decoration: none;
+  }
+}
+
+#footer {
+  color: #AED1F1;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  
+  .left {
+    float: left;
+  }
+  
+  .right {
+    float: right;
+  }
+  
+  a {
+    color: #AED1F1;
+  }
+  
+  .content {
+    font-size: 1.4em;
+    padding-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  h1 {
+    font-size: 1.2em;
+  }
+  
+  #links {
+    margin-top: 1em;
+  }
+}

@@ -6,6 +6,6 @@
 
 <%= render :partial => 'preview' if @preview %>
 
-<% form_for [@health_check_import] do |f| %>
+<% form_for [@health_check_import], :html => { :class => 'form' } do |f| %>
   <%= render :partial => 'form', :locals => { :f => f } %>
 <% end %>

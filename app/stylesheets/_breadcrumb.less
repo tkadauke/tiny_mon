@@ -1,0 +1,22 @@
+.breadcrumb {
+  margin-bottom: 1em;
+  
+  ul {
+    display: inline;
+  }
+
+  ul > li {
+    display: inline;
+    list-style-type: none;
+
+    :after {
+      content: "\00BB";
+      font-family: "Times New Roman", serif;
+      font-size: 14px;
+      padding: 0 6px;
+    }
+    :last-child:after {
+      content: "";
+    }
+  }
+}

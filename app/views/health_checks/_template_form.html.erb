@@ -1,4 +1,4 @@
-<% form_for [@account, @site, @health_check] do |f| %>
+<% form_for [@account, @site, @health_check], :html => { :class => 'form' } do |f| %>
   <%= hidden_field_tag :template, @health_check_template.id %>
   
   <% f.fields_for :template_data, @health_check.template_data do |data| %>

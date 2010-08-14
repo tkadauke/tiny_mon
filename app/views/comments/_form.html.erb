@@ -1,4 +1,4 @@
-<% form_for [@account, @site, @health_check, @check_run, @comment] do |f| %>
+<% form_for [@account, @site, @health_check, @check_run, @comment], :html => { :class => 'form' } do |f| %>
   <%= f.error_messages :header_message => t('.error_adding_comment') %>
   
   <p class="form_item">

@@ -8,95 +8,68 @@
     <%= stylesheet_link_tag 'style' %>
   </head>
   <body>
-    <!-- wrap start -->
-    <div id="wrap">
-    <div class="wrap_corner_right">
-
-      <!-- topcontent -->
-      <div id="topcontent">
-
-        <!-- header start -->
-        <div id="header">
-
-          <!-- topheader start -->
-          <div id="top_header">
-            <div id="logo">
-              <h1><a href="/">TinyMon</a><sup>&beta;</sup></h1>
-              <p><%= t('layouts.subtitle') %></p>
-            </div>
-            <div id="center_header">
-              <div id="suggestion">
-                <div class="suggestion_corner_right">
-                  <span><%= t('layouts.report_bugs', :report_link => link_to(t('layouts.report_link_text'), "http://github.com/tkadauke/tiny_mon/issues")) %></span>
-                </div>
-              </div>
-            </div>
-            <div id="right_header">
-            </div>
-            <div class="clearer"></div>
+    <!-- header start -->
+    <div id="header">
+      <div class="corset">
+        <!-- topheader start -->
+        <div id="top_header" class="clearfix">
+          <div id="logo">
+            <h1><a href="/">TinyMon</a><sup>&beta;</sup></h1>
+            <p><%= t('layouts.subtitle') %></p>
           </div>
-          <!-- topheader end -->
-
-          <!-- menu start -->
-          <div id="menu_container">
-            <div id="menu">
-              <ul>
-                <li><a href="/" class="first"><%= t('layouts.home') %></a></li>
-                <li><a href="/sites"><%= t('layouts.sites') %></a></li>
-                <li><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
-                <li><a href="/help"><%= t('layouts.help') %></a></li>
-              </ul>
-            </div>
-            <div class="clearer"></div>
+          <div id="right_header">
           </div>
-          <!-- menu end -->
-
         </div>
-        <!-- header end -->
+        <!-- topheader end -->
 
-      <!-- body start -->
-
-      <div id="body">
-        <%= yield %>
-      <div class="clearer"></div>
-
+        <!-- menu start -->
+        <div id="menu">
+          <ul>
+            <li><a href="/" class="first"><%= t('layouts.home') %></a></li>
+            <li><a href="/sites"><%= t('layouts.sites') %></a></li>
+            <li><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
+            <li class="help"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+          </ul>
+        </div>
       </div>
-      <!-- body end -->
+    </div>
+    <!-- header end -->
 
+    <!-- body start -->
+
+    <div id="body">
+      <div class="corset">
+        <div id="canvas">
+          <%= yield %>
+        </div>
       </div>
-      <!-- topcontent end -->
+    </div>
+    <!-- body end -->
 
-      <!-- footer start -->
-      <div id="bottomcontent">
-      <div class="bottomcontent_right">
-        <div id="footer">
-        <div class="footer_corner_right">
+    <!-- footer start -->
+    <div id="footer">
+      <div class="corset">
+        <div class="content">
           <div class="left">
-          <a href="/"><%= t('layouts.home') %></a> | 
-          <a href="/sites"><%= t('layouts.sites') %></a> |
-          <a href="/health_checks"><%= t('layouts.health_checks') %></a>
+            <a href="/"><%= t('layouts.home') %></a> | 
+            <a href="/sites"><%= t('layouts.sites') %></a> |
+            <a href="/health_checks"><%= t('layouts.health_checks') %></a>
           </div>
-          <div class="clearer"></div>
+          <div class="right">
+            <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link) %>
+          </div>
         </div>
-        </div>
-      </div>
-      </div>
-      <!-- footer end -->
-
-    </div>
-    </div>
-    <!-- wrap end -->
-
-    <div class="bottom_space">
-      <div id="ads_page_end">
-        <h1><%= t('layouts.quick_links') %></h1>
-        <div id="links">
-          <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>
-          <% FooterLink.ordered.each do |link| %>
-            | <%= link_to link.text, link.url %>
-          <% end %>
+        <div class="content">
+          <h1><%= t('layouts.quick_links') %></h1>
+          <div id="links">
+            <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>
+            <% FooterLink.ordered.each do |link| %>
+              | <%= link_to link.text, link.url %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </body>
 </html>
+

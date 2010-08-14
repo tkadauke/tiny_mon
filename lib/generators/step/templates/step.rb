@@ -3,6 +3,6 @@ class <%= class_name %>Step < Step
   property :<%= attribute.name %>, :<%= attribute.type %>
 <% end -%>
   
-  def run!(session)
+  def run!(session, check_run)
   end
 end

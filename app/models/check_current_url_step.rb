@@ -5,7 +5,7 @@ class CheckCurrentUrlStep < Step
   
   validates_presence_of :url
   
-  def run!(session)
+  def run!(session, check_run)
     session.fail UrlCheckFailed, "Expected current URL to be #{self.url}, but was #{session.response.uri}" unless session.response.uri.to_s == self.url.to_s
   end
 end

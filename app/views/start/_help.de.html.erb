@@ -1,0 +1,23 @@
+<h2>Willkommen</h2>
+
+<p>TinyMon ist eine mächtige aber simple Anwendung für Website-Monitoring. Dies ist Ihre Übersicht. Sie sehen hier die Ergebnisse Ihrer vergangenen Testläufe, sowie geplante Testläufe.</p>
+
+<h3>Loslegen</h3>
+
+<ul class="asterisk">
+  <li><%= link_to 'Passen Sie Ihre Einstellungen an', settings_path %>, wie z.B. Ihre Sprache oder E-Mail-Benachrichtigungen.</li>
+  <% if current_user.current_account.blank? %>
+    <li><%= link_to 'Erstellen Sie ein Konto', new_account_path %>, damit Sie Funktionstests definieren können.</li>
+  <% end %>
+</ul>
+
+<h3>Anleitungen</h3>
+
+<p>Wählen Sie eine der folgenden Anleitungen, um TinyMon zu verwenden.</p>
+
+<ul class="asterisk">
+  <li><%= link_to 'Erster Funktionstest', tutorials_path(:id => 'first_health_check'), :method => :post %> - erklärt, wie Sie den ersten Funktionstest für Ihre Website erstellen.</li>
+  <li><%= link_to 'Funktionstests importieren', tutorials_path(:id => 'import'), :method => :post %> - erklärt, wie Sie mehrere Funktionstests in einem simplen Schritt importieren können.</li>
+  <li><%= link_to 'Deployments', tutorials_path(:id => 'deployments'), :method => :post %> - erklärt, wie Sie Ihre Site markieren können, nachdem Sie eine neue Version online gestellt haben.</li>
+  <li><%= link_to 'Integration mit Deployment-Tools', tutorials_path(:id => 'integrate_deployments'), :method => :post %> - erklärt, wie Sie TinyMon automatisch benachrichtigen können, wenn Sie eine neue Version Ihrer Website online stellen.</li>
+</ul>

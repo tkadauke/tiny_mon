@@ -4,6 +4,12 @@ class HealthChecksController < ApplicationController
   before_filter :find_site
   
   def index
+    @report = if params[:report]
+      current_user.soft_settings.set("health_checks.report", params[:report])
+    else
+      current_user.soft_settings.get("health_checks.report")
+    end
+    
     @search_filter = SearchFilter.new(params[:search_filter])
     if @site
       @health_checks = @site.health_checks.find_for_list(@search_filter, :order => 'health_checks.name ASC')

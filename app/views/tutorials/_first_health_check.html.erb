@@ -1,0 +1,11 @@
+<h2>Create your first health check</h2>
+
+<p>In TinyMon, <em>health checks</em> are assigned to <em>sites</em>. In order to create a health check, you first need to <%= link_to 'create a site', new_site_path %>. Follow these five simple steps to get your first health check going.</p>
+
+<ol>
+  <li><strong>Create a site:</strong> Go to <%= link_to 'the new site page', new_site_path %> to create a new site. In most cases, you'll want the base URL to be the home page of your site (don't forget the "http://").</li>
+  <li><strong>Create a health check for your site:</strong> On your site page, create a health check. Click on "New from template".</li>
+  <li><strong>Choose template:</strong> We'll choose the most simple type of check, called the "Up-Check". It simply checks if your web site responds normally. To choose this template, click "Up-Check".</li>
+  <li><strong>Fill in the form:</strong> Enter the URL which the health check should load. This URL can be relative to the base URL of the site (i.e. enter "/" for the home page). Optionally, copy some (possibly unique) short content from the page that is always there, and paste it into the "Content" field. This lets the check determine if the page actually returns the expected content (and not e.g. an error page).</li>
+  <li><strong>Test it:</strong> On the health check page, hit "Run" to test your health check.</li>
+</ol>

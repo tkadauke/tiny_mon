@@ -60,4 +60,25 @@ module ApplicationHelper
       link_to(build[0..7], "http://github.com/tkadauke/tiny_mon/commit/#{TinyMon::Version.build}")
     end
   end
+  
+  def show_help?
+    current_user.soft_settings.get("help.show", :default => '1') == '1'
+  end
+  
+  def current_tutorial
+    @current_tutorial ||= current_user.soft_settings.get("tutorials.current")
+  end
+  
+  def help
+    return unless logged_in? && show_help?
+    
+    if current_tutorial
+      render :partial => "/tutorials/tutorial"
+    else
+      begin
+        render :partial => "/shared/help"
+      rescue
+      end
+    end
+  end
 end

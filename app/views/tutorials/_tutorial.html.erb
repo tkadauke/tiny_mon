@@ -1,0 +1,5 @@
+<div class="help">
+  <%= render :partial => "/tutorials/#{current_tutorial}" %>
+
+  <p><%= link_to t(".finish_tutorial"), tutorials_path, :method => :delete %></p>
+</div>

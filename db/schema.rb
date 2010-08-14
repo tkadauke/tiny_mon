@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807011752) do
+ActiveRecord::Schema.define(:version => 20100814002449) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -174,6 +174,14 @@ ActiveRecord::Schema.define(:version => 20100807011752) do
 
   add_index "sites", ["deployment_token"], :name => "index_sites_on_deployment_token"
   add_index "sites", ["name"], :name => "index_sites_on_name"
+
+  create_table "soft_settings", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "steps", :force => true do |t|
     t.integer  "health_check_id"

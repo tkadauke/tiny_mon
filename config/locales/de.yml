@@ -586,6 +586,8 @@ de:
   shared: 
     filter: 
       filter: Filter
+    help: 
+      close: Schließen
   sites: 
     edit: 
       edit_site: "Site {{site}} bearbeiten"
@@ -718,6 +720,9 @@ de:
   time: 
     formats: 
       log: "%H:%M:%S"
+  tutorials: 
+    tutorial: 
+      finish_tutorial: "Anleitung beenden"
   user_accounts: 
     new: 
       add: Hinzufügen

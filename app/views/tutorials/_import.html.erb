@@ -1,0 +1,19 @@
+<h2>Import health checks</h2>
+
+<p>In this tutorial we will import health checks.</p>
+
+<ol>
+  <li><strong>Go to Import page:</strong> From the start page, click on "Import".</li>
+  <li><strong>Choose a template:</strong> For this tutorial, we will choose the simple "Up-Check" template.</li>
+  <li><strong>Describe your import:</strong> If you want to, you can add a quick note on what you are importing. This can help you later, when you want to identify a particular import.</li>
+  <li><strong>Enter CSV Data:</strong>
+    Enter one line of CSV data for each health check. The first column is the name of the health check's site, and the second is the base URL of that site. Sites are created if they don't exist yet when health checks are imported. The third column is the relative URL that TinyMon checks. Finally, if you want TinyMon to check for the presence of content on your page, put that in the last column. Note that the last column is optional.<br/>
+    As an example, consider the following CSV data:<br/>
+    <pre>
+"example.com","http://www.example.com","/"
+"google.com","http://www.google.com","/"
+"wikipedia.org","http://www.wikipedia.org","/"</pre><br/>
+  </li>
+  <li><strong>Preview:</strong> Make sure the CSV is interpreted correctly, i.e. the values are in the correct columns.</li>
+  <li><strong>Import:</strong> Hit "Import" to generate the health checks.</li>
+</ol>

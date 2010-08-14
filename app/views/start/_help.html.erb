@@ -1,0 +1,23 @@
+<h2>Welcome to TinyMon</h2>
+
+<p>TinyMon is a powerful yet simple website monitoring tool. This is your dashboard. It shows you the results of recent check runs as well as planned health checks.</p>
+
+<h3>Getting started</h3>
+
+<ul class="asterisk">
+  <li><%= link_to 'Adjust your settings', settings_path %>, like your language or e-mail alerts.</li>
+  <% if current_user.current_account.blank? %>
+    <li><%= link_to 'Create an account', new_account_path %> to start defining health checks.</li>
+  <% end %>
+</ul>
+
+<h3>Tutorials</h3>
+
+<p>Choose one of the following tutorials to start using TinyMon.</p>
+
+<ul class="asterisk">
+  <li><%= link_to 'First health check', tutorials_path(:id => 'first_health_check'), :method => :post %> - explains how to create the first health check for your site.</li>
+  <li><%= link_to 'Import health checks', tutorials_path(:id => 'import'), :method => :post %> - explains how to import multiple health checks in one easy step.</li>
+  <li><%= link_to 'Deployments', tutorials_path(:id => 'deployments'), :method => :post %> - explains how to mark a site after you have deployed a new version.</li>
+  <li><%= link_to 'Integrate with your deployment tools', tutorials_path(:id => 'integrate_deployments'), :method => :post %> - explains how to automatically notify TinyMon of newly deployed versions.</li>
+</ul>

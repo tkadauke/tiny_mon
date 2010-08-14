@@ -1,7 +1,7 @@
 <% if @health_checks.empty? %>
   <p><%= t('.no_health_checks_found') %></p>
 <% else %>
-  <% if params[:report] == 'overview' %>
+  <% if @report == 'overview' %>
     <%= render :partial => "overview" %>
   <% else %>
     <%= render :partial => "details" %>

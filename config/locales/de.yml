@@ -14,11 +14,11 @@ de:
       name_hint: "Zum Beispiel der Name Ihrer Organisation. Hinweis: Alle Benutzer des Kontos können alle Funktionstests sehen"
       save_account: "Konto speichern"
     index: 
+      details: "Details"
       edit: Bearbeiten
       name: Name
       new_account: "Neues Konto"
       options: Optionen
-      switch: "Konto wechseln"
     new: 
       new_account: "Neues Konto"
     show: 

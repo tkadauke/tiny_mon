@@ -14,11 +14,11 @@ en:
       name_hint: "For example your organization's name. Note that every user in an account can see all health checks"
       save_account: "Save account"
     index: 
+      details: "Details"
       edit: Edit
       name: Name
       new_account: "New Account"
       options: Options
-      switch: "Switch account"
     new: 
       new_account: "New Account"
     show: 

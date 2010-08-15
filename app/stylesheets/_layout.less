@@ -72,6 +72,40 @@ body {
     }
   }
   
+  .action-list li {
+    position: relative;
+  }
+  
+  li.account {
+    ul {
+      visibility: hidden;
+
+      text-align: left;
+      position: absolute;
+      right: 1em;
+      
+      border: 2px solid #012C54;
+      background-color: #fff;
+      
+      li {
+        float: none;
+        position: relative;
+        padding: 0.5em;
+        white-space:nowrap;
+      }
+      
+      li:nth-child(odd) {
+        background: #AED1F1;
+      }
+    }
+    
+    :hover {
+      ul {
+        visibility: visible;
+      }
+    }
+  }
+  
   #menu ul {
     .clearfix;
     

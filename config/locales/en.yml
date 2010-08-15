@@ -191,7 +191,6 @@ en:
       subject: "Health Check {{health_check}} of site {{site}} failed!"
   check_runs: 
     activity: 
-      account: Account
       duration: Duration
       duration_in_seconds: "{{duration}} seconds"
       health_check: "Health Check"
@@ -329,20 +328,14 @@ en:
       account_templates: "Account templates"
       all_templates: "All Templates"
       choose_template: "Choose template for import"
-      create_template: "Create new template"
       my_templates: "My Templates"
-      no_templates_found: "No templates found."
       public_templates: "Public Templates"
-      template_created_by: "Template created by {{user}}"
     choose_template_for_site: 
       account_templates: "Account templates"
       all_templates: "All Templates"
       choose_template: "Choose template for import"
-      create_template: "Create new template"
       my_templates: "My Templates"
-      no_templates_found: "No templates found."
       public_templates: "Public Templates"
-      template_created_by: "Template created by {{user}}"
     form: 
       could_not_import: "Could not import"
       csv_data: "CSV Data"
@@ -426,15 +419,11 @@ en:
       name_template: "Health check's name"
       public: Public
       save_template: "Save template"
-      see_help_for_more_info: "See the help for more info"
       steps: "Steps for the generated health check"
-      steps_template: "Health check steps"
       template_for_health_check_description: "Description for the health check with placeholders"
       template_for_health_check_name: "Name for the health check with placeholders"
-      template_for_health_check_steps: "Steps for the health check with placeholders"
       template_name: "Health check's name"
       template_variables: "Template variables"
-      variables: Variables
       who_can_see_and_use_this_template: "Should this template be visible to and usable by every user?"
     index: 
       delete: Delete
@@ -448,6 +437,10 @@ en:
     new: 
       could_not_create_template: "Could not create template"
       new_template: "New health check template"
+    select: 
+      create_template: "Create template"
+      no_templates_found: "No templates found."
+      template_created_by: "Template created by {{user}}"
   health_checks: 
     all_checks: 
       all_health_checks: "All Health Checks"
@@ -500,15 +493,11 @@ en:
     new: 
       account_templates: "Account templates"
       all_templates: "All Templates"
-      create_template: "Create new template"
-      import: Import
       my_templates: "My Templates"
       new_from_template: "New health check from template"
       new_health_check_for_site: "New Health Check for site {{site}}"
       new_health_check_from_template: "New health check from template {{template}}"
-      no_templates_found: "No templates found."
       public_templates: "Public Templates"
-      template_created_by: "Template created by {{user}}"
     preview: 
       description: Description
       details: Details
@@ -526,7 +515,6 @@ en:
       all_comments: "Show all comments"
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"
-      check_runs: "Check Runs"
       comments: "Comments ({{count}})"
       description: Description
       disable: Disable
@@ -539,7 +527,6 @@ en:
       last_check_run: "Last check run"
       run: Run
       run_at: "Run at"
-      screenshots: Screenshots
     tabs: 
       check_runs: "Check runs"
       edit: Edit
@@ -564,8 +551,6 @@ en:
     login: Login
     logout: Logout
     quick_links: "Quick links"
-    report_bugs: "Found a bug? {{report_link}}"
-    report_link_text: "Report it!"
     signup: Signup
     sites: Sites
     subtitle: "Website Acceptance Monitoring"
@@ -756,7 +741,6 @@ en:
       password: Password
       register_instead: "Not registered yet?"
       remember_me: "Remember me"
-      user_name: "User name"
   users: 
     edit: 
       could_not_update_user: "Could not update user"
@@ -765,14 +749,6 @@ en:
       full_name: "Full name"
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
       update: Update
-    index: 
-      edit: Edit
-      listing_users: "Listing users"
-      login_name: "Login name"
-      new_account: "New account"
-      options: Options
-      signup: Signup
-      there_are_no_user_accounts_yet: "There are no user accounts yet"
     new: 
       could_not_register_user: "Could not register user"
       create_account: "Create account"
@@ -780,7 +756,6 @@ en:
       email_address: "E-mail address"
       full_name: "Full name"
       login_instead: "Already registered?"
-      login_name: "Login name"
       password: Password
       password_confirmation: "Password confirmation"
       please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"

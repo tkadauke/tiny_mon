@@ -191,7 +191,6 @@ de:
       subject: "Funktionstest {{health_check}} von site {{site}} ist fehlgeschlagen!"
   check_runs: 
     activity: 
-      account: Konto
       duration: Dauer
       duration_in_seconds: "{{duration}} Sekunden"
       health_check: Funktionstest
@@ -329,20 +328,14 @@ de:
       account_templates: "Vorlagen des Kontos"
       all_templates: "Alle Vorlagen"
       choose_template: "Vorlage für Import wählen"
-      create_template: "Vorlage erstellen"
       my_templates: "Meine Vorlagen"
-      no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von {{user}}"
     choose_template_for_site: 
       account_templates: "Vorlagen des Kontos"
       all_templates: "Alle Vorlagen"
       choose_template: "Vorlage für Import wählen"
-      create_template: "Vorlage erstellen"
       my_templates: "Meine Vorlagen"
-      no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von {{user}}"
     form: 
       could_not_import: "Konnte nicht importieren"
       csv_data: CSV-Daten
@@ -426,15 +419,11 @@ de:
       name_template: "Name des Funktionstests"
       public: Öffentlich
       save_template: "Vorlage speichern"
-      see_help_for_more_info: "Siehe die Hilfe für weitere Informationen"
       steps: Schritte
-      steps_template: Schritte
       template_for_health_check_description: "Beschreibung des Funktionstests mit Platzhaltern"
       template_for_health_check_name: "Name des Funktionstests mit Platzhaltern"
-      template_for_health_check_steps: "Schritte des Funktionstests mit Platzhaltern"
       template_name: "Name der Vorlage"
       template_variables: "Variablen für die Vorlage"
-      variables: Variablen
       who_can_see_and_use_this_template: "Soll die Vorlage für alle Benutzer sichtbar und verwendbar sein?"
     index: 
       delete: Löschen
@@ -448,6 +437,10 @@ de:
     new: 
       could_not_create_template: "Konnte Funktionstest-Vorlage nicht erstellen"
       new_template: "Neue Funktionstest-Vorlage"
+    select: 
+      create_template: "Vorlage erstellen"
+      no_templates_found: "Keine Vorlagen gefunden."
+      template_created_by: "Vorlage wurde erstellt von {{user}}"
   health_checks: 
     all_checks: 
       all_health_checks: "Alle Funktionstests"
@@ -500,15 +493,11 @@ de:
     new: 
       account_templates: "Vorlagen des Kontos"
       all_templates: "Alle Vorlagen"
-      create_template: "Vorlage erstellen"
-      import: Importieren
       my_templates: "Meine Vorlagen"
       new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
       new_health_check_from_template: "Neuer Funktionstest aus Vorlage {{template}}"
-      no_templates_found: "Keine Vorlagen gefunden."
       public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von {{user}}"
     preview: 
       description: Beschreibung
       details: Details
@@ -526,7 +515,6 @@ de:
       all_comments: "Alle Kommentare anzeigen"
       check_is_disabled: "Funktionstest ist inaktiv"
       check_is_enabled: "Funktionstest ist aktiv"
-      check_runs: Testläufe
       comments: "Kommentare ({{count}})"
       description: Beschreibung
       disable: Deaktivieren
@@ -539,7 +527,6 @@ de:
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
       run_at: Zeit
-      screenshots: Bildschirmfotos
     tabs: 
       check_runs: "Testläufe"
       edit: Bearbeiten
@@ -564,8 +551,6 @@ de:
     login: Login
     logout: Logout
     quick_links: Schnellzugriff
-    report_bugs: "Fehler gefunden? {{report_link}}"
-    report_link_text: Melden!
     signup: Registrieren
     sites: Sites
     subtitle: Website-Funktionsüberwachung
@@ -756,7 +741,6 @@ de:
       password: Passwort
       register_instead: "Noch nicht registriert?"
       remember_me: "Eingeloggt bleiben"
-      user_name: Benutzername
   users: 
     edit: 
       could_not_update_user: "Konnte Benutzerprofil nicht aktualisieren"
@@ -765,14 +749,6 @@ de:
       full_name: "Voller Name"
       the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
       update: Aktualisieren
-    index: 
-      edit: Bearbeiten
-      listing_users: "Alle Benutzer"
-      login_name: Benutzername
-      new_account: "Neuer benutzer"
-      options: Optionen
-      signup: Registrieren
-      there_are_no_user_accounts_yet: "Bisher gibt es keine Benutzer"
     new: 
       could_not_register_user: "Konnte Benutzer nicht registrieren"
       create_account: "Benutzer registrieren"
@@ -780,7 +756,6 @@ de:
       email_address: E-Mail-Adresse
       full_name: "Voller Name"
       login_instead: "Bereits registriert?"
-      login_name: Benutzername
       password: Passwort
       password_confirmation: "Passwort wiederholen"
       please_repeat_the_password_exactly_as_above: "Bitte wiederholen Sie das Passwort exakt wie oben"

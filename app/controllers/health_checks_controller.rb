@@ -7,7 +7,7 @@ class HealthChecksController < ApplicationController
     @report = if params[:report]
       current_user.soft_settings.set("health_checks.report", params[:report])
     else
-      current_user.soft_settings.get("health_checks.report")
+      current_user.soft_settings.get("health_checks.report", 'details')
     end
     
     @search_filter = SearchFilter.new(params[:search_filter])

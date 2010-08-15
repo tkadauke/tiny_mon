@@ -18,8 +18,14 @@ module TabsHelper
     def build!
       @template.content_tag(:ul, :class => 'tabs') do
         @tabs.collect do |tab|
-          @template.content_tag(:li, :class => tab[:name] == @options[:selected] ? 'selected' : nil) do
-            @template.link_to tab[:text], tab[:url]
+          if tab[:name] == @options[:selected]
+            @template.content_tag(:li, :class => 'selected') do
+              @template.content_tag(:span) { tab[:text] }
+            end
+          else
+            @template.content_tag(:li) do
+              @template.link_to tab[:text], tab[:url]
+            end
           end
         end
       end

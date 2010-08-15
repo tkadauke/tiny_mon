@@ -1,25 +1,23 @@
 <h2><%= t(".choose_template") %></h2>
 
-<p>
-  <% action_list do |a| %>
-    <% a.link_to t(".my_templates"), new_health_check_import_path(:template => 'select', :filter => 'mine') %>
-    <% a.link_to t(".account_templates"), new_health_check_import_path(:template => 'select', :filter => 'account') %>
-    <% a.link_to t(".public_templates"), new_health_check_import_path(:template => 'select', :filter => 'public') %>
-    <% a.link_to t(".all_templates"), new_health_check_import_path(:template => 'select', :filter => 'all') %>
-  <% end %>
-</p>
+<% tabs(:selected => (params[:filter] || :all).to_sym) do |a| %>
+  <% a.tab :mine, t(".my_templates"), new_health_check_import_path(:template => 'select', :filter => 'mine') %>
+  <% a.tab :account, t(".account_templates"), new_health_check_import_path(:template => 'select', :filter => 'account') %>
+  <% a.tab :public, t(".public_templates"), new_health_check_import_path(:template => 'select', :filter => 'public') %>
+  <% a.tab :all, t(".all_templates"), new_health_check_import_path(:template => 'select', :filter => 'all') %>
+<% end %>
 
 <% if @health_check_templates.empty? %>
   <p><%= t(".no_templates_found") %></p>
 <% else %>
   <%= will_paginate @health_check_templates %>
   
-  <ul class="asterisk">
+  <ul class="templates">
     <% @health_check_templates.each do |template| %>
       <li>
-        <%= link_to template.name, new_health_check_import_path(:template => template.id) %><br/>
-        <%=h template.description %><br/>
-        <%= t(".template_created_by", :user => link_to(template.user.full_name, user_path(template.user))) %>
+        <strong><%= link_to template.name, new_health_check_import_path(:template => template.id) %></strong>
+        <%= simple_format template.description %>
+        <span class="creator"><%= t(".template_created_by", :user => link_to(template.user.full_name, user_path(template.user))) %></span>
       </li>
     <% end %>
   </ul>

@@ -531,8 +531,6 @@ de:
       description: Beschreibung
       disable: Deaktivieren
       duration: Dauer
-      edit: Bearbeiten
-      edit_steps: "Schritte bearbeiten"
       enable: Aktivieren
       interval: Prüfintervall
       interval_minutes: 
@@ -542,11 +540,13 @@ de:
       run: "Jetzt prüfen"
       run_at: Zeit
       screenshots: Bildschirmfotos
-      view_steps: "Schritte anzeigen"
     tabs: 
       check_runs: "Testläufe"
+      edit: Bearbeiten
+      edit_steps: "Schritte bearbeiten"
       information: "Information"
       screenshots: "Bildschirmfotos"
+      view_steps: "Schritte anzeigen"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
       preview: Vorschau
@@ -636,6 +636,7 @@ de:
       token: Deployment-Token
     tabs: 
       deployments: Deployments
+      edit: Bearbeiten
       health_checks: Funktionstests
       information: Information
   start: 

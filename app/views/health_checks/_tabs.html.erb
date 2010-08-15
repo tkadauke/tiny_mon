@@ -2,4 +2,10 @@
   <% a.tab :information, t(".information"), account_site_health_check_path(@account, @site, @health_check) %>
   <% a.tab :check_runs, t(".check_runs"), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
   <% a.tab :screenshots, t(".screenshots"), account_site_health_check_screenshots_path(@account, @site, @health_check) unless @health_check.screenshots.empty? %>
+  <% if current_user.can_edit_health_checks?(@account) %>
+    <% a.tab :edit, t('.edit'), edit_account_site_health_check_path(@account, @site, @health_check) %>
+    <% a.tab :steps, t('.edit_steps'), account_site_health_check_steps_path(@account, @site, @health_check) %>
+  <% else %>
+    <% a.tab :steps, t('.view_steps'), account_site_health_check_steps_path(@account, @site, @health_check) %>
+  <% end %>
 <% end %>

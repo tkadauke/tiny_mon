@@ -531,8 +531,6 @@ en:
       description: Description
       disable: Disable
       duration: Duration
-      edit: Edit
-      edit_steps: "Edit Steps"
       enable: Enable
       interval: "Check Interval"
       interval_minutes: 
@@ -542,11 +540,13 @@ en:
       run: Run
       run_at: "Run at"
       screenshots: Screenshots
-      view_steps: "View Steps"
     tabs: 
       check_runs: "Check runs"
+      edit: Edit
+      edit_steps: "Edit Steps"
       information: "Information"
       screenshots: "Screenshots"
+      view_steps: "View Steps"
     template_form: 
       could_not_create_health_check: "Could not create health check"
       preview: Preview
@@ -636,6 +636,7 @@ en:
       token: "Deployment token"
     tabs: 
       deployments: Deployments
+      edit: Edit
       health_checks: "Health checks"
       information: Information
   start: 

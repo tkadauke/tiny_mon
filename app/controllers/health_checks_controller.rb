@@ -62,6 +62,8 @@ class HealthChecksController < ApplicationController
   end
   
   def edit_multiple
+    redirect_to :back and return if params[:health_check_ids].blank?
+    
     can_edit_health_checks!(@account) do
       @health_checks = @account.health_checks.find(params[:health_check_ids], :include => :site, :order => 'sites.name ASC, health_checks.name ASC')
     end

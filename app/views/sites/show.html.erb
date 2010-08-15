@@ -18,11 +18,11 @@
     <% if current_user.can_see_deployment_tokens?(@account) %>
       <form>
         <span><%= t(".token") %></span><br/>
-        <%= text_field_tag nil, @site.deployment_token, :size => 80 %>
+        <%= text_field_tag nil, @site.deployment_token, :class => 'copy' %>
       </form><br/>
       <form>
         <span><%= t(".deployment_url") %></span><br/>
-        <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :size => 80 %>
+        <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :class => 'copy' %>
       </form>
     <% end %>
   </dd>

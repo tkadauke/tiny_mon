@@ -1,4 +1,5 @@
 @import "_core";
+@import "_variables";
 
 .corset {
   width: 100em;
@@ -30,7 +31,7 @@ body {
     
     h1 {
       font-size: 4em;
-      font-family: 'Trebuchet MS', Arial, sans-serif;
+      font-family: @sans_serif;
       
       a {
         color: #222;
@@ -43,7 +44,7 @@ body {
     
     p {
       font-size: 2em;
-      font-family: "Georgia", serif;
+      font-family: @serif;
     }
   }
   
@@ -66,7 +67,7 @@ body {
     float: right;
     font-size: 1.6em;
     margin-top: 1em;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: @sans_serif;
     width: 60%;
     
     text-align: right;
@@ -89,7 +90,7 @@ body {
   #menu ul {
     .clearfix;
     
-    font-family: 'Trebuchet MS', Arial, sans-serif;
+    font-family: @sans_serif;
     width: 100%;
     
     li {
@@ -127,7 +128,7 @@ body {
 
 #footer {
   color: #AED1F1;
-  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-family: @sans_serif;
   
   .left {
     float: left;

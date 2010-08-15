@@ -1,5 +1,7 @@
 <h2><%= t('.check_runs_of_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
 
+<%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
+
 <%= auto_update 'activity' %>
 <div id="activity">
   <%= render :partial => "/check_runs/activity" %>

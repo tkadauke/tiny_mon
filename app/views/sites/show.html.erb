@@ -1,6 +1,6 @@
 <h2><%= t('.site', :site => @site.name) %></h2>
 
-<%= render :partial => "tabs" %>
+<%= render :partial => "tabs", :locals => { :selected => :information } %>
 
 <dl>
   <dt><%= t(".status") %></dt>

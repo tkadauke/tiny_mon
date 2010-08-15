@@ -1,6 +1,6 @@
 <h2><%= t(".deployments_of_site", :site => @site.name) %></h2>
 
-<%= render :partial => "/sites/tabs" %>
+<%= render :partial => "/sites/tabs", :locals => { :selected => :deployments } %>
 
 <% if @deployments.empty? %>
   <p><%= t(".no_deployments_found") %></p>

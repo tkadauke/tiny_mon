@@ -543,6 +543,10 @@ en:
       run_at: "Run at"
       screenshots: Screenshots
       view_steps: "View Steps"
+    tabs: 
+      check_runs: "Check runs"
+      information: "Information"
+      screenshots: "Screenshots"
     template_form: 
       could_not_create_health_check: "Could not create health check"
       preview: Preview
@@ -586,6 +590,8 @@ en:
       instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
       reset: "Reset my password"
   screenshots: 
+    index: 
+      screenshots_of_health_check: "Screenshots of health check {{health_check}}"
     list: 
       time_ago: "{{time}} ago"
     show: 

@@ -1,13 +1,13 @@
 <h2><%= @health_check.name %></h2>
 
+<%= render :partial => "tabs", :locals => { :selected => :information } %>
+
 <dl>
   <dt><%= t('.description') %></dt>
   <dd>
     <%= simple_format auto_link(@health_check.description) unless @health_check.description.blank? %>
     <p>
       <% action_list do |a| %>
-        <% a.link_to t('.check_runs'), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
-        <% a.link_to t('.screenshots'), account_site_health_check_screenshots_path(@account, @site, @health_check) unless @health_check.screenshots.empty? %>
         <% if current_user.can_edit_health_checks?(@account) %>
           <% a.link_to t('.edit'), edit_account_site_health_check_path(@account, @site, @health_check) %>
           <% a.link_to t('.edit_steps'), account_site_health_check_steps_path(@account, @site, @health_check) %>

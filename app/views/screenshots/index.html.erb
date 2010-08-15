@@ -1,3 +1,7 @@
+<h2><%= t(".screenshots_of_health_check", :health_check => @health_check.name) %></h2>
+
+<%= render :partial => "/health_checks/tabs", :locals => { :selected => :screenshots } %>
+
 <%= will_paginate @screenshots %>
 
 <%= render :partial => "list" %>

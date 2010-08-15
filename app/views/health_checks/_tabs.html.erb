@@ -1,0 +1,5 @@
+<% tabs(:selected => selected) do |a| %>
+  <% a.tab :information, t(".information"), account_site_health_check_path(@account, @site, @health_check) %>
+  <% a.tab :check_runs, t(".check_runs"), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
+  <% a.tab :screenshots, t(".screenshots"), account_site_health_check_screenshots_path(@account, @site, @health_check) unless @health_check.screenshots.empty? %>
+<% end %>

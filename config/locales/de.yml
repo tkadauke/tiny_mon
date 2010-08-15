@@ -543,6 +543,10 @@ de:
       run_at: Zeit
       screenshots: Bildschirmfotos
       view_steps: "Schritte anzeigen"
+    tabs: 
+      check_runs: "Testläufe"
+      information: "Information"
+      screenshots: "Bildschirmfotos"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
       preview: Vorschau
@@ -586,6 +590,8 @@ de:
       instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
       reset: "Passwort zurücksetzen"
   screenshots: 
+    index: 
+      screenshots_of_health_check: "Bildschirmfotos von Funktionstest {{health_check}}"
     list: 
       time_ago: "vor {{time}}"
     show: 

@@ -20,7 +20,7 @@ class CheckRunsController < ApplicationController
   
   def create
     can_run_health_checks!(@account) do
-      @check_run = @health_check.check!
+      @check_run = @health_check.check!(current_user)
       redirect_to account_site_health_check_check_run_path(@account, @site, @health_check, @check_run)
     end
   end

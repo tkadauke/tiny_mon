@@ -2,6 +2,7 @@ class CheckRun < ActiveRecord::Base
   belongs_to :health_check
   belongs_to :account
   belongs_to :deployment
+  belongs_to :user
   has_many :comments, :dependent => :delete_all
   has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
   has_many :screenshots, :dependent => :destroy
@@ -37,6 +38,6 @@ protected
   end
   
   def notify_subscribers
-    TinyMon::Notifier.new(self).notify! if self.status == 'failure' && health_check.enabled?
+    TinyMon::Notifier.new(self).notify! if user.blank? && self.status == 'failure' && health_check.enabled?
   end
 end

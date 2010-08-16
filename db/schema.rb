@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100816192833) do
+ActiveRecord::Schema.define(:version => 20100816212024) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20100816192833) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.integer  "deployment_id"
+    t.integer  "user_id"
   end
 
   add_index "check_runs", ["account_id", "created_at"], :name => "index_check_runs_on_account_id_and_created_at"

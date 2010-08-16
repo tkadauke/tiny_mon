@@ -214,6 +214,7 @@ de:
       message: Ausgabe
       running: "Funktionstest läuft. Bitte laden Sie die Seite in wenigen Augenblicken erneut ..."
       screenshots: Bildschirmfotos
+      started_by: "Gestartet von"
       status: Status
       time: Zeit
   comment_mailer: 

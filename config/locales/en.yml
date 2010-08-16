@@ -214,6 +214,7 @@ en:
       message: Message
       running: "Health check is running. Please reload this page in a few moments ..."
       screenshots: Screenshots
+      started_by: "Stared by"
       status: Status
       time: Time
   comment_mailer: 

@@ -77,8 +77,8 @@ class HealthCheck < ActiveRecord::Base
     update_attribute(:next_check_at, nil)
   end
   
-  def check!
-    check_run = check_runs.create(:started_at => Time.now.to_f)
+  def check!(user = nil)
+    check_run = check_runs.create(:started_at => Time.now.to_f, :user => user)
     schedule_next_check(interval.minutes.from_now)
     do_check(check_run)
     check_run

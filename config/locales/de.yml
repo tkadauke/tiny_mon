@@ -654,6 +654,7 @@ de:
     check_content: "Durchsuche Inhalt"
     check_current_url: "Aktuelle URL prüfen"
     check_email: "Rufe E-Mail ab"
+    choose_radio_button: "Wähle Radio-Button"
     click_button: "Klicke Button"
     click_email_link: "Klicke Link in E-Mail"
     click_link: "Klicke Link"
@@ -673,6 +674,9 @@ de:
       login: Benutzername
       password: Passwort
       server: Server
+    choose_radio_button_step_form: 
+      name: "Button-Name"
+      name_specifying_radio_button: "ID, Titel oder Text, womit der Radio-Button eindeutig identifiziert wird"
     click_button_step_form: 
       name: Button-Name
       name_specifying_button: "ID, Titel oder Text, womit der Button eindeutig identifiziert wird"

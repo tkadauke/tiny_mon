@@ -654,6 +654,7 @@ en:
     check_content: "Check content"
     check_current_url: "Check current URL"
     check_email: "Check email"
+    choose_radio_button: "Choose radio button"
     click_button: "Click button"
     click_email_link: "Click link in email"
     click_link: "Click link"
@@ -673,6 +674,9 @@ en:
       login: Login
       password: Password
       server: Server
+    choose_radio_button_step_form: 
+      name: "Name"
+      name_specifying_radio_button: "ID, title or text that uniquely identifies the radio button"
     click_button_step_form: 
       name: "Button name"
       name_specifying_button: "ID, title or text that uniquely identifies the button"

@@ -10,7 +10,7 @@ class Step < ActiveRecord::Base
   after_save :reorder_steps
   
   def self.available_types
-    ['visit', 'check_content', 'check_current_url', 'fill_in', 'select_check_box', 'click_button', 'click_link', 'wait', 'submit_form', 'check_email', 'click_email_link', 'take_screenshot']
+    ['visit', 'check_content', 'check_current_url', 'fill_in', 'select_check_box', 'choose_radio_button', 'click_button', 'click_link', 'wait', 'submit_form', 'check_email', 'click_email_link', 'take_screenshot']
   end
   
   def self.available_types_with_translations

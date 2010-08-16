@@ -654,7 +654,6 @@ de:
     check_content: "Durchsuche Inhalt"
     check_current_url: "Aktuelle URL prüfen"
     check_email: "Rufe E-Mail ab"
-    check_status: "Prüfe HTTP-Status"
     click_button: "Klicke Button"
     click_email_link: "Klicke Link in E-Mail"
     click_link: "Klicke Link"
@@ -674,8 +673,6 @@ de:
       login: Benutzername
       password: Passwort
       server: Server
-    check_status_step_form: 
-      status: HTTP-Status
     click_button_step_form: 
       name: Button-Name
       name_specifying_button: "ID, Titel oder Text, womit der Button eindeutig identifiziert wird"

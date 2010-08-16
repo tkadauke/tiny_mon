@@ -654,7 +654,6 @@ en:
     check_content: "Check content"
     check_current_url: "Check current URL"
     check_email: "Check email"
-    check_status: "Check status"
     click_button: "Click button"
     click_email_link: "Click link in email"
     click_link: "Click link"
@@ -674,8 +673,6 @@ en:
       login: Login
       password: Password
       server: Server
-    check_status_step_form: 
-      status: "HTTP Status"
     click_button_step_form: 
       name: "Button name"
       name_specifying_button: "ID, title or text that uniquely identifies the button"

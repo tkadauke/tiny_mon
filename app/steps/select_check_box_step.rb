@@ -1,9 +1,11 @@
-class SelectCheckBoxStep < Step
+class SelectCheckBoxStep < ScopableStep
   property :name, :string
   
   validates_presence_of :name
   
   def run!(session, check_run)
-    session.check(self.name)
+    with_optional_scope(session) do |scope|
+      scope.check(self.name)
+    end
   end
 end

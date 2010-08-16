@@ -6,4 +6,11 @@ class SelectCheckBoxStepTest < ActiveSupport::TestCase
     session = mock(:check)
     step.run!(session, stub)
   end
+  
+  test "should select check box in scope" do
+    step = SelectCheckBoxStep.new(:name => 'Check', :scope => '.some_class')
+    session = mock
+    session.expects(:within).yields(mock(:check))
+    step.run!(session, stub)
+  end
 end

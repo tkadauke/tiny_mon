@@ -659,6 +659,7 @@ en:
     click_email_link: "Click link in email"
     click_link: "Click link"
     fill_in: "Fill in field"
+    in_scope: "in scope {{scope_name}}"
     select_check_box: "Select check box"
     submit_form: "Submit form"
     take_screenshot: "Take screenshot"
@@ -710,6 +711,9 @@ en:
       options: Options
       steps_for_health_check: "Steps for Health Check {{health_check}}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
+    scope_field: 
+      scope: "Scope"
+      scope_description: "Optional CSS selector or XPath within which the element can be found"
     select_check_box_step_form: 
       name: Name
       name_specifying_check_box: "ID, title or text that uniquely identifies the check box"
@@ -771,3 +775,6 @@ en:
       no_accounts: "none yet"
       settings: "Edit settings"
       users_profile: "{{full_name}}'s profile"
+
+
+

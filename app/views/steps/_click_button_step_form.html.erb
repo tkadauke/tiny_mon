@@ -4,4 +4,6 @@
   <%= f.text_field :name %>
 </p>
 
+<%= render :partial => "scope_field", :locals => { :f => f } %>
+
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

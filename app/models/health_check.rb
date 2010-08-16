@@ -125,6 +125,7 @@ protected
 
       attrs[:status] = 'failure'
       attrs[:error_message] = "#{e.class.name}: #{e.message}"
+      puts e.backtrace
     end
     attrs[:ended_at] = Time.now.to_f
     attrs[:log] = runner.log_entries

@@ -658,6 +658,7 @@ de:
     click_button: "Klicke Button"
     click_email_link: "Klicke Link in E-Mail"
     click_link: "Klicke Link"
+    deselect_check_box: "Check Box abwählen"
     fill_in: "Fülle Feld aus"
     in_scope: "im Bereich {{scope_name}}"
     select_check_box: "Wähle Check Box"
@@ -687,6 +688,9 @@ de:
     click_link_step_form: 
       name: Link-Name
       name_specifying_link: "ID, Titel oder Text, womit der Link eindeutig identifiziert wird"
+    deselect_check_box_step_form: 
+      name: "Name"
+      name_specifying_check_box: "ID, Titel oder Text, womit die Check Box eindeutig identifiziert wird"
     email_must_be_checked_before_this_step: "Vor diesem Schritt muss eine E-Mail geladen worden sein."
     fill_in_step_form: 
       field: Feld-Name

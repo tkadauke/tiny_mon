@@ -81,4 +81,21 @@ module ApplicationHelper
       end
     end
   end
+  
+  def warning_tag(notice, url)
+    content_tag(:div, :class => 'warning') { [notice, link_to(I18n.t("warning.more_info"), url)].join(' ') }
+  end
+  
+  def account_check_run_limit_warning_if_needed
+    account = current_user.current_account
+    notice = if account.over_maximum_check_runs_per_day? && account.over_maximum_check_runs_today?
+      I18n.t("warning.over_max_check_runs_per_day_and_today", :maximum => account.maximum_check_runs_per_day)
+    elsif account.over_maximum_check_runs_per_day?
+      I18n.t("warning.over_max_check_runs_per_day", :maximum => account.maximum_check_runs_per_day)
+    elsif account.over_maximum_check_runs_today?
+      I18n.t("warning.over_max_check_runs_today", :maximum => account.maximum_check_runs_per_day)
+    end
+    
+    warning_tag notice, 'http://tinymon.org/pages/support' if notice
+  end
 end

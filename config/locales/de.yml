@@ -14,11 +14,33 @@ de:
       name_hint: "Zum Beispiel der Name Ihrer Organisation. Hinweis: Alle Benutzer des Kontos können alle Funktionstests sehen"
       save_account: "Konto speichern"
     index: 
-      details: "Details"
+      details: Details
       edit: Bearbeiten
       name: Name
       new_account: "Neues Konto"
       options: Optionen
+    info: 
+      check_runs_count: 
+        one: "1 Testlauf"
+        other: "{{count}} Testläufe"
+      check_runs_per_day: "{{count}} Testläufe pro Tag"
+      check_runs_today: "{{count}} Testläufe heute"
+      comments_count: 
+        one: "1 Kommentar"
+        other: "{{count}} Kommentare"
+      health_checks_count: 
+        one: "1 Funktionstest"
+        other: "{{count}} Funktionstests"
+      limit: Beschränkung
+      name: Name
+      screenshots_count: 
+        one: "1 Screenshot"
+        other: "{{count}} Screenshots"
+      sites_count: 
+        one: "1 Site"
+        other: "{{count}} Sites"
+      statistics: Statistiken
+      unlimited_check_runs_per_day: "Unbeschränkte Anzahl an Testläufen pro Tag"
     new: 
       new_account: "Neues Konto"
     show: 
@@ -31,6 +53,10 @@ de:
       really_remove_user_from_account: "Wollen Sie wirklich diesen Benutzer vom Konto entfernen?"
       remove: Entfernen
       role: Rolle
+      users: Benutzer
+    tabs: 
+      edit: Bearbeiten
+      information: Information
   activerecord: 
     attributes: 
       check_content_step: 
@@ -88,6 +114,13 @@ de:
               taken: "ist bereits diesem Konto zugeordnet"
   admin: 
     accounts: 
+      edit: 
+        could_not_update_account: "Konnte das Konto nicht aktualisieren"
+        edit_account: "Konto bearbeiten"
+        maximum_check_runs_per_day: "Maximale Anzahl an Testläufen pro Tag"
+        maximum_check_runs_per_day_hint: "Geben Sie 0 ein, für eine unbeschränkte Anzahl an Testläufen pro Tag"
+        name: Name
+        save_account: "Konto speichern"
       index: 
         all_accounts: "Alle Konten"
         name: Name
@@ -96,25 +129,11 @@ de:
         users: Benutzer
       show: 
         account: "Konto {{account}}"
-        check_runs_count: 
-          one: "1 Testlauf"
-          other: "{{count}} Testläufe"
-        comments_count: 
-          one: "1 Kommentar"
-          other: "{{count}} Kommentare"
-        health_checks_count: 
-          one: "1 Funktionstest"
-          other: "{{count}} Funktionsteste"
-        name: Name
         no_users: "bisher keine Benutzer"
-        screenshots_count: 
-          one: "1 Screenshot"
-          other: "{{count}} Screenshots"
-        sites_count: 
-          one: "1 Site"
-          other: "{{count}} Sites"
-        statistics: Statistiken
         users: Benutzer
+      tabs: 
+        edit: Bearbeiten
+        information: Information
     footer_links: 
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
@@ -369,7 +388,7 @@ de:
       preview: Vorschau
       site: Site
       url: URL
-    show:
+    show: 
       health_checks_for_import: "Funktionstests für Import"
   health_check_template: 
     condition: 
@@ -529,11 +548,11 @@ de:
       run: "Jetzt prüfen"
       run_at: Zeit
     tabs: 
-      check_runs: "Testläufe"
+      check_runs: Testläufe
       edit: Bearbeiten
       edit_steps: "Schritte bearbeiten"
-      information: "Information"
-      screenshots: "Bildschirmfotos"
+      information: Information
+      screenshots: Bildschirmfotos
       view_steps: "Schritte anzeigen"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
@@ -643,6 +662,7 @@ de:
       health_check: Funktionstest
       in_time: "In {{time}}"
       no_upcoming_checks: "Keine geplanten Testläufe."
+      over_maximum_number_of_check_runs_today: "Ihr Konto ist für heute über der maximalen Anzahl an Testläufen."
       site: Site
       when: Wann
   status: 
@@ -678,7 +698,7 @@ de:
       password: Passwort
       server: Server
     choose_radio_button_step_form: 
-      name: "Button-Name"
+      name: Button-Name
       name_specifying_radio_button: "ID, Titel oder Text, womit der Radio-Button eindeutig identifiziert wird"
     click_button_step_form: 
       name: Button-Name
@@ -690,7 +710,7 @@ de:
       name: Link-Name
       name_specifying_link: "ID, Titel oder Text, womit der Link eindeutig identifiziert wird"
     deselect_check_box_step_form: 
-      name: "Name"
+      name: Name
       name_specifying_check_box: "ID, Titel oder Text, womit die Check Box eindeutig identifiziert wird"
     email_must_be_checked_before_this_step: "Vor diesem Schritt muss eine E-Mail geladen worden sein."
     fill_in_step_form: 
@@ -717,7 +737,7 @@ de:
       steps_for_health_check: "Schritte für Funktionstest {{health_check}}"
     page_must_be_loaded_before_this_step: "Vor diesem Schritt muss eine Seite geladen worden sein."
     scope_field: 
-      scope: "Bereich"
+      scope: Bereich
       scope_description: "Optionaler CSS-Selektor oder XPath, in dem das Element enthalten ist"
     select_check_box_step_form: 
       name: Name
@@ -780,3 +800,8 @@ de:
       no_accounts: "bisher keine"
       settings: "Einstellungen bearbeiten"
       users_profile: "{{full_name}}s Profil"
+  warning: 
+    more_info: "Mehr Informationen"
+    over_max_check_runs_per_day: "Die geplanten Testläufe pro Tag überschreiten die maximale Anzahl für Ihr Konto ({{maximum}}). Bitte passen Sie die Intervalle Ihrer Funktionstests an."
+    over_max_check_runs_per_day_and_today: "Die geplanten Testläufe pro Tag überschreiten die maximale Anzahl für Ihr Konto ({{maximum}}). Außerdem sind heute bereits mehr als {{maximum}} Funktionstests gelaufen. Bitte passen Sie die Intervalle Ihrer Funktionstests an."
+    over_max_check_runs_today: "Heute sind bereits mehr Funktionstests als das Tagesmaximum von {{maximum}} gelaufen. Bitte passen Sie die Intervalle Ihrer Funktionstests an."

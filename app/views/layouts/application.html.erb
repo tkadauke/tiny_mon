@@ -89,6 +89,11 @@
               <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
             </div>
           <% end %>
+          
+          <% if logged_in? && current_user.current_account %>
+            <%= account_check_run_limit_warning_if_needed %>
+          <% end %>
+          
           <div class="breadcrumb"><%= t('layouts.you_are_here') %>: <%= bread_crumb %></div>
           <%= help %>
           <%= yield %>

@@ -1,0 +1,4 @@
+<% tabs(:selected => selected) do |t| %>
+  <% t.tab :information, t(".information"), admin_account_path(@account) %>
+  <% t.tab :edit, t(".edit"), edit_admin_account_path(@account) %>
+<% end %>

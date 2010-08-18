@@ -56,6 +56,12 @@ class AccountsControllerTest < ActionController::TestCase
     assert_equal 'changed name', @account.reload.name
   end
   
+  test "should not update account limits" do
+    post :update, :id => @account, :account => { :maximum_check_runs_per_day => 1000 }
+    assert_response :redirect
+    assert_not_equal 1000, @account.reload.maximum_check_runs_per_day
+  end
+  
   test "should not update invalid account" do
     post :update, :id => @account, :account => { :name => nil }
     assert_response :success

@@ -1,4 +1,6 @@
 class HealthCheck < ActiveRecord::Base
+  MINUTES_PER_DAY = 1440
+  
   belongs_to :site
   belongs_to :health_check_import
   
@@ -22,6 +24,8 @@ class HealthCheck < ActiveRecord::Base
 
   before_save :set_next_check_at, :if => :enabled_changed?
   before_validation :get_info_from_template
+  
+  before_save :update_account_check_runs_per_day, :if => :interval_changed_before_save?
   
   has_permalink :name, :scope => :site_id
   
@@ -78,10 +82,13 @@ class HealthCheck < ActiveRecord::Base
   end
   
   def check!(user = nil)
-    check_run = check_runs.create(:started_at => Time.now.to_f, :user => user)
     schedule_next_check(interval.minutes.from_now)
-    do_check(check_run)
-    check_run
+    
+    if user || !site.account.over_maximum_check_runs_today?
+      check_run = check_runs.create(:started_at => Time.now.to_f, :user => user)
+      do_check(check_run)
+      check_run
+    end
   end
   
   def schedule_next_check(timestamp)
@@ -108,6 +115,10 @@ class HealthCheck < ActiveRecord::Base
     values.reject! { |name, v| selections["bulk_update_#{name}"] != '1' }
     
     update_attributes(values)
+  end
+  
+  def check_runs_per_day
+    (MINUTES_PER_DAY / self.interval).to_i
   end
   
 protected
@@ -138,6 +149,10 @@ protected
 
   def set_next_check_at
     self.next_check_at = 1.minute.from_now if enabled?
+  end
+  
+  def update_account_check_runs_per_day
+    site.account.update_check_runs_per_day
   end
 
   def self.with_search_scope(filter, &block)

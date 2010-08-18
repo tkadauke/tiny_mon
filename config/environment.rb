@@ -53,6 +53,6 @@ end
 
 Rails.backtrace_cleaner.remove_silencers!
 
-Dir["#{RAILS_ROOT}/lib/core_ext/**/*.rb"].each do |file|
+Dir["#{RAILS_ROOT}/lib/{core_ext,rails_ext}/**/*.rb"].each do |file|
   require file
 end

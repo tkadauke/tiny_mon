@@ -14,11 +14,33 @@ en:
       name_hint: "For example your organization's name. Note that every user in an account can see all health checks"
       save_account: "Save account"
     index: 
-      details: "Details"
+      details: Details
       edit: Edit
       name: Name
       new_account: "New Account"
       options: Options
+    info: 
+      check_runs_count: 
+        one: "1 check run"
+        other: "{{count}} check runs"
+      check_runs_per_day: "{{count}} check runs per day"
+      check_runs_today: "{{count}} check runs today"
+      comments_count: 
+        one: "1 comment"
+        other: "{{count}} comments"
+      health_checks_count: 
+        one: "1 health check"
+        other: "{{count}} health checks"
+      limit: Limit
+      name: Name
+      screenshots_count: 
+        one: "1 screenshot"
+        other: "{{count}} screenshots"
+      sites_count: 
+        one: "1 site"
+        other: "{{count}} sites"
+      statistics: Statistics
+      unlimited_check_runs_per_day: "Unlimited check runs per day"
     new: 
       new_account: "New Account"
     show: 
@@ -31,6 +53,10 @@ en:
       really_remove_user_from_account: "Do you really want to remove the user from this account?"
       remove: Remove
       role: Role
+      users: Users
+    tabs: 
+      edit: Edit
+      information: Information
   activerecord: 
     attributes: 
       check_content_step: 
@@ -88,6 +114,13 @@ en:
               taken: "is already assigned to this account"
   admin: 
     accounts: 
+      edit: 
+        could_not_update_account: "Could not update account"
+        edit_account: "Edit account"
+        maximum_check_runs_per_day: "Maximum number of check runs per day"
+        maximum_check_runs_per_day_hint: "Enter 0 for unlimited number of check runs per day"
+        name: Name
+        save_account: "Save account"
       index: 
         all_accounts: "All accounts"
         name: Name
@@ -96,25 +129,11 @@ en:
         users: Users
       show: 
         account: "Account {{account}}"
-        check_runs_count: 
-          one: "1 check run"
-          other: "{{count}} check runs"
-        comments_count: 
-          one: "1 comment"
-          other: "{{count}} comments"
-        health_checks_count: 
-          one: "1 health check"
-          other: "{{count}} health checks"
-        name: Name
         no_users: "no users yet"
-        screenshots_count: 
-          one: "1 screenshot"
-          other: "{{count}} screenshots"
-        sites_count: 
-          one: "1 site"
-          other: "{{count}} sites"
-        statistics: Statistics
-        users: "Users ({{count}})"
+        users: Users
+      tabs: 
+        edit: Edit
+        information: Information
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"
@@ -369,7 +388,7 @@ en:
       preview: Preview
       site: Site
       url: URL
-    show:
+    show: 
       health_checks_for_import: "Health checks for import"
   health_check_template: 
     condition: 
@@ -532,8 +551,8 @@ en:
       check_runs: "Check runs"
       edit: Edit
       edit_steps: "Edit Steps"
-      information: "Information"
-      screenshots: "Screenshots"
+      information: Information
+      screenshots: Screenshots
       view_steps: "View Steps"
     template_form: 
       could_not_create_health_check: "Could not create health check"
@@ -643,6 +662,7 @@ en:
       health_check: "Health Check"
       in_time: "In {{time}}"
       no_upcoming_checks: "No upcoming checks."
+      over_maximum_number_of_check_runs_today: "Your account is over the maximum number of scheduled check runs for today."
       site: Site
       when: When
   status: 
@@ -678,7 +698,7 @@ en:
       password: Password
       server: Server
     choose_radio_button_step_form: 
-      name: "Name"
+      name: Name
       name_specifying_radio_button: "ID, title or text that uniquely identifies the radio button"
     click_button_step_form: 
       name: "Button name"
@@ -690,7 +710,7 @@ en:
       name: "Link name"
       name_specifying_link: "ID, title or text that uniquely identifies the link"
     deselect_check_box_step_form: 
-      name: "Name"
+      name: Name
       name_specifying_check_box: "ID, title or text that uniquely identifies the check box"
     email_must_be_checked_before_this_step: "An email must have been loaded before this step."
     fill_in_step_form: 
@@ -717,7 +737,7 @@ en:
       steps_for_health_check: "Steps for Health Check {{health_check}}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
     scope_field: 
-      scope: "Scope"
+      scope: Scope
       scope_description: "Optional CSS selector or XPath within which the element can be found"
     select_check_box_step_form: 
       name: Name
@@ -780,3 +800,8 @@ en:
       no_accounts: "none yet"
       settings: "Edit settings"
       users_profile: "{{full_name}}'s profile"
+  warning: 
+    more_info: "More information"
+    over_max_check_runs_per_day: "The number of planned check runs per day exceeds the maximum number for your account ({{maximum}}). Please adjust the intervals of your health checks."
+    over_max_check_runs_per_day_and_today: "The number of planned check runs per day exceeds the maximum number for your account ({{maximum}}). Also, the number of health checks run today is greater than {{maximum}}. Please adjust the intervals of your health checks."
+    over_max_check_runs_today: "The number of health checks run today is greater than the daily maximum of {{maximum}}. Please adjust the intervals of your health checks."

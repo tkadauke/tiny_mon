@@ -34,4 +34,10 @@ class HealthCheckTest < ActiveSupport::TestCase
     
     assert ! health_check.template_data.errors.empty?
   end
+  
+  test "should calculate check runs per day" do
+    assert_equal 1440, HealthCheck.new(:interval => 1).check_runs_per_day
+    assert_equal 24, HealthCheck.new(:interval => 60).check_runs_per_day
+    assert_equal 12, HealthCheck.new(:interval => 120).check_runs_per_day
+  end
 end

@@ -1,5 +1,11 @@
 <h2><%= t('.account', :account => @account.name) %></h2>
 
+<%= render :partial => "tabs", :locals => { :selected => :information } %>
+
+<%= render :partial => "info" %>
+
+<h3><%= t(".users") %></h3>
+
 <table>
   <thead>
     <tr>

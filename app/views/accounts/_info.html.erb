@@ -1,0 +1,24 @@
+<dl>
+  <dt><%= t(".name") %></dt>
+  <dd><%= @account.name %></dd>
+  
+  <dt><%= t(".limit") %></dt>
+  <dd>
+    <% if @account.unlimited_check_runs? %>
+      <%= t('.unlimited_check_runs_per_day') %>
+    <% else %>
+      <%= t('.check_runs_per_day', :count => @account.check_runs_per_day, :max => @account.maximum_check_runs_per_day) %>
+    <% end %>
+  </dd>
+  
+  <dt><%= t('.statistics') %></dt>
+  <dd>
+    <ul>
+      <li><%= t('.sites_count', :count => @account.sites.count) %></li>
+      <li><%= t('.health_checks_count', :count => @account.health_checks.count) %></li>
+      <li><%= t('.check_runs_count', :count => @account.check_runs.count) %>, <%= t('.check_runs_today', :count => @account.scheduled_check_runs_today) %></li>
+      <li><%= t('.comments_count', :count => @account.comments.count) %></li>
+      <li><%= t('.screenshots_count', :count => @account.screenshots.count) %></li>
+    </ul>
+  </dd>
+</dl>

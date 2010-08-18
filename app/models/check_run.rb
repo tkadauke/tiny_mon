@@ -15,6 +15,8 @@ class CheckRun < ActiveRecord::Base
   after_update :notify_subscribers
   
   named_scope :recent, :order => 'check_runs.created_at DESC', :limit => 10
+  named_scope :today, lambda { { :conditions => ['created_at > ?', Date.today.to_time] } }
+  named_scope :scheduled, :conditions => 'user_id is null'
   
   def duration
     (self.ended_at - self.started_at).to_f rescue 0.0

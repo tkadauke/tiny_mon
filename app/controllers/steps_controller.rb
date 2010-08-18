@@ -3,6 +3,7 @@ class StepsController < ApplicationController
   before_filter :find_account
   before_filter :find_site
   before_filter :find_health_check
+  active_tab :health_checks
   
   skip_before_filter :verify_authenticity_token, :only => :sort
   

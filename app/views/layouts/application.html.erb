@@ -63,9 +63,9 @@
         <!-- menu start -->
         <div id="menu">
           <ul>
-            <li><a href="/" class="first"><%= t('layouts.home') %></a></li>
-            <li><a href="/sites"><%= t('layouts.sites') %></a></li>
-            <li><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
+            <li<%= ' class="selected"' if @tab == :start %>><a href="/"><%= t('layouts.home') %></a></li>
+            <li<%= ' class="selected"' if @tab == :sites %>><a href="/sites"><%= t('layouts.sites') %></a></li>
+            <li<%= ' class="selected"' if @tab == :health_checks %>><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
             <li class="help"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
           </ul>
         </div>

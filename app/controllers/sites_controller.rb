@@ -1,6 +1,7 @@
 class SitesController < ApplicationController
   before_filter :login_required
   before_filter :find_account
+  active_tab :sites
   
   def index
     @search_filter = SearchFilter.new(params[:search_filter])

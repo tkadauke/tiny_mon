@@ -3,6 +3,7 @@ class DeploymentsController < ApplicationController
   before_filter :find_site_by_token_or_login_required, :only => :create
   before_filter :find_account, :except => :create
   before_filter :find_site, :except => :create
+  active_tab :sites
   
   skip_before_filter :verify_authenticity_token, :only => :create
   

@@ -92,6 +92,12 @@ protected
     status = interpret_status(status_code)
     render :template => "/errors/#{status[0,3]}.html.erb", :status => status, :layout => 'plain'
   end
+  
+  def self.active_tab(tab, options = {})
+    before_filter options do |controller|
+      controller.instance_variable_set(:@tab, tab)
+    end
+  end
 
 private
   def current_user_session

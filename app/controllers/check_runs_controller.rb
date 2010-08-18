@@ -3,6 +3,7 @@ class CheckRunsController < ApplicationController
   before_filter :find_account
   before_filter :find_site
   before_filter :find_health_check
+  active_tab :health_checks
   
   def index
     @check_runs = @health_check.recent_check_runs.find :all, :include => :health_check

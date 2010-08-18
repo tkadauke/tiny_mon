@@ -118,10 +118,12 @@ body {
       font-size: 1.6em;
       background-color: #012C54;
       padding: 0.5em 0;
-    
+      border: 2px solid #012C54;
+      margin-bottom: -2px;
+      
       a {
         color: #fff;
-        padding: 0.5em 1em;
+        padding: 0.5em 1em 0.3em 1em;
       }
     
       margin-right: 0.5em;
@@ -129,10 +131,22 @@ body {
       .rounded_corners_top;
     }
     
+    li.selected {
+      background-color: #AED1F1;
+      border: 2px solid #012C54;
+      border-bottom: 2px solid #AED1F1;
+      
+      a {
+        color: #012C54;
+      }
+    }
+    
     li.help {
       background-color: inherit;
       float: right !important;
       margin-right: 0;
+      border: none;
+      
       a {
         color: #012C54;
         padding: 0.5em 0;
@@ -146,7 +160,7 @@ body {
 }
 
 #footer {
-  color: #AED1F1;
+  color: #fff;
   font-family: @sans_serif;
   
   .left {

@@ -2,6 +2,7 @@ class HealthChecksController < ApplicationController
   before_filter :login_required
   before_filter :find_account
   before_filter :find_site
+  active_tab :health_checks
   
   def index
     @report = if params[:report]

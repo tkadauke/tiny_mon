@@ -121,6 +121,10 @@ class HealthCheck < ActiveRecord::Base
     (MINUTES_PER_DAY / self.interval).to_i
   end
   
+  def update_status(status)
+    update_attributes(:status => self.status, :weather => calculate_weather)
+  end
+  
 protected
   def do_check(check_run)
     runner = Runner.new(check_run)
@@ -173,5 +177,12 @@ protected
     with_scope :find => { :conditions => conditions } do
       yield
     end
+  end
+  
+  def calculate_weather
+    last_check_runs = check_runs.last(5)
+    fill_run_count = 5 - last_check_runs.size
+
+    last_check_runs.select { |run| run.success? }.size + fill_run_count
   end
 end

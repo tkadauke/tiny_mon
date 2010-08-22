@@ -29,6 +29,7 @@
                       <% if current_user.accounts.size > 1 %>
                         <ul>
                           <% current_user.accounts.each do |account| %>
+                            <% next if account == current_user.current_account %>
                             <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
                           <% end %>
                         </ul>

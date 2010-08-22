@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100818193355) do
+ActiveRecord::Schema.define(:version => 20100822141811) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(:version => 20100818193355) do
     t.datetime "last_checked_at"
     t.datetime "next_check_at"
     t.integer  "health_check_import_id"
+    t.integer  "weather"
   end
 
   add_index "health_checks", ["enabled"], :name => "index_health_checks_on_enabled"

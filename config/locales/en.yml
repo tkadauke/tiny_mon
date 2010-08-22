@@ -805,3 +805,7 @@ en:
     over_max_check_runs_per_day: "The number of planned check runs per day exceeds the maximum number for your account ({{maximum}}). Please adjust the intervals of your health checks."
     over_max_check_runs_per_day_and_today: "The number of planned check runs per day exceeds the maximum number for your account ({{maximum}}). Also, the number of health checks run today is greater than {{maximum}}. Please adjust the intervals of your health checks."
     over_max_check_runs_today: "The number of health checks run today is greater than the daily maximum of {{maximum}}. Please adjust the intervals of your health checks."
+  weather: 
+    count_successful: 
+      one: "One of the last 5 check runs was successful"
+      other: "{{count}} of the last 5 check runs were successful"

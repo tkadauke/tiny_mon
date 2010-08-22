@@ -805,3 +805,7 @@ de:
     over_max_check_runs_per_day: "Die geplanten Testläufe pro Tag überschreiten die maximale Anzahl für Ihr Konto ({{maximum}}). Bitte passen Sie die Intervalle Ihrer Funktionstests an."
     over_max_check_runs_per_day_and_today: "Die geplanten Testläufe pro Tag überschreiten die maximale Anzahl für Ihr Konto ({{maximum}}). Außerdem sind heute bereits mehr als {{maximum}} Funktionstests gelaufen. Bitte passen Sie die Intervalle Ihrer Funktionstests an."
     over_max_check_runs_today: "Heute sind bereits mehr Funktionstests als das Tagesmaximum von {{maximum}} gelaufen. Bitte passen Sie die Intervalle Ihrer Funktionstests an."
+  weather: 
+    count_successful: 
+      one: "Einer der letzten 5 Testläufe war erfolgreich"
+      other: "{{count}} der letzten 5 Testläufe waren erfolgreich"

@@ -5,7 +5,7 @@
         <% if current_user.can_edit_health_checks?(@account) %>
           <th></th>
         <% end %>
-        <th><%= t('.status') %></th>
+        <th colspan="2"><%= t('.status') %></th>
         <th><%= t('.site') %></th>
         <th><%= t('.name') %></th>
         <% if current_user.can_edit_health_checks?(@account) %>
@@ -17,7 +17,7 @@
       <tfoot>
         <tr>
           <td></td>
-          <td colspan="4">
+          <td colspan="5">
             <% action_list do |a| %>
               <% a.link_to_function t(".all"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = true })} %>
               <% a.link_to_function t(".none"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = false })} %>
@@ -36,6 +36,7 @@
             <td><%= check_box_tag "health_check_ids[]", health_check.id %></td>
           <% end %>
           <td><%= status_icon health_check %></td>
+          <td><%= weather_icon health_check %></td>
           <td><%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %></td>
           <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
           <% if current_user.can_edit_health_checks?(@account) %>

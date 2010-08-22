@@ -26,6 +26,10 @@ class CheckRun < ActiveRecord::Base
     find(param)
   end
   
+  def success?
+    status == 'success'
+  end
+  
 protected
   def set_account
     self.account_id = health_check.site.account_id
@@ -36,7 +40,7 @@ protected
   end
 
   def update_health_check_status
-    health_check.update_attribute(:status, self.status)
+    health_check.update_status(self.status)
   end
   
   def notify_subscribers

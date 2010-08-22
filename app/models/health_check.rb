@@ -122,7 +122,7 @@ class HealthCheck < ActiveRecord::Base
   end
   
   def update_status(status)
-    update_attributes(:status => self.status, :weather => calculate_weather)
+    update_attributes(:status => status, :weather => calculate_weather)
   end
   
 protected

@@ -199,7 +199,7 @@ en:
     login: Login
     new: New
     password_resets: "Reset password"
-    screenshot_comparisons: Screenshot Comparisons
+    screenshot_comparisons: "Screenshot Comparisons"
     screenshots: Screenshots
     settings: Settings
     sites: Sites
@@ -221,6 +221,11 @@ en:
       when: When
     index: 
       check_runs_of_health_check_site: "Check Runs of Health Check {{health_check}} (Site {{site}})"
+      filter: Filter
+      filter_active: "filter active"
+      from: From
+      reset_filter: "Reset filter"
+      until: until
     show: 
       all_comments: "Show all comments"
       check_run_of_health_check_site: "Check run of {{health_check}} (site {{site}})"

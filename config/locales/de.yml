@@ -221,6 +221,11 @@ de:
       when: Wann
     index: 
       check_runs_of_health_check_site: "Testläufe von Funktionstest {{health_check}} (Site {{site}})"
+      filter: Filtern
+      filter_active: "Filter aktiv"
+      from: Von
+      reset_filter: Zurücksetzen
+      until: bis
     show: 
       all_comments: "Alle Kommentare anzeigen"
       check_run_of_health_check_site: "Testlauf von {{health_check}} (Site {{site}})"

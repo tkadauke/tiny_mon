@@ -3,10 +3,11 @@ class CheckRunsController < ApplicationController
   before_filter :find_account
   before_filter :find_site
   before_filter :find_health_check
+  before_filter :create_check_run_filter, :only => :index
   active_tab :health_checks
   
   def index
-    @check_runs = @health_check.recent_check_runs.find :all, :include => :health_check
+    @check_runs = @health_check.check_runs.recent.paginate(:page => params[:page], :include => :health_check, :conditions => @check_run_filter.conditions)
     render :partial => "/check_runs/activity" if request.xhr?
   end
   
@@ -34,5 +35,19 @@ protected
 
   def find_health_check
     @health_check = @site.health_checks.find_by_permalink!(params[:health_check_id])
+  end
+  
+  def create_check_run_filter
+    if params[:check_run_filter]
+      @check_run_filter = CheckRunFilter.new(params[:check_run_filter])
+    end
+    
+    if !params[:check_run_filter] || !@check_run_filter.valid?
+      if first_check_run = @health_check.check_runs.first
+        @check_run_filter = CheckRunFilter.new(:start_date => first_check_run.created_at, :end_date => Date.today)
+      else
+        @check_run_filter = CheckRunFilter.new
+      end
+    end
   end
 end

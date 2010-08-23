@@ -345,17 +345,9 @@ en:
         other: "{{count}} minutes"
   health_check_imports: 
     choose_template_for_account: 
-      account_templates: "Account templates"
-      all_templates: "All Templates"
       choose_template: "Choose template for import"
-      my_templates: "My Templates"
-      public_templates: "Public Templates"
     choose_template_for_site: 
-      account_templates: "Account templates"
-      all_templates: "All Templates"
       choose_template: "Choose template for import"
-      my_templates: "My Templates"
-      public_templates: "Public Templates"
     form: 
       could_not_import: "Could not import"
       csv_data: "CSV Data"
@@ -458,8 +450,12 @@ en:
       could_not_create_template: "Could not create template"
       new_template: "New health check template"
     select: 
+      account_templates: "Account templates"
+      all_templates: "All Templates"
       create_template: "Create template"
+      my_templates: "My Templates"
       no_templates_found: "No templates found."
+      public_templates: "Public Templates"
       template_created_by: "Template created by {{user}}"
   health_checks: 
     all_checks: 
@@ -511,13 +507,9 @@ en:
     list: 
       no_health_checks_found: "No health checks found."
     new: 
-      account_templates: "Account templates"
-      all_templates: "All Templates"
-      my_templates: "My Templates"
       new_from_template: "New health check from template"
       new_health_check_for_site: "New Health Check for site {{site}}"
       new_health_check_from_template: "New health check from template {{template}}"
-      public_templates: "Public Templates"
     preview: 
       description: Description
       details: Details

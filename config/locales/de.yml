@@ -345,17 +345,9 @@ de:
         other: "{{count}} Minuten"
   health_check_imports: 
     choose_template_for_account: 
-      account_templates: "Vorlagen des Kontos"
-      all_templates: "Alle Vorlagen"
       choose_template: "Vorlage für Import wählen"
-      my_templates: "Meine Vorlagen"
-      public_templates: "Öffentliche Vorlagen"
     choose_template_for_site: 
-      account_templates: "Vorlagen des Kontos"
-      all_templates: "Alle Vorlagen"
       choose_template: "Vorlage für Import wählen"
-      my_templates: "Meine Vorlagen"
-      public_templates: "Öffentliche Vorlagen"
     form: 
       could_not_import: "Konnte nicht importieren"
       csv_data: CSV-Daten
@@ -458,8 +450,12 @@ de:
       could_not_create_template: "Konnte Funktionstest-Vorlage nicht erstellen"
       new_template: "Neue Funktionstest-Vorlage"
     select: 
+      account_templates: "Vorlagen des Kontos"
+      all_templates: "Alle Vorlagen"
       create_template: "Vorlage erstellen"
+      my_templates: "Meine Vorlagen"
       no_templates_found: "Keine Vorlagen gefunden."
+      public_templates: "Öffentliche Vorlagen"
       template_created_by: "Vorlage wurde erstellt von {{user}}"
   health_checks: 
     all_checks: 
@@ -511,13 +507,9 @@ de:
     list: 
       no_health_checks_found: "Keine Funktionstests gefunden."
     new: 
-      account_templates: "Vorlagen des Kontos"
-      all_templates: "Alle Vorlagen"
-      my_templates: "Meine Vorlagen"
       new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check_for_site: "Neuer Funktionstest für Site {{site}}"
       new_health_check_from_template: "Neuer Funktionstest aus Vorlage {{template}}"
-      public_templates: "Öffentliche Vorlagen"
     preview: 
       description: Beschreibung
       details: Details

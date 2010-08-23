@@ -104,4 +104,12 @@ module ApplicationHelper
     
     warning_tag notice, 'http://tinymon.org/pages/support' if notice
   end
+  
+  def partial_route(route, *params)
+    lambda do |new_options|
+      new_params = params.dup
+      options = new_params.extract_options!
+      send(route, *(new_params << options.merge(new_options)))
+    end
+  end
 end

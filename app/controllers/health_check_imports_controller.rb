@@ -37,7 +37,7 @@ class HealthCheckImportsController < ApplicationController
       
       if @health_check_import.save
         flash[:notice] = I18n.t("flash.notice.created_import")
-        redirect_to account_site_health_checks_path(@account, @site)
+        redirect_to health_check_import_path(@health_check_import)
       else
         render :action => 'new'
       end

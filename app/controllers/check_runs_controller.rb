@@ -44,7 +44,7 @@ protected
     
     if !params[:check_run_filter] || !@check_run_filter.valid?
       if first_check_run = @health_check.check_runs.first
-        @check_run_filter = CheckRunFilter.new(:start_date => first_check_run.created_at, :end_date => Date.today)
+        @check_run_filter = CheckRunFilter.new(:start_date => first_check_run.created_at, :end_date => (Date.today + 1))
       else
         @check_run_filter = CheckRunFilter.new
       end

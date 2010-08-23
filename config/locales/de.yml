@@ -199,6 +199,7 @@ de:
     login: Login
     new: Neu
     password_resets: "Passwort zurücksetzen"
+    screenshot_comparisons: Bildschirmfoto-Vergleiche
     screenshots: Bildschirmfotos
     settings: Einstellungen
     sites: Sites
@@ -232,6 +233,7 @@ de:
       log_output: Log-Ausgabe
       message: Ausgabe
       running: "Funktionstest läuft. Bitte laden Sie die Seite in wenigen Augenblicken erneut ..."
+      screenshot_comparisons: Bildschirmfoto-Vergleiche
       screenshots: Bildschirmfotos
       started_by: "Gestartet von"
       status: Status
@@ -586,6 +588,13 @@ de:
       forgot_password: "Passwort vergessen"
       instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
       reset: "Passwort zurücksetzen"
+  screenshot_comparisons: 
+    list: 
+      time_ago: "vor {{time}}"
+    show: 
+      comparing_screenshots: "Vergleiche Bildschirmfotos"
+      current: Aktuelles
+      previous: Vorheriges
   screenshots: 
     index: 
       screenshots_of_health_check: "Bildschirmfotos von Funktionstest {{health_check}}"
@@ -737,6 +746,9 @@ de:
     submit_form_step_form: 
       name: Name
       name_specifying_form: "ID, Titel oder Text, womit das Formular eindeutig identifiziert wird"
+    take_screenshot_step_form: 
+      css: CSS
+      custom_style_declarations: "Benutzerdefiniertes Stylesheet (CSS). Nutzen Sie das, um sehr variable Seitenteile zu verstecken, z.B. Werbung"
     visit_step_form: 
       relative_or_absolute: "Relative oder absolute URLs. Relative URLs beziehen sich auf die Basis-URL der Site."
       url: URL

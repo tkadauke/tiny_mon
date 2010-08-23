@@ -17,6 +17,7 @@ class CheckRunsController < ApplicationController
     @comments_count = @check_run.comments.count
     
     @screenshots = @check_run.screenshots
+    @screenshot_comparisons = @check_run.screenshot_comparisons
   end
   
   def create

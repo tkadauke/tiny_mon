@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100822141811) do
+ActiveRecord::Schema.define(:version => 20100823204504) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -155,6 +155,16 @@ ActiveRecord::Schema.define(:version => 20100822141811) do
   add_index "health_checks", ["site_id"], :name => "index_health_checks_on_site_id"
   add_index "health_checks", ["status"], :name => "index_health_checks_on_status"
 
+  create_table "screenshot_comparisons", :force => true do |t|
+    t.integer  "check_run_id"
+    t.integer  "first_screenshot_id"
+    t.integer  "second_screenshot_id"
+    t.string   "checksum"
+    t.float    "distance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "screenshots", :force => true do |t|
     t.integer  "check_run_id"
     t.string   "url"
@@ -162,9 +172,11 @@ ActiveRecord::Schema.define(:version => 20100822141811) do
     t.string   "format"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "step_id"
   end
 
   add_index "screenshots", ["check_run_id"], :name => "index_screenshots_on_check_run_id"
+  add_index "screenshots", ["step_id", "created_at"], :name => "index_screenshots_on_step_id_and_created_at"
 
   create_table "sites", :force => true do |t|
     t.string   "name"

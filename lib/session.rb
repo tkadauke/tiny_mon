@@ -4,9 +4,11 @@ class Session < Webrat::Session
   class FieldNotFoundError < CheckFailed; end
   class EmailNotFoundError < CheckFailed; end
   class EmailLinkNotFoundError < CheckFailed; end
+  class NoScreenshotToCompareError < CheckFailed; end
   
   attr_accessor :log_entries
   attr_accessor :last_email
+  attr_accessor :last_screenshot
   
   def initialize(url)
     require 'webrat'
@@ -50,10 +52,27 @@ class Session < Webrat::Session
     log "Now on #{response.uri}"
   end
   
-  def take_screenshot
+  def take_screenshot(css)
     log "taking screen shot of URL #{expand_url(response.uri)}"
-    renderer = TinyMon::Renderer.new(expand_url(response.uri), adapter.mechanize.cookie_jar.cookies(response.uri))
-    renderer.render!
+    renderer = TinyMon::Renderer.new(expand_url(response.uri), adapter.mechanize.cookie_jar.cookies(response.uri), css)
+    self.last_screenshot = renderer.render!
+  end
+  
+  def compare_screenshots
+    log "comparing screenshot with previous check run"
+    if last_screenshot
+      screenshots = self.last_screenshot.step.last_two_screenshots
+      if screenshots.size == 2
+        comparer = TinyMon::ScreenshotComparer.new(*screenshots)
+        return comparer.compare!
+      else
+        log "No previous screenshot found"
+      end
+    else
+      raise NoScreenshotToCompareError, "No screenshot to compare. Please take a screenshot before attempting to compare it agains a previous check run."
+    end
+    
+    nil
   end
   
   def debug_log(*args)

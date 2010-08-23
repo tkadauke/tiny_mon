@@ -6,6 +6,7 @@ class CheckRun < ActiveRecord::Base
   has_many :comments, :dependent => :delete_all
   has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
   has_many :screenshots, :dependent => :destroy
+  has_many :screenshot_comparisons, :dependent => :destroy
   
   serialize :log, Array
   
@@ -28,6 +29,14 @@ class CheckRun < ActiveRecord::Base
   
   def success?
     status == 'success'
+  end
+  
+  def first_in_deployment?
+    if deployment
+      deployment.check_runs.count <= 1
+    else
+      health_check.check_runs.count <= 1
+    end
   end
   
 protected

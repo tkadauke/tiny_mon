@@ -22,7 +22,7 @@
 
     <% if @check_run.error_message %>
       <dt><%= t('.error_message') %></dt>
-      <dd><%= @check_run.error_message %></dd>
+      <dd><%=h @check_run.error_message %></dd>
     <% end %>
   </dl>
 
@@ -49,6 +49,12 @@
   <h3><%= t('.screenshots') %></h3>
   
   <%= render :partial => "/screenshots/list" %>
+<% end %>
+
+<% unless @screenshot_comparisons.empty? %>
+  <h3><%= t('.screenshot_comparisons') %></h3>
+  
+  <%= render :partial => "/screenshot_comparisons/list" %>
 <% end %>
 
 <h3><%= t('.comments', :count => @comments_count) %></h3>

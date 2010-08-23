@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
         checks.resources :check_runs do |check_runs|
           check_runs.resources :comments
           check_runs.resources :screenshots
+          check_runs.resources :screenshot_comparisons
         end
         
         checks.resources :comments

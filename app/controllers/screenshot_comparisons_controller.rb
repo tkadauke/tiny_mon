@@ -1,16 +1,16 @@
-class ScreenshotsController < ApplicationController
+class ScreenshotComparisonsController < ApplicationController
   before_filter :login_required
   before_filter :find_account
   before_filter :find_site
   before_filter :find_health_check
-  before_filter :find_check_run, :only => :show
+  before_filter :find_check_run
   
   def index
-    @screenshots = @health_check.latest_screenshots.paginate :page => (params[:page] || 1), :per_page => 15
+    redirect_to account_site_health_check_check_run_path(@account, @site, @health_check, @check_run)
   end
-  
+
   def show
-    @screenshot = @check_run.screenshots.find(params[:id])
+    @screenshot_comparison = ScreenshotComparison.find(params[:id])
   end
   
 protected

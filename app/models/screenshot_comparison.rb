@@ -1,7 +1,8 @@
-class Screenshot < ActiveRecord::Base
+class ScreenshotComparison < ActiveRecord::Base
   belongs_to :check_run
-  belongs_to :step
-  
+  belongs_to :first_screenshot, :class_name => 'Screenshot'
+  belongs_to :second_screenshot, :class_name => 'Screenshot'
+
   validates_presence_of :checksum
   
   after_destroy :release

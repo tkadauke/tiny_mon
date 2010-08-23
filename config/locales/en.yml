@@ -199,6 +199,7 @@ en:
     login: Login
     new: New
     password_resets: "Reset password"
+    screenshot_comparisons: Screenshot Comparisons
     screenshots: Screenshots
     settings: Settings
     sites: Sites
@@ -232,6 +233,7 @@ en:
       log_output: "Log output"
       message: Message
       running: "Health check is running. Please reload this page in a few moments ..."
+      screenshot_comparisons: "Screenshot Comparisons"
       screenshots: Screenshots
       started_by: "Stared by"
       status: Status
@@ -586,6 +588,13 @@ en:
       forgot_password: "Forgot Password"
       instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
       reset: "Reset my password"
+  screenshot_comparisons: 
+    list: 
+      time_ago: "{{time}} ago"
+    show: 
+      comparing_screenshots: "Comparing Screenshots"
+      current: Current
+      previous: Previous
   screenshots: 
     index: 
       screenshots_of_health_check: "Screenshots of health check {{health_check}}"
@@ -737,6 +746,9 @@ en:
     submit_form_step_form: 
       name: Name
       name_specifying_form: "ID, title or text that uniquely identifies the form"
+    take_screenshot_step_form: 
+      css: CSS
+      custom_style_declarations: "Custom Stylesheet (CSS). Use this to hide highly variable areas, such as ads."
     visit_step_form: 
       relative_or_absolute: "Relative or absolute URL. Relative URLs are with respect to the site's base URL."
       url: URL

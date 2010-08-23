@@ -1,4 +1,7 @@
 class ScreenshotFile
+  PUBLIC_IMAGE_PATH = 'system'
+  IMAGE_PATH = "#{RAILS_ROOT}/public/#{PUBLIC_IMAGE_PATH}"
+
   attr_accessor :checksum
   
   def initialize(checksum)
@@ -19,11 +22,11 @@ class ScreenshotFile
   end
   
   def public_path
-    "/#{TinyMon::Renderer::PUBLIC_IMAGE_PATH}/#{file_name}.png"
+    "/#{PUBLIC_IMAGE_PATH}/#{file_name}.png"
   end
   
   def public_thumbnail_path
-    "/#{TinyMon::Renderer::PUBLIC_IMAGE_PATH}/#{file_name}-thumb.png"
+    "/#{PUBLIC_IMAGE_PATH}/#{file_name}-thumb.png"
   end
   
   def retain
@@ -45,10 +48,25 @@ class ScreenshotFile
       File.open(ref_counter_file, 'w') { |file| file.puts count - 1 }
     end
   end
+  
+  def self.store!(source, options = {})
+    checksum = Digest::MD5.hexdigest(File.read(source))
+    relative_file_path = checksum.sub(/^(..)(.*)$/, '\1/\2')
+    absolute_file_path = File.join(IMAGE_PATH, relative_file_path)
+    
+    FileUtils.mkdir_p(File.dirname(absolute_file_path))
+    FileUtils.mv source, absolute_file_path + '.png'
+    
+    if options[:thumbnail]
+      system "convert -resize 180 #{absolute_file_path}.png #{absolute_file_path}-thumb.png"
+    end
+    
+    new(checksum)
+  end
 
 protected
   def file_path_prefix
-    "#{TinyMon::Renderer::IMAGE_PATH}/#{file_name}"
+    "#{IMAGE_PATH}/#{file_name}"
   end
 
   def ref_counter_file

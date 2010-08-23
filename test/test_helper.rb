@@ -64,6 +64,17 @@ class ActionController::TestCase
   end
 end
 
+class MockScreenshotFile < ScreenshotFile
+  def initialize
+  end
+  
+  def retain
+  end
+  
+  def release
+  end
+end
+
 # add default routes so that actions in test controllers can be called
 ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'

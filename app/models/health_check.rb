@@ -131,7 +131,7 @@ protected
 
     attrs = { :status => 'success' }
 
-    retry_times = 1
+    retry_times = 3
     begin
       runner.run!
     rescue Exception => e

@@ -1,5 +1,5 @@
 module Role::User
-  include Role::Base
+  include TinyCore::Role
   
   def can_see_profile?(user)
     user == self || self.shares_accounts_with?(user)

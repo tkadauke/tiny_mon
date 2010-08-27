@@ -1,5 +1,5 @@
 module Role::Locked
-  include Role::Base
+  include TinyCore::Role
   
   def can_see_profile?(user)
     user == self

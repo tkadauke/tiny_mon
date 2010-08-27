@@ -1,0 +1,1 @@
+TinyCore::Application.name = 'TinyMon'

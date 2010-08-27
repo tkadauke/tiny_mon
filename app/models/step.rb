@@ -1,5 +1,4 @@
 class Step < ActiveRecord::Base
-  include HasProperties
   has_properties :in => :data
   
   has_many :screenshots

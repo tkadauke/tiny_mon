@@ -1,5 +1,5 @@
 # Port me to ActiveModel in Rails 3
-class CheckRunFilter < TablelessModel
+class CheckRunFilter < TinyCore::TablelessModel
   column :start_date, :datetime
   column :end_date, :datetime
   

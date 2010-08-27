@@ -20,6 +20,9 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   
+  config.gem "tiny_core", :version => '0.0.2'
+  config.gem "tiny_core_users", :version => '0.0.1'
+  config.gem "tiny_core_accounts", :version => '0.0.1'
   config.gem "acts_as_list"
   config.gem "webrat", :version => '0.5.3'
   config.gem "mechanize", :lib => false
@@ -52,7 +55,3 @@ Rails::Initializer.run do |config|
 end
 
 Rails.backtrace_cleaner.remove_silencers!
-
-Dir["#{RAILS_ROOT}/lib/{core_ext,rails_ext}/**/*.rb"].each do |file|
-  require file
-end

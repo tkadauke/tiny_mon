@@ -10,7 +10,7 @@ Hello,
 <%= @comment.text %>
 ------------
 
-See http://<%= TinyMon::Config.host %><%= account_site_health_check_check_run_path(@comment.check_run.health_check.site.account, @comment.check_run.health_check.site, @comment.check_run.health_check, @comment.check_run) %>
+See http://<%= TinyCore::Config.host %><%= account_site_health_check_check_run_path(@comment.check_run.health_check.site.account, @comment.check_run.health_check.site, @comment.check_run.health_check, @comment.check_run) %>
 
 Sincerely,
 TinyMon

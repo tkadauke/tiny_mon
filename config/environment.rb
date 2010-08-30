@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   
   config.gem "tiny_core", :version => '0.0.2'
   config.gem "tiny_core_users", :version => '0.0.1'
-  config.gem "tiny_core_accounts", :version => '0.0.1'
+  config.gem "tiny_core_accounts", :version => '0.0.2'
   config.gem "has_properties", :version => '0.0.1'
   config.gem "acts_as_list"
   config.gem "webrat", :version => '0.5.3'

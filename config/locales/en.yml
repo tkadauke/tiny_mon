@@ -2,23 +2,8 @@
 en: 
   account: 
     role: 
-      admin: Admin
       observer: Observer
-      user: User
   accounts: 
-    edit: 
-      edit_account: "Edit Account"
-    form: 
-      could_not_create_account: "Could not create account"
-      name: Name
-      name_hint: "For example your organization's name. Note that every user in an account can see all health checks"
-      save_account: "Save account"
-    index: 
-      details: Details
-      edit: Edit
-      name: Name
-      new_account: "New Account"
-      options: Options
     info: 
       check_runs_count: 
         one: "1 check run"
@@ -32,7 +17,6 @@ en:
         one: "1 health check"
         other: "{{count}} health checks"
       limit: Limit
-      name: Name
       screenshots_count: 
         one: "1 screenshot"
         other: "{{count}} screenshots"
@@ -41,22 +25,6 @@ en:
         other: "{{count}} sites"
       statistics: Statistics
       unlimited_check_runs_per_day: "Unlimited check runs per day"
-    new: 
-      new_account: "New Account"
-    show: 
-      account: "Account {{account}}"
-      add_existing: "Add existing user to this account"
-      add_new: "Register new user for this account"
-      change: Change
-      name: Name
-      options: Options
-      really_remove_user_from_account: "Do you really want to remove the user from this account?"
-      remove: Remove
-      role: Role
-      users: Users
-    tabs: 
-      edit: Edit
-      information: Information
   activerecord: 
     attributes: 
       check_content_step: 
@@ -106,34 +74,11 @@ en:
               invalid: "should look like an email address"
             full_name: 
               blank: "is required"
-        user_account: 
-          attributes: 
-            email: 
-              not_found: "does not belong to an existing user"
-            user_id: 
-              taken: "is already assigned to this account"
   admin: 
     accounts: 
       edit: 
-        could_not_update_account: "Could not update account"
-        edit_account: "Edit account"
         maximum_check_runs_per_day: "Maximum number of check runs per day"
         maximum_check_runs_per_day_hint: "Enter 0 for unlimited number of check runs per day"
-        name: Name
-        save_account: "Save account"
-      index: 
-        all_accounts: "All accounts"
-        name: Name
-        no_accounts: "There are no accounts yet"
-        options: Options
-        users: Users
-      show: 
-        account: "Account {{account}}"
-        no_users: "no users yet"
-        users: Users
-      tabs: 
-        edit: Edit
-        information: Information
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"
@@ -293,15 +238,10 @@ en:
       error_message: "We've been notified about this issue and we'll take a look at it shortly."
       title: "We're sorry, but something went wrong."
   flash: 
-    error: 
-      assign_roles: "Could not assign account role to user"
-      create_account_first: "You need to be assigned to an account first"
     notice: 
-      assign_roles: "Successfully assigned account role to user"
       bulk_updated_health_checks: 
         one: "Successfully updated 1 health check"
         other: "Successfully updated {{count}} health checks"
-      created_account: "Successfully created account {{account}}"
       created_comment: "Successfully added comment"
       created_deployment: "Successfully marked site with new deployment"
       created_footer_link: "Successfully created footer link"
@@ -309,15 +249,11 @@ en:
       created_health_check_template: "Successfully created health check template"
       created_import: "Successfully imported health checks"
       created_site: "Successfully created site {{site}}"
-      created_user_account: "Successfully added this user to the account"
       deleted_health_check: "Successfully deleted health check {{health_check}}"
       deleted_health_check_template: "Successfully deleted health check template"
       deleted_import: "Successfully deleted imported health checks"
       deleted_site: "Successfully deleted site {{site}}"
       removed_footer_link: "Successfully removed footer link"
-      removed_user_account: "Successfully removed user from this account"
-      switched_account: "Successfully switched to account {{account}}"
-      updated_account: "Successfully updated account {{account}}"
       updated_footer_link: "Successfully updated footer link"
       updated_health_check: "Successfully updated health check {{health_check}}"
       updated_health_check_template: "Successfully updated health check template"

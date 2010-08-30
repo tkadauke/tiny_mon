@@ -1,0 +1,79 @@
+--- 
+en: 
+  account: 
+    role: 
+      admin: Admin
+      user: User
+  accounts: 
+    edit: 
+      edit_account: "Edit Account"
+    form: 
+      could_not_create_account: "Could not create account"
+      name: Name
+      name_hint: "For example your organization's name. Note that every user in an account can see all health checks"
+      save_account: "Save account"
+    index: 
+      details: Details
+      edit: Edit
+      name: Name
+      new_account: "New Account"
+      options: Options
+    info: 
+      name: Name
+    new: 
+      new_account: "New Account"
+    show: 
+      account: "Account {{account}}"
+      add_existing: "Add existing user to this account"
+      add_new: "Register new user for this account"
+      change: Change
+      name: Name
+      options: Options
+      really_remove_user_from_account: "Do you really want to remove the user from this account?"
+      remove: Remove
+      role: Role
+      users: Users
+    tabs: 
+      edit: Edit
+      information: Information
+  activerecord: 
+    errors: 
+      models: 
+        user_account: 
+          attributes: 
+            email: 
+              not_found: "does not belong to an existing user"
+            user_id: 
+              taken: "is already assigned to this account"
+  admin: 
+    accounts: 
+      edit: 
+        could_not_update_account: "Could not update account"
+        edit_account: "Edit account"
+        name: Name
+        save_account: "Save account"
+      index: 
+        all_accounts: "All accounts"
+        edit: Edit
+        name: Name
+        no_accounts: "There are no accounts yet"
+        options: Options
+        users: Users
+      show: 
+        account: "Account {{account}}"
+        no_users: "no users yet"
+        users: Users
+      tabs: 
+        edit: Edit
+        information: Information
+  flash: 
+    error: 
+      assign_roles: "Could not assign account role to user"
+      create_account_first: "You need to be assigned to an account first"
+    notice: 
+      assign_roles: "Successfully assigned account role to user"
+      created_account: "Successfully created account {{account}}"
+      created_user_account: "Successfully added this user to the account"
+      removed_user_account: "Successfully removed user from this account"
+      switched_account: "Successfully switched to account {{account}}"
+      updated_account: "Successfully updated account {{account}}"

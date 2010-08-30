@@ -1,0 +1,79 @@
+--- 
+de: 
+  account: 
+    role: 
+      admin: Admin
+      user: Benutzer
+  accounts: 
+    edit: 
+      edit_account: "Konto bearbeiten"
+    form: 
+      could_not_create_account: "Konnte Konto nicht erstellen"
+      name: Kontoname
+      name_hint: "Zum Beispiel der Name Ihrer Organisation. Hinweis: Alle Benutzer des Kontos können alle Funktionstests sehen"
+      save_account: "Konto speichern"
+    index: 
+      details: Details
+      edit: Bearbeiten
+      name: Name
+      new_account: "Neues Konto"
+      options: Optionen
+    info: 
+      name: Name
+    new: 
+      new_account: "Neues Konto"
+    show: 
+      account: "Konto {{account}}"
+      add_existing: "Vorhandenen Benutzer zum Konto hinzufügen"
+      add_new: "Neuen Benutzer für Konto registrieren"
+      change: Ändern
+      name: Name
+      options: Optionen
+      really_remove_user_from_account: "Wollen Sie wirklich diesen Benutzer vom Konto entfernen?"
+      remove: Entfernen
+      role: Rolle
+      users: Benutzer
+    tabs: 
+      edit: Bearbeiten
+      information: Information
+  activerecord: 
+    errors: 
+      models: 
+        user_account: 
+          attributes: 
+            email: 
+              not_found: "gehört zu keinem registrierten Benutzer"
+            user_id: 
+              taken: "ist bereits diesem Konto zugeordnet"
+  admin: 
+    accounts: 
+      edit: 
+        could_not_update_account: "Konnte das Konto nicht aktualisieren"
+        edit_account: "Konto bearbeiten"
+        name: Name
+        save_account: "Konto speichern"
+      index: 
+        all_accounts: "Alle Konten"
+        edit: Bearbeiten
+        name: Name
+        no_accounts: "Es gibt bisher keine Konten."
+        options: Optionen
+        users: Benutzer
+      show: 
+        account: "Konto {{account}}"
+        no_users: "bisher keine Benutzer"
+        users: Benutzer
+      tabs: 
+        edit: Bearbeiten
+        information: Information
+  flash: 
+    error: 
+      assign_roles: "Konnte die Rolle dem Benutzer nicht zuteilen"
+      create_account_first: "Sie müssen zuerst einem Konto zugewiesen sein"
+    notice: 
+      assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
+      created_account: "Konto {{account}} wurde erfolgreich erstellt"
+      created_user_account: "Benutzer wurde erfolgreich dem Konto hinzugefügt"
+      removed_user_account: "Benutzer wurde erfolgreich vom Konto entfernt"
+      switched_account: "Erfolgreich zu Konto {{account}} gewechselt"
+      updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"

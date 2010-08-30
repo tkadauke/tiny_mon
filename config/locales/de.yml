@@ -2,23 +2,8 @@
 de: 
   account: 
     role: 
-      admin: Admin
       observer: Zuschauer
-      user: Benutzer
   accounts: 
-    edit: 
-      edit_account: "Konto bearbeiten"
-    form: 
-      could_not_create_account: "Konnte Konto nicht erstellen"
-      name: Kontoname
-      name_hint: "Zum Beispiel der Name Ihrer Organisation. Hinweis: Alle Benutzer des Kontos können alle Funktionstests sehen"
-      save_account: "Konto speichern"
-    index: 
-      details: Details
-      edit: Bearbeiten
-      name: Name
-      new_account: "Neues Konto"
-      options: Optionen
     info: 
       check_runs_count: 
         one: "1 Testlauf"
@@ -32,7 +17,6 @@ de:
         one: "1 Funktionstest"
         other: "{{count}} Funktionstests"
       limit: Beschränkung
-      name: Name
       screenshots_count: 
         one: "1 Screenshot"
         other: "{{count}} Screenshots"
@@ -41,22 +25,6 @@ de:
         other: "{{count}} Sites"
       statistics: Statistiken
       unlimited_check_runs_per_day: "Unbeschränkte Anzahl an Testläufen pro Tag"
-    new: 
-      new_account: "Neues Konto"
-    show: 
-      account: "Konto {{account}}"
-      add_existing: "Vorhandenen Benutzer zum Konto hinzufügen"
-      add_new: "Neuen Benutzer für Konto registrieren"
-      change: Ändern
-      name: Name
-      options: Optionen
-      really_remove_user_from_account: "Wollen Sie wirklich diesen Benutzer vom Konto entfernen?"
-      remove: Entfernen
-      role: Rolle
-      users: Benutzer
-    tabs: 
-      edit: Bearbeiten
-      information: Information
   activerecord: 
     attributes: 
       check_content_step: 
@@ -106,34 +74,11 @@ de:
               invalid: "muss das Format einer E-Mail-Adresse haben"
             full_name: 
               blank: "muss angegeben werden"
-        user_account: 
-          attributes: 
-            email: 
-              not_found: "gehört zu keinem registrierten Benutzer"
-            user_id: 
-              taken: "ist bereits diesem Konto zugeordnet"
   admin: 
     accounts: 
       edit: 
-        could_not_update_account: "Konnte das Konto nicht aktualisieren"
-        edit_account: "Konto bearbeiten"
         maximum_check_runs_per_day: "Maximale Anzahl an Testläufen pro Tag"
         maximum_check_runs_per_day_hint: "Geben Sie 0 ein, für eine unbeschränkte Anzahl an Testläufen pro Tag"
-        name: Name
-        save_account: "Konto speichern"
-      index: 
-        all_accounts: "Alle Konten"
-        name: Name
-        no_accounts: "Es gibt bisher keine Konten."
-        options: Optionen
-        users: Benutzer
-      show: 
-        account: "Konto {{account}}"
-        no_users: "bisher keine Benutzer"
-        users: Benutzer
-      tabs: 
-        edit: Bearbeiten
-        information: Information
     footer_links: 
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
@@ -293,15 +238,10 @@ de:
       error_message: "Bitte melden Sie diesen Bug und wir werden uns darum kümmern."
       title: "Es tut uns leid, aber gerade ist etwas schief gelaufen."
   flash: 
-    error: 
-      assign_roles: "Konnte die Rolle dem Benutzer nicht zuteilen"
-      create_account_first: "Sie müssen zuerst einem Konto zugewiesen sein"
     notice: 
-      assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
       bulk_updated_health_checks: 
         one: "1 Funktionstest wurde erfolgreich aktualisiert"
         other: "{{count}} Funktionstests wurden erfolgreich aktualisiert"
-      created_account: "Konto {{account}} wurde erfolgreich erstellt"
       created_comment: "Kommentar wurde erfolgreich hinzugefügt"
       created_deployment: "Site wurde erfolgreich mit Deployment markiert"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
@@ -309,15 +249,11 @@ de:
       created_health_check_template: "Funktionstest-Vorlage wurde erfolgreich erstellt"
       created_import: "Import wurder erfolgreich abgeschlossen"
       created_site: "Site {{site}} wurde erfolgreich erstellt"
-      created_user_account: "Benutzer wurde erfolgreich dem Konto hinzugefügt"
       deleted_health_check: "Funktionstest {{health_check}} wurde erfolgreich entfernt"
       deleted_health_check_template: "Funktionstest-Vorlage wurde erfolgreich gelöscht"
       deleted_import: "Importierte Funktionstests wurden erfolgreich gelöscht"
       deleted_site: "Site {{site}} wurde erfolgreich gelöscht"
       removed_footer_link: "Fußzeilen-Link wurde erfolgreich entfernt"
-      removed_user_account: "Benutzer wurde erfolgreich vom Konto entfernt"
-      switched_account: "Erfolgreich zu Konto {{account}} gewechselt"
-      updated_account: "Konto {{account}} wurde erfolgreich aktualisiert"
       updated_footer_link: "Fußzeilen-Link wurde erfolgreich aktualisiert"
       updated_health_check: "Funktionstest {{health_check}} wurde erfolgreich aktualisiert"
       updated_health_check_template: "Funktionstest-Vorlage wurde erfolgreich aktualisiert"

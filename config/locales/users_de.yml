@@ -1,0 +1,83 @@
+--- 
+de: 
+  admin: 
+    users: 
+      index: 
+        accounts: Konten
+        all_users: "Alle Benutzer"
+        email: E-Mail
+        name: Name
+        no_users: "Keine Benutzer gefunden."
+        options: Optionen
+  flash: 
+    error: 
+      access_denied: "Zugriff verweigert"
+      guest_required: "Sie müssen ausgeloggt sein, um auf diese Seite zuzugreifen"
+      login_required: "Sie müssen eingeloggt sein, um auf diese Seite zuzugreifen"
+      user_by_email_not_found: "Es wurde kein Benutzer mit dieser E-Mail-Adresse gefunden"
+      user_could_not_be_located: "Es tut uns leid, aber wir konnten den Benutzer nicht identifizieren. Bitte versuchen Sie die URL aus der E-Mail in die Adressleiste des Browsers zu kopieren oder starten Sie den Password-Vergessen-Prozess von vorne."
+    notice: 
+      created_user: "Benutzer wurde erfolgreich erstellt"
+      logged_in: "Erfolgreich eingeloggt"
+      logged_out: "Erfolgreich ausgeloggt"
+      password_instructions_sent: "Anweisungen zur Änderung Ihres Passwortes wurden per E-Mail verschickt. Bitte prüfen Sie Ihren Posteingang."
+      password_updated: "Ihr Passwort wurde erfolgreich geändert"
+      updated_user: "Benutzer wurde erfolgreich aktualisiert"
+    password_reset_mailer: 
+      subject: "Anweisungen zur Änderung Ihres Passwortes"
+  layouts: 
+    accounts: Konten
+    admin: Admin
+    login: Login
+    logout: Logout
+    signup: Registrieren
+    user_greeter: "Willkommen, {{user}}"
+  password_resets: 
+    edit: 
+      change_password: "Passwort ändern"
+      could_not_reset_password: "Konnte Passwort nicht zurücksetzen"
+      password: Passwort
+      password_confirmation: "Passwort bestätigen"
+      update: "Passwort ändern"
+    index: 
+      instructions: "Bitte prüfen Sie Ihren Posteingang für Anweisungen zur Änderung Ihres Passwortes."
+    new: 
+      email: E-Mail-Adresse
+      forgot_password: "Passwort vergessen"
+      instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
+      reset: "Passwort zurücksetzen"
+  user_sessions: 
+    new: 
+      could_not_login: "Login war nicht erfolgreich"
+      email: E-Mail
+      forgot_password: "Passwort vergessen?"
+      login: Login
+      password: Passwort
+      register_instead: "Noch nicht registriert?"
+      remember_me: "Eingeloggt bleiben"
+  users: 
+    edit: 
+      could_not_update_user: "Konnte Benutzerprofil nicht aktualisieren"
+      edit_users_profile: "Benutzerprofil bearbeiten"
+      email_address: E-Mail-Adresse
+      full_name: "Voller Name"
+      the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
+      update: Aktualisieren
+    new: 
+      could_not_register_user: "Konnte Benutzer nicht registrieren"
+      create_account: "Benutzer registrieren"
+      create_new_account: "Neuen Benutzer registrieren"
+      email_address: E-Mail-Adresse
+      full_name: "Voller Name"
+      login_instead: "Bereits registriert?"
+      password: Passwort
+      password_confirmation: "Passwort wiederholen"
+      please_repeat_the_password_exactly_as_above: "Bitte wiederholen Sie das Passwort exakt wie oben"
+      the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
+    show: 
+      accounts: Konten
+      edit_profile: "Profil bearbeiten"
+      email: E-Mail-Adresse
+      full_name: "Voller Name"
+      no_accounts: "bisher keine"
+      users_profile: "{{full_name}}s Profil"

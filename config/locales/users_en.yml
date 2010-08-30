@@ -1,0 +1,83 @@
+--- 
+en: 
+  admin: 
+    users: 
+      index: 
+        accounts: Accounts
+        all_users: "All Users"
+        email: Email
+        name: Name
+        no_users: "No users found."
+        options: Options
+  flash: 
+    error: 
+      access_denied: "Access denied"
+      guest_required: "You must be logged out to access this page"
+      login_required: "You must be logged in to access this page"
+      user_by_email_not_found: "No user was found with that email address"
+      user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+    notice: 
+      created_user: "Successfully created user"
+      logged_in: "Successfully logged in"
+      logged_out: "Successfully logged out"
+      password_instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
+      password_updated: "Password successfully updated"
+      updated_user: "Successfully updated user"
+    password_reset_mailer: 
+      subject: "Password Reset Instructions"
+  layouts: 
+    accounts: Accounts
+    admin: Admin
+    login: Login
+    logout: Logout
+    signup: Signup
+    user_greeter: "Welcome, {{user}}"
+  password_resets: 
+    edit: 
+      change_password: "Change My Password"
+      could_not_reset_password: "Could not reset password"
+      password: Password
+      password_confirmation: "Confirm password"
+      update: "Update my password and log me in"
+    index: 
+      instructions: "Please check your email for instructions how to change your password."
+    new: 
+      email: "E-mail address"
+      forgot_password: "Forgot Password"
+      instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
+      reset: "Reset my password"
+  user_sessions: 
+    new: 
+      could_not_login: "Login failed"
+      email: E-Mail
+      forgot_password: "Forgot password?"
+      login: Login
+      password: Password
+      register_instead: "Not registered yet?"
+      remember_me: "Remember me"
+  users: 
+    edit: 
+      could_not_update_user: "Could not update user"
+      edit_users_profile: "Edit user's profile"
+      email_address: "E-mail address"
+      full_name: "Full name"
+      the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
+      update: Update
+    new: 
+      could_not_register_user: "Could not register user"
+      create_account: "Create account"
+      create_new_account: "Create new account"
+      email_address: "E-mail address"
+      full_name: "Full name"
+      login_instead: "Already registered?"
+      password: Password
+      password_confirmation: "Password confirmation"
+      please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
+      the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
+    show: 
+      accounts: Accounts
+      edit_profile: "Edit profile"
+      email: "Email address"
+      full_name: "Full name"
+      no_accounts: "none yet"
+      users_profile: "{{full_name}}'s profile"

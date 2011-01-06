@@ -2,6 +2,7 @@
 
 <% if @check_run.status.blank? %>
   <p><%= t('.running') %> <%= image_tag 'spinner.gif' %></p>
+  <%= javascript_tag 'window.setTimeout(function() { location.reload() }, 1000)' %>
 <% else %>
   <dl>
     <dt><%= t('.status') %></dt>

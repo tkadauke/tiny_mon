@@ -7,6 +7,7 @@ class HealthCheck < ActiveRecord::Base
   has_many :steps, :order => 'position ASC'
   has_many :check_runs, :dependent => :destroy
   has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
+  has_many :weather_relevant_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 5
   
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'
   
@@ -180,7 +181,7 @@ protected
   end
   
   def calculate_weather
-    last_check_runs = check_runs.last(5)
+    last_check_runs = weather_relevant_check_runs
     fill_run_count = 5 - last_check_runs.size
 
     last_check_runs.select { |run| run.success? }.size + fill_run_count

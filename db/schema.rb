@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110203233552) do
+ActiveRecord::Schema.define(:version => 20110503201404) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -39,26 +39,6 @@ ActiveRecord::Schema.define(:version => 20110203233552) do
   add_index "check_runs", ["deployment_id"], :name => "index_new_check_runs_on_deployment_id"
   add_index "check_runs", ["health_check_id", "created_at"], :name => "index_new_check_runs_on_health_check_id_and_created_at"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
-
-  create_table "check_runs_before_add_index_on_check_runs", :force => true do |t|
-    t.integer  "health_check_id"
-    t.string   "status"
-    t.text     "log"
-    t.string   "error_message"
-    t.decimal  "started_at",      :precision => 20, :scale => 10
-    t.decimal  "ended_at",        :precision => 20, :scale => 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "account_id"
-    t.integer  "deployment_id"
-    t.integer  "user_id"
-  end
-
-  add_index "check_runs_before_add_index_on_check_runs", ["account_id", "created_at"], :name => "index_check_runs_on_account_id_and_created_at"
-  add_index "check_runs_before_add_index_on_check_runs", ["account_id"], :name => "index_check_runs_on_account_id"
-  add_index "check_runs_before_add_index_on_check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
-  add_index "check_runs_before_add_index_on_check_runs", ["deployment_id"], :name => "index_new_check_runs_on_deployment_id"
-  add_index "check_runs_before_add_index_on_check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "check_run_id"

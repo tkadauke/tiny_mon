@@ -546,6 +546,12 @@ en:
       last_check_run: "Last check run"
       run: Run
       run_at: "Run at"
+    status: 
+      all: All
+      disabled: Disabled
+      enabled: Enabled
+      failure: Failed
+      success: Successful
     tabs: 
       check_runs: "Check runs"
       edit: Edit

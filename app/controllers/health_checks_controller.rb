@@ -11,11 +11,17 @@ class HealthChecksController < ApplicationController
       current_user.soft_settings.get("health_checks.report", :default => 'details')
     end
     
+    @status = if params[:status]
+      current_user.soft_settings.set("health_checks.status", params[:status])
+    else
+      current_user.soft_settings.get("health_checks.status", :default => 'all')
+    end
+    
     @search_filter = SearchFilter.new(params[:search_filter])
     if @site
-      @health_checks = @site.health_checks.find_for_list(@search_filter, :order => 'health_checks.name ASC')
+      @health_checks = @site.health_checks.find_for_list(@search_filter, @status, :order => 'health_checks.name ASC')
     else
-      @health_checks = @account.health_checks.find_for_list(@search_filter, :order => 'sites.name ASC, health_checks.name ASC')
+      @health_checks = @account.health_checks.find_for_list(@search_filter, @status, :order => 'sites.name ASC, health_checks.name ASC')
       render :action => 'all_checks' unless request.xhr?
     end
     

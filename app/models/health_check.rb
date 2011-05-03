@@ -38,9 +38,18 @@ class HealthCheck < ActiveRecord::Base
     find :all, options.merge(:conditions => ["enabled and next_check_at > ?", Time.now], :order => 'next_check_at ASC')
   end
   
-  def self.find_for_list(filter, find_options)
+  def self.find_for_list(filter, status, find_options)
     with_search_scope(filter) do
-      find(:all, find_options.merge(:include => {:site => :account}))
+      conditions = case status.to_s
+      when 'success', 'failure'
+        { :status => status.to_s }
+      when 'enabled'
+        { :enabled => true }
+      when 'disabled'
+        { :enabled => false }
+      end
+      
+      find(:all, find_options.merge(:include => {:site => :account}, :conditions => conditions))
     end
   end
 

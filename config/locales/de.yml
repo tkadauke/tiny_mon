@@ -546,6 +546,12 @@ de:
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
       run_at: Zeit
+    status: 
+      all: Alle
+      disabled: Deaktiviert
+      enabled: Aktiviert
+      failure: Fehlschlag
+      success: Erfolg
     tabs: 
       check_runs: Testläufe
       edit: Bearbeiten

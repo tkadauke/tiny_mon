@@ -9,6 +9,14 @@
   <% a.tab :overview, t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %>
 <% end %>
 
+<% tabs(:selected => @status.to_sym) do |a| %>
+  <% a.tab :all, t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all') %>
+  <% a.tab :success, t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success') %>
+  <% a.tab :failure, t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure') %>
+  <% a.tab :enabled, t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled') %>
+  <% a.tab :disabled, t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled') %>
+<% end %>
+
 <%#= auto_update 'checks' %>
 <div id="checks">
   <%= render :partial => "list" %>

@@ -16,6 +16,37 @@ class HealthChecksControllerTest < ActionController::TestCase
     assert_equal [health_check], assigns(:health_checks)
   end
   
+  test "should get index with report parameter" do
+    health_check = @site.health_checks.create(:name => 'Home page', :interval => 1)
+    get :index, :account_id => @account, :site_id => @site.to_param, :report => 'overview'
+    assert_response :success
+    assert_equal [health_check], assigns(:health_checks)
+    assert_equal 'overview', @user.soft_settings.get("health_checks.report")
+  end
+  
+  test "should get index with status filter" do
+    health_check = @site.health_checks.create(:name => 'Home page', :interval => 1, :status => 'success')
+    get :index, :account_id => @account, :site_id => @site.to_param, :status => 'success'
+    assert_response :success
+    assert_equal [health_check], assigns(:health_checks)
+    assert_equal 'success', @user.soft_settings.get("health_checks.status")
+  end
+  
+  test "should get index with enabled filter" do
+    health_check = @site.health_checks.create(:name => 'Home page', :interval => 1, :enabled => false)
+    get :index, :account_id => @account, :site_id => @site.to_param, :status => 'disabled'
+    assert_response :success
+    assert_equal [health_check], assigns(:health_checks)
+    assert_equal 'disabled', @user.soft_settings.get("health_checks.status")
+  end
+  
+  test "should get index with search filter" do
+    health_check = @site.health_checks.create(:name => 'Home page', :interval => 1, :enabled => false)
+    get :index, :account_id => @account, :site_id => @site.to_param, :search_filter => { :query => 'Home' }
+    assert_response :success
+    assert_equal [health_check], assigns(:health_checks)
+  end
+  
   test "should update index" do
     health_check = @site.health_checks.create(:name => 'Home page', :interval => 1)
     xhr :get, :index, :account_id => @account, :site_id => @site.to_param

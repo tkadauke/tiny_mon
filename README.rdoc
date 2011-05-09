@@ -57,7 +57,7 @@ This is pre-alpha. So there you need to start the processes manually. Start the 
 
 Start the background checker process with
 
-  RAILS_ENV=production script/checker
+  RAILS_ENV=production script/scheduler
 
 === Contributing
 

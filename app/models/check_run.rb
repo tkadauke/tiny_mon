@@ -13,7 +13,7 @@ class CheckRun < ActiveRecord::Base
   before_create :set_account
   before_create :set_deployment
   after_update :update_health_check_status
-  after_update :notify_subscribers
+  after_update :notify_subscribers, :if => :send_notification?
   
   named_scope :recent, :order => 'check_runs.created_at DESC', :limit => 10
   named_scope :today, lambda { { :conditions => ['created_at > ?', Date.today.to_time] } }
@@ -53,6 +53,14 @@ protected
   end
   
   def notify_subscribers
-    TinyMon::Notifier.new(self).notify! if user.blank? && self.status == 'failure' && health_check.enabled?
+    TinyMon::Notifier.new(self).notify!
+  end
+  
+  def send_notification?
+    user.blank? && health_check.enabled? && self.status != previous_check_run.status
+  end
+  
+  def previous_check_run
+    health_check.check_runs.find(:first, :order => 'id desc', :conditions => ['id < ?', self.id])
   end
 end

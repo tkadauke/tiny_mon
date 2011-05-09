@@ -209,6 +209,8 @@ en:
   check_run_mailer: 
     failure: 
       subject: "Health Check {{health_check}} of site {{site}} failed!"
+    success: 
+      subject: "Health Check {{health_check}} of site {{site}} was successful!"
   check_runs: 
     activity: 
       duration: Duration

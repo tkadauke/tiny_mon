@@ -209,6 +209,8 @@ de:
   check_run_mailer: 
     failure: 
       subject: "Funktionstest {{health_check}} von site {{site}} ist fehlgeschlagen!"
+    success: 
+      subject: "Funktionstest {{health_check}} von site {{site}} war erfolgreich!"
   check_runs: 
     activity: 
       duration: Dauer

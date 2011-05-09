@@ -42,7 +42,7 @@ class HealthCheck < ActiveRecord::Base
     with_search_scope(filter) do
       conditions = case status.to_s
       when 'success', 'failure'
-        { :status => status.to_s }
+        { :status => status.to_s, :enabled => true }
       when 'enabled'
         { :enabled => true }
       when 'disabled'

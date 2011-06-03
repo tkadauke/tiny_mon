@@ -61,6 +61,7 @@ protected
   end
   
   def previous_check_run
-    health_check.check_runs.find(:first, :order => 'id desc', :conditions => ['id < ?', self.id])
+    runs = health_check.check_runs.find(:all, :order => 'id desc', :limit => 2)
+    runs.last if runs.size == 2
   end
 end

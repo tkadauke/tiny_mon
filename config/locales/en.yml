@@ -481,6 +481,7 @@ en:
       none: "Select none"
       options: Options
       really_delete_health_check: "Do you really want to delete this health check including all check runs? This operation can not be undone."
+      run: Run
       site: Site
       status: Status
     edit: 
@@ -559,6 +560,7 @@ en:
       edit: Edit
       edit_steps: "Edit Steps"
       information: Information
+      run: Run
       screenshots: Screenshots
       view_steps: "View Steps"
     template_form: 

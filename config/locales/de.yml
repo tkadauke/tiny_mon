@@ -481,6 +481,7 @@ de:
       none: "Keinen wählen"
       options: Optionen
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
+      run: "Prüfen"
       site: Site
       status: Status
     edit: 
@@ -559,6 +560,7 @@ de:
       edit: Bearbeiten
       edit_steps: "Schritte bearbeiten"
       information: Information
+      run: "Jetzt prüfen"
       screenshots: Bildschirmfotos
       view_steps: "Schritte anzeigen"
     template_form: 

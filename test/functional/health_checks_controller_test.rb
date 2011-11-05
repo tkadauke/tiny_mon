@@ -25,7 +25,7 @@ class HealthChecksControllerTest < ActionController::TestCase
   end
   
   test "should get index with status filter" do
-    health_check = @site.health_checks.create(:name => 'Home page', :interval => 1, :status => 'success')
+    health_check = @site.health_checks.create(:name => 'Home page', :interval => 1, :status => 'success', :enabled => true)
     get :index, :account_id => @account, :site_id => @site.to_param, :status => 'success'
     assert_response :success
     assert_equal [health_check], assigns(:health_checks)

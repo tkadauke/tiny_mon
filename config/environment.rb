@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   config.gem "webrat", :version => '0.5.3'
   config.gem "mechanize", :lib => false
   config.gem "orderedhash"
-  config.gem "authlogic", :version => '2.0.14'
+  config.gem "authlogic", :version => '2.1.5'
   config.gem "background_lite", :lib => false
   config.gem "will_paginate"
   config.gem "fastercsv"

@@ -30,7 +30,7 @@ class UserAccountsControllerTest < ActionController::TestCase
       post :create, :account_id => @account, :user_account => { :email => 'foo@bar.com' }
       assert_response :success
       assert_nil flash[:notice]
-      assert assigns(:user_account).errors.on(:email)
+      assert assigns(:user_account).errors[:email]
     end
   end
   

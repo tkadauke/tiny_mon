@@ -26,7 +26,6 @@ class StepsController < ApplicationController
   def edit
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
-      render :partial => '/steps/form', :locals => { :step => @step } if request.xhr?
     end
   end
   

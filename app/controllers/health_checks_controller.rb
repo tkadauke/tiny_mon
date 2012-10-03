@@ -24,10 +24,6 @@ class HealthChecksController < ApplicationController
       @health_checks = @account.health_checks.filter_for_list(@search_filter, params[:status]).order('sites.name ASC, health_checks.name ASC')
       render 'all_checks' unless request.xhr?
     end
-    
-    render :update do |page|
-      page.replace_html 'checks', :partial => 'list'
-    end if request.xhr?
   end
   
   def new

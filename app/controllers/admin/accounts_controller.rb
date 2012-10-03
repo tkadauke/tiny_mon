@@ -6,9 +6,6 @@ class Admin::AccountsController < ApplicationController
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
     @accounts = Account.filter_for_list(@search_filter).paginate(:page => params[:page])
-    render :update do |page|
-      page.replace_html 'accounts', :partial => 'index'
-    end if request.xhr?
   end
   
   def show

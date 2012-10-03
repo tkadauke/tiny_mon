@@ -1,0 +1,1 @@
+$("#step_<%= @step.id %>").html("<%= escape_javascript(render(:partial => '/steps/form', :locals => { :step => @step })) %>")

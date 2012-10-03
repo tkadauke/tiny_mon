@@ -40,9 +40,8 @@ class AccountTest < ActiveSupport::TestCase
   end
   
   test "should figure out if health checks today are over check run limit" do
-    CheckRun.stubs(:count).returns(50)
-    
     account = Account.new
+    account.stubs(:scheduled_check_runs_today).returns(50)
     account.maximum_check_runs_per_day = 40
     assert account.over_maximum_check_runs_today?
   end

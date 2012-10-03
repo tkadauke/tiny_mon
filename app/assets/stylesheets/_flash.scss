@@ -1,0 +1,18 @@
+#flash {
+  margin-bottom: 1em;
+  padding: 0.5em;
+  
+  a {
+    float: right;
+  }
+}
+
+#flash.error {
+  background-color: #FFBAB4;
+  border: 1px solid #FF6F64;
+}
+
+#flash.notice {
+  background-color: #AEF5BA;
+  border: 1px solid #00D225;
+}

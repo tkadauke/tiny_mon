@@ -14,11 +14,33 @@ de:
       name_hint: "Zum Beispiel der Name Ihrer Organisation. Hinweis: Alle Benutzer des Kontos können alle Funktionstests sehen"
       save_account: "Konto speichern"
     index: 
+      details: Details
       edit: Bearbeiten
       name: Name
       new_account: "Neues Konto"
       options: Optionen
-      switch: "Konto wechseln"
+    info: 
+      check_runs_count: 
+        one: "1 Testlauf"
+        other: "%{count} Testläufe"
+      check_runs_per_day: "%{count} Testläufe pro Tag"
+      check_runs_today: "%{count} Testläufe heute"
+      comments_count: 
+        one: "1 Kommentar"
+        other: "%{count} Kommentare"
+      health_checks_count: 
+        one: "1 Funktionstest"
+        other: "%{count} Funktionstests"
+      limit: Beschränkung
+      name: Name
+      screenshots_count: 
+        one: "1 Screenshot"
+        other: "%{count} Screenshots"
+      sites_count: 
+        one: "1 Site"
+        other: "%{count} Sites"
+      statistics: Statistiken
+      unlimited_check_runs_per_day: "Unbeschränkte Anzahl an Testläufen pro Tag"
     new: 
       new_account: "Neues Konto"
     show: 
@@ -31,6 +53,10 @@ de:
       really_remove_user_from_account: "Wollen Sie wirklich diesen Benutzer vom Konto entfernen?"
       remove: Entfernen
       role: Rolle
+      users: Benutzer
+    tabs: 
+      edit: Bearbeiten
+      information: Information
   activerecord: 
     attributes: 
       check_content_step: 
@@ -88,6 +114,13 @@ de:
               taken: "ist bereits diesem Konto zugeordnet"
   admin: 
     accounts: 
+      edit: 
+        could_not_update_account: "Konnte das Konto nicht aktualisieren"
+        edit_account: "Konto bearbeiten"
+        maximum_check_runs_per_day: "Maximale Anzahl an Testläufen pro Tag"
+        maximum_check_runs_per_day_hint: "Geben Sie 0 ein, für eine unbeschränkte Anzahl an Testläufen pro Tag"
+        name: Name
+        save_account: "Konto speichern"
       index: 
         all_accounts: "Alle Konten"
         name: Name
@@ -96,22 +129,11 @@ de:
         users: Benutzer
       show: 
         account: "Konto %{account}"
-        check_runs_count: 
-          one: "1 Testlauf"
-          other: "%{count} Testläufe"
-        comments_count: 
-          one: "1 Kommentar"
-          other: "%{count} Kommentare"
-        health_checks_count: 
-          one: "1 Funktionstest"
-          other: "%{count} Funktionsteste"
-        name: Name
         no_users: "bisher keine Benutzer"
-        sites_count: 
-          one: "1 Site"
-          other: "%{count} Sites"
-        statistics: Statistiken
         users: Benutzer
+      tabs: 
+        edit: Bearbeiten
+        information: Information
     footer_links: 
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
@@ -177,6 +199,8 @@ de:
     login: Login
     new: Neu
     password_resets: "Passwort zurücksetzen"
+    screenshot_comparisons: Bildschirmfoto-Vergleiche
+    screenshots: Bildschirmfotos
     settings: Einstellungen
     sites: Sites
     steps: Schritte
@@ -185,9 +209,10 @@ de:
   check_run_mailer: 
     failure: 
       subject: "Funktionstest %{health_check} von site %{site} ist fehlgeschlagen!"
+    success: 
+      subject: "Funktionstest %{health_check} von site %{site} war erfolgreich!"
   check_runs: 
     activity: 
-      account: Konto
       duration: Dauer
       duration_in_seconds: "%{duration} Sekunden"
       health_check: Funktionstest
@@ -198,6 +223,11 @@ de:
       when: Wann
     index: 
       check_runs_of_health_check_site: "Testläufe von Funktionstest %{health_check} (Site %{site})"
+      filter: Filtern
+      filter_active: "Filter aktiv"
+      from: Von
+      reset_filter: Zurücksetzen
+      until: bis
     show: 
       all_comments: "Alle Kommentare anzeigen"
       check_run_of_health_check_site: "Testlauf von %{health_check} (Site %{site})"
@@ -210,6 +240,9 @@ de:
       log_output: Log-Ausgabe
       message: Ausgabe
       running: "Funktionstest läuft. Bitte laden Sie die Seite in wenigen Augenblicken erneut ..."
+      screenshot_comparisons: Bildschirmfoto-Vergleiche
+      screenshots: Bildschirmfotos
+      started_by: "Gestartet von"
       status: Status
       time: Zeit
   comment_mailer: 
@@ -321,23 +354,9 @@ de:
         other: "%{count} Minuten"
   health_check_imports: 
     choose_template_for_account: 
-      account_templates: "Vorlagen des Kontos"
-      all_templates: "Alle Vorlagen"
       choose_template: "Vorlage für Import wählen"
-      create_template: "Vorlage erstellen"
-      my_templates: "Meine Vorlagen"
-      no_templates_found: "Keine Vorlagen gefunden."
-      public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von %{user}"
     choose_template_for_site: 
-      account_templates: "Vorlagen des Kontos"
-      all_templates: "Alle Vorlagen"
       choose_template: "Vorlage für Import wählen"
-      create_template: "Vorlage erstellen"
-      my_templates: "Meine Vorlagen"
-      no_templates_found: "Keine Vorlagen gefunden."
-      public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von %{user}"
     form: 
       could_not_import: "Konnte nicht importieren"
       csv_data: CSV-Daten
@@ -370,6 +389,8 @@ de:
       preview: Vorschau
       site: Site
       url: URL
+    show: 
+      health_checks_for_import: "Funktionstests für Import"
   health_check_template: 
     condition: 
       for_each_element_in_array: "Für jedes 'element' mehrerer Elemente"
@@ -419,15 +440,11 @@ de:
       name_template: "Name des Funktionstests"
       public: Öffentlich
       save_template: "Vorlage speichern"
-      see_help_for_more_info: "Siehe die Hilfe für weitere Informationen"
       steps: Schritte
-      steps_template: Schritte
       template_for_health_check_description: "Beschreibung des Funktionstests mit Platzhaltern"
       template_for_health_check_name: "Name des Funktionstests mit Platzhaltern"
-      template_for_health_check_steps: "Schritte des Funktionstests mit Platzhaltern"
       template_name: "Name der Vorlage"
       template_variables: "Variablen für die Vorlage"
-      variables: Variablen
       who_can_see_and_use_this_template: "Soll die Vorlage für alle Benutzer sichtbar und verwendbar sein?"
     index: 
       delete: Löschen
@@ -441,6 +458,14 @@ de:
     new: 
       could_not_create_template: "Konnte Funktionstest-Vorlage nicht erstellen"
       new_template: "Neue Funktionstest-Vorlage"
+    select: 
+      account_templates: "Vorlagen des Kontos"
+      all_templates: "Alle Vorlagen"
+      create_template: "Vorlage erstellen"
+      my_templates: "Meine Vorlagen"
+      no_templates_found: "Keine Vorlagen gefunden."
+      public_templates: "Öffentliche Vorlagen"
+      template_created_by: "Vorlage wurde erstellt von %{user}"
   health_checks: 
     all_checks: 
       all_health_checks: "Alle Funktionstests"
@@ -456,6 +481,7 @@ de:
       none: "Keinen wählen"
       options: Optionen
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
+      run: "Prüfen"
       site: Site
       status: Status
     edit: 
@@ -491,17 +517,9 @@ de:
     list: 
       no_health_checks_found: "Keine Funktionstests gefunden."
     new: 
-      account_templates: "Vorlagen des Kontos"
-      all_templates: "Alle Vorlagen"
-      create_template: "Vorlage erstellen"
-      import: Importieren
-      my_templates: "Meine Vorlagen"
       new_from_template: "Neuer Funktionstest aus Vorlage"
       new_health_check_for_site: "Neuer Funktionstest für Site %{site}"
       new_health_check_from_template: "Neuer Funktionstest aus Vorlage %{template}"
-      no_templates_found: "Keine Vorlagen gefunden."
-      public_templates: "Öffentliche Vorlagen"
-      template_created_by: "Erstellt von %{user}"
     preview: 
       description: Beschreibung
       details: Details
@@ -519,13 +537,10 @@ de:
       all_comments: "Alle Kommentare anzeigen"
       check_is_disabled: "Funktionstest ist inaktiv"
       check_is_enabled: "Funktionstest ist aktiv"
-      check_runs: Testläufe
       comments: "Kommentare (%{count})"
       description: Beschreibung
       disable: Deaktivieren
       duration: Dauer
-      edit: Bearbeiten
-      edit_steps: "Schritte bearbeiten"
       enable: Aktivieren
       interval: Prüfintervall
       interval_minutes: 
@@ -534,6 +549,19 @@ de:
       last_check_run: "Letzter Testlauf"
       run: "Jetzt prüfen"
       run_at: Zeit
+    status: 
+      all: Alle
+      disabled: Deaktiviert
+      enabled: Aktiviert
+      failure: Fehlschlag
+      success: Erfolg
+    tabs: 
+      check_runs: Testläufe
+      edit: Bearbeiten
+      edit_steps: "Schritte bearbeiten"
+      information: Information
+      run: "Jetzt prüfen"
+      screenshots: Bildschirmfotos
       view_steps: "Schritte anzeigen"
     template_form: 
       could_not_create_health_check: "Konnte Funktionstest nicht erstellen"
@@ -552,15 +580,13 @@ de:
     login: Login
     logout: Logout
     quick_links: Schnellzugriff
-    report_bugs: "Fehler gefunden? %{report_link}"
-    report_link_text: Melden!
     signup: Registrieren
     sites: Sites
     subtitle: Website-Funktionsüberwachung
     unknown_build: unbekannt
     user_greeter: "Willkommen, %{user}"
     version: "Version %{version}, Revision %{revision}"
-    you_are_here: "Sie sind hier: %{bread_crumb}"
+    you_are_here: "Sie sind hier"
   password_reset_mailer: 
     subject: "Anweisungen zur Änderung Ihres Passwortes"
   password_resets: 
@@ -577,6 +603,20 @@ de:
       forgot_password: "Passwort vergessen"
       instructions: "Füllen Sie untenstehendes Formular aus, um Ihr Passwort zurückzusetzen."
       reset: "Passwort zurücksetzen"
+  screenshot_comparisons: 
+    list: 
+      time_ago: "vor %{time}"
+    show: 
+      comparing_screenshots: "Vergleiche Bildschirmfotos"
+      current: Aktuelles
+      previous: Vorheriges
+  screenshots: 
+    index: 
+      screenshots_of_health_check: "Bildschirmfotos von Funktionstest %{health_check}"
+    list: 
+      time_ago: "vor %{time}"
+    show: 
+      screenshot_for_check_run_health_check_site: "Bildschirmfoto von Testlauf #%{check_run} (Funktionstest %{health_check}, Site %{site})"
   settings: 
     show: 
       settings: Einstellungen
@@ -584,6 +624,8 @@ de:
   shared: 
     filter: 
       filter: Filter
+    help: 
+      close: Schließen
   sites: 
     edit: 
       edit_site: "Site %{site} bearbeiten"
@@ -615,6 +657,7 @@ de:
       token: Deployment-Token
     tabs: 
       deployments: Deployments
+      edit: Bearbeiten
       health_checks: Funktionstests
       information: Information
   start: 
@@ -635,6 +678,7 @@ de:
       health_check: Funktionstest
       in_time: "In %{time}"
       no_upcoming_checks: "Keine geplanten Testläufe."
+      over_maximum_number_of_check_runs_today: "Ihr Konto ist für heute über der maximalen Anzahl an Testläufen."
       site: Site
       when: Wann
   status: 
@@ -647,13 +691,16 @@ de:
     check_content: "Durchsuche Inhalt"
     check_current_url: "Aktuelle URL prüfen"
     check_email: "Rufe E-Mail ab"
-    check_status: "Prüfe HTTP-Status"
+    choose_radio_button: "Wähle Radio-Button"
     click_button: "Klicke Button"
     click_email_link: "Klicke Link in E-Mail"
     click_link: "Klicke Link"
+    deselect_check_box: "Check Box abwählen"
     fill_in: "Fülle Feld aus"
+    in_scope: "im Bereich %{scope_name}"
     select_check_box: "Wähle Check Box"
     submit_form: "Schicke Formular ab"
+    take_screenshot: "Screenshot erstellen"
     visit: "Gehe zu"
     wait: Warte
   steps: 
@@ -666,8 +713,9 @@ de:
       login: Benutzername
       password: Passwort
       server: Server
-    check_status_step_form: 
-      status: HTTP-Status
+    choose_radio_button_step_form: 
+      name: Button-Name
+      name_specifying_radio_button: "ID, Titel oder Text, womit der Radio-Button eindeutig identifiziert wird"
     click_button_step_form: 
       name: Button-Name
       name_specifying_button: "ID, Titel oder Text, womit der Button eindeutig identifiziert wird"
@@ -677,6 +725,9 @@ de:
     click_link_step_form: 
       name: Link-Name
       name_specifying_link: "ID, Titel oder Text, womit der Link eindeutig identifiziert wird"
+    deselect_check_box_step_form: 
+      name: Name
+      name_specifying_check_box: "ID, Titel oder Text, womit die Check Box eindeutig identifiziert wird"
     email_must_be_checked_before_this_step: "Vor diesem Schritt muss eine E-Mail geladen worden sein."
     fill_in_step_form: 
       field: Feld-Name
@@ -701,12 +752,18 @@ de:
       options: Optionen
       steps_for_health_check: "Schritte für Funktionstest %{health_check}"
     page_must_be_loaded_before_this_step: "Vor diesem Schritt muss eine Seite geladen worden sein."
+    scope_field: 
+      scope: Bereich
+      scope_description: "Optionaler CSS-Selektor oder XPath, in dem das Element enthalten ist"
     select_check_box_step_form: 
       name: Name
       name_specifying_check_box: "ID, Titel oder Text, womit die Check Box eindeutig identifiziert wird"
     submit_form_step_form: 
       name: Name
       name_specifying_form: "ID, Titel oder Text, womit das Formular eindeutig identifiziert wird"
+    take_screenshot_step_form: 
+      css: CSS
+      custom_style_declarations: "Benutzerdefiniertes Stylesheet (CSS). Nutzen Sie das, um sehr variable Seitenteile zu verstecken, z.B. Werbung"
     visit_step_form: 
       relative_or_absolute: "Relative oder absolute URLs. Relative URLs beziehen sich auf die Basis-URL der Site."
       url: URL
@@ -716,6 +773,9 @@ de:
   time: 
     formats: 
       log: "%H:%M:%S"
+  tutorials: 
+    tutorial: 
+      finish_tutorial: "Anleitung beenden"
   user_accounts: 
     new: 
       add: Hinzufügen
@@ -730,7 +790,6 @@ de:
       password: Passwort
       register_instead: "Noch nicht registriert?"
       remember_me: "Eingeloggt bleiben"
-      user_name: Benutzername
   users: 
     edit: 
       could_not_update_user: "Konnte Benutzerprofil nicht aktualisieren"
@@ -739,14 +798,6 @@ de:
       full_name: "Voller Name"
       the_email_address_is_used_for_notifications: "Die E-Mail-Adresse wird für Benachrichtigungen verwendet"
       update: Aktualisieren
-    index: 
-      edit: Bearbeiten
-      listing_users: "Alle Benutzer"
-      login_name: Benutzername
-      new_account: "Neuer benutzer"
-      options: Optionen
-      signup: Registrieren
-      there_are_no_user_accounts_yet: "Bisher gibt es keine Benutzer"
     new: 
       could_not_register_user: "Konnte Benutzer nicht registrieren"
       create_account: "Benutzer registrieren"
@@ -754,7 +805,6 @@ de:
       email_address: E-Mail-Adresse
       full_name: "Voller Name"
       login_instead: "Bereits registriert?"
-      login_name: Benutzername
       password: Passwort
       password_confirmation: "Passwort wiederholen"
       please_repeat_the_password_exactly_as_above: "Bitte wiederholen Sie das Passwort exakt wie oben"
@@ -769,3 +819,12 @@ de:
       no_accounts: "bisher keine"
       settings: "Einstellungen bearbeiten"
       users_profile: "%{full_name}s Profil"
+  warning: 
+    more_info: "Mehr Informationen"
+    over_max_check_runs_per_day: "Die geplanten Testläufe pro Tag überschreiten die maximale Anzahl für Ihr Konto (%{maximum}). Bitte passen Sie die Intervalle Ihrer Funktionstests an."
+    over_max_check_runs_per_day_and_today: "Die geplanten Testläufe pro Tag überschreiten die maximale Anzahl für Ihr Konto (%{maximum}). Außerdem sind heute bereits mehr als %{maximum} Funktionstests gelaufen. Bitte passen Sie die Intervalle Ihrer Funktionstests an."
+    over_max_check_runs_today: "Heute sind bereits mehr Funktionstests als das Tagesmaximum von %{maximum} gelaufen. Bitte passen Sie die Intervalle Ihrer Funktionstests an."
+  weather: 
+    count_successful: 
+      one: "Einer der letzten 5 Testläufe war erfolgreich"
+      other: "%{count} der letzten 5 Testläufe waren erfolgreich"

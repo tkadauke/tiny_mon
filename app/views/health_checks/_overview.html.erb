@@ -1,15 +1,15 @@
-<ul class="check-overview">
-  <% @health_checks.each do |health_check| %>
-    <li>
-      <div class="status">
-        <%= status_icon health_check, :large %>
-      </div>
-      <div class="details">
-        <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %><br/>
-        <span class="secondary">(<%= link_to highlight(health_check.site.name, @search_filter.query), account_site_path(health_check.site.account, health_check.site) %>)</span>
-      </div>
-    </li>
-  <% end %>
-</ul>
-<div class="clearer"></div>
-<br/>
+<div class="clearfix">
+  <ul class="check-overview">
+    <% @health_checks.each do |health_check| %>
+      <li>
+        <div class="status">
+          <%= status_icon health_check, :large %>
+        </div>
+        <div class="details">
+          <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %><br/>
+          <span class="secondary">(<%= link_to highlight(health_check.site.name, @search_filter.query), account_site_path(health_check.site.account, health_check.site) %>)</span>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

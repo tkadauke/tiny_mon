@@ -1,5 +1,7 @@
 <h2><%= t('.steps_for_health_check', :health_check => @health_check.name) %></h2>
 
+<%= render :partial => "/health_checks/tabs", :locals => { :selected => :steps } %>
+
 <% if @steps.empty?  %>
   <p><%= t('.no_steps_defined') %></p>
 <% else %>

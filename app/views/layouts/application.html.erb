@@ -4,145 +4,129 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <title>TinyMon</title>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :application %>
     <%= javascript_include_tag 'ProtoChart/ProtoChart' %>
     <%= stylesheet_link_tag 'style' %>
-    <%= csrf_meta_tag %>
   </head>
   <body>
-    <!-- wrap start -->
-    <div id="wrap">
-    <div class="wrap_corner_right">
-
-      <!-- topcontent -->
-      <div id="topcontent">
-
-        <!-- header start -->
-        <div id="header">
-
-          <!-- topheader start -->
-          <div id="top_header">
-            <div id="logo">
-              <h1><a href="/">TinyMon</a><sup>&beta;</sup></h1>
-              <p><%= t('layouts.subtitle') %></p>
-            </div>
-            <div id="center_header">
-              <div id="suggestion">
-                <div class="suggestion_corner_right">
-                  <span><%= t('layouts.report_bugs', :report_link => link_to(t('layouts.report_link_text'), "http://github.com/tkadauke/tiny_mon/issues")).html_safe %></span>
-                </div>
-              </div>
-            </div>
-            <div id="right_header">
-              <% if logged_in? %>
-                <ul class="action-list">
-                  <li><%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %></li>
-                  <% if current_user.can_see_account_details? %>
-                    <% if current_user.current_account %>
-                      <li><%= link_to current_user.current_account.name, accounts_path %></li>
-                    <% else %>
-                      <li><%= link_to t('layouts.accounts'), accounts_path %></li>
-                    <% end %>
+    <!-- header start -->
+    <div id="header">
+      <div class="corset">
+        <!-- topheader start -->
+        <div id="top_header" class="clearfix">
+          <div id="logo">
+            <h1><a href="/">TinyMon</a><sup>&beta;</sup></h1>
+            <p><%= t('layouts.subtitle') %></p>
+          </div>
+          <div id="right_header">
+            <% if logged_in? %>
+              <ul class="action-list">
+                <li><%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %></li>
+                <% if current_user.can_see_account_details? %>
+                  <% if current_user.current_account %>
+                    <li class="account">
+                      <%= link_to current_user.current_account.name, accounts_path %>
+                      <% if current_user.accounts.size > 1 %>
+                        <ul>
+                          <% current_user.accounts.each do |account| %>
+                            <% next if account == current_user.current_account %>
+                            <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    </li>
+                  <% else %>
+                    <li><%= link_to t('layouts.accounts'), accounts_path %></li>
                   <% end %>
-                  <% if current_user.can_enter_admin_area? %>
-                    <li><%= link_to t('layouts.admin'), admin_path %></li>
-                  <% end %>
-                  <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
-                </ul>
-                
-                <% if current_user.current_account %>
-                  <div class="overall-status">
-                    <%= overall_status %>
-                  </div>
                 <% end %>
-              <% else %>
-                <ul class="action-list">
-                  <li><%= t('layouts.guest_greeter') %></li>
-                  <li><%= link_to t('layouts.login'), login_path %></li>
-                  <li><%= link_to t('layouts.signup'), new_user_path %></li>
-                </ul>
-              <% end %>
-            </div>
-            <div class="clearer"></div>
-          </div>
-          <!-- topheader end -->
-
-          <!-- menu start -->
-          <div id="menu_container">
-            <div id="menu">
-              <ul>
-                <li><a href="/" class="first"><%= t('layouts.home') %></a></li>
-                <li><a href="/sites"><%= t('layouts.sites') %></a></li>
-                <li><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
-                <li><a href="/help"><%= t('layouts.help') %></a></li>
+                <% if current_user.can_enter_admin_area? %>
+                  <li><%= link_to t('layouts.admin'), admin_path %></li>
+                <% end %>
+                <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
               </ul>
-            </div>
-            <div class="clearer"></div>
+            
+              <% if current_user.current_account %>
+                <div class="overall-status">
+                  <%= overall_status %>
+                </div>
+              <% end %>
+            <% else %>
+              <ul class="action-list">
+                <li><%= t('layouts.guest_greeter') %></li>
+                <li><%= link_to t('layouts.login'), login_path %></li>
+                <li><%= link_to t('layouts.signup'), new_user_path %></li>
+              </ul>
+            <% end %>
           </div>
-          <!-- menu end -->
-
         </div>
-        <!-- header end -->
+        <!-- topheader end -->
 
-      <!-- body start -->
-
-      <div id="body">
-        <% if flash[:error] %>
-          <div id="flash" class="error">
-            <%= flash[:error] %>
-            <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
-          </div>
-        <% elsif flash[:notice] %>
-          <div id="flash" class="notice">
-            <%= flash[:notice] %>
-            <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
-          </div>
-        <% end %>
-        <p><%= t('layouts.you_are_here', :bread_crumb => bread_crumb).html_safe %></p>
-        <%= yield %>
-      <div class="clearer"></div>
-
+        <!-- menu start -->
+        <div id="menu">
+          <ul>
+            <li<%= ' class="selected"' if @tab == :start %>><a href="/"><%= t('layouts.home') %></a></li>
+            <li<%= ' class="selected"' if @tab == :sites %>><a href="/sites"><%= t('layouts.sites') %></a></li>
+            <li<%= ' class="selected"' if @tab == :health_checks %>><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
+            <li class="help"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+          </ul>
+        </div>
       </div>
-      <!-- body end -->
+    </div>
+    <!-- header end -->
 
+    <!-- body start -->
+
+    <div id="body">
+      <div class="corset">
+        <div id="canvas">
+          <% if flash[:error] %>
+            <div id="flash" class="error">
+              <%= flash[:error] %>
+              <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
+            </div>
+          <% elsif flash[:notice] %>
+            <div id="flash" class="notice">
+              <%= flash[:notice] %>
+              <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
+            </div>
+          <% end %>
+          
+          <% if logged_in? && current_user.current_account %>
+            <%= account_check_run_limit_warning_if_needed %>
+          <% end %>
+          
+          <div class="breadcrumb"><%= t('layouts.you_are_here') %>: <%= bread_crumb %></div>
+          <%= help %>
+          <%= yield %>
+        </div>
       </div>
-      <!-- topcontent end -->
+    </div>
+    <!-- body end -->
 
-      <!-- footer start -->
-      <div id="bottomcontent">
-      <div class="bottomcontent_right">
-        <div id="footer">
-        <div class="footer_corner_right">
+    <!-- footer start -->
+    <div id="footer">
+      <div class="corset">
+        <div class="content">
           <div class="left">
-          <a href="/"><%= t('layouts.home') %></a> | 
-          <a href="/sites"><%= t('layouts.sites') %></a> |
-          <a href="/health_checks"><%= t('layouts.health_checks') %></a>
+            <a href="/"><%= t('layouts.home') %></a> | 
+            <a href="/sites"><%= t('layouts.sites') %></a> |
+            <a href="/health_checks"><%= t('layouts.health_checks') %></a>
           </div>
           <div class="right">
             <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %>
           </div>
-          <div class="clearer"></div>
         </div>
-        </div>
-      </div>
-      </div>
-      <!-- footer end -->
-
-    </div>
-    </div>
-    <!-- wrap end -->
-
-    <div class="bottom_space">
-      <div id="ads_page_end">
-        <h1><%= t('layouts.quick_links') %></h1>
-        <div id="links">
-          <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>
-          <% FooterLink.ordered.each do |link| %>
-            | <%= link_to link.text, link.url %>
-          <% end %>
-          <% if logged_in? && current_user.can_edit_footer_links? %>
-            || <%= link_to t('layouts.edit_footer'), admin_footer_links_path %>
-          <% end %>
+        <div class="content">
+          <h1><%= t('layouts.quick_links') %></h1>
+          <div id="links">
+            <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>
+            <% FooterLink.ordered.each do |link| %>
+              | <%= link_to link.text, link.url %>
+            <% end %>
+            <% if logged_in? && current_user.can_edit_footer_links? %>
+              || <%= link_to t('layouts.edit_footer'), admin_footer_links_path %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

@@ -2,13 +2,26 @@ class HealthChecksController < ApplicationController
   before_filter :login_required
   before_filter :find_account
   before_filter :find_site
+  active_tab :health_checks
   
   def index
+    @report = if params[:report]
+      current_user.soft_settings.set("health_checks.report", params[:report])
+    else
+      current_user.soft_settings.get("health_checks.report", :default => 'details')
+    end
+    
+    @status = if params[:status]
+      current_user.soft_settings.set("health_checks.status", params[:status])
+    else
+      current_user.soft_settings.get("health_checks.status", :default => 'all')
+    end
+    
     @search_filter = SearchFilter.new(params[:search_filter])
     if @site
-      @health_checks = @site.health_checks.filter_for_list(@search_filter).order('health_checks.name ASC')
+      @health_checks = @site.health_checks.filter_for_list(@search_filter, params[:status]).order('health_checks.name ASC')
     else
-      @health_checks = @account.health_checks.filter_for_list(@search_filter).order('sites.name ASC, health_checks.name ASC')
+      @health_checks = @account.health_checks.filter_for_list(@search_filter, params[:status]).order('sites.name ASC, health_checks.name ASC')
       render 'all_checks' unless request.xhr?
     end
     
@@ -56,6 +69,8 @@ class HealthChecksController < ApplicationController
   end
   
   def edit_multiple
+    redirect_to :back and return if params[:health_check_ids].blank?
+    
     can_edit_health_checks!(@account) do
       @health_checks = @account.health_checks.order('sites.name ASC, health_checks.name ASC').includes(:site).find(params[:health_check_ids])
     end

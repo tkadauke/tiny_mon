@@ -1,0 +1,13 @@
+<h2>Deployments</h2>
+
+<p>In this tutorial we will mark a site with the revision of it's current deployment. This is useful for figuring out if a particular revision is broken, or to schedule all of your site's health checks shortly after deployment.</p>
+
+<ol>
+  <li><strong>Go to the page of your site:</strong> Go to the "Sites" tab and choose your site.</li>
+  <li><strong>Go to the deployments page:</strong> Click on "Deployments" and then on "Mark site with deployment".</li>
+  <li><strong>Enter the revision:</strong> If you want to, you can enter the revision of the code base that is currently deployed.</li>
+  <li><strong>Optionally schedule checks:</strong> If you want to run all health checks right away, enter the number of minutes from now to schedule them.</li>
+  <li><strong>Mark it:</strong> Hit "Mark site" to finish. All health check runs for this site will from now on be associated with the revision you specified.</li>
+</ol>
+
+<p>If you don't feel like doing this manually every time you deploy, be sure to check out the <%= link_to 'Integrate with your deployment tools', tutorials_path(:id => 'integrate_deployments'), :method => :post %> tutorial.</p>

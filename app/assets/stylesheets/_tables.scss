@@ -1,0 +1,39 @@
+@import "_core";
+
+#canvas {
+  table {
+    td, th {
+      padding: 0.2em 0.5em;
+      
+      form.form {
+        margin-bottom: 0 !important;
+      }
+    }
+    
+    th {
+      font-family: 'Trebuchet MS', Arial, sans-serif;
+      text-align: left;
+    }
+    
+    margin-bottom: 1em;
+  }
+  
+  table.list {
+    tr:nth-child(even) td { background: #fff; }
+    tr:nth-child(odd) td { background: #AED1F1; }
+
+    th, tfoot td {
+      background: #fff !important;
+    }
+    
+    thead { border-bottom: 1px solid #315371; }
+    tfoot { border-top: 1px solid #315371; }
+    
+    td.handle {
+      cursor: move;
+    }
+    
+    border: 1px solid #315371;
+    width: 100%;
+  }
+}

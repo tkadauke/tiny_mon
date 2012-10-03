@@ -1,0 +1,25 @@
+<h2>Integrate TinyMon with your deployment tool</h2>
+
+<p>You should ping TinyMon after you deploy to automatically run your site's checks.</p>
+
+<ol>
+  <li><strong>Find your site's deployment token:</strong> The deployment token is used to securely identify your site when you ping TinyMon. To find the token, go to your site's page and click on "Information".</li>
+  <li><strong>Ping TinyMon on deploy:</strong> Add a POST request to the Deployment Callback URL to your deployment scripts. You can optionally use the following form parameters:
+    <ul class="asterisk">
+      <li><code>deployment[revision]</code>: The revision the your code base you deployed</li>
+      <li><code>deployment[schedule_checks_in]</code>: Number of minutes to wait before all of your site's health checks should run. No checks will be scheduled if this parameter is left blank.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>For example, if you are using Capistrano to deploy a Rails application, you could add the following task to your <code>deploy.rb</code>:</p>
+
+<pre>
+namespace :deploy do
+  task :mark do
+    callback_url = 'http://mon.tinymon.org/deployments/(your deployment token)'
+    system "curl -F deployment[revision]=#{current_revision} -F deployment[schedule_checks_in]=5 #{callback_url}"
+  end
+end
+before :"deploy:restart", :"deploy:mark"
+</pre>

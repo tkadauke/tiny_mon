@@ -1,0 +1,32 @@
+@import "_core";
+@import "_variables";
+
+#canvas {
+  ul.tabs {
+    display: block;
+    margin-bottom: 1em;
+    font-family: $sans_serif;
+    
+    li {
+      display: inline;
+      background-color: #012C54;
+      padding: 0.3em 0.5em;
+      margin-right: 0.5em;
+      border: 1px solid #012C54;
+      @include rounded_corners(5px);
+
+      a {
+        color: #fff !important;
+        text-decoration: none;
+      }
+    }
+    
+    li.selected {
+      background-color: #AED1F1;
+      
+      span {
+        color: #012C54 !important;
+      }
+    }
+  }
+}

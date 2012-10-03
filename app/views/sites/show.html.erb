@@ -1,13 +1,13 @@
 <h2><%= t('.site', :site => @site.name) %></h2>
 
-<%= render :partial => "tabs" %>
+<%= render :partial => "tabs", :locals => { :selected => :information } %>
 
 <dl>
   <dt><%= t(".status") %></dt>
   <dd><%= overall_status(@site) %></dd>
   
   <dt><%= t(".base_url") %></dt>
-  <dd><%=h @site.url %></dd>
+  <dd><%= link_to h(@site.url), @site.url %></dd>
   
   <dt><%= t(".deployment") %></dt>
   <dd>
@@ -18,11 +18,11 @@
     <% if current_user.can_see_deployment_tokens?(@account) %>
       <form>
         <span><%= t(".token") %></span><br/>
-        <%= text_field_tag nil, @site.deployment_token, :size => 80 %>
+        <%= text_field_tag nil, @site.deployment_token, :class => 'copy' %>
       </form><br/>
       <form>
         <span><%= t(".deployment_url") %></span><br/>
-        <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :size => 80 %>
+        <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :class => 'copy' %>
       </form>
     <% end %>
   </dd>

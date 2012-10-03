@@ -37,7 +37,6 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 - Configuration has to be done by hand
 - Some step types might be missing
 - Alerts other than by email and Prowl (e.g. SMS)
-- Limit the number of alerts
 - Nice way of distributing the application
 - Nice way to setup the database
 - Nice way of starting all needed processes
@@ -58,7 +57,7 @@ This is pre-alpha. So there you need to start the processes manually. Start the 
 
 Start the background checker process with
 
-  RAILS_ENV=production script/checker
+  RAILS_ENV=production script/scheduler
 
 === Contributing
 

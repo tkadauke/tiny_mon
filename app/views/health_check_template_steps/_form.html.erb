@@ -20,8 +20,8 @@
     <dt><%= t(".condition") %></dt>
     <dd>
       <%= fields.select :condition, HealthCheckTemplateStep.condition_types_with_translations, :include_blank => true %>
-      <%= fields.text_field :condition_parameter %>
-      <%= fields.text_field :condition_value %>
+      <%= fields.text_field :condition_parameter, :size => 20 %>
+      <%= fields.text_field :condition_value, :size => 20 %>
     </dd>
     
     <% step_data_id = "step_data_#{rand(1_000_000)}" %>

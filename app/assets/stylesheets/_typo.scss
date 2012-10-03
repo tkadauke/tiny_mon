@@ -1,0 +1,75 @@
+html {
+  font-size: 62.5%;
+}
+
+#body .corset #canvas {
+  font-size: 1.6em;
+  font-family: "Georgia", "Times New Roman", serif;
+  line-height: 1.3em;
+  color: #333;
+  
+  a {
+    color: #012C54;
+  }
+  
+  a:visited {
+    color: #012C54;
+  }
+  
+  p, ul.asterisk, dl {
+    margin: 1em 0;
+  }
+  
+  h2, h3, h4 { font-family: 'Trebuchet MS', Arial, sans-serif; }
+  h2 { font-size: 1.5em; margin: 1em 0; }
+  h3 { font-size: 1.3em; margin: 1em 0; }
+  h4 { font-size: 1.1em; margin: 1em 0; }
+  
+  ul.asterisk {
+    list-style-type: disc;
+    
+    li {
+      margin-left: 2em;
+    }
+  }
+  
+  ol {
+    list-style-type: decimal;
+    
+    li {
+      margin-left: 2em;
+    }
+  }
+  
+  dl {
+    background-color: #AED1F1;
+    border: 1px solid #315371;
+    padding: 1em;
+    
+    dt { font-weight: bold; width: 13em; }
+    dd {
+      margin-left: 14em;
+      top: -1.3em;
+      position: relative;
+      margin-bottom: -0.5em;
+      
+      >*:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+  
+  em {
+    background-color: #AEF5BA;
+  }
+  
+  pre {
+    background-color: #AED1F1;
+    border: 1px solid #67AFF1;
+    padding: 1em;
+  }
+}
+
+sup {
+  font-size: 0.8em; vertical-align: super;
+}

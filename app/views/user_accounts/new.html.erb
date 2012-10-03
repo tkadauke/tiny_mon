@@ -1,4 +1,4 @@
-<%= form_for [@account, @user_account] do |f| %>
+<%= form_for [@account, @user_account], :html => { :class => 'form' } do |f| %>
   <%= f.error_messages :header_message => t('.error_creating_user_account') %>
   
   <p class="form_item">

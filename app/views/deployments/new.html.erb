@@ -1,6 +1,6 @@
 <h2><%= t(".mark_deploment_of_site", :site => @site.name) %></h2>
 
-<%= form_for [@account, @site, @deployment] do |f| %>
+<%= form_for [@account, @site, @deployment], :html => { :class => 'form' } do |f| %>
   <p class="form_item">
     <span class="label"><%= f.label :revision, t(".revision") %></span>
     <span class="desc"><%= t(".optional_revision_number") %></span>

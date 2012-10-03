@@ -39,3 +39,21 @@ class ActionController::TestCase
     assert_equal 'You can not do that', flash[:error]
   end
 end
+
+class MockScreenshotFile < ScreenshotFile
+  def initialize
+  end
+  
+  def retain
+  end
+  
+  def release
+  end
+end
+
+# TODO: remove?
+# add default routes so that actions in test controllers can be called
+# ActionController::Routing::Routes.draw do |map|
+#   map.connect ':controller/:action/:id'
+#   map.connect ':controller/:action/:id.:format'
+# end

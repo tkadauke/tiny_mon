@@ -5,7 +5,7 @@ class CheckCurrentUrlStepTest < ActiveSupport::TestCase
     session = stub(:response => stub(:uri => 'http://www.example.com/some?url'))
     step = CheckCurrentUrlStep.new(:url => 'http://www.example.com/some?url')
     assert_nothing_raised do
-      step.run!(session)
+      step.run!(session, stub)
     end
   end
 
@@ -13,6 +13,6 @@ class CheckCurrentUrlStepTest < ActiveSupport::TestCase
     session = stub(:response => stub(:uri => 'http://www.example.com/some?url'))
     session.expects(:fail)
     step = CheckCurrentUrlStep.new(:url => 'http://www.example.com/foobar')
-    step.run!(session)
+    step.run!(session, stub)
   end
 end

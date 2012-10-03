@@ -9,12 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100807011752) do
+ActiveRecord::Schema.define(:version => 20110503201404) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "maximum_check_runs_per_day", :default => 100
+    t.integer  "check_runs_per_day",         :default => 0
   end
 
   create_table "check_runs", :force => true do |t|
@@ -28,12 +30,14 @@ ActiveRecord::Schema.define(:version => 20100807011752) do
     t.datetime "updated_at"
     t.integer  "account_id"
     t.integer  "deployment_id"
+    t.integer  "user_id"
   end
 
   add_index "check_runs", ["account_id", "created_at"], :name => "index_check_runs_on_account_id_and_created_at"
   add_index "check_runs", ["account_id"], :name => "index_check_runs_on_account_id"
   add_index "check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
   add_index "check_runs", ["deployment_id"], :name => "index_new_check_runs_on_deployment_id"
+  add_index "check_runs", ["health_check_id", "created_at"], :name => "index_new_check_runs_on_health_check_id_and_created_at"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
 
   create_table "comments", :force => true do |t|
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20100807011752) do
     t.datetime "last_checked_at"
     t.datetime "next_check_at"
     t.integer  "health_check_import_id"
+    t.integer  "weather"
   end
 
   add_index "health_checks", ["enabled"], :name => "index_health_checks_on_enabled"
@@ -151,6 +156,16 @@ ActiveRecord::Schema.define(:version => 20100807011752) do
   add_index "health_checks", ["site_id"], :name => "index_health_checks_on_site_id"
   add_index "health_checks", ["status"], :name => "index_health_checks_on_status"
 
+  create_table "screenshot_comparisons", :force => true do |t|
+    t.integer  "check_run_id"
+    t.integer  "first_screenshot_id"
+    t.integer  "second_screenshot_id"
+    t.string   "checksum"
+    t.float    "distance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "screenshots", :force => true do |t|
     t.integer  "check_run_id"
     t.string   "url"
@@ -158,9 +173,11 @@ ActiveRecord::Schema.define(:version => 20100807011752) do
     t.string   "format"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "step_id"
   end
 
   add_index "screenshots", ["check_run_id"], :name => "index_screenshots_on_check_run_id"
+  add_index "screenshots", ["step_id", "created_at"], :name => "index_screenshots_on_step_id_and_created_at"
 
   create_table "sites", :force => true do |t|
     t.string   "name"
@@ -174,6 +191,14 @@ ActiveRecord::Schema.define(:version => 20100807011752) do
 
   add_index "sites", ["deployment_token"], :name => "index_sites_on_deployment_token"
   add_index "sites", ["name"], :name => "index_sites_on_name"
+
+  create_table "soft_settings", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "steps", :force => true do |t|
     t.integer  "health_check_id"

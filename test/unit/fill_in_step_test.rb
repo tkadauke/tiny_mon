@@ -4,6 +4,6 @@ class FillInStepTest < ActiveSupport::TestCase
   test "should fill in field" do
     step = FillInStep.new(:field => 'login', :value => 'username')
     session = mock(:fill_in)
-    step.run!(session)
+    step.run!(session, stub)
   end
 end

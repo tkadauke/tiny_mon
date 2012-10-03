@@ -9,7 +9,7 @@ class SettingsController < ApplicationController
   end
   
   def create
-    current_user.config.update_attributes(params[:config])
+    current_user.config.update_attributes(params[:configuration])
     flash[:notice] = I18n.t('flash.notice.updated_settings')
     redirect_to settings_path
   end

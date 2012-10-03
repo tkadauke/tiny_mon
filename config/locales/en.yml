@@ -14,11 +14,33 @@ en:
       name_hint: "For example your organization's name. Note that every user in an account can see all health checks"
       save_account: "Save account"
     index: 
+      details: Details
       edit: Edit
       name: Name
       new_account: "New Account"
       options: Options
-      switch: "Switch account"
+    info: 
+      check_runs_count: 
+        one: "1 check run"
+        other: "%{count} check runs"
+      check_runs_per_day: "%{count} check runs per day"
+      check_runs_today: "%{count} check runs today"
+      comments_count: 
+        one: "1 comment"
+        other: "%{count} comments"
+      health_checks_count: 
+        one: "1 health check"
+        other: "%{count} health checks"
+      limit: Limit
+      name: Name
+      screenshots_count: 
+        one: "1 screenshot"
+        other: "%{count} screenshots"
+      sites_count: 
+        one: "1 site"
+        other: "%{count} sites"
+      statistics: Statistics
+      unlimited_check_runs_per_day: "Unlimited check runs per day"
     new: 
       new_account: "New Account"
     show: 
@@ -31,6 +53,10 @@ en:
       really_remove_user_from_account: "Do you really want to remove the user from this account?"
       remove: Remove
       role: Role
+      users: Users
+    tabs: 
+      edit: Edit
+      information: Information
   activerecord: 
     attributes: 
       check_content_step: 
@@ -88,6 +114,13 @@ en:
               taken: "is already assigned to this account"
   admin: 
     accounts: 
+      edit: 
+        could_not_update_account: "Could not update account"
+        edit_account: "Edit account"
+        maximum_check_runs_per_day: "Maximum number of check runs per day"
+        maximum_check_runs_per_day_hint: "Enter 0 for unlimited number of check runs per day"
+        name: Name
+        save_account: "Save account"
       index: 
         all_accounts: "All accounts"
         name: Name
@@ -96,22 +129,11 @@ en:
         users: Users
       show: 
         account: "Account %{account}"
-        check_runs_count: 
-          one: "1 check run"
-          other: "%{count} check runs"
-        comments_count: 
-          one: "1 comment"
-          other: "%{count} comments"
-        health_checks_count: 
-          one: "1 health check"
-          other: "%{count} health checks"
-        name: Name
         no_users: "no users yet"
-        sites_count: 
-          one: "1 site"
-          other: "%{count} sites"
-        statistics: Statistics
-        users: "Users (%{count})"
+        users: Users
+      tabs: 
+        edit: Edit
+        information: Information
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"
@@ -177,6 +199,8 @@ en:
     login: Login
     new: New
     password_resets: "Reset password"
+    screenshot_comparisons: "Screenshot Comparisons"
+    screenshots: Screenshots
     settings: Settings
     sites: Sites
     steps: Steps
@@ -185,9 +209,10 @@ en:
   check_run_mailer: 
     failure: 
       subject: "Health Check %{health_check} of site %{site} failed!"
+    success: 
+      subject: "Health Check %{health_check} of site %{site} was successful!"
   check_runs: 
     activity: 
-      account: Account
       duration: Duration
       duration_in_seconds: "%{duration} seconds"
       health_check: "Health Check"
@@ -198,6 +223,11 @@ en:
       when: When
     index: 
       check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
+      filter: Filter
+      filter_active: "filter active"
+      from: From
+      reset_filter: "Reset filter"
+      until: until
     show: 
       all_comments: "Show all comments"
       check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
@@ -210,6 +240,9 @@ en:
       log_output: "Log output"
       message: Message
       running: "Health check is running. Please reload this page in a few moments ..."
+      screenshot_comparisons: "Screenshot Comparisons"
+      screenshots: Screenshots
+      started_by: "Stared by"
       status: Status
       time: Time
   comment_mailer: 
@@ -321,23 +354,9 @@ en:
         other: "%{count} minutes"
   health_check_imports: 
     choose_template_for_account: 
-      account_templates: "Account templates"
-      all_templates: "All Templates"
       choose_template: "Choose template for import"
-      create_template: "Create new template"
-      my_templates: "My Templates"
-      no_templates_found: "No templates found."
-      public_templates: "Public Templates"
-      template_created_by: "Template created by %{user}"
     choose_template_for_site: 
-      account_templates: "Account templates"
-      all_templates: "All Templates"
       choose_template: "Choose template for import"
-      create_template: "Create new template"
-      my_templates: "My Templates"
-      no_templates_found: "No templates found."
-      public_templates: "Public Templates"
-      template_created_by: "Template created by %{user}"
     form: 
       could_not_import: "Could not import"
       csv_data: "CSV Data"
@@ -370,6 +389,8 @@ en:
       preview: Preview
       site: Site
       url: URL
+    show: 
+      health_checks_for_import: "Health checks for import"
   health_check_template: 
     condition: 
       for_each_element_in_array: "For each element 'element' in array"
@@ -419,15 +440,11 @@ en:
       name_template: "Health check's name"
       public: Public
       save_template: "Save template"
-      see_help_for_more_info: "See the help for more info"
       steps: "Steps for the generated health check"
-      steps_template: "Health check steps"
       template_for_health_check_description: "Description for the health check with placeholders"
       template_for_health_check_name: "Name for the health check with placeholders"
-      template_for_health_check_steps: "Steps for the health check with placeholders"
       template_name: "Health check's name"
       template_variables: "Template variables"
-      variables: Variables
       who_can_see_and_use_this_template: "Should this template be visible to and usable by every user?"
     index: 
       delete: Delete
@@ -441,6 +458,14 @@ en:
     new: 
       could_not_create_template: "Could not create template"
       new_template: "New health check template"
+    select: 
+      account_templates: "Account templates"
+      all_templates: "All Templates"
+      create_template: "Create template"
+      my_templates: "My Templates"
+      no_templates_found: "No templates found."
+      public_templates: "Public Templates"
+      template_created_by: "Template created by %{user}"
   health_checks: 
     all_checks: 
       all_health_checks: "All Health Checks"
@@ -456,6 +481,7 @@ en:
       none: "Select none"
       options: Options
       really_delete_health_check: "Do you really want to delete this health check including all check runs? This operation can not be undone."
+      run: Run
       site: Site
       status: Status
     edit: 
@@ -491,17 +517,9 @@ en:
     list: 
       no_health_checks_found: "No health checks found."
     new: 
-      account_templates: "Account templates"
-      all_templates: "All Templates"
-      create_template: "Create new template"
-      import: Import
-      my_templates: "My Templates"
       new_from_template: "New health check from template"
       new_health_check_for_site: "New Health Check for site %{site}"
       new_health_check_from_template: "New health check from template %{template}"
-      no_templates_found: "No templates found."
-      public_templates: "Public Templates"
-      template_created_by: "Template created by %{user}"
     preview: 
       description: Description
       details: Details
@@ -519,13 +537,10 @@ en:
       all_comments: "Show all comments"
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"
-      check_runs: "Check Runs"
       comments: "Comments (%{count})"
       description: Description
       disable: Disable
       duration: Duration
-      edit: Edit
-      edit_steps: "Edit Steps"
       enable: Enable
       interval: "Check Interval"
       interval_minutes: 
@@ -534,6 +549,19 @@ en:
       last_check_run: "Last check run"
       run: Run
       run_at: "Run at"
+    status: 
+      all: All
+      disabled: Disabled
+      enabled: Enabled
+      failure: Failed
+      success: Successful
+    tabs: 
+      check_runs: "Check runs"
+      edit: Edit
+      edit_steps: "Edit Steps"
+      information: Information
+      run: Run
+      screenshots: Screenshots
       view_steps: "View Steps"
     template_form: 
       could_not_create_health_check: "Could not create health check"
@@ -552,15 +580,13 @@ en:
     login: Login
     logout: Logout
     quick_links: "Quick links"
-    report_bugs: "Found a bug? %{report_link}"
-    report_link_text: "Report it!"
     signup: Signup
     sites: Sites
     subtitle: "Website Acceptance Monitoring"
     unknown_build: unknown
     user_greeter: "Welcome, %{user}"
     version: "Version %{version}, revision %{revision}"
-    you_are_here: "You are here: %{bread_crumb}"
+    you_are_here: "You are here"
   password_reset_mailer: 
     subject: "Password Reset Instructions"
   password_resets: 
@@ -577,6 +603,20 @@ en:
       forgot_password: "Forgot Password"
       instructions: "Fill out the form below and instructions to reset your password will be emailed to you."
       reset: "Reset my password"
+  screenshot_comparisons: 
+    list: 
+      time_ago: "%{time} ago"
+    show: 
+      comparing_screenshots: "Comparing Screenshots"
+      current: Current
+      previous: Previous
+  screenshots: 
+    index: 
+      screenshots_of_health_check: "Screenshots of health check %{health_check}"
+    list: 
+      time_ago: "%{time} ago"
+    show: 
+      screenshot_for_check_run_health_check_site: "Screenshot for check run #%{check_run} (health check %{health_check}, site %{site})"
   settings: 
     show: 
       settings: Settings
@@ -584,6 +624,8 @@ en:
   shared: 
     filter: 
       filter: Filter
+    help: 
+      close: Close
   sites: 
     edit: 
       edit_site: "Edit Site %{site}"
@@ -615,6 +657,7 @@ en:
       token: "Deployment token"
     tabs: 
       deployments: Deployments
+      edit: Edit
       health_checks: "Health checks"
       information: Information
   start: 
@@ -635,6 +678,7 @@ en:
       health_check: "Health Check"
       in_time: "In %{time}"
       no_upcoming_checks: "No upcoming checks."
+      over_maximum_number_of_check_runs_today: "Your account is over the maximum number of scheduled check runs for today."
       site: Site
       when: When
   status: 
@@ -647,13 +691,16 @@ en:
     check_content: "Check content"
     check_current_url: "Check current URL"
     check_email: "Check email"
-    check_status: "Check status"
+    choose_radio_button: "Choose radio button"
     click_button: "Click button"
     click_email_link: "Click link in email"
     click_link: "Click link"
+    deselect_check_box: "Deselect check box"
     fill_in: "Fill in field"
+    in_scope: "in scope %{scope_name}"
     select_check_box: "Select check box"
     submit_form: "Submit form"
+    take_screenshot: "Take screenshot"
     visit: Visit
     wait: Wait
   steps: 
@@ -666,8 +713,9 @@ en:
       login: Login
       password: Password
       server: Server
-    check_status_step_form: 
-      status: "HTTP Status"
+    choose_radio_button_step_form: 
+      name: Name
+      name_specifying_radio_button: "ID, title or text that uniquely identifies the radio button"
     click_button_step_form: 
       name: "Button name"
       name_specifying_button: "ID, title or text that uniquely identifies the button"
@@ -677,6 +725,9 @@ en:
     click_link_step_form: 
       name: "Link name"
       name_specifying_link: "ID, title or text that uniquely identifies the link"
+    deselect_check_box_step_form: 
+      name: Name
+      name_specifying_check_box: "ID, title or text that uniquely identifies the check box"
     email_must_be_checked_before_this_step: "An email must have been loaded before this step."
     fill_in_step_form: 
       field: "Field name"
@@ -701,12 +752,18 @@ en:
       options: Options
       steps_for_health_check: "Steps for Health Check %{health_check}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
+    scope_field: 
+      scope: Scope
+      scope_description: "Optional CSS selector or XPath within which the element can be found"
     select_check_box_step_form: 
       name: Name
       name_specifying_check_box: "ID, title or text that uniquely identifies the check box"
     submit_form_step_form: 
       name: Name
       name_specifying_form: "ID, title or text that uniquely identifies the form"
+    take_screenshot_step_form: 
+      css: CSS
+      custom_style_declarations: "Custom Stylesheet (CSS). Use this to hide highly variable areas, such as ads."
     visit_step_form: 
       relative_or_absolute: "Relative or absolute URL. Relative URLs are with respect to the site's base URL."
       url: URL
@@ -716,6 +773,9 @@ en:
   time: 
     formats: 
       log: "%H:%M:%S"
+  tutorials: 
+    tutorial: 
+      finish_tutorial: "Finish tutorial"
   user_accounts: 
     new: 
       add: "Add user"
@@ -730,7 +790,6 @@ en:
       password: Password
       register_instead: "Not registered yet?"
       remember_me: "Remember me"
-      user_name: "User name"
   users: 
     edit: 
       could_not_update_user: "Could not update user"
@@ -739,14 +798,6 @@ en:
       full_name: "Full name"
       the_email_address_is_used_for_notifications: "The e-mail address is used for notifications"
       update: Update
-    index: 
-      edit: Edit
-      listing_users: "Listing users"
-      login_name: "Login name"
-      new_account: "New account"
-      options: Options
-      signup: Signup
-      there_are_no_user_accounts_yet: "There are no user accounts yet"
     new: 
       could_not_register_user: "Could not register user"
       create_account: "Create account"
@@ -754,7 +805,6 @@ en:
       email_address: "E-mail address"
       full_name: "Full name"
       login_instead: "Already registered?"
-      login_name: "Login name"
       password: Password
       password_confirmation: "Password confirmation"
       please_repeat_the_password_exactly_as_above: "Please repeat the password exactly as above"
@@ -769,3 +819,12 @@ en:
       no_accounts: "none yet"
       settings: "Edit settings"
       users_profile: "%{full_name}'s profile"
+  warning: 
+    more_info: "More information"
+    over_max_check_runs_per_day: "The number of planned check runs per day exceeds the maximum number for your account (%{maximum}). Please adjust the intervals of your health checks."
+    over_max_check_runs_per_day_and_today: "The number of planned check runs per day exceeds the maximum number for your account (%{maximum}). Also, the number of health checks run today is greater than %{maximum}. Please adjust the intervals of your health checks."
+    over_max_check_runs_today: "The number of health checks run today is greater than the daily maximum of %{maximum}. Please adjust the intervals of your health checks."
+  weather: 
+    count_successful: 
+      one: "One of the last 5 check runs was successful"
+      other: "%{count} of the last 5 check runs were successful"

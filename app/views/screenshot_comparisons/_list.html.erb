@@ -1,0 +1,10 @@
+<ul class="screenshots">
+  <% @screenshot_comparisons.each do |comparison| %>
+    <li>
+      <div class="caption">
+        <%= link_to t(".time_ago", :time => time_ago_in_words(comparison.created_at)), account_site_health_check_check_run_path(@account, @site, @health_check, @check_run) %>
+      </div>
+      <%= link_to image_tag(comparison.public_thumbnail_path), account_site_health_check_check_run_screenshot_comparison_path(@account, @site, @health_check, @check_run, comparison) %>
+    </li>
+  <% end %>
+</ul>

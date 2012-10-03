@@ -20,8 +20,11 @@ TinyMon::Application.routes.draw do
         end
         resources :check_runs do
           resources :comments
+          resources :screenshots
+          resources :screenshot_comparisons
         end
         resources :comments
+        resources :screenshots
       end
       resources :health_check_imports
       resources :deployments
@@ -52,7 +55,9 @@ TinyMon::Application.routes.draw do
   end
   resources :password_resets
   resource :settings
-  
+  resource :tutorials
+  resource :help, :as => 'help'
+
   match '/login' => 'user_sessions#new', :as => :login, :via => :get
   match '/login' => 'user_sessions#create', :via => :post
   match '/logout' => 'user_sessions#destroy', :as => :logout, :via => :delete

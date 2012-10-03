@@ -1,0 +1,14 @@
+<h2><%= t(".comparing_screenshots") %></h2>
+
+<ul class="screenshots">
+  <li>
+    <%= t(".current") %><br/>
+    <%= link_to image_tag(@screenshot_comparison.first_screenshot.public_thumbnail_path), account_site_health_check_check_run_screenshot_path(@account, @site, @health_check, @screenshot_comparison.first_screenshot.check_run, @screenshot_comparison.first_screenshot) %>
+  </li>
+  <li>
+    <%= t(".previous") %><br/>
+    <%= link_to image_tag(@screenshot_comparison.second_screenshot.public_thumbnail_path), account_site_health_check_check_run_screenshot_path(@account, @site, @health_check, @screenshot_comparison.second_screenshot.check_run, @screenshot_comparison.second_screenshot) %>
+  </li>
+</ul>
+
+<p><%= link_to image_tag(@screenshot_comparison.public_path, :class => 'screenshot'), @screenshot_comparison.public_path %></p>

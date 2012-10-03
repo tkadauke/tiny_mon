@@ -1,7 +1,10 @@
 <h2><%= t('.check_run_of_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
 
+<%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
+
 <% if @check_run.status.blank? %>
   <p><%= t('.running') %> <%= image_tag 'spinner.gif' %></p>
+  <%= javascript_tag 'window.setTimeout(function() { location.reload() }, 1000)' %>
 <% else %>
   <dl>
     <dt><%= t('.status') %></dt>
@@ -10,6 +13,11 @@
     <dt><%= t('.duration') %></dt>
     <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
     
+    <% if @check_run.user %>
+      <dt><%= t(".started_by") %></dt>
+      <dd><%= link_to @check_run.user.full_name, user_path(@check_run.user) %>
+    <% end %>
+
     <% if @check_run.deployment %>
       <dt><%= t(".deployment") %></dt>
       <dd><%= link_to deployment_title(@check_run.deployment), account_site_deployment_path(@account, @site, @check_run.deployment) %>
@@ -17,7 +25,7 @@
 
     <% if @check_run.error_message %>
       <dt><%= t('.error_message') %></dt>
-      <dd><%= @check_run.error_message %></dd>
+      <dd><%=h @check_run.error_message %></dd>
     <% end %>
   </dl>
 
@@ -40,7 +48,19 @@
     </tbody>
   </table>
 
-  <h3><%= t('.comments', :count => @comments_count) %></h3>
+<% unless @screenshots.empty? %>
+  <h3><%= t('.screenshots') %></h3>
+  
+  <%= render :partial => "/screenshots/list" %>
+<% end %>
+
+<% unless @screenshot_comparisons.empty? %>
+  <h3><%= t('.screenshot_comparisons') %></h3>
+  
+  <%= render :partial => "/screenshot_comparisons/list" %>
+<% end %>
+
+<h3><%= t('.comments', :count => @comments_count) %></h3>
 
   <%= render :partial => "/comments/list" %>
 

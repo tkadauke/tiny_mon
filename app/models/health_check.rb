@@ -1,15 +1,21 @@
 class HealthCheck < ActiveRecord::Base
+  MINUTES_PER_DAY = 1440
+  
   belongs_to :site
   belongs_to :health_check_import
   
   has_many :steps, :order => 'position ASC'
   has_many :check_runs, :dependent => :destroy
   has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
+  has_many :weather_relevant_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 5
   
   has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'
   
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
+  
+  has_many :screenshots, :through => :check_runs
+  has_many :latest_screenshots, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots', :order => 'screenshots.created_at DESC'
   
   scope :enabled, where(:enabled => true)
   scope :upcoming, lambda { where("enabled and next_check_at > ?", Time.now).order('next_check_at ASC') }
@@ -24,6 +30,8 @@ class HealthCheck < ActiveRecord::Base
   before_save :set_next_check_at, :if => :enabled_changed?
   before_validation :get_info_from_template
   
+  before_save :update_account_check_runs_per_day, :if => :interval_changed_before_save?
+  
   has_permalink :name, :scope => :site_id
   
   after_initialize :set_template_data
@@ -32,8 +40,21 @@ class HealthCheck < ActiveRecord::Base
     self.template_data = HealthCheckTemplateData.new(self.template_data || {})
   end
 
-  def self.filter_for_list(filter)
-    with_search_scope(filter).includes(:site => :account)
+  def self.filter_for_list(filter, status)
+    conditions = case status.to_s
+    when 'success', 'failure'
+      { :status => status.to_s, :enabled => true }
+    when 'enabled'
+      { :enabled => true }
+    when 'disabled'
+      { :enabled => false }
+    end
+    
+    with_search_scope(filter).where(conditions).includes(:site => :account)
+  end
+
+  def self.due
+    enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
   end
   
   # This method reenables health checks that got accidentally disabled, for example when
@@ -70,11 +91,14 @@ class HealthCheck < ActiveRecord::Base
     update_attribute(:next_check_at, nil)
   end
   
-  def check!
-    check_run = check_runs.create(:started_at => Time.now.to_f)
+  def check!(user = nil)
     schedule_next_check(interval.minutes.from_now)
-    do_check(check_run)
-    check_run
+    
+    if user || !site.account.over_maximum_check_runs_today?
+      check_run = check_runs.create(:started_at => Time.now.to_f, :user => user)
+      do_check(check_run)
+      check_run
+    end
   end
   
   def schedule_next_check(timestamp)
@@ -103,9 +127,17 @@ class HealthCheck < ActiveRecord::Base
     update_attributes(values)
   end
   
+  def check_runs_per_day
+    (MINUTES_PER_DAY / self.interval).to_i
+  end
+  
+  def update_status(status)
+    update_attributes(:status => status, :weather => calculate_weather)
+  end
+  
 protected
   def do_check(check_run)
-    runner = Runner.new(check_run.health_check)
+    runner = Runner.new(check_run)
 
     attrs = { :status => 'success' }
 
@@ -118,6 +150,7 @@ protected
 
       attrs[:status] = 'failure'
       attrs[:error_message] = "#{e.class.name}: #{e.message}"
+      puts e.backtrace
     end
     attrs[:ended_at] = Time.now.to_f
     attrs[:log] = runner.log_entries
@@ -126,10 +159,15 @@ protected
   ensure
     update_attributes(:last_checked_at => Time.now)
   end
-  background_method :do_check
+  # TODO: reenable this. Looks like the new_record information is dropped when using background_lite in Rails 3
+  # background_method :do_check
 
   def set_next_check_at
     self.next_check_at = 1.minute.from_now if enabled?
+  end
+  
+  def update_account_check_runs_per_day
+    site.account.update_check_runs_per_day
   end
 
   def self.with_search_scope(filter, &block)
@@ -148,5 +186,12 @@ protected
     end
     
     where(conditions)
+  end
+  
+  def calculate_weather
+    last_check_runs = weather_relevant_check_runs
+    fill_run_count = 5 - last_check_runs.size
+
+    last_check_runs.select { |run| run.success? }.size + fill_run_count
   end
 end

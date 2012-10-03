@@ -2,7 +2,7 @@ class HealthCheckTemplateStepData
   attr_reader :data
   
   def initialize(attributes = {})
-    @data = attributes.with_indifferent_access
+    @data = (attributes || {}).with_indifferent_access
   end
   
   def method_missing(method, *args)

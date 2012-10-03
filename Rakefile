@@ -11,6 +11,11 @@ begin
 rescue LoadError
 end
 
+begin
+  require 'i18n_tools/tasks'
+rescue LoadError
+end
+
 namespace :test do
   desc 'Measure test coverage'
   task :coverage do

@@ -1,8 +1,0 @@
-.check-overview li { width: 150px; height: 36px; border: 1px solid lightgrey; float: left; padding: 5px; overflow: hidden; }
-.check-overview li div.status { width: 40px; float: left; }
-.check-overview li div.details { margin-left: 40px; }
-.check-overview li div.details a { font-size: 1.2em; }
-
-span.secondary { font-size: 0.8em; }
-
-table iframe { width: 100%; height: 200px; }

@@ -2,12 +2,18 @@
 
 <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
 
-<p>
-  <%= action_list do |a| %>
-    <% a.link_to t('health_checks.report.details'), health_checks_path(:report => 'details') %>
-    <% a.link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview') %>
-  <% end %>
-</p>
+<%= tabs(:selected => @report.to_sym) do |a| %>
+  <% a.tab :details, t('health_checks.report.details'), health_checks_path(:report => 'details') %>
+  <% a.tab :overview, t('health_checks.report.overview'), health_checks_path(:report => 'overview') %>
+<% end %>
+
+<%= tabs(:selected => @status.to_sym) do |a| %>
+  <% a.tab :all, t('health_checks.status.all'), health_checks_path(:status => 'all') %>
+  <% a.tab :success, t('health_checks.status.success'), health_checks_path(:status => 'success') %>
+  <% a.tab :failure, t('health_checks.status.failure'), health_checks_path(:status => 'failure') %>
+  <% a.tab :enabled, t('health_checks.status.enabled'), health_checks_path(:status => 'enabled') %>
+  <% a.tab :disabled, t('health_checks.status.disabled'), health_checks_path(:status => 'disabled') %>
+<% end %>
 
 <%#= auto_update 'checks' %>
 <div id="checks">

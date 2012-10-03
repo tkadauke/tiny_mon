@@ -1,30 +1,3 @@
 <h2><%= t(".choose_template") %></h2>
 
-<p>
-  <%= action_list do |a| %>
-    <% a.link_to t(".my_templates"), new_account_site_health_check_import_path(@account, @site, :template => 'select', :filter => 'mine') %>
-    <% a.link_to t(".account_templates"), new_account_site_health_check_import_path(@account, @site, :template => 'select', :filter => 'account') %>
-    <% a.link_to t(".public_templates"), new_account_site_health_check_import_path(@account, @site, :template => 'select', :filter => 'public') %>
-    <% a.link_to t(".all_templates"), new_account_site_health_check_import_path(@account, @site, :template => 'select', :filter => 'all') %>
-  <% end %>
-</p>
-
-<% if @health_check_templates.empty? %>
-  <p><%= t(".no_templates_found") %></p>
-<% else %>
-  <%= will_paginate @health_check_templates %>
-  
-  <ul class="asterisk">
-    <% @health_check_templates.each do |template| %>
-      <li>
-        <%= link_to template.name, new_account_site_health_check_import_path(@account, @site, :template => template.id) %><br/>
-        <%=h template.description %><br/>
-        <%= t(".template_created_by", :user => link_to(template.user.full_name, user_path(template.user))) %>
-      </li>
-    <% end %>
-  </ul>
-  
-  <%= will_paginate @health_check_templates %>
-<% end %>
-
-<p><%= link_to t(".create_template"), new_health_check_template_path %></p>
+<%= render :partial => "/health_check_templates/select", :locals => { :url => partial_route(:new_account_site_health_check_import_path, @account, @site) } %>

@@ -13,6 +13,12 @@ class HealthCheckImportsController < ApplicationController
     end
   end
   
+  def show
+    @health_check_import = HealthCheckImport.find(params[:id])
+    @health_checks = @health_check_import.health_checks
+    @search_filter = SearchFilter.new
+  end
+  
   def new
     find_templates
     @health_check_import = HealthCheckImport.new(:health_check_template => @health_check_template)
@@ -31,11 +37,7 @@ class HealthCheckImportsController < ApplicationController
       
       if @health_check_import.save
         flash[:notice] = I18n.t("flash.notice.created_import")
-        if @site
-          redirect_to account_site_health_checks_path(@account, @site)
-        else
-          redirect_to health_checks_path
-        end
+        redirect_to health_check_import_path(@health_check_import)
       else
         render :action => 'new'
       end

@@ -9,7 +9,7 @@ module TinyMon
     end
     
     def render!
-      Dir.create_tmp_dir "renderer", "#{RAILS_ROOT}/tmp" do
+      Dir.create_tmp_dir "renderer", "#{Rails.root}/tmp" do
         cookie_params = @cookies.collect { |cookie| %{--cookie "#{cookie.name}" "#{cookie.value}"} }.join(" ")
         
         stylesheet_params = if @stylesheet

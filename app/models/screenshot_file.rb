@@ -1,6 +1,6 @@
 class ScreenshotFile
   PUBLIC_IMAGE_PATH = 'system'
-  IMAGE_PATH = "#{RAILS_ROOT}/public/#{PUBLIC_IMAGE_PATH}"
+  IMAGE_PATH = "#{Rails.root}/public/#{PUBLIC_IMAGE_PATH}"
 
   attr_accessor :checksum
   

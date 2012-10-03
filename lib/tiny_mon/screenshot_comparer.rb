@@ -5,7 +5,7 @@ module TinyMon
     end
     
     def compare!
-      Dir.create_tmp_dir "comparer", "#{RAILS_ROOT}/tmp" do
+      Dir.create_tmp_dir "comparer", "#{Rails.root}/tmp" do
         system %{compare #{@first.file_path} #{@second.file_path} diff.png}
         system %{pngcrush diff.png}
         

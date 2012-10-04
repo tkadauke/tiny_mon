@@ -114,7 +114,7 @@ body {
   }
   
   #menu ul {
-    @extend .clearfix;
+    @include clearfix;
     
     font-family: $sans_serif;
     width: 100%;

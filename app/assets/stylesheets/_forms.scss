@@ -41,7 +41,7 @@
     }
     
     p {
-      @extend .clearfix;
+      @include clearfix;
       display: block;
     }
     

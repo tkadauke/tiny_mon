@@ -2,7 +2,7 @@
 
 #canvas {
   .screenshots {
-    @extend .clearfix;
+    @include clearfix;
     
     li {
       float: left;

@@ -63,7 +63,5 @@
 
   <h3><%= t('.add_step') %></h3>
 
-  <div id="new_step_container">
-    <%= render :partial => "/steps/form", :locals => { :step => @step || Step.new } %>
-  </div>
+  <%= render :partial => "/steps/form", :locals => { :step => @step || Step.new } %>
 <% end %>

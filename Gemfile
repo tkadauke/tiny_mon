@@ -26,6 +26,7 @@ gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
 gem 'capistrano'
 
 gem 'jquery-rails'
+gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'

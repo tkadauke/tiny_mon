@@ -6,4 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jqplot/index
+//= require jqplot/plugins/dateAxisRenderer
+//= require jqplot/plugins/highlighter
 //= require_tree .

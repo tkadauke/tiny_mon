@@ -31,43 +31,43 @@
 <% if @health_check.enabled? %>
   <div id="graph" style="width: 100%; height: 300px; margin-bottom: 10px;"></div>
 
-  <% check_runs = @health_check.recent_check_runs %>
+  <% check_runs = @health_check.recent_check_runs.reverse %>
+  
   <script language="javascript" type="text/javascript">
-    Event.observe(window, 'load', function() {
-      var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
-      var d1 = <%= check_runs.collect { |run| [run.created_at.to_time.to_i * 1000, run.duration] }.to_json %>;
-      var ids = <%= check_runs.inject({}) { |hash, run| hash[run.created_at.to_time.to_i * 1000] = run.id; hash }.to_json.html_safe %>;
-      var data = [{ data: d1, label: "Duration" }];
-    
-      new Proto.Chart($("graph"), data, {
-        legend: { show: true },
-        xaxis: { mode: "time" },
-        mouse: {
-          track: true,
-          fixedPosition: false,
-          sensibility: 10000,
-          trackFormatter: function(obj) { return <%= t(".run_at").inspect.html_safe %> + ': ' + new Date(parseInt(obj.x)).toISOString() + '<br/>' + <%= t(".duration").inspect.html_safe %> + ': ' + obj.y + 's'; }
+    var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
+    var d1 = <%= check_runs.collect { |run| [run.created_at.strftime("%Y-%m-%d %H:%M%p"), run.duration] }.to_json.html_safe %>;
+    var ids = <%= check_runs.collect(&:id).to_json.html_safe %>;
+
+    $(document).ready(function(){
+      $.jqplot.eventListenerHooks.push(['jqplotClick', handleClick])
+      $.jqplot('graph', [d1], {
+        axesDefaults: {
+          labelRenderer: $.jqplot.CanvasAxisLabelRenderer
         },
-        allowDataClick: true,
-        grid: {
-          drawYAxis: true,
-          drawXAxis: true,
-          clickable: true
-        }
-      });
-    
-      currentPoint = null;
-    
-      $('graph').observe('ProtoChart:hit', function(e) {
-        currentPoint = e.memo[0];
-      });
-    
-      $('graph').observe('ProtoChart:plotclick', function(e) {
-        if (currentPoint) {
-          document.location.href = base_url + '/' + ids[currentPoint.x];
+        axes: {
+          xaxis: {
+            label: "X Axis",
+            pad: 0,
+            renderer:$.jqplot.DateAxisRenderer
+          },
+          yaxis: {
+            label: "Y Axis"
+          }
+        },
+        highlighter: {
+          show: true,
+          sizeAdjust: 7.5
+        },
+        cursor: {
+          show: false
         }
       });
     });
+    function handleClick(ev, gridpos, datapos, neighbor, plot) {
+      if (neighbor) {
+        document.location.href = base_url + '/' + ids[neighbor.pointIndex];
+      }
+    }
   </script>
 <% end %>
 

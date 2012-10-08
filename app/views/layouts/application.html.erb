@@ -81,12 +81,12 @@
           <% if flash[:error] %>
             <div id="flash" class="error">
               <%= flash[:error] %>
-              <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
+              <%= link_to_function t('layouts.close_flash'), "$('#flash').fadeOut()" %>
             </div>
           <% elsif flash[:notice] %>
             <div id="flash" class="notice">
               <%= flash[:notice] %>
-              <%= link_to_function t('layouts.close_flash'), "$('flash').fade()" %>
+              <%= link_to_function t('layouts.close_flash'), "$('#flash').fadeOut()" %>
             </div>
           <% end %>
           

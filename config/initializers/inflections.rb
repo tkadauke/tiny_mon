@@ -10,5 +10,5 @@
 # end
 
 ActiveSupport::Inflector.inflections do |inflect|
-  inflect.uncountable %w( health_check_template_step_data )
+  inflect.uncountable %w( health_check_template_step_data help )
 end

@@ -16,7 +16,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-Dir["lib/*.rb", "lib/core_ext/**/*.rb", "lib/rails_ext/**/*.rb", "lib/tiny_mon/**/*.rb"].each do |file|
+Dir["lib/*.rb", "lib/core_ext/**/*.rb", "lib/rails_ext/**/*.rb", "lib/tiny_mon/**/*.rb"].sort.each do |file|
   require File.expand_path(File.join(File.dirname(__FILE__), '..', file))
 end
 

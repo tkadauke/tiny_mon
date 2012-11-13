@@ -7,8 +7,11 @@ class StepsController < ApplicationController
   
   skip_before_filter :verify_authenticity_token, :only => :sort
   
+  respond_to :html, :xml, :json, :js
+  
   def index
     @steps = @health_check.steps
+    respond_with @steps
   end
 
   def new
@@ -26,6 +29,7 @@ class StepsController < ApplicationController
   def edit
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
+      respond_with @step
     end
   end
   
@@ -35,7 +39,7 @@ class StepsController < ApplicationController
       @step = type_name.classify.constantize.new(params[type_name])
       @step.health_check = @health_check
       if @step.save
-        redirect_to account_site_health_check_steps_path(@account, @site, @health_check)
+        respond_with @step, :location => account_site_health_check_steps_path(@account, @site, @health_check)
       else
         index
         render :action => 'index'
@@ -46,8 +50,9 @@ class StepsController < ApplicationController
   def update
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
-      if @step.update_attributes(params[@step.class.name.underscore])
-        redirect_to :back
+      @step.update_attributes(params[@step.class.name.underscore])
+      respond_with @step do |format|
+        format.html { redirect_to :back }
       end
     end
   end
@@ -56,7 +61,9 @@ class StepsController < ApplicationController
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
       @step.destroy
-      redirect_to :back
+      respond_with @step do |format|
+        format.html { redirect_to :back }
+      end
     end
   end
   

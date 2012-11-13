@@ -22,12 +22,24 @@ class Site < ActiveRecord::Base
     health_checks.failed.count == 0
   end
   
+  def status
+    if health_checks.count > 0
+      all_checks_successful? ? 'success' : 'failure'
+    else
+      'offline'
+    end
+  end
+  
   def self.from_param!(param)
     find_by_permalink!(param)
   end
   
   def self.find_for_list(filter)
     with_search_scope(filter).includes(:account).order('sites.name ASC')
+  end
+  
+  def as_json(options = {})
+    attributes.merge(:status => status)
   end
 
 protected

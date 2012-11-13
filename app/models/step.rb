@@ -34,4 +34,8 @@ class Step < ActiveRecord::Base
   def underscored_class_name
     self.class.name.gsub(/Step$/, '').underscore
   end
+  
+  def as_json(options = {})
+    attributes
+  end
 end

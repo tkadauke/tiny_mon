@@ -59,7 +59,7 @@ TinyMon::Application.routes.draw do
   resource :help, :as => 'help'
 
   match '/login' => 'user_sessions#new', :as => :login, :via => :get
-  match '/login' => 'user_sessions#create', :via => :post
+  match '/login(.:format)' => 'user_sessions#create', :via => :post
   match '/logout' => 'user_sessions#destroy', :as => :logout, :via => :delete
   root :to => 'start#index'
 

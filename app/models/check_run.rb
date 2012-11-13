@@ -39,6 +39,10 @@ class CheckRun < ActiveRecord::Base
     end
   end
   
+  def as_json(options = {})
+    attributes.merge(:duration => duration)
+  end
+  
 protected
   def set_account
     self.account_id = health_check.site.account_id

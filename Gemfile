@@ -33,6 +33,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.1.1'
   gem "therubyracer", "0.10.2"
   gem "libv8", "3.3.10.2"
+  gem 'yui-compressor'
   gem 'uglifier', '>= 1.0.3'
 end
 

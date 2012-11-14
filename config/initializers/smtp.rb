@@ -4,5 +4,6 @@ ActionMailer::Base.smtp_settings = {
   :port => TinyMon::Config.email_port,
   :user_name => TinyMon::Config.email_user_name,
   :password => TinyMon::Config.email_password,
-  :authentication => TinyMon::Config.email_authentication.to_sym
+  :authentication => TinyMon::Config.email_authentication.to_sym,
+  :openssl_verify_mode => TinyMon::Config.email_openssl_verify_mode.to_sym
 }

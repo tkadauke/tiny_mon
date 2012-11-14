@@ -1,8 +1,14 @@
 class UserAccountsController < ApplicationController
   before_filter :find_account
   
+  respond_to :html, :xml, :json
+  
   def index
-    redirect_to account_path(@account)
+    respond_with(@account.user_accounts_with_users, :include => :user) do |format|
+      format.html do
+        redirect_to account_path(@account)
+      end
+    end
   end
   
   def new

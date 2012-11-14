@@ -2,8 +2,11 @@ class AccountsController < ApplicationController
   before_filter :login_required
   before_filter :can_see_account_details!
   
+  respond_to :html, :xml, :json
+  
   def index
     @accounts = current_user.accounts.ordered_by_name
+    respond_with @accounts
   end
   
   def new
@@ -13,6 +16,7 @@ class AccountsController < ApplicationController
   def show
     @account = Account.find(params[:id])
     can_see_account!(@account)
+    respond_with @account
   end
   
   def edit
@@ -50,7 +54,7 @@ class AccountsController < ApplicationController
     can_switch_to_account!(@account) do
       current_user.switch_to_account(@account)
       flash[:notice] = I18n.t('flash.notice.switched_account', :account => @account.name)
-      redirect_to root_path
+      respond_with @account, :location => root_path
     end
   end
 end

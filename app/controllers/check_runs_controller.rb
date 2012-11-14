@@ -6,9 +6,15 @@ class CheckRunsController < ApplicationController
   before_filter :create_check_run_filter, :only => :index
   active_tab :health_checks
   
+  respond_to :html, :xml, :json
+  
   def index
     @check_runs = @health_check.check_runs.recent.paginate(:page => params[:page], :include => :health_check, :conditions => @check_run_filter.conditions)
-    render :partial => "/check_runs/activity" if request.xhr?
+    respond_with @check_runs do |format|
+      format.html do
+        render :partial => "/check_runs/activity" if request.xhr?
+      end
+    end
   end
   
   def show
@@ -19,6 +25,7 @@ class CheckRunsController < ApplicationController
     
     @screenshots = @check_run.screenshots
     @screenshot_comparisons = @check_run.screenshot_comparisons
+    respond_with @check_run
   end
   
   def create

@@ -3,14 +3,18 @@ class SitesController < ApplicationController
   before_filter :find_account
   active_tab :sites
   
+  respond_to :html, :json, :xml, :js
+  
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
     @sites = @account.sites.find_for_list(@search_filter)
+    respond_with @sites
   end
   
   def new
     can_create_sites!(@account) do
       @site = @account.sites.build
+      respond_with @site
     end
   end
   
@@ -19,20 +23,20 @@ class SitesController < ApplicationController
       @site = @account.sites.build(params[:site])
       if @site.save
         flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
-        redirect_to account_site_health_checks_path(@account, @site)
-      else
-        render :action => 'new'
       end
+      respond_with @site, :location => account_site_health_checks_path(@account, @site)
     end
   end
   
   def show
     @site = @account.sites.find_by_permalink!(params[:id])
+    respond_with @site
   end
   
   def edit
     can_edit_sites!(@account) do
       @site = @account.sites.find_by_permalink!(params[:id])
+      respond_with @site
     end
   end
   
@@ -41,10 +45,8 @@ class SitesController < ApplicationController
       @site = @account.sites.find_by_permalink!(params[:id])
       if @site.update_attributes(params[:site])
         flash[:notice] = I18n.t('flash.notice.updated_site', :site => @site.name)
-        redirect_to account_site_path(@account, @site)
-      else
-        render :action => 'edit'
       end
+      respond_with @site, :location => account_site_path(@account, @site)
     end
   end
   
@@ -53,7 +55,7 @@ class SitesController < ApplicationController
       @site = @account.sites.find_by_permalink!(params[:id])
       @site.destroy
       flash[:notice] = I18n.t('flash.notice.deleted_site', :site => @site.name)
-      redirect_to sites_path
+      respond_with @site, :location => sites_path
     end
   end
 end

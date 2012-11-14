@@ -12,7 +12,7 @@ gem "webrat", '0.5.3'
 gem "mechanize", :require => false
 gem "orderedhash"
 gem "authlogic"
-gem "background_lite", '0.3.1'
+gem "background_lite", '0.3.2'
 gem "will_paginate"
 gem "fastercsv"
 gem "permalink_fu"

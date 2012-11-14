@@ -1,8 +1,8 @@
 class CheckRunsController < ApplicationController
   before_filter :login_required
   before_filter :find_account
-  before_filter :find_site
-  before_filter :find_health_check
+  before_filter :find_site, :except => :recent
+  before_filter :find_health_check, :except => :recent
   before_filter :create_check_run_filter, :only => :index
   active_tab :health_checks
   
@@ -15,6 +15,11 @@ class CheckRunsController < ApplicationController
         render :partial => "/check_runs/activity" if request.xhr?
       end
     end
+  end
+  
+  def recent
+    @check_runs = @account.check_runs.recent.includes(:health_check => { :site => :account })
+    respond_with @check_runs, :include => :health_check
   end
   
   def show

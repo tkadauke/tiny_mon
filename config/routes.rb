@@ -41,6 +41,10 @@ TinyMon::Application.routes.draw do
   resources :health_check_template_steps
   resource :health_check_template_step_data, :to => 'health_check_template_step_data'
   resources :health_check_imports
+  
+  match '/health_checks/upcoming(.:format)' => 'health_checks#upcoming', :via => :get
+  match '/check_runs/recent(.:format)' => 'check_runs#recent', :via => :get
+
   resources :health_checks do
     collection do
       put :update_multiple

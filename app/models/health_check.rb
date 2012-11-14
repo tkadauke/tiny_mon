@@ -135,6 +135,10 @@ class HealthCheck < ActiveRecord::Base
     update_attributes(:status => status, :weather => calculate_weather)
   end
   
+  def as_json(options = {})
+    attributes.merge(:site => site)
+  end
+  
 protected
   def do_check(check_run)
     runner = Runner.new(check_run)

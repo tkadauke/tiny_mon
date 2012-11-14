@@ -40,7 +40,7 @@ class CheckRun < ActiveRecord::Base
   end
   
   def as_json(options = {})
-    attributes.merge(:duration => duration)
+    attributes.merge(:duration => duration, :health_check => health_check)
   end
   
 protected

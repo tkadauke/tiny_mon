@@ -34,6 +34,11 @@ class HealthChecksController < ApplicationController
     end
   end
   
+  def upcoming
+    @upcoming_health_checks = @account.health_checks.upcoming(:limit => 10, :include => :site)
+    respond_with @upcoming_health_checks
+  end
+  
   def new
     can_create_health_checks!(@account) do
       find_templates

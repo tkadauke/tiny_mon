@@ -43,7 +43,7 @@ GEM
     authlogic (3.1.3)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-    background_lite (0.3)
+    background_lite (0.3.1)
     bcrypt-ruby (3.0.1)
     builder (3.0.3)
     capistrano (2.5.5)
@@ -173,7 +173,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   authlogic
-  background_lite (= 0.3)
+  background_lite (= 0.3.1)
   capistrano
   coffee-rails (~> 3.1.1)
   fastercsv

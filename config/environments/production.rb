@@ -39,7 +39,6 @@ TinyMon::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.assets.css_compressor = :yui
   config.assets.js_compressor = :uglifier
 
   # Enable serving of images, stylesheets, and javascripts from an asset server

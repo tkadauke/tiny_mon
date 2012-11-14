@@ -18,6 +18,7 @@ gem "fastercsv"
 gem "permalink_fu"
 gem "less"
 gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
+gem 'tmail'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -159,8 +159,7 @@ protected
   ensure
     update_attributes(:last_checked_at => Time.now)
   end
-  # TODO: reenable this. Looks like the new_record information is dropped when using background_lite in Rails 3
-  # background_method :do_check
+  background_method :do_check
 
   def set_next_check_at
     self.next_check_at = 1.minute.from_now if enabled?

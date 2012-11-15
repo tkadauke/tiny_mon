@@ -35,7 +35,7 @@ class HealthChecksController < ApplicationController
   end
   
   def upcoming
-    @upcoming_health_checks = @account.health_checks.upcoming(:limit => 10, :include => :site)
+    @upcoming_health_checks = @account.health_checks.upcoming.limit(20).includes(:site)
     respond_with @upcoming_health_checks
   end
   

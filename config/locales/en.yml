@@ -671,6 +671,7 @@ en:
       create_account: "Create account"
       import: Import
       manage_users: "Manage users for account %{account}"
+      my_templates: "My Templates"
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
       settings: "Edit settings"

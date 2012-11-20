@@ -671,6 +671,7 @@ de:
       create_account: "Konto erstellen"
       import: Importieren
       manage_users: "Benutzer für Konto %{account} verwalten"
+      my_templates: "Meine Vorlagen"
       no_accounts: "Diesem Benutzer sind bisher keine Konten zugewiesen."
       quick_links: Schnellzugriff
       settings: "Einstellungen bearbeiten"

@@ -28,7 +28,7 @@
       <% if current_user.can_edit_account?(current_user.current_account) %>
         <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %>
       <% end %>
-      <% if current_user.can_create_health_check_templates? %>
+      <% if current_user.can_create_health_check_templates?(current_user.current_account) %>
         <li><%= link_to t('.my_templates'), health_check_templates_path %>
       <% end %>
     </ul>

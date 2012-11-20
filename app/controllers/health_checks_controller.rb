@@ -93,8 +93,6 @@ class HealthChecksController < ApplicationController
       
       if @health_check.update_attributes(params[:health_check])
         flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
-      else
-        raise @health_check.errors.inspect
       end
       respond_with @health_check, :location => account_site_health_check_path(@account, @site, @health_check)
     end

@@ -3,7 +3,7 @@
 <%= form_for :health_check, :url => update_multiple_health_checks_path, :html => { :method => :put, :class => 'form' } do |f| %>
   <ul class="asterisk" id="health_check_list">
     <% @health_checks.each_with_index do |health_check, i| %>
-      <li<%= ' style="display: none"' if i >= 10 %>>
+      <li<%= ' style="display: none"'.html_safe if i >= 10 %>>
         <%= health_check.site.name %> / <%= health_check.name %>
         <%= hidden_field_tag "health_check_ids[]", health_check.id %>
       </li>

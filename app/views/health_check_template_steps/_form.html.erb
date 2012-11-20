@@ -11,9 +11,9 @@
     </dt>
     <dd>
       <% if fields.object.new_record? %>
-        <%= link_to_function t(".remove"), "$('#{step_id}').remove();" %>
+        <%= link_to_function t(".remove"), "$('##{step_id}').remove();" %>
       <% else %>
-        <%= fields.check_box '_delete' %> <%= fields.label '_delete', t(".delete") %>
+        <%= fields.check_box '_destroy' %> <%= fields.label '_destroy', t(".delete") %>
       <% end %>
     </dd>
 
@@ -29,7 +29,7 @@
     <dt><%= t(".step_type") %></dt>
     <%# HACK: get index of step model %>
     <% step_index = f.instance_variable_get(:@nested_child_index)['health_check_template[steps_attributes]'] || child_index %>
-    <dd><%= fields.select :step_type, Step.available_types_with_translations, { :include_blank => true }, :onchange => "if (this.value != '') { new Ajax.Updater('#{step_data_id}', #{new_health_check_template_step_data_path.inspect}, { method: 'get', parameters: { step_type: this.value, step_index: #{step_index} } }) }" %></dd>
+    <dd><%= fields.select :step_type, Step.available_types_with_translations, { :include_blank => true }, :onchange => "if (this.value != 'nothing') { $('##{step_data_id}').load(#{new_health_check_template_step_data_path.inspect}, 'step_type=' + this.value + '&step_index=#{step_index}') }" %></dd>
     
     <dt><%= t(".step_data") %></dt>
     <dd id="<%= step_data_id %>">

@@ -5,7 +5,7 @@
     <%= data.error_messages :header_message => t('.could_not_create_health_check') unless @health_check.template_data.errors.empty? %>
     
     <% @health_check_template.variables.each do |variable| %>
-      <%= render :partial => "#{variable.type}_variable", :locals => { :f => data, :variable => variable } %>
+    <%= render :partial => "#{variable.attributes['type']}_variable", :locals => { :f => data, :variable => variable } %>
     <% end %>
   <% end %>
   

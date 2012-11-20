@@ -15,7 +15,7 @@
       <li>
         <strong><%= link_to template.name, url.call(:template => template.id) %></strong>
         <%= simple_format template.description %>
-        <span class="creator"><%= t(".template_created_by", :user => link_to(template.user.full_name, user_path(template.user))) %></span>
+        <span class="creator"><%= t(".template_created_by", :user => link_to(template.user.full_name, user_path(template.user))).html_safe %></span>
       </li>
     <% end %>
   </ul>

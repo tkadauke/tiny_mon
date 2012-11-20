@@ -17,7 +17,7 @@
   <table class="edit-multiple">
     <tbody>
       <tr>
-        <td><%= f.check_box :bulk_update_name, :onclick => "$('health_check_name').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_name, :onclick => "$('#health_check_name')[0].disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_name, t('.name') %></span>
@@ -26,7 +26,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.check_box :bulk_update_description, :onclick => "$('health_check_description').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_description, :onclick => "$('#health_check_description')[0].disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_description, t('.description') %></span>
@@ -35,7 +35,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.check_box :bulk_update_interval, :onclick => "$('health_check_interval').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_interval, :onclick => "$('#health_check_interval')[0].disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_interval, t('.interval') %></span>
@@ -44,7 +44,7 @@
         </td>
       </tr>
       <tr>
-        <td><%= f.check_box :bulk_update_enabled, :onclick => "$('health_check_enabled').disabled = !this.checked" %></td>
+        <td><%= f.check_box :bulk_update_enabled, :onclick => "$('#health_check_enabled')[0].disabled = !this.checked" %></td>
         <td>
           <p class="form_item">
             <span class="label"><%= f.label :bulk_update_enabled, t('.enabled') %></span>

@@ -18,10 +18,10 @@
         <tr>
           <td></td>
           <td colspan="5">
-            <% action_list do |a| %>
-              <% a.link_to_function t(".all"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = true })} %>
-              <% a.link_to_function t(".none"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = false })} %>
-              <% a.link_to_function t(".invert"), %{$$('table input[type="checkbox"]').each(function(element) { element.checked = !element.checked })} %>
+            <%= action_list do |a| %>
+              <% a.link_to_function t(".all"), %{$('table input[type="checkbox"]').prop('checked',true )} %>
+              <% a.link_to_function t(".none"), %{$('table input[type="checkbox"]').prop('checked', false)} %>
+              <% a.link_to_function t(".invert"), %{$('table input[type="checkbox"]').each(function(index) { $(this).prop('checked', !$(this).prop('checked'));})} %>
             <% end %>
 
             <%= submit_tag t(".edit_checked") %>

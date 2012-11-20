@@ -3,27 +3,14 @@
   <span class="label">
     <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'required' : '' %>
     <%= link_to_function t(".add_more"), %{
-      input_key = new Element('input', {
-        type: 'text', id: 'health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_key',
-        name: 'health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][key]',
-        size: 30
-      });
-      input_value = new Element('input', {
-        type: 'text', id: 'health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_value',
-        name: 'health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][value]',
-        size: 30
-      });
-      remove_link = new Element('a', {
-        onclick: "$('#{hash_id}_" + #{hash_id}_index + "').remove()"
-      }).update('[X]');
-      element = new Element('span', {
-        id: '#{hash_id}_' + #{hash_id}_index
-      });
-      element.insert({ bottom: input_key });
-      element.insert({ bottom: input_value });
-      element.insert({ bottom: remove_link });
-      element.insert({ bottom: '<br/>' });
-      $('#{hash_id}').insert({ bottom: element });
+      element = '<span id="#{hash_id}_' + #{hash_id}_index + '">' +
+        '<input type="text" id="health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_key" name="health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][key]" size="30" />' +
+        '<input type="text" id="health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_value" name="health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][value]" size="30" />' +
+        '<a href="#" onclick="$(\\'##{hash_id}_' + #{hash_id}_index + '\\').remove()">[X]</a>' +
+        '<br/>' +
+      '</span>'
+      
+      $('##{hash_id}').append(element);
       #{hash_id}_index++;
     } %>
   </span>

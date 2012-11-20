@@ -1,1 +1,1 @@
-<%= render "/steps/#{step_type}_step_form", :f => f %>
+<%= render "/steps/#{step_type}_step_form", :f => f unless step_type.blank? %>

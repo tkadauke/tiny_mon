@@ -19,6 +19,7 @@ en:
       name: Name
       new_account: "New Account"
       options: Options
+      status: Status
     info: 
       check_runs_count: 
         one: "1 check run"

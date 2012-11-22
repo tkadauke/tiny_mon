@@ -24,6 +24,10 @@ class Account < ActiveRecord::Base
     health_checks.failed.count == 0
   end
   
+  def status
+    all_checks_successful? ? 'success' : 'failure'
+  end
+  
   def user_accounts_with_users
     user_accounts.includes(:user).order('users.full_name ASC')
   end
@@ -58,6 +62,10 @@ class Account < ActiveRecord::Base
   
   def over_maximum_check_runs_today?
     !unlimited_check_runs? && scheduled_check_runs_today > maximum_check_runs_per_day
+  end
+  
+  def as_json(options = {})
+    super.merge(:status => status)
   end
 
 protected

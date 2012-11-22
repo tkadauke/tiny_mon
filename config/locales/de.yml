@@ -19,6 +19,7 @@ de:
       name: Name
       new_account: "Neues Konto"
       options: Optionen
+      status: Status
     info: 
       check_runs_count: 
         one: "1 Testlauf"

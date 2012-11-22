@@ -4,6 +4,7 @@
   <table>
     <thead>
       <tr>
+        <th><%= t('.status') %></th>
         <th><%= t('.name') %></th>
         <th><%= t('.options') %></th>
       </tr>
@@ -11,6 +12,7 @@
     <tbody>
       <% @accounts.each do |account| %>
         <tr>
+          <td><%= status_icon account %></td>
           <td>
             <% if current_user.can_switch_to_account?(account) %>
               <%= link_to account.name, switch_account_path(account), :method => :post %>

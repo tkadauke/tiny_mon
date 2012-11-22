@@ -21,6 +21,7 @@ class UserAccountsController < ApplicationController
     can_add_user_to_account!(@account) do
       @user_account = @account.user_accounts.build(params[:user_account])
       if @user_account.save
+        @user_account.user.switch_to_account(@account) if @user_account.user.current_account.blank?
         flash[:notice] = I18n.t('flash.notice.created_user_account')
         redirect_to new_account_user_account_path(@account)
       else

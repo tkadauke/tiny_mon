@@ -25,6 +25,21 @@ class UserAccountsControllerTest < ActionController::TestCase
     end
   end
   
+  test "should set current account when account mapping is created if user has no account" do
+    second_user = User.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
+    assert_nil second_user.current_account
+    post :create, :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
+    assert_not_nil second_user.reload.current_account
+  end
+  
+  test "should not set current account when account mapping is created if user already has an account" do
+    new_account = Account.create(:name => 'another')
+    second_user = User.create(:current_account => new_account, :full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
+    
+    post :create, :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
+    assert_equal new_account, second_user.reload.current_account
+  end
+  
   test "should not create user account mapping if user does not exist" do
     assert_no_difference 'UserAccount.count' do
       post :create, :account_id => @account, :user_account => { :email => 'foo@bar.com' }

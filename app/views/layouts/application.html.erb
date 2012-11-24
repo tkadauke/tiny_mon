@@ -20,7 +20,10 @@
           <div id="right_header">
             <% if logged_in? %>
               <ul class="action-list">
-                <li><%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %></li>
+                <li>
+                  <%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %>
+                  <%= gravatar(current_user) %>
+                </li>
                 <% if current_user.can_see_account_details? %>
                   <% if current_user.current_account %>
                     <li class="account">

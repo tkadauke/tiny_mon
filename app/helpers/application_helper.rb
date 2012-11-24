@@ -1,5 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def gravatar(user, options = {})
+    hash = Digest::MD5.hexdigest(user.email.strip.downcase)
+    link_to image_tag("http://www.gravatar.com/avatar/#{hash}.png?s=#{options[:size] || 20}"), user_path(user)
+  end
+  
   def auto_update(container)
     # periodically_call_remote(:url => request.request_uri, :update => container, :method => 'get', :frequency => '10')
   end

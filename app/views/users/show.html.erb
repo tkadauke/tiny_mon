@@ -1,6 +1,8 @@
 <h2><%= t('.users_profile', :full_name => @user.full_name) %></h2>
 
 <dl>
+  <dt><%= t('.picture') %></dt>
+  <dd><%= gravatar @user, :size => 160 %></dd>
   <dt><%= t('.full_name') %></dt>
   <dd><%= @user.full_name %></dd>
   <% if current_user.can_see_email?(@user) %>

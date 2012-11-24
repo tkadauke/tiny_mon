@@ -65,7 +65,10 @@ class Account < ActiveRecord::Base
   end
   
   def as_json(options = {})
-    super.merge(:status => status)
+    super.merge(
+      :status => status,
+      :role => (options[:for].user_account_for(self).role if options[:for])
+    )
   end
 
 protected

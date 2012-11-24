@@ -6,7 +6,7 @@ class AccountsController < ApplicationController
   
   def index
     @accounts = current_user.accounts.ordered_by_name
-    respond_with @accounts
+    respond_with @accounts, :for => current_user
   end
   
   def new
@@ -16,7 +16,7 @@ class AccountsController < ApplicationController
   def show
     @account = Account.find(params[:id])
     can_see_account!(@account)
-    respond_with @account
+    respond_with @account, :for => current_user
   end
   
   def edit
@@ -54,7 +54,7 @@ class AccountsController < ApplicationController
     can_switch_to_account!(@account) do
       current_user.switch_to_account(@account)
       flash[:notice] = I18n.t('flash.notice.switched_account', :account => @account.name)
-      respond_with @account, :location => root_path
+      respond_with @account, :for => current_user, :location => root_path
     end
   end
 end

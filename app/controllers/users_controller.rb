@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => [:index, :show, :edit, :update]
   
+  respond_to :html, :xml, :json
+  
   def index
     redirect_to account_path(current_user.current_account)
   end
@@ -32,10 +34,11 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id], :include => :accounts)
     can_see_profile!(@user) do
       @comments = @user.latest_comments_for_user(current_user).limit(5)
       @comments_count = @user.comments_count_for_user(current_user)
+      respond_with @user, :include => :accounts
     end
   end
 

@@ -29,12 +29,11 @@
 <% end %>
 
 <%= javascript_tag %{
-  Sortable.create('links', {
-    tag: 'tr',
-    scroll: window,
-    handle: 'handle',
-    onUpdate: function() { new Ajax.Request('#{sort_admin_footer_links_path}?authenticity_token=#{form_authenticity_token}', { method: "post", parameters: Sortable.serialize("links", { name: 'link' }) }); }
-  });
+  $('#links').sortable({
+    update: function(event, ui) {
+      $.ajax({ url: '#{sort_admin_footer_links_path}?authenticity_token=#{form_authenticity_token}', type: "POST", data: $('#links').sortable('serialize', { key: 'link[]' }) })
+    }
+  })
 } %>
 
 <p><%= link_to t('.new_footer_link'), new_admin_footer_link_path %></p>

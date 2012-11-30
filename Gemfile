@@ -27,6 +27,7 @@ gem 'tmail'
 gem 'capistrano'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
 
 group :assets do

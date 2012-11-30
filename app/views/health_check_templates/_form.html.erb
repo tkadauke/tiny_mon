@@ -25,12 +25,16 @@
 </div>
 
 <%= javascript_tag %{
-  Sortable.create('variables', {
-    tag: 'dl',
-    scroll: window,
-    handle: 'handle',
-    onUpdate: function() { var i = 1; $A(Sortable.sequence('variables')).each(function(id) { $("variable_" + id).down('input.position').value = i++; } ) }
-  });
+  $('#variables').sortable({
+    update: function(event, ui) {
+      var i = 1;
+      var sequence = $('#variables').sortable('serialize', { key: 'x' })
+      $.each(sequence.split("&"), function(index, element) {
+        var id = element.split("=")[1];
+        $("#variable_" + id + " input.position").val(i++);
+      })
+    }
+  })
 } %>
 
 <h3><%= t(".health_check_fields") %></h3>
@@ -60,12 +64,16 @@
 </div>
 
 <%= javascript_tag %{
-  Sortable.create('steps', {
-    tag: 'dl',
-    scroll: window,
-    handle: 'handle',
-    onUpdate: function() { var i = 1; $A(Sortable.sequence('steps')).each(function(id) { $("step_" + id).down('input.position').value = i++; } ) }
-  });
+  $('#steps').sortable({
+    update: function(event, ui) {
+      var i = 1;
+      var sequence = $('#steps').sortable('serialize', { key: 'x' })
+      $.each(sequence.split("&"), function(index, element) {
+        var id = element.split("=")[1];
+        $("#step_" + id + " input.position").val(i++);
+      })
+    }
+  })
 } %>
 
 <p><%= f.submit t('.save_template') %></p>

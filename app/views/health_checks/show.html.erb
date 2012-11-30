@@ -35,7 +35,7 @@
   
   <script language="javascript" type="text/javascript">
     var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
-    var d1 = <%= check_runs.collect { |run| [run.created_at.strftime("%Y-%m-%d %H:%M%p"), run.duration] }.to_json.html_safe %>;
+    var d1 = <%= check_runs.collect { |run| [run.created_at.to_i * 1000, run.duration] }.to_json.html_safe %>;
     var ids = <%= check_runs.collect(&:id).to_json.html_safe %>;
 
     $(document).ready(function(){

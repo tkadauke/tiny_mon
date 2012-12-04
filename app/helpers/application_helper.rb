@@ -36,7 +36,7 @@ module ApplicationHelper
     end
     
     content_tag :ul do
-      items.collect { |item| content_tag(:li) { item } }
+      items.collect { |item| content_tag(:li) { item.html_safe } }.join.html_safe
     end
   end
   

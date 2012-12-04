@@ -1,7 +1,7 @@
 .clearfix {
   display: inline-block;
   
-  :after {
+  &:after {
     content: ".";
     display: block;
     height: 0;
@@ -61,12 +61,12 @@
 ul.action-list > li {
   display: inline;
   
-  :after {
+  &:after {
     content: "|";
     padding: 0 0 0 0.2em;
   }
   
-  :last-child:after {
+  &:last-child:after {
     content: "";
   }
   

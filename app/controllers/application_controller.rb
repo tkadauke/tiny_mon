@@ -26,7 +26,10 @@ protected
         yield if block_given?
       else
         flash[:error] = t('flash.error.access_denied')
-        redirect_to root_path
+        respond_to do |wants|
+          wants.html { redirect_to root_path }
+          wants.json { render :json => {}, :status => :unauthorized }
+        end
         false
       end
     else

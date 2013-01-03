@@ -25,11 +25,7 @@ protected
       if current_user.send(method.to_s.gsub(/\!$/, '?'), *args)
         yield if block_given?
       else
-        flash[:error] = t('flash.error.access_denied')
-        respond_to do |wants|
-          wants.html { redirect_to root_path }
-          wants.json { render :json => {}, :status => :unauthorized }
-        end
+        deny_access
         false
       end
     else
@@ -56,7 +52,12 @@ protected
   def deny_access(message = nil, path = root_path)
     store_location
     flash[:error] = message || I18n.t("flash.error.access_denied")
-    redirect_to path
+    
+    respond_to do |wants|
+      wants.html { redirect_to root_path }
+      wants.json { render :json => {}, :status => :unauthorized }
+    end
+    
     return false
   end
   

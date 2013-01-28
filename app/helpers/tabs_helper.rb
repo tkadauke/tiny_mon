@@ -16,16 +16,10 @@ module TabsHelper
     end
     
     def build!
-      @template.content_tag(:ul, :class => 'tabs') do
+      @template.content_tag(:ul, :class => 'nav nav-pills') do
         @tabs.collect do |tab|
-          if tab[:name] == @options[:selected]
-            @template.content_tag(:li, :class => 'selected') do
-              @template.content_tag(:span) { tab[:text] }
-            end
-          else
-            @template.content_tag(:li) do
-              @template.link_to tab[:text], tab[:url]
-            end
+          @template.content_tag(:li, :class => tab[:name] == @options[:selected] ? 'active' : nil) do
+            @template.link_to tab[:text], tab[:url]
           end
         end.join.html_safe
       end

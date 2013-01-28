@@ -1,5 +1,5 @@
-<div class="help">
-  <%= link_to t(".close"), help_path, :method => :delete, :class => 'close' %>
+<div class="alert alert-success alert-block">
+  <%= link_to "&times;".html_safe, help_path, :method => :delete, :class => 'close' %>
 
   <%= render :partial => "help" %>
 </div>

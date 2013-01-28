@@ -1,20 +1,30 @@
-<%= form_for [@account, @site, @health_check], :html => { :class => 'form' } do |f| %>
+<%= form_for [@account, @site, @health_check], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages :header_message => t('.could_not_create_health_check') %>
   
-  <p class="form_item">
-    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
-    <%= f.text_field :name %>
-  </p>
+  <div class="control-group">
+    <%= f.label :name, t('.name'), :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
 
-  <p class="form_item">
-    <span class="label"><%= f.label :description, t('.description') %></span>
-    <%= f.text_area :description, :rows => 5 %>
-  </p>
+  <div class="control-group">
+    <%= f.label :description, t('.description'), :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :rows => 5 %>
+    </div>
+  </div>
 
-  <p class="form_item">
-    <span class="label"><%= f.label :interval, t('.interval'), :class => 'required' %></span>
-    <%= f.select :interval, HealthCheck.intervals_with_units %>
-  </p>
+  <div class="control-group">
+    <%= f.label :interval, t('.interval'), :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.select :interval, HealthCheck.intervals_with_units %>
+    </div>
+  </div>
   
-  <p><%= f.submit t('.save_health_check') %></p>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit t('.save_health_check'), :class => 'btn' %>
+    </div>
+  </div>
 <% end %>

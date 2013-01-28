@@ -1,16 +1,22 @@
-<p class="form_item">
-  <span class="label"><%= f.label :server, t('.server'), :class => 'required' %></span>
-  <%= f.text_field :server %>
-</p>
+<div class="control-group">
+  <%= f.label :server, t('.server'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :server %>
+  </div>
+</div>
 
-<p class="form_item">
-  <span class="label"><%= f.label :login, t('.login'), :class => 'required' %></span>
-  <%= f.text_field :login %>
-</p>
+<div class="control-group">
+  <%= f.label :login, t('.login'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :login %>
+  </div>
+</div>
 
-<p class="form_item">
-  <span class="label"><%= f.label :password, t('.password'), :class => 'required' %></span>
-  <%= f.password_field :password %>
-</p>
+<div class="control-group">
+  <%= f.label :password, t('.password'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.password_field :password %>
+  </div>
+</div>
 
 <%= render :partial => "/steps/check_email_warning" %>

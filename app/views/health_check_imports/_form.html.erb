@@ -2,15 +2,19 @@
 
 <%= f.hidden_field :health_check_template_id %>
 
-<p class="form_item">
-  <span class="label"><%= f.label :description, t('.description') %></span>
-  <%= f.text_field :description %>
-</p>
+<div class="control-group">
+  <%= f.label :description, t('.description'), :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :description %>
+  </div>
+</div>
 
-<p class="form_item">
-  <span class="label"><%= f.label :csv_data, t('.csv_data'), :class => 'required' %></span>
-  <%= f.text_area :csv_data, :cols => 80, :style => 'font-family: "Courier New", Courier, monospace' %>
-</p>
+<div class="control-group">
+  <%= f.label :csv_data, t('.csv_data'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_area :csv_data, :cols => 80, :style => 'font-family: "Courier New", Courier, monospace' %>
+  </div>
+</div>
 
 <p>
   <%= f.submit t('.preview') %>

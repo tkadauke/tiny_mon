@@ -1,8 +1,10 @@
-<p class="form_item">
-  <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
-  <span class="desc"><%= t('.name_specifying_button') %></span>
-  <%= f.text_field :name %>
-</p>
+<div class="control-group">
+  <%= f.label :name, t('.name'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :name %>
+    <p><small><%= t('.name_specifying_button') %></small></p>
+  </div>
+</div>
 
 <%= render :partial => "/steps/scope_field", :locals => { :f => f } %>
 

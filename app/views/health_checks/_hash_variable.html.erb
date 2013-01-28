@@ -1,29 +1,30 @@
 <% hash_id = "hash_#{rand(1_000_000)}" %>
-<p class="form_item" id="<%= hash_id %>">
-  <span class="label">
-    <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'required' : '' %>
-    <%= link_to_function t(".add_more"), %{
-      element = '<span id="#{hash_id}_' + #{hash_id}_index + '">' +
-        '<input type="text" id="health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_key" name="health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][key]" size="30" /> => ' +
-        '<input type="text" id="health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_value" name="health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][value]" size="30" />' +
-        '<a href="#" onclick="$(\\'##{hash_id}_' + #{hash_id}_index + '\\').remove()">[X]</a>' +
-        '<br/>' +
-      '</span>'
+<div class="control-group" id="<%= hash_id %>">
+  <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'control-label required' : 'control-label' %>
+  <%= link_to_function t(".add_more"), %{
+    element = '<span id="#{hash_id}_' + #{hash_id}_index + '">' +
+      '<input type="text" id="health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_key" name="health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][key]" size="30" /> => ' +
+      '<input type="text" id="health_check_template_data_#{variable.name}_' + #{hash_id}_index + '_value" name="health_check[template_data][#{variable.name}][' + #{hash_id}_index + '][value]" size="30" />' +
+      '<a href="#" onclick="$(\\'##{hash_id}_' + #{hash_id}_index + '\\').remove()">[X]</a>' +
+      '<br/>' +
+    '</span>'
       
-      $('##{hash_id}').append(element);
-      #{hash_id}_index++;
-    } %>
-  </span>
-  <span class="desc"><%=h variable.description %></span>
-  <% hash = (f.object.send(variable.name) || { '0' => { 'key' => '', 'value' => '' } }); index = 0 %>
-  <% hash.sort_by { |x| x.first.to_i }.collect { |x| x.last }.each_with_index do |value, index| %>
-    <%= f.fields_for variable.name do |pair| %>
-      <span id="<%= [hash_id, index].join('_') %>">
-        <%= pair.fields_for index.to_s do |fields| %>
-          <%= fields.text_field 'key', :value => value['key'] %> => <%= fields.text_field 'value', :value => value['value'] %><%= link_to_function '[X]', "$('##{[hash_id, index].join('_')}').remove()" %><br/>
-        <% end %>
-      </span>
+    $('##{hash_id}').append(element);
+    #{hash_id}_index++;
+  } %>
+  
+  <div class="controls">
+    <% hash = (f.object.send(variable.name) || { '0' => { 'key' => '', 'value' => '' } }); index = 0 %>
+    <% hash.sort_by { |x| x.first.to_i }.collect { |x| x.last }.each_with_index do |value, index| %>
+      <%= f.fields_for variable.name do |pair| %>
+        <span id="<%= [hash_id, index].join('_') %>">
+          <%= pair.fields_for index.to_s do |fields| %>
+            <%= fields.text_field 'key', :value => value['key'] %> => <%= fields.text_field 'value', :value => value['value'] %><%= link_to_function '[X]', "$('##{[hash_id, index].join('_')}').remove()" %><br/>
+          <% end %>
+        </span>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= javascript_tag %{var #{hash_id}_index = #{hash.keys.size};} %>
-</p>
+    <%= javascript_tag %{var #{hash_id}_index = #{hash.keys.size};} %>
+    <p><small><%=h variable.description %></small></p>
+  </div>
+</div>

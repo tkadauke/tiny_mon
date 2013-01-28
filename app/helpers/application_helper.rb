@@ -35,9 +35,14 @@ module ApplicationHelper
       end
     end
     
-    content_tag :ul do
-      items.collect { |item| content_tag(:li) { item.html_safe } }.join.html_safe
-    end
+    items.collect do |item|
+      content_tag(:li) do
+        [
+          item,
+          (content_tag(:span, :class => 'divider') { '/'} unless item == items.last)
+        ].join.html_safe
+      end
+    end.join.html_safe
   end
   
   def status_icon(model, version = :small)
@@ -47,6 +52,20 @@ module ApplicationHelper
     status = 'offline' if model.respond_to?(:enabled?) && !model.enabled?
     
     image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
+  end
+  
+  def status_class(model)
+    return if model.blank? || model.status.blank?
+    
+    if model.status == 'success'
+      status = 'success'
+    elsif model.status == 'failure'
+      status = 'error'
+    elsif model.respond_to?(:enabled?) && !model.enabled?
+      status = 'warning'
+    end
+    
+    status
   end
   
   def overall_status(model = current_user.current_account, version = :large)

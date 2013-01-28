@@ -2,19 +2,27 @@
 
 <%= render :partial => "tabs", :locals => { :selected => :edit } %>
 
-<% form_for [:admin, @account], :html => { :class => 'form' } do |f| %>
+<%= form_for [:admin, @account], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages :header_message => t('.could_not_update_account') %>
   
-  <p class="form_item">
-    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
-    <%= f.text_field :name %>
-  </p>
+  <div class="control-group">
+    <%= f.label :name, t('.name'), :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
   
-  <p class="form_item">
-    <span class="label"><%= f.label :maximum_check_runs_per_day, t(".maximum_check_runs_per_day") %></span>
-    <span class="desc"><%= t(".maximum_check_runs_per_day_hint") %></span>
-    <%= f.text_field :maximum_check_runs_per_day %>
-  </p>
+  <div class="control-group">
+    <%= f.label :maximum_check_runs_per_day, t(".maximum_check_runs_per_day"), :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :maximum_check_runs_per_day %>
+      <p><small><%= t(".maximum_check_runs_per_day_hint") %></small></p>
+    </div>
+  </div>
   
-  <p><%= f.submit t('.save_account') %></p>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit t('.save_account'), :class => 'btn' %>
+    </div>
+  </div>
 <% end %>

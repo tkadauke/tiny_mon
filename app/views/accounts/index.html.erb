@@ -1,7 +1,7 @@
 <% if @accounts.blank? %>
   <%= render :partial => "no_account" %>
 <% else %>
-  <table>
+  <table class="table table-hover">
     <thead>
       <tr>
         <th><%= t('.status') %></th>

@@ -2,7 +2,7 @@
 
 <%= render :partial => "tabs", :locals => { :selected => :information } %>
 
-<dl>
+<dl class="dl-horizontal">
   <dt><%= t('.description') %></dt>
   <dd>
     <%= simple_format auto_link(@health_check.description) unless @health_check.description.blank? %>

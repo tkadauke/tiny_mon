@@ -54,7 +54,7 @@ protected
     flash[:error] = message || I18n.t("flash.error.access_denied")
     
     respond_to do |wants|
-      wants.html { redirect_to root_path }
+      wants.html { redirect_to path }
       wants.json { render :json => {}, :status => :unauthorized }
     end
     

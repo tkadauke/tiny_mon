@@ -2,13 +2,14 @@
 
 <%= render :partial => "tabs", :locals => { :selected => :information } %>
 
-<dl class="dl-horizontal">
-  <dt><%= t('.description') %></dt>
-  <dd>
-    <%= simple_format auto_link(@health_check.description) unless @health_check.description.blank? %>
-    <%= button_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post if current_user.can_run_health_checks?(@account) %>
-  </dd>
-
+<dl class="dl-horizontal well">
+  <% unless @health_check.description.blank? %>
+    <dt><%= t('.description') %></dt>
+    <dd>
+      <%= simple_format auto_link(@health_check.description) unless @health_check.description.blank? %>
+    </dd>
+  <% end %>
+  
   <dt><%= t('.interval') %></dt>
   <dd><%= t('.interval_minutes', :count => @health_check.interval) %></dd>
 

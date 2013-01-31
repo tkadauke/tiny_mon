@@ -2,7 +2,7 @@
 
 <%= render :partial => "tabs", :locals => { :selected => :information } %>
 
-<dl class="dl-horizontal">
+<dl class="dl-horizontal well">
   <dt><%= t(".status") %></dt>
   <dd><%= overall_status(@site) %></dd>
   
@@ -19,8 +19,7 @@
       <form>
         <span><%= t(".token") %></span><br/>
         <%= text_field_tag nil, @site.deployment_token, :class => 'copy' %>
-      </form><br/>
-      <form>
+        <br/>
         <span><%= t(".deployment_url") %></span><br/>
         <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :class => 'copy' %>
       </form>

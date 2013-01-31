@@ -6,7 +6,7 @@
   <p><%= t('.running') %> <%= image_tag 'spinner.gif' %></p>
   <%= javascript_tag 'window.setTimeout(function() { location.reload() }, 1000)' %>
 <% else %>
-  <dl class="dl-horizontal">
+  <dl class="dl-horizontal well">
     <dt><%= t('.status') %></dt>
     <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
 

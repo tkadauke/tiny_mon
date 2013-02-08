@@ -34,7 +34,7 @@ class ApplicationControllerTest < ActionController::TestCase
   test "should report error on guest only action for logged in user" do
     login_with @user
     
-    get :guest_only_action
+    get :guest_only_action, :locale => 'en'
     assert_response :redirect
     assert_not_nil flash[:error]
   end
@@ -42,25 +42,25 @@ class ApplicationControllerTest < ActionController::TestCase
   test "should return unauthorized status on guest only action for logged in user when format is json" do
     login_with @user
     
-    get :guest_only_action, :format => :json
+    get :guest_only_action, :locale => 'en', :format => :json
     assert_response :unauthorized
   end
 
   test "should report error on user only action for guest" do
-    get :user_only_action
+    get :user_only_action, :locale => 'en'
     assert_response :redirect
     assert_not_nil flash[:error]
   end
 
   test "should return unauthorized status on user only action for guest when format is json" do
-    get :user_only_action, :format => :json
+    get :user_only_action, :locale => 'en', :format => :json
     assert_response :unauthorized
   end
 
   test "should return unauthorized status on admin only action when format is json" do
     login_with @user
     
-    get :admin_only_action, :format => :json
+    get :admin_only_action, :locale => 'en', :format => :json
     assert_response :unauthorized
   end
 end

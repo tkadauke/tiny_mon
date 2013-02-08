@@ -14,7 +14,7 @@ module ApplicationHelper
     sofar = ''
     elements = request.fullpath.split('?').first.split('/')
     parent_model = nil
-    for i in 1...elements.size
+    for i in 2...elements.size
       sofar += '/' + elements[i]
       
       parent_model, link_text = begin

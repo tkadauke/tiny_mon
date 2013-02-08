@@ -11,7 +11,7 @@ class AdminControllerTest < ActionController::TestCase
   end
   
   test "should show index" do
-    get :index
+    get :index, :locale => 'en'
     assert_response :success
   end
 end

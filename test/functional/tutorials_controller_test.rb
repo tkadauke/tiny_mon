@@ -10,14 +10,14 @@ class TutorialsControllerTest < ActionController::TestCase
   
   test "should start tutorial" do
     assert_redirected_back do
-      post :create, :id => 'test_tutorial'
+      post :create, :locale => 'en', :id => 'test_tutorial'
       assert_equal 'test_tutorial', @user.soft_settings.get("tutorials.current")
     end
   end
   
   test "should finish tutorial" do
     assert_redirected_back do
-      delete :destroy
+      delete :destroy, :locale => 'en'
       assert_nil @user.soft_settings.get("tutorials.current")
     end
   end

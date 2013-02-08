@@ -9,14 +9,14 @@ class SettingsControllerTest < ActionController::TestCase
   test "should show user settings" do
     login_with @user
     
-    get 'show'
+    get 'show', :locale => 'en'
     assert_response :success
   end
   
   test "should update user settings" do
     login_with @user
     
-    post 'create', :configuration => { :prowl_enabled => '1' }
+    post 'create', :locale => 'en', :configuration => { :prowl_enabled => '1' }
     assert_not_nil flash[:notice]
     assert_response :redirect
     

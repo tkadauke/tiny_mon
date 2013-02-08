@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   before_filter :set_language
-
+  before_filter :set_locale
+  
   helper_method :current_user_session, :current_user, :logged_in?
 
 protected
@@ -33,14 +34,24 @@ protected
     end
   end
   
+  def default_url_options(options={})
+    { :locale => I18n.locale }
+  end
+  
   def set_language
+    return if params[:locale]
+    
     if logged_in?
-      I18n.locale = current_user.config.language
+      redirect_to :locale => current_user.config.language
     else
-      I18n.locale = TinyMon::Config.language if TinyMon::Config.language
+      redirect_to :locale => TinyMon::Config.language if TinyMon::Config.language
     end
   end
-
+  
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+  
   def login_required
     deny_access(I18n.t("flash.error.login_required"), login_path) unless current_user
   end

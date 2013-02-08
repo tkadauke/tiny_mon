@@ -13,7 +13,7 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should show comments from check run" do
     comment = @check_run.comments.create(:text => 'foobar', :user => @user)
-    get :index, :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id
+    get :index, :locale => 'en', :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id
     assert_response :success
     
     assert_match /foobar/, @response.body
@@ -21,7 +21,7 @@ class CommentsControllerTest < ActionController::TestCase
   
   test "should show comments from health check" do
     comment = @check_run.comments.create(:text => 'foobar', :user => @user)
-    get :index, :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink
+    get :index, :locale => 'en', :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink
     assert_response :success
     
     assert_match /foobar/, @response.body
@@ -29,7 +29,7 @@ class CommentsControllerTest < ActionController::TestCase
   
   test "should show comments by user" do
     comment = @check_run.comments.create(:text => 'foobar', :user => @user)
-    get :index, :user_id => @user.id
+    get :index, :locale => 'en', :user_id => @user.id
     assert_response :success
     
     assert_match /foobar/, @response.body
@@ -37,13 +37,13 @@ class CommentsControllerTest < ActionController::TestCase
   
   test "should create comment" do
     assert_difference 'Comment.count' do
-      post :create, :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id, :comment => { :text => 'foobar' }
+      post :create, :locale => 'en', :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id, :comment => { :text => 'foobar' }
       assert_response :redirect
     end
   end
   
   test "should get new" do
-    get :new, :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id
+    get :new, :locale => 'en', :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id
     assert_response :success
   end
 end

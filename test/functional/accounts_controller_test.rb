@@ -10,29 +10,29 @@ class AccountsControllerTest < ActionController::TestCase
   end
   
   test "should show account index" do
-    get :index
+    get :index, :locale => 'en'
     assert_response :success
   end
   
   test "should show new" do
-    get :new
+    get :new, :locale => 'en'
     assert_response :success
   end
   
   test "should show edit" do
-    get :edit, :id => @account
+    get :edit, :locale => 'en', :id => @account
     assert_response :success
   end
   
   test "should show account info" do
-    get :show, :id => @account
+    get :show, :locale => 'en', :id => @account
     assert_response :success
   end
   
   test "should create account" do
     assert_difference 'Account.count' do
       assert_difference 'UserAccount.count' do
-        post :create, :account => { :name => 'other account' }
+        post :create, :locale => 'en', :account => { :name => 'other account' }
         assert_response :redirect
         assert_not_nil flash[:notice]
       end
@@ -42,7 +42,7 @@ class AccountsControllerTest < ActionController::TestCase
   test "should not create invalid account" do
     assert_no_difference 'Account.count' do
       assert_no_difference 'UserAccount.count' do
-        post :create, :account => { :name => nil }
+        post :create, :locale => 'en', :account => { :name => nil }
         assert_response :success
         assert_nil flash[:notice]
       end
@@ -50,20 +50,20 @@ class AccountsControllerTest < ActionController::TestCase
   end
   
   test "should update account" do
-    post :update, :id => @account, :account => { :name => 'changed name' }
+    post :update, :locale => 'en', :id => @account, :account => { :name => 'changed name' }
     assert_response :redirect
     assert_not_nil flash[:notice]
     assert_equal 'changed name', @account.reload.name
   end
   
   test "should not update account limits" do
-    post :update, :id => @account, :account => { :maximum_check_runs_per_day => 1000 }
+    post :update, :locale => 'en', :id => @account, :account => { :maximum_check_runs_per_day => 1000 }
     assert_response :redirect
     assert_not_equal 1000, @account.reload.maximum_check_runs_per_day
   end
   
   test "should not update invalid account" do
-    post :update, :id => @account, :account => { :name => nil }
+    post :update, :locale => 'en', :id => @account, :account => { :name => nil }
     assert_response :success
     assert_nil flash[:notice]
     assert_equal 'account', @account.reload.name
@@ -71,14 +71,14 @@ class AccountsControllerTest < ActionController::TestCase
   
   test "should switch account" do
     @second_account = @user.accounts.create(:name => 'second account')
-    post :switch, :id => @second_account
+    post :switch, :locale => 'en', :id => @second_account
     assert_not_nil flash[:notice]
     assert_equal @second_account, @user.reload.current_account
   end
   
   test "should not switch to account that the user does not belong to" do
     @second_account = Account.create(:name => 'second account')
-    post :switch, :id => @second_account
+    post :switch, :locale => 'en', :id => @second_account
     assert_not_nil flash[:error]
     assert_equal @account, @user.reload.current_account
   end

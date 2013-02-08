@@ -10,7 +10,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new, :account_id => @account
+    get :new, :locale => 'en', :account_id => @account
     assert_response :success
   end
   
@@ -18,7 +18,7 @@ class UserAccountsControllerTest < ActionController::TestCase
     second_user = User.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
     assert_difference 'UserAccount.count' do
       assert !second_user.can_switch_to_account?(@account)
-      post :create, :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
+      post :create, :locale => 'en', :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
       assert_response :redirect
       assert_not_nil flash[:notice]
       assert second_user.can_switch_to_account?(@account)
@@ -28,7 +28,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   test "should set current account when account mapping is created if user has no account" do
     second_user = User.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
     assert_nil second_user.current_account
-    post :create, :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
+    post :create, :locale => 'en', :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
     assert_not_nil second_user.reload.current_account
   end
   
@@ -36,13 +36,13 @@ class UserAccountsControllerTest < ActionController::TestCase
     new_account = Account.create(:name => 'another')
     second_user = User.create(:current_account => new_account, :full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
     
-    post :create, :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
+    post :create, :locale => 'en', :account_id => @account, :user_account => { :email => 'jane.doe@example.com' }
     assert_equal new_account, second_user.reload.current_account
   end
   
   test "should not create user account mapping if user does not exist" do
     assert_no_difference 'UserAccount.count' do
-      post :create, :account_id => @account, :user_account => { :email => 'foo@bar.com' }
+      post :create, :locale => 'en', :account_id => @account, :user_account => { :email => 'foo@bar.com' }
       assert_response :success
       assert_nil flash[:notice]
       assert assigns(:user_account).errors[:email]
@@ -52,7 +52,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   test "should update user account mapping" do
     second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345')
 
-    post :update, :account_id => @account, :id => UserAccount.last, :user_account => { :role => 'admin' }
+    post :update, :locale => 'en', :account_id => @account, :id => UserAccount.last, :user_account => { :role => 'admin' }
     assert_response :redirect
     assert_not_nil flash[:notice]
   end
@@ -60,7 +60,7 @@ class UserAccountsControllerTest < ActionController::TestCase
   test "should remove user account mapping" do
     second_user = @account.users.create(:full_name => 'Jane Doe', :email => 'jane.doe@example.com', :password => '12345', :password_confirmation => '12345', :current_account => @account)
     assert_difference 'UserAccount.count', -1 do
-      delete :destroy, :account_id => @account, :id => UserAccount.last
+      delete :destroy, :locale => 'en', :account_id => @account, :id => UserAccount.last
       assert_response :redirect
       assert_not_nil flash[:notice]
     end

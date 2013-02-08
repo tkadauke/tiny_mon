@@ -11,22 +11,22 @@ class Admin::AccountsControllerTest < ActionController::TestCase
   end
   
   test "should show index" do
-    get :index
+    get :index, :locale => 'en'
     assert_response :success
   end
   
   test "should show account" do
-    get :show, :id => @account
+    get :show, :locale => 'en', :id => @account
     assert_response :success
   end
   
   test "should show edit" do
-    get :edit, :id => @account
+    get :edit, :locale => 'en', :id => @account
     assert_response :success
   end
   
   test "should update account" do
-    post :update, :id => @account, :account => { :maximum_check_runs_per_day => 1000 }
+    post :update, :locale => 'en', :id => @account, :account => { :maximum_check_runs_per_day => 1000 }
     assert_response :redirect
     assert_equal 1000, @account.reload.maximum_check_runs_per_day
   end

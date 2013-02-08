@@ -17,7 +17,7 @@ class ScreenshotComparisonsControllerTest < ActionController::TestCase
     
     comparison = @check_run.screenshot_comparisons.create(:first_screenshot => screenshot1, :second_screenshot => screenshot2, :checksum => 'abcdef0123456789', :file => MockScreenshotFile.new)
     
-    get :show, :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id, :id => comparison.id
+    get :show, :locale => 'en', :account_id => @account.id, :site_id => @site.permalink, :health_check_id => @health_check.permalink, :check_run_id => @check_run.id, :id => comparison.id
     assert_response :success
   end
 end

@@ -9,7 +9,7 @@ class HealthCheckTemplateVariablesControllerTest < ActionController::TestCase
   end
   
   test "should get new" do
-    xhr :get, :new
+    xhr :get, :new, :locale => 'en'
     assert_response :success
   end
 end

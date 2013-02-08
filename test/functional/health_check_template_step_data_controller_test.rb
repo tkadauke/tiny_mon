@@ -9,7 +9,7 @@ class HealthCheckTemplateStepDataControllerTest < ActionController::TestCase
   end
   
   test "should get new" do
-    xhr :get, :new, :step_type => 'visit'
+    xhr :get, :new, :locale => 'en', :step_type => 'visit'
     assert_response :success
   end
 end

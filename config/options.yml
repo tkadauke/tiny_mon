@@ -1,12 +1,15 @@
 - language:
     name:
-      en: "Language"
-      de: "Sprache"
+      en: "Language for notifications"
+      de: "Sprache für Benachrichtigungen"
     type: String
     default: en
     values:
       English: en
       Deutsch: de
+    description:
+      en: "The language used for notifications. To change the language of the user interface, use language switcher in the page's header."
+      de: "Die Sprache für Benachrichtigungen. Um die Sprache der Seite zu ändern, benutzen Sie bitte die Landessymbole in der Kopfzeile."
 - email_enabled:
     name:
       en: "Email notifications enabled"

@@ -11,12 +11,8 @@
     <div class="container">
       <header>
         <div class="row">
-          <div id="logo" class="span6">
-            <h1><%= link_to 'TinyMon', root_path %><sup>&beta;</sup></h1>
-            <p><%= t('layouts.subtitle') %></p>
-          </div>
           <% if logged_in? %>
-            <div class="span5">
+            <div class="span11">
               <ul class="inline pull-right">
                 <li>
                   <%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %>
@@ -30,15 +26,21 @@
                 <% if current_user.can_see_account_details? %>
                   <% if current_user.current_account %>
                     <li class="account">
-                      <%= link_to current_user.current_account.name, accounts_path %>
-                      <% if current_user.accounts.size > 1 %>
-                        <ul>
-                          <% current_user.accounts.each do |account| %>
-                            <% next if account == current_user.current_account %>
-                            <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
-                          <% end %>
-                        </ul>
-                      <% end %>
+                      <div class="btn-group">
+                        <button class="btn btn-mini" onclick="document.location='<%= accounts_path %>'"><%= current_user.current_account.name  %></button>
+                        <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                          <span class="caret"></span>
+                        </button>
+                        
+                        <% if current_user.accounts.size > 1 %>
+                          <ul class="dropdown-menu">
+                            <% current_user.accounts.each do |account| %>
+                              <% next if account == current_user.current_account %>
+                              <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
+                            <% end %>
+                          </ul>
+                        <% end %>
+                      </div>
                     </li>
                   <% else %>
                     <li><%= link_to t('layouts.accounts'), accounts_path %></li>
@@ -76,18 +78,27 @@
       
         <div class="row">
           <nav id="menu" class="span12">
-            <ul class="nav nav-tabs">
-              <li<%= ' class="active"'.html_safe if @tab == :start %>><%= link_to t('layouts.home'), root_path %></li>
-              <li<%= ' class="active"'.html_safe if @tab == :sites %>><%= link_to t('layouts.sites'), sites_path %></li>
-              <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
-              <li class="pull-right"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
-            </ul>
+            <div class="navbar">
+              <div class="navbar-inner">
+                <%= link_to 'TinyMon', root_path, :class => 'brand' %>
+                <ul class="nav">
+                  <li<%= ' class="active"'.html_safe if @tab == :sites %>><%= link_to t('layouts.sites'), sites_path %></li>
+                  <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
+                  <li class="pull-right"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+                </ul>
+              </div>
+            </div>
           </nav>
         </div>
       </header>
 
       <div class="row">
         <div class="span12">
+          <ul class="breadcrumb">
+            <li><%= t('layouts.you_are_here') %> <span class="divider">:</span></li>
+            <%= bread_crumb %>
+          </ul>
+
           <% if flash[:error] %>
             <div class="alert alert-error">
               <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -103,11 +114,6 @@
           <% if logged_in? && current_user.current_account %>
             <%= account_check_run_limit_warning_if_needed %>
           <% end %>
-          
-          <ul class="breadcrumb">
-            <li><%= t('layouts.you_are_here') %> <span class="divider">:</span></li>
-            <%= bread_crumb %>
-          </ul>
           <%= help %>
           <%= yield %>
         </div>

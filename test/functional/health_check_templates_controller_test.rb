@@ -11,26 +11,26 @@ class HealthCheckTemplatesControllerTest < ActionController::TestCase
   test "should get index" do
     template = @user.health_check_templates.create(:name => 'Test template', :name_template => 'Testtest', :interval => 60, :account => @account)
     
-    get :index
+    get :index, :locale => 'en'
     assert_response :success
     assert_match /Test template/, @response.body
   end
   
   test "should get new" do
-    get :new
+    get :new, :locale => 'en'
     assert_response :success
   end
   
   test "should get edit" do
     template = @user.health_check_templates.create(:name => 'Test template', :name_template => 'Testtest', :interval => 60, :account => @account)
     
-    get :edit, :id => template
+    get :edit, :locale => 'en', :id => template
     assert_response :success
   end
   
   test "should create template" do
     assert_difference 'HealthCheckTemplate.count' do
-      post :create, :health_check_template => { :name => 'Test template', :name_template => 'Testtest', :interval => 60 }
+      post :create, :locale => 'en', :health_check_template => { :name => 'Test template', :name_template => 'Testtest', :interval => 60 }
       assert_response :redirect
       assert_not_nil flash[:notice]
     end
@@ -38,7 +38,7 @@ class HealthCheckTemplatesControllerTest < ActionController::TestCase
   
   test "should not create invalid template" do
     assert_no_difference 'HealthCheckTemplate.count' do
-      post :create, :health_check_template => { :name => 'Test template', :name_template => 'Testtest' }
+      post :create, :locale => 'en', :health_check_template => { :name => 'Test template', :name_template => 'Testtest' }
       assert_response :success
       assert_nil flash[:notice]
     end
@@ -47,7 +47,7 @@ class HealthCheckTemplatesControllerTest < ActionController::TestCase
   test "should update template" do
     template = @user.health_check_templates.create(:name => 'Test template', :name_template => 'Testtest', :interval => 60, :account => @account)
     
-    post :update, :id => template, :health_check_template => { :name => 'Test template', :name_template => 'Test' }
+    post :update, :locale => 'en', :id => template, :health_check_template => { :name => 'Test template', :name_template => 'Test' }
     assert_response :redirect
     
     assert_equal 'Test', template.reload.name_template
@@ -57,7 +57,7 @@ class HealthCheckTemplatesControllerTest < ActionController::TestCase
     template = @user.health_check_templates.create(:name => 'Test template', :name_template => 'Testtest', :interval => 60, :account => @account)
     
     assert_difference 'HealthCheckTemplate.count', -1 do
-      delete :destroy, :id => template
+      delete :destroy, :locale => 'en', :id => template
       assert_response :redirect
       assert_not_nil flash[:notice]
     end

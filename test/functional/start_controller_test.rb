@@ -9,13 +9,13 @@ class StartControllerTest < ActionController::TestCase
   end
   
   test "should get index" do
-    get :index
+    get :index, :locale => 'en'
     assert_response :success
     assert assigns(:check_runs)
   end
   
   test "should update index" do
-    xhr :get, :index
+    xhr :get, :index, :locale => 'en'
     assert_response :success
     assert assigns(:check_runs)
   end

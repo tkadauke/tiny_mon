@@ -10,14 +10,14 @@ class HelpControllerTest < ActionController::TestCase
   
   test "should turn on help" do
     assert_redirected_back do
-      post :create
+      post :create, :locale => 'en'
       assert_equal '1', @user.soft_settings.get("help.show")
     end
   end
   
   test "should turn off help" do
     assert_redirected_back do
-      delete :destroy
+      delete :destroy, :locale => 'en'
       assert_equal '0', @user.soft_settings.get("help.show")
     end
   end

@@ -12,31 +12,31 @@ class DeploymentsControllerTest < ActionController::TestCase
   test "should get index" do
     deployment = @site.deployments.create
     
-    get :index, :account_id => @account, :site_id => @site.permalink
+    get :index, :locale => 'en', :account_id => @account, :site_id => @site.permalink
     assert_response :success
   end
   
   test "should get new" do
-    get :new, :account_id => @account, :site_id => @site.permalink
+    get :new, :locale => 'en', :account_id => @account, :site_id => @site.permalink
     assert_response :success
   end
   
   test "should show deployment" do
     deployment = @site.deployments.create
-    get :show, :account_id => @account, :site_id => @site.permalink, :id => deployment
+    get :show, :locale => 'en', :account_id => @account, :site_id => @site.permalink, :id => deployment
     assert_response :success
   end
   
   test "should create deployment" do
     assert_difference 'Deployment.count' do
-      post :create, :account_id => @account, :site_id => @site.permalink
+      post :create, :locale => 'en', :account_id => @account, :site_id => @site.permalink
       assert_response :redirect
     end
   end
   
   test "should create deployment with token" do
     assert_difference 'Deployment.count' do
-      post :create, :token => @site.deployment_token
+      post :create, :locale => 'en', :token => @site.deployment_token
       assert_response :redirect
     end
   end

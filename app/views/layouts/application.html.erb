@@ -12,7 +12,7 @@
       <header>
         <div class="row">
           <div id="logo" class="span6">
-            <h1><a href="/">TinyMon</a><sup>&beta;</sup></h1>
+            <h1><%= link_to 'TinyMon', root_path %><sup>&beta;</sup></h1>
             <p><%= t('layouts.subtitle') %></p>
           </div>
           <% if logged_in? %>
@@ -21,6 +21,11 @@
                 <li>
                   <%= t('layouts.user_greeter', :user => link_to(current_user.full_name, user_path(current_user))).html_safe %>
                   <%= gravatar(current_user) %>
+                </li>
+                <li>
+                  <% ['en', 'de'].each do |language| %>
+                    <%= link_to image_tag("language/#{language}.png"), :locale => language %>
+                  <% end %>
                 </li>
                 <% if current_user.can_see_account_details? %>
                   <% if current_user.current_account %>
@@ -57,6 +62,11 @@
             <div class="span6">
               <ul class="inline pull-right">
                 <li><%= t('layouts.guest_greeter') %></li>
+                <li>
+                  <% ['en', 'de'].each do |language| %>
+                    <%= link_to image_tag("language/#{language}.png"), :locale => language %>
+                  <% end %>
+                </li>
                 <li><%= link_to t('layouts.login'), login_path %></li>
                 <li><%= link_to t('layouts.signup'), new_user_path %></li>
               </ul>
@@ -67,9 +77,9 @@
         <div class="row">
           <nav id="menu" class="span12">
             <ul class="nav nav-tabs">
-              <li<%= ' class="active"'.html_safe if @tab == :start %>><a href="/"><%= t('layouts.home') %></a></li>
-              <li<%= ' class="active"'.html_safe if @tab == :sites %>><a href="/sites"><%= t('layouts.sites') %></a></li>
-              <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><a href="/health_checks"><%= t('layouts.health_checks') %></a></li>
+              <li<%= ' class="active"'.html_safe if @tab == :start %>><%= link_to t('layouts.home'), root_path %></li>
+              <li<%= ' class="active"'.html_safe if @tab == :sites %>><%= link_to t('layouts.sites'), sites_path %></li>
+              <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
               <li class="pull-right"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
             </ul>
           </nav>
@@ -107,9 +117,9 @@
         <div class="row">
           <div class="span12">
             <div>
-              <a href="/"><%= t('layouts.home') %></a> | 
-              <a href="/sites"><%= t('layouts.sites') %></a> |
-              <a href="/health_checks"><%= t('layouts.health_checks') %></a>
+              <%= link_to t('layouts.home'), root_path %> | 
+              <%= link_to t('layouts.sites'), sites_path %> |
+              <%= link_to t('layouts.health_checks'), health_checks_path %>
             </div>
             <div class="pull-right">
               <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %>

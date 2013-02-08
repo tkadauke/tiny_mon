@@ -60,6 +60,9 @@ de:
       over_x_years:
         one: 'mehr als 1 Jahr'
         other: 'mehr als %{count} Jahren'
+      almost_x_years:
+        one: 'fast 1 Jahr'
+        other: 'fast %{count} Jahren'
     prompts:
       second: "Sekunden"
       minute: "Minuten"

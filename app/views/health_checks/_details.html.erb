@@ -24,14 +24,14 @@
               <% a.link_to_function t(".invert"), %{$('table input[type="checkbox"]').each(function(index) { $(this).prop('checked', !$(this).prop('checked'));})} %>
             <% end %>
 
-            <%= submit_tag t(".edit_checked") %>
+            <%= submit_tag t(".edit_checked"), :class => 'btn' %>
           </td>
         </tr>
       </tfoot>
     <% end %>
     <tbody>
       <% @health_checks.each do |health_check| %>
-        <tr>
+        <tr class="<%= status_class health_check %>">
           <% if current_user.can_edit_health_checks?(@account) %>
             <td><%= check_box_tag "health_check_ids[]", health_check.id %></td>
           <% end %>

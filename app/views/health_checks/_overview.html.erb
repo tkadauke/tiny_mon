@@ -1,7 +1,7 @@
 <div class="clearfix">
   <ul class="check-overview">
     <% @health_checks.each do |health_check| %>
-      <li>
+      <li class="<%= status_class health_check %>">
         <div class="status">
           <%= status_icon health_check, :large %>
         </div>

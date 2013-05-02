@@ -2,18 +2,23 @@
   <p><%= t('.no_comments_found') %></p>
 <% else %>
   <% @comments.each do |comment| %>
-    <p>
-      <%= status_icon comment.check_run %>
-      <%= link_to t('.check_run', :check_run => comment.check_run.id), account_site_health_check_check_run_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check, comment.check_run) %> |
-      <%= link_to (@health_check || comment.check_run.health_check).name, account_site_health_check_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check) %> |
-      <%= link_to (@site || comment.check_run.health_check.site).name, account_site_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site) %>
-      <br/>
-      <%= t('.user_wrote_time_ago', :user => link_to(comment.user.full_name, user_path(comment.user)), :time => time_ago_in_words(comment.created_at)).html_safe %>:
-      <strong><%= comment.title %></strong>
-    </p>
-  
-    <%= simple_format(auto_link(comment.text)) %>
-  
-    <% unless comment == @comments.last %><hr/><% end %>
+    <div class="media">
+      <div class="pull-left">
+        <%= gravatar(comment.user, :size => 64) %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <%= status_icon comment.check_run %>
+          <%= link_to t('.check_run', :check_run => comment.check_run.id), account_site_health_check_check_run_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check, comment.check_run) %> |
+          <%= link_to (@health_check || comment.check_run.health_check).name, account_site_health_check_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check) %> |
+          <%= link_to (@site || comment.check_run.health_check.site).name, account_site_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site) %>
+        </h4>
+      
+        <p><%= t('.user_wrote_time_ago', :user => link_to(comment.user.full_name, user_path(comment.user)), :time => time_ago_in_words(comment.created_at)).html_safe %>:</p>
+        <p><strong><%= comment.title %></strong></p>
+    
+        <%= simple_format(auto_link(comment.text)) %>
+      </div>
+    </div>
   <% end %>
 <% end %>

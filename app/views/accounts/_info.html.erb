@@ -7,8 +7,13 @@
     <% if @account.unlimited_check_runs? %>
       <%= t('.unlimited_check_runs_per_day') %>
     <% else %>
-      <%= t('.check_runs_per_day', :count => @account.check_runs_per_day, :max => @account.maximum_check_runs_per_day) %>
+      <%= t('.check_runs_per_day', :count => @account.maximum_check_runs_per_day) %>
     <% end %>
+  </dd>
+  
+  <dt><%= t(".usage") %></dt>
+  <dd>
+    <%= t('.check_runs_per_day', :count => @account.check_runs_per_day) %>
   </dd>
   
   <dt><%= t('.statistics') %></dt>

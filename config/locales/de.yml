@@ -41,6 +41,7 @@ de:
         one: "1 Site"
         other: "%{count} Sites"
       statistics: Statistiken
+      usage: Nutzung
       unlimited_check_runs_per_day: "Unbeschränkte Anzahl an Testläufen pro Tag"
     new: 
       new_account: "Neues Konto"

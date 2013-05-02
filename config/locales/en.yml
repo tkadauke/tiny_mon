@@ -41,6 +41,7 @@ en:
         one: "1 site"
         other: "%{count} sites"
       statistics: Statistics
+      usage: Usage
       unlimited_check_runs_per_day: "Unlimited check runs per day"
     new: 
       new_account: "New Account"

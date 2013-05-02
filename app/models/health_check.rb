@@ -30,7 +30,8 @@ class HealthCheck < ActiveRecord::Base
   before_save :set_next_check_at, :if => :enabled_changed?
   before_validation :get_info_from_template
   
-  before_save :update_account_check_runs_per_day, :if => :interval_changed_before_save?
+  after_save :update_account_check_runs_per_day
+  after_destroy :update_account_check_runs_per_day
   
   has_permalink :name, :scope => :site_id
   

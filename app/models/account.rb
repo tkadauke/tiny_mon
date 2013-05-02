@@ -6,6 +6,7 @@ class Account < ActiveRecord::Base
   
   has_many :sites
   has_many :health_checks, :through => :sites
+  has_many :enabled_health_checks, :through => :sites, :source => :health_checks, :conditions => { :enabled => true }
   has_many :health_check_templates
   has_many :health_check_imports
   has_many :check_runs
@@ -44,7 +45,7 @@ class Account < ActiveRecord::Base
   end
   
   def update_check_runs_per_day
-    self.check_runs_per_day = health_checks.map(&:check_runs_per_day).sum
+    self.check_runs_per_day = enabled_health_checks.map(&:check_runs_per_day).sum
     save
   end
   

@@ -23,7 +23,7 @@
       <%= render_step_form(f, step) %>
 
       <p>
-        <%= f.submit t('.save_step') %> |
+        <%= f.submit t('.save_step'), :class => 'btn' %> |
         <%= link_to t('.cancel'), account_site_health_check_steps_path(@account, @site, @health_check) %>
       </p>
     <% end %>

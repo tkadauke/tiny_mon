@@ -21,10 +21,10 @@
   <% if current_user.can_edit_health_checks?(@account) %>
     <% if @health_check.enabled? %>
       <dt><%= t('.check_is_enabled') %></dt>
-      <dd><%= button_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :method => :put %></dd>
+      <dd><%= button_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :class => 'btn', :method => :put %></dd>
     <% else %>
       <dt><%= t('.check_is_disabled') %></dt>
-      <dd><%= button_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :method => :put %></dd>
+      <dd><%= button_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :class => 'btn', :method => :put %></dd>
     <% end %>
   <% end %>
 </dl>

@@ -17,6 +17,6 @@
 </div>
 
 <p>
-  <%= f.submit t('.preview') %>
-  <%= f.submit t(".import") if @preview %>
+  <%= f.submit t('.preview'), :class => 'btn' %>
+  <%= f.submit t(".import"), :class => 'btn' if @preview %>
 </p>

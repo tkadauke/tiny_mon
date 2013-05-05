@@ -14,71 +14,76 @@
           <nav id="menu" class="span12">
             <div class="navbar">
               <div class="navbar-inner">
-                <%= link_to 'TinyMon', root_path, :class => 'brand' %>
-                <ul class="nav">
-                  <li<%= ' class="active"'.html_safe if @tab == :sites %>><%= link_to t('layouts.sites'), sites_path %></li>
-                  <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
-                </ul>
-                
-                <ul class="nav pull-right">
-                  <li class="hidden-phone"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
-                  <% if logged_in? %>
-                    <li class="hidden-phone"><%= gravatar(current_user, :text => current_user.full_name) %></li>
-                    
-                    <%= render '/layouts/language_dropdown' %>
-                    
-                    <% if current_user.can_see_account_details? %>
-                      <% if current_user.current_account %>
-                        <li class="dropdown">
-                          <a href="<%= accounts_path %>" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="hidden-phone">
-                              <%= current_user.current_account.name %>
-                              <b class="caret"></b>
-                            </span>
-                            <span class="visible-phone">
-                              <%= t(".account") %>
-                              <b class="caret"></b>
-                            </span>
-                          </a>
-                          <% if current_user.accounts.size > 1 %>
-                            <ul class="dropdown-menu">
-                              <% current_user.accounts.each do |account| %>
-                                <% if account == current_user.current_account %>
-                                  <li><a href="#"><b><%= account.name %></b></a></li>
-                                <% else %>
-                                  <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
-                                <% end %>
-                              <% end %>
-                            </ul>
-                          <% end %>
-                        </li>
-                      <% else %>
-                        <li><%= link_to t('layouts.accounts'), accounts_path %></li>
-                      <% end %>
-                    <% end %>
-                    <% if current_user.can_enter_admin_area? %>
-                      <li><%= link_to t('layouts.admin'), admin_path %></li>
-                    <% end %>
-                    <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+                  
+                  <%= link_to 'TinyMon', root_path, :class => 'brand' %>
+                  <span class="hidden-desktop"><%= overall_status %></span>
+                  
+                  <div class="nav-collapse collapse">
+                    <ul class="nav">
+                      <li<%= ' class="active"'.html_safe if @tab == :sites %>><%= link_to t('layouts.sites'), sites_path %></li>
+                      <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
+                    </ul>
 
-                    <% if current_user.current_account %>
-                      <li class="hidden-phone"><%= overall_status %></li>
-                    <% end %>
-                  <% else %>
-                    <%= render '/layouts/language_dropdown' %>
-                    <li><%= link_to t('layouts.login'), login_path %></li>
-                    <li class="pull-right"><%= link_to t('layouts.signup'), new_user_path %></li>
-                  <% end %>
-                </ul>
+                    <ul class="nav pull-right">
+                      <li class="hidden-phone"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+                      <% if logged_in? %>
+                        <li><%= gravatar(current_user, :text => current_user.full_name) %></li>
+
+                        <%= render '/layouts/language_dropdown' %>
+
+                        <% if current_user.can_see_account_details? %>
+                          <% if current_user.current_account %>
+                            <li class="dropdown">
+                              <a href="<%= accounts_path %>" class="dropdown-toggle" data-toggle="dropdown">
+                                <%= current_user.current_account.name %>
+                                <b class="caret"></b>
+                              </a>
+                              <% if current_user.accounts.size > 1 %>
+                                <ul class="dropdown-menu">
+                                  <% current_user.accounts.each do |account| %>
+                                    <% if account == current_user.current_account %>
+                                      <li><a href="#"><b><%= account.name %></b></a></li>
+                                    <% else %>
+                                      <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
+                                    <% end %>
+                                  <% end %>
+                                </ul>
+                              <% end %>
+                            </li>
+                          <% else %>
+                            <li><%= link_to t('layouts.accounts'), accounts_path %></li>
+                          <% end %>
+                        <% end %>
+                        <% if current_user.can_enter_admin_area? %>
+                          <li><%= link_to t('layouts.admin'), admin_path %></li>
+                        <% end %>
+                        <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
+
+                        <% if current_user.current_account %>
+                          <li class="hidden-phone"><%= overall_status %></li>
+                        <% end %>
+                      <% else %>
+                        <%= render '/layouts/language_dropdown' %>
+                        <li><%= link_to t('layouts.login'), login_path %></li>
+                        <li class="pull-right"><%= link_to t('layouts.signup'), new_user_path %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </nav>
         </div>
       </header>
 
-
       <div class="content">
-        <ul class="breadcrumb">
+        <ul class="breadcrumb hidden-phone">
           <li><%= t('layouts.you_are_here') %> <span class="divider">:</span></li>
           <%= bread_crumb %>
         </ul>

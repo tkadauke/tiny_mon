@@ -36,7 +36,7 @@
             <td><%= check_box_tag "health_check_ids[]", health_check.id %></td>
           <% end %>
           <td class="hidden-phone"><%= status_icon health_check %></td>
-          <td><%= weather_icon health_check %></td>
+          <td class="hidden-phone"><%= weather_icon health_check %></td>
           <td><%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %></td>
           <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
           <% if current_user.can_edit_health_checks?(@account) %>

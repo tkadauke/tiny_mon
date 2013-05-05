@@ -21,26 +21,33 @@
                 </ul>
                 
                 <ul class="nav pull-right">
-                  <li><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+                  <li class="hidden-phone"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
                   <% if logged_in? %>
-                    <li><%= gravatar(current_user, :text => current_user.full_name) %></li>
+                    <li class="hidden-phone"><%= gravatar(current_user, :text => current_user.full_name) %></li>
                     
-                    <% ['en', 'de'].each do |language| %>
-                      <li><%= link_to image_tag("language/#{language}.png"), :locale => language %></li>
-                    <% end %>
+                    <%= render '/layouts/language_dropdown' %>
                     
                     <% if current_user.can_see_account_details? %>
                       <% if current_user.current_account %>
                         <li class="dropdown">
                           <a href="<%= accounts_path %>" class="dropdown-toggle" data-toggle="dropdown">
-                            <%= current_user.current_account.name %>
-                            <b class="caret"></b>
+                            <span class="hidden-phone">
+                              <%= current_user.current_account.name %>
+                              <b class="caret"></b>
+                            </span>
+                            <span class="visible-phone">
+                              <%= t(".account") %>
+                              <b class="caret"></b>
+                            </span>
                           </a>
                           <% if current_user.accounts.size > 1 %>
                             <ul class="dropdown-menu">
                               <% current_user.accounts.each do |account| %>
-                                <% next if account == current_user.current_account %>
-                                <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
+                                <% if account == current_user.current_account %>
+                                  <li><a href="#"><b><%= account.name %></b></a></li>
+                                <% else %>
+                                  <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
+                                <% end %>
                               <% end %>
                             </ul>
                           <% end %>
@@ -50,17 +57,15 @@
                       <% end %>
                     <% end %>
                     <% if current_user.can_enter_admin_area? %>
-                      <li><%= link_to t('layouts.admin'), admin_path %></li>
+                      <li><%#= link_to t('layouts.admin'), admin_path %></li>
                     <% end %>
                     <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
 
                     <% if current_user.current_account %>
-                      <li><%= overall_status %></li>
+                      <li class="hidden-phone"><%= overall_status %></li>
                     <% end %>
                   <% else %>
-                    <% ['en', 'de'].each do |language| %>
-                      <li><%= link_to image_tag("language/#{language}.png"), :locale => language %></li>
-                    <% end %>
+                    <%= render '/layouts/language_dropdown' %>
                     <li><%= link_to t('layouts.login'), login_path %></li>
                     <li class="pull-right"><%= link_to t('layouts.signup'), new_user_path %></li>
                   <% end %>
@@ -102,7 +107,7 @@
       </div>
 
       <footer>
-        <div class="row">
+        <div class="row hidden-phone">
           <div class="span12">
             <div class="pull-right">
               <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %>

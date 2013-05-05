@@ -571,6 +571,8 @@ en:
   layouts: 
     accounts: Accounts
     admin: Admin
+    application: 
+      account: Account
     close_flash: Close
     edit_footer: "Edit footer"
     github_project_page: "Github project page"
@@ -819,6 +821,7 @@ en:
       email: "Email address"
       full_name: "Full name"
       no_accounts: "none yet"
+      picture: Picture
       settings: "Edit settings"
       users_profile: "%{full_name}'s profile"
   warning: 

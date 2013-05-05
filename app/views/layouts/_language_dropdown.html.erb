@@ -1,0 +1,11 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= image_tag("language/#{I18n.locale}.png") %>
+    <b class="caret"></b>
+  </a>
+  <ul class="dropdown-menu">
+    <% { 'en' => 'English', 'de' => 'Deutsch' }.each do |code, language| %>
+      <li><%= link_to image_tag("language/#{code}.png") + " " + language, :locale => code %></li>
+    <% end %>
+  </ul>
+</li>

@@ -482,7 +482,7 @@ de:
       none: "Keinen wählen"
       options: Optionen
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
-      run: "Prüfen"
+      run: Prüfen
       site: Site
       status: Status
     edit: 
@@ -571,6 +571,8 @@ de:
   layouts: 
     accounts: Konten
     admin: Admin
+    application: 
+      account: Konto
     close_flash: Schließen
     edit_footer: "Fußzeile bearbeiten"
     github_project_page: Github-Projektseite
@@ -819,6 +821,7 @@ de:
       email: E-Mail-Adresse
       full_name: "Voller Name"
       no_accounts: "bisher keine"
+      picture: Bild
       settings: "Einstellungen bearbeiten"
       users_profile: "%{full_name}s Profil"
   warning: 

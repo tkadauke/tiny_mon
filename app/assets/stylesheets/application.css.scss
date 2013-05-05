@@ -8,11 +8,15 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
  *= require "bootstrap"
  *= require "bootstrap-responsive"
+ *= require_tree .
+ *= require_self
  */
+
+h2 {
+  font-size: 20px;
+}
 
 .content, footer {
   padding: 20px;
@@ -39,10 +43,29 @@
 }
 
 .breadcrumb {
-  margin: -20px -20px 20px -20px !important;
+  margin: -20px -20px 20px -20px;
 }
 
 footer {
   margin-top: 20px;
   margin-bottom: 5px;
+}
+
+@media (max-width: 767px) {
+  .content, footer {
+    margin: 0 -5px;
+    padding: 5px;
+  }
+  .navbar {
+    margin: 5px -5px;
+  }
+
+  .breadcrumb {
+    margin: -5px -5px 20px -5px;
+  }
+
+  footer {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 }

@@ -27,3 +27,11 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .check-overview {
+    li {
+      width: 42%;
+    }
+  }
+}

@@ -43,7 +43,7 @@ h2 {
 }
 
 .breadcrumb {
-  margin: -20px -20px 20px -20px;
+  margin: -20px -20px 5px -20px;
 }
 
 footer {
@@ -52,6 +52,10 @@ footer {
 }
 
 @media (max-width: 767px) {
+  body {
+    padding: 5px 10px;
+  }
+  
   .content, footer {
     margin: 0 -5px;
     padding: 5px;
@@ -61,7 +65,7 @@ footer {
   }
 
   .breadcrumb {
-    margin: -5px -5px 20px -5px;
+    margin: -5px -5px 5px -5px;
   }
 
   footer {

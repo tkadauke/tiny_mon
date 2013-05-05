@@ -1,6 +1,6 @@
 <%= form_for @search_filter, :url => url, :html => { :id => 'filter', :method => :get, :class => 'form-search' }, :remote => true do |f| %>
   <div class="input-append">
-    <%= f.text_field :query, :class => 'search-query' %>
+    <%= f.text_field :query, :size => 25, :class => 'search-query' %>
     <button type="submit" class="btn"><%= t('.filter') %></button>
   </div>
 <% end %>

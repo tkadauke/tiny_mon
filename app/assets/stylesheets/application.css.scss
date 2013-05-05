@@ -14,7 +14,7 @@
  *= require "bootstrap-responsive"
  */
 
-.content {
+.content, footer {
   padding: 20px;
   margin: 0 -20px;
   -webkit-border-radius: 4px;
@@ -40,4 +40,9 @@
 
 .breadcrumb {
   margin: -20px -20px 20px -20px !important;
+}
+
+footer {
+  margin-top: 20px;
+  margin-bottom: 5px;
 }

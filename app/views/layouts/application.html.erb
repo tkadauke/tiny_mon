@@ -108,19 +108,19 @@
       <footer>
         <div class="row">
           <div class="span12">
+            <div class="pull-right">
+              <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %>
+            </div>
             <div>
               <%= link_to t('layouts.home'), root_path %> | 
               <%= link_to t('layouts.sites'), sites_path %> |
               <%= link_to t('layouts.health_checks'), health_checks_path %>
             </div>
-            <div class="pull-right">
-              <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %>
-            </div>
           </div>
         </div>
         <div class="row">
           <div class="span12">
-            <h3><%= t('layouts.quick_links') %></h3>
+            <h4><%= t('layouts.quick_links') %></h4>
             <div>
               <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>
               <% FooterLink.ordered.each do |link| %>

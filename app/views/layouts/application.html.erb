@@ -53,14 +53,10 @@
                       <li><%= link_to t('layouts.admin'), admin_path %></li>
                     <% end %>
                     <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
-            
-                    <!-- <div class="span1">
-                      <% if current_user.current_account %>
-                        <div class="pull-right">
-                          <%= overall_status %>
-                        </div>
-                      <% end %>
-                    </div> -->
+
+                    <% if current_user.current_account %>
+                      <li><%= overall_status %></li>
+                    <% end %>
                   <% else %>
                     <% ['en', 'de'].each do |language| %>
                       <li><%= link_to image_tag("language/#{language}.png"), :locale => language %></li>

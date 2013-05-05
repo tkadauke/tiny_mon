@@ -116,7 +116,7 @@ module ApplicationHelper
   end
   
   def warning_tag(notice, url)
-    content_tag(:div, :class => 'warning') { [notice, link_to(I18n.t("warning.more_info"), url)].join(' ') }
+    content_tag(:div, :class => 'alert alert-warning') { [notice, link_to(I18n.t("warning.more_info"), url)].join(' ').html_safe }
   end
   
   def account_check_run_limit_warning_if_needed

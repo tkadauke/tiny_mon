@@ -33,6 +33,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'i18n_tools'
+end
+
 group :test do
   gem "mocha", '0.9.8'
 end

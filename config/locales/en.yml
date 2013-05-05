@@ -783,6 +783,7 @@ en:
   user_accounts: 
     new: 
       add: "Add user"
+      add_user_to_account: "Add user to account"
       email: "E-mail address"
       error_creating_user_account: "Could not add a user to this account"
   user_sessions: 

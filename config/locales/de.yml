@@ -783,6 +783,7 @@ de:
   user_accounts: 
     new: 
       add: Hinzufügen
+      add_user_to_account: "Vorhandenen Benutzer zum Konto hinzufügen"
       email: E-Mail-Adresse
       error_creating_user_account: "Benutzer konnte dem Konto nicht hinzugefügt werden"
   user_sessions: 

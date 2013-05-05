@@ -1,11 +1,17 @@
-<%= form_for @account, :html => { :class => 'form' } do |f| %>
+<%= form_for @account, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages :header_message => t('.could_not_create_account') %>
   
-  <p class="form_item">
-    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
-    <span class="desc"><%= t(".name_hint") %></span>
-    <%= f.text_field :name %>
-  </p>
+  <div class="control-group">
+    <%= f.label :name, t('.name'), :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+      <p><small><%= t(".name_hint") %></small></p>
+    </div>
+  </div>
   
-  <p><%= f.submit t('.save_account') %></p>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit t('.save_account'), :class => 'btn' %>
+    </div>
+  </p>
 <% end %>

@@ -3,7 +3,7 @@
 <% if @footer_links.empty? %>
   <p><%= t('.nothing_found') %></p>
 <% else %>
-  <table class="list">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>&nbsp;</th>
@@ -19,8 +19,17 @@
           <td><%= footer_link.text %></td>
           <td><%= link_to footer_link.url, footer_link.url %></td>
           <td>
-            <%= link_to t('.edit'), edit_admin_footer_link_path(footer_link) %> |
-            <%= link_to t('.remove'), admin_footer_link_path(footer_link), :method => :delete, :confirm => t('.really_remove_footer_link') %>
+            <div class="btn-group">
+              <button class="btn btn-mini">
+                <%= link_to t('.edit'), edit_admin_footer_link_path(footer_link) %>
+              </button>
+              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to t('.remove'), admin_footer_link_path(footer_link), :method => :delete, :confirm => t('.really_remove_footer_link') %></li>
+              </ul>
+            </div>
           </td>
         </tr>
       <% end %>

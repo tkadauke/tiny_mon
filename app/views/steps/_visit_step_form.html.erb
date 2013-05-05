@@ -1,5 +1,7 @@
-<p class="form_item">
-  <span class="label"><%= f.label :url, t('.url'), :class => 'required' %></span>
-  <span class="desc"><%= t('.relative_or_absolute') %></span>
-  <%= f.text_field :url %>
-</p>
+<div class="control-group">
+  <%= f.label :url, t('.url'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :url %>
+    <p><small><%= t('.relative_or_absolute') %></small></p>
+  </div>
+</div>

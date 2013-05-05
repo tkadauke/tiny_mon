@@ -1,6 +1,6 @@
 <%= f.fields_for :steps, :child_index => child_index do |fields| %>
   <% step_id = "step_#{rand(1_000_000)}" %>
-  <dl id="<%= step_id %>">
+  <dl class="dl-horizontal" id="<%= step_id %>">
     <%= fields.hidden_field :position, :class => 'position' %>
     <dt>
       <% if fields.object.new_record? %>

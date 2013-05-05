@@ -2,10 +2,10 @@
 
 <%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
 
-<% form_for :check_run_filter, :url => account_site_health_check_check_runs_path(@account, @site, @health_check), :html => { :method => :get, :class => 'filter' } do |f| %>
+<%= form_for :check_run_filter, :url => account_site_health_check_check_runs_path(@account, @site, @health_check), :html => { :method => :get, :class => 'filter' } do |f| %>
   <%= t(".from") %> <%= f.date_select :start_date %>
   <%= t(".until") %> <%= f.date_select :end_date %>
-  <%= f.submit t(".filter") %>
+  <%= f.submit t(".filter"), :class => 'btn' %>
   <% if params[:check_run_filter] %>
     <%= link_to t(".reset_filter"), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
     <span class="info"><%= t(".filter_active") %></span>

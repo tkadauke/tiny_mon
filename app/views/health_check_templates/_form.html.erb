@@ -1,22 +1,27 @@
 <h3><%= t(".about_the_template") %></h3>
 
-<p class="form_item">
-  <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
-  <span class="desc"><%= t(".template_name") %></span>
-  <%= f.text_field :name %>
-</p>
+<div class="control-group">
+  <%= f.label :name, t('.name'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :name %>
+    <p><small><%= t(".template_name") %></small></p>
+  </div>
+</div>
 
-<p class="form_item">
-  <span class="label"><%= f.label :description, t(".description") %></span>
-  <span class="desc"><%= t(".describe_the_template") %></span>
-  <%= f.text_area :description, :rows => 5 %>
-</p>
+<div class="control-group">
+  <%= f.label :description, t(".description"), :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_area :description, :rows => 5 %>
+    <p><small><%= t(".describe_the_template") %></small></p>
+  </div>
+</div>
 
-<p class="form_item">
-  <%= f.check_box :public %>
-  <span class="check-box-label"><%= f.label :public, t(".public") %></span>
-  <span class="desc"><%= t(".who_can_see_and_use_this_template") %></span>
-</p>
+<div class="control-group">
+  <div class="controls">
+    <%= f.check_box :public %>
+    <p><small><%= t(".who_can_see_and_use_this_template") %></small></p>
+  </div>
+</div>
 
 <h3><%= t(".template_variables") %></h3>
 
@@ -39,23 +44,29 @@
 
 <h3><%= t(".health_check_fields") %></h3>
 
-<p class="form_item">
-  <span class="label"><%= f.label :name_template, t(".name_template"), :class => 'required' %></span>
-  <span class="desc"><%= t(".template_for_health_check_name") %></span>
-  <%= f.text_field :name_template %>
-</p>
+<div class="control-group">
+  <%= f.label :name_template, t(".name_template"), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :name_template %>
+    <p><small><%= t(".template_for_health_check_name") %></small></p>
+  </div>
+</div>
 
-<p class="form_item">
-  <span class="label"><%= f.label :description_template, t(".description_template") %></span>
-  <span class="desc"><%= t(".template_for_health_check_description") %></span>
-  <%= f.text_area :description_template, :rows => 5 %>
-</p>
+<div class="control-group">
+  <%= f.label :description_template, t(".description_template"), :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_area :description_template, :rows => 5 %>
+    <p><small><%= t(".template_for_health_check_description") %></small></p>
+  </div>
+</div>
 
-<p class="form_item">
-  <span class="label"><%= f.label :interval, t(".interval"), :class => 'required' %></span>
-  <span class="desc"><%= t(".interval_for_generated_health_checks") %></span>
-  <%= f.select :interval, HealthCheck.intervals_with_units %>
-</p>
+<div class="control-group">
+  <%= f.label :interval, t(".interval"), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.select :interval, HealthCheck.intervals_with_units %>
+    <p><small><%= t(".interval_for_generated_health_checks") %></small></p>
+  </div>
+</div>
 
 <h3><%= t(".steps") %></h3>
 
@@ -76,4 +87,8 @@
   })
 } %>
 
-<p><%= f.submit t('.save_template') %></p>
+<div class="control-group">
+  <div class="controls">
+    <%= f.submit t('.save_template'), :class => 'btn' %>
+  </div>
+</div>

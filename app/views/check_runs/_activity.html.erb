@@ -3,24 +3,25 @@
 <% else %>
   <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
 
-  <table class="list">
+  <table class="table table-hover">
     <thead>
       <tr>
-        <th><%= t('.status') %></th>
+        <th class="hidden-phone"><%= t('.status') %></th>
         <th><%= t('.when') %></th>
-        <th><%= t('.duration') %></th>
-        <th><%= t('.site') %></th>
-        <th><%= t('.health_check') %></th>
+        <th><%= t('.name') %></th>
+        <th class="hidden-phone"><%= t('.duration') %></th>
       </tr>
     </thead>
     <tbody>
       <% @check_runs.each do |check_run| %>
-        <tr>
-          <td><%= status_icon check_run %></td>
+        <tr class="<%= status_class check_run %>">
+          <td class="hidden-phone"><%= status_icon check_run %></td>
           <td><%= link_to t(".time_ago", :when => time_ago_in_words(check_run.created_at)), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %></td>
-          <td><%= t(".duration_in_seconds", :duration => "%5.1f" % check_run.duration) %></td>
-          <td><%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %></td>
-          <td><%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %></td>
+          <td>
+            <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %> /
+            <%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %>
+          </td>
+          <td class="hidden-phone"><%= t(".duration_in_seconds", :duration => "%5.1f" % check_run.duration) %></td>
         </tr>
       <% end %>
     </tbody>

@@ -313,6 +313,7 @@ en:
       login_required: "You must be logged in to access this page"
       user_by_email_not_found: "No user was found with that email address"
       user_could_not_be_located: "We're sorry, but we could not locate your account. If you are having issues try copying and pasting the URL from your email into your browser or restarting the reset password process."
+    error_title: Error!
     notice: 
       assign_roles: "Successfully assigned account role to user"
       bulk_updated_health_checks: 
@@ -346,6 +347,7 @@ en:
       updated_settings: "Successfully updated settings"
       updated_site: "Successfully updated site %{site}"
       updated_user: "Successfully updated user"
+    success_title: Success!
   health_check: 
     interval: 
       hours: 
@@ -572,6 +574,8 @@ en:
   layouts: 
     accounts: Accounts
     admin: Admin
+    application: 
+      account: Account
     close_flash: Close
     edit_footer: "Edit footer"
     github_project_page: "Github project page"
@@ -782,6 +786,7 @@ en:
   user_accounts: 
     new: 
       add: "Add user"
+      add_user_to_account: "Add user to account"
       email: "E-mail address"
       error_creating_user_account: "Could not add a user to this account"
   user_sessions: 
@@ -820,6 +825,7 @@ en:
       email: "Email address"
       full_name: "Full name"
       no_accounts: "none yet"
+      picture: Picture
       settings: "Edit settings"
       users_profile: "%{full_name}'s profile"
   warning: 
@@ -831,3 +837,6 @@ en:
     count_successful: 
       one: "One of the last 5 check runs was successful"
       other: "%{count} of the last 5 check runs were successful"
+  will_paginate: 
+    next_label: »
+    previous_label: «

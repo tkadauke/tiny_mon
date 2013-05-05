@@ -1,19 +1,23 @@
 <div id="new_step_container">
-  <%= form_for [@account, @site, @health_check, step], :url => step.new_record? ? account_site_health_check_steps_path(@account, @site, @health_check) : account_site_health_check_step_path(@account, @site, @health_check, step), :html => { :class => 'form' } do |f| %>
+  <%= form_for [@account, @site, @health_check, step], :url => step.new_record? ? account_site_health_check_steps_path(@account, @site, @health_check) : account_site_health_check_step_path(@account, @site, @health_check, step), :html => { :class => 'form-horizontal' } do |f| %>
     <%= f.error_messages :header_message => t('.could_not_create_step') %>
   
     <% if step.class.name == 'Step' %>
-      <p class="form_item">
-        <span class="label"><%= f.label :type, t('.type') %></span>
-        <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types_with_translations), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }" %>
-      </p>
+      <div class="control-group">
+        <%= f.label :type, t('.type'), :class => 'control-label' %>
+        <div class="controls">
+          <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types_with_translations), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }" %>
+        </div>
+      </div>
     <% else %>
       <% if step.new_record? %>
         <% if step.position.blank? %>
-          <p class="form_item">
-            <span class="label"><%= f.label :type, t('.type'), :class => 'required' %></span>
-            <%= select_tag :type, options_for_select(Step.available_types_with_translations, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }" %><br/>
-          </p>
+          <div class="control-group">
+            <%= f.label :type, t('.type'), :class => 'control-label required' %>
+            <div class="controls">
+              <%= select_tag :type, options_for_select(Step.available_types_with_translations, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }" %><br/>
+            </div>
+          </div>
         <% else %>
           <%= f.hidden_field :insert_after, :value => step.position %>
           <%= hidden_field_tag :type, step.class.name.underscore.gsub(/_step$/, '') %>
@@ -23,7 +27,7 @@
       <%= render_step_form(f, step) %>
 
       <p>
-        <%= f.submit t('.save_step') %> |
+        <%= f.submit t('.save_step'), :class => 'btn' %> |
         <%= link_to t('.cancel'), account_site_health_check_steps_path(@account, @site, @health_check) %>
       </p>
     <% end %>

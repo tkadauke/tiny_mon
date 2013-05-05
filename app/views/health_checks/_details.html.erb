@@ -1,12 +1,11 @@
 <%= form_tag edit_multiple_health_checks_path do %>
-  <table class="list">
+  <table class="table table-hover">
     <thead>
       <tr>
         <% if current_user.can_edit_health_checks?(@account) %>
           <th></th>
         <% end %>
-        <th colspan="2"><%= t('.status') %></th>
-        <th><%= t('.site') %></th>
+        <th colspan="2" class="hidden-phone"><%= t('.status') %></th>
         <th><%= t('.name') %></th>
         <% if current_user.can_edit_health_checks?(@account) %>
           <th><%= t('.options') %></th>
@@ -17,35 +16,43 @@
       <tfoot>
         <tr>
           <td></td>
-          <td colspan="5">
+          <td colspan="4">
             <%= action_list do |a| %>
               <% a.link_to_function t(".all"), %{$('table input[type="checkbox"]').prop('checked',true )} %>
               <% a.link_to_function t(".none"), %{$('table input[type="checkbox"]').prop('checked', false)} %>
               <% a.link_to_function t(".invert"), %{$('table input[type="checkbox"]').each(function(index) { $(this).prop('checked', !$(this).prop('checked'));})} %>
             <% end %>
 
-            <%= submit_tag t(".edit_checked") %>
+            <%= submit_tag t(".edit_checked"), :class => 'btn' %>
           </td>
         </tr>
       </tfoot>
     <% end %>
     <tbody>
       <% @health_checks.each do |health_check| %>
-        <tr>
+        <tr class="<%= status_class health_check %>">
           <% if current_user.can_edit_health_checks?(@account) %>
             <td><%= check_box_tag "health_check_ids[]", health_check.id %></td>
           <% end %>
-          <td><%= status_icon health_check %></td>
-          <td><%= weather_icon health_check %></td>
-          <td><%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %></td>
-          <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
+          <td class="hidden-phone"><%= status_icon health_check %></td>
+          <td class="hidden-phone"><%= weather_icon health_check %></td>
+          <td>
+            <%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %> / <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %>
+          </td>
           <% if current_user.can_edit_health_checks?(@account) %>
             <td>
-              <%= action_list do |a| %>
-                <% a.link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
-                <% a.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %>
-                <% a.link_to t('.run'), account_site_health_check_check_runs_path(health_check.site.account, health_check.site, health_check), :method => :post if current_user.can_run_health_checks?(health_check.site.account) %>
-              <% end %>
+              <div class="btn-group">
+                <button class="btn btn-mini">
+                  <%= link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
+                </button>
+                <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to t('.run'), account_site_health_check_check_runs_path(health_check.site.account, health_check.site, health_check), :method => :post if current_user.can_run_health_checks?(health_check.site.account) %></li>
+                  <li><%= link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :confirm => t('.really_delete_health_check') if current_user.can_delete_health_checks?(@account) %></li>
+                </ul>
+              </div>
             </td>
           <% end %>
         </tr>

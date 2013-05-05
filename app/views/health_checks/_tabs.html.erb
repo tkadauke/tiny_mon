@@ -1,4 +1,4 @@
-<%= button_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :style => 'float: right' if current_user.can_run_health_checks?(@account) %>
+<%= button_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn hidden-phone', :style => 'float: right' if current_user.can_run_health_checks?(@account) %>
 
 <%= tabs(:selected => selected) do |a| %>
   <% a.tab :information, t(".information"), account_site_health_check_path(@account, @site, @health_check) %>

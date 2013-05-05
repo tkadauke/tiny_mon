@@ -1,7 +1,9 @@
-<p class="form_item">
-  <span class="label"><%= f.label :css, t(".css") %></span>
-  <span class="desc"><%= t(".custom_style_declarations") %></span>
-  <%= f.text_area :css %>
-</p>
+<div class="control-group">
+  <%= f.label :css, t(".css"), :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_area :css %>
+    <p><small><%= t(".custom_style_declarations") %></small></p>
+  </div>
+</div>
 
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

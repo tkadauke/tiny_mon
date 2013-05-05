@@ -1,15 +1,23 @@
-<%= form_for [@account, @site], :html => { :class => 'form' } do |f| %>
+<%= form_for [@account, @site], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages :header_message => t('.could_not_create_site') %>
   
-  <p class="form_item">
-    <span class="label"><%= f.label :name, t('.name'), :class => 'required' %></span>
-    <%= f.text_field :name %>
-  </p>
+  <div class="control-group">
+    <%= f.label :name, t('.name'), :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
 
-  <p class="form_item">
-    <span class="label"><%= f.label :url, t('.url'), :class => 'required' %></span>
-    <%= f.text_field :url %>
-  </p>
+  <div class="control-group">
+    <%= f.label :url, t('.url'), :class => 'control-label required' %>
+    <div class="controls">
+      <%= f.text_field :url %>
+    </div>
+  </div>
   
-  <p><%= f.submit t('.save_site') %></p>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit t('.save_site'), :class => 'btn' %>
+    </div>
+  </div>
 <% end %>

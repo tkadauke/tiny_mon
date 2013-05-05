@@ -3,10 +3,10 @@
 <p><%= t('.instructions') %></p>
 
 <%= form_tag password_resets_path do %>
-  <p class="form_item">
-    <span class="label"><label><%= t('.email') %></label></span>
+  <div class="control-group">
+    <label><%= t('.email') %></label>
     <%= text_field_tag "email" %>
-  </p>
+  </div>
 
-  <p><%= submit_tag t('.reset') %></p>
+  <p><%= submit_tag t('.reset'), :class => 'btn' %></p>
 <% end %>

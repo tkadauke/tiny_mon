@@ -1,6 +1,6 @@
 <%= f.fields_for :variables, :child_index => child_index do |fields| %>
   <% variable_id = "variable_#{rand(1_000_000)}" %>
-  <dl id="<%= variable_id %>">
+  <dl class="dl-horizontal" id="<%= variable_id %>">
     <%= fields.hidden_field :position, :class => 'position' %>
     <dt>
       <% if fields.object.new_record? %>
@@ -17,16 +17,16 @@
       <% end %>
     </dd>
 
-    <dt><%= fields.label :name, t(".name"), :class => 'required' %></dt>
+    <dt><%= fields.label :name, t(".name"), :class => 'control-label required' %></dt>
     <dd><%= fields.text_field :name %></dd>
 
-    <dt><%= fields.label :display_name, t(".display_name"), :class => 'required' %></dt>
+    <dt><%= fields.label :display_name, t(".display_name"), :class => 'control-label required' %></dt>
     <dd><%= fields.text_field :display_name %></dd>
 
     <dt><%= fields.label :description, t(".description") %></dt>
     <dd><%= fields.text_field :description %></dd>
 
-    <dt><%= fields.label :type, t(".type"), :class => 'required' %></dt>
+    <dt><%= fields.label :type, t(".type"), :class => 'control-label required' %></dt>
     <dd><%= fields.select :type, HealthCheckTemplateVariable.available_types_with_translations %></dd>
 
     <dt><%= fields.label :required, t(".required") %></dt>

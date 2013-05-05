@@ -313,6 +313,7 @@ de:
       login_required: "Sie müssen eingeloggt sein, um auf diese Seite zuzugreifen"
       user_by_email_not_found: "Es wurde kein Benutzer mit dieser E-Mail-Adresse gefunden"
       user_could_not_be_located: "Es tut uns leid, aber wir konnten den Benutzer nicht identifizieren. Bitte versuchen Sie die URL aus der E-Mail in die Adressleiste des Browsers zu kopieren oder starten Sie den Password-Vergessen-Prozess von vorne."
+    error_title: Fehler!
     notice: 
       assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
       bulk_updated_health_checks: 
@@ -346,6 +347,7 @@ de:
       updated_settings: "Einstellungen wurden erfolgreich aktualisiert"
       updated_site: "Site %{site} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
+    success_title: Erfolg!
   health_check: 
     interval: 
       hours: 
@@ -483,7 +485,7 @@ de:
       none: "Keinen wählen"
       options: Optionen
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
-      run: "Prüfen"
+      run: Prüfen
       site: Site
       status: Status
     edit: 
@@ -572,6 +574,8 @@ de:
   layouts: 
     accounts: Konten
     admin: Admin
+    application: 
+      account: Konto
     close_flash: Schließen
     edit_footer: "Fußzeile bearbeiten"
     github_project_page: Github-Projektseite
@@ -782,6 +786,7 @@ de:
   user_accounts: 
     new: 
       add: Hinzufügen
+      add_user_to_account: "Vorhandenen Benutzer zum Konto hinzufügen"
       email: E-Mail-Adresse
       error_creating_user_account: "Benutzer konnte dem Konto nicht hinzugefügt werden"
   user_sessions: 
@@ -820,6 +825,7 @@ de:
       email: E-Mail-Adresse
       full_name: "Voller Name"
       no_accounts: "bisher keine"
+      picture: Bild
       settings: "Einstellungen bearbeiten"
       users_profile: "%{full_name}s Profil"
   warning: 
@@ -831,3 +837,6 @@ de:
     count_successful: 
       one: "Einer der letzten 5 Testläufe war erfolgreich"
       other: "%{count} der letzten 5 Testläufe waren erfolgreich"
+  will_paginate: 
+    next_label: »
+    previous_label: «

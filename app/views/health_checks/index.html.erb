@@ -2,22 +2,49 @@
 
 <%= render :partial => "/sites/tabs", :locals => { :selected => :health_checks } %>
 
-<%= render :partial => "/shared/filter", :locals => { :url => account_site_health_checks_path(@account, @site, :report => params[:report]) } %>
+<div class="row">
+  <div class="span3">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <%= t("health_checks.report.#{@report.to_sym}") %>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details') %></li>
+        <li><%= link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %></li>
+      </ul>
+    </div>
+  
+    <div class="btn-group">
+      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <%= t("health_checks.status.#{@status.to_sym}") %>
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= link_to t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all') %></li>
+        <li><%= link_to t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success') %></li>
+        <li><%= link_to t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure') %></li>
+        <li><%= link_to t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled') %></li>
+        <li><%= link_to t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled') %></li>
+      </ul>
+    </div>
+    
+    <div class="btn-group">
+      <a class="btn" data-toggle="collapse" data-target="#filter" href="#">
+        <%= t('button.filter') %>
+        <span class="caret"></span>
+      </a>
+    </div>
+  </div>
+</div>
 
-<%= tabs(:selected => @report.to_sym) do |a| %>
-  <% a.tab :details, t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details') %>
-  <% a.tab :overview, t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %>
-<% end %>
+<div id="filter" class="row collapse">
+  <br/>
+  <div class="span12">
+    <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
+  </div>
+</div>
 
-<%= tabs(:selected => @status.to_sym) do |a| %>
-  <% a.tab :all, t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all') %>
-  <% a.tab :success, t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success') %>
-  <% a.tab :failure, t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure') %>
-  <% a.tab :enabled, t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled') %>
-  <% a.tab :disabled, t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled') %>
-<% end %>
-
-<%#= auto_update 'checks' %>
 <div id="checks">
   <%= render :partial => "list" %>
 </div>

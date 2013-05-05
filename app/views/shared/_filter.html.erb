@@ -1,8 +1,8 @@
-<%= form_for @search_filter, :url => url, :html => { :id => 'filter', :method => :get }, :remote => true do |f| %>
-  <p class="form_item">
-    <%= f.text_field :query %>
-    <%= f.submit t('.filter') %>
-  </p>
+<%= form_for @search_filter, :url => url, :html => { :id => 'filter', :method => :get, :class => 'form-search' }, :remote => true do |f| %>
+  <div class="input-append">
+    <%= f.text_field :query, :size => 25, :class => 'search-query' %>
+    <button type="submit" class="btn"><%= t('.filter') %></button>
+  </div>
 <% end %>
 
 <%= javascript_tag "$('#search_filter_query').focus();" %>

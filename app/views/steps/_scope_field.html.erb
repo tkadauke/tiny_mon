@@ -1,5 +1,7 @@
-<p class="form_item">
-  <span class="label"><%= f.label :scope, t(".scope") %></span>
-  <span class="desc"><%= t(".scope_description") %></span>
-  <%= f.text_field :scope %>
-</p>
+<div class="control-group">
+  <%= f.label :scope, t(".scope"), :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :scope %>
+    <p><small><%= t(".scope_description") %></small></p>
+  </div>
+</div>

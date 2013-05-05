@@ -1,4 +1,4 @@
-<%= form_for [@account, @site, @health_check], :html => { :class => 'form' } do |f| %>
+<%= form_for [@account, @site, @health_check], :html => { :class => 'form-horizontal' } do |f| %>
   <%= hidden_field_tag :template, @health_check_template.id %>
   
   <%= f.fields_for :template_data, @health_check.template_data do |data| %>
@@ -9,5 +9,9 @@
     <% end %>
   <% end %>
   
-  <p><%= f.submit t('.save_health_check') %> <%= f.submit t(".preview") %></p>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit t('.save_health_check') %> <%= f.submit t(".preview"), :class => 'btn' %>
+    </div>
+  </div>
 <% end %>

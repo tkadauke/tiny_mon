@@ -22,7 +22,7 @@
                   </a>
                   
                   <%= link_to 'TinyMon', root_path, :class => 'brand' %>
-                  <span class="hidden-desktop"><%= overall_status %></span>
+                  <span class="hidden-desktop"><%= overall_status if logged_in? %></span>
                   
                   <div class="nav-collapse collapse">
                     <ul class="nav">
@@ -66,7 +66,7 @@
                         <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
 
                         <% if current_user.current_account %>
-                          <li class="hidden-phone"><%= overall_status %></li>
+                          <li class="visible-desktop"><%= overall_status %></li>
                         <% end %>
                       <% else %>
                         <%= render '/layouts/language_dropdown' %>

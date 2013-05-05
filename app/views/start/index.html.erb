@@ -10,6 +10,11 @@
     <%= link_to t('.create_account'), new_account_path %>
   </p>
 <% else %>
+  <%= auto_update 'dashboard' %>
+  <div id="dashboard">
+    <%= render :partial => "dashboard" %>
+  </div>
+
   <% if current_user.role != 'locked' %>
     <h2><%= t('.quick_links') %></h2>
 
@@ -33,9 +38,4 @@
       <% end %>
     </ul>
   <% end %>
-
-  <%= auto_update 'dashboard' %>
-  <div id="dashboard">
-    <%= render :partial => "dashboard" %>
-  </div>
 <% end %>

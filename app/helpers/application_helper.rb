@@ -11,8 +11,8 @@ module ApplicationHelper
   end
 
   def bread_crumb
-    items = [%{<a href="/">#{I18n.t('breadcrumb.home')}</a>}]
-    sofar = ''
+    items = [%{<a href="/#{I18n.locale}">#{I18n.t('breadcrumb.home')}</a>}]
+    sofar = "/#{I18n.locale}"
     elements = request.fullpath.split('?').first.split('/')
     parent_model = nil
     for i in 2...elements.size

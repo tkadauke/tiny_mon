@@ -70,6 +70,8 @@ module ApplicationHelper
   end
   
   def overall_status(model = current_user.current_account, version = :large)
+    return if model.nil?
+    
     if model.all_checks_successful?
       image_tag "icons/#{version}/success.png", :alt => I18n.t("status.all_checks_successful"), :title => I18n.t("status.all_checks_successful")
     else

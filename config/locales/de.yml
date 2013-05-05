@@ -836,3 +836,6 @@ de:
     count_successful: 
       one: "Einer der letzten 5 Testläufe war erfolgreich"
       other: "%{count} der letzten 5 Testläufe waren erfolgreich"
+  will_paginate: 
+    next_label: »
+    previous_label: «

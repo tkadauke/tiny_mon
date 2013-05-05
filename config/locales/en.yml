@@ -836,3 +836,6 @@ en:
     count_successful: 
       one: "One of the last 5 check runs was successful"
       other: "%{count} of the last 5 check runs were successful"
+  will_paginate: 
+    next_label: »
+    previous_label: «

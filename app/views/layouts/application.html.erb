@@ -88,12 +88,12 @@
             <% if flash[:error] %>
               <div class="alert alert-error">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Error!</strong> <%= flash[:error] %>.
+                <strong><%= t("flash.error_title") %></strong> <%= flash[:error] %>.
               </div>
             <% elsif flash[:notice] %>
               <div class="alert alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Success!</strong> <%= flash[:notice] %>.
+                <strong><%= t("flash.success_title") %></strong> <%= flash[:notice] %>.
               </div>
             <% end %>
           

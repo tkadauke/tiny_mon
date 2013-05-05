@@ -312,6 +312,7 @@ de:
       login_required: "Sie müssen eingeloggt sein, um auf diese Seite zuzugreifen"
       user_by_email_not_found: "Es wurde kein Benutzer mit dieser E-Mail-Adresse gefunden"
       user_could_not_be_located: "Es tut uns leid, aber wir konnten den Benutzer nicht identifizieren. Bitte versuchen Sie die URL aus der E-Mail in die Adressleiste des Browsers zu kopieren oder starten Sie den Password-Vergessen-Prozess von vorne."
+    error_title: Fehler!
     notice: 
       assign_roles: "Die Rolle wurde dem Benutzer erfolgreich zugeteilt"
       bulk_updated_health_checks: 
@@ -345,6 +346,7 @@ de:
       updated_settings: "Einstellungen wurden erfolgreich aktualisiert"
       updated_site: "Site %{site} wurde erfolgreich aktualisiert"
       updated_user: "Benutzer wurde erfolgreich aktualisiert"
+    success_title: Erfolg!
   health_check: 
     interval: 
       hours: 

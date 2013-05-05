@@ -26,7 +26,7 @@ gem 'jquery-ui-rails'
 gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
+  gem 'sass-rails'
   gem 'coffee-rails', '~> 3.1.1'
   gem "therubyracer", "0.10.2"
   gem "libv8", "3.3.10.2"

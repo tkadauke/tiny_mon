@@ -17,7 +17,7 @@
         <p><%= t('.user_wrote_time_ago', :user => link_to(comment.user.full_name, user_path(comment.user)), :time => time_ago_in_words(comment.created_at)).html_safe %>:</p>
         <p><strong><%= comment.title %></strong></p>
     
-        <%= simple_format(auto_link(comment.text)) %>
+        <%= simple_format(auto_link(h(comment.text))).html_safe %>
       </div>
     </div>
   <% end %>

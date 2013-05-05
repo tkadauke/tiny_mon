@@ -59,6 +59,11 @@ footer {
   margin-bottom: 5px;
 }
 
+code {
+  border: none;
+  white-space: normal;
+}
+
 @media (max-width: 767px) {
   body {
     padding: 5px 10px;

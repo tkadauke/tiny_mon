@@ -4,7 +4,7 @@ module CheckRunsHelper
     when /<html/
       format_embedded_html_page(message)
     else
-      content_tag(:code) { auto_link(message) }
+      content_tag(:code) { auto_link(message).html_safe }
     end
   end
   

@@ -6,7 +6,6 @@
           <th></th>
         <% end %>
         <th colspan="2" class="hidden-phone"><%= t('.status') %></th>
-        <th><%= t('.site') %></th>
         <th><%= t('.name') %></th>
         <% if current_user.can_edit_health_checks?(@account) %>
           <th><%= t('.options') %></th>
@@ -17,7 +16,7 @@
       <tfoot>
         <tr>
           <td></td>
-          <td colspan="5">
+          <td colspan="4">
             <%= action_list do |a| %>
               <% a.link_to_function t(".all"), %{$('table input[type="checkbox"]').prop('checked',true )} %>
               <% a.link_to_function t(".none"), %{$('table input[type="checkbox"]').prop('checked', false)} %>
@@ -37,8 +36,9 @@
           <% end %>
           <td class="hidden-phone"><%= status_icon health_check %></td>
           <td class="hidden-phone"><%= weather_icon health_check %></td>
-          <td><%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %></td>
-          <td><%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %></td>
+          <td>
+            <%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %> / <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %>
+          </td>
           <% if current_user.can_edit_health_checks?(@account) %>
             <td>
               <%= action_list do |a| %>

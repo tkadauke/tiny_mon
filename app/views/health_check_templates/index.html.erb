@@ -15,10 +15,17 @@
         <tr>
           <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
           <td>
-            <%= action_list do |a| %>
-              <% a.link_to t(".edit"), edit_health_check_template_path(health_check_template) %>
-              <% a.link_to t(".delete"), health_check_template_path(health_check_template), :method => :delete, :confirm => t(".really_delete_template") %>
-            <% end %>
+            <div class="btn-group">
+              <button class="btn btn-mini">
+                <%= link_to t(".edit"), edit_health_check_template_path(health_check_template) %>
+              </button>
+              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to t(".delete"), health_check_template_path(health_check_template), :method => :delete, :confirm => t(".really_delete_template") %></li>
+              </ul>
+            </div>
           </td>
         </tr>
       <% end %>

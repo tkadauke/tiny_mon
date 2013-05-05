@@ -37,11 +37,18 @@
             </td>
             <% if current_user.can_edit_health_checks?(@account) %>
               <td>
-                <%= action_list do |a| %>
-                <% a.link_to t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true %>
-                  <% a.link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %>
-                  <% a.link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %>
-                <% end %>
+                <div class="btn-group">
+                  <button class="btn btn-mini">
+                    <%= link_to t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true %>
+                  </button>
+                  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %></li>
+                    <li><%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %></li>
+                  </ul>
+                </div>
               </td>
             <% end %>
           <% end %>

@@ -31,7 +31,7 @@
           <td><strong><%= t("account.role.#{user_account.role}") %></strong></td>
         <% end %>
         <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
-          <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account') %></td>
+          <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account'), :class => 'btn btn-mini' %></td>
         <% end %>
       </tr>
     <% end %>

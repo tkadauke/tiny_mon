@@ -13,7 +13,7 @@
       <tr>
         <td><%= link_to highlight(account.name, @search_filter.query), admin_account_path(account) %></td>
         <td><%= account.users.count %></td>
-        <td><%= link_to 'Edit', edit_admin_account_path(account) %></td>
+        <td><%= link_to 'Edit', edit_admin_account_path(account), :class => 'btn btn-mini' %></td>
       </tr>
     <% end %>
   </tbody>

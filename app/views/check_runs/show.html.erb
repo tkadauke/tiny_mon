@@ -48,23 +48,25 @@
     </tbody>
   </table>
 
-<% unless @screenshots.empty? %>
-  <h3><%= t('.screenshots') %></h3>
+  <% unless @screenshots.empty? %>
+    <h3><%= t('.screenshots') %></h3>
   
-  <%= render :partial => "/screenshots/list" %>
-<% end %>
+    <%= render :partial => "/screenshots/list" %>
+  <% end %>
 
-<% unless @screenshot_comparisons.empty? %>
-  <h3><%= t('.screenshot_comparisons') %></h3>
+  <% unless @screenshot_comparisons.empty? %>
+    <h3><%= t('.screenshot_comparisons') %></h3>
   
-  <%= render :partial => "/screenshot_comparisons/list" %>
-<% end %>
+    <%= render :partial => "/screenshot_comparisons/list" %>
+  <% end %>
 
-<h3><%= t('.comments', :count => @comments_count) %></h3>
+  <h3><%= t('.comments', :count => @comments_count) %></h3>
 
   <%= render :partial => "/comments/list" %>
 
-  <p><%= link_to t('.all_comments'), account_site_health_check_check_run_comments_path(@account, @site, @health_check, @check_run) %></p>
+  <% unless @comments_count == 0 %>
+    <p><%= link_to t('.all_comments'), account_site_health_check_check_run_comments_path(@account, @site, @health_check, @check_run) %></p>
+  <% end %>
 
   <% if current_user.can_create_comments?(@account) %>
     <h3><%= t('.leave_a_comment') %></h3>

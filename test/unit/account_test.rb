@@ -4,8 +4,8 @@ class AccountTest < ActiveSupport::TestCase
   test "should update check runs per day" do
     account = Account.create!(:name => 'some account')
     site = account.sites.create!(:name => 'some_site', :url => 'http://www.example.com')
-    health_check1 = site.health_checks.create!(:name => 'some_check', :interval => 60) # 24 per day
-    health_check2 = site.health_checks.create!(:name => 'some_other_check', :interval => 120) # 12 per day
+    health_check1 = site.health_checks.create!(:name => 'some_check', :interval => 60, :enabled => true) # 24 per day
+    health_check2 = site.health_checks.create!(:name => 'some_other_check', :interval => 120, :enabled => true) # 12 per day
     
     account.update_check_runs_per_day
     

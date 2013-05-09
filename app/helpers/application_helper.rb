@@ -6,8 +6,28 @@ module ApplicationHelper
     link_to image_tag("http://www.gravatar.com/avatar/#{hash}.png?s=#{options[:size] || 20}") + text.html_safe, user_path(user)
   end
   
-  def auto_update(container)
-    # periodically_call_remote(:url => request.request_uri, :update => container, :method => 'get', :frequency => '10')
+  def poll(url, element = "list")
+    javascript_tag %{
+      (function worker() {
+        if (typeof(previous) == "undefined") {
+          previous = "";
+        }
+
+        $.ajax({
+          url: '#{url}',
+          success: function(data) {
+            var btngroups = $('.btn-group.open');
+            if (btngroups.length == 0 && data != previous) {
+              $('##{element}').html(data);
+              previous = data;
+            }
+          },
+          complete: function() {
+            setTimeout(worker, 10000);
+          }
+        });
+      })();
+    }
   end
 
   def bread_crumb

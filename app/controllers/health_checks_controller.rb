@@ -29,7 +29,11 @@ class HealthChecksController < ApplicationController
     end
     respond_with @health_checks do |format|
       format.html do
-        render template unless request.xhr?
+        if request.xhr?
+          render :partial => "list"
+        else
+          render template
+        end
       end
     end
   end

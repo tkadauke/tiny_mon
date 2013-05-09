@@ -10,10 +10,10 @@
     <%= link_to t('.create_account'), new_account_path %>
   </p>
 <% else %>
-  <%= auto_update 'dashboard' %>
   <div id="dashboard">
     <%= render :partial => "dashboard" %>
   </div>
+  <%= poll root_path(:firefix => true), 'dashboard' %>
 
   <% if current_user.role != 'locked' %>
     <h2><%= t('.quick_links') %></h2>

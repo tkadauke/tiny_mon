@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<%#= auto_update 'checks' %>
 <div id="checks">
   <%= render "list" %>
 </div>
+<%= poll health_checks_path(:firefix => true), 'checks' %>

@@ -4,8 +4,8 @@ class SelectCheckBoxStep < ScopableStep
   validates_presence_of :name
   
   def run!(session, check_run)
-    with_optional_scope(session) do |scope|
-      scope.check(self.name)
+    with_optional_scope(session) do
+      session.check(self.name)
     end
   end
 end

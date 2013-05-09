@@ -47,6 +47,10 @@
       <% end %>
     </tbody>
   </table>
+  
+  <% if @check_run.last_response.present? %>
+    <%= format_embedded_html_page(@check_run.last_response) %>
+  <% end %>
 
   <% unless @screenshots.empty? %>
     <h3><%= t('.screenshots') %></h3>

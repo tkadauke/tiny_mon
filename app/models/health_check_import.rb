@@ -11,7 +11,7 @@ class HealthCheckImport < ActiveRecord::Base
   validates_presence_of :user_id, :account_id, :health_check_template_id, :csv_data
   
   def rows
-    @rows ||= FasterCSV.parse(csv_data)
+    @rows ||= CSV.parse(csv_data)
   end
   
   def headers

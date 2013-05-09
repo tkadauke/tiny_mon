@@ -4,13 +4,13 @@ gem 'rails', '3.1.0'
 gem "mysql"
 
 gem "acts_as_list"
-gem "webrat", '0.5.3'
-gem "mechanize", :require => false
+gem "capybara"
+gem "bbc-capybara-mechanize", :require => 'capybara/mechanize'
+gem "poltergeist", :require => 'capybara/poltergeist'
 gem "orderedhash"
 gem "authlogic"
 gem "background_lite", '0.3.2'
 gem "will_paginate"
-gem "fastercsv"
 gem "permalink_fu"
 gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
 gem 'tmail'

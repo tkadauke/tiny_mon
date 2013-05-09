@@ -40,4 +40,28 @@ class HealthCheckTest < ActiveSupport::TestCase
     assert_equal 24, HealthCheck.new(:interval => 60).check_runs_per_day
     assert_equal 12, HealthCheck.new(:interval => 120).check_runs_per_day
   end
+  
+  test "should set next_check_at when health check gets enabled" do
+    account = Account.create!(:name => 'TinyMon')
+    site = Site.create!(:account => account, :name => 'TinyMon', :url => 'http://www.tinymon.org')
+    check = HealthCheck.create!(:site => site, :name => 'Upcheck', :interval => 60, :enabled => false)
+    
+    assert_nil check.next_check_at
+    
+    check.update_attributes(:enabled => true)
+    
+    assert check.next_check_at < 2.minutes.from_now
+  end
+  
+  test "should set next_check_at when health check interval is changed" do
+    account = Account.create!(:name => 'TinyMon')
+    site = Site.create!(:account => account, :name => 'TinyMon', :url => 'http://www.tinymon.org')
+    check = HealthCheck.create!(:site => site, :name => 'Upcheck', :interval => 60, :enabled => true)
+    
+    check.update_attributes(:next_check_at => 1.hour.from_now)
+    
+    check.update_attributes(:interval => 5)
+    
+    assert check.next_check_at < 2.minutes.from_now
+  end
 end

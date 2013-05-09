@@ -27,7 +27,7 @@ class HealthCheck < ActiveRecord::Base
   
   attr_accessor :template, :template_data
 
-  before_save :set_next_check_at, :if => :enabled_changed?
+  before_save :set_next_check_at, :if => :schedule_next_check_now?
   before_validation :get_info_from_template
   
   after_save :update_account_check_runs_per_day
@@ -169,6 +169,10 @@ protected
     update_attributes(:last_checked_at => Time.now)
   end
   background_method :do_check
+
+  def schedule_next_check_now?
+    enabled_changed? || interval_changed?
+  end
 
   def set_next_check_at
     self.next_check_at = 1.minute.from_now if enabled?

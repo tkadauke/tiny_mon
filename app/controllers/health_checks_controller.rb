@@ -21,10 +21,10 @@ class HealthChecksController < ApplicationController
     
     @search_filter = SearchFilter.new(params[:search_filter])
     if @site
-      @health_checks = @site.health_checks.filter_for_list(@search_filter, params[:status]).order('health_checks.name ASC')
+      @health_checks = @site.health_checks.filter_for_list(@search_filter, @status).order('health_checks.name ASC')
       template = 'index'
     else
-      @health_checks = @account.health_checks.filter_for_list(@search_filter, params[:status]).order('sites.name ASC, health_checks.name ASC')
+      @health_checks = @account.health_checks.filter_for_list(@search_filter, @status).order('sites.name ASC, health_checks.name ASC')
       template = 'all_checks'
     end
     respond_with @health_checks do |format|

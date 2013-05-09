@@ -38,23 +38,21 @@
                         <%= render '/layouts/language_dropdown' %>
 
                         <% if current_user.can_see_account_details? %>
-                          <% if current_user.current_account %>
+                          <% if current_user.current_account && current_user.accounts.size > 1 %>
                             <li class="dropdown">
                               <a href="<%= accounts_path %>" class="dropdown-toggle" data-toggle="dropdown">
                                 <%= current_user.current_account.name %>
                                 <b class="caret"></b>
                               </a>
-                              <% if current_user.accounts.size > 1 %>
-                                <ul class="dropdown-menu">
-                                  <% current_user.accounts.each do |account| %>
-                                    <% if account == current_user.current_account %>
-                                      <li><a href="#"><b><%= account.name %></b></a></li>
-                                    <% else %>
-                                      <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
-                                    <% end %>
+                              <ul class="dropdown-menu">
+                                <% current_user.accounts.each do |account| %>
+                                  <% if account == current_user.current_account %>
+                                    <li><a href="#"><b><%= account.name %></b></a></li>
+                                  <% else %>
+                                    <li><%= link_to account.name, switch_account_path(account), :method => :post %></li>
                                   <% end %>
-                                </ul>
-                              <% end %>
+                                <% end %>
+                              </ul>
                             </li>
                           <% else %>
                             <li><%= link_to t('layouts.accounts'), accounts_path %></li>

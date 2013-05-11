@@ -4,7 +4,6 @@ class Session < Capybara::Session
   class FieldNotFoundError < CheckFailed; end
   class EmailNotFoundError < CheckFailed; end
   class EmailLinkNotFoundError < CheckFailed; end
-  class NoScreenshotToCompareError < CheckFailed; end
   
   attr_accessor :log_entries
   attr_accessor :last_email
@@ -59,23 +58,6 @@ class Session < Capybara::Session
       
       self.last_screenshot = Screenshot.new(:checksum => file.checksum)
     end
-  end
-  
-  def compare_screenshots
-    log "comparing screenshot with previous check run"
-    if last_screenshot
-      screenshots = self.last_screenshot.step.last_two_screenshots
-      if screenshots.size == 2
-        comparer = TinyMon::ScreenshotComparer.new(*screenshots)
-        return comparer.compare!
-      else
-        log "No previous screenshot found"
-      end
-    else
-      raise NoScreenshotToCompareError, "No screenshot to compare. Please take a screenshot before attempting to compare it agains a previous check run."
-    end
-    
-    nil
   end
   
   def debug_log(*args)

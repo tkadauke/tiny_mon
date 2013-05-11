@@ -707,6 +707,7 @@ en:
     in_scope: "in scope %{scope_name}"
     select_check_box: "Select check box"
     submit_form: "Submit form"
+    run_script: "Run script"
     take_screenshot: "Take screenshot"
     visit: Visit
     wait: Wait

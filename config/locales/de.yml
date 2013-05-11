@@ -705,6 +705,7 @@ de:
     deselect_check_box: "Check Box abwählen"
     fill_in: "Fülle Feld aus"
     in_scope: "im Bereich %{scope_name}"
+    run_script: "Script ausführen"
     select_check_box: "Wähle Check Box"
     submit_form: "Schicke Formular ab"
     take_screenshot: "Screenshot erstellen"

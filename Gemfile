@@ -5,7 +5,6 @@ gem "mysql"
 
 gem "acts_as_list"
 gem "capybara"
-gem "bbc-capybara-mechanize", :require => 'capybara/mechanize'
 gem "poltergeist", :require => 'capybara/poltergeist'
 gem "orderedhash"
 gem "authlogic"

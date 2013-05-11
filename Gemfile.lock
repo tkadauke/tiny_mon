@@ -44,9 +44,6 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
     background_lite (0.3.2)
-    bbc-capybara-mechanize (0.3.2)
-      capybara
-      mechanize (~> 1.0.0)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.1.0)
       sass (~> 3.2)
@@ -96,8 +93,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mechanize (1.0.0)
-      nokogiri (>= 1.2.1)
     mime-types (1.19)
     mocha (0.9.8)
       rake
@@ -195,7 +190,6 @@ DEPENDENCIES
   acts_as_list
   authlogic
   background_lite (= 0.3.2)
-  bbc-capybara-mechanize
   bootstrap-sass
   bootstrap-will_paginate
   capistrano

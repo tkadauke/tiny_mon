@@ -62,13 +62,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    coffee-rails (3.1.1)
-      coffee-script (>= 2.2.0)
-      railties (~> 3.1.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.3.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -194,7 +187,6 @@ DEPENDENCIES
   bootstrap-will_paginate
   capistrano
   capybara
-  coffee-rails (~> 3.1.1)
   i18n_tools
   jqplot-rails!
   jquery-rails

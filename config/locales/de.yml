@@ -100,7 +100,7 @@ de:
         user_id: Benutzer
       visit_step: 
         url: URL
-    errors: 
+    errors:
       models: 
         user: 
           attributes: 
@@ -208,6 +208,8 @@ de:
     steps: Schritte
     user_accounts: Benutzer
     users: Benutzer
+  button:
+    filter: Filter
   check_run_mailer: 
     failure: 
       subject: "Funktionstest %{health_check} von site %{site} ist fehlgeschlagen!"
@@ -218,6 +220,7 @@ de:
       duration: Dauer
       duration_in_seconds: "%{duration} Sekunden"
       health_check: Funktionstest
+      name: Name
       no_activity_yet: "Bisher keine Aktivität."
       site: Site
       status: Status
@@ -760,6 +763,8 @@ de:
       options: Optionen
       steps_for_health_check: "Schritte für Funktionstest %{health_check}"
     page_must_be_loaded_before_this_step: "Vor diesem Schritt muss eine Seite geladen worden sein."
+    run_script_step_form:
+      code: Code
     scope_field: 
       scope: Bereich
       scope_description: "Optionaler CSS-Selektor oder XPath, in dem das Element enthalten ist"

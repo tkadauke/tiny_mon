@@ -208,6 +208,8 @@ en:
     steps: Steps
     user_accounts: Users
     users: Users
+  button:
+    filter: Filter
   check_run_mailer: 
     failure: 
       subject: "Health Check %{health_check} of site %{site} failed!"
@@ -218,6 +220,7 @@ en:
       duration: Duration
       duration_in_seconds: "%{duration} seconds"
       health_check: "Health Check"
+      name: Name
       no_activity_yet: "No activity yet."
       site: Site
       status: Status
@@ -760,6 +763,8 @@ en:
       options: Options
       steps_for_health_check: "Steps for Health Check %{health_check}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
+    run_script_step_form:
+      code: Code
     scope_field: 
       scope: Scope
       scope_description: "Optional CSS selector or XPath within which the element can be found"

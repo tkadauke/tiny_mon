@@ -24,7 +24,7 @@ class HealthCheckTemplateData
   def validate_against_variables(variables)
     variables.each do |variable|
       if variable.required? && data[variable.name].blank?
-        self.errors.add(:base, [variable.display_name, I18n.t("activerecord.errors.messages.blank")].join(' '))
+        self.errors.add(:base, [variable.display_name, I18n.t("errors.messages.blank")].join(' '))
       end
     end
   end

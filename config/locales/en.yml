@@ -226,16 +226,8 @@ en:
       status: Status
       time_ago: "%{when} ago"
       when: When
-    index: 
-      check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
-      filter: Filter
-      filter_active: "filter active"
-      from: From
-      reset_filter: "Reset filter"
-      until: until
-    show: 
+    details: 
       all_comments: "Show all comments"
-      check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
       comments: "Comments (%{count})"
       deployment: Deployment
       duration: Duration
@@ -250,6 +242,15 @@ en:
       started_by: "Stared by"
       status: Status
       time: Time
+    index: 
+      check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
+      filter: Filter
+      filter_active: "filter active"
+      from: From
+      reset_filter: "Reset filter"
+      until: until
+    show: 
+      check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
   comment_mailer: 
     comment: 
       subject: "New Comment on Health Check %{health_check}: %{title}"

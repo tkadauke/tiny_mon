@@ -226,16 +226,8 @@ de:
       status: Status
       time_ago: "vor %{when}"
       when: Wann
-    index: 
-      check_runs_of_health_check_site: "Testläufe von Funktionstest %{health_check} (Site %{site})"
-      filter: Filtern
-      filter_active: "Filter aktiv"
-      from: Von
-      reset_filter: Zurücksetzen
-      until: bis
-    show: 
+    details: 
       all_comments: "Alle Kommentare anzeigen"
-      check_run_of_health_check_site: "Testlauf von %{health_check} (Site %{site})"
       comments: "Kommentare (%{count})"
       deployment: Deployment
       duration: Dauer
@@ -250,6 +242,15 @@ de:
       started_by: "Gestartet von"
       status: Status
       time: Zeit
+    index: 
+      check_runs_of_health_check_site: "Testläufe von Funktionstest %{health_check} (Site %{site})"
+      filter: Filtern
+      filter_active: "Filter aktiv"
+      from: Von
+      reset_filter: Zurücksetzen
+      until: bis
+    show: 
+      check_run_of_health_check_site: "Testlauf von %{health_check} (Site %{site})"
   comment_mailer: 
     comment: 
       subject: "Neuer Kommentar für Funktionstest %{health_check}: %{title}"

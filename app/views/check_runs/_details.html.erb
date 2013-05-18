@@ -1,0 +1,75 @@
+<% if @check_run.status.blank? %>
+  <p><%= t('.running') %> <%= image_tag 'spinner.gif' %></p>
+<% else %>
+  <dl class="dl-horizontal well">
+    <dt><%= t('.status') %></dt>
+    <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
+
+    <dt><%= t('.duration') %></dt>
+    <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
+    
+    <% if @check_run.user %>
+      <dt><%= t(".started_by") %></dt>
+      <dd><%= gravatar @check_run.user %> <%= link_to @check_run.user.full_name, user_path(@check_run.user) %>
+    <% end %>
+
+    <% if @check_run.deployment %>
+      <dt><%= t(".deployment") %></dt>
+      <dd><%= link_to deployment_title(@check_run.deployment), account_site_deployment_path(@account, @site, @check_run.deployment) %>
+    <% end %>
+
+    <% if @check_run.error_message %>
+      <dt><%= t('.error_message') %></dt>
+      <dd><%= auto_link(h(@check_run.error_message)).html_safe %></dd>
+    <% end %>
+  </dl>
+
+  <h3><%= t('.log_output') %></h3>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= t('.time') %></th>
+        <th><%= t('.message') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @check_run.log.each do |time, message| %>
+        <tr>
+          <td><%= l(time, :format => :log) %></td>
+          <td><%= format_log_message message %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <% if @check_run.last_response.present? %>
+    <%= format_embedded_html_page(@check_run.last_response) %>
+  <% end %>
+
+  <% unless @screenshots.empty? %>
+    <h3><%= t('.screenshots') %></h3>
+  
+    <%= render :partial => "/screenshots/list" %>
+  <% end %>
+
+  <% unless @screenshot_comparisons.empty? %>
+    <h3><%= t('.screenshot_comparisons') %></h3>
+  
+    <%= render :partial => "/screenshot_comparisons/list" %>
+  <% end %>
+
+  <h3><%= t('.comments', :count => @comments_count) %></h3>
+
+  <%= render :partial => "/comments/list" %>
+
+  <% unless @comments_count == 0 %>
+    <p><%= link_to t('.all_comments'), account_site_health_check_check_run_comments_path(@account, @site, @health_check, @check_run) %></p>
+  <% end %>
+
+  <% if current_user.can_create_comments?(@account) %>
+    <h3><%= t('.leave_a_comment') %></h3>
+
+    <%= render :partial => "/comments/form" %>
+  <% end %>
+<% end %>

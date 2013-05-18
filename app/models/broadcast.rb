@@ -3,6 +3,14 @@ class Broadcast < ActiveRecord::Base
   
   scope :ordered, order('broadcasts.sent_at DESC')
   
+  def name
+    title
+  end
+  
+  def self.from_param!(param)
+    find(param)
+  end
+  
   def deliver
     User.all.each do |user|
       I18n.with_locale user.config.language do

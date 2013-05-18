@@ -151,13 +151,17 @@ en:
         nothing_found: "Nothing found"
         options: Options
         really_remove_broadcast: "Do you really want to remove this broadcast? This operation cannot be undone."
-        really_send_broadcast: "Do you really want to send this broadcast? This operation cannot be canceled."
         remove: Remove
         send: Send
         sent_at: "Sent at"
         title: Title
       new: 
         new_broadcast: "New broadcast"
+      really_send_broadcast: "Do you really want to send this broadcast? This operation cannot be canceled."
+      show: 
+        never_sent: "Never sent."
+        send_now: "Send now"
+        sent_at: "Sent %{time} ago"
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"
@@ -211,6 +215,7 @@ en:
   breadcrumb: 
     accounts: Accounts
     admin: Administration
+    broadcasts: Broadcasts
     check_runs: "Check Runs"
     comments: Comments
     deployments: Deployments

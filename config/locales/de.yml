@@ -151,13 +151,17 @@ de:
         nothing_found: "Nichts gefunden."
         options: Optionen
         really_remove_broadcast: "Wollen Sie diese Neuigkeit wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden."
-        really_send_broadcast: "Wollen Sie diese Neuigkeit wirklich versenden? Diese Aktion kann nicht abgebrochen werden."
         remove: Entfernen
         send: Senden
         sent_at: Versendet
         title: Titel
       new: 
         new_broadcast: "Neuigkeit anlegen"
+      really_send_broadcast: "Wollen Sie diese Neuigkeit wirklich versenden? Diese Aktion kann nicht abgebrochen werden."
+      show: 
+        never_sent: "Nicht versendet"
+        send_now: "Jetzt versenden"
+        sent_at: "Vor %{time} versendet"
     footer_links: 
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
@@ -211,6 +215,7 @@ de:
   breadcrumb: 
     accounts: Konten
     admin: Administration
+    broadcasts: Neuigkeiten
     check_runs: Testläufe
     comments: Kommentare
     deployments: Deployments

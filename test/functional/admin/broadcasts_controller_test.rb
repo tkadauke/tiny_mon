@@ -22,6 +22,11 @@ class Admin::BroadcastsControllerTest < ActionController::TestCase
     assert_response :success
   end
   
+  test "should show broadcast" do
+    get :show, :locale => 'en', :id => @broadcast
+    assert_response :success
+  end
+  
   test "should show edit" do
     get :edit, :locale => 'en', :id => @broadcast
     assert_response :success

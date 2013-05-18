@@ -10,6 +10,10 @@ class Admin::BroadcastsController < ApplicationController
     @broadcast = Broadcast.new
   end
   
+  def show
+    @broadcast = Broadcast.find(params[:id])
+  end
+  
   def edit
     @broadcast = Broadcast.find(params[:id])
   end

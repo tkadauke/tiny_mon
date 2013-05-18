@@ -77,6 +77,13 @@ Version 0.2.0 added Javascript support via Capybara + PhantomJS. In addition to 
 - You may uninstall wkhtmltoimage
 - Migrate the YAML columns in the database so that special characters are UTF-8. These columns are `steps.data`, `health_check_template_steps.step_data_hash`, `config_options.value`, `check_runs.log`
 
+Differences in behavior:
+
+- PhantomJS complains about ambiguities when finding elements, so these must be resolved in the steps
+- Link texts should not include HTML tags anymore
+- Check runs take about twice the time
+- Capybara expects correct CSS selector syntax
+
 ## Contributing
 
 Do the Github dance. That means fork the project, make your changes, and send me a pull request.

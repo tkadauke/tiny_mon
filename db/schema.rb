@@ -1,15 +1,16 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110503201404) do
+ActiveRecord::Schema.define(:version => 20130518150718) do
 
   create_table "accounts", :force => true do |t|
     t.string   "name"
@@ -17,6 +18,14 @@ ActiveRecord::Schema.define(:version => 20110503201404) do
     t.datetime "updated_at"
     t.integer  "maximum_check_runs_per_day", :default => 100
     t.integer  "check_runs_per_day",         :default => 0
+  end
+
+  create_table "broadcasts", :force => true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "check_runs", :force => true do |t|
@@ -31,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20110503201404) do
     t.integer  "account_id"
     t.integer  "deployment_id"
     t.integer  "user_id"
+    t.text     "last_response"
   end
 
   add_index "check_runs", ["account_id", "created_at"], :name => "index_check_runs_on_account_id_and_created_at"
@@ -39,6 +49,27 @@ ActiveRecord::Schema.define(:version => 20110503201404) do
   add_index "check_runs", ["deployment_id"], :name => "index_new_check_runs_on_deployment_id"
   add_index "check_runs", ["health_check_id", "created_at"], :name => "index_new_check_runs_on_health_check_id_and_created_at"
   add_index "check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
+
+  create_table "check_runs_before_add_last_response_to_check_runs", :force => true do |t|
+    t.integer  "health_check_id"
+    t.string   "status"
+    t.text     "log"
+    t.string   "error_message"
+    t.decimal  "started_at",      :precision => 20, :scale => 10
+    t.decimal  "ended_at",        :precision => 20, :scale => 10
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "account_id"
+    t.integer  "deployment_id"
+    t.integer  "user_id"
+  end
+
+  add_index "check_runs_before_add_last_response_to_check_runs", ["account_id", "created_at"], :name => "index_check_runs_on_account_id_and_created_at"
+  add_index "check_runs_before_add_last_response_to_check_runs", ["account_id"], :name => "index_check_runs_on_account_id"
+  add_index "check_runs_before_add_last_response_to_check_runs", ["created_at"], :name => "index_check_runs_on_created_at"
+  add_index "check_runs_before_add_last_response_to_check_runs", ["deployment_id"], :name => "index_new_check_runs_on_deployment_id"
+  add_index "check_runs_before_add_last_response_to_check_runs", ["health_check_id", "created_at"], :name => "index_new_check_runs_on_health_check_id_and_created_at"
+  add_index "check_runs_before_add_last_response_to_check_runs", ["health_check_id"], :name => "index_check_runs_on_health_check_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "check_run_id"

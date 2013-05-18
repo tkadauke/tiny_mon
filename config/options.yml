@@ -19,6 +19,15 @@
       de: "Gibt an, ob Benachrichtigungen über fehlgeschlagene Funktionstests per E-Mail an Sie geschickt werden."
     type: Boolean
     default: true
+- broadcasts_enabled:
+    name:
+      en: "Broadcast e-mail news enabled"
+      de: "E-Mail-Neuigkeiten aktivieren"
+    description:
+      en: "Whether or not broadcast email news by the site administrator are delivered to you."
+      de: "Gibt an, ob Neuigkeiten des Administrators per E-Mail an Sie geschickt werden."
+    type: Boolean
+    default: true
 - prowl_enabled:
     name:
       en: "Prowl enabled"

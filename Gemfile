@@ -11,7 +11,7 @@ gem "authlogic"
 gem "background_lite", '0.3.2'
 gem "will_paginate"
 gem "permalink_fu"
-gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
+gem 'rinku', :require => 'rails_rinku'
 gem 'tmail'
 gem "dynamic_form"
 

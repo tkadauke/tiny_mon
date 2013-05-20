@@ -231,7 +231,7 @@ GEM
       retryable
       solve (>= 0.4.4)
       winrm (~> 1.1.0)
-    rinku (1.2.2)
+    rinku (1.7.3)
     rubyntlm (0.1.1)
     sass (3.2.9)
     sass-rails (3.2.6)
@@ -322,7 +322,7 @@ DEPENDENCIES
   poltergeist
   rails (= 3.2.12)
   resque
-  rinku (~> 1.2.2)
+  rinku
   sass-rails
   therubyracer (= 0.10.2)
   tmail

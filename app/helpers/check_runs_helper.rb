@@ -1,3 +1,5 @@
+require 'rinku'
+
 module CheckRunsHelper
   def format_log_message(message)
     case message

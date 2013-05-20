@@ -1,3 +1,5 @@
+require 'csv'
+
 class HealthCheckImport < ActiveRecord::Base
   belongs_to :user
   belongs_to :site

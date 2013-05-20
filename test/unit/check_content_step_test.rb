@@ -16,6 +16,13 @@ class CheckContentStepTest < ActiveSupport::TestCase
     step.run!(session, stub)
   end
   
+  test "should raise if content is present in negate mode" do
+    session = stub(:response => stub(:body => 'something with interesting content', :encoding => 'UTF-8'), :log => nil)
+    session.expects(:fail)
+    step = CheckContentStep.new(:content => 'something', :negate => true)
+    step.run!(session, stub)
+  end
+  
   test "should transcode response body to utf-8 before checking content" do
     Iconv.expects(:conv).returns('something with interesting content')
 

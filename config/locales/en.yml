@@ -743,10 +743,16 @@ en:
     visit: Visit
     wait: Wait
   steps: 
+    check_content_step: 
+      not: not
     check_content_step_form: 
       content: Content
+      negate: Negate
+    check_current_url_step: 
+      not: not
     check_current_url_step_form: 
       absolute_url: "Please enter the absolute URL, including protocol and domain name"
+      negate: Negate
       url: URL
     check_email_step_form: 
       login: Login

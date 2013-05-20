@@ -5,4 +5,11 @@
   </div>
 </div>
 
+<div class="control-group">
+  <%= f.label :negate, t('.negate'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.check_box :negate %>
+  </div>
+</div>
+
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

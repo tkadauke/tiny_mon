@@ -15,4 +15,11 @@ class CheckCurrentUrlStepTest < ActiveSupport::TestCase
     step = CheckCurrentUrlStep.new(:url => 'http://www.example.com/foobar')
     step.run!(session, stub)
   end
+
+  test "should raise if url as expected in negate mode" do
+    session = stub(:response => stub(:uri => 'http://www.example.com/some?url'))
+    session.expects(:fail)
+    step = CheckCurrentUrlStep.new(:url => 'http://www.example.com/some?url', :negate => true)
+    step.run!(session, stub)
+  end
 end

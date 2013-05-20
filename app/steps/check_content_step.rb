@@ -4,6 +4,7 @@ class CheckContentStep < Step
   class ContentCheckFailed < CheckFailed; end
 
   property :content, :string
+  property :negate, :boolean
   
   validates_presence_of :content
   
@@ -16,9 +17,18 @@ class CheckContentStep < Step
       Iconv.conv('UTF-8//TRANSLIT', session.response.encoding, session.response.body)
     end
     
-    unless utf8_body =~ Regexp.new(Regexp.escape(content))
-      session.log utf8_body
-      session.fail ContentCheckFailed, "Expected page to contain #{content}"
+    rx = Regexp.new(Regexp.escape(content))
+    
+    if negate
+      unless utf8_body !~ rx
+        session.log utf8_body
+        session.fail ContentCheckFailed, "Expected page to not contain #{content}"
+      end
+    else
+      unless utf8_body =~ rx
+        session.log utf8_body
+        session.fail ContentCheckFailed, "Expected page to contain #{content}"
+      end
     end
   end
 end

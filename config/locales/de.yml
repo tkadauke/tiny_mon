@@ -743,10 +743,16 @@ de:
     visit: "Gehe zu"
     wait: Warte
   steps: 
+    check_content_step: 
+      not: nicht
     check_content_step_form: 
       content: Inhalt
+      negate: Negieren
+    check_current_url_step: 
+      not: nicht
     check_current_url_step_form: 
       absolute_url: "Bitte geben Sie die volle URL inklusive Protokoll und Domain an"
+      negate: Negieren
       url: URL
     check_email_step_form: 
       login: Benutzername

@@ -38,6 +38,8 @@ module HasProperties
         value.to_s
       when :integer
         value.to_i
+      when :boolean
+        value.to_bool
       end
     end
   end

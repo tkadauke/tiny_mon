@@ -13,6 +13,7 @@ gem "will_paginate"
 gem "permalink_fu"
 gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
 gem 'tmail'
+gem "dynamic_form"
 
 gem "bootstrap-sass"
 gem 'bootstrap-will_paginate'

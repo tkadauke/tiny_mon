@@ -1,7 +1,15 @@
-class AddUserIdToCheckRuns < TableMigration
-  migrates :check_runs
+require 'lhm'
 
-  change_table do |t|
-    t.integer :user_id
+class AddUserIdToCheckRuns < ActiveRecord::Migration
+  def self.up
+    Lhm.change_table :check_runs do |m|
+      m.add_column :user_id, :integer
+    end
+  end
+
+  def self.down
+    Lhm.change_table :check_runs do |m|
+      m.remove_column :user_id
+    end
   end
 end

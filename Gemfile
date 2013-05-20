@@ -15,6 +15,8 @@ gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
 gem 'tmail'
 gem "dynamic_form"
 
+gem "lhm", :require => false
+
 gem "bootstrap-sass"
 gem 'bootstrap-will_paginate'
 

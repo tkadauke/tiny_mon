@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
-gem "mysql"
+gem 'rails', '3.2.12'
+gem "mysql2"
 
 gem "acts_as_list"
 gem "capybara"
@@ -41,4 +41,10 @@ end
 
 group :production do
   gem "resque"
+end
+
+group :vm do
+  gem 'vagrant', :git => 'git://github.com/mitchellh/vagrant.git', :ref => 'v1.2.2'
+  gem 'berkshelf'
+  gem 'vagrant-berkshelf'
 end

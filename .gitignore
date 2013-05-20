@@ -11,3 +11,4 @@ doc/TODO
 public/system
 public/stylesheets/*
 tmp/*
+.vagrant

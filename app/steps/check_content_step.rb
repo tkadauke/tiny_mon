@@ -2,6 +2,7 @@ class CheckContentStep < Step
   class ContentCheckFailed < CheckFailed; end
 
   property :content, :string
+  property :negate, :boolean
   
   validates_presence_of :content
   
@@ -10,8 +11,16 @@ class CheckContentStep < Step
     
     response_body = session.driver.body
     
-    unless response_body =~ Regexp.new(Regexp.escape(content))
-      session.fail ContentCheckFailed, "Expected page to contain #{content}"
+    rx = Regexp.new(Regexp.escape(content))
+    
+    if negate
+      unless response_body !~ rx
+        session.fail ContentCheckFailed, "Expected page to not contain #{content}"
+      end
+    else
+      unless response_body =~ rx
+        session.fail ContentCheckFailed, "Expected page to contain #{content}"
+      end
     end
   end
 end

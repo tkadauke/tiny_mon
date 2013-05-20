@@ -6,6 +6,11 @@ TinyMon::Application.routes.draw do
           post :sort
         end
       end
+      resources :broadcasts do
+        member do
+          post :deliver
+        end
+      end
       resources :accounts
       resources :users
     end

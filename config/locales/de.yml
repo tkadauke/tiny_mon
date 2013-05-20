@@ -41,8 +41,8 @@ de:
         one: "1 Site"
         other: "%{count} Sites"
       statistics: Statistiken
-      usage: Nutzung
       unlimited_check_runs_per_day: "Unbeschränkte Anzahl an Testläufen pro Tag"
+      usage: Nutzung
     new: 
       new_account: "Neues Konto"
     show: 
@@ -136,6 +136,32 @@ de:
       tabs: 
         edit: Bearbeiten
         information: Information
+    broadcasts: 
+      edit: 
+        edit_broadcast: "Neuigkeit bearbeiten"
+      form: 
+        could_not_create_broadcast: "Konnte Neuigkeit nicht erstellen"
+        save_broadcast: "Neuigkeit speichern"
+        text: Text
+        title: Titel
+      index: 
+        broadcasts: Neuigkeiten
+        edit: Bearbeiten
+        new_broadcast: "Neuigkeit anlegen"
+        nothing_found: "Nichts gefunden."
+        options: Optionen
+        really_remove_broadcast: "Wollen Sie diese Neuigkeit wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden."
+        remove: Entfernen
+        send: Senden
+        sent_at: Versendet
+        title: Titel
+      new: 
+        new_broadcast: "Neuigkeit anlegen"
+      really_send_broadcast: "Wollen Sie diese Neuigkeit wirklich versenden? Diese Aktion kann nicht abgebrochen werden."
+      show: 
+        never_sent: "Nicht versendet"
+        send_now: "Jetzt versenden"
+        sent_at: "Vor %{time} versendet"
     footer_links: 
       edit: 
         edit_footer_link: "Fußzeilen-Link bearbeiten"
@@ -160,6 +186,7 @@ de:
     index: 
       accounts: Konten
       admin_area: Admin-Bereich
+      broadcasts: Neuigkeiten
       footer_links: Fußzeilen-Links
       users: Benutzer
     users: 
@@ -188,6 +215,7 @@ de:
   breadcrumb: 
     accounts: Konten
     admin: Administration
+    broadcasts: Neuigkeiten
     check_runs: Testläufe
     comments: Kommentare
     deployments: Deployments
@@ -324,6 +352,7 @@ de:
         one: "1 Funktionstest wurde erfolgreich aktualisiert"
         other: "%{count} Funktionstests wurden erfolgreich aktualisiert"
       created_account: "Konto %{account} wurde erfolgreich erstellt"
+      created_broadcast: "Neuigkeit wurde erfolgreich erstellt"
       created_comment: "Kommentar wurde erfolgreich hinzugefügt"
       created_deployment: "Site wurde erfolgreich mit Deployment markiert"
       created_footer_link: "Fußzeilen-Link wurde erfolgreich erstellt"
@@ -341,10 +370,13 @@ de:
       logged_out: "Erfolgreich ausgeloggt"
       password_instructions_sent: "Anweisungen zur Änderung Ihres Passwortes wurden per E-Mail verschickt. Bitte prüfen Sie Ihren Posteingang."
       password_updated: "Ihr Passwort wurde erfolgreich geändert"
+      removed_broadcast: "Neuigkeit wurde erfolgreich gelöscht"
       removed_footer_link: "Fußzeilen-Link wurde erfolgreich entfernt"
       removed_user_account: "Benutzer wurde erfolgreich vom Konto entfernt"
+      sent_broadcast: "Neuigkeit wird versendet"
       switched_account: "Erfolgreich zu Konto %{account} gewechselt"
       updated_account: "Konto %{account} wurde erfolgreich aktualisiert"
+      updated_broadcast: "Neuigkeit wurde erfolgreich aktualisiert"
       updated_footer_link: "Fußzeilen-Link wurde erfolgreich aktualisiert"
       updated_health_check: "Funktionstest %{health_check} wurde erfolgreich aktualisiert"
       updated_health_check_template: "Funktionstest-Vorlage wurde erfolgreich aktualisiert"
@@ -716,10 +748,16 @@ de:
     visit: "Gehe zu"
     wait: Warte
   steps: 
+    check_content_step: 
+      not: nicht
     check_content_step_form: 
       content: Inhalt
+      negate: Negieren
+    check_current_url_step: 
+      not: nicht
     check_current_url_step_form: 
       absolute_url: "Bitte geben Sie die volle URL inklusive Protokoll und Domain an"
+      negate: Negieren
       url: URL
     check_email_step_form: 
       login: Benutzername

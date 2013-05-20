@@ -15,4 +15,11 @@ class CheckContentStepTest < ActiveSupport::TestCase
     step = CheckContentStep.new(:content => 'not present')
     step.run!(session, stub)
   end
+  
+  test "should raise if content is present in negate mode" do
+    session = stub(:driver => stub(:body => 'something with interesting content'), :log => nil)
+    session.expects(:fail)
+    step = CheckContentStep.new(:content => 'something', :negate => true)
+    step.run!(session, stub)
+  end
 end

@@ -1,145 +1,148 @@
-# German translations for Ruby on Rails 
-# by Clemens Kofler (clemens@railway.at)
-
-de:
-  date:
-    formats:
+--- 
+de: 
+  activerecord: 
+    errors: 
+      messages: 
+        accepted: "muss akzeptiert werden"
+        blank: "muss ausgefüllt werden"
+        confirmation: "stimmt nicht mit der Bestätigung überein"
+        empty: "muss ausgefüllt werden"
+        equal_to: "muss genau %{count} sein"
+        even: "muss gerade sein"
+        exclusion: "ist nicht verfügbar"
+        greater_than: "muss größer als %{count} sein"
+        greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
+        inclusion: "ist kein gültiger Wert"
+        invalid: "ist nicht gültig"
+        less_than: "muss kleiner als %{count} sein"
+        less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
+        not_a_number: "ist keine Zahl"
+        odd: "muss ungerade sein"
+        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+        taken: "ist bereits vergeben"
+        too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
+        too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
+        wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
+      template: 
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+        header: 
+          one: "Konnte dieses %{model} Objekt nicht speichern: 1 Fehler."
+          other: "Konnte dieses %{model} Objekt nicht speichern: %{count} Fehler."
+  date: 
+    abbr_day_names: 
+      - So
+      - Mo
+      - Di
+      - Mi
+      - Do
+      - Fr
+      - Sa
+    abbr_month_names: []
+    day_names: 
+      - Sonntag
+      - Montag
+      - Dienstag
+      - Mittwoch
+      - Donnerstag
+      - Freitag
+      - Samstag
+    formats: 
       default: "%d.%m.%Y"
-      short: "%e. %b"
       long: "%e. %B %Y"
       only_day: "%e"
-
-    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag]
-    abbr_day_names: [So, Mo, Di, Mi, Do, Fr, Sa]
-    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
-    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+      short: "%e. %b"
+    month_names: []
     order: 
-      - :day
-      - :month
-      - :year
-  
-  time:
-    formats:
-      default: "%A, %d. %B %Y, %H:%M Uhr"
-      short: "%d. %B, %H:%M Uhr"
-      long: "%A, %d. %B %Y, %H:%M Uhr"
-      time: "%H:%M"
-
-    am: "vormittags"
-    pm: "nachmittags"
-      
-  datetime:
-    distance_in_words:
-      half_a_minute: 'eine halbe Minute'
-      less_than_x_seconds:
-        zero: 'weniger als 1 Sekunde'
-        one: 'weniger als 1 Sekunde'
-        other: 'weniger als %{count} Sekunden'
-      x_seconds:
-        one: '1 Sekunde'
-        other: '%{count} Sekunden'
-      less_than_x_minutes:
-        zero: 'weniger als 1 Minute'
-        one: 'weniger als einer Minute'
-        other: 'weniger als %{count} Minuten'
-      x_minutes:
-        one: '1 Minute'
-        other: '%{count} Minuten'
-      about_x_hours:
-        one: 'etwa 1 Stunde'
-        other: 'etwa %{count} Stunden'
-      x_days:
-        one: '1 Tag'
-        other: '%{count} Tagen'
-      about_x_months:
-        one: 'etwa 1 Monat'
-        other: 'etwa %{count} Monaten'
-      x_months:
-        one: '1 Monat'
-        other: '%{count} Monaten'
-      about_x_years:
-        one: 'etwa 1 Jahr'
-        other: 'etwa %{count} Jahren'
-      over_x_years:
-        one: 'mehr als 1 Jahr'
-        other: 'mehr als %{count} Jahren'
-      almost_x_years:
-        one: 'fast 1 Jahr'
-        other: 'fast %{count} Jahren'
-    prompts:
-      second: "Sekunden"
-      minute: "Minuten"
-      hour: "Stunden"
-      day: "Tag"
-      month: "Monat"
-      year: "Jahr"
-
-  number:
-    format:
+      - !ruby/symbol day
+      - !ruby/symbol month
+      - !ruby/symbol year
+  datetime: 
+    distance_in_words: 
+      about_x_hours: 
+        one: "etwa 1 Stunde"
+        other: "etwa %{count} Stunden"
+      about_x_months: 
+        one: "etwa 1 Monat"
+        other: "etwa %{count} Monaten"
+      about_x_years: 
+        one: "etwa 1 Jahr"
+        other: "etwa %{count} Jahren"
+      almost_x_years: 
+        one: "fast 1 Jahr"
+        other: "fast %{count} Jahren"
+      half_a_minute: "eine halbe Minute"
+      less_than_x_minutes: 
+        one: "weniger als einer Minute"
+        other: "weniger als %{count} Minuten"
+        zero: "weniger als 1 Minute"
+      less_than_x_seconds: 
+        one: "weniger als 1 Sekunde"
+        other: "weniger als %{count} Sekunden"
+        zero: "weniger als 1 Sekunde"
+      over_x_years: 
+        one: "mehr als 1 Jahr"
+        other: "mehr als %{count} Jahren"
+      x_days: 
+        one: "1 Tag"
+        other: "%{count} Tagen"
+      x_minutes: 
+        one: "1 Minute"
+        other: "%{count} Minuten"
+      x_months: 
+        one: "1 Monat"
+        other: "%{count} Monaten"
+      x_seconds: 
+        one: "1 Sekunde"
+        other: "%{count} Sekunden"
+    prompts: 
+      day: Tag
+      hour: Stunden
+      minute: Minuten
+      month: Monat
+      second: Sekunden
+      year: Jahr
+  number: 
+    currency: 
+      format: 
+        delimiter: ~
+        format: "%n%u"
+        precision: ~
+        separator: ~
+        unit: €
+    format: 
+      delimiter: "."
       precision: 2
-      separator: ','
-      delimiter: '.'
-    currency:
-      format:
-        unit: '€'
-        format: '%n%u'
-        separator: 
-        delimiter: 
-        precision: 
-    percentage:
-      format:
-        delimiter: ""
-    precision:
-      format:
-        delimiter: ""
-    human:
-      format:
+      separator: ","
+    human: 
+      format: 
         delimiter: ""
         precision: 1
-      storage_units:
-        # Storage units output formatting.
-        # %u is the storage unit, %n is the number (default: 2 MB)
+      storage_units: 
         format: "%n %u"
-        units:
-          byte:
-            one:   "Byte"
-            other: "Bytes"
-          kb: "KB"
-          mb: "MB"
-          gb: "GB"
-          tb: "TB"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " und "
+        units: 
+          byte: 
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage: 
+      format: 
+        delimiter: ""
+    precision: 
+      format: 
+        delimiter: ""
+  support: 
+    array: 
       last_word_connector: " und "
-
-  errors:
-    template:
-      header:
-        one:    "Konnte dieses %{model} Objekt nicht speichern: 1 Fehler."
-        other:  "Konnte dieses %{model} Objekt nicht speichern: %{count} Fehler."
-      body: "Bitte überprüfen Sie die folgenden Felder:"
-
-    messages:
-      inclusion: "ist kein gültiger Wert"
-      exclusion: "ist nicht verfügbar"
-      invalid: "ist nicht gültig"
-      confirmation: "stimmt nicht mit der Bestätigung überein"
-      accepted: "muss akzeptiert werden"
-      empty: "muss ausgefüllt werden"
-      blank: "muss ausgefüllt werden"
-      too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
-      too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
-      wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
-      taken: "ist bereits vergeben"
-      not_a_number: "ist keine Zahl"
-      greater_than: "muss größer als %{count} sein"
-      greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
-      equal_to: "muss genau %{count} sein"
-      less_than: "muss kleiner als %{count} sein"
-      less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
-      odd: "muss ungerade sein"
-      even: "muss gerade sein"
-      record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+      two_words_connector: " und "
+      words_connector: ", "
+  time: 
+    am: vormittags
+    formats: 
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      long: "%A, %d. %B %Y, %H:%M Uhr"
+      short: "%d. %B, %H:%M Uhr"
+      time: "%H:%M"
+    pm: nachmittags

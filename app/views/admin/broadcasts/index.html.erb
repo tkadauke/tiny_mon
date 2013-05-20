@@ -1,0 +1,43 @@
+<h2><%= t('.broadcasts') %></h2>
+
+<% if @broadcasts.empty? %>
+  <p><%= t('.nothing_found') %></p>
+<% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th><%= t('.title') %></th>
+        <th class="hidden-phone"><%= t('.sent_at') %></th>
+        <th><%= t('.options') %></th>
+      </tr>
+    </thead>
+    <tbody id="links">
+      <% @broadcasts.each do |broadcast| %>
+        <tr>
+          <td><%= link_to broadcast.title, admin_broadcast_path(broadcast) %></td>
+          <td class="hidden-phone"><%= time_ago_in_words broadcast.sent_at if broadcast.sent_at %></td>
+          <td>
+            <% if broadcast.sent_at %>
+              <%= link_to t('.remove'), admin_broadcast_path(broadcast), :method => :delete, :confirm => t('.really_remove_broadcast'), :class => 'btn btn-mini' %>
+            <% else %>
+              <div class="btn-group">
+                <button class="btn btn-mini">
+                  <%= link_to t('.edit'), edit_admin_broadcast_path(broadcast) %>
+                </button>
+                <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to t('.send'), deliver_admin_broadcast_path(broadcast), :method => :post, :confirm => t('admin.broadcasts.really_send_broadcast') %></li>
+                  <li><%= link_to t('.remove'), admin_broadcast_path(broadcast), :method => :delete, :confirm => t('.really_remove_broadcast') %></li>
+                </ul>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<p><%= link_to t('.new_broadcast'), new_admin_broadcast_path %></p>

@@ -41,8 +41,8 @@ en:
         one: "1 site"
         other: "%{count} sites"
       statistics: Statistics
-      usage: Usage
       unlimited_check_runs_per_day: "Unlimited check runs per day"
+      usage: Usage
     new: 
       new_account: "New Account"
     show: 
@@ -136,6 +136,32 @@ en:
       tabs: 
         edit: Edit
         information: Information
+    broadcasts: 
+      edit: 
+        edit_broadcast: "Edit broadcast"
+      form: 
+        could_not_create_broadcast: "Could not create broadcast"
+        save_broadcast: "Save broadcast"
+        text: Text
+        title: Title
+      index: 
+        broadcasts: Broadcasts
+        edit: Edit
+        new_broadcast: "New broadcast"
+        nothing_found: "Nothing found"
+        options: Options
+        really_remove_broadcast: "Do you really want to remove this broadcast? This operation cannot be undone."
+        remove: Remove
+        send: Send
+        sent_at: "Sent at"
+        title: Title
+      new: 
+        new_broadcast: "New broadcast"
+      really_send_broadcast: "Do you really want to send this broadcast? This operation cannot be canceled."
+      show: 
+        never_sent: "Never sent."
+        send_now: "Send now"
+        sent_at: "Sent %{time} ago"
     footer_links: 
       edit: 
         edit_footer_link: "Edit footer link"
@@ -160,6 +186,7 @@ en:
     index: 
       accounts: Accounts
       admin_area: "Admin Area"
+      broadcasts: Broadcasts
       footer_links: "Footer Links"
       users: Users
     users: 
@@ -188,6 +215,7 @@ en:
   breadcrumb: 
     accounts: Accounts
     admin: Administration
+    broadcasts: Broadcasts
     check_runs: "Check Runs"
     comments: Comments
     deployments: Deployments
@@ -324,6 +352,7 @@ en:
         one: "Successfully updated 1 health check"
         other: "Successfully updated %{count} health checks"
       created_account: "Successfully created account %{account}"
+      created_broadcast: "Successfully cretaed broadcast"
       created_comment: "Successfully added comment"
       created_deployment: "Successfully marked site with new deployment"
       created_footer_link: "Successfully created footer link"
@@ -341,10 +370,13 @@ en:
       logged_out: "Successfully logged out"
       password_instructions_sent: "Instructions to reset your password have been emailed to you. Please check your email."
       password_updated: "Password successfully updated"
+      removed_broadcast: "Successfully removed broadcast"
       removed_footer_link: "Successfully removed footer link"
       removed_user_account: "Successfully removed user from this account"
+      sent_broadcast: "Broadcast will be sent"
       switched_account: "Successfully switched to account %{account}"
       updated_account: "Successfully updated account %{account}"
+      updated_broadcast: "Successfully updated broadcast"
       updated_footer_link: "Successfully updated footer link"
       updated_health_check: "Successfully updated health check %{health_check}"
       updated_health_check_template: "Successfully updated health check template"
@@ -716,10 +748,16 @@ en:
     visit: Visit
     wait: Wait
   steps: 
+    check_content_step: 
+      not: not
     check_content_step_form: 
       content: Content
+      negate: Negate
+    check_current_url_step: 
+      not: not
     check_current_url_step_form: 
       absolute_url: "Please enter the absolute URL, including protocol and domain name"
+      negate: Negate
       url: URL
     check_email_step_form: 
       login: Login

@@ -1,2 +1,2 @@
-<%=h step.name %>
-<%= t("step.in_scope", :scope_name => step.scope) unless step.scope.blank? %>
+<code><%=h step.name %></code>
+<%= t("step.in_scope", :scope_name => "<code>#{step.scope}</code>").html_safe unless step.scope.blank? %>

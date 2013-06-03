@@ -13,9 +13,13 @@ class Broadcast < ActiveRecord::Base
   
   def deliver
     User.all.each do |user|
-      I18n.with_locale user.config.language do
-        BroadcastMailer.broadcast(self, user).deliver
-      end if user.config.broadcasts_enabled
+      begin
+        I18n.with_locale user.config.language do
+          BroadcastMailer.broadcast(self, user).deliver
+        end if user.config.broadcasts_enabled
+      rescue
+        # ignore delivery errors
+      end
     end
     update_attribute(:sent_at, Time.now)
   end

@@ -1,27 +1,21 @@
-class Session < Webrat::Session
+class Session < Capybara::Session
   class PageNotFound < CheckFailed; end
   class ServerError < CheckFailed; end
   class FieldNotFoundError < CheckFailed; end
   class EmailNotFoundError < CheckFailed; end
   class EmailLinkNotFoundError < CheckFailed; end
-  class NoScreenshotToCompareError < CheckFailed; end
   
   attr_accessor :log_entries
   attr_accessor :last_email
   attr_accessor :last_screenshot
   
   def initialize(url)
-    require 'webrat'
-    require 'webrat/mechanize'
-    
     @url = url
     @log_entries = []
     
-    adapter = Webrat::MechanizeAdapter.new
-    adapter.mechanize.open_timeout = 20
-    adapter.mechanize.read_timeout = 10
+    Capybara.app_host = @url
     
-    super(adapter)
+    super(:poltergeist)
   end
   
   def log(message)
@@ -35,44 +29,35 @@ class Session < Webrat::Session
   
   def visit(url)
     log "getting #{url}"
-    super(expand_url(url))
-  rescue Webrat::PageLoadError
-    raise ServerError, "Internal Server Error when trying to load #{url}"
+    super
   end
   
   def click_link(*args)
     log "Clicking link #{args.first}"
     super
-    log "Now on #{response.uri}"
+    log "Now on #{driver.current_url}"
   end
   
   def click_button(*args)
     log "Clicking button #{args.first}"
     super
-    log "Now on #{response.uri}"
+    log "Now on #{driver.current_url}"
+  end
+  
+  def submit_form(locator)
+    find(:form, locator, {}).submit({})
   end
   
   def take_screenshot(css)
-    log "taking screen shot of URL #{expand_url(response.uri)}"
-    renderer = TinyMon::Renderer.new(expand_url(response.uri), adapter.mechanize.cookie_jar.cookies(response.uri), css)
-    self.last_screenshot = renderer.render!
-  end
-  
-  def compare_screenshots
-    log "comparing screenshot with previous check run"
-    if last_screenshot
-      screenshots = self.last_screenshot.step.last_two_screenshots
-      if screenshots.size == 2
-        comparer = TinyMon::ScreenshotComparer.new(*screenshots)
-        return comparer.compare!
-      else
-        log "No previous screenshot found"
-      end
-    else
-      raise NoScreenshotToCompareError, "No screenshot to compare. Please take a screenshot before attempting to compare it agains a previous check run."
+    log "taking screen shot of URL #{expand_url(driver.current_url)}"
+    Dir.create_tmp_dir "renderer", "#{Rails.root}/tmp" do
+      driver.render "#{Dir.pwd}/screenshot.png", :full => true
+      system %{pngcrush screenshot.png crushed.png}
+      
+      file = ScreenshotFile.store!("crushed.png", :thumbnail => true)
+      
+      self.last_screenshot = Screenshot.new(:checksum => file.checksum)
     end
-    
-    nil
   end
   
   def debug_log(*args)
@@ -92,6 +77,10 @@ class Session < Webrat::Session
     else
       raise EmailLinkNotFoundError, "Link with pattern #{link_pattern} not found in email"
     end
+  end
+  
+  def last_response
+    driver.body
   end
   
 protected

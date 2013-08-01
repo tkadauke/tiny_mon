@@ -236,6 +236,8 @@ en:
     steps: Steps
     user_accounts: Users
     users: Users
+  button:
+    filter: Filter
   check_run_mailer: 
     failure: 
       subject: "Health Check %{health_check} of site %{site} failed!"
@@ -246,21 +248,14 @@ en:
       duration: Duration
       duration_in_seconds: "%{duration} seconds"
       health_check: "Health Check"
+      name: Name
       no_activity_yet: "No activity yet."
       site: Site
       status: Status
       time_ago: "%{when} ago"
       when: When
-    index: 
-      check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
-      filter: Filter
-      filter_active: "filter active"
-      from: From
-      reset_filter: "Reset filter"
-      until: until
-    show: 
+    details: 
       all_comments: "Show all comments"
-      check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
       comments: "Comments (%{count})"
       deployment: Deployment
       duration: Duration
@@ -275,6 +270,15 @@ en:
       started_by: "Stared by"
       status: Status
       time: Time
+    index: 
+      check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
+      filter: Filter
+      filter_active: "filter active"
+      from: From
+      reset_filter: "Reset filter"
+      until: until
+    show: 
+      check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
   comment_mailer: 
     comment: 
       subject: "New Comment on Health Check %{health_check}: %{title}"
@@ -739,6 +743,7 @@ en:
     in_scope: "in scope %{scope_name}"
     select_check_box: "Select check box"
     submit_form: "Submit form"
+    run_script: "Run script"
     take_screenshot: "Take screenshot"
     visit: Visit
     wait: Wait
@@ -797,6 +802,8 @@ en:
       options: Options
       steps_for_health_check: "Steps for Health Check %{health_check}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
+    run_script_step_form:
+      code: Code
     scope_field: 
       scope: Scope
       scope_description: "Optional CSS selector or XPath within which the element can be found"

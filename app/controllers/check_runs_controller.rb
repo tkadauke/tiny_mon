@@ -30,7 +30,12 @@ class CheckRunsController < ApplicationController
     
     @screenshots = @check_run.screenshots
     @screenshot_comparisons = @check_run.screenshot_comparisons
-    respond_with @check_run
+    
+    if request.xhr?
+      render :partial => "/check_runs/details"
+    else
+      respond_with @check_run
+    end
   end
   
   def create

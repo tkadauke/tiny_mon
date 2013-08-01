@@ -10,7 +10,7 @@ class DeselectCheckBoxStepTest < ActiveSupport::TestCase
   test "should deselect check box in scope" do
     step = DeselectCheckBoxStep.new(:name => 'Uncheck', :scope => '.some_class')
     session = mock
-    session.expects(:within).yields(mock(:uncheck))
+    session.expects(:within)
     step.run!(session, stub)
   end
 end

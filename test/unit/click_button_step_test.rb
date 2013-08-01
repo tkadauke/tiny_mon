@@ -10,7 +10,7 @@ class ClickButtonStepTest < ActiveSupport::TestCase
   test "should click button in scope" do
     step = ClickButtonStep.new(:name => 'Save', :scope => '.some_class')
     session = mock
-    session.expects(:within).yields(mock(:click_button))
+    session.expects(:within)
     step.run!(session, stub)
   end
 end

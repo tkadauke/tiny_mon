@@ -15,4 +15,4 @@
 <div id="activity">
   <%= render :partial => "/check_runs/activity" %>
 </div>
-<%= poll account_site_health_check_check_runs_path(@account, @site, @health_check, :firefix => true), 'activity' %>
+<%= poll account_site_health_check_check_runs_path(@account, @site, @health_check, :firefix => true), :element => 'activity' %>

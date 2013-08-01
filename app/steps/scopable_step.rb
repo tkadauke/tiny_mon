@@ -4,10 +4,10 @@ class ScopableStep < Step
 protected
   def with_optional_scope(session, &block)
     if scope.blank?
-      yield session
+      yield
     else
-      session.within scope do |selector|
-        yield selector
+      session.within scope do
+        yield
       end
     end
   end

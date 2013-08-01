@@ -1,8 +1,17 @@
-class AddDeploymentIdToCheckRuns < TableMigration
-  migrates :check_runs
+require 'lhm'
 
-  change_table do |t|
-    t.integer :deployment_id
-    t.index   :deployment_id
+class AddDeploymentIdToCheckRuns < ActiveRecord::Migration
+  def self.up
+    Lhm.change_table :check_runs, :atomic_switch => true do |m|
+      m.add_column :deployment_id, :integer
+      m.add_index [:deployment_id]
+    end
+  end
+
+  def self.down
+    Lhm.change_table :check_runs, :atomic_switch => true do |m|
+      m.remove_index [:deployment_id]
+      m.remove_column :deployment_id
+    end
   end
 end

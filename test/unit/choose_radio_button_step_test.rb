@@ -10,7 +10,7 @@ class ChooseRadioButtonStepTest < ActiveSupport::TestCase
   test "should choose radio button in scope" do
     step = ChooseRadioButtonStep.new(:name => 'foo', :scope => '.some_class')
     session = mock
-    session.expects(:within).yields(mock(:choose))
+    session.expects(:within)
     step.run!(session, stub)
   end
 end

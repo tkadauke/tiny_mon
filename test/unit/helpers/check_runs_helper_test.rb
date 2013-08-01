@@ -11,4 +11,9 @@ class CheckRunsHelperTest < ActionView::TestCase
     assert message =~ /iframe/
     assert message =~ /<html><body>hello<\\\/body><\\\/html>/
   end
+  
+protected
+  def h(string)
+    string
+  end
 end

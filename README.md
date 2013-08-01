@@ -11,6 +11,7 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 
 ## Features
 
+- Supports all web technologies including HTML5 and Javascript
 - Available in two languages: English and German
 - Automatically updated overview
 - Overview of recent activity
@@ -45,9 +46,11 @@ TinyMon is a small tool to automatically and periodically monitor that features 
 
 Clone the repository. Then run
 
-  bundle install
-  rake db:create:all
-  rake db:migrate
+```
+bundle install
+rake db:create:all
+rake db:migrate
+```
 
 ## Running
 
@@ -62,6 +65,24 @@ Start the background checker process with
 ```
 RAILS_ENV=production script/scheduler
 ```
+
+## Upgrading
+
+### Version 0.1.0 to 0.2.0
+
+Version 0.2.0 added Javascript support via Capybara + PhantomJS. In addition to the usual upgrading, do the following steps.
+
+- Make sure you run Ruby 1.9.3
+- Install PhantomJS
+- You may uninstall wkhtmltoimage
+- Migrate the YAML columns in the database so that special characters are UTF-8. These columns are `steps.data`, `health_check_template_steps.step_data_hash`, `config_options.value`, `check_runs.log`
+
+Differences in behavior:
+
+- PhantomJS complains about ambiguities when finding elements, so these must be resolved in the steps
+- Link texts should not include HTML tags anymore
+- Check runs take about twice the time
+- Capybara expects correct CSS selector syntax
 
 ## Contributing
 

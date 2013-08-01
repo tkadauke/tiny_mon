@@ -13,7 +13,7 @@
   <div id="dashboard">
     <%= render :partial => "dashboard" %>
   </div>
-  <%= poll root_path(:firefix => true), 'dashboard' %>
+  <%= poll root_path(:firefix => true), :element => 'dashboard' %>
 
   <% if current_user.role != 'locked' %>
     <h2><%= t('.quick_links') %></h2>

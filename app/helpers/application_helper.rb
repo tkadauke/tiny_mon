@@ -6,7 +6,13 @@ module ApplicationHelper
     link_to image_tag("http://www.gravatar.com/avatar/#{hash}.png?s=#{options[:size] || 20}") + text.html_safe, user_path(user)
   end
   
-  def poll(url, element = "list")
+  def poll(url, options = {})
+    default_options = {
+      element: "list",
+      interval: 10
+    }
+    options = default_options.merge(options)
+    
     javascript_tag %{
       (function worker() {
         if (typeof(previous) == "undefined") {
@@ -18,12 +24,12 @@ module ApplicationHelper
           success: function(data) {
             var btngroups = $('.btn-group.open');
             if (btngroups.length == 0 && data != previous) {
-              $('##{element}').html(data);
+              $('##{options[:element]}').html(data);
               previous = data;
             }
           },
           complete: function() {
-            setTimeout(worker, 10000);
+            setTimeout(worker, #{options[:interval] * 1000});
           }
         });
       })();

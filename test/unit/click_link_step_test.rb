@@ -10,7 +10,7 @@ class ClickLinkStepTest < ActiveSupport::TestCase
   test "should click link in scope" do
     step = ClickLinkStep.new(:name => 'View it!', :scope => '.some_class')
     session = mock
-    session.expects(:within).yields(mock(:click_link))
+    session.expects(:within)
     step.run!(session, stub)
   end
 end

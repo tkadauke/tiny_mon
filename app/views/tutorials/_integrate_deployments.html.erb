@@ -18,7 +18,7 @@
 namespace :deploy do
   task :mark do
     callback_url = 'http://mon.tinymon.org/deployments/(your deployment token)'
-    system "curl -F deployment[revision]=#{current_revision} -F deployment[schedule_checks_in]=5 #{callback_url}"
+    system "curl -L -F deployment[revision]=#{current_revision} -F deployment[schedule_checks_in]=5 #{callback_url}"
   end
 end
 before :"deploy:restart", :"deploy:mark"

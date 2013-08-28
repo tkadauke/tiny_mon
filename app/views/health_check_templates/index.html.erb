@@ -16,9 +16,7 @@
           <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
           <td>
             <div class="btn-group">
-              <button class="btn btn-mini">
-                <%= link_to t(".edit"), edit_health_check_template_path(health_check_template) %>
-              </button>
+              <%= link_to t(".edit"), edit_health_check_template_path(health_check_template), :class => "btn btn-mini" %>
               <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
               </button>

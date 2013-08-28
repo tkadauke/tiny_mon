@@ -19,9 +19,7 @@
           <% if current_user.can_edit_sites?(@account) %>
             <td>
               <div class="btn-group">
-                <button class="btn btn-mini">
-                  <%= link_to t('.edit'), edit_account_site_path(site.account, site) %>
-                </button>
+                <%= link_to t('.edit'), edit_account_site_path(site.account, site), :class => "btn btn-mini" %>
                 <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>

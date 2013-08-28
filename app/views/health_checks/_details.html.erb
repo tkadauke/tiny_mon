@@ -42,9 +42,7 @@
           <% if current_user.can_edit_health_checks?(@account) %>
             <td>
               <div class="btn-group">
-                <button class="btn btn-mini">
-                  <%= link_to t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) if current_user.can_edit_health_checks?(@account) %>
-                </button>
+                <%= link_to(t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check), :class => "btn btn-mini") if current_user.can_edit_health_checks?(@account) %>
                 <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>

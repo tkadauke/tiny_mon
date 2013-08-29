@@ -38,9 +38,7 @@
             <% if current_user.can_edit_health_checks?(@account) %>
               <td>
                 <div class="btn-group">
-                  <button class="btn btn-mini">
-                    <%= link_to t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true %>
-                  </button>
+                    <%= link_to t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true, :class => "btn btn-mini" %>
                   <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                   </button>

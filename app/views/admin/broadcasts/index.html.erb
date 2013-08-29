@@ -21,9 +21,7 @@
               <%= link_to t('.remove'), admin_broadcast_path(broadcast), :method => :delete, :confirm => t('.really_remove_broadcast'), :class => 'btn btn-mini' %>
             <% else %>
               <div class="btn-group">
-                <button class="btn btn-mini">
-                  <%= link_to t('.edit'), edit_admin_broadcast_path(broadcast) %>
-                </button>
+                <%= link_to t('.edit'), edit_admin_broadcast_path(broadcast), :class => "btn btn-mini" %>
                 <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>

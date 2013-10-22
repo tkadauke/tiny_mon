@@ -69,7 +69,7 @@ protected
   end
   
   def previous_check_run
-    runs = health_check.check_runs.order('id desc').limit(2)
+    runs = health_check.check_runs.where('status is not null').order('id desc').first(2)
     runs.last if runs.size == 2
   end
 end

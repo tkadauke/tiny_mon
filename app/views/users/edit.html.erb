@@ -1,26 +1,30 @@
-<h2><%= t('.edit_users_profile', :full_name => @user.full_name) %></h2>
+<%= title t('.edit_users_profile', :full_name => @user.full_name) %>
 
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.error_messages :header_message => t('.could_not_update_user') %>
+<div class="box">
+  <div class="box-body">
+    <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+      <%= f.error_messages :header_message => t('.could_not_update_user') %>
 
-  <div class="control-group">
-    <%= f.label :full_name, t('.full_name'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_field :full_name %>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :full_name, t('.full_name'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.text_field :full_name, :class => 'form-control' %>
+        </div>
+      </div>
 
-  <div class="control-group">
-    <%= f.label :email, t('.email_address'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_field :email %>
-      <p><small><%= t('.the_email_address_is_used_for_notifications') %></small></p>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :email, t('.email_address'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.text_field :email, :class => 'form-control' %>
+          <p><small><%= t('.the_email_address_is_used_for_notifications') %></small></p>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit t('.update'), :class => 'btn' %>
-    </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit t('.update'), :class => 'btn' %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

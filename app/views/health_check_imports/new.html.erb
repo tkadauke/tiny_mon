@@ -1,13 +1,17 @@
-<% if @health_check_template %>
-  <% if @site %>
-    <%= render :partial => 'import_to_site' %>
-  <% else %>
-    <%= render :partial => 'import_to_account' %>
-  <% end %>
-<% else %>
-  <% if @site %>
-    <%= render :partial => "choose_template_for_site" %>
-  <% else %>
-    <%= render :partial => "choose_template_for_account" %>
-  <% end %>
-<% end %>
+<div class="box">
+  <div class="box-body">
+    <% if @health_check_template %>
+      <% if @site %>
+        <%= render :partial => 'import_to_site' %>
+      <% else %>
+        <%= render :partial => 'import_to_account' %>
+      <% end %>
+    <% else %>
+      <% if @site %>
+        <%= render :partial => "choose_template_for_site" %>
+      <% else %>
+        <%= render :partial => "choose_template_for_account" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -406,11 +406,11 @@ de:
     import_to_account: 
       field_names: "Die Felder sind (in dieser Reihenfolge): Site-Name, Basis-URL der Site, %{fields}"
       instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
-      new_import: "Neuer Import von Funktionstests aus Vorlage %{template}"
+      new_import: "Neuer Import"
     import_to_site: 
       field_names: "Die Felder sind (in dieser Reihenfolge): %{fields}"
       instructions: "Kopieren Sie in das untenstehende Feld die zu importierenden Funktionstests im CSV-Format herein."
-      new_import: "Neuer Import von Funktionstests aus Vorlage %{template}"
+      new_import: "Neuer Import"
     index: 
       all_imports_for_account: "Alle Importe für dieses Konto anzeigen"
       delete: Löschen
@@ -618,7 +618,7 @@ de:
     guest_greeter: "Willkommen, Gast!"
     health_checks: Funktionstests
     help: Hilfe
-    home: Start
+    home: Startseite
     login: Login
     logout: Logout
     quick_links: Schnellzugriff
@@ -702,11 +702,13 @@ de:
       edit: Bearbeiten
       health_checks: Funktionstests
       information: Information
-  start: 
-    dashboard: 
+  start:
+    dashboard:
       recent_activity: "Neueste Aktivität"
       upcoming_checks: "Geplante Testläufe"
-    index: 
+    index:
+      title: "Startseite"
+      welcome: 'Willkommen'
       add_existing_user_to_account: "Vorhandenen Benutzer zu Konto %{account} hinzufügen"
       add_new_user_to_account: "Neuen Benutzer zu Konto %{account} hinzufügen"
       add_site: "Site hinzufügen"
@@ -734,6 +736,7 @@ de:
     check_content: "Durchsuche Inhalt"
     check_current_url: "Aktuelle URL prüfen"
     check_email: "Rufe E-Mail ab"
+    check_element_count: "Zähle Elemente"
     choose_radio_button: "Wähle Radio-Button"
     click_button: "Klicke Button"
     click_email_link: "Klicke Link in E-Mail"
@@ -743,6 +746,7 @@ de:
     in_scope: "im Bereich %{scope_name}"
     run_script: "Script ausführen"
     select_check_box: "Wähle Check Box"
+    select_dropdown: "Wähle Dropdown"
     submit_form: "Schicke Formular ab"
     take_screenshot: "Screenshot erstellen"
     visit: "Gehe zu"

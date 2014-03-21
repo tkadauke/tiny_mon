@@ -1,5 +1,9 @@
-<h2><%= t(".health_checks_for_import") %></h2>
+<%= title t(".health_checks_for_import") %>
 
-<p><%=h @health_check_import.description %></p>
+<div class="box">
+  <div class="box-body">
+    <p><%=h @health_check_import.description %></p>
 
-<%= render :partial => "/health_checks/details" %>
+    <%= render :partial => "/health_checks/details" %>
+  </div>
+</div>

@@ -1,60 +1,61 @@
-<h2><%= t('.health_checks_for_site', :site => @site.name) %></h2>
+<% title t('.health_checks_for_site', :site => @site.name) %>
 
-<%= render :partial => "/sites/tabs", :locals => { :selected => :health_checks } %>
+<div class="box">
+  <div class="box-header">
+    <div class="box-tools">
+      <div class="btn-group pull-right">
+        <a class="btn btn-default btn-flat btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
+          <%= t("health_checks.report.#{@report.to_sym}") %>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li<%= ' class="selected"'.html_safe if @report.to_sym == :details %>><%= link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details') %></li>
+          <li<%= ' class="selected"'.html_safe if @report.to_sym == :overview %>><%= link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %></li>
+        </ul>
+      </div>
 
-<div class="row">
-  <div class="span3">
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        <%= t("health_checks.report.#{@report.to_sym}") %>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details') %></li>
-        <li><%= link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %></li>
-      </ul>
+      <div class="btn-group pull-right">
+        <a class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+          <%= t("health_checks.status.#{@status.to_sym}") %>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li<%= ' class="selected"'.html_safe if @status.to_sym == :all %>><%= link_to t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all') %></li>
+          <li<%= ' class="selected"'.html_safe if @status.to_sym == :success %>><%= link_to t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success') %></li>
+          <li<%= ' class="selected"'.html_safe if @status.to_sym == :failure %>><%= link_to t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure') %></li>
+          <li<%= ' class="selected"'.html_safe if @status.to_sym == :enabled %>><%= link_to t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled') %></li>
+          <li<%= ' class="selected"'.html_safe if @status.to_sym == :disabled %>><%= link_to t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled') %></li>
+        </ul>
+      </div>
+
+      <div class="btn-group pull-right">
+        <a class="btn btn-sm btn-flat btn-default" data-toggle="collapse" data-target="#filter" href="#">
+          <%= t('button.filter') %>
+          <span class="caret"></span>
+        </a>
+      </div>
+
+      <div id="filter" class="row collapse">
+        <br/>
+        <div class="col-md-12">
+          <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
+        </div>
+      </div>
     </div>
-  
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        <%= t("health_checks.status.#{@status.to_sym}") %>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all') %></li>
-        <li><%= link_to t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success') %></li>
-        <li><%= link_to t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure') %></li>
-        <li><%= link_to t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled') %></li>
-        <li><%= link_to t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled') %></li>
-      </ul>
-    </div>
-    
-    <div class="btn-group">
-      <a class="btn" data-toggle="collapse" data-target="#filter" href="#">
-        <%= t('button.filter') %>
-        <span class="caret"></span>
-      </a>
-    </div>
+    <%= render :partial => "/sites/tabs", :locals => { :selected => :health_checks } %>
   </div>
-</div>
 
-<div id="filter" class="row collapse">
-  <br/>
-  <div class="span12">
-    <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
-  </div>
-</div>
+  <div class="box-body">
+    <div id="checks">
+      <%= render :partial => "list" %>
+    </div>
 
-<div id="checks">
-  <%= render :partial => "list" %>
-</div>
-
-<% if current_user.can_create_health_checks?(@account) %>
-  <p>
-    <%= action_list do |a| %>
-      <% a.link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site) %>
-      <% a.link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select') %>
-      <% a.link_to t('.import'), new_account_site_health_check_import_path(@account, @site, :template => 'select') if current_user.can_create_health_check_imports?(@account) %>
+    <% if current_user.can_create_health_checks?(@account) %>
+      <p>
+        <%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site), :class => "btn btn-sm btn-flat btn-default" %>
+        <%= link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select'), :class => "btn btn-sm btn-flat btn-default" %>
+        <%= link_to t('.import'), new_account_site_health_check_import_path(@account, @site, :template => 'select'), :class => "btn btn-sm btn-flat btn-default" if current_user.can_create_health_check_imports?(@account) %>
+      </p>
     <% end %>
-  </p>
-<% end %>
+  </div>
+</div>

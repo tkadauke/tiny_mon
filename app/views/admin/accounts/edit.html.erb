@@ -1,28 +1,32 @@
-<h2><%= t('.edit_account') %></h2>
+<%= title t('.edit_account') %>
 
-<%= render :partial => "tabs", :locals => { :selected => :edit } %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "tabs", :locals => { :selected => :edit } %>
 
-<%= form_for [:admin, @account], :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.error_messages :header_message => t('.could_not_update_account') %>
+    <%= form_for [:admin, @account], :html => { :class => 'form-horizontal' } do |f| %>
+      <%= f.error_messages :header_message => t('.could_not_update_account') %>
   
-  <div class="control-group">
-    <%= f.label :name, t('.name'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_field :name %>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :name, t('.name'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.text_field :name %>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <%= f.label :maximum_check_runs_per_day, t(".maximum_check_runs_per_day"), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :maximum_check_runs_per_day %>
-      <p><small><%= t(".maximum_check_runs_per_day_hint") %></small></p>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :maximum_check_runs_per_day, t(".maximum_check_runs_per_day"), :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :maximum_check_runs_per_day %>
+          <p><small><%= t(".maximum_check_runs_per_day_hint") %></small></p>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit t('.save_account'), :class => 'btn' %>
-    </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit t('.save_account'), :class => 'btn' %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

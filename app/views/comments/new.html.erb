@@ -1,3 +1,7 @@
-<h2><%= t('.comment_for_check_run_in_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+<%= title t('.comment_for_check_run_in_health_check_site', :health_check => @health_check.name, :site => @site.name) %>
 
-<%= render :partial => "form" %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "form" %>
+  </div>
+</div>

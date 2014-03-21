@@ -1,5 +1,8 @@
-<h2><%= t('.edit_site', :site => @site.name) %></h2>
+<% title t('.edit_site', :site => @site.name) %>
 
-<%= render :partial => "tabs", :locals => { :selected => :edit } %>
-
-<%= render :partial => "form" %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "tabs", :locals => { :selected => :edit } %>
+    <%= render :partial => "form" %>
+  </div>
+</div>

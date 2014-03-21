@@ -1,49 +1,59 @@
-<h2><%= t('.all_health_checks') %></h2>
+<% title t('health_checks.all_checks.all_health_checks') %>
 
 <div class="row">
-  <div class="span12">
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        <%= t("health_checks.report.#{@report.to_sym}") %>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to t('health_checks.report.details'), health_checks_path(:report => 'details') %></li>
-        <li><%= link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview') %></li>
-      </ul>
-    </div>
-  
-    <div class="btn-group">
-      <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-        <%= t("health_checks.status.#{@status.to_sym}") %>
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu">
-        <li><%= link_to t('health_checks.status.all'), health_checks_path(:status => 'all') %></li>
-        <li><%= link_to t('health_checks.status.success'), health_checks_path(:status => 'success') %></li>
-        <li><%= link_to t('health_checks.status.failure'), health_checks_path(:status => 'failure') %></li>
-        <li><%= link_to t('health_checks.status.enabled'), health_checks_path(:status => 'enabled') %></li>
-        <li><%= link_to t('health_checks.status.disabled'), health_checks_path(:status => 'disabled') %></li>
-      </ul>
-    </div>
-    
-    <div class="btn-group">
-      <a class="btn" data-toggle="collapse" data-target="#filter" href="#">
-        <%= t('button.filter') %>
-        <span class="caret"></span>
-      </a>
+  <div class="col-md-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title"><%= t("health_checks.report.#{@report.to_sym}") %></h3>
+
+        <div class="box-tools">
+          <div class="btn-group pull-right">
+            <a class="btn btn-default btn-flat btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= t("health_checks.report.#{@report}") %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li<%= ' class="selected"'.html_safe if @report.to_sym == :details %>><%= link_to t('health_checks.report.details'), health_checks_path(:report => 'details') %></li>
+              <li<%= ' class="selected"'.html_safe if @report.to_sym == :overview %>><%= link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview') %></li>
+            </ul>
+          </div>
+
+          <div class="btn-group pull-right">
+            <a class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+              <%= t("health_checks.status.#{@status.to_sym}") %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li<%= ' class="selected"'.html_safe if @status.to_sym == :all %>><%= link_to t('health_checks.status.all'), health_checks_path(:status => 'all') %></li>
+              <li<%= ' class="selected"'.html_safe if @status.to_sym == :success %>><%= link_to t('health_checks.status.success'), health_checks_path(:status => 'success') %></li>
+              <li<%= ' class="selected"'.html_safe if @status.to_sym == :failure %>><%= link_to t('health_checks.status.failure'), health_checks_path(:status => 'failure') %></li>
+              <li<%= ' class="selected"'.html_safe if @status.to_sym == :enabled %>><%= link_to t('health_checks.status.enabled'), health_checks_path(:status => 'enabled') %></li>
+              <li<%= ' class="selected"'.html_safe if @status.to_sym == :selected %>><%= link_to t('health_checks.status.disabled'), health_checks_path(:status => 'disabled') %></li>
+            </ul>
+          </div>
+
+          <div class="btn-group pull-right">
+            <a class="btn btn-sm btn-flat btn-default" data-toggle="collapse" data-target="#filter" href="#">
+              <%= t('button.filter') %>
+              <span class="caret"></span>
+            </a>
+          </div>
+
+          <div id="filter" class="row collapse">
+            <br/>
+            <div class="col-md-12">
+              <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-body">
+        <div id="checks">
+          <%= render "list" %>
+        </div>
+      </div>
     </div>
   </div>
+  <%= poll health_checks_path(:firefix => true), :element => 'checks' %>
 </div>
-
-<div id="filter" class="row collapse">
-  <br/>
-  <div class="span12">
-    <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
-  </div>
-</div>
-
-<div id="checks">
-  <%= render "list" %>
-</div>
-<%= poll health_checks_path(:firefix => true), :element => 'checks' %>

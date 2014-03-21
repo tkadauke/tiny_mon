@@ -1,41 +1,64 @@
-<% if current_user.accounts.empty? %>
-  <h2><%= t('.quick_links') %></h2>
+<% title t('.title') %>
 
-  <ul class="asterisk">
-    <li><%= link_to t('.settings'), settings_path %></li>
-  </ul>
-  
-  <p>
-    <%= t('.no_accounts') %>
-    <%= link_to t('.create_account'), new_account_path %>
-  </p>
-<% else %>
-  <div id="dashboard">
-    <%= render :partial => "dashboard" %>
-  </div>
-  <%= poll root_path(:firefix => true), :element => 'dashboard' %>
+<div class="row">
+  <%= help %>
 
-  <% if current_user.role != 'locked' %>
-    <h2><%= t('.quick_links') %></h2>
-
-    <ul class="asterisk">
-      <% if current_user.can_create_sites?(current_user.current_account) %>
-        <li><%= link_to t('.add_site'), new_account_site_path(current_user.current_account) %></li>
-      <% end %>
-      <% if current_user.can_create_health_check_imports?(current_user.current_account) %>
-        <li><%= link_to t(".import"), new_health_check_import_path %></li>
-      <% end %>
-      <li><%= link_to t('.settings'), settings_path %></li>
-      <% if current_user.can_add_user_to_account?(current_user.current_account) %>
-        <li><%= link_to t('.add_existing_user_to_account', :account => current_user.current_account.name), new_account_user_account_path(current_user.current_account) %></li>
-        <li><%= link_to t('.add_new_user_to_account', :account => current_user.current_account.name), new_user_path %></li>
-      <% end %>
-      <% if current_user.can_edit_account?(current_user.current_account) %>
-        <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %>
-      <% end %>
-      <% if current_user.can_create_health_check_templates?(current_user.current_account) %>
-        <li><%= link_to t('.my_templates'), health_check_templates_path %>
-      <% end %>
-    </ul>
+  <% if current_user.accounts.empty? %>
+    <div class="col-md-6">
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title"><%= t('.quick_links') %></h3>
+          <div class="box-tools">
+          </div>
+        </div>
+        <div class="box-body">
+          <ul class="asterisk">
+            <li><%= link_to t('.settings'), settings_path %></li>
+          </ul>
+          <p>
+            <%= t('.no_accounts') %>
+            <%= link_to t('.create_account'), new_account_path %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <%= poll root_path(:firefix => true), :element => 'dashboard' %>
+    <div id="dashboard">
+      <%= render :partial => "dashboard" %>
+    </div>
+    <% if current_user.role != 'locked' %>
+      <div class="col-md-6">
+        <div class="box">
+          <div class="box-header">
+            <h3 class="box-title"><%= t('.quick_links') %></h3>
+            <div class="box-tools">
+            </div>
+          </div>
+          <div class="box-body">
+            <ul class="asterisk">
+              <% if current_user.can_create_sites?(current_user.current_account) %>
+                <li><%= link_to t('.add_site'), new_account_site_path(current_user.current_account) %></li>
+              <% end %>
+              <% if current_user.can_create_health_check_imports?(current_user.current_account) %>
+                <li><%= link_to t(".import"), new_health_check_import_path %></li>
+              <% end %>
+              <li><%= link_to t('.settings'), settings_path %></li>
+              <% if current_user.can_add_user_to_account?(current_user.current_account) %>
+                <li><%= link_to t('.add_existing_user_to_account', :account => current_user.current_account.name), new_account_user_account_path(current_user.current_account) %></li>
+                <li><%= link_to t('.add_new_user_to_account', :account => current_user.current_account.name), new_user_path %></li>
+              <% end %>
+              <% if current_user.can_edit_account?(current_user.current_account) %>
+                <li><%= link_to t('.manage_users', :account => current_user.current_account.name), account_path(current_user.current_account) %></li>
+              <% end %>
+              <% if current_user.can_create_health_check_templates?(current_user.current_account) %>
+                <li><%= link_to t('.my_templates'), health_check_templates_path %></li>
+              <% end %>
+            </ul>
+            <br />
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

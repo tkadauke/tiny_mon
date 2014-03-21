@@ -1,9 +1,15 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def title(page_title)
+    content_for :page_title, page_title.to_s
+  end
+
   def gravatar(user, options = {})
     hash = Digest::MD5.hexdigest(user.email.strip.downcase)
-    text = options[:text] ? "&nbsp;" + options[:text] : ""
-    link_to image_tag("http://www.gravatar.com/avatar/#{hash}.png?s=#{options[:size] || 20}") + text.html_safe, user_path(user)
+    text = options[:text] ? "&nbsp;" + options.delete(:text) : ""
+    size = options[:size] || 50
+    size = size.to_s + 'x' + size.to_s
+    link_to image_tag("http://www.gravatar.com/avatar/#{hash}.png?s=#{size}", options) + text.html_safe, user_path(user)
   end
   
   def poll(url, options = {})
@@ -54,7 +60,7 @@ module ApplicationHelper
       rescue Exception => e
         [parent_model, I18n.t("breadcrumb.#{elements[i]}")]
       end
-        
+
       if sofar == request.path
         items << "<strong>"  + link_text + '</strong>'
       else
@@ -66,7 +72,7 @@ module ApplicationHelper
       content_tag(:li) do
         [
           item,
-          (content_tag(:span, :class => 'divider') { '/'} unless item == items.last)
+          (content_tag(:span, "", :class => 'divider') unless item == items.last)
         ].join.html_safe
       end
     end.join.html_safe
@@ -77,8 +83,7 @@ module ApplicationHelper
     
     status = model.status
     status = 'offline' if model.respond_to?(:enabled?) && !model.enabled?
-    
-    image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
+    content_tag :i, "", :class => "fa fa-#{self.status_icon_class(model)} bg-#{self.status_background(model)}"
   end
   
   def status_class(model)
@@ -94,14 +99,46 @@ module ApplicationHelper
     
     status
   end
+
+  def status_background(model)
+    status = 'yellow'
+
+    if model.status == 'success'
+      status = 'green'
+    elsif model.status == 'failure'
+      status = 'red'
+    elsif model.respond_to?(:enabled?) && !model.enabled?
+      status = 'yellow'
+    elsif model.status.nil?
+      status = 'yellow'
+    end
+
+    status
+  end
+
+  def status_icon_class(model)
+    status = ''
+
+    if model.status == 'success'
+      status = 'check'
+    elsif model.status == 'failure'
+      status = 'exclamation'
+    elsif model.respond_to?(:enabled?) && !model.enabled?
+      status = 'warning'
+    elsif model.status.nil?
+      status = 'spinner'
+    end
+
+    status
+  end
   
   def overall_status(model = current_user.current_account, version = :large)
     return if model.nil?
     
     if model.all_checks_successful?
-      image_tag "icons/#{version}/success.png", :alt => I18n.t("status.all_checks_successful"), :title => I18n.t("status.all_checks_successful")
+      content_tag :i, "", :class => "status-icon fa fa-check bg-green"
     else
-      image_tag "icons/#{version}/failure.png", :alt => I18n.t("status.one_or_more_checks_failed"), :title => I18n.t("status.one_or_more_checks_failed")
+      content_tag :i, "", :class => "status-icon fa fa-bolt bg-red"
     end
   end
   

@@ -1,73 +1,76 @@
-<h2><%= t('.steps_for_health_check', :health_check => @health_check.name) %></h2>
+<% title t('.steps_for_health_check', :health_check => @health_check.name) %>
 
-<%= render :partial => "/health_checks/tabs", :locals => { :selected => :steps } %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "/health_checks/tabs", :locals => { :selected => :steps } %>
 
-<% if @steps.empty?  %>
-  <p><%= t('.no_steps_defined') %></p>
-<% else %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>&nbsp;</th>
-        <th><%= t('.name') %></th>
-        <th><%= t('.details') %></th>
-        <% if current_user.can_edit_health_checks?(@account) %>
-          <th><%= t('.options') %></th>
-        <% end %>
-      </tr>
-    </thead>
-    <tbody id="steps">
-      <% @steps.each_with_index do |step, i| %>
-        <tr id="order_<%= step.id %>">
-          <% if current_user.can_edit_health_checks?(@account) %>
-            <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
-          <% else %>
-            <td><%= i + 1 %></td>
-          <% end %>
-          <td><%= t("step.#{step.underscored_class_name}") %></td>
-          <% if step.new_record? %>
-            <td>
-              <%= render :partial => '/steps/form', :locals => { :step => step } %>
-            </td>
-            <td>
-            </td>
-          <% else %>
-            <td>
-              <div id="step_<%= step.id %>"><%= render_step_details(step) %></div>
-            </td>
+    <% if @steps.empty?  %>
+      <p><%= t('.no_steps_defined') %></p>
+    <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>&nbsp;</th>
+            <th><%= t('.name') %></th>
+            <th><%= t('.details') %></th>
             <% if current_user.can_edit_health_checks?(@account) %>
-              <td>
-                <div class="btn-group">
-                    <%= link_to t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true, :class => "btn btn-mini" %>
-                  <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %></li>
-                    <li><%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %></li>
-                  </ul>
-                </div>
-              </td>
+              <th><%= t('.options') %></th>
             <% end %>
+          </tr>
+        </thead>
+        <tbody id="steps">
+          <% @steps.each_with_index do |step, i| %>
+            <tr id="order_<%= step.id %>">
+              <% if current_user.can_edit_health_checks?(@account) %>
+                <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
+              <% else %>
+                <td><%= i + 1 %></td>
+              <% end %>
+              <td><%= t("step.#{step.underscored_class_name}") %></td>
+              <% if step.new_record? %>
+                <td>
+                  <%= render :partial => '/steps/form', :locals => { :step => step } %>
+                </td>
+                <td>
+                </td>
+              <% else %>
+                <td>
+                  <div id="step_<%= step.id %>"><%= render_step_details(step) %></div>
+                </td>
+                <% if current_user.can_edit_health_checks?(@account) %>
+                  <td>
+                    <div class="btn-group">
+                      <%= link_to t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true, :class => "btn btn-sm btn-default btn-flat" %>
+                      <button class="btn btn-sm btn-default btn-flat dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><%= link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %></li>
+                        <li><%= link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :confirm => t('.are_you_sure') %></li>
+                      </ul>
+                    </div>
+                  </td>
+                <% end %>
+              <% end %>
+            </tr>
           <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+        </tbody>
+      </table>
+    <% end %>
 
-<% if current_user.can_edit_health_checks?(@account) %>
-  <%= javascript_tag %{
-    $('#steps').sortable({
-      update: function(event, ui) {
-        $.ajax({ url: '#{sort_account_site_health_check_steps_path(@account, @site, @health_check)}?authenticity_token=#{form_authenticity_token}', type: "POST", data: $('#steps').sortable('serialize', { key: 'step[]' }) })
-      }
-    })
-  } %>
+    <% if current_user.can_edit_health_checks?(@account) %>
+      <%= javascript_tag %{
+        $('#steps').sortable({
+          update: function(event, ui) {
+            $.ajax({ url: '#{sort_account_site_health_check_steps_path(@account, @site, @health_check)}?authenticity_token=#{form_authenticity_token}', type: "POST", data: $('#steps').sortable('serialize', { key: 'step[]' }) })
+          }
+        })
+      } %>
 
-  <div class="well">
-    <h3><%= t('.add_step') %></h3>
-
-    <%= render :partial => "/steps/form", :locals => { :step => @step || Step.new } %>
+      <div class="well">
+        <h3><%= t('.add_step') %></h3>
+        <%= render :partial => "/steps/form", :locals => { :step => @step || Step.new } %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

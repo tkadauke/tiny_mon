@@ -1,8 +1,21 @@
-<h2><%= t('.admin_area') %></h2>
+<% title t('.admin_area') %>
 
-<ul class="asterisk">
-  <li><%= link_to t('.accounts'), admin_accounts_path %></li>
-  <li><%= link_to t('.users'), admin_users_path %></li>
-  <li><%= link_to t('.broadcasts'), admin_broadcasts_path %></li>
-  <li><%= link_to t('.footer_links'), admin_footer_links_path %></li>
-</ul>
+<div class="row">
+  <div class="col-md-6">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title"><%= t('.quick_links') %></h3>
+        <div class="box-tools">
+        </div>
+      </div>
+      <div class="box-body">
+        <ul class="asterisk">
+          <li><%= link_to t('.accounts'), admin_accounts_path %></li>
+          <li><%= link_to t('.users'), admin_users_path %></li>
+          <li><%= link_to t('.broadcasts'), admin_broadcasts_path %></li>
+          <li><%= link_to t('.footer_links'), admin_footer_links_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

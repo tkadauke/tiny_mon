@@ -2,30 +2,31 @@
   <p><%= t('.no_activity_yet') %></p>
 <% else %>
   <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="timeline">
+        <% @check_runs.each do |check_run| %>
+          <li style="margin-bottom:10px;">
+            <i class="fa fa-<%= status_icon_class check_run %> bg-<%= status_background check_run %>"></i>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th class="hidden-phone"><%= t('.status') %></th>
-        <th><%= t('.when') %></th>
-        <th><%= t('.name') %></th>
-        <th class="hidden-phone"><%= t('.duration') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @check_runs.each do |check_run| %>
-        <tr class="<%= status_class check_run %>">
-          <td class="hidden-phone"><%= status_icon check_run %></td>
-          <td><%= link_to t(".time_ago", :when => time_ago_in_words(check_run.created_at)), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %></td>
-          <td>
-            <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %> /
-            <%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %>
-          </td>
-          <td class="hidden-phone"><%= t(".duration_in_seconds", :duration => "%5.1f" % check_run.duration) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+            <div class="timeline-item no-padding">
+              <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<%= link_to time_ago_in_words(check_run.created_at), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %></span>
 
+              <div class="timeline-body no-padding">
+                <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %>
+                /
+                <%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %>
+                |
+                <%= link_to t('.info'), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+        <li>
+          <i class="fa fa-clock-o"></i>
+        </li>
+      </ul>
+    </div>
+  </div>
   <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
 <% end %>

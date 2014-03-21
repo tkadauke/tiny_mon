@@ -3,7 +3,7 @@
 <div class="control-group">
   <%= f.label :name, t('.name'), :class => 'control-label required' %>
   <div class="controls">
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'form-control' %>
     <p><small><%= t(".template_name") %></small></p>
   </div>
 </div>
@@ -11,15 +11,14 @@
 <div class="control-group">
   <%= f.label :description, t(".description"), :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_area :description, :rows => 5 %>
+    <%= f.text_area :description, :rows => 5, :class => 'form-control' %>
     <p><small><%= t(".describe_the_template") %></small></p>
   </div>
 </div>
 
 <div class="control-group">
   <div class="controls">
-    <%= f.check_box :public %>
-    <p><small><%= t(".who_can_see_and_use_this_template") %></small></p>
+    <%= f.check_box :public %> <%= f.label :public, t(".who_can_see_and_use_this_template") %>
   </div>
 </div>
 
@@ -47,7 +46,7 @@
 <div class="control-group">
   <%= f.label :name_template, t(".name_template"), :class => 'control-label required' %>
   <div class="controls">
-    <%= f.text_field :name_template %>
+    <%= f.text_field :name_template, :class => 'form-control' %>
     <p><small><%= t(".template_for_health_check_name") %></small></p>
   </div>
 </div>
@@ -55,7 +54,7 @@
 <div class="control-group">
   <%= f.label :description_template, t(".description_template"), :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_area :description_template, :rows => 5 %>
+    <%= f.text_area :description_template, :rows => 5, :class => 'form-control' %>
     <p><small><%= t(".template_for_health_check_description") %></small></p>
   </div>
 </div>
@@ -63,7 +62,7 @@
 <div class="control-group">
   <%= f.label :interval, t(".interval"), :class => 'control-label required' %>
   <div class="controls">
-    <%= f.select :interval, HealthCheck.intervals_with_units %>
+    <%= f.select :interval, HealthCheck.intervals_with_units, :class => 'form-control' %>
     <p><small><%= t(".interval_for_generated_health_checks") %></small></p>
   </div>
 </div>

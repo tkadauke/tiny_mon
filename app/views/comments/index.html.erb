@@ -1,19 +1,25 @@
-<% if @check_run %>
-  <h2><%= t('.comments_for_check_run_in_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+<%# titles are defined in the conditional block below %>
 
-  <%= render :partial => "list" %>
+<div class="box">
+  <div class="box-body">
+    <% if @check_run %>
+      <%= title t('.comments_for_check_run_in_health_check_site', :health_check => @health_check.name, :site => @site.name) %>
 
-  <% if current_user.can_create_comments?(@account) %>
-    <h3><%= t('.leave_a_comment') %></h3>
+      <%= render :partial => "list" %>
 
-    <%= render :partial => "form" %>
-  <% end %>
-<% elsif @health_check %>
-  <h2><%= t('.comments_for_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+      <% if current_user.can_create_comments?(@account) %>
+        <h3><%= t('.leave_a_comment') %></h3>
+
+        <%= render :partial => "form" %>
+      <% end %>
+    <% elsif @health_check %>
+      <%= title t('.comments_for_health_check_site', :health_check => @health_check.name, :site => @site.name) %>
   
-  <%= render :partial => "list" %>
-<% elsif @user %>
-  <h2><%= t('.comments_by_user', :user => @user.full_name) %></h2>
+      <%= render :partial => "list" %>
+    <% elsif @user %>
+      <%= title t('.comments_by_user', :user => @user.full_name) %>
 
-  <%= render :partial => "list" %>
-<% end %>
+      <%= render :partial => "list" %>
+    <% end %>
+  </div>
+</div>

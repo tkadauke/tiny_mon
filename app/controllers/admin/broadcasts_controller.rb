@@ -19,7 +19,7 @@ class Admin::BroadcastsController < ApplicationController
   end
   
   def create
-    @broadcast = Broadcast.new(params[:broadcast])
+    @broadcast = Broadcast.new(broadcast_params)
     if @broadcast.save
       flash[:notice] = I18n.t("flash.notice.created_broadcast")
       redirect_to admin_broadcasts_path
@@ -30,7 +30,7 @@ class Admin::BroadcastsController < ApplicationController
   
   def update
     @broadcast = Broadcast.find(params[:id])
-    if @broadcast.update_attributes(params[:broadcast])
+    if @broadcast.update_attributes(broadcast_params)
       flash[:notice] = I18n.t("flash.notice.updated_broadcast")
       redirect_to admin_broadcasts_path
     else
@@ -50,5 +50,10 @@ class Admin::BroadcastsController < ApplicationController
     @broadcast.deliver
     flash[:notice] = I18n.t("flash.notice.sent_broadcast")
     redirect_to admin_broadcasts_path
+  end
+
+private
+  def broadcast_params
+   params.require(:broadcast).permit(:title, :text)
   end
 end

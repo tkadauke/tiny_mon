@@ -1,12 +1,16 @@
-<h2><%= @broadcast.title %></h2>
+<%= title @broadcast.title %>
 
-<div class="well">
-  <%= simple_format @broadcast.text %>
+<div class="box">
+  <div class="box-body">
+    <div class="well">
+      <%= simple_format @broadcast.text %>
+    </div>
+
+    <% if @broadcast.sent_at %>
+      <p><%= t(".sent_at", :time => time_ago_in_words(@broadcast.sent_at)) %></p>
+    <% else %>
+      <p><%= t(".never_sent") %></p>
+      <%= button_to t(".send_now"), deliver_admin_broadcast_path(@broadcast), :confirm => t('admin.broadcasts.really_send_broadcast'), :class => 'btn btn-primary btn-small btn-flat' %>
+    <% end %>
+  </div>
 </div>
-
-<% if @broadcast.sent_at %>
-  <p><%= t(".sent_at", :time => time_ago_in_words(@broadcast.sent_at)) %></p>
-<% else %>
-  <p><%= t(".never_sent") %></p>
-  <%= button_to t(".send_now"), deliver_admin_broadcast_path(@broadcast), :confirm => t('admin.broadcasts.really_send_broadcast'), :class => 'btn' %>
-<% end %>

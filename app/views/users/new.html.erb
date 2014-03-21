@@ -1,44 +1,48 @@
-<h2><%= t('.create_new_account') %></h2>
+<%= title t('.create_new_account') %>
 
-<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.error_messages :header_message => t('.could_not_register_user') %>
+<div class="box">
+  <div class="box-body">
+    <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+      <%= f.error_messages :header_message => t('.could_not_register_user') %>
 
-  <div class="control-group">
-    <%= f.label :full_name, t('.full_name'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_field :full_name %>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :full_name, t('.full_name'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.text_field :full_name, :class => 'form-control' %>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <%= f.label :email, t('.email_address'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_field :email %>
-      <p><small><%= t('.the_email_address_is_used_for_notifications') %></small></p>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :email, t('.email_address'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.text_field :email, :class => 'form-control' %>
+          <p><small><%= t('.the_email_address_is_used_for_notifications') %></small></p>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <%= f.label :password, t('.password'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.password_field :password %>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :password, t('.password'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.password_field :password, :class => 'form-control' %>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <%= f.label :password_confirmation, t('.password_confirmation'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.password_field :password_confirmation %>
-      <p><small><%= t('.please_repeat_the_password_exactly_as_above') %></small></p>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :password_confirmation, t('.password_confirmation'), :class => 'control-label required' %>
+        <div class="controls">
+          <%= f.password_field :password_confirmation, :class => 'form-control' %>
+          <p><small><%= t('.please_repeat_the_password_exactly_as_above') %></small></p>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit t('.create_account'), :class => 'btn' %>
-      <% unless logged_in? %>
-        | <%= link_to t('.login_instead'), login_path %>
-      <% end %>
-    </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit t('.create_account'), :class => 'btn' %>
+          <% unless logged_in? %>
+            <%= link_to t('.login_instead'), login_path, :class => 'btn btn-default btn-small btn-flat' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

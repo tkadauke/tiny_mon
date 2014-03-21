@@ -1,25 +1,29 @@
-<h2><%= t(".mark_deploment_of_site", :site => @site.name) %></h2>
+<%= title t(".mark_deploment_of_site", :site => @site.name) %>
 
-<%= form_for [@account, @site, @deployment], :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :revision, t(".revision"), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :revision %>
-      <p><small><%= t(".optional_revision_number") %></small></p>
-    </div>
-  </div>
+<div class="box">
+  <div class="box-body">
+    <%= form_for [@account, @site, @deployment], :html => { :class => 'form-horizontal' } do |f| %>
+      <div class="control-group">
+        <%= f.label :revision, t(".revision"), :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :revision, :class => 'form-control' %>
+          <p><small><%= t(".optional_revision_number") %></small></p>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <%= f.label :schedule_checks_in, t(".schedule_checks_in"), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :schedule_checks_in %>
-      <p><small><%= t(".when_to_schedule_checks_in") %></small></p>
-    </div>
-  </div>
+      <div class="control-group">
+        <%= f.label :schedule_checks_in, t(".schedule_checks_in"), :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :schedule_checks_in, :class => 'form-control' %>
+          <p><small><%= t(".when_to_schedule_checks_in") %></small></p>
+        </div>
+      </div>
   
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit t(".mark_deployment"), :class => 'btn' %>
-    </div>
+      <div class="control-group">
+        <div class="controls">
+          <%= f.submit t(".mark_deployment"), :class => 'btn' %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

@@ -2,9 +2,8 @@
   <% next if option.type == 'Hash' %>
   <div class="control-group">
     <% if option.type == 'Boolean' %>
-      <%= f.label option.key, translate_if_possible(option.name), :class => 'control-label' %>
       <div class="controls">
-        <%= f.check_box option.key %>
+        <%= f.check_box option.key %> <%= f.label option.key, translate_if_possible(option.name), :class => 'control-label' %>
         <p><small><%= translate_if_possible(option.description) %></small></p>
       </div>
     <% else %>

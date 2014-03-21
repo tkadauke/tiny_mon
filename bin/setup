@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Installs gem dependencies
+bundle install $BUNDLE_ARGS
+
+# Set up configurable environment variables for Foreman
+if [ ! -f .env ]; then
+  echo "RACK_ENV=development" > .env
+fi
+
+echo "port: 3000" > .foreman

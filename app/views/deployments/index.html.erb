@@ -1,36 +1,40 @@
-<h2><%= t(".deployments_of_site", :site => @site.name) %></h2>
+<% title t(".deployments_of_site", :site => @site.name) %>
 
-<%= render :partial => "/sites/tabs", :locals => { :selected => :deployments } %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "/sites/tabs", :locals => { :selected => :deployments } %>
 
-<% if @deployments.empty? %>
-  <p><%= t(".no_deployments_found") %></p>
-<% else %>
-  <%= will_paginate @deployments %>
+    <% if @deployments.empty? %>
+      <p><%= t(".no_deployments_found") %></p>
+    <% else %>
+      <%= will_paginate @deployments %>
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><%= t(".status") %></th>
-        <th><%= t(".when") %></th>
-        <th><%= t(".revision") %></th>
-        <th><%= t(".checks") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @deployments.each do |deployment| %>
-        <tr>
-          <td><%= overall_status(deployment, :small) %></td>
-          <td><%= link_to t(".time_ago", :time => time_ago_in_words(deployment.created_at)), account_site_deployment_path(@account, @site, deployment) %></td>
-          <td><%= link_to deployment.revision, account_site_deployment_path(@account, @site, deployment) %></td>
-          <td><%= t(".count_checks", :count => deployment.check_runs.count) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="status"><%= t(".status") %></th>
+            <th><%= t(".when") %></th>
+            <th><%= t(".revision") %></th>
+            <th><%= t(".checks") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @deployments.each do |deployment| %>
+            <tr>
+              <td><%= overall_status(deployment, :small) %></td>
+              <td><%= link_to t(".time_ago", :time => time_ago_in_words(deployment.created_at)), account_site_deployment_path(@account, @site, deployment) %></td>
+              <td><%= link_to deployment.revision, account_site_deployment_path(@account, @site, deployment) %></td>
+              <td><%= t(".count_checks", :count => deployment.check_runs.count) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-  <%= will_paginate @deployments %>
-<% end %>
+      <%= will_paginate @deployments %>
+    <% end %>
 
-<% if current_user.can_create_deployments?(@account) %>
-  <p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site) %></p>
-<% end %>
+    <% if current_user.can_create_deployments?(@account) %>
+      <p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site) %></p>
+    <% end %>
+  </div>
+</div>

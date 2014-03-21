@@ -1,32 +1,32 @@
-<h2><%= t('.site', :site => @site.name) %></h2>
+<% title t('.site', :site => @site.name) %>
 
-<%= render :partial => "tabs", :locals => { :selected => :information } %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "tabs", :locals => { :selected => :information } %>
 
-<dl class="dl-horizontal well">
-  <dt><%= t(".status") %></dt>
-  <dd><%= overall_status(@site) %></dd>
-  
-  <dt><%= t(".base_url") %></dt>
-  <dd><%= link_to h(@site.url), @site.url %></dd>
-  
-  <dt><%= t(".deployment") %></dt>
-  <dd>
-    <% if @site.current_deployment %>
-      <p><%= link_to deployment_title(@site.current_deployment), account_site_deployment_path(@account, @site, @site.current_deployment) %></p>
-    <% end %>
+    <dl class="dl-horizontal well">
+      <dt><%= t(".status") %></dt>
+      <dd><%= overall_status(@site) %></dd>
 
-    <% if current_user.can_see_deployment_tokens?(@account) %>
-      <form>
-        <span><%= t(".token") %></span><br/>
-        <%= text_field_tag nil, @site.deployment_token, :class => 'copy' %>
-        <br/>
-        <span><%= t(".deployment_url") %></span><br/>
-        <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :class => 'copy' %>
-      </form>
-    <% end %>
-  </dd>
-</dl>
+      <dt><%= t(".base_url") %></dt>
+      <dd><%= link_to h(@site.url), @site.url %></dd>
+      <br />
 
-<% if current_user.can_edit_sites?(@account) %>
-  <p><%= link_to t(".edit_site"), edit_account_site_path(@account, @site) %></p>
-<% end %>
+      <dt><%= t(".deployment") %></dt>
+      <dd>
+        <% if @site.current_deployment %>
+          <p><%= link_to deployment_title(@site.current_deployment), account_site_deployment_path(@account, @site, @site.current_deployment) %></p>
+        <% end %>
+        <% if current_user.can_see_deployment_tokens?(@account) %>
+          <form>
+            <%= text_field_tag nil, @site.deployment_token, :class => 'copy form-control inactive' %>
+            <span><%= t(".token") %></span><br/>
+            <br/>
+            <%= text_field_tag nil, mark_deployment_url(:token => @site.deployment_token), :class => 'copy form-control' %>
+            <span><%= t(".deployment_url") %></span><br/>
+          </form>
+        <% end %>
+      </dd>
+    </dl>
+  </div>
+</div>

@@ -1,11 +1,15 @@
-<h2><%= t('.all_accounts') %></h2>
+<% title t('.all_accounts') %>
 
-<% if @accounts.empty? %>
-  <p><%= t('.no_accounts') %></p>
-<% else %>
-  <%= render :partial => "/shared/filter", :locals => { :url => admin_accounts_path } %>
+<div class="box">
+  <div class="box-body">
+    <% if @accounts.empty? %>
+      <p><%= t('.no_accounts') %></p>
+    <% else %>
+      <%= render :partial => "/shared/filter", :locals => { :url => admin_accounts_path } %>
   
-  <div id="accounts">
-    <%= render :partial => "index" %>
+      <div id="accounts">
+        <%= render :partial => "index" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>

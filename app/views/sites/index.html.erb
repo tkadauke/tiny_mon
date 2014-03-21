@@ -1,15 +1,24 @@
-<h2><%= t('.all_sites') %></h2>
+<% title t('.all_sites') %>
 
-<% if @sites.empty? %>
-  <p><%= t('.no_sites_configured') %></p>
-<% else %>
-  <%= render :partial => "/shared/filter", :locals => { :url => account_sites_path(@account) } %>
-  
-  <div id="sites">
-    <%= render :partial => "index" %>
+<div class="box">
+  <div class="box-header">
+    <h3 class="box-title"><%= t('layouts.sites') %></h3>
+    <div class="box-tools">
+      <%= render :partial => "/shared/filter", :locals => { :url => account_sites_path(@account) } %>
+    </div>
   </div>
-<% end %>
+  <div class="box-body">
+    <% if @sites.empty? %>
+      <p><%= t('.no_sites_configured') %></p>
+    <% else %>
+      <div id="sites">
+        <%= render :partial => "index" %>
+      </div>
+    <% end %>
 
-<% if current_user.can_create_sites?(@account) %>
-  <p><%= link_to t('.new_site'), new_account_site_path(@account) %></p>
-<% end %>
+    <% if current_user.can_create_sites?(@account) %>
+      <br />
+      <p><%= link_to t('.new_site'), new_account_site_path(@account), :class => 'btn btn-default btn-flat' %></p>
+    <% end %>
+  </div>
+</div>

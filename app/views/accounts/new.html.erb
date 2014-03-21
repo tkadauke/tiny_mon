@@ -1,5 +1,8 @@
-<h2><%= t('.new_account') %></h2>
+<% title t('.new_account') %>
 
-<%= render :partial => "no_account" if current_user.accounts.empty? %>
-
-<%= render :partial => "form" %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "no_account" if current_user.accounts.empty? %>
+    <%= render :partial => "form" %>
+  </div>
+</div>

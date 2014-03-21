@@ -4,14 +4,14 @@
   <div class="control-group">
     <%= f.label :title, t('.title'), :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :class => 'form-control' %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :text, t('.text'), :class => 'control-label required' %>
     <div class="controls">
-      <%= f.text_area :text, :rows => 5 %>
+      <%= f.text_area :text, :rows => 5, :class => 'form-control' %>
     </div>
   </div>
 

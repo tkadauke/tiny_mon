@@ -4,20 +4,20 @@
   <div class="control-group">
     <%= f.label :text, t('.text'), :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :text %>
+      <%= f.text_field :text, :class => 'form-control' %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :url, t('.url'), :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :url %>
+      <%= f.text_field :url, :class => 'form-control' %>
     </div>
   </div>
   
   <div class="control-group">
     <div class="controls">
-      <%= f.submit t('.save_footer_link'), :class => 'btn' %>
+      <%= f.submit t('.save_footer_link'), :class => 'btn btn-primary btn-small btn-flat' %>
     </div>
   </div>
 <% end %>

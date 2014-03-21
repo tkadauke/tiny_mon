@@ -51,8 +51,7 @@ class UsersControllerTest < ActionController::TestCase
   test "should update user" do
     john = User.create(:full_name => 'John Doe', :email => 'john.doe@example.com', :password => '12345', :password_confirmation => '12345')
     login_with john
-
-    put :update, :locale => 'en', :id => john.id, :user => { }
+    put :update, :locale => 'en', :id => john.id, :user => { :full_name => "Jane Doe" }
     assert_redirected_to root_path
   end
   

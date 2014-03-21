@@ -25,7 +25,7 @@ class AccountsController < ApplicationController
   end
   
   def create
-    @account = Account.new(params[:account])
+    @account = Account.new(account_params)
     if @account.save
       current_user.accounts << @account
       current_user.set_role_for_account(@account, 'admin')
@@ -40,7 +40,7 @@ class AccountsController < ApplicationController
   def update
     @account = Account.find(params[:id])
     can_edit_account!(@account) do
-      if @account.update_attributes(params[:account])
+      if @account.update_attributes(account_params)
         flash[:notice] = I18n.t('flash.notice.updated_account', :account => @account.name)
         redirect_to account_path(@account)
       else
@@ -56,5 +56,10 @@ class AccountsController < ApplicationController
       flash[:notice] = I18n.t('flash.notice.switched_account', :account => @account.name)
       respond_with @account, :for => current_user, :location => root_path
     end
+  end
+
+private
+  def account_params
+    params.require(:account).permit(:name, :id)
   end
 end

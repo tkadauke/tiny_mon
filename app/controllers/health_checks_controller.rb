@@ -27,6 +27,7 @@ class HealthChecksController < ApplicationController
       @health_checks = @account.health_checks.filter_for_list(@search_filter, @status).order('sites.name ASC, health_checks.name ASC')
       template = 'all_checks'
     end
+
     respond_with @health_checks do |format|
       format.html do
         if request.xhr?
@@ -47,6 +48,7 @@ class HealthChecksController < ApplicationController
     can_create_health_checks!(@account) do
       find_templates
       @health_check = @site.health_checks.build
+
       respond_with @health_check
     end
   end
@@ -54,7 +56,7 @@ class HealthChecksController < ApplicationController
   def create
     can_create_health_checks!(@account) do
       @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
-      @health_check = @site.health_checks.build(params[:health_check].merge(:template => @health_check_template))
+      @health_check = @site.health_checks.build(health_check_params.merge(:template => @health_check_template))
       if params[:commit] == I18n.t("health_checks.template_form.preview")
         @health_check.get_info_from_template
         @preview = true
@@ -95,7 +97,7 @@ class HealthChecksController < ApplicationController
     can_edit_health_checks!(@account) do
       @health_check = @site.health_checks.find_by_permalink!(params[:id])
       
-      if @health_check.update_attributes(params[:health_check])
+      if @health_check.update_attributes(health_check_params)
         flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
       end
       respond_with @health_check, :location => account_site_health_check_path(@account, @site, @health_check)
@@ -106,7 +108,7 @@ class HealthChecksController < ApplicationController
     can_edit_health_checks!(@account) do
       @health_checks = @account.health_checks.find(params[:health_check_ids])
       updated = @health_checks.map do |health_check|
-        health_check.bulk_update(params[:health_check])
+        health_check.bulk_update(health_check_params)
       end
       
       flash[:notice] = I18n.t("flash.notice.bulk_updated_health_checks", :count => updated.count(true))
@@ -122,7 +124,12 @@ class HealthChecksController < ApplicationController
       respond_with @health_check, :location => account_site_health_checks_path(@account, @site)
     end
   end
-  
+
+private
+  def health_check_params
+    params.require(:health_check).permit(:enabled, :name, :description, :interval, :bulk_update_interval)
+  end
+
 protected
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]

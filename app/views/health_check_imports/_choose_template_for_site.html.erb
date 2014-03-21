@@ -1,3 +1,3 @@
-<h2><%= t(".choose_template") %></h2>
+<%= title t(".choose_template") %>
 
 <%= render :partial => "/health_check_templates/select", :locals => { :url => partial_route(:new_account_site_health_check_import_path, @account, @site) } %>

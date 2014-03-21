@@ -1,83 +1,90 @@
-<h2><%= @health_check.name %></h2>
+<% title @health_check.name %>
 
-<%= render :partial => "tabs", :locals => { :selected => :information } %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "tabs", :locals => { :selected => :information } %>
 
-<dl class="dl-horizontal well">
-  <% unless @health_check.description.blank? %>
-    <dt><%= t('.description') %></dt>
-    <dd>
-      <%= simple_format(auto_link(h(@health_check.description))) unless @health_check.description.blank? %>
-    </dd>
-  <% end %>
-  
-  <dt><%= t('.interval') %></dt>
-  <dd><%= t('.interval_minutes', :count => @health_check.interval) %></dd>
+    <dl class="dl-horizontal well">
+      <% unless @health_check.description.blank? %>
+        <dt><%= t('.description') %></dt>
+        <dd>
+          <%= simple_format(auto_link(h(@health_check.description))) unless @health_check.description.blank? %>
+        </dd>
+      <% end %>
 
-  <% if @health_check.last_check_run %>
-    <dt><%= t('.last_check_run') %></dt>
-    <dd><%= link_to status_icon(@health_check.last_check_run) + '&nbsp;'.html_safe + t("status.#{@health_check.last_check_run.status}"), account_site_health_check_check_run_path(@account, @site, @health_check, @health_check.last_check_run) %></dd>
-  <% end %>
+      <dt><%= t('.interval') %></dt>
+      <dd><%= t('.interval_minutes', :count => @health_check.interval) %></dd>
 
-  <% if current_user.can_edit_health_checks?(@account) %>
+      <% if @health_check.last_check_run %>
+        <dt><%= t('.last_check_run') %></dt>
+        <dd>
+          <%= status_icon(@health_check.last_check_run) %>
+          <%= link_to t("status.#{@health_check.last_check_run.status}"), account_site_health_check_check_run_path(@account, @site, @health_check, @health_check.last_check_run) %>
+        </dd>
+      <% end %>
+
+      <% if current_user.can_edit_health_checks?(@account) %>
+        <% if @health_check.enabled? %>
+          <dt><%= t('.check_is_enabled') %></dt>
+          <dd>
+            <%= link_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :class => 'btn btn-sm btn-warning btn-flat', :method => :put %>
+            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-default btn-flat' %>
+          </dd>
+        <% else %>
+          <dt><%= t('.check_is_disabled') %></dt>
+          <dd>
+            <%= link_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :class => 'btn btn-sm btn-success btn-flat', :method => :put %>
+            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-default btn-flat'  %>
+          </dd>
+        <% end %>
+      <% end %>
+    </dl>
+
     <% if @health_check.enabled? %>
-      <dt><%= t('.check_is_enabled') %></dt>
-      <dd>
-        <%= link_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :class => 'btn', :method => :put %>
-        <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn' %>
-      </dd>
-    <% else %>
-      <dt><%= t('.check_is_disabled') %></dt>
-      <dd>
-        <%= link_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :class => 'btn', :method => :put %>
-        <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn'  %>
-      </dd>
-    <% end %>
-  <% end %>
-</dl>
+      <div id="graph" style="width: 100%; height: 300px; margin-bottom: 10px;"></div>
 
-<% if @health_check.enabled? %>
-  <div id="graph" style="width: 100%; height: 300px; margin-bottom: 10px;"></div>
+      <% check_runs = @health_check.recent_check_runs.reverse %>
 
-  <% check_runs = @health_check.recent_check_runs.reverse %>
-  
-  <script language="javascript" type="text/javascript">
-    var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
-    var d1 = <%= check_runs.collect { |run| [run.created_at.to_i * 1000, run.duration] }.to_json.html_safe %>;
-    var ids = <%= check_runs.collect(&:id).to_json.html_safe %>;
+      <script language="javascript" type="text/javascript">
+        var base_url = "<%= account_site_health_check_check_runs_path(@account, @site, @health_check) %>";
+        var d1 = <%= check_runs.collect { |run| [run.created_at.to_i * 1000, run.duration] }.to_json.html_safe %>;
+        var ids = <%= check_runs.collect(&:id).to_json.html_safe %>;
 
-    $(document).ready(function(){
-      $.jqplot.eventListenerHooks.push(['jqplotClick', handleClick])
-      $.jqplot('graph', [d1], {
-        axesDefaults: {
-          labelRenderer: $.jqplot.CanvasAxisLabelRenderer
-        },
-        axes: {
-          xaxis: {
-            pad: 0,
-            renderer:$.jqplot.DateAxisRenderer
-          },
-          yaxis: {
+        $(document).ready(function(){
+          $.jqplot.eventListenerHooks.push(['jqplotClick', handleClick])
+          $.jqplot('graph', [d1], {
+            axesDefaults: {
+              labelRenderer: $.jqplot.CanvasAxisLabelRenderer
+            },
+            axes: {
+              xaxis: {
+                pad: 0,
+                renderer:$.jqplot.DateAxisRenderer
+              },
+              yaxis: {
+              }
+            },
+            highlighter: {
+              show: true,
+              sizeAdjust: 7.5
+            },
+            cursor: {
+              show: false
+            }
+          });
+        });
+        function handleClick(ev, gridpos, datapos, neighbor, plot) {
+          if (neighbor) {
+            document.location.href = base_url + '/' + ids[neighbor.pointIndex];
           }
-        },
-        highlighter: {
-          show: true,
-          sizeAdjust: 7.5
-        },
-        cursor: {
-          show: false
         }
-      });
-    });
-    function handleClick(ev, gridpos, datapos, neighbor, plot) {
-      if (neighbor) {
-        document.location.href = base_url + '/' + ids[neighbor.pointIndex];
-      }
-    }
-  </script>
-<% end %>
+      </script>
+    <% end %>
 
-<h3><%= t('.comments', :count => @comments_count) %></h3>
+    <h3><%= t('.comments', :count => @comments_count) %></h3>
 
-<%= render :partial => "/comments/list" %>
+    <%= render :partial => "/comments/list" %>
 
-<p><%= link_to t('.all_comments'), account_site_health_check_comments_path(@account, @site, @health_check) %></p>
+    <p><%= link_to t('.all_comments'), account_site_health_check_comments_path(@account, @site, @health_check) %></p>
+  </div>
+</div>

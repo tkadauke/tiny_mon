@@ -14,8 +14,6 @@ class User < ActiveRecord::Base
   
   validates_presence_of :full_name
   
-  attr_protected :role
-  
   after_initialize :extend_role
   
   def extend_role

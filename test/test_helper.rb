@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = "test"
 require 'test/unit'
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'rails/test_help'
@@ -15,7 +15,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   
   def assert_redirected_back(&block)
-    @request.env['Referer'] = 'http://test.host/referer'
+    @request.env['HTTP_REFERER'] = 'http://test.host/referer'
     yield
     assert_response :redirect
     assert_redirected_to 'http://test.host/referer'
@@ -50,10 +50,3 @@ class MockScreenshotFile < ScreenshotFile
   def release
   end
 end
-
-# TODO: remove?
-# add default routes so that actions in test controllers can be called
-# ActionController::Routing::Routes.draw do |map|
-#   map.connect ':controller/:action/:id'
-#   map.connect ':controller/:action/:id.:format'
-# end

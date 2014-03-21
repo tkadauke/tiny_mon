@@ -48,9 +48,10 @@ Clone the repository. Then run
 
 ```
 bundle install
-rake db:create:all
-rake db:migrate
+rake db:setup:all
 ```
+
+You will also need to install phantomjs and pngcrush.
 
 ## Running
 
@@ -83,6 +84,12 @@ Differences in behavior:
 - Link texts should not include HTML tags anymore
 - Check runs take about twice the time
 - Capybara expects correct CSS selector syntax
+
+### Version 0.2.0 to 0.3.0
+
+Version 0.3.0 is an upgrade to Rails 4 and a complete UI redesign. In addition to updating the code and the bundles, do the following steps:
+
+- Make sure you run Ruby 2.1.1. It is recommended you use RVM or rbenv for that.
 
 ## Contributing
 

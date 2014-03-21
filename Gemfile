@@ -1,24 +1,25 @@
+ruby '2.1.1'
 source 'http://rubygems.org'
-
-gem 'rails', '3.2.12'
+gem 'rails', '~> 4.0.3'
 gem "mysql2"
 
 gem "acts_as_list"
 gem "capybara"
 gem "poltergeist", :require => 'capybara/poltergeist'
 gem "orderedhash"
-gem "authlogic"
+gem 'authlogic', '~> 3.4.0'
 gem "background_lite", '0.3.2'
 gem "will_paginate"
 gem "permalink_fu"
 gem 'rinku', :require => 'rails_rinku'
-gem 'tmail'
+gem 'mail'
 gem "dynamic_form"
-
 gem "lhm", :require => false
-
 gem "bootstrap-sass"
+gem 'compass'
 gem 'bootstrap-will_paginate'
+gem 'scrypt'
+gem 'rails-i18n', '~> 4.0.0'
 
 # Deploy with Capistrano
 gem 'capistrano'
@@ -27,10 +28,13 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
 
+gem 'ionicons-rails'
+gem 'font-awesome-rails'
+
 group :assets do
-  gem 'sass-rails'
-  gem "therubyracer", "0.10.2"
-  gem "libv8", "3.3.10.2"
+  gem 'sass-rails', '~> 4.0.0'
+  gem "therubyracer"
+  gem "libv8"
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -39,15 +43,15 @@ group :development do
 end
 
 group :test do
-  gem "mocha", '0.9.8'
+  gem 'mocha'
 end
 
 group :production do
   gem "resque"
+  gem "rails_12factor"
 end
 
 group :vm do
   gem 'vagrant', :git => 'git://github.com/mitchellh/vagrant.git', :ref => 'v1.2.2'
-  gem 'berkshelf'
-  gem 'vagrant-berkshelf'
+  gem 'vagrant-berkshelf', '>= 2.0.1'
 end

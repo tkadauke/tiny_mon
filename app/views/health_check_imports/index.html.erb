@@ -1,49 +1,53 @@
 <% if @site %>
-  <h2><%= t(".imports_for_site", :site => @site.name) %></h2>
+  <% title t(".imports_for_site", :site => @site.name) %></h2>
 <% else %>
-  <h2><%= t(".imports_for_account", :account => @account.name) %></h2>
+  <% title t(".imports_for_account", :account => @account.name) %></h2>
 <% end %>
 
-<% if @health_check_imports.empty? %>
-  <p><%= t(".nothing_found") %></p>
-<% else %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><%= t(".when") %></th>
-        <% if @site.blank? %>
-          <th><%= t(".site") %></th>
-        <% end %>
-        <th><%= t(".who") %></th>
-        <th><%= t(".description") %></th>
-        <th><%= t(".options") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @health_check_imports.each do |health_check_import| %>
-        <tr>
-          <td><%= link_to t(".imported_at", :time => time_ago_in_words(health_check_import.created_at)), health_check_import_path(health_check_import) %></td>
-          <% if @site.blank? %>
-            <td><%= link_to health_check_import.site.name, account_site_health_check_imports_path(@account, health_check_import.site) if health_check_import.site %></td>
+<div class="box">
+  <div class="box-body">
+    <% if @health_check_imports.empty? %>
+      <p><%= t(".nothing_found") %></p>
+    <% else %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t(".when") %></th>
+            <% if @site.blank? %>
+              <th><%= t(".site") %></th>
+            <% end %>
+            <th><%= t(".who") %></th>
+            <th><%= t(".description") %></th>
+            <th><%= t(".options") %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @health_check_imports.each do |health_check_import| %>
+            <tr>
+              <td><%= link_to t(".imported_at", :time => time_ago_in_words(health_check_import.created_at)), health_check_import_path(health_check_import) %></td>
+              <% if @site.blank? %>
+                <td><%= link_to health_check_import.site.name, account_site_health_check_imports_path(@account, health_check_import.site) if health_check_import.site %></td>
+              <% end %>
+              <td><%= link_to health_check_import.user.full_name, user_path(health_check_import.user) %></td>
+              <td><%= link_to health_check_import.description, health_check_import_path(health_check_import) unless health_check_import.description.blank? %></td>
+              <% if @site.blank? %>
+                <td><%= link_to t('.delete'), health_check_import_path(health_check_import), :method => :delete, :confirm => t(".really_delete_import"), :class => 'btn btn-mini' %></td>
+              <% else %>
+                <td><%= link_to t('.delete'), account_site_health_check_import_path(@account, @site, health_check_import), :method => :delete, :confirm => t(".really_delete_import"), :class => 'btn btn-mini' %></td>
+              <% end %>
+            </tr>
           <% end %>
-          <td><%= link_to health_check_import.user.full_name, user_path(health_check_import.user) %></td>
-          <td><%= link_to health_check_import.description, health_check_import_path(health_check_import) unless health_check_import.description.blank? %></td>
-          <% if @site.blank? %>
-            <td><%= link_to t('.delete'), health_check_import_path(health_check_import), :method => :delete, :confirm => t(".really_delete_import"), :class => 'btn btn-mini' %></td>
-          <% else %>
-            <td><%= link_to t('.delete'), account_site_health_check_import_path(@account, @site, health_check_import), :method => :delete, :confirm => t(".really_delete_import"), :class => 'btn btn-mini' %></td>
-          <% end %>
-        </tr>
+        </tbody>
+      </table>
+    <% end %>
+
+    <p>
+      <% if @site.blank? %>
+        <%= link_to t(".new_import"), new_health_check_import_path, :class => 'btn btn-default btn-flat' %>
+      <% else %>
+        <%= link_to t(".all_imports_for_account"), health_check_imports_path, :class => 'btn btn-default btn-flat' %>
+        <%= link_to t(".new_import"), new_account_site_health_check_import_path(@account, @site), :class => 'btn btn-default btn-flat' %>
       <% end %>
-    </tbody>
-  </table>
-<% end %>
-
-<p>
-  <% if @site.blank? %>
-    <%= link_to t(".new_import"), new_health_check_import_path %>
-  <% else %>
-    <%= link_to t(".all_imports_for_account"), health_check_imports_path %> |
-    <%= link_to t(".new_import"), new_account_site_health_check_import_path(@account, @site) %>
-  <% end %>
-</p>
+    </p>
+  </div>
+</div>

@@ -13,7 +13,7 @@ class HealthCheck < ActiveRecord::Base
   
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
-  
+
   has_many :screenshots, :through => :check_runs
   has_many :latest_screenshots, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots', :order => 'screenshots.created_at DESC'
   
@@ -55,7 +55,7 @@ class HealthCheck < ActiveRecord::Base
   end
 
   def self.due
-    enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
+    enabled.where('next_check_at is not null and next_check_at < ?', Time.now)
   end
   
   # This method reenables health checks that got accidentally disabled, for example when

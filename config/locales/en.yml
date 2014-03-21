@@ -406,11 +406,11 @@ en:
     import_to_account: 
       field_names: "The fields are (in this order): Site name, Site's Base URL, %{fields}"
       instructions: "Copy the health checks into the field below as CSV data"
-      new_import: "New Import from health check template %{template}"
+      new_import: "New Import"
     import_to_site: 
       field_names: "The fields are (in this order): %{fields}"
       instructions: "Copy the health checks into the field below as CSV data"
-      new_import: "New Import from health check template %{template}"
+      new_import: "New Import"
     index: 
       all_imports_for_account: "Show all imports for this account"
       delete: Delete
@@ -618,7 +618,7 @@ en:
     guest_greeter: "Welcome, Guest!"
     health_checks: "Health Checks"
     help: Help
-    home: Home
+    home: Dashboard
     login: Login
     logout: Logout
     quick_links: "Quick links"
@@ -702,11 +702,12 @@ en:
       edit: Edit
       health_checks: "Health checks"
       information: Information
-  start: 
-    dashboard: 
+  start:
+    dashboard:
       recent_activity: "Recent Activity"
       upcoming_checks: "Upcoming Checks"
-    index: 
+    index:
+      title: "Dashboard"
       add_existing_user_to_account: "Add existing user to account %{account}"
       add_new_user_to_account: "Add new user to account %{account}"
       add_site: "Add site"
@@ -734,6 +735,7 @@ en:
     check_content: "Check content"
     check_current_url: "Check current URL"
     check_email: "Check email"
+    check_element_count: "Check count"
     choose_radio_button: "Choose radio button"
     click_button: "Click button"
     click_email_link: "Click link in email"
@@ -742,6 +744,7 @@ en:
     fill_in: "Fill in field"
     in_scope: "in scope %{scope_name}"
     select_check_box: "Select check box"
+    select_dropdown: "Select dropdown"
     submit_form: "Submit form"
     run_script: "Run script"
     take_screenshot: "Take screenshot"

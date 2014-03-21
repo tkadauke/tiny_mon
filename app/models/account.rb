@@ -15,8 +15,6 @@ class Account < ActiveRecord::Base
   
   scope :ordered_by_name, order('name ASC')
   
-  attr_protected :maximum_check_runs_per_day, :check_runs_per_day
-  
   def self.from_param!(param)
     find(param)
   end

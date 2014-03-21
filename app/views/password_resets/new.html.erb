@@ -1,12 +1,18 @@
-<h2><%= t('.forgot_password') %></h2>
+<%= title t('.forgot_password') %>
 
-<p><%= t('.instructions') %></p>
+<div class="box">
+  <div class="box-body">
+    <p><%= t('.instructions') %></p>
 
-<%= form_tag password_resets_path do %>
-  <div class="control-group">
-    <label><%= t('.email') %></label>
-    <%= text_field_tag "email" %>
+    <%= form_tag password_resets_path do %>
+      <div class="control-group">
+        <label><%= t('.email') %></label>
+        <%= text_field_tag "email", "", :class => 'form-control' %>
+      </div>
+
+      <div class="control-group">
+        <p><%= submit_tag t('.reset'), :class => 'btn' %></p>
+      </div>
+    <% end %>
   </div>
-
-  <p><%= submit_tag t('.reset'), :class => 'btn' %></p>
-<% end %>
+</div>

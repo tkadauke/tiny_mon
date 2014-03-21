@@ -14,7 +14,7 @@ TinyMon::Application.routes.draw do
       resources :accounts
       resources :users
     end
-    match '/admin' => 'admin#index', :as => :admin
+    match '/admin' => 'admin#index', via: :get, :as => :admin
   
     resources :accounts do
       resources :sites do
@@ -74,5 +74,5 @@ TinyMon::Application.routes.draw do
     root :to => 'start#index'
   end
   
-  match '/:controller(/:action(/:id))' if Rails.env.test?
+  match '/:controller(/:action(/:id))', via: :get if Rails.env.test?
 end

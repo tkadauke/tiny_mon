@@ -4,16 +4,16 @@ class HealthCheck < ActiveRecord::Base
   belongs_to :site
   belongs_to :health_check_import
   
-  has_many :steps, :order => 'position ASC'
+  has_many :steps, -> { order(position: :asc) }
   has_many :check_runs, :dependent => :destroy
-  has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
-  has_many :weather_relevant_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 5
+  has_many :recent_check_runs, -> { order(created_at: :desc).limit(50) }, :class_name => 'CheckRun'
+  has_many :weather_relevant_check_runs, -> { limit(5) },  :class_name => 'CheckRun'
   
-  has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'
+  has_one :last_check_run, :class_name => 'CheckRun', :conditions => 'status is not null',  :order => 'created_at DESC'
   
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
-  
+
   has_many :screenshots, :through => :check_runs
   has_many :latest_screenshots, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots', :order => 'screenshots.created_at DESC'
   
@@ -55,7 +55,7 @@ class HealthCheck < ActiveRecord::Base
   end
 
   def self.due
-    enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
+    enabled.all :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
   end
   
   # This method reenables health checks that got accidentally disabled, for example when

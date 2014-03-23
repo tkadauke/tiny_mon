@@ -1,7 +1,7 @@
 <h2><%= t('.all_health_checks') %></h2>
 
 <div class="row">
-  <div class="span12">
+  <div class="col-md-12">
     <div class="btn-group">
       <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
         <%= t("health_checks.report.#{@report.to_sym}") %>
@@ -38,7 +38,7 @@
 
 <div id="filter" class="row collapse">
   <br/>
-  <div class="span12">
+  <div class="col-md-12">
     <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
   </div>
 </div>

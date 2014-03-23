@@ -38,11 +38,11 @@ module ApplicationHelper
 
   def bread_crumb
     items = [%{<a href="/#{I18n.locale}">#{I18n.t('breadcrumb.home')}</a>}]
-    sofar = "/#{I18n.locale}"
+    sofar = "#{I18n.locale}"
     elements = request.fullpath.split('?').first.split('/')
     parent_model = nil
     for i in 2...elements.size
-      sofar += '/' + elements[i]
+      sofar +=  elements[i]
       
       parent_model, link_text = begin
         next_model = if parent_model
@@ -66,7 +66,7 @@ module ApplicationHelper
       content_tag(:li) do
         [
           item,
-          (content_tag(:span, :class => 'divider') { '/'} unless item == items.last)
+          (content_tag(:span, :class => 'divider') { ''} unless item == items.last)
         ].join.html_safe
       end
     end.join.html_safe

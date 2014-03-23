@@ -30,17 +30,18 @@ gem "therubyracer"
 gem "libv8"
 gem 'uglifier', '>= 1.0.3'
 
-gem 'protected_attributes'
 group :development do
   gem 'i18n_tools'
+  gem "resque"
 end
 
 group :test do
-  gem "mocha", '0.9.8'
+  gem 'mocha', '0.9.8'
+  gem 'rspec'
 end
 
 group :production do
-  gem "resque"
+  gem 'resque'
 end
 
 group :vm do

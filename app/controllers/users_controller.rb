@@ -13,10 +13,10 @@ class UsersController < ApplicationController
   
   def create
     if logged_in?
-      @user = current_user.current_account.users.build(params[:user])
+      @user = current_user.current_account.users.build(user_params)
       @user.current_account = current_user.current_account
     else
-      @user = User.new(params[:user])
+      @user = User.new(user_params)
     end
     
     if @user.save
@@ -54,5 +54,10 @@ class UsersController < ApplicationController
     else
       render :action => :edit
     end
+  end
+
+  private
+  def user_params
+      params.require(:user).permit :full_name, :email, :password, :password_confirmation
   end
 end

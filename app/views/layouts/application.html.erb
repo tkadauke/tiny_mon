@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <header>
-        <nav class="navbar">
+        <nav class="navbar navbar-default" role="navigation">
           <div class="navbar-header">
             <%= link_to 'TinyMon', root_path, :class => 'navbar-brand' %>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
@@ -20,10 +20,10 @@
               <span class="icon-bar"></span>
             </button>
           </div>
-          <span class="hidden-desktop"><%= overall_status if logged_in? %></span>
+          <span class="visible-xs"><%= overall_status if logged_in? %></span>
           <div class="navbar-header navbar-right">
             <ul class="nav navbar-nav">
-              <li class="hidden-phone"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+              <li class="hidden-xs"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
               <% if logged_in? %>
                 <li><%= gravatar(current_user, :text => current_user.full_name) %></li>
 
@@ -56,7 +56,7 @@
                 <li><%= link_to t('layouts.logout'), logout_path, :method => :delete %></li>
 
                 <% if current_user.current_account %>
-                  <li class="visible-desktop"><%= overall_status %></li>
+                  <li class="hidden-md"><%= overall_status %></li>
                 <% end %>
               <% else %>
                 <%= render '/layouts/language_dropdown' %>

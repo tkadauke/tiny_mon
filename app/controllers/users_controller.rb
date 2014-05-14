@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       flash[:notice] = I18n.t('flash.notice.updated_user')
       redirect_to root_path
     else

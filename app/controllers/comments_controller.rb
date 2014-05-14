@@ -18,13 +18,13 @@ class CommentsController < ApplicationController
   
   def new
     can_create_comments!(@account) do
-      @comment = @check_run.comments.build(params[:comment])
+      @comment = @check_run.comments.build()
     end
   end
   
   def create
     can_create_comments!(@account) do
-      @comment = @check_run.comments.new(params[:comment])
+      @comment = @check_run.comments.new(comment_params)
       @comment.user = current_user
       if @comment.save
         flash[:notice] = I18n.t("flash.notice.created_comment")
@@ -34,8 +34,13 @@ class CommentsController < ApplicationController
       end
     end
   end
-  
-protected
+
+  private
+  def comment_params
+    params.require(:comment).permit :text, :user
+  end
+
+  protected
   def find_parent_models
     if params[:user_id]
       find_user

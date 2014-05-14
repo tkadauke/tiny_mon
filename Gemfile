@@ -16,6 +16,7 @@ gem 'pg'
 gem "lhm", :require => false
 gem 'sass-rails', '~> 4.0.0'
 gem "bootstrap-sass"
+gem 'compass'
 gem 'bootstrap-will_paginate'
 gem 'authlogic', '~> 3.4.0'
 gem 'scrypt'
@@ -36,7 +37,7 @@ group :development do
 end
 
 group :test do
-  gem 'mocha', '0.9.8'
+  gem 'mocha'
   gem 'rspec'
 end
 

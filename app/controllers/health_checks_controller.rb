@@ -104,7 +104,7 @@ class HealthChecksController < ApplicationController
   
   def update_multiple
     can_edit_health_checks!(@account) do
-      @health_checks = @account.health_checks.find(health_check_params)
+      @health_checks = @account.health_checks.find(params[:health_check_ids])
       updated = @health_checks.map do |health_check|
         health_check.bulk_update(health_check_params)
       end
@@ -122,12 +122,15 @@ class HealthChecksController < ApplicationController
       respond_with @health_check, :location => account_site_health_checks_path(@account, @site)
     end
   end
-  
+
+private
+  def health_check_params
+    params.require(:health_check).permit(:enabled, :name, :description, :interval, :bulk_update_interval)
+  end
+
+
 protected
 
-  def health_check_params
-    params.require(:health_check).permit(:enabled, :name, :description, :interval)
-  end
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]
   end

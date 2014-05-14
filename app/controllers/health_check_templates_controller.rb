@@ -19,7 +19,7 @@ class HealthCheckTemplatesController < ApplicationController
   end
   
   def create
-    @health_check_template = HealthCheckTemplate.new(params[:health_check_template])
+    @health_check_template = HealthCheckTemplate.new(health_check_params)
     @health_check_template.user = current_user
     @health_check_template.account = current_user.current_account
     if @health_check_template.save
@@ -33,7 +33,7 @@ class HealthCheckTemplatesController < ApplicationController
   def update
     @health_check_template = HealthCheckTemplate.find(params[:id])
     can_edit_health_check_template!(@health_check_template) do
-      if @health_check_template.update_attributes(params[:health_check_template])
+      if @health_check_template.update_attributes(health_check_params)
         flash[:notice] = I18n.t("flash.notice.updated_health_check_template")
         redirect_to health_check_templates_path
       else
@@ -52,6 +52,9 @@ class HealthCheckTemplatesController < ApplicationController
   end
 
 protected
+  def health_check_params
+    params.require(:health_check_template).permit!
+  end
   def check_account_permissions
     deny_access unless current_user.can_create_health_check_templates?(@account)
   end

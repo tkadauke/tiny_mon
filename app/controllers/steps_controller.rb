@@ -50,7 +50,7 @@ class StepsController < ApplicationController
   def update
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
-      @step.update_attributes(params[@step.class.name.underscore])
+      @step.update_attributes(step_update_params(@step.type))
       respond_with @step do |format|
         format.html { redirect_to :back }
       end
@@ -79,7 +79,10 @@ class StepsController < ApplicationController
 protected
 
   def step_params
-    params.require(params[:type]+'_step').permit  :url, :content, :negate
+    params.require(params[:type]+'_step').permit  :id, :url, :content, :negate
+  end
+  def step_update_params type
+    params.require(type.underscore.to_sym).permit  :id, :url, :content, :negate
   end
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id])

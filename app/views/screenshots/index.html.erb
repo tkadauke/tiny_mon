@@ -1,9 +1,11 @@
-<h2><%= t(".screenshots_of_health_check", :health_check => @health_check.name) %></h2>
+<div class="box">
+    <div class="box-body">
+      <%= render :partial => "/health_checks/tabs", :locals => { :selected => :screenshots } %>
 
-<%= render :partial => "/health_checks/tabs", :locals => { :selected => :screenshots } %>
+      <%= will_paginate @screenshots %>
 
-<%= will_paginate @screenshots %>
+      <%= render :partial => "list" %>
 
-<%= render :partial => "list" %>
-
-<%= will_paginate @screenshots %>
+      <%= will_paginate @screenshots %>
+  </div>
+</div>

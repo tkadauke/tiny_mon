@@ -8,12 +8,14 @@ class SitesController < ApplicationController
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
     @sites = @account.sites.find_for_list(@search_filter)
+    @page_title =  t('.all_sites')
     respond_with @sites
   end
   
   def new
     can_create_sites!(@account) do
       @site = @account.sites.new
+      @page_title = t('.new_site')
       respond_with @site
     end
   end
@@ -30,12 +32,15 @@ class SitesController < ApplicationController
   
   def show
     @site = @account.sites.find_by_permalink!(params[:id])
+    @page_title = t('.site', :site => @site.name)
+    #@page_subtitle = '*'
     respond_with @site
   end
   
   def edit
     can_edit_sites!(@account) do
       @site = @account.sites.find_by_permalink!(params[:id])
+      @page_title = t('.edit_site', :site => @site.name)
       respond_with @site
     end
   end

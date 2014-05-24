@@ -1,5 +1,15 @@
-<div class="alert alert-success alert-block">
-  <%= link_to "&times;".html_safe, help_path, :method => :delete, :class => 'close' %>
+<div class="col-md-12">
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title"><%= t('start.index.welcome') %></h3>
+            <div class="box-tools">
+                <%= link_to "&times;".html_safe, help_path, :method => :delete, :class => 'close' %>
 
-  <%= render :partial => "help" %>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <%= render :partial => "help" %>
+
+        </div><!-- /.box-body -->
+    </div>
 </div>

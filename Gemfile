@@ -33,6 +33,8 @@ gem "therubyracer"
 gem "libv8"
 gem 'uglifier', '>= 1.0.3'
 gem 'rspec-rails'
+#gem 'ionicons-rails'
+#gem 'font-awesome-rails
 
 group :development do
   gem 'i18n_tools'

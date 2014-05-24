@@ -1,18 +1,20 @@
-<h2><%= t('.check_runs_of_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+<div class="box">
+    <div class="box-body">
+      <%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
 
-<%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
+      <%= form_for :check_run_filter, :url => account_site_health_check_check_runs_path(@account, @site, @health_check), :html => { :method => :get, :class => 'filter' } do |f| %>
+        <%= t(".from") %> <%= f.date_select :start_date, :class => 'form-control' %>
+        <%= t(".until") %> <%= f.date_select :end_date, :class => 'form-control' %>
+        <%= f.submit t(".filter"), :class => 'btn btn-default btn-flat' %>
+        <% if params[:check_run_filter] %>
+          <%= link_to t(".reset_filter"), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
+          <span class="info"><%= t(".filter_active") %></span>
+        <% end %>
+      <% end %>
 
-<%= form_for :check_run_filter, :url => account_site_health_check_check_runs_path(@account, @site, @health_check), :html => { :method => :get, :class => 'filter' } do |f| %>
-  <%= t(".from") %> <%= f.date_select :start_date %>
-  <%= t(".until") %> <%= f.date_select :end_date %>
-  <%= f.submit t(".filter"), :class => 'btn' %>
-  <% if params[:check_run_filter] %>
-    <%= link_to t(".reset_filter"), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
-    <span class="info"><%= t(".filter_active") %></span>
-  <% end %>
-<% end %>
-
-<div id="activity">
-  <%= render :partial => "/check_runs/activity" %>
+      <div id="activity">
+        <%= render :partial => "/check_runs/activity" %>
+      </div>
+      <%= poll account_site_health_check_check_runs_path(@account, @site, @health_check, :firefix => true), :element => 'activity' %>
+   </div>
 </div>
-<%= poll account_site_health_check_check_runs_path(@account, @site, @health_check, :firefix => true), :element => 'activity' %>

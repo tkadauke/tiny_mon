@@ -17,7 +17,7 @@ class CheckRunFilter
   end
 
   def date_range_valid
-    errors.add(:start_date, 'Date range invalid') if start_date > end_date
+    errors.add(:start_date, 'Date range invalid') if start_date && end_date && start_date > end_date
   end
   
   def conditions

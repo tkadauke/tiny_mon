@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2199298655">
+  <component name="DataSourceManagerImpl" format="xml" hash="323246458">
     <data-source source="LOCAL" name="Rails tiny_mon: development" uuid="d8251a4e-d8f6-4abb-aa42-f2a4e42db616">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql:tiny-mon-development</jdbc-url>
+      <schema-pattern>tiny-mon-development.*</schema-pattern>
+      <default-schemas>tiny-mon-development.*</default-schemas>
       <libraries>
         <library>
           <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea12/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar</url>
@@ -40,6 +42,13 @@
           <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea12/jdbc-drivers/postgresql-9.2-1002.jdbc3.jar</url>
         </library>
       </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - @localhost" uuid="2f4f03f2-151d-40b2-92f3-e9a009614da4">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432</jdbc-url>
+      <libraries />
     </data-source>
   </component>
 </project>

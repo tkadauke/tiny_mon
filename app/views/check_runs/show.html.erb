@@ -1,12 +1,14 @@
-<h2><%= t('.check_run_of_health_check_site', :health_check => @health_check.name, :site => @site.name) %></h2>
+<div class="box">
+    <div class="box-body">
+      <%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
 
-<%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
-
-<% if @check_run.status.blank? %>
-  <div id="details">
-    <%= render "details" %>
+      <% if @check_run.status.blank? %>
+        <div id="details">
+          <%= render "details" %>
+        </div>
+        <%= poll account_site_health_check_check_run_path(@account, @site, @health_check, @check_run, :firefix => true), :element => 'details', :interval => 1 %>
+      <% else %>
+        <%= render "details" %>
+      <% end %>
+      </div>
   </div>
-  <%= poll account_site_health_check_check_run_path(@account, @site, @health_check, @check_run, :firefix => true), :element => 'details', :interval => 2 %>
-<% else %>
-  <%= render "details" %>
-<% end %>

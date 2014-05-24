@@ -11,6 +11,7 @@ class StepsController < ApplicationController
   
   def index
     @steps = @health_check.steps
+    @page_title = t('.steps_for_health_check', :health_check => @health_check.name)
     respond_with @steps
   end
 
@@ -79,10 +80,10 @@ class StepsController < ApplicationController
 protected
 
   def step_params
-    params.require(params[:type]+'_step').permit  :id, :url, :content, :negate, :name, :scope
+    params.require(params[:type]+'_step').permit  :id, :url, :content, :negate, :name, :scope, :mincount, :maxcount
   end
   def step_update_params type
-    params.require(type.underscore.to_sym).permit  :id, :url, :content, :negate
+    params.require(type.underscore.to_sym).permit  :id, :url, :content, :negate,  :name, :scope, :mincount, :maxcount
   end
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id])

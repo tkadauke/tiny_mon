@@ -3,9 +3,9 @@ module ApplicationHelper
   def gravatar(user, options = {})
     hash = Digest::MD5.hexdigest(user.email.strip.downcase)
     text = options[:text] ? "&nbsp;" + options[:text] : ""
-    size = options[:size] || 20
+    size = options[:size] || 50
     size = size.to_s + 'x' + size.to_s
-    link_to image_tag("http://www.gravatar.com/avatar/#{hash}.png?s=#{options[:size] || 20}", {size:size}) + text.html_safe, user_path(user)
+    "http://www.gravatar.com/avatar/#{hash}.png?s=#{size}"
   end
   
   def poll(url, options = {})

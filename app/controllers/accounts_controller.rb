@@ -10,6 +10,7 @@ class AccountsController < ApplicationController
   end
   
   def new
+    @page_title = ('.add_user_to_account')
     @account = Account.new
   end
   

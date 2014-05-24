@@ -23,9 +23,11 @@ class HealthChecksController < ApplicationController
     if @site
       @health_checks = @site.health_checks.filter_for_list(@search_filter, @status).order('health_checks.name ASC')
       template = 'index'
+      @page_title = t('.health_checks_for_site', :site => @site.name)
     else
       @health_checks = @account.health_checks.filter_for_list(@search_filter, @status).order('sites.name ASC, health_checks.name ASC')
       template = 'all_checks'
+      @page_title = t(:'health_checks.all_checks.all_health_checks')
     end
     respond_with @health_checks do |format|
       format.html do
@@ -72,12 +74,14 @@ class HealthChecksController < ApplicationController
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
     @comments = @health_check.latest_comments.limit(5)
     @comments_count = @health_check.comments.count
+    @page_title = @health_check.name
     respond_with @health_check
   end
   
   def edit
     can_edit_health_checks!(@account) do
       @health_check = @site.health_checks.find_by_permalink!(params[:id])
+      @page_title = t('.edit_health_check_for_site', :health_check => @health_check.name, :site => @site.name)
       respond_with @health_check
     end
   end

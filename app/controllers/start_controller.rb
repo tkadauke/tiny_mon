@@ -4,7 +4,7 @@ class StartController < ApplicationController
   
   def index
     @account = current_user.current_account
-    
+    @page_title = t('.title')
     if @account
       # disable account_id check because it's to slow
       # :conditions => ["sites.account_id = ?", @account.id]

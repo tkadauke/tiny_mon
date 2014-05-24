@@ -21,7 +21,7 @@ class Broadcast < ActiveRecord::Base
         # ignore delivery errors
       end
     end
-    update_attribute(:sent_at, Time.now)
+    update_attribute(:sent_at, DateTime.now)
   end
   background_method :deliver
 end

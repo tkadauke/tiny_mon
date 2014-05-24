@@ -10,6 +10,8 @@ class CheckRunsController < ApplicationController
   
   def index
     @check_runs = @health_check.check_runs.recent.paginate(:page => params[:page], :include => :health_check, :conditions => @check_run_filter.conditions)
+    @page_title = t('.check_runs_of_health_check_site', :health_check => @health_check.name, :site => @site.name)
+
     respond_with @check_runs do |format|
       format.html do
         render :partial => "/check_runs/activity" if request.xhr?
@@ -30,7 +32,8 @@ class CheckRunsController < ApplicationController
     
     @screenshots = @check_run.screenshots
     @screenshot_comparisons = @check_run.screenshot_comparisons
-    
+
+    @page_title = t('.check_run_of_health_check_site', :health_check => @health_check.name, :site => @site.name)
     if request.xhr?
       render :partial => "/check_runs/details"
     else
@@ -56,12 +59,15 @@ protected
   
   def create_check_run_filter
     if params[:check_run_filter]
-      @check_run_filter = CheckRunFilter.new(params[:check_run_filter])
+     #explicit convertion of params to date objects
+      start_date = Date.civil(params[:check_run_filter][:"start_date(1i)"].to_i,params[:check_run_filter][:"start_date(2i)"].to_i,params[:check_run_filter][:"start_date(3i)"].to_i)
+      end_date = Date.civil(params[:check_run_filter][:"wnd_date(1i)"].to_i,params[:check_run_filter][:"end_date(2i)"].to_i,params[:check_run_filter][:"end_date(3i)"].to_i)
+      @check_run_filter = CheckRunFilter.new({:start_date => start_date, :end_date=> end_date})
     end
     
     if !params[:check_run_filter] || !@check_run_filter.valid?
       if first_check_run = @health_check.check_runs.first
-        @check_run_filter = CheckRunFilter.new(:start_date => first_check_run.created_at, :end_date => (Date.today + 1))
+        @check_run_filter = CheckRunFilter.new(:start_date => first_check_run.created_at, :end_date => (DateTime.now + 1.day))
       else
         @check_run_filter = CheckRunFilter.new
       end

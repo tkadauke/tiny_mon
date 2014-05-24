@@ -22,7 +22,7 @@
           <div class="control-group">
             <%= f.label :bulk_update_name, t('.name'), :class => 'control-label' %>
             <div class="controls">
-              <%= f.text_field :name, :disabled => true %>
+              <%= f.text_field :name, :disabled => true, :class => 'form-control' %>
             </div>
           </div>
         </td>
@@ -33,7 +33,7 @@
           <div class="control-group">
             <%= f.label :bulk_update_description, t('.description'), :class => 'control-label' %>
             <div class="controls">
-              <%= f.text_area :description, :rows => 5, :disabled => true %>
+              <%= f.text_area :description, :rows => 5, :disabled => true, :class => 'form-control' %>
             </div>
           </div>
         </td>
@@ -44,7 +44,7 @@
           <div class="control-group">
             <%= f.label :bulk_update_interval, t('.interval'), :class => 'control-label' %>
             <div class="controls">
-              <%= f.select :interval, HealthCheck.intervals_with_units, {}, :disabled => true %>
+              <%= f.select :interval, HealthCheck.intervals_with_units, {}, :disabled => true, :class => 'form-control' %>
             </div>
           </div>
         </td>
@@ -55,7 +55,7 @@
           <div class="control-group">
             <%= f.label :bulk_update_enabled, t('.enabled'), :class => 'control-label' %>
             <div class="controls">
-              <%= f.select :enabled, [[t(".yes"), 1], [t(".no"), 0]], {}, :disabled => true %>
+              <%= f.select :enabled, [[t(".yes"), 1], [t(".no"), 0]], {}, :disabled => true, :class => 'form-control' %>
             </div>
           </div>
         </td>
@@ -65,7 +65,7 @@
   
   <div class="control-group">
     <div class="controls">
-      <%= f.submit t('.update_health_checks'), :class => 'btn' %>
+      <%= f.submit t('.update_health_checks'),  :class => "btn btn-sm btn-flat btn-default" %>
     </div>
   </div>
 <% end %>

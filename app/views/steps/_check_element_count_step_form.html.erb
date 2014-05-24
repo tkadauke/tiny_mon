@@ -1,0 +1,18 @@
+<div class="control-group">
+  <%= f.label :name, t('.selector'), :class => 'control-label required' %>
+  <div class="controls">
+    <%= f.text_field :name , :class => 'form-control' %>
+    <p><small><%= t('.selector') %></small></p>
+  </div>
+  <div class="controls">
+      <%= f.text_field :mincount , :class => 'form-control' %>
+      <p><small><%= t('.mincount') %></small></p>
+  </div>
+  <div class="controls">
+      <%= f.text_field :maxcount , :class => 'form-control' %>
+      <p><small><%= t('.maxcount') %></small></p>
+  </div>
+</div>
+
+
+<p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

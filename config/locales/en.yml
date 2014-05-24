@@ -742,6 +742,7 @@ en:
     fill_in: "Fill in field"
     in_scope: "in scope %{scope_name}"
     select_check_box: "Select check box"
+    select_dropdown: "Select dropdown"
     submit_form: "Submit form"
     run_script: "Run script"
     take_screenshot: "Take screenshot"

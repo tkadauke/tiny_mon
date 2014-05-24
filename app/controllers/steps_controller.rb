@@ -79,7 +79,7 @@ class StepsController < ApplicationController
 protected
 
   def step_params
-    params.require(params[:type]+'_step').permit  :id, :url, :content, :negate
+    params.require(params[:type]+'_step').permit  :id, :url, :content, :negate, :name, :scope
   end
   def step_update_params type
     params.require(type.underscore.to_sym).permit  :id, :url, :content, :negate

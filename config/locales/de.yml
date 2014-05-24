@@ -743,6 +743,7 @@ de:
     in_scope: "im Bereich %{scope_name}"
     run_script: "Script ausführen"
     select_check_box: "Wähle Check Box"
+    select_dropdown: "Wähle Dropdown"
     submit_form: "Schicke Formular ab"
     take_screenshot: "Screenshot erstellen"
     visit: "Gehe zu"

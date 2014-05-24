@@ -20,6 +20,8 @@ gem 'compass'
 gem 'bootstrap-will_paginate'
 gem 'authlogic', '~> 3.4.0'
 gem 'scrypt'
+gem 'rails-i18n', '~> 4.0.0'
+
 # Deploy with Capistrano
 gem 'capistrano'
 
@@ -30,6 +32,7 @@ gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
 gem "therubyracer"
 gem "libv8"
 gem 'uglifier', '>= 1.0.3'
+gem 'rspec-rails'
 
 group :development do
   gem 'i18n_tools'
@@ -39,6 +42,7 @@ end
 group :test do
   gem 'mocha'
   gem 'rspec'
+
 end
 
 group :production do

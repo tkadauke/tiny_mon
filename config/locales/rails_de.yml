@@ -28,30 +28,13 @@ de:
         header: 
           one: "Konnte dieses %{model} Objekt nicht speichern: 1 Fehler."
           other: "Konnte dieses %{model} Objekt nicht speichern: %{count} Fehler."
-  date: 
-    abbr_day_names: 
-      - So
-      - Mo
-      - Di
-      - Mi
-      - Do
-      - Fr
-      - Sa
+  date:
     abbr_month_names: []
-    day_names: 
-      - Sonntag
-      - Montag
-      - Dienstag
-      - Mittwoch
-      - Donnerstag
-      - Freitag
-      - Samstag
     formats: 
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       only_day: "%e"
       short: "%e. %b"
-    month_names: []
     order: 
       - !ruby/symbol day
       - !ruby/symbol month

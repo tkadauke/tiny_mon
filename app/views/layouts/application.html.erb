@@ -19,7 +19,6 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
           </a>
-          <span class="visible-xs"><%= overall_status if logged_in? %></span>
           <div class="navbar-header navbar-right">
             <ul class="nav navbar-nav">
               <li class="hidden-xs"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
@@ -50,7 +49,7 @@
                   <li><%= link_to t('layouts.admin'), admin_path %></li>
                 <% end %>
                 <% if current_user.current_account %>
-                  <li class="hidden-md" style="margin-top:5px;"><%= overall_status %></li>
+                  <li class="hidden-md" style="margin-top:10px;"><%== overall_status %></li>
                 <% end %>
               <% else %>
                 <%= render '/layouts/language_dropdown' %>
@@ -75,8 +74,6 @@
                     </div>
                     <div class="pull-left info">
                         <p>Hello, <%=  current_user.full_name %></p>
-
-
                         <%= link_to t('layouts.logout'), logout_path, :method => :delete %>
                     </div>
                 </div>
@@ -84,7 +81,9 @@
                 <ul class="sidebar-menu">
                     <li<%= ' class="active"'.html_safe if current_page?(root_path) %>><%= link_to t('layouts.home'), root_path %></li>
                     <li<%= ' class="active"'.html_safe if @tab == :sites %>><%= link_to t('layouts.sites'), sites_path %></li>
-                    <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
+                    <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %>
+                       <!-- <small class="badge pull-right bg-red">3</small> -->
+                    </li>
                     <li<%= ' class="active"'.html_safe if controller.controller_name == 'health_check_templates' %>><%= link_to t('layouts.templates'), health_check_templates_path %></li>
                     <li<%= ' class="active"'.html_safe if controller.controller_name == 'settings' %>><%= link_to t('layouts.settings'), settings_path %></li>
 

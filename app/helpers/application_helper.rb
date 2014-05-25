@@ -112,15 +112,31 @@ module ApplicationHelper
 
     status
   end
+
+  def status_icon(model)
+    status = ''
+
+    if model.status == 'success'
+      status = 'check'
+    elsif model.status == 'failure'
+      status = 'exclamation'
+    elsif model.respond_to?(:enabled?) && !model.enabled?
+      status = 'warning'
+    elsif model.status.nil?
+      status = 'spinner'
+    end
+
+    status
+  end
   
   def overall_status(model = current_user.current_account, version = :large)
     return if model.nil?
     
     if model.all_checks_successful?
-      image_tag "icons/#{version}/success.png", :alt => I18n.t("status.all_checks_successful"), :title => I18n.t("status.all_checks_successful")
-    else
-      image_tag "icons/#{version}/failure.png", :alt => I18n.t("status.one_or_more_checks_failed"), :title => I18n.t("status.one_or_more_checks_failed")
-    end
+      return '<i class="status-icon fa fa-check bg-green"></i>'
+     else
+      return '<i class="status-icon fa fa-bolt bg-red"></i>'
+     end
   end
   
   def weather_icon(model, version = :small)

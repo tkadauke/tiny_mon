@@ -9,6 +9,7 @@ class CheckRunsController < ApplicationController
   respond_to :html, :xml, :json
   
   def index
+    @check_run_filter.health_check_id = @health_check.id if @health_check
     @check_runs = @health_check.check_runs.recent.paginate(:page => params[:page], :include => :health_check, :conditions => @check_run_filter.conditions)
     @page_title = t('.check_runs_of_health_check_site', :health_check => @health_check.name, :site => @site.name)
 

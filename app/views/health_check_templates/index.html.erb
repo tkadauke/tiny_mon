@@ -1,34 +1,36 @@
-<h2><%= t(".my_templates") %></h2>
-
-<% if @health_check_templates.empty? %>
-  <p><%= t(".nothing_found") %></p>
-<% else %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><%= t(".name") %></th>
-        <th><%= t(".options") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @health_check_templates.each do |health_check_template| %>
+<div class="box">
+    <div class="box-body">
+  <% if @health_check_templates.empty? %>
+    <p><%= t(".nothing_found") %></p>
+  <% else %>
+    <table class="table table-hover">
+      <thead>
         <tr>
-          <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
-          <td>
-            <div class="btn-group">
-              <%= link_to t(".edit"), edit_health_check_template_path(health_check_template), :class => "btn btn-mini" %>
-              <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu">
-                <li><%= link_to t(".delete"), health_check_template_path(health_check_template), :method => :delete, :confirm => t(".really_delete_template") %></li>
-              </ul>
-            </div>
-          </td>
+          <th><%= t(".name") %></th>
+          <th><%= t(".options") %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+      </thead>
+      <tbody>
+        <% @health_check_templates.each do |health_check_template| %>
+          <tr>
+            <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
+            <td>
+              <div class="btn-group">
+                <%= link_to t(".edit"), edit_health_check_template_path(health_check_template), :class => "btn btn-mini" %>
+                <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to t(".delete"), health_check_template_path(health_check_template), :method => :delete, :confirm => t(".really_delete_template") %></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 
 <p><%= link_to t(".new_health_check_template"), new_health_check_template_path %></p>
+  </div>
+</div>

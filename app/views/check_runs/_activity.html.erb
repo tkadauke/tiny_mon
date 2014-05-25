@@ -2,30 +2,53 @@
   <p><%= t('.no_activity_yet') %></p>
 <% else %>
   <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
+  <div class="row">
+      <div class="col-md-12">
+          <ul class="timeline">
 
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th class="hidden-phone"><%= t('.status') %></th>
-        <th><%= t('.when') %></th>
-        <th><%= t('.name') %></th>
-        <th class="hidden-phone"><%= t('.duration') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @check_runs.each do |check_run| %>
-        <tr class="<%= status_class check_run %>">
-          <td class="hidden-phone"><%= status_icon check_run %></td>
-          <td><%= link_to t(".time_ago", :when => time_ago_in_words(check_run.created_at)), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %></td>
-          <td>
-            <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %> /
-            <%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %>
-          </td>
-          <td class="hidden-phone"><%= t(".duration_in_seconds", :duration => "%5.1f" % check_run.duration) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+              <!-- timeline time label
+              <li class="time-label">
+                <span class="bg-red">
+                    10 Feb. 2014
+                </span>
+              </li> -->
+              <!-- /.timeline-label -->
+
+              <!-- timeline item -->
+              <% @check_runs.each do |check_run| %>
+                <li style="margin-bottom:10px;">
+                    <!-- timeline icon -->
+
+                    <i class="fa fa-envelope bg-<%= status_background check_run %>"></i>
+
+                    <div class="timeline-item no-padding">
+                        <span class="time"><i class="fa fa-clock-o"></i><%= time_ago_in_words(check_run.created_at) %></span>
+
+                        <div class="timeline-body no-padding">
+                            <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %>
+                            /
+                            <%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %>
+
+                        </div>
+
+                    </div>
+                </li>
+              <% end %>
+              <li>
+                  <i class="fa fa-clock-o"></i>
+              </li>
+              <!-- END timeline item -->
+
+
+          </ul>
+      </div>
+  </div>
+
+
+
+
+
+
 
   <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
 <% end %>

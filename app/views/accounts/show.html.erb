@@ -1,47 +1,50 @@
-<h2><%= t('.account', :account => @account.name) %></h2>
+<div class="box">
+    <div class="box-body">
+        <%= render :partial => "tabs", :locals => {:selected => :information} %>
 
-<%= render :partial => "tabs", :locals => { :selected => :information } %>
+        <%= render :partial => "info" %>
 
-<%= render :partial => "info" %>
+        <h3><%= t(".users") %></h3>
 
-<h3><%= t(".users") %></h3>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= t('.name') %></th>
-      <th><%= t('.options') %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @account.user_accounts_with_users.each do |user_account| %>
-      <tr>
-        <td><%= gravatar user_account.user, :size => 20 %></td>
-        <td>
-          <%= link_to user_account.user.full_name, user_path(user_account.user) %><br/>
-          <% if current_user.can_assign_role_for_user_and_account?(user_account.user, @account) %>
-            <%= form_for [@account, user_account] do |f| %>
-              <%= f.select :role, UserAccount.available_roles_for_select, {}, :style => 'width: 110px', :onchange => "$('#edit_user_account_#{user_account.id}').submit()" %>
-              <%= f.submit t('.change'), :class => 'btn', :style => 'display: none' %>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th><%= t('.name') %></th>
+                <th><%= t('.options') %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @account.user_accounts_with_users.each do |user_account| %>
+              <tr>
+                  <td><img src="<%= gravatar user_account.user, :size => 20 %>" /></td>
+                  <td>
+                      <%= link_to user_account.user.full_name, user_path(user_account.user) %>
+                      <br/>
+                      <% if current_user.can_assign_role_for_user_and_account?(user_account.user, @account) %>
+                        <%= form_for [@account, user_account] do |f| %>
+                          <%= f.select :role, UserAccount.available_roles_for_select, {}, :style => 'width: 110px', :onchange => "$('#edit_user_account_#{user_account.id}').submit()" %>
+                          <%= f.submit t('.change'), :class => 'btn', :style => 'display: none' %>
+                        <% end %>
+                      <% else %>
+                        <strong><%= t("account.role.#{user_account.role}") %></strong>
+                      <% end %>
+                  </td>
+                  <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
+                    <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account'), :class => 'btn btn-mini' %></td>
+                  <% end %>
+              </tr>
             <% end %>
-          <% else %>
-            <strong><%= t("account.role.#{user_account.role}") %></strong>
-          <% end %>
-        </td>
-        <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
-          <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :confirm => t('.really_remove_user_from_account'), :class => 'btn btn-mini' %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            </tbody>
+        </table>
 
-<% if current_user.can_add_user_to_account?(@account) %>
-  <p>
-    <%= action_list do |a| %>
-      <% a.link_to t('.add_existing'), new_account_user_account_path(@account) %>
-      <% a.link_to t('.add_new'), new_user_path if @account == current_user.current_account %>
-    <% end %>
-  </p>
-<% end %>
+        <% if current_user.can_add_user_to_account?(@account) %>
+          <p>
+              <%= action_list do |a| %>
+                <% a.link_to t('.add_existing'), new_account_user_account_path(@account) %>
+                <% a.link_to t('.add_new'), new_user_path if @account == current_user.current_account %>
+              <% end %>
+          </p>
+        <% end %>
+    </div>
+</div>

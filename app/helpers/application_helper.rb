@@ -96,6 +96,22 @@ module ApplicationHelper
     
     status
   end
+
+  def status_background(model)
+    status = 'yellow'
+
+    if model.status == 'success'
+      status = 'green'
+    elsif model.status == 'failure'
+      status = 'red'
+    elsif model.respond_to?(:enabled?) && !model.enabled?
+      status = 'yellow'
+    elsif model.status.nil?
+      status = 'yellow'
+    end
+
+    status
+  end
   
   def overall_status(model = current_user.current_account, version = :large)
     return if model.nil?

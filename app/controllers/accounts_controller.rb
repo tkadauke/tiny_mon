@@ -6,17 +6,19 @@ class AccountsController < ApplicationController
   
   def index
     @accounts = current_user.accounts.ordered_by_name
+    @page_title = t('layouts.accounts')
     respond_with @accounts, :for => current_user
   end
   
   def new
-    @page_title = ('.add_user_to_account')
+    @page_title = ('.new_account')
     @account = Account.new
   end
   
   def show
     @account = Account.find(params[:id])
     can_see_account!(@account)
+    @page_title = t('.account', :account => @account.name)
     respond_with @account, :for => current_user
   end
   

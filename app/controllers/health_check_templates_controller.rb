@@ -5,12 +5,14 @@ class HealthCheckTemplatesController < ApplicationController
   
   def index
     @health_check_templates = current_user.health_check_templates.order('name ASC')
+    @page_title = t(".my_templates")
   end
   
   def new
     @health_check_template = HealthCheckTemplate.new
     @health_check_template.variables.build
     @health_check_template.steps.build
+    @page_title = t(".new_template")
   end
   
   def edit

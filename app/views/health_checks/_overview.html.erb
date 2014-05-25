@@ -1,4 +1,4 @@
-<br />
+<div class="clearfix"></div>
   <div class="row">
     <% @health_checks.each do |health_check| %>
       <div class="col-lg-3 col-xs-6" style="min-height:120px">
@@ -13,7 +13,7 @@
                   </p>
               </div>
               <a href="<%= account_site_health_check_path(health_check.site.account, health_check.site, health_check)  %>" class="small-box-footer">
-                  More info <i class="fa fa-arrow-circle-right"></i>
+                  <%= t(:'More info') %><i class="fa fa-arrow-circle-right"></i>
               </a>
           </div>
       </div>

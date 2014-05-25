@@ -49,6 +49,16 @@ class HealthChecksController < ApplicationController
     can_create_health_checks!(@account) do
       find_templates
       @health_check = @site.health_checks.build
+
+      if @health_check_template
+        @page_title =  t(".new_health_check_from_template", :template => @health_check_template.name)
+      elsif params[:template]
+        @page_title =  t(".new_from_template")
+      else
+        @page_title = t('.new_health_check_for_site', :site => @site.name)
+      end
+
+
       respond_with @health_check
     end
   end

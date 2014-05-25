@@ -6,6 +6,7 @@ class SettingsController < ApplicationController
     # @config does not work. See
     # http://rails.lighthouseapp.com/projects/8994/tickets/5342-rails-300rc-does-not-allow-config-instance-variable-in-controllers
     @configuration = current_user.config
+    @page_title = t('.settings')
   end
   
   def create

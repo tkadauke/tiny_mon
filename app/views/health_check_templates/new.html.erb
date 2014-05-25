@@ -1,7 +1,10 @@
-<h2><%= t(".new_template") %></h2>
+<div class="box">
+    <div class="box-body">
 
 <%= form_for @health_check_template, :html => { :class => 'form-horizontal' } do |f| -%>
   <%= f.error_messages :header_message => t('.could_not_create_template') %>
   
   <%= render :partial => 'form', :locals => { :f => f } %>
 <% end -%>
+  </div>
+</div>

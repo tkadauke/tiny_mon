@@ -1,14 +1,12 @@
-<% if @health_check_template %>
-  <h2><%= t(".new_health_check_from_template", :template => @health_check_template.name) %></h2>
-  
-  <%= render :partial => "template_form" %>
-  <%= render :partial => "preview" if @preview %>
-<% elsif params[:template] %>
-  <h2><%= t(".new_from_template") %></h2>
-  
-  <%= render :partial => "/health_check_templates/select", :locals => { :url => partial_route(:new_account_site_health_check_path, @account, @site) } %>
-<% else %>
-  <h2><%= t('.new_health_check_for_site', :site => @site.name) %></h2>
-  
-  <%= render :partial => "form" %>
-<% end %>
+<div class="box">
+    <div class="box-body">
+      <% if @health_check_template %>
+        <%= render :partial => "template_form" %>
+        <%= render :partial => "preview" if @preview %>
+      <% elsif params[:template] %>
+         <%= render :partial => "/health_check_templates/select", :locals => { :url => partial_route(:new_account_site_health_check_path, @account, @site) } %>
+      <% else %>
+         <%= render :partial => "form" %>
+    <% end %>
+    </div>
+</div>

@@ -4,7 +4,7 @@
   <% @comments.each do |comment| %>
     <div class="media">
       <div class="pull-left">
-        <%= gravatar(comment.user, :size => 64) %>
+        <img src="<%= gravatar(comment.user, :size => 64) %>" />
       </div>
       <div class="media-body">
         <h4 class="media-heading">

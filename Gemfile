@@ -35,21 +35,14 @@ gem 'uglifier', '>= 1.0.3'
 gem 'rspec-rails'
 gem 'ionicons-rails'
 gem 'font-awesome-rails'
-
-group :development do
-  gem 'i18n_tools'
-  gem "resque"
-end
+gem 'i18n_tools'
+gem "resque"
 
 group :test do
   gem 'mocha'
   gem 'rspec'
-
 end
 
-group :production do
-  gem 'resque'
-end
 
 group :vm do
   gem 'vagrant', :git => 'git://github.com/mitchellh/vagrant.git', :ref => 'v1.2.2'

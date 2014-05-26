@@ -46,6 +46,7 @@ module TinyMon
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.serve_static_assets = true
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

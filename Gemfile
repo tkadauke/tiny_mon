@@ -1,5 +1,5 @@
+ruby '2.1.0'
 source 'http://rubygems.org'
-
 gem 'rails', '~> 4.0.3'
 
 gem "acts_as_list"

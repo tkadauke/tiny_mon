@@ -15,7 +15,8 @@
 
         <% if @health_check.last_check_run %>
           <dt><%= t('.last_check_run') %></dt>
-          <dd><%= link_to status_icon(@health_check.last_check_run) + '&nbsp;'.html_safe + t("status.#{@health_check.last_check_run.status}"), account_site_health_check_check_run_path(@account, @site, @health_check, @health_check.last_check_run) %></dd>
+          <dd><%== status_icon(@health_check.last_check_run) %>
+             <%= link_to t("status.#{@health_check.last_check_run.status}"), account_site_health_check_check_run_path(@account, @site, @health_check, @health_check.last_check_run) %></dd>
         <% end %>
 
         <% if current_user.can_edit_health_checks?(@account) %>

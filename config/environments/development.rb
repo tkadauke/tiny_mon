@@ -5,11 +5,11 @@ TinyMon::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
-  config.assets.compile = true
+  config.assets.compile = false
   config.eager_load = false
 
   # Do not compress assets
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Expands the lines which load the assets
   config.assets.debug = false

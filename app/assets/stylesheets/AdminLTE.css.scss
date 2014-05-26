@@ -142,7 +142,7 @@ h6,
 }
 /* All images should be responsive */
 img {
-  max-width: 100%important;
+  max-width: 100% !important;
 }
 .sort-highlight {
   background: #f4f4f4;
@@ -288,7 +288,7 @@ img {
 }
 /* Remove box shadow */
 .no-shadow {
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
 /* Don't display when printing */
 @media print {
@@ -322,9 +322,9 @@ table.text-center th {
 }
 /* _fix for sparkline tooltip */
 .jqstooltip {
-  padding: 5px!important;
-  width: auto!important;
-  height: auto!important;
+  padding: 5px !important;
+  width: auto !important;
+  height: auto !important;
 }
 /*
     Components: navbar, logo and content header
@@ -494,7 +494,7 @@ body > .header .logo .icon {
   }
   body.fixed > .wrapper,
   body.fixed .sidebar-offcanvas {
-    margin-top: 100px!important;
+    margin-top: 100px !important;
   }
 }
 /*
@@ -508,7 +508,7 @@ body > .header .logo .icon {
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
-  border-color: transparent!important;
+  border-color: transparent !important;
 }
 .sidebar .sidebar-menu {
   list-style: none;
@@ -1071,7 +1071,7 @@ body > .header .logo .icon {
   margin-right: 10px;
 }
 .progress.vertical > .progress-bar {
-  width: 100%!important;
+  width: 100% !important;
   position: absolute;
   bottom: 0;
 }
@@ -2171,7 +2171,7 @@ Component: timeline
 */
 /* ADD THIS CLASS TO THE <HTML> TAG */
 .lockscreen {
-  background: image-url(../img/blur-background09.jpg) repeat center center fixed;
+  background: image-url("../img/blur-background09.jpg") repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

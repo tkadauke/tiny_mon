@@ -42,7 +42,7 @@ group :test do
   gem 'mocha'
   gem 'rspec'
 end
-
+gem 'rails_12factor'
 
 group :vm do
   gem 'vagrant', :git => 'git://github.com/mitchellh/vagrant.git', :ref => 'v1.2.2'

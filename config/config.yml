@@ -1,0 +1,16 @@
+email_domain: localhost
+email_address: 
+email_port: 25
+email_user_name: 
+email_password: 
+email_authentication: :login
+email_sender_address: tinymon@janrenz.de
+email_openssl_verify_mode: none
+email_enable_starttls_auto: false
+host: "tiny-mon"
+language: en
+
+exception_recipients: tiny_mon@example.de
+exception_sender_address: '"Application Error" <app.error@example.com>'
+
+secret_token: '694c10be3f99fe778293ee682e3b162defefefe'

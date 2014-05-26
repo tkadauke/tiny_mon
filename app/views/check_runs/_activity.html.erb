@@ -19,7 +19,7 @@
                 <li style="margin-bottom:10px;">
                     <!-- timeline icon -->
 
-                    <i class="fa fa-<%= status_icon check_run %> bg-<%= status_background check_run %>"></i>
+                    <i class="fa fa-<%= status_icon_class check_run %> bg-<%= status_background check_run %>"></i>
 
                     <div class="timeline-item no-padding">
                         <span class="time"><i class="fa fa-clock-o"></i><%= time_ago_in_words(check_run.created_at) %></span>

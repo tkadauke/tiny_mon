@@ -14,7 +14,7 @@
         <tbody>
           <% @accounts.each do |the_account| %>
             <tr>
-              <td><%= status_icon the_account %></td>
+              <td><%== status_icon the_account %></td>
               <td>
                 <% if current_user.can_switch_to_account?(the_account) %>
                   <%= link_to the_account.name, switch_account_path(the_account), :method => :post %>

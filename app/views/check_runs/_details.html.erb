@@ -3,7 +3,7 @@
 <% else %>
   <dl class="dl-horizontal well">
     <dt><%= t('.status') %></dt>
-    <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
+    <dd><%== status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
 
     <dt><%= t('.duration') %></dt>
     <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>

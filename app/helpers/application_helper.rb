@@ -79,8 +79,8 @@ module ApplicationHelper
     
     status = model.status
     status = 'offline' if model.respond_to?(:enabled?) && !model.enabled?
-    
-    image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
+    '<i class="fa fa-' + self.status_icon_class(model) +' bg-'+ self.status_background(model) +'"></i>'
+    #image_tag "icons/#{version}/#{status}.png", :alt => t("status.#{status}"), :title => t("status.#{status}")
   end
   
   def status_class(model)
@@ -113,7 +113,7 @@ module ApplicationHelper
     status
   end
 
-  def status_icon(model)
+  def status_icon_class(model)
     status = ''
 
     if model.status == 'success'

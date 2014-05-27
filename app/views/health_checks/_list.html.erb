@@ -1,5 +1,5 @@
 <% if @health_checks.empty? %>
-  <p><%= t('.no_health_checks_found') %></p>
+  <div><%= t('.no_health_checks_found') %></div>
 <% else %>
   <% if @report == 'overview' %>
     <%= render "overview" %>

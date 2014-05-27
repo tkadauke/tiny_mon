@@ -10,7 +10,7 @@ class HealthChecksController < ApplicationController
     @report = if params[:report]
       current_user.soft_settings.set("health_checks.report", params[:report])
     else
-      current_user.soft_settings.get("health_checks.report", :default => 'details')
+      current_user.soft_settings.get("health_checks.report", :default => 'overview')
     end
     
     @status = if params[:status]

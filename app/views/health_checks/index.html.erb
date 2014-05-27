@@ -1,6 +1,5 @@
 <div class="box">
-    <div class="box-body">
-
+    <div class="box-header">
         <div class="btn-group pull-right">
             <a class="btn btn-default btn-flat btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
                 <%= t("health_checks.report.#{@report.to_sym}") %>
@@ -42,6 +41,8 @@
         </div>
         <%= render :partial => "/sites/tabs", :locals => { :selected => :health_checks } %>
 
+    </div>
+    <div class="box-body">
 
 
         <div id="checks">

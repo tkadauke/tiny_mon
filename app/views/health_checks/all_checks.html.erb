@@ -32,12 +32,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-body">
-                    <div id="checks">
-                        <%= render "list" %>
-                    </div>
+            </div>
+            <div class="box-body">
+                <div id="checks">
+                    <%= render "list" %>
                 </div>
             </div>
+
         </div>
     </div>
     <%= poll health_checks_path(:firefix => true), :element => 'checks' %>

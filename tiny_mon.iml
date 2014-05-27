@@ -3,6 +3,11 @@
   <component name="CompassSettings">
     <option name="compassExecutableFilePath" value="$USER_HOME$/.rvm/gems/ruby-2.1.1/gems/compass-0.12.2/bin/compass" />
     <option name="compassSupportEnabled" value="true" />
+    <option name="importPaths">
+      <list>
+        <option value="$USER_HOME$/.rvm/gems/ruby-2.1.1/gems/compass-core-1.0.0.alpha.19/stylesheets" />
+      </list>
+    </option>
   </component>
   <component name="FacetManager">
     <facet type="RailsFacetType" name="Ruby on Rails">
@@ -108,6 +113,9 @@
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.2, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails (v4.0.4, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails-i18n (v4.0.2, RVM: ruby-2.1.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_12factor (v0.0.2, RVM: ruby-2.1.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_serve_static_assets (v0.0.2, RVM: ruby-2.1.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rails_stdout_logging (v0.0.3, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.0.4, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.2.1, RVM: ruby-2.1.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rbzip2 (v0.2.0, RVM: ruby-2.1.1) [gem]" level="application" />

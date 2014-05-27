@@ -8,7 +8,7 @@ class StartController < ApplicationController
     if @account
       # disable account_id check because it's to slow
       # :conditions => ["sites.account_id = ?", @account.id]
-      @check_runs = @account.check_runs.where(:account_id => @account.id).order(:started_at).includes(:health_check )
+      @check_runs = @account.check_runs.where(:account_id => @account.id).order('started_at DESC').includes(:health_check )
       @upcoming_health_checks = @account.health_checks.upcoming.limit(10)
       render :partial => 'dashboard' if request.xhr?
     end

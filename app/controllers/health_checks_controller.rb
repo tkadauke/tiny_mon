@@ -10,7 +10,7 @@ class HealthChecksController < ApplicationController
     @report = if params[:report]
       current_user.soft_settings.set("health_checks.report", params[:report])
     else
-      current_user.soft_settings.get("health_checks.report", :default => 'details')
+      current_user.soft_settings.get("health_checks.report", :default => 'overview')
     end
     
     @status = if params[:status]
@@ -23,9 +23,11 @@ class HealthChecksController < ApplicationController
     if @site
       @health_checks = @site.health_checks.filter_for_list(@search_filter, @status).order('health_checks.name ASC')
       template = 'index'
+      @page_title = t('.health_checks_for_site', :site => @site.name)
     else
       @health_checks = @account.health_checks.filter_for_list(@search_filter, @status).order('sites.name ASC, health_checks.name ASC')
       template = 'all_checks'
+      @page_title = t(:'health_checks.all_checks.all_health_checks')
     end
     respond_with @health_checks do |format|
       format.html do
@@ -47,6 +49,16 @@ class HealthChecksController < ApplicationController
     can_create_health_checks!(@account) do
       find_templates
       @health_check = @site.health_checks.build
+
+      if @health_check_template
+        @page_title =  t(".new_health_check_from_template", :template => @health_check_template.name)
+      elsif params[:template]
+        @page_title =  t(".new_from_template")
+      else
+        @page_title = t('.new_health_check_for_site', :site => @site.name)
+      end
+
+
       respond_with @health_check
     end
   end
@@ -54,7 +66,7 @@ class HealthChecksController < ApplicationController
   def create
     can_create_health_checks!(@account) do
       @health_check_template = HealthCheckTemplate.find_by_id(params[:template])
-      @health_check = @site.health_checks.build(params[:health_check].merge(:template => @health_check_template))
+      @health_check = @site.health_checks.build(health_check_params.merge(:template => @health_check_template))
       if params[:commit] == I18n.t("health_checks.template_form.preview")
         @health_check.get_info_from_template
         @preview = true
@@ -72,12 +84,14 @@ class HealthChecksController < ApplicationController
     @health_check = @site.health_checks.find_by_permalink!(params[:id])
     @comments = @health_check.latest_comments.limit(5)
     @comments_count = @health_check.comments.count
+    @page_title = @health_check.name
     respond_with @health_check
   end
   
   def edit
     can_edit_health_checks!(@account) do
       @health_check = @site.health_checks.find_by_permalink!(params[:id])
+      @page_title = t('.edit_health_check_for_site', :health_check => @health_check.name, :site => @site.name)
       respond_with @health_check
     end
   end
@@ -95,7 +109,7 @@ class HealthChecksController < ApplicationController
     can_edit_health_checks!(@account) do
       @health_check = @site.health_checks.find_by_permalink!(params[:id])
       
-      if @health_check.update_attributes(params[:health_check])
+      if @health_check.update_attributes(health_check_params)
         flash[:notice] = I18n.t('flash.notice.updated_health_check', :health_check => @health_check.name)
       end
       respond_with @health_check, :location => account_site_health_check_path(@account, @site, @health_check)
@@ -106,7 +120,7 @@ class HealthChecksController < ApplicationController
     can_edit_health_checks!(@account) do
       @health_checks = @account.health_checks.find(params[:health_check_ids])
       updated = @health_checks.map do |health_check|
-        health_check.bulk_update(params[:health_check])
+        health_check.bulk_update(health_check_params)
       end
       
       flash[:notice] = I18n.t("flash.notice.bulk_updated_health_checks", :count => updated.count(true))
@@ -122,8 +136,15 @@ class HealthChecksController < ApplicationController
       respond_with @health_check, :location => account_site_health_checks_path(@account, @site)
     end
   end
-  
+
+private
+  def health_check_params
+    params.require(:health_check).permit(:enabled, :name, :description, :interval, :bulk_update_interval)
+  end
+
+
 protected
+
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]
   end

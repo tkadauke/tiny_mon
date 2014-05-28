@@ -141,7 +141,7 @@ class HealthChecksControllerTest < ActionController::TestCase
     health_check1 = @site.health_checks.create(:name => 'Home page', :interval => 1)
     health_check2 = @site.health_checks.create(:name => 'About page', :interval => 1)
 
-    put :update_multiple, :locale => 'en', :health_check_ids => [health_check1.id, health_check2.id], :health_check => { :bulk_update_interval => '0', :interval => 60 }
+    put :update_multiple, :locale => 'en', :health_check_ids => [health_check1.id, health_check2.id], :health_check => { :bulk_update_interval => '0', :interval => 1 }
     
     assert_response :redirect
     assert_not_nil flash[:notice]

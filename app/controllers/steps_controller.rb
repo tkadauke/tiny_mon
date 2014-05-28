@@ -11,6 +11,7 @@ class StepsController < ApplicationController
   
   def index
     @steps = @health_check.steps
+    @page_title = t('.steps_for_health_check', :health_check => @health_check.name)
     respond_with @steps
   end
 
@@ -36,7 +37,7 @@ class StepsController < ApplicationController
   def create
     can_edit_health_checks!(@account) do
       type_name = "#{params[:type]}_step"
-      @step = type_name.classify.constantize.new(params[type_name])
+      @step = type_name.classify.constantize.new(step_params)
       @step.health_check = @health_check
       if @step.save
         respond_with @step, :location => account_site_health_check_steps_path(@account, @site, @health_check)
@@ -50,7 +51,7 @@ class StepsController < ApplicationController
   def update
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
-      @step.update_attributes(params[@step.class.name.underscore])
+      @step.update_attributes(step_update_params(@step.type))
       respond_with @step do |format|
         format.html { redirect_to :back }
       end
@@ -77,6 +78,13 @@ class StepsController < ApplicationController
   end
 
 protected
+
+  def step_params
+    params.require(params[:type]+'_step').permit  :id, :url, :content, :negate, :name, :scope, :mincount, :maxcount
+  end
+  def step_update_params type
+    params.require(type.underscore.to_sym).permit  :id, :url, :content, :negate,  :name, :scope, :mincount, :maxcount
+  end
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id])
   end

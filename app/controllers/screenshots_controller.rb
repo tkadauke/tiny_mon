@@ -7,10 +7,12 @@ class ScreenshotsController < ApplicationController
   
   def index
     @screenshots = @health_check.latest_screenshots.paginate :page => (params[:page] || 1), :per_page => 15
+    @page_title = t(".screenshots_of_health_check", :health_check => @health_check.name)
   end
-  
+
   def show
     @screenshot = @check_run.screenshots.find(params[:id])
+    @page_title = t('.screenshot_for_check_run_health_check_site', :check_run => @check_run.id, :health_check => @health_check.name, :site => @site.name)
   end
   
 protected

@@ -13,8 +13,9 @@ class User < ActiveRecord::Base
   belongs_to :current_account, :class_name => 'Account'
   
   validates_presence_of :full_name
-  
-  attr_protected :role
+
+
+  #attr_protected :role
   
   after_initialize :extend_role
   

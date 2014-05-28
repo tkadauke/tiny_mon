@@ -1,9 +1,9 @@
-ENV["RAILS_ENV"] = "test"
+ENV['RAILS_ENV'] = 'test'
 require 'test/unit'
-require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
+require File.expand_path(File.dirname(__FILE__) + '/../config/environment')
 require 'rails/test_help'
 require 'mocha'
-require "authlogic/test_case"
+require 'authlogic/test_case'
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
@@ -15,7 +15,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   
   def assert_redirected_back(&block)
-    @request.env['Referer'] = 'http://test.host/referer'
+    @request.env['HTTP_REFERER'] = 'http://test.host/referer'
     yield
     assert_response :redirect
     assert_redirected_to 'http://test.host/referer'

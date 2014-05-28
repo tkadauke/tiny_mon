@@ -9,6 +9,7 @@ class DeploymentsController < ApplicationController
   
   def index
     @deployments = @site.deployments.paginate(:order => 'created_at DESC', :page => params[:page])
+    @page_title = t(".deployments_of_site", :site => @site.name)
   end
   
   def new

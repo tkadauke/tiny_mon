@@ -3,14 +3,14 @@
 <% else %>
   <dl class="dl-horizontal well">
     <dt><%= t('.status') %></dt>
-    <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
+    <dd><%== status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
 
     <dt><%= t('.duration') %></dt>
     <dd><%= t('.duration_in_seconds', :seconds => "%5.1f" % @check_run.duration) %></dd>
     
     <% if @check_run.user %>
       <dt><%= t(".started_by") %></dt>
-      <dd><%= gravatar @check_run.user %> <%= link_to @check_run.user.full_name, user_path(@check_run.user) %>
+      <dd><img src="<%= gravatar @check_run.user %>" /> <%= link_to @check_run.user.full_name, user_path(@check_run.user) %>
     <% end %>
 
     <% if @check_run.deployment %>

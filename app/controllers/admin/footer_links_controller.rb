@@ -15,7 +15,7 @@ class Admin::FooterLinksController < ApplicationController
   end
   
   def create
-    @footer_link = FooterLink.new(params[:footer_link])
+    @footer_link = FooterLink.new(footer_link_params)
     if @footer_link.save
       flash[:notice] = I18n.t("flash.notice.created_footer_link")
       redirect_to admin_footer_links_path
@@ -26,7 +26,7 @@ class Admin::FooterLinksController < ApplicationController
   
   def update
     @footer_link = FooterLink.find(params[:id])
-    if @footer_link.update_attributes(params[:footer_link])
+    if @footer_link.update_attributes(footer_link_params)
       flash[:notice] = I18n.t("flash.notice.updated_footer_link")
       redirect_to admin_footer_links_path
     else
@@ -46,5 +46,10 @@ class Admin::FooterLinksController < ApplicationController
       FooterLink.find(id).update_attribute(:position, i)
     end
     render :nothing => true
+  end
+
+  private
+  def footer_link_params
+    params.require(:footer_link).permit :text, :url
   end
 end

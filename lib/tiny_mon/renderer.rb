@@ -19,7 +19,7 @@ module TinyMon
           ""
         end
         
-        system %{wkhtmltoimage #{cookie_params} #{stylesheet_params} "#{@url}" screenshot.png}
+        system %{wkhtmltoimage #{cookie_params} --width 1280 #{stylesheet_params} "#{@url}" screenshot.png}
         system %{pngcrush screenshot.png crushed.png}
         
         file = ScreenshotFile.store!("crushed.png", :thumbnail => true)

@@ -48,9 +48,10 @@ Clone the repository. Then run
 
 ```
 bundle install
-rake db:create:all
-rake db:migrate
+rake db:setup:all
 ```
+
+You will also need (if you dont use the auto deplay tools like vagrant): redis, phantomjs, pngcrush
 
 ## Running
 

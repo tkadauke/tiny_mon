@@ -1,5 +1,5 @@
 <% if current_user.current_account.over_maximum_check_runs_today? %>
-  <p><%= t(".over_maximum_number_of_check_runs_today") %></p>
+  <><%= t(".over_maximum_number_of_check_runs_today") %></p>
 <% else %>
   <% if @upcoming_health_checks.empty? %>
     <p><%= t('.no_upcoming_checks') %></p>

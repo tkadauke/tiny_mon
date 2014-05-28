@@ -10,10 +10,7 @@ class Object
 end
 
 if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
+  Bundler.require(:default, Rails.env)
 end
 
 Dir["lib/*.rb", "lib/core_ext/**/*.rb", "lib/rails_ext/**/*.rb", "lib/tiny_mon/**/*.rb"].sort.each do |file|
@@ -49,6 +46,7 @@ module TinyMon
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.serve_static_assets = true
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

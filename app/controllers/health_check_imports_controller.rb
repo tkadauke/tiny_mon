@@ -25,7 +25,7 @@ class HealthCheckImportsController < ApplicationController
   end
   
   def create
-    @health_check_import = HealthCheckImport.new(params[:health_check_import])
+    @health_check_import = HealthCheckImport.new(health_check_import_params)
     @health_check_template ||= @health_check_import.health_check_template
     if params[:commit] == I18n.t("health_check_imports.form.preview")
       @preview = true
@@ -56,7 +56,12 @@ class HealthCheckImportsController < ApplicationController
       end
     end
   end
-  
+
+private
+  def health_check_import_params
+    params.require(:health_check_import).permit(:health_check_template_id, :csv_data)
+  end
+
 protected
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id]) if params[:site_id]

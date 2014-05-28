@@ -8,19 +8,21 @@ class SitesController < ApplicationController
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
     @sites = @account.sites.find_for_list(@search_filter)
+    @page_title =  t('.all_sites')
     respond_with @sites
   end
   
   def new
     can_create_sites!(@account) do
-      @site = @account.sites.build
+      @site = @account.sites.new
+      @page_title = t('.new_site')
       respond_with @site
     end
   end
   
   def create
     can_create_sites!(@account) do
-      @site = @account.sites.build(params[:site])
+      @site = @account.sites.new(site_params)
       if @site.save
         flash[:notice] = I18n.t('flash.notice.created_site', :site => @site.name)
       end
@@ -30,12 +32,15 @@ class SitesController < ApplicationController
   
   def show
     @site = @account.sites.find_by_permalink!(params[:id])
+    @page_title = t('.site', :site => @site.name)
+    #@page_subtitle = '*'
     respond_with @site
   end
   
   def edit
     can_edit_sites!(@account) do
       @site = @account.sites.find_by_permalink!(params[:id])
+      @page_title = t('.edit_site', :site => @site.name)
       respond_with @site
     end
   end
@@ -43,7 +48,7 @@ class SitesController < ApplicationController
   def update
     can_edit_sites!(@account) do
       @site = @account.sites.find_by_permalink!(params[:id])
-      if @site.update_attributes(params[:site])
+      if @site.update_attributes(site_params)
         flash[:notice] = I18n.t('flash.notice.updated_site', :site => @site.name)
       end
       respond_with @site, :location => account_site_path(@account, @site)
@@ -57,5 +62,10 @@ class SitesController < ApplicationController
       flash[:notice] = I18n.t('flash.notice.deleted_site', :site => @site.name)
       respond_with @site, :location => sites_path
     end
+  end
+
+  private
+  def site_params
+    params.require(:site).permit :name, :url
   end
 end

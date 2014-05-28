@@ -6,7 +6,7 @@
       <div class="control-group">
         <%= f.label :type, t('.type'), :class => 'control-label' %>
         <div class="controls">
-          <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types_with_translations), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }" %>
+          <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types_with_translations), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }", :class => 'form-control' %>
         </div>
       </div>
     <% else %>
@@ -27,8 +27,8 @@
       <%= render_step_form(f, step) %>
 
       <p>
-        <%= f.submit t('.save_step'), :class => 'btn' %> |
-        <%= link_to t('.cancel'), account_site_health_check_steps_path(@account, @site, @health_check) %>
+        <%= f.submit t('.save_step'), :class => 'btn btn-default btn-flat' %> |
+        <%= link_to t('.cancel'), account_site_health_check_steps_path(@account, @site, @health_check), :class => 'btn btn-default btn-flat' %>
       </p>
     <% end %>
   <% end %>

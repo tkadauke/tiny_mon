@@ -1,21 +1,14 @@
 .check-overview {
   margin: 0;
-  li {
-    list-style-type: none;
-    width: 18%;
-    height: 60px;
-    float: left;
-    margin: 5px;
-    padding: 5px;
+  div {
     overflow: hidden;
-    
+    border-radius: 2px;
     div.status {
-      float: left;
-      width: 32px;
+
     }
     
     div.details {
-      margin-left: 40px;
+      margin-left: 30px;
     }
     
     &.error {
@@ -28,10 +21,4 @@
   }
 }
 
-@media (max-width: 767px) {
-  .check-overview {
-    li {
-      width: 42%;
-    }
-  }
-}
+

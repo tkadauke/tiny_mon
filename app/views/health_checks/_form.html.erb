@@ -2,29 +2,29 @@
   <%= f.error_messages :header_message => t('.could_not_create_health_check') %>
   
   <div class="control-group">
-    <%= f.label :name, t('.name'), :class => 'control-label required' %>
+    <%= f.label :name, t('.name'), :class => 'control-labelrequired' %>
     <div class="controls">
-      <%= f.text_field :name %>
+      <%= f.text_field :name ,:class => 'form-control' %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :description, t('.description'), :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :description, :rows => 5 %>
+      <%= f.text_area :description, :rows => 5, :class => 'form-control' %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :interval, t('.interval'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.select :interval, HealthCheck.intervals_with_units %>
+    <div class="form-controls">
+      <%= f.select :interval, HealthCheck.intervals_with_units, :class => 'form-control' %>
     </div>
   </div>
-  
+  <br />
   <div class="control-group">
     <div class="controls">
-      <%= f.submit t('.save_health_check'), :class => 'btn' %>
+      <%= f.submit t('.save_health_check'), :class => 'btn btn-default btn-flat' %>
     </div>
   </div>
 <% end %>

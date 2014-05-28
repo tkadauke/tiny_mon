@@ -4,11 +4,11 @@
   <% @comments.each do |comment| %>
     <div class="media">
       <div class="pull-left">
-        <%= gravatar(comment.user, :size => 64) %>
+        <img src="<%= gravatar(comment.user, :size => 64) %>" />
       </div>
       <div class="media-body">
         <h4 class="media-heading">
-          <%= status_icon comment.check_run %>
+          <%== status_icon comment.check_run %>
           <%= link_to t('.check_run', :check_run => comment.check_run.id), account_site_health_check_check_run_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check, comment.check_run) %> |
           <%= link_to (@health_check || comment.check_run.health_check).name, account_site_health_check_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site, @health_check || comment.check_run.health_check) %> |
           <%= link_to (@site || comment.check_run.health_check.site).name, account_site_path(@account || comment.check_run.account, @site || comment.check_run.health_check.site) %>

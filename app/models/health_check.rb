@@ -4,22 +4,22 @@ class HealthCheck < ActiveRecord::Base
   belongs_to :site
   belongs_to :health_check_import
   
-  has_many :steps, :order => 'position ASC'
+  has_many :steps, -> { order(position: :asc) }
   has_many :check_runs, :dependent => :destroy
-  has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
-  has_many :weather_relevant_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 5
+  has_many :recent_check_runs, -> { order(created_at: :desc).limit(50) }, :class_name => 'CheckRun'
+  has_many :weather_relevant_check_runs, -> { limit(5) },  :class_name => 'CheckRun'
   
-  has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'
+  has_one :last_check_run, :class_name => 'CheckRun', :conditions => 'status is not null',  :order => 'created_at DESC'
   
   has_many :comments, :through => :check_runs
   has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
-  
+
   has_many :screenshots, :through => :check_runs
   has_many :latest_screenshots, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots', :order => 'screenshots.created_at DESC'
   
   scope :enabled, where(:enabled => true)
-  scope :upcoming, lambda { where("enabled and next_check_at > ?", Time.now).order('next_check_at ASC') }
-  scope :due, lambda { enabled.where('next_check_at is not null and next_check_at < ?', Time.now) }
+  scope :upcoming, lambda { where("enabled and next_check_at > ?", DateTime.now).order('next_check_at ASC') }
+  scope :due, lambda { enabled.where('next_check_at is not null and next_check_at < ?', DateTime.now) }
   scope :failed, enabled.where(:status => 'failure')
   
   validates_presence_of :site_id, :name, :interval
@@ -55,13 +55,13 @@ class HealthCheck < ActiveRecord::Base
   end
 
   def self.due
-    enabled.find :all, :conditions => ['next_check_at is not null and next_check_at < ?', Time.now]
+    enabled.where('next_check_at is not null and next_check_at < ?', DateTime.now)
   end
   
   # This method reenables health checks that got accidentally disabled, for example when
   # a worker died while performing the check, thus leaving it in a permanently disabled state
   def self.recover_zombies
-    update_all ['next_check_at = ?', Time.now], ['next_check_at is null and last_checked_at < ?', 1.hour.ago]
+    update_all ['next_check_at = ?', DateTime.now], ['next_check_at is null and last_checked_at < ?', 1.hour.ago]
   end
 
   def steps_with_clone(clone_id)
@@ -96,7 +96,7 @@ class HealthCheck < ActiveRecord::Base
     schedule_next_check(interval.minutes.from_now)
     
     if user || !site.account.over_maximum_check_runs_today?
-      check_run = check_runs.create(:started_at => Time.now.to_f, :user => user)
+      check_run = check_runs.create(:started_at => DateTime.now.to_f, :user => user)
       do_check(check_run)
       check_run
     end
@@ -162,12 +162,12 @@ protected
       attrs[:last_response] = runner.session.last_response
       puts e.backtrace
     end
-    attrs[:ended_at] = Time.now.to_f
+    attrs[:ended_at] = DateTime.now.to_f
     attrs[:log] = runner.log_entries
 
     check_run.update_attributes(attrs)
   ensure
-    update_attributes(:last_checked_at => Time.now)
+    update_attributes(:last_checked_at => DateTime.now)
   end
   background_method :do_check
 

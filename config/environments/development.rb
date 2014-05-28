@@ -5,9 +5,14 @@ TinyMon::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
   config.cache_classes = false
+  config.assets.compile = true
+  config.eager_load = false
+  config.serve_static_assets = true
+  # Do not compress assets
+  config.assets.compress = false
 
-  # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  # Expands the lines which load the assets
+  config.assets.debug = false
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true

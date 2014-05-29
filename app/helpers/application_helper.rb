@@ -20,7 +20,7 @@ module ApplicationHelper
     options = default_options.merge(options)
     
     javascript_tag <<-JS
-      (function worker() {
+      function worker() {
         if (typeof(previous) == "undefined") {
           previous = "";
         }
@@ -38,7 +38,8 @@ module ApplicationHelper
             setTimeout(worker, #{options[:interval] * 1000});
           }
         });
-      })();
+      }
+      setTimeout(worker, #{options[:interval] * 1000});
     JS
   end
 
@@ -137,7 +138,7 @@ module ApplicationHelper
   def weather_icon(model, version = :small)
     return if model.blank? || model.weather.blank?
     
-    image_tag "icons/#{version}/weather-#{model.weather}.png", :alt => I18n.t("weather.count_successful", :count => model.weather), :title => I18n.t("weather.count_successful", :count => model.weather)
+    content_tag :div, "", :class => "weather-icon #{version} icon-#{model.weather}", :title => I18n.t("weather.count_successful", :count => model.weather)
   end
   
   def revision_link

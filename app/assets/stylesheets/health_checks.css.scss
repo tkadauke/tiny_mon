@@ -21,4 +21,28 @@
   }
 }
 
+div.weather-icon {
+  &.small {
+    width: 30px;
+    height: 30px;
 
+    &.icon-0 { @include at2x('/assets/icons/small/weather-0', png, 30px, 30px); }
+    &.icon-1 { @include at2x('/assets/icons/small/weather-1', png, 30px, 30px); }
+    &.icon-2 { @include at2x('/assets/icons/small/weather-2', png, 30px, 30px); }
+    &.icon-3 { @include at2x('/assets/icons/small/weather-3', png, 30px, 30px); }
+    &.icon-4 { @include at2x('/assets/icons/small/weather-4', png, 30px, 30px); }
+    &.icon-5 { @include at2x('/assets/icons/small/weather-5', png, 30px, 30px); }
+  }
+
+  &.large {
+    width: 40px;
+    height: 40px;
+
+    &.icon-0 { @include at2x('/assets/icons/large/weather-0', png, 40px, 40px); }
+    &.icon-1 { @include at2x('/assets/icons/large/weather-1', png, 40px, 40px); }
+    &.icon-2 { @include at2x('/assets/icons/large/weather-2', png, 40px, 40px); }
+    &.icon-3 { @include at2x('/assets/icons/large/weather-3', png, 40px, 40px); }
+    &.icon-4 { @include at2x('/assets/icons/large/weather-4', png, 40px, 40px); }
+    &.icon-5 { @include at2x('/assets/icons/large/weather-5', png, 40px, 40px); }
+  }
+}

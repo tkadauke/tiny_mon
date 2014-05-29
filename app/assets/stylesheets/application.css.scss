@@ -9,10 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require "bootstrap"
- *= require_tree .
- *= require "AdminLTE"
  *= require font-awesome
+ *= require_self
  */
+
+@import "AdminLTE";
+@import "_retina";
+@import "health_checks";
+@import "check_runs";
+
 .status-icon {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   width: 30px;
@@ -67,4 +72,8 @@ th.check {
 th.status,
 td.status {
   width: 45px;
+}
+
+.small-box > .inner {
+  max-height: 90px;
 }

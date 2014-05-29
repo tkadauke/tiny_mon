@@ -93,3 +93,47 @@ div.pagination {
 ul.pagination {
   margin: 0 auto;
 }
+
+@media(max-width:767px) {
+  .content {
+    padding: 0;
+  }
+
+  .timeline > li {
+    margin-right: -10px;
+    margin-left: -15px;
+  }
+  
+  .timeline::before {
+    left:30px;
+  }
+
+  input[type='text'], input[type='email'], input[type='password'], input[type='number'], textarea {font-size:16px;}
+
+  code {
+    white-space: normal;
+  }
+
+  body > .header .navbar {
+    margin-left: 0;
+  }
+
+  .well {
+    padding: 10px;
+  }
+
+  div.nav-logo {
+    font-size: 20px;
+    top: 10px;
+    width:100%;
+    display: block;
+    padding-left:50px;
+    padding-right:50px;
+    text-align:center;
+    position:relative;
+
+    a {
+      color: white;
+    }
+  }
+}

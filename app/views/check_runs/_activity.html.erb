@@ -9,7 +9,10 @@
             <i class="fa fa-<%= status_icon_class check_run %> bg-<%= status_background check_run %>"></i>
 
             <div class="timeline-item no-padding">
-              <span class="time"><i class="fa fa-clock-o"></i>&nbsp;<%= link_to time_ago_in_words(check_run.created_at), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %></span>
+              <span class="time">
+                <%= link_to %{<i class="fa fa-clock-o"></i>}.html_safe, account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %>
+                <%= link_to time_ago_in_words(check_run.created_at), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run), :class => 'hidden-xs' %>
+              </span>
 
               <div class="timeline-body no-padding">
                 <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %>

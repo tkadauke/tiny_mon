@@ -4,10 +4,10 @@
   <div class="col-md-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title"><%= t("health_checks.report.#{@report.to_sym}") %></h3>
+        <h3 class="box-title hidden-xs"><%= t("health_checks.report.#{@report.to_sym}") %></h3>
 
         <div class="box-tools">
-          <%= btn_group t("health_checks.report.#{@report}"), '#', :template => 'btn_menu' do |b| %>
+          <%= btn_group t("health_checks.report.#{@report}"), '#', :template => 'btn_menu', :class => 'hidden-xs' do |b| %>
             <% b.link_to t('health_checks.report.details'), health_checks_path(:report => 'details'), :selected => (@report.to_sym == :details) %>
             <% b.link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview'), :selected => (@report.to_sym == :overview) %>
           <% end %>

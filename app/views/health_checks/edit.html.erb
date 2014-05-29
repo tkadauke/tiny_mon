@@ -1,9 +1,13 @@
 <% title t('.edit_health_check_for_site', :health_check => @health_check.name, :site => @site.name) %>
 
 <div class="box">
-  <div class="box-body">
-    <%= render :partial => "tabs", :locals => { :selected => :edit } %>
+  <div class="box-header">
+    <div class="box-tools">
+      <%= render :partial => "tabs", :locals => { :selected => :edit } %>
+    </div>
+  </div>
 
+  <div class="box-body">
     <%= render :partial => "form" %>
   </div>
 </div>

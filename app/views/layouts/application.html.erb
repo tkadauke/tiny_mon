@@ -11,7 +11,7 @@
 
   <body class="skin-blue">
     <header class="header">
-      <%= link_to 'TinyMon', root_path, :class => 'logo' %>
+      <%= link_to 'TinyMon', root_path, :class => 'logo hidden-xs' %>
       <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -27,7 +27,7 @@
               <%= render '/layouts/language_dropdown' %>
               <% if current_user.can_see_account_details? %>
                 <% if current_user.current_account && current_user.accounts.size > 1 %>
-                  <li class="dropdown">
+                  <li class="dropdown hidden-xs">
                     <a href="<%= accounts_path %>" class="dropdown-toggle" data-toggle="dropdown">
                       <%= current_user.current_account.name %>
                       <b class="caret"></b>
@@ -46,9 +46,6 @@
                   <li><%= link_to t('layouts.accounts'), accounts_path %></li>
                 <% end %>
               <% end %>
-              <% if current_user.can_enter_admin_area? %>
-                <li><%= link_to t('layouts.admin'), admin_path %></li>
-              <% end %>
               <% if current_user.current_account %>
                 <li class="hidden-md" style="margin-top:10px;"><%= overall_status %></li>
               <% end %>
@@ -59,12 +56,14 @@
             <% end %>
           </ul>
         </div>
+        <div class="nav-logo visible-xs">
+          <%= link_to 'TinyMon', root_path %>
+        </div>
       </nav>
     </header>
     <div class="wrapper row-offcanvas row-offcanvas-left">
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="left-side sidebar-offcanvas">
-        <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
           <% if logged_in? %>
             <div class="user-panel">
@@ -85,17 +84,21 @@
             <li<%= ' class="active"'.html_safe if @tab == :health_checks %>><%= link_to t('layouts.health_checks'), health_checks_path %></li>
             <li<%= ' class="active"'.html_safe if controller.controller_name == 'health_check_templates' %>><%= link_to t('layouts.templates'), health_check_templates_path %></li>
             <li<%= ' class="active"'.html_safe if controller.controller_name == 'settings' %>><%= link_to t('layouts.settings'), settings_path %></li>
+            <li<%= ' class="active"'.html_safe if controller.controller_name == 'accounts' %>><%= link_to t('layouts.accounts'), accounts_path %></li>
+            <% if logged_in? && current_user.can_enter_admin_area? %>
+              <li<%= ' class="active"'.html_safe if controller.class.name =~ /Admin/i %>><%= link_to t('layouts.admin'), admin_path %></li>
+            <% end %>
           </ul>
         </section>
       </aside>
 
       <aside class="right-side">
-        <section class="content-header">
+        <section class="content-header hidden-xs">
           <h1>
             <%= yield :page_title %>
             <small><%= @page_subtitle if @page_subtitle %></small>
           </h1>
-          <ol class="breadcrumb hidden-phone">
+          <ol class="breadcrumb">
             <%= bread_crumb %>
           </ol>
         </section>
@@ -119,7 +122,7 @@
           <%= yield %>
         </div>
 
-        <footer class="hidden-phone">
+        <footer class="hidden-xs">
           <div class="content content-header">
             <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %> |
             <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>

@@ -3,7 +3,7 @@
 <div class="box">
   <div class="box-header">
     <div class="box-tools">
-      <%= btn_group t("health_checks.report.#{@report}"), '#', :template => 'btn_menu' do |b| %>
+      <%= btn_group t("health_checks.report.#{@report}"), '#', :template => 'btn_menu', :class => 'hidden-xs' do |b| %>
         <% b.link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details'), :selected => (@report.to_sym == :details) %>
         <% b.link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview'), :selected => (@report.to_sym == :overview) %>
       <% end %>
@@ -26,8 +26,8 @@
           <%= render "/shared/filter", :url => account_site_health_checks_path(@account, @site, :report => params[:report]) %>
         </div>
       </div>
+      <%= render :partial => "/sites/tabs", :locals => { :selected => :health_checks } %>
     </div>
-    <%= render :partial => "/sites/tabs", :locals => { :selected => :health_checks } %>
   </div>
 
   <div class="box-body">
@@ -39,7 +39,7 @@
       <p>
         <%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site), :class => 'btn btn-default btn-small btn-flat' %>
         <%= link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select'), :class => 'btn btn-default btn-small btn-flat' %>
-        <%= link_to t('.import'), new_account_site_health_check_import_path(@account, @site, :template => 'select'), :class => 'btn btn-default btn-small btn-flat' if current_user.can_create_health_check_imports?(@account) %>
+        <%= link_to t('.import'), new_account_site_health_check_import_path(@account, @site, :template => 'select'), :class => 'btn btn-default btn-small btn-flat hidden-xs' if current_user.can_create_health_check_imports?(@account) %>
       </p>
     <% end %>
   </div>

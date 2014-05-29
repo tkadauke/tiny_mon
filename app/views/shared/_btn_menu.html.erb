@@ -1,4 +1,4 @@
-<div class="btn-group pull-right">
+<div class="btn-group pull-right <%= options.delete(:class) %>">
   <%= link_to %{#{text} <span class="caret"></span>}.html_safe, url, options.merge(:class => 'btn btn-default btn-small btn-flat', 'data-toggle' => 'dropdown') %>
   
   <ul class="dropdown-menu">

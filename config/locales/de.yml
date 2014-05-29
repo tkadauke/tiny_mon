@@ -582,6 +582,7 @@ de:
       check_is_disabled: "Funktionstest ist inaktiv"
       check_is_enabled: "Funktionstest ist aktiv"
       comments: "Kommentare (%{count})"
+      delete: Löschen
       description: Beschreibung
       disable: Deaktivieren
       duration: Dauer
@@ -591,6 +592,7 @@ de:
         one: "%{count} Minute"
         other: "%{count} Minuten"
       last_check_run: "Letzter Testlauf"
+      really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
       run: "Jetzt prüfen"
       run_at: Zeit
     status: 

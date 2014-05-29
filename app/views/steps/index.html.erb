@@ -1,18 +1,22 @@
 <% title t('.steps_for_health_check', :health_check => @health_check.name) %>
 
 <div class="box">
-  <div class="box-body">
-    <%= render :partial => "/health_checks/tabs", :locals => { :selected => :steps } %>
+  <div class="box-header">
+    <div class="box-tools">
+      <%= render :partial => "/health_checks/tabs", :locals => { :selected => :steps } %>
+    </div>
+  </div>
 
+  <div class="box-body">
     <% if @steps.empty?  %>
       <p><%= t('.no_steps_defined') %></p>
     <% else %>
       <table class="table table-hover">
         <thead>
           <tr>
-            <th>&nbsp;</th>
+            <th class="hidden-xs">&nbsp;</th>
             <th><%= t('.name') %></th>
-            <th><%= t('.details') %></th>
+            <th class="hidden-xs"><%= t('.details') %></th>
             <% if current_user.can_edit_health_checks?(@account) %>
               <th><%= t('.options') %></th>
             <% end %>
@@ -22,19 +26,19 @@
           <% @steps.each_with_index do |step, i| %>
             <tr id="order_<%= step.id %>">
               <% if current_user.can_edit_health_checks?(@account) %>
-                <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
+                <td class="handle hidden-xs" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
               <% else %>
-                <td><%= i + 1 %></td>
+                <td class="hidden-xs"><%= i + 1 %></td>
               <% end %>
               <td><%= t("step.#{step.underscored_class_name}") %></td>
               <% if step.new_record? %>
-                <td>
+                <td class="hidden-xs">
                   <%= render :partial => '/steps/form', :locals => { :step => step } %>
                 </td>
                 <td>
                 </td>
               <% else %>
-                <td>
+                <td class="hidden-xs">
                   <div id="step_<%= step.id %>"><%= render_step_details(step) %></div>
                 </td>
                 <% if current_user.can_edit_health_checks?(@account) %>

@@ -1,9 +1,13 @@
 <%= title t('.edit_account') %>
 
 <div class="box">
-  <div class="box-body">
-    <%= render :partial => "tabs", :locals => { :selected => :edit } %>
+  <div class="box-header">
+    <div class="box-tools">
+      <%= render :partial => "tabs", :locals => { :selected => :edit } %>
+    </div>
+  </div>
 
+  <div class="box-body">
     <%= form_for [:admin, @account], :html => { :class => 'form-horizontal' } do |f| %>
       <%= f.error_messages :header_message => t('.could_not_update_account') %>
 

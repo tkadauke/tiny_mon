@@ -5,10 +5,10 @@
         <% if current_user.can_edit_health_checks?(@account) %>
           <th class="check"></th>
         <% end %>
-        <th colspan="2" class="hidden-phone"><%= t('.status') %></th>
+        <th colspan="2" class="hidden-xs"><%= t('.status') %></th>
         <th><%= t('.name') %></th>
         <% if current_user.can_edit_health_checks?(@account) %>
-          <th><%= t('.options') %></th>
+          <th class="hidden-xs"><%= t('.options') %></th>
         <% end %>
       </tr>
     </thead>
@@ -31,13 +31,13 @@
           <% if current_user.can_edit_health_checks?(@account) %>
             <td><%= check_box_tag "health_check_ids[]", health_check.id %></td>
           <% end %>
-          <td class="status hidden-phone"><%= status_icon health_check %></td>
-          <td class="status hidden-phone"><%= weather_icon health_check %></td>
+          <td class="status hidden-xs"><%= status_icon health_check %></td>
+          <td class="status hidden-xs"><%= weather_icon health_check %></td>
           <td>
             <%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site) %> / <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check) %>
           </td>
           <% if current_user.can_edit_health_checks?(@account) %>
-            <td>
+            <td class="hidden-xs">
               <%= btn_group t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check) do |b| %>
                 <% b.link_to t('.run'), account_site_health_check_check_runs_path(health_check.site.account, health_check.site, health_check), :method => :post, :class => "" if current_user.can_run_health_checks?(health_check.site.account) %>
                 <% b.link_to t('.delete'), account_site_health_check_path(health_check.site.account, health_check.site, health_check), :method => :delete, :class => "", :data => { :confirm => t('.really_delete_health_check') } if current_user.can_delete_health_checks?(@account) %>

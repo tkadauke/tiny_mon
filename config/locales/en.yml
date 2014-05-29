@@ -582,6 +582,7 @@ en:
       check_is_disabled: "Check is disabled"
       check_is_enabled: "Check is enabled"
       comments: "Comments (%{count})"
+      delete: Delete
       description: Description
       disable: Disable
       duration: Duration
@@ -591,6 +592,7 @@ en:
         one: "%{count} minute"
         other: "%{count} minutes"
       last_check_run: "Last check run"
+      really_delete_health_check: "Do you really want to delete this health check including all check runs? This operation can not be undone."
       run: Run
       run_at: "Run at"
     status: 

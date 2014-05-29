@@ -1,0 +1,21 @@
+<div class="nav-tabs-custom">
+  <ul class="nav nav-tabs hidden-xs">
+    <% tabs.each do |tab| %>
+      <li<%= ' class="active"'.html_safe if tab[:name] == options[:selected] %>>
+        <%= link_to tab[:text], tab[:url] %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="btn-group visible-xs">
+    <% active = tabs.find { |tab| tab[:name] == options[:selected] } %>
+
+    <%= link_to %{#{active[:text]} <span class="caret"></span>}.html_safe, '#', :class => 'btn btn-default btn-small btn-flat', 'data-toggle' => 'dropdown' %>
+  
+    <ul class="dropdown-menu">
+      <% tabs.each do |tab| %>
+        <li<%= ' class="selected"'.html_safe if tab[:name] == options[:selected] %>><%= link_to tab[:text], tab[:url] %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

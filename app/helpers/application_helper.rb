@@ -95,7 +95,7 @@ module ApplicationHelper
     elsif model.status == 'success'
       'success'
     elsif model.status == 'failure'
-      'error'
+      'danger'
     else
       'warning'
     end

@@ -1,9 +1,13 @@
 <% title t('.account', :account => @account.name) %>
 
 <div class="box">
-  <div class="box-body">
-    <%= render :partial => "tabs", :locals => {:selected => :information} %>
+  <div class="box-header">
+    <div class="box-tools">
+      <%= render :partial => "tabs", :locals => {:selected => :information} %>
+    </div>
+  </div>
 
+  <div class="box-body">
     <%= render :partial => "info" %>
 
     <h3><%= t(".users") %></h3>

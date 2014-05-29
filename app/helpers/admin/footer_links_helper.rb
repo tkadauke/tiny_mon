@@ -1,2 +1,0 @@
-module Admin::FooterLinksHelper
-end

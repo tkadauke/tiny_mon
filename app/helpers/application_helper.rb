@@ -79,7 +79,7 @@ module ApplicationHelper
   end
   
   def status_icon(model, version = :small)
-    return if model.blank? || model.status.blank?
+    return if model.blank?
     
     status = model.status
     status = 'offline' if model.respond_to?(:enabled?) && !model.enabled?
@@ -87,49 +87,41 @@ module ApplicationHelper
   end
   
   def status_class(model)
-    return if model.blank? || model.status.blank?
+    return if model.blank?
     
-    if model.status == 'success'
-      status = 'success'
+    if model.respond_to?(:enabled?) && !model.enabled?
+      'warning'
+    elsif model.status == 'success'
+      'success'
     elsif model.status == 'failure'
-      status = 'error'
-    elsif model.respond_to?(:enabled?) && !model.enabled?
-      status = 'warning'
+      'error'
+    else
+      'warning'
     end
-    
-    status
   end
 
   def status_background(model)
-    status = 'yellow'
-
-    if model.status == 'success'
-      status = 'green'
+    if model.respond_to?(:enabled?) && !model.enabled?
+      'yellow'
+    elsif model.status == 'success'
+      'green'
     elsif model.status == 'failure'
-      status = 'red'
-    elsif model.respond_to?(:enabled?) && !model.enabled?
-      status = 'yellow'
-    elsif model.status.nil?
-      status = 'yellow'
+      'red'
+    elsif model.status.nil? || model.status == 'offline'
+      'yellow'
     end
-
-    status
   end
 
   def status_icon_class(model)
-    status = ''
-
-    if model.status == 'success'
-      status = 'check'
+    if model.respond_to?(:enabled?) && !model.enabled? || model.status == 'offline'
+      'warning'
+    elsif model.status == 'success'
+      'check'
     elsif model.status == 'failure'
-      status = 'exclamation'
-    elsif model.respond_to?(:enabled?) && !model.enabled?
-      status = 'warning'
+      'exclamation'
     elsif model.status.nil?
-      status = 'spinner'
+      'spinner'
     end
-
-    status
   end
   
   def overall_status(model = current_user.current_account, version = :large)

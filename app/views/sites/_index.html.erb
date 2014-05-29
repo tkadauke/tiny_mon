@@ -1,7 +1,7 @@
 <% if @sites.empty? %>
   <p><%= t('.no_sites_found') %></p>
 <% else %>
-  <table class="table table-bordered table-striped dataTable">
+  <table class="table table-bordered dataTable">
     <thead>
       <tr>
         <th class="status"><%= t(".status") %></td>
@@ -14,7 +14,7 @@
     <tbody>
       <% @sites.each do |site| %>
         <tr class="<%= status_class(site) %>">
-          <td><%= overall_status(site, :small) %></td>
+          <td><%= status_icon(site) %></td>
           <td><%= link_to highlight(site.name, @search_filter.query), account_site_health_checks_path(site.account, site) %></td>
           <% if current_user.can_edit_sites?(@account) %>
             <td>

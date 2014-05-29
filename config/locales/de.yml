@@ -593,7 +593,7 @@ de:
         other: "%{count} Minuten"
       last_check_run: "Letzter Testlauf"
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
-      run: "Jetzt prüfen"
+      run: "Prüfen"
       run_at: Zeit
     status: 
       all: Alle
@@ -606,7 +606,7 @@ de:
       edit: Bearbeiten
       edit_steps: "Schritte bearbeiten"
       information: Information
-      run: "Jetzt prüfen"
+      run: "Prüfen"
       screenshots: Bildschirmfotos
       view_steps: "Schritte anzeigen"
     template_form: 

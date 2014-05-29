@@ -1,17 +1,23 @@
 <%# titles are defined in the conditional block below %>
 
-<div class="box">
-  <div class="box-body">
-    <% if @health_check_template %>
-      <% title t(".new_health_check_from_template", :template => @health_check_template.name) %>
+<% if @health_check_template %>
+  <% title t(".new_health_check_from_template", :template => @health_check_template.name) %>
+
+  <div class="box">
+    <div class="box-body">
       <%= render :partial => "template_form" %>
       <%= render :partial => "preview" if @preview %>
-    <% elsif params[:template] %>
-      <% title t(".new_from_template") %>
-      <%= render :partial => "/health_check_templates/select", :locals => { :url => partial_route(:new_account_site_health_check_path, @account, @site) } %>
-    <% else %>
-      <% title t('.new_health_check_for_site', :site => @site.name) %>
-      <%= render :partial => "form" %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% elsif params[:template] %>
+  <% title t(".new_from_template") %>
+  <%= render :partial => "/health_check_templates/select", :locals => { :url => partial_route(:new_account_site_health_check_path, @account, @site) } %>
+<% else %>
+  <% title t('.new_health_check_for_site', :site => @site.name) %>
+
+  <div class="box">
+    <div class="box-body">
+      <%= render :partial => "form" %>
+    </div>
+  </div>
+<% end %>

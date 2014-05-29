@@ -1,0 +1,9 @@
+<div class="btn-group pull-right">
+  <%= link_to %{#{text} <span class="caret"></span>}.html_safe, url, options.merge(:class => 'btn btn-default btn-small btn-flat', 'data-toggle' => 'dropdown') %>
+  
+  <ul class="dropdown-menu">
+    <% items.each do |item| %>
+      <li<%= ' class="selected"'.html_safe if item[:options].delete(:selected) %>><%= link_to item[:text], item[:url], item[:options] %></li>
+    <% end %>
+  </ul>
+</div>

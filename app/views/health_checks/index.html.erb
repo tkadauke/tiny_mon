@@ -3,42 +3,27 @@
 <div class="box">
   <div class="box-header">
     <div class="box-tools">
-      <div class="btn-group pull-right">
-        <a class="btn btn-default btn-flat btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
-          <%= t("health_checks.report.#{@report.to_sym}") %>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li<%= ' class="selected"'.html_safe if @report.to_sym == :details %>><%= link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details') %></li>
-          <li<%= ' class="selected"'.html_safe if @report.to_sym == :overview %>><%= link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview') %></li>
-        </ul>
-      </div>
+      <%= btn_group t("health_checks.report.#{@report}"), '#', :template => 'btn_menu' do |b| %>
+        <% b.link_to t('health_checks.report.details'), account_site_health_checks_path(@account, @site, :report => 'details'), :selected => (@report.to_sym == :details) %>
+        <% b.link_to t('health_checks.report.overview'), account_site_health_checks_path(@account, @site, :report => 'overview'), :selected => (@report.to_sym == :overview) %>
+      <% end %>
+
+      <%= btn_group t("health_checks.status.#{@status.to_sym}"), '#', :template => 'btn_menu' do |b| %>
+        <% b.link_to t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all'), :selected => (@status.to_sym == :all) %>
+        <% b.link_to t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success'), :selected => (@status.to_sym == :success) %>
+        <% b.link_to t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure'), :selected => (@status.to_sym == :failure) %>
+        <% b.link_to t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled'), :selected => (@status.to_sym == :enabled) %>
+        <% b.link_to t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled'), :selected => (@status.to_sym == :selected) %>
+      <% end %>
 
       <div class="btn-group pull-right">
-        <a class="btn btn-default btn-small btn-flat dropdown-toggle" data-toggle="dropdown" href="#">
-          <%= t("health_checks.status.#{@status.to_sym}") %>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li<%= ' class="selected"'.html_safe if @status.to_sym == :all %>><%= link_to t('health_checks.status.all'), account_site_health_checks_path(@account, @site, :status => 'all') %></li>
-          <li<%= ' class="selected"'.html_safe if @status.to_sym == :success %>><%= link_to t('health_checks.status.success'), account_site_health_checks_path(@account, @site, :status => 'success') %></li>
-          <li<%= ' class="selected"'.html_safe if @status.to_sym == :failure %>><%= link_to t('health_checks.status.failure'), account_site_health_checks_path(@account, @site, :status => 'failure') %></li>
-          <li<%= ' class="selected"'.html_safe if @status.to_sym == :enabled %>><%= link_to t('health_checks.status.enabled'), account_site_health_checks_path(@account, @site, :status => 'enabled') %></li>
-          <li<%= ' class="selected"'.html_safe if @status.to_sym == :disabled %>><%= link_to t('health_checks.status.disabled'), account_site_health_checks_path(@account, @site, :status => 'disabled') %></li>
-        </ul>
-      </div>
-
-      <div class="btn-group pull-right">
-        <a class="btn btn-default btn-small btn-flat" data-toggle="collapse" data-target="#filter" href="#">
+        <a class="btn btn-default btn-small btn-flat" data-toggle="dropdown" href="#">
           <%= t('button.filter') %>
           <span class="caret"></span>
         </a>
-      </div>
 
-      <div id="filter" class="row collapse">
-        <br/>
-        <div class="col-md-12">
-          <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
+        <div class="dropdown-menu">
+          <%= render "/shared/filter", :url => account_site_health_checks_path(@account, @site, :report => params[:report]) %>
         </div>
       </div>
     </div>
@@ -51,8 +36,9 @@
     </div>
 
     <% if current_user.can_create_health_checks?(@account) %>
+      <br/>
       <p>
-        <%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site), :class => 'btn btn-default btn-sm btn-flat' %>
+        <%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site), :class => 'btn btn-default btn-small btn-flat' %>
         <%= link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select'), :class => 'btn btn-default btn-small btn-flat' %>
         <%= link_to t('.import'), new_account_site_health_check_import_path(@account, @site, :template => 'select'), :class => 'btn btn-default btn-small btn-flat' if current_user.can_create_health_check_imports?(@account) %>
       </p>

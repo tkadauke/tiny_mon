@@ -7,41 +7,26 @@
         <h3 class="box-title"><%= t("health_checks.report.#{@report.to_sym}") %></h3>
 
         <div class="box-tools">
-          <div class="btn-group pull-right">
-            <a class="btn btn-default btn-flat btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= t("health_checks.report.#{@report}") %>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li<%= ' class="selected"'.html_safe if @report.to_sym == :details %>><%= link_to t('health_checks.report.details'), health_checks_path(:report => 'details') %></li>
-              <li<%= ' class="selected"'.html_safe if @report.to_sym == :overview %>><%= link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview') %></li>
-            </ul>
-          </div>
+          <%= btn_group t("health_checks.report.#{@report}"), '#', :template => 'btn_menu' do |b| %>
+            <% b.link_to t('health_checks.report.details'), health_checks_path(:report => 'details'), :selected => (@report.to_sym == :details) %>
+            <% b.link_to t('health_checks.report.overview'), health_checks_path(:report => 'overview'), :selected => (@report.to_sym == :overview) %>
+          <% end %>
+
+          <%= btn_group t("health_checks.status.#{@status.to_sym}"), '#', :template => 'btn_menu' do |b| %>
+            <% b.link_to t('health_checks.status.all'), health_checks_path(:status => 'all'), :selected => (@status.to_sym == :all) %>
+            <% b.link_to t('health_checks.status.success'), health_checks_path(:status => 'success'), :selected => (@status.to_sym == :success) %>
+            <% b.link_to t('health_checks.status.failure'), health_checks_path(:status => 'failure'), :selected => (@status.to_sym == :failure) %>
+            <% b.link_to t('health_checks.status.enabled'), health_checks_path(:status => 'enabled'), :selected => (@status.to_sym == :enabled) %>
+            <% b.link_to t('health_checks.status.disabled'), health_checks_path(:status => 'disabled'), :selected => (@status.to_sym == :selected) %>
+          <% end %>
 
           <div class="btn-group pull-right">
-            <a class="btn btn-default btn-small btn-flat dropdown-toggle" data-toggle="dropdown" href="#">
-              <%= t("health_checks.status.#{@status.to_sym}") %>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-              <li<%= ' class="selected"'.html_safe if @status.to_sym == :all %>><%= link_to t('health_checks.status.all'), health_checks_path(:status => 'all') %></li>
-              <li<%= ' class="selected"'.html_safe if @status.to_sym == :success %>><%= link_to t('health_checks.status.success'), health_checks_path(:status => 'success') %></li>
-              <li<%= ' class="selected"'.html_safe if @status.to_sym == :failure %>><%= link_to t('health_checks.status.failure'), health_checks_path(:status => 'failure') %></li>
-              <li<%= ' class="selected"'.html_safe if @status.to_sym == :enabled %>><%= link_to t('health_checks.status.enabled'), health_checks_path(:status => 'enabled') %></li>
-              <li<%= ' class="selected"'.html_safe if @status.to_sym == :selected %>><%= link_to t('health_checks.status.disabled'), health_checks_path(:status => 'disabled') %></li>
-            </ul>
-          </div>
-
-          <div class="btn-group pull-right">
-            <a class="btn btn-default btn-small btn-flat" data-toggle="collapse" data-target="#filter" href="#">
+            <a class="btn btn-default btn-small btn-flat" data-toggle="dropdown" href="#">
               <%= t('button.filter') %>
               <span class="caret"></span>
             </a>
-          </div>
-
-          <div id="filter" class="row collapse">
-            <br/>
-            <div class="col-md-12">
+  
+            <div class="dropdown-menu">
               <%= render "/shared/filter", :url => health_checks_path(:report => params[:report]) %>
             </div>
           </div>

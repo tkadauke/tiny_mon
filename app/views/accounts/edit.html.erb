@@ -1,5 +1,9 @@
 <% title t('.edit_account') %>
 
-<%= render :partial => "tabs", :locals => { :selected => :edit } %>
+<div class="box">
+  <div class="box-body">
+    <%= render :partial => "tabs", :locals => { :selected => :edit } %>
 
-<%= render :partial => "form" %>
+    <%= render :partial => "form" %>
+  </div>
+</div>

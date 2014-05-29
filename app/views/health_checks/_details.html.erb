@@ -17,10 +17,10 @@
         <tr>
           <td></td>
           <td colspan="4">
-            <%= link_to t(".all"), '#', :class => 'select-all btn btn-default btn-small btn-flat' %>
-            <%= link_to t(".none"), '#', :class => 'select-none btn btn-default btn-small btn-flat' %>
-            <%= link_to t(".invert"), '#', :class => 'select-invert btn btn-default btn-small btn-flat' %>
-            <%= submit_tag t(".edit_checked"), :class => 'btn' %>
+            <%= link_to t(".all"), '#', :class => 'select-all btn btn-default btn-sm btn-flat' %>
+            <%= link_to t(".none"), '#', :class => 'select-none btn btn-default btn-sm btn-flat' %>
+            <%= link_to t(".invert"), '#', :class => 'select-invert btn btn-default btn-sm btn-flat' %>
+            <%= submit_tag t(".edit_checked"), :class => 'btn btn-primary btn-sm btn-flat' %>
           </td>
         </tr>
       </tfoot>
@@ -34,13 +34,13 @@
           <td class="status hidden-phone"><%= status_icon health_check %></td>
           <td class="status hidden-phone"><%= weather_icon health_check %></td>
           <td>
-            <%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site, :class => "btn btn-sm btn-flat btn-default") %> / <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check, :class => "btn btn-sm btn-flat btn-default") %>
+            <%= link_to highlight(health_check.site.name, @search_filter.query), account_site_health_checks_path(health_check.site.account, health_check.site, :class => 'btn btn-default btn-sm btn-flat') %> / <%= link_to highlight(health_check.name, @search_filter.query), account_site_health_check_path(health_check.site.account, health_check.site, health_check, :class => 'btn btn-default btn-sm btn-flat') %>
           </td>
           <% if current_user.can_edit_health_checks?(@account) %>
             <td>
               <div class="btn-group">
-                <%= link_to(t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check), :class => "btn btn-sm btn-flat btn-default") if current_user.can_edit_health_checks?(@account) %>
-                <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
+                <%= link_to(t('.edit'), edit_account_site_health_check_path(health_check.site.account, health_check.site, health_check), :class => 'btn btn-default btn-sm btn-flat') if current_user.can_edit_health_checks?(@account) %>
+                <button class="btn btn-default btn-small btn-flat dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu">

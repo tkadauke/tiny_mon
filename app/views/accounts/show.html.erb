@@ -33,7 +33,7 @@
               <% end %>
             </td>
             <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
-              <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :data => { :confirm => t('.really_remove_user_from_account') }, :class => 'btn btn-sm btn-flat btn-default' %></td>
+              <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :data => { :confirm => t('.really_remove_user_from_account') }, :class => 'btn btn-default btn-sm btn-flat' %></td>
             <% end %>
           </tr>
         <% end %>
@@ -42,8 +42,8 @@
 
     <% if current_user.can_add_user_to_account?(@account) %>
       <p>
-        <%= link_to t('.add_existing'), new_account_user_account_path(@account), :class => "btn btn-sm btn-flat btn-default" %>
-        <%= link_to t('.add_new'), new_user_path, :class => "btn btn-sm btn-flat btn-default" if @account == current_user.current_account %>
+        <%= link_to t('.add_existing'), new_account_user_account_path(@account), :class => 'btn btn-default btn-small btn-flat' %>
+        <%= link_to t('.add_new'), new_user_path, :class => 'btn btn-default btn-small btn-flat' if @account == current_user.current_account %>
       </p>
     <% end %>
   </div>

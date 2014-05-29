@@ -18,8 +18,8 @@
               <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
               <td>
                 <div class="btn-group">
-                  <%= link_to t(".edit"), edit_health_check_template_path(health_check_template), :class => "btn btn-sm btn-flat btn-default" %>
-                  <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
+                  <%= link_to t(".edit"), edit_health_check_template_path(health_check_template), :class => 'btn btn-default btn-sm btn-flat' %>
+                  <button class="btn btn-default btn-small btn-flat dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
@@ -34,6 +34,6 @@
     <% end %>
 
     <br />
-    <p><%= link_to t(".new_health_check_template"), new_health_check_template_path, :class => 'btn btn-default btn-flat' %></p>
+    <p><%= link_to t(".new_health_check_template"), new_health_check_template_path, :class => 'btn btn-default btn-small btn-flat' %></p>
   </div>
 </div>

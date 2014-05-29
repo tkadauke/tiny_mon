@@ -19,7 +19,7 @@
           <% if current_user.can_edit_sites?(@account) %>
             <td>
               <div class="btn-group">
-                <%= link_to t('.edit'), edit_account_site_path(site.account, site), :class => "btn btn-default btn-sm" %>
+                <%= link_to t('.edit'), edit_account_site_path(site.account, site), :class => 'btn btn-default btn-sm btn-flat' %>
                 <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
                   <span class="caret"></span>
                   <span class="sr-only">Toggle Dropdown</span>

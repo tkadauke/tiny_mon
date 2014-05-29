@@ -37,7 +37,7 @@
   
       <div class="control-group">
         <div class="controls">
-          <%= f.submit t('.create_account'), :class => 'btn' %>
+          <%= f.submit t('.create_account'), :class => 'btn btn-primary btn-small btn-flat' %>
           <% unless logged_in? %>
             <%= link_to t('.login_instead'), login_path, :class => 'btn btn-default btn-small btn-flat' %>
           <% end %>

@@ -20,11 +20,11 @@
               <td class="hidden-phone"><%= time_ago_in_words broadcast.sent_at if broadcast.sent_at %></td>
               <td>
                 <% if broadcast.sent_at %>
-                  <%= link_to t('.remove'), admin_broadcast_path(broadcast), :method => :delete, :data => { :confirm => t('.really_remove_broadcast') }, :class => 'btn btn-mini' %>
+                  <%= link_to t('.remove'), admin_broadcast_path(broadcast), :method => :delete, :data => { :confirm => t('.really_remove_broadcast') }, :class => 'btn btn-default btn-sm btn-flat' %>
                 <% else %>
                   <div class="btn-group">
-                    <%= link_to t('.edit'), edit_admin_broadcast_path(broadcast), :class => "btn btn-sm btn-flat btn-default" %>
-                    <button class="btn btn-sm btn-flat btn-default dropdown-toggle" data-toggle="dropdown">
+                    <%= link_to t('.edit'), edit_admin_broadcast_path(broadcast), :class => 'btn btn-default btn-sm btn-flat' %>
+                    <button class="btn btn-default btn-sm btn-flat dropdown-toggle" data-toggle="dropdown">
                       <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -40,6 +40,6 @@
       </table>
     <% end %>
 
-    <p><%= link_to t('.new_broadcast'), new_admin_broadcast_path %></p>
+    <p><%= link_to t('.new_broadcast'), new_admin_broadcast_path, :class => 'btn btn-default btn-small btn-flat' %></p>
   </div>
 </div>

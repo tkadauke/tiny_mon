@@ -28,13 +28,13 @@
           <dt><%= t('.check_is_enabled') %></dt>
           <dd>
             <%= link_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :class => 'btn btn-sm btn-warning btn-flat', :method => :put %>
-            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-default btn-flat' %>
+            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-primary btn-flat' %>
           </dd>
         <% else %>
           <dt><%= t('.check_is_disabled') %></dt>
           <dd>
             <%= link_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :class => 'btn btn-sm btn-success btn-flat', :method => :put %>
-            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-default btn-flat'  %>
+            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-primary btn-flat'  %>
           </dd>
         <% end %>
       <% end %>

@@ -1,0 +1,16 @@
+email_domain: localhost
+email_address: smtp.gmail.com
+email_port: 25
+email_user_name: deploynotifier@tinymon.org
+email_password: deploynow
+email_authentication: :login
+email_sender_address: tiny_mon@tinymon.org
+email_openssl_verify_mode: none
+email_enable_starttls_auto: false
+host: "localhost:8199"
+language: de
+
+exception_recipients: tiny_mon@tinymon.org
+exception_sender_address: '"Application Error" <error@tinymon.org>'
+
+secret_token: '7e024c1ed9faf287539a1c113b60c2275bd83a11376a8951b6f7e242b85c646764e1783ec2aef7a32f5e7cd68b13fdf8eb4a126d793f9b41ccbddb761587bdf8'

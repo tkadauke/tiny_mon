@@ -119,7 +119,7 @@
           <%= yield %>
         </div>
 
-        <footer>
+        <footer class="hidden-phone">
           <div class="content content-header">
             <%= t('layouts.version', :version => TinyMon::Version.version, :revision => revision_link).html_safe %> |
             <a href="http://github.com/tkadauke/tiny_mon"><%= t('layouts.github_project_page') %></a>

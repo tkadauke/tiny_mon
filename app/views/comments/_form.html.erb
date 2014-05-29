@@ -1,23 +1,17 @@
 <%= form_for [@account, @site, @health_check, @check_run, @comment], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages :header_message => t('.error_adding_comment') %>
-  
-  <div class="control-group">
+
+  <p>
     <%= f.label :title, t('.title'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title, :class => 'form-control' %>
-    </div>
-  </div>
+    <%= f.text_field :title, :class => 'form-control' %>
+  </p>
 
-  <div class="control-group">
+  <p>
     <%= f.label :text, t('.text'), :class => 'control-label required' %>
-    <div class="controls">
-      <%= f.text_area :text, :rows => 5, :class => 'form-control' %>
-    </div>
-  </div>
+    <%= f.text_area :text, :rows => 5, :class => 'form-control' %>
+  </p>
 
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit t('.save_comment'), :class => 'btn btn-primary btn-small btn-flat' %>
-    </div>
-  </div>
+  <p>
+    <%= f.submit t('.save_comment'), :class => 'btn btn-primary btn-small btn-flat' %>
+  </p>
 <% end %>

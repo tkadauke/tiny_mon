@@ -1,9 +1,7 @@
-<div class="control-group">
+<p>
   <%= f.label :name, t('.name'), :class => 'control-label required' %>
-  <div class="controls">
-    <%= f.text_field :name, :class => 'form-control' %>
-    <p><small><%= t('.name_specifying_form') %></small></p>
-  </div>
-</div>
+  <%= f.text_field :name, :class => 'form-control' %>
+  <small><%= t('.name_specifying_form') %></small>
+</p>
 
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

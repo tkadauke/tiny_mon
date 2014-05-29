@@ -4,26 +4,20 @@
   <div class="box-body">
     <%= form_for @user, :url => password_reset_path, :method => :put, :html => { :class => 'form-horizontal' } do |f| %>
       <%= f.error_messages :header_message => t('.could_not_reset_password') %>
-  
-      <div class="control-group">
-        <%= f.label :password, t('.password'), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.password_field :password, :class => 'form-control' %>
-        </div>
-      </div>
 
-      <div class="control-group">
+      <p>
+        <%= f.label :password, t('.password'), :class => 'control-label' %>
+        <%= f.password_field :password, :class => 'form-control' %>
+      </p>
+
+      <p>
         <%= f.label :password_confirmation, t('.password_confirmation'), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.password_field :password_confirmation, :class => 'form-control' %>
-        </div>
-      </div>
-  
-      <div class="control-group">
-        <div class="controls">
-          <%= f.submit t('.update'), :class => 'btn btn-primary btn-small btn-flat' %>
-        </div>
-      </div>
+        <%= f.password_field :password_confirmation, :class => 'form-control' %>
+      </p>
+
+      <p>
+        <%= f.submit t('.update'), :class => 'btn btn-primary btn-small btn-flat' %>
+      </p>
     <% end %>
   </div>
 </div>

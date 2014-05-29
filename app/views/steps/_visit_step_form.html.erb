@@ -1,7 +1,5 @@
-<div class="control-group">
+<p>
   <%= f.label :url, t('.url'), :class => 'control-label required' %>
-  <div class="controls">
-    <%= f.text_field :url, :class => 'form-control' %>
-    <p><small><%= t('.relative_or_absolute') %></small></p>
-  </div>
-</div>
+  <%= f.text_field :url, :class => 'form-control' %>
+  <small><%= t('.relative_or_absolute') %></small>
+</p>

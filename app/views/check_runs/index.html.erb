@@ -2,17 +2,39 @@
 
 <div class="box">
   <div class="box-body">
-    <%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
+    <div class="btn-group pull-right">
+      <a class="btn btn-default btn-small btn-flat" data-toggle="dropdown" href="#">
+        <% if params[:check_run_filter] %>
+          <%= t(".filter_active") %>
+        <% else %>
+          <%= t("button.filter") %>
+        <% end %>
 
-    <%= form_for @check_run_filter, :url => account_site_health_check_check_runs_path(@account, @site, @health_check), :html => { :method => :get, :class => 'filter' } do |f| %>
-      <%= t(".from") %> <%= f.date_select :start_date, :class => 'form-control' %>
-      <%= t(".until") %> <%= f.date_select :end_date, :class => 'form-control' %>
-      <%= f.submit t(".filter"), :class => 'btn btn-sm btn-default btn-flat' %>
-      <% if params[:check_run_filter] %>
-        <%= link_to t(".reset_filter"), account_site_health_check_check_runs_path(@account, @site, @health_check) %>
-        <span class="info"><%= t(".filter_active") %></span>
-      <% end %>
-    <% end %>
+        <span class="caret"></span>
+      </a>
+
+      <div class="dropdown-menu">
+        <%= form_for @check_run_filter, :url => account_site_health_check_check_runs_path(@account, @site, @health_check), :html => { :method => :get, :class => 'filter' } do |f| %>
+          <p>
+            <%= t(".from") %><br/><%= f.date_select :start_date, :class => 'form-control' %>
+          </p>
+
+          <p>
+            <%= t(".until") %><br/><%= f.date_select :end_date, :class => 'form-control' %>
+          </p>
+
+          <p>
+            <%= f.submit t(".filter"), :class => 'btn btn-sm btn-default btn-flat' %>
+          </p>
+
+          <% if params[:check_run_filter] %>
+            <p><%= link_to t(".reset_filter"), account_site_health_check_check_runs_path(@account, @site, @health_check) %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <%= render :partial => "/health_checks/tabs", :locals => { :selected => :check_runs } %>
 
     <div id="activity">
       <%= render :partial => "/check_runs/activity" %>

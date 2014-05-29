@@ -7,8 +7,6 @@
     <% if @deployments.empty? %>
       <p><%= t(".no_deployments_found") %></p>
     <% else %>
-      <%= will_paginate @deployments %>
-
       <table class="table table-hover">
         <thead>
           <tr>
@@ -34,7 +32,7 @@
     <% end %>
 
     <% if current_user.can_create_deployments?(@account) %>
-      <p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site) %></p>
+      <p><%= link_to t(".mark_deployment"), new_account_site_deployment_path(@account, @site), :class => 'btn btn-default btn-small btn-flat' %></p>
     <% end %>
   </div>
 </div>

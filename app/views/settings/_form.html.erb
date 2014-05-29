@@ -1,23 +1,19 @@
 <% config.options.each do |option| %>
   <% next if option.type == 'Hash' %>
-  <div class="control-group">
+  <p>
     <% if option.type == 'Boolean' %>
-      <div class="controls">
-        <%= f.check_box option.key %> <%= f.label option.key, translate_if_possible(option.name), :class => 'control-label' %>
-        <p><small><%= translate_if_possible(option.description) %></small></p>
-      </div>
+      <%= f.check_box option.key %> <%= f.label option.key, translate_if_possible(option.name), :class => 'control-label' %><br/>
+      <small><%= translate_if_possible(option.description) %></small>
     <% else %>
       <%= f.label option.key, translate_if_possible(option.name), :class => 'control-label' %>
 
-      <div class="controls">
-        <% if option.values %>
-          <%= f.select option.key, option.values.sort %>
-        <% elsif option.type != 'Boolean' %>
-          <%= f.text_field option.key %>
-        <% end %>
+      <% if option.values %>
+        <%= f.select option.key, option.values.sort %>
+      <% elsif option.type != 'Boolean' %>
+        <%= f.text_field option.key, :class => 'form-control' %>
+      <% end %>
 
-        <p><small><%= translate_if_possible(option.description) %></small></p>
-      </div>
+      <small><%= translate_if_possible(option.description) %></small>
     <% end %>
-  </div>
+  </p>
 <% end %>

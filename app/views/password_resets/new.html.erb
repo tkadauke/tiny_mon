@@ -5,14 +5,14 @@
     <p><%= t('.instructions') %></p>
 
     <%= form_tag password_resets_path do %>
-      <div class="control-group">
+      <p>
         <label><%= t('.email') %></label>
         <%= text_field_tag "email", "", :class => 'form-control' %>
-      </div>
+      </p>
 
-      <div class="control-group">
-        <p><%= submit_tag t('.reset'), :class => 'btn btn-primary btn-small btn-flat' %></p>
-      </div>
+      <p>
+        <%= submit_tag t('.reset'), :class => 'btn btn-primary btn-small btn-flat' %>
+      </p>
     <% end %>
   </div>
 </div>

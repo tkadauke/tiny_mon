@@ -1,7 +1,6 @@
 <% if @check_runs.empty? %>
   <p><%= t('.no_activity_yet') %></p>
 <% else %>
-  <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
   <div class="row">
     <div class="col-md-12">
       <ul class="timeline">
@@ -28,5 +27,6 @@
       </ul>
     </div>
   </div>
+
   <%= will_paginate @check_runs if @check_runs.respond_to?(:total_pages) %>
 <% end %>

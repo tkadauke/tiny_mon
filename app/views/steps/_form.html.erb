@@ -3,21 +3,17 @@
     <%= f.error_messages :header_message => t('.could_not_create_step') %>
   
     <% if step.class.name == 'Step' %>
-      <div class="control-group">
+      <p>
         <%= f.label :type, t('.type'), :class => 'control-label' %>
-        <div class="controls">
-          <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types_with_translations), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }", :class => 'form-control' %>
-        </div>
-      </div>
+        <%= select_tag :type, options_for_select([[t('.please_select'), 'nothing']] + Step.available_types_with_translations), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }", :class => 'form-control' %>
+      </p>
     <% else %>
       <% if step.new_record? %>
         <% if step.position.blank? %>
-          <div class="control-group">
+          <p>
             <%= f.label :type, t('.type'), :class => 'control-label required' %>
-            <div class="controls">
-              <%= select_tag :type, options_for_select(Step.available_types_with_translations, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }" %><br/>
-            </div>
-          </div>
+            <%= select_tag :type, options_for_select(Step.available_types_with_translations, :selected => step.class.name.underscore.gsub('_step', '')), :onchange => "if (this.value != 'nothing') { $('#new_step_container').load(#{new_account_site_health_check_step_path(@account, @site, @health_check).inspect}, 'type=' + this.value) }", :class => 'form-control' %>
+          </p>
         <% else %>
           <%= f.hidden_field :insert_after, :value => step.position %>
           <%= hidden_field_tag :type, step.class.name.underscore.gsub(/_step$/, '') %>

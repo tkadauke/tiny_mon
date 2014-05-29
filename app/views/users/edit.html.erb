@@ -5,26 +5,20 @@
     <%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
       <%= f.error_messages :header_message => t('.could_not_update_user') %>
 
-      <div class="control-group">
+      <p>
         <%= f.label :full_name, t('.full_name'), :class => 'control-label required' %>
-        <div class="controls">
-          <%= f.text_field :full_name, :class => 'form-control' %>
-        </div>
-      </div>
+        <%= f.text_field :full_name, :class => 'form-control' %>
+      </p>
 
-      <div class="control-group">
+      <p>
         <%= f.label :email, t('.email_address'), :class => 'control-label required' %>
-        <div class="controls">
-          <%= f.text_field :email, :class => 'form-control' %>
-          <p><small><%= t('.the_email_address_is_used_for_notifications') %></small></p>
-        </div>
-      </div>
-  
-      <div class="control-group">
-        <div class="controls">
-          <%= f.submit t('.update'), :class => 'btn btn-primary btn-small btn-flat' %>
-        </div>
-      </div>
+        <%= f.text_field :email, :class => 'form-control' %>
+        <small><%= t('.the_email_address_is_used_for_notifications') %></small>
+      </p>
+
+      <p>
+        <%= f.submit t('.update'), :class => 'btn btn-primary btn-small btn-flat' %>
+      </p>
     <% end %>
   </div>
 </div>

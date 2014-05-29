@@ -1,7 +1,5 @@
-<div class="control-group">
+<p>
   <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'control-label required' : 'control-label' %>
-  <div class="controls">
-    <%= f.text_field variable.name %>
-    <p><small><%=h variable.description %></small></p>
-  </div>
-</div>
+  <%= f.text_field variable.name, :class => 'form-control' %>
+  <small><%=h variable.description %></small>
+</p>

@@ -76,3 +76,20 @@ td.status {
 .small-box > .inner {
   max-height: 90px;
 }
+
+table {
+  margin-bottom: 20px !important;
+}
+
+textarea.enter-code {
+  font-family: "Courier New", Courier, monospace;
+}
+
+div.pagination {
+  text-align: center;
+  width: 100%;
+}
+
+ul.pagination {
+  margin: 0 auto;
+}

@@ -25,7 +25,7 @@
               <br/>
               <% if current_user.can_assign_role_for_user_and_account?(user_account.user, @account) %>
                 <%= form_for [@account, user_account] do |f| %>
-                  <%= f.select :role, UserAccount.available_roles_for_select, {}, :style => 'width: 110px', :onchange => "$('#edit_user_account_#{user_account.id}').submit()" %>
+                  <%= f.select :role, UserAccount.available_roles_for_select, {}, :style => 'width: 110px', :onchange => "$(this).parent('form').submit()" %>
                   <%= f.submit t('.change'), :class => 'btn', :style => 'display: none' %>
                 <% end %>
               <% else %>

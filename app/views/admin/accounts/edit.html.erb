@@ -6,27 +6,21 @@
 
     <%= form_for [:admin, @account], :html => { :class => 'form-horizontal' } do |f| %>
       <%= f.error_messages :header_message => t('.could_not_update_account') %>
-  
-      <div class="control-group">
+
+      <p>
         <%= f.label :name, t('.name'), :class => 'control-label required' %>
-        <div class="controls">
-          <%= f.text_field :name %>
-        </div>
-      </div>
-  
-      <div class="control-group">
+        <%= f.text_field :name, :class => 'form-control' %>
+      </p>
+
+      <p>
         <%= f.label :maximum_check_runs_per_day, t(".maximum_check_runs_per_day"), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :maximum_check_runs_per_day %>
-          <p><small><%= t(".maximum_check_runs_per_day_hint") %></small></p>
-        </div>
-      </div>
-  
-      <div class="control-group">
-        <div class="controls">
-          <%= f.submit t('.save_account'), :class => 'btn btn-primary btn-small btn-flat' %>
-        </div>
-      </div>
+        <%= f.text_field :maximum_check_runs_per_day, :class => 'form-control' %>
+        <small><%= t(".maximum_check_runs_per_day_hint") %></small>
+      </p>
+
+      <p>
+        <%= f.submit t('.save_account'), :class => 'btn btn-primary btn-small btn-flat' %>
+      </p>
     <% end %>
   </div>
 </div>

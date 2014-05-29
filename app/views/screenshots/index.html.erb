@@ -4,8 +4,6 @@
   <div class="box-body">
     <%= render :partial => "/health_checks/tabs", :locals => { :selected => :screenshots } %>
 
-    <%= will_paginate @screenshots %>
-
     <%= render :partial => "list" %>
 
     <%= will_paginate @screenshots %>

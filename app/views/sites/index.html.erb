@@ -17,7 +17,6 @@
     <% end %>
 
     <% if current_user.can_create_sites?(@account) %>
-      <br />
       <p><%= link_to t('.new_site'), new_account_site_path(@account), :class => 'btn btn-default btn-small btn-flat' %></p>
     <% end %>
   </div>

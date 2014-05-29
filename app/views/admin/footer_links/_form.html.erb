@@ -1,23 +1,17 @@
 <%= form_for [:admin, @footer_link], :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.error_messages :header_message => t('.could_not_create_footer_link') %>
-  
-  <div class="control-group">
-    <%= f.label :text, t('.text'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :text, :class => 'form-control' %>
-    </div>
-  </div>
 
-  <div class="control-group">
+  <p>
+    <%= f.label :text, t('.text'), :class => 'control-label' %>
+    <%= f.text_field :text, :class => 'form-control' %>
+  </p>
+
+  <p>
     <%= f.label :url, t('.url'), :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :url, :class => 'form-control' %>
-    </div>
-  </div>
-  
-  <div class="control-group">
-    <div class="controls">
-      <%= f.submit t('.save_footer_link'), :class => 'btn btn-primary btn-small btn-flat' %>
-    </div>
-  </div>
+    <%= f.text_field :url, :class => 'form-control' %>
+  </p>
+
+  <p>
+    <%= f.submit t('.save_footer_link'), :class => 'btn btn-primary btn-small btn-flat' %>
+  </p>
 <% end %>

@@ -1,15 +1,11 @@
-<div class="control-group">
+<p>
   <%= f.label :content, t('.content'), :class => 'control-label required' %>
-  <div class="controls">
-    <%= f.text_field :content, :class => 'form-control' %>
-  </div>
-</div>
+  <%= f.text_field :content, :class => 'form-control' %>
+</p>
 
-<div class="control-group">
+<p>
+  <%= f.check_box :negate %>
   <%= f.label :negate, t('.negate'), :class => 'control-label required' %>
-  <div class="controls">
-    <%= f.check_box :negate %>
-  </div>
 </div>
 
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

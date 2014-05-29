@@ -2,6 +2,7 @@ class UserAccount < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
   
+  validates_presence_of :user_id
   validates_uniqueness_of :user_id, :scope => :account_id
   
   attr_accessor :email

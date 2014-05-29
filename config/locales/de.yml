@@ -120,7 +120,7 @@ de:
         could_not_update_account: "Konnte das Konto nicht aktualisieren"
         edit_account: "Konto bearbeiten"
         maximum_check_runs_per_day: "Maximale Anzahl an Testläufen pro Tag"
-        maximum_check_runs_per_day_hint: "Geben Sie 0 ein, für eine unbeschränkte Anzahl an Testläufen pro Tag"
+        maximum_check_runs_per_day_hint: "Für eine unbeschränkte Anzahl an Testläufen pro Tag tragen Sie bitte eine 0 ein"
         name: Name
         save_account: "Konto speichern"
       index: 

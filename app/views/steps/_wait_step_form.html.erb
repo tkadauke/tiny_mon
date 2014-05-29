@@ -1,7 +1,5 @@
-<div class="control-group">
+<p>
   <%= f.label :duration, t('.duration'), :class => 'control-label required' %>
-  <div class="controls">
-    <%= f.text_field :duration, :class => 'form-control' %>
-    <p><small><%= t('.duration_in_seconds') %></small></p>
-  </div>
-</div>
+  <%= f.text_field :duration, :class => 'form-control' %>
+  <small><%= t('.duration_in_seconds') %></small>
+</p>

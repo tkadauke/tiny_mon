@@ -8,8 +8,6 @@
 <% if @health_check_templates.empty? %>
   <p><%= t(".no_templates_found") %></p>
 <% else %>
-  <%= will_paginate @health_check_templates %>
-  
   <ul class="templates">
     <% @health_check_templates.each do |template| %>
       <li>

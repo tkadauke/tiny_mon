@@ -3,18 +3,14 @@
     <%= form_for [@account, @user_account], :html => { :class => 'form-horizontal' } do |f| %>
       <%= f.error_messages :header_message => t('.error_creating_user_account') %>
 
-      <div class="control-group">
+      <p>
         <%= f.label :email, t('.email'), :class => 'control-label required' %>
-        <div class="controls">
-          <%= f.text_field :email, :class => 'form-control'  %>
-        </div>
-      </div>
+        <%= f.text_field :email, :class => 'form-control'  %>
+      </p>
 
-      <div class="control-group">
-        <div class="controls">
-          <%= f.submit t('.add'), :class => 'btn btn-primary btn-small btn-flat' %>
-        </div>
-      </div>
+      <p>
+        <%= f.submit t('.add'), :class => 'btn btn-primary btn-small btn-flat' %>
+      </p>
     <% end %>
   </div>
 </div>

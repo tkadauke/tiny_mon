@@ -36,7 +36,6 @@
     </div>
 
     <% if current_user.can_create_health_checks?(@account) %>
-      <br/>
       <p>
         <%= link_to t('.new_health_check'), new_account_site_health_check_path(@account, @site), :class => 'btn btn-default btn-small btn-flat' %>
         <%= link_to t('.new_from_template'), new_account_site_health_check_path(@account, @site, :template => 'select'), :class => 'btn btn-default btn-small btn-flat' %>

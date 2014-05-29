@@ -16,39 +16,33 @@
   
       <p><%= t('.check_fields_you_want_to_change') %></p>
 
-      <div class="control-group">
-        <%= f.check_box :bulk_update_name, :onclick => "$('#health_check_name')[0].disabled = !this.checked" %> <%= f.label :bulk_update_name, t('.name'), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_field :name, :disabled => true, :class => 'form-control' %>
-        </div>
-      </div>
+      <p>
+        <%= f.check_box :bulk_update_name, :onclick => "$('#health_check_name')[0].disabled = !this.checked" %>
+        <%= f.label :bulk_update_name, t('.name'), :class => 'control-label' %>
+        <%= f.text_field :name, :disabled => true, :class => 'form-control' %>
+      </p>
 
-      <div class="control-group">
-        <%= f.check_box :bulk_update_description, :onclick => "$('#health_check_description')[0].disabled = !this.checked" %> <%= f.label :bulk_update_description, t('.description'), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.text_area :description, :rows => 5, :disabled => true, :class => 'form-control' %>
-        </div>
-      </div>
+      <p>
+        <%= f.check_box :bulk_update_description, :onclick => "$('#health_check_description')[0].disabled = !this.checked" %>
+        <%= f.label :bulk_update_description, t('.description'), :class => 'control-label' %>
+        <%= f.text_area :description, :rows => 5, :disabled => true, :class => 'form-control' %>
+      </p>
 
-      <div class="control-group">
-        <%= f.check_box :bulk_update_interval, :onclick => "$('#health_check_interval')[0].disabled = !this.checked" %> <%= f.label :bulk_update_interval, t('.interval'), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.select :interval, HealthCheck.intervals_with_units, {}, :disabled => true, :class => 'form-control' %>
-        </div>
-      </div>
+      <p>
+        <%= f.check_box :bulk_update_interval, :onclick => "$('#health_check_interval')[0].disabled = !this.checked" %>
+        <%= f.label :bulk_update_interval, t('.interval'), :class => 'control-label' %>
+        <%= f.select :interval, HealthCheck.intervals_with_units, {}, :disabled => true, :class => 'form-control' %>
+      </p>
 
-      <div class="control-group">
-        <%= f.check_box :bulk_update_enabled, :onclick => "$('#health_check_enabled')[0].disabled = !this.checked" %> <%= f.label :bulk_update_enabled, t('.enabled'), :class => 'control-label' %>
-        <div class="controls">
-          <%= f.select :enabled, [[t(".yes"), 1], [t(".no"), 0]], {}, :disabled => true, :class => 'form-control' %>
-        </div>
-      </div>
+      <p>
+        <%= f.check_box :bulk_update_enabled, :onclick => "$('#health_check_enabled')[0].disabled = !this.checked" %>
+        <%= f.label :bulk_update_enabled, t('.enabled'), :class => 'control-label' %>
+        <%= f.select :enabled, [[t(".yes"), 1], [t(".no"), 0]], {}, :disabled => true, :class => 'form-control' %>
+      </p>
 
-      <div class="control-group">
-        <div class="controls">
-          <%= f.submit t('.update_health_checks'), :class => 'btn btn-primary btn-small btn-flat' %>
-        </div>
-      </div>
+      <p>
+        <%= f.submit t('.update_health_checks'), :class => 'btn btn-primary btn-small btn-flat' %>
+      </p>
     <% end %>
   </div>
 </div>

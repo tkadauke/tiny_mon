@@ -3,7 +3,7 @@ class Step < ActiveRecord::Base
   has_properties :in => :data
   
   has_many :screenshots
-  has_many :last_two_screenshots, :class_name => 'Screenshot', :order => 'created_at DESC', :limit => 2
+  has_many :last_two_screenshots, lambda { order('created_at DESC').limit(2) }, :class_name => 'Screenshot'
   belongs_to :health_check
   acts_as_list :scope => :health_check
   

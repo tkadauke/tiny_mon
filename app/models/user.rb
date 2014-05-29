@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :accounts, :through => :user_accounts
   has_many :config_options
   has_many :comments
-  has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
+  has_many :latest_comments, lambda { order('created_at DESC') }, :class_name => 'Comment'
   
   has_many :health_check_templates
   

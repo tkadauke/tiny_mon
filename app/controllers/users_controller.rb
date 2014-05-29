@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id], :include => :accounts)
+    @user = User.includes(:accounts).find(params[:id])
     can_see_profile!(@user) do
       @comments = @user.latest_comments_for_user(current_user).limit(5)
       @comments_count = @user.comments_count_for_user(current_user)

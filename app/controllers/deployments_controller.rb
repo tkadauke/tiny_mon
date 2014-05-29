@@ -8,7 +8,7 @@ class DeploymentsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
   
   def index
-    @deployments = @site.deployments.paginate(:order => 'created_at DESC', :page => params[:page])
+    @deployments = @site.deployments.order('created_at DESC').paginate(:page => params[:page])
   end
   
   def new
@@ -19,7 +19,7 @@ class DeploymentsController < ApplicationController
   
   def show
     @deployment = @site.deployments.find(params[:id])
-    @check_runs = @deployment.check_runs.paginate(:order => 'created_at DESC', :page => params[:page])
+    @check_runs = @deployment.check_runs.order('created_at DESC').paginate(:page => params[:page])
   end
   
   def create

@@ -18,6 +18,6 @@ class Deployment < ActiveRecord::Base
   end
   
   def all_checks_successful?
-    check_runs.count(:conditions => { :status => 'failure' }) == 0
+    check_runs.where(:status => 'failure').count == 0
   end
 end

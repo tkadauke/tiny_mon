@@ -11,5 +11,4 @@
 //= require jqplot/plugins/dateAxisRenderer
 //= require jqplot/plugins/highlighter
 //= require bootstrap
-//= require AdminLTE/app.js
 //= require_tree .

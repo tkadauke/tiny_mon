@@ -10,7 +10,7 @@ class CheckRunsController < ApplicationController
   
   def index
     @check_run_filter.health_check_id = @health_check.id if @health_check
-    @check_runs = @health_check.check_runs.recent.paginate(:page => params[:page], :include => :health_check, :conditions => @check_run_filter.conditions)
+    @check_runs = @health_check.check_runs.recent.where(@check_run_filter.conditions).includes(:health_check).paginate(:page => params[:page])
 
     respond_with @check_runs do |format|
       format.html do

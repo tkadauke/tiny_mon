@@ -6,7 +6,7 @@ class ScreenshotsController < ApplicationController
   before_filter :find_check_run, :only => :show
   
   def index
-    @screenshots = @health_check.latest_screenshots.paginate :page => (params[:page] || 1), :per_page => 15
+    @screenshots = @health_check.latest_screenshots.paginate(:page => (params[:page] || 1), :per_page => 15)
   end
   
   def show

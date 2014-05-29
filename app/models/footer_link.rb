@@ -3,5 +3,5 @@ class FooterLink < ActiveRecord::Base
   
   acts_as_list
   
-  scope :ordered, order('position ASC')
+  scope :ordered, lambda { order('position ASC') }
 end

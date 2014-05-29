@@ -6,7 +6,7 @@ class SoftSetting < ActiveRecord::Base
   end
   
   def self.set(key, value)
-    find_or_create_by_key(key).update_attribute(:value, value)
+    find_or_create_by(:key => key).update_attribute(:value, value)
     value
   end
   

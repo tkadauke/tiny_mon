@@ -17,9 +17,9 @@
         <tr>
           <td></td>
           <td colspan="4">
-            <%= link_to_function t(".all"), %{$('table input[type="checkbox"]').prop('checked',true )}, :class => 'btn btn-default btn-small btn-flat' %>
-            <%= link_to_function t(".none"), %{$('table input[type="checkbox"]').prop('checked', false)}, :class => 'btn btn-default btn-small btn-flat' %>
-            <%= link_to_function t(".invert"), %{$('table input[type="checkbox"]').each(function(index) { $(this).prop('checked', !$(this).prop('checked'));})}, :class => 'btn btn-default btn-small btn-flat' %>
+            <%= link_to t(".all"), '#', :class => 'select-all btn btn-default btn-small btn-flat' %>
+            <%= link_to t(".none"), '#', :class => 'select-none btn btn-default btn-small btn-flat' %>
+            <%= link_to t(".invert"), '#', :class => 'select-invert btn btn-default btn-small btn-flat' %>
             <%= submit_tag t(".edit_checked"), :class => 'btn' %>
           </td>
         </tr>
@@ -55,3 +55,7 @@
     </tbody>
   </table>
 <% end %>
+
+<script>
+apply_table_events();
+</script>

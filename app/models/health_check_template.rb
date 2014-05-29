@@ -2,14 +2,14 @@ class HealthCheckTemplate < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
   
-  scope :public_templates, where('public')
+  scope :public_templates, lambda { where('public') }
   
   validates_presence_of :user_id, :name, :name_template, :interval
   
-  has_many :variables, :class_name => 'HealthCheckTemplateVariable', :order => 'position ASC', :dependent => :delete_all
+  has_many :variables, lambda { order('position ASC') }, :class_name => 'HealthCheckTemplateVariable', :dependent => :delete_all
   accepts_nested_attributes_for :variables, :allow_destroy => true
   
-  has_many :steps, :class_name => 'HealthCheckTemplateStep', :order => 'position ASC', :dependent => :delete_all
+  has_many :steps, lambda { order('position ASC') }, :class_name => 'HealthCheckTemplateStep', :dependent => :delete_all
   accepts_nested_attributes_for :steps, :allow_destroy => true
   
   def self.from_param!(param)

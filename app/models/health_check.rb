@@ -4,23 +4,23 @@ class HealthCheck < ActiveRecord::Base
   belongs_to :site
   belongs_to :health_check_import
   
-  has_many :steps, :order => 'position ASC'
+  has_many :steps, lambda { order('position ASC') }
   has_many :check_runs, :dependent => :destroy
-  has_many :recent_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 50
-  has_many :weather_relevant_check_runs, :class_name => 'CheckRun', :order => 'created_at DESC', :limit => 5
+  has_many :recent_check_runs, lambda { order('created_at DESC').limit(50) }, :class_name => 'CheckRun'
+  has_many :weather_relevant_check_runs, lambda { order('created_at DESC').limit(5) }, :class_name => 'CheckRun'
   
-  has_one :last_check_run, :class_name => 'CheckRun', :order => 'created_at DESC', :conditions => 'status is not null'
+  has_one :last_check_run, lambda { order('created_at DESC').where('status is not null') }, :class_name => 'CheckRun'
   
   has_many :comments, :through => :check_runs
-  has_many :latest_comments, :through => :check_runs, :class_name => 'Comment', :source => 'comments', :order => 'comments.created_at DESC'
+  has_many :latest_comments, lambda { order('comments.created_at DESC') }, :through => :check_runs, :class_name => 'Comment', :source => 'comments'
 
   has_many :screenshots, :through => :check_runs
-  has_many :latest_screenshots, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots', :order => 'screenshots.created_at DESC'
+  has_many :latest_screenshots, lambda { order('screenshots.created_at DESC') }, :through => :check_runs, :class_name => 'Screenshot', :source => 'screenshots'
   
-  scope :enabled, where(:enabled => true)
+  scope :enabled, lambda { where(:enabled => true) }
   scope :upcoming, lambda { where("enabled and next_check_at > ?", Time.now).order('next_check_at ASC') }
   scope :due, lambda { enabled.where('next_check_at is not null and next_check_at < ?', Time.now) }
-  scope :failed, enabled.where(:status => 'failure')
+  scope :failed, lambda { enabled.where(:status => 'failure') }
   
   validates_presence_of :site_id, :name, :interval
   validate :validate_template_data
@@ -198,7 +198,7 @@ protected
       ['health_checks.name LIKE ? OR sites.name LIKE ?', "%#{sql_like}%", "%#{sql_like}%"]
     end
     
-    where(conditions)
+    where(conditions).references(:sites)
   end
   
   def calculate_weather

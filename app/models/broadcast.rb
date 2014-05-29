@@ -1,7 +1,7 @@
 class Broadcast < ActiveRecord::Base
   validates_presence_of :title, :text
   
-  scope :ordered, order('broadcasts.sent_at DESC')
+  scope :ordered, lambda { order('broadcasts.sent_at DESC') }
   
   def name
     title

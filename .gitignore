@@ -6,7 +6,7 @@ config/database.yml
 test/coverage
 Capfile
 config/deploy.rb
-config/production
+config/deployments/production
 doc/TODO
 public/system
 public/stylesheets/*

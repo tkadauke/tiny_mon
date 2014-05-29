@@ -11,9 +11,9 @@
     </dt>
     <dd>
       <% if fields.object.new_record? %>
-        <%= link_to_function t(".remove"), "$('##{variable_id}').remove();" %>
+        <%= link_to t(".remove"), '#', :id => "remove_#{variable_id}" %>
       <% else %>
-        <%#= fields.check_box '_delete' %> <%#= fields.label '_delete', t(".delete") %>
+        <%= fields.check_box '_destroy' %> <%= fields.label '_destroy', t(".delete") %>
       <% end %>
     </dd>
 
@@ -32,6 +32,12 @@
     <dt><%= fields.label :required, t(".required") %></dt>
     <dd><%= fields.check_box :required %></dd>
   </dl>
+  <script>
+    $('#remove_<%= variable_id %>').click(function(event) {
+      $('#<%= variable_id %>').remove()
+      event.preventDefault()
+    })
+  </script>
 <% end %>
 
 <div id="replace-variable">

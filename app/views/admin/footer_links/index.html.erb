@@ -27,7 +27,7 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><%= link_to t('.remove'), admin_footer_link_path(footer_link), :method => :delete, :confirm => t('.really_remove_footer_link') %></li>
+                    <li><%= link_to t('.remove'), admin_footer_link_path(footer_link), :method => :delete, :data => { :confirm => t('.really_remove_footer_link') } %></li>
                   </ul>
                 </div>
               </td>

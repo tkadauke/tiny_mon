@@ -14,3 +14,4 @@ exception_recipients: tiny_mon@example.com
 exception_sender_address: '"Application Error" <app.error@example.com>'
 
 secret_token: 'c4ad64bf7b6eb7473a522f58a83f9121a3999fb22fba48bd5a40c2e9cc1fd820fe32efa6e3f3b3a6b47c6aa326bb5bd46d3e42f7826874ef5735ae96f975d358'
+secret_key_base: 'ba38bcb1300da6296dd15393bb8684dcd703cd5e62dffff62fd1e666c6b448a8586255ab7eccd4eb3e7d0d27ac50d49697f4c6499dc2379b1d2945cd72813674'

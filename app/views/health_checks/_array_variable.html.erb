@@ -1,23 +1,14 @@
 <% array_id = "array_#{rand(1_000_000)}" %>
 <div class="control-group" id="<%= array_id %>">
   <%= f.label variable.name, variable.display_name, :class => variable.required? ? 'control-label required' : 'control-label' %>
-  <%= link_to_function t(".add_more"), %{
-    element = '<span id="#{array_id}_' + #{array_id}_index + '">' +
-      '<input type="text" id="health_check_template_data_#{variable.name}_' + #{array_id}_index + '" name="health_check[template_data][#{variable.name}][' + #{array_id}_index + ']" size="30" />' +
-      '<a href="#" onclick="$(\\'##{array_id}_' + #{array_id}_index + '\\').remove()">[X]</a>' +
-      '<br/>' +
-    '</span>'
-      
-    $('##{array_id}').append(element);
-    #{array_id}_index++;
-  } %>
+  <%= link_to t(".add_more"), '#', :id => "add-more-#{array_id}" %>
   
   <div class="controls">
     <% array = (f.object.send(variable.name) || { '0' => "" }); index = 0 %>
     <% array.sort_by { |x| x.first.to_i }.collect { |x| x.last }.each_with_index do |value, index| %>
       <%= f.fields_for variable.name do |fields| %>
         <span id="<%= [array_id, index].join('_') %>">
-          <%= fields.text_field index.to_s, :value => value %><%= link_to_function '[X]', "$('##{[array_id, index].join('_')}').remove()" %>
+          <%= fields.text_field index.to_s, :value => value %><%= link_to '[X]', '#', :id => "remove-#{array_id}" %>
           <br/>
         </span>
       <% end %>
@@ -26,3 +17,20 @@
     <p><small><%=h variable.description %></small></p>
   </div>
 </div>
+
+<script>
+  $('#add-more-<%= array_id %>').click(function() {
+    element = '<span id="<%= array_id %>_' + <%= array_id %>_index + '">' +
+      '<input type="text" id="health_check_template_data_<%= variable.name %>_' + <%= array_id %>_index + '" name="health_check[template_data][<%= variable.name %>][' + <%= array_id %>_index + ']" size="30" />' +
+      '<a href="#" onclick="$(\'#<%= array_id %>_' + <%= array_id %>_index + '\').remove()">[X]</a>' +
+      '<br/>' +
+    '</span>'
+    
+    $('#<%= array_id %>').append(element);
+    <%= array_id %>_index++;
+  })
+
+  $('#remove-<%= array_id %>').click(function() {
+    $('#<%= [array_id, index].join('_') %>').remove()
+  })
+</script>

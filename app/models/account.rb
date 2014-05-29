@@ -6,14 +6,14 @@ class Account < ActiveRecord::Base
   
   has_many :sites
   has_many :health_checks, :through => :sites
-  has_many :enabled_health_checks, :through => :sites, :source => :health_checks, :conditions => { :enabled => true }
+  has_many :enabled_health_checks, lambda { where(:enabled => true) }, :through => :sites, :source => :health_checks
   has_many :health_check_templates
   has_many :health_check_imports
   has_many :check_runs
   has_many :comments
   has_many :screenshots, :through => :check_runs
   
-  scope :ordered_by_name, order('name ASC')
+  scope :ordered_by_name, lambda { order('name ASC') }
   
   def self.from_param!(param)
     find(param)

@@ -11,7 +11,7 @@
     </dt>
     <dd>
       <% if fields.object.new_record? %>
-        <%= link_to_function t(".remove"), "$('##{step_id}').remove();" %>
+        <%= link_to t(".remove"), '#', :id => "remove_#{step_id}" %>
       <% else %>
         <%= fields.check_box '_destroy' %> <%= fields.label '_destroy', t(".delete") %>
       <% end %>
@@ -40,6 +40,12 @@
       <% end %>
     </dd>
   </dl>
+  <script>
+    $('#remove_<%= step_id %>').click(function(event) {
+      $('#<%= step_id %>').remove()
+      event.preventDefault()
+    })
+  </script>
 <% end %>
 
 <div id="replace-step">

@@ -4,7 +4,7 @@ class CheckRun < ActiveRecord::Base
   belongs_to :deployment
   belongs_to :user
   has_many :comments, :dependent => :delete_all
-  has_many :latest_comments, :class_name => 'Comment', :order => 'created_at DESC'
+  has_many :latest_comments, lambda { order('created_at DESC') }, :class_name => 'Comment'
   has_many :screenshots, :dependent => :destroy
   has_many :screenshot_comparisons, :dependent => :destroy
   
@@ -15,9 +15,9 @@ class CheckRun < ActiveRecord::Base
   after_update :update_health_check_status
   after_update :notify_subscribers, :if => :send_notification?
   
-  scope :recent, order('check_runs.created_at DESC').limit(10)
+  scope :recent, lambda { order('check_runs.created_at DESC').limit(10) }
   scope :today, lambda { where(['created_at > ?', Date.today.to_time]) }
-  scope :scheduled, where('user_id is null')
+  scope :scheduled, lambda { where('user_id is null') }
   
   def duration
     (self.ended_at - self.started_at).to_f rescue 0.0

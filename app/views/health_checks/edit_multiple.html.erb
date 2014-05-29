@@ -12,7 +12,7 @@
         <% end %>
       </ul>
   
-      <p><%= link_to_function t(".show_all", :count => @health_checks.size), %{$('#health_check_list li').show(); $(this).hide()} if @health_checks.size > 10 %></p>
+      <p><%= link_to t(".show_all", :count => @health_checks.size), '#', :id => 'show-all' if @health_checks.size > 10 %></p>
   
       <p><%= t('.check_fields_you_want_to_change') %></p>
 
@@ -52,3 +52,10 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  $("#show-all").click(function() {
+    $('#health_check_list li').show()
+    $("#show-all").hide()
+  })
+</script>

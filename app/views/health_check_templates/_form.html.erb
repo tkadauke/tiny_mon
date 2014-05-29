@@ -28,7 +28,7 @@
   <%= render "/health_check_template_variables/form", :f => f, :child_index => nil %>
 </div>
 
-<%= javascript_tag %{
+<%= javascript_tag <<-JS
   $('#variables').sortable({
     update: function(event, ui) {
       var i = 1;
@@ -39,7 +39,8 @@
       })
     }
   })
-} %>
+  JS
+%>
 
 <h3><%= t(".health_check_fields") %></h3>
 

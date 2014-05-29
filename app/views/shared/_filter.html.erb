@@ -7,10 +7,11 @@
   </div>
 <% end %>
 
-<script>
+<%= javascript_tag <<-JS
   $(function() {
     $(".auto-submit").keyup(function() {
       $(this).parents("form").submit();
     });
   });
-</script>
+  JS
+%>

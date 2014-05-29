@@ -40,12 +40,13 @@
       <% end %>
     </dd>
   </dl>
-  <script>
-    $('#remove_<%= step_id %>').click(function(event) {
-      $('#<%= step_id %>').remove()
+  <%= javascript_tag <<-JS
+    $('#remove_#{step_id}').click(function(event) {
+      $('##{step_id}').remove()
       event.preventDefault()
     })
-  </script>
+    JS
+  %>
 <% end %>
 
 <div id="replace-step">

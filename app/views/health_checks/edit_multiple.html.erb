@@ -53,9 +53,10 @@
   </div>
 </div>
 
-<script>
+<%= javascript_tag <<JS
   $("#show-all").click(function() {
     $('#health_check_list li').show()
     $("#show-all").hide()
   })
-</script>
+JS
+%>

@@ -32,12 +32,13 @@
     <dt><%= fields.label :required, t(".required") %></dt>
     <dd><%= fields.check_box :required %></dd>
   </dl>
-  <script>
-    $('#remove_<%= variable_id %>').click(function(event) {
-      $('#<%= variable_id %>').remove()
+  <%= javascript_tag <<-JS
+    $('#remove_#{variable_id}').click(function(event) {
+      $('##{variable_id}').remove()
       event.preventDefault()
     })
-  </script>
+    JS
+  %>
 <% end %>
 
 <div id="replace-variable">

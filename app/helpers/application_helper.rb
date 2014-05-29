@@ -19,7 +19,7 @@ module ApplicationHelper
     }
     options = default_options.merge(options)
     
-    javascript_tag %{
+    javascript_tag <<-JS
       (function worker() {
         if (typeof(previous) == "undefined") {
           previous = "";
@@ -39,7 +39,7 @@ module ApplicationHelper
           }
         });
       })();
-    }
+    JS
   end
 
   def bread_crumb

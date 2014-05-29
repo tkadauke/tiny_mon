@@ -31,13 +31,14 @@
       </table>
     <% end %>
 
-    <%= javascript_tag %{
+    <%= javascript_tag <<-JS
       $('#links').sortable({
         update: function(event, ui) {
           $.ajax({ url: '#{sort_admin_footer_links_path}?authenticity_token=#{form_authenticity_token}', type: "POST", data: $('#links').sortable('serialize', { key: 'link[]' }) })
         }
       })
-    } %>
+      JS
+    %>
 
     <p><%= link_to t('.new_footer_link'), new_admin_footer_link_path %></p>
   </div>

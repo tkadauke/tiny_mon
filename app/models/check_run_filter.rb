@@ -2,10 +2,13 @@ class CheckRunFilter
   include ActiveModel::Conversion
   extend ActiveModel::Naming
   include ActiveModel::Validations
+  extend DateWriter
 
   attr_accessor :start_date
   attr_accessor :end_date
   attr_accessor :health_check_id
+
+  date_writer :start_date, :end_date
 
   validates_presence_of :start_date, :end_date
   validate :date_range_valid

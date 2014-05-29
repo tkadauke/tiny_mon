@@ -58,9 +58,7 @@ protected
   
   def create_check_run_filter
     if params[:check_run_filter]
-      start_date = Date.civil(params[:check_run_filter][:"start_date(1i)"].to_i, params[:check_run_filter][:"start_date(2i)"].to_i, params[:check_run_filter][:"start_date(3i)"].to_i)
-      end_date = Date.civil(params[:check_run_filter][:"wnd_date(1i)"].to_i, params[:check_run_filter][:"end_date(2i)"].to_i, params[:check_run_filter][:"end_date(3i)"].to_i)
-      @check_run_filter = CheckRunFilter.new({:start_date => start_date, :end_date => end_date})
+      @check_run_filter = CheckRunFilter.new(params[:check_run_filter])
     end
 
     if !params[:check_run_filter] || !@check_run_filter.valid?

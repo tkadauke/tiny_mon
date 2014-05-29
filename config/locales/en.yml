@@ -188,6 +188,7 @@ en:
       admin_area: "Admin Area"
       broadcasts: Broadcasts
       footer_links: "Footer Links"
+      quick_links: "Quick links"
       users: Users
     users: 
       index: 
@@ -236,7 +237,7 @@ en:
     steps: Steps
     user_accounts: Users
     users: Users
-  button:
+  button: 
     filter: Filter
   check_run_mailer: 
     failure: 
@@ -248,6 +249,7 @@ en:
       duration: Duration
       duration_in_seconds: "%{duration} seconds"
       health_check: "Health Check"
+      info: Info
       name: Name
       no_activity_yet: "No activity yet."
       site: Site
@@ -560,6 +562,8 @@ en:
       new_from_template: "New health check from template"
       new_health_check_for_site: "New Health Check for site %{site}"
       new_health_check_from_template: "New health check from template %{template}"
+    overview: 
+      more_info: "More information"
     preview: 
       description: Description
       details: Details
@@ -622,9 +626,11 @@ en:
     login: Login
     logout: Logout
     quick_links: "Quick links"
+    settings: Settings
     signup: Signup
     sites: Sites
     subtitle: "Website Acceptance Monitoring"
+    templates: Templates
     unknown_build: unknown
     user_greeter: "Welcome, %{user}"
     version: "Version %{version}, revision %{revision}"
@@ -702,12 +708,11 @@ en:
       edit: Edit
       health_checks: "Health checks"
       information: Information
-  start:
-    dashboard:
+  start: 
+    dashboard: 
       recent_activity: "Recent Activity"
       upcoming_checks: "Upcoming Checks"
-    index:
-      title: "Dashboard"
+    index: 
       add_existing_user_to_account: "Add existing user to account %{account}"
       add_new_user_to_account: "Add new user to account %{account}"
       add_site: "Add site"
@@ -718,6 +723,8 @@ en:
       no_accounts: "There are no accounts for this user yet."
       quick_links: "Quick links"
       settings: "Edit settings"
+      title: Dashboard
+      welcome: Welcome
     upcoming_checks: 
       health_check: "Health Check"
       in_time: "In %{time}"
@@ -734,8 +741,8 @@ en:
   step: 
     check_content: "Check content"
     check_current_url: "Check current URL"
-    check_email: "Check email"
     check_element_count: "Check count"
+    check_email: "Check email"
     choose_radio_button: "Choose radio button"
     click_button: "Click button"
     click_email_link: "Click link in email"
@@ -743,10 +750,10 @@ en:
     deselect_check_box: "Deselect check box"
     fill_in: "Fill in field"
     in_scope: "in scope %{scope_name}"
+    run_script: "Run script"
     select_check_box: "Select check box"
     select_dropdown: "Select dropdown"
     submit_form: "Submit form"
-    run_script: "Run script"
     take_screenshot: "Take screenshot"
     visit: Visit
     wait: Wait
@@ -762,6 +769,10 @@ en:
       absolute_url: "Please enter the absolute URL, including protocol and domain name"
       negate: Negate
       url: URL
+    check_element_count_step_form: 
+      maxcount: "Maximum count"
+      mincount: "Minimum count"
+      selector: Selector
     check_email_step_form: 
       login: Login
       password: Password
@@ -805,7 +816,7 @@ en:
       options: Options
       steps_for_health_check: "Steps for Health Check %{health_check}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
-    run_script_step_form:
+    run_script_step_form: 
       code: Code
     scope_field: 
       scope: Scope
@@ -813,6 +824,9 @@ en:
     select_check_box_step_form: 
       name: Name
       name_specifying_check_box: "ID, title or text that uniquely identifies the check box"
+    select_dropdown_step_form: 
+      name: Name
+      name_specifying_dropdown: "ID, title or text that uniquely identifies the drop down"
     submit_form_step_form: 
       name: Name
       name_specifying_form: "ID, title or text that uniquely identifies the form"

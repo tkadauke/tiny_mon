@@ -22,9 +22,6 @@ gem 'bootstrap-will_paginate'
 gem 'scrypt'
 gem 'rails-i18n', '~> 4.0.0'
 
-# Deploy with Capistrano
-gem 'capistrano'
-
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
@@ -50,6 +47,13 @@ end
 group :production do
   gem "resque"
   gem "rails_12factor"
+end
+
+group :deploy do
+  gem 'capistrano'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
 end
 
 group :vm do

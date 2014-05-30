@@ -50,11 +50,9 @@ GEM
       activerecord (>= 3.0)
     addressable (2.3.6)
     arel (4.0.2)
-    atomic (1.1.16)
-    authlogic (3.4.0)
+    authlogic (3.3.0)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
-      request_store (~> 1.0.5)
     background_lite (0.3.2)
     berkshelf (3.1.2)
       addressable (~> 2.3.4)
@@ -166,7 +164,7 @@ GEM
     mocha (1.0.0)
       metaclass (~> 0.0.1)
     mono_logger (1.1.0)
-    multi_json (1.9.2)
+    multi_json (1.10.1)
     multipart-post (2.0.0)
     mysql2 (0.3.16)
     net-http-persistent (2.9.4)
@@ -217,7 +215,6 @@ GEM
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
     ref (1.0.5)
-    request_store (1.0.5)
     resque (1.25.2)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -282,8 +279,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
-    thread_safe (0.3.1)
-      atomic (>= 1.1.7, < 2)
+    thread_safe (0.3.4)
     tilt (1.4.1)
     timers (2.0.0)
       hitimes
@@ -315,7 +311,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
-  authlogic (~> 3.4.0)
+  authlogic (~> 3.3.0)
   background_lite (= 0.3.2)
   bootstrap-sass
   bootstrap-will_paginate

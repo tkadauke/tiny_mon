@@ -2,6 +2,12 @@
   <p><%= t('.running') %> <%= image_tag 'spinner.gif' %></p>
 <% else %>
   <dl class="dl-horizontal well">
+    <dt><%= t('.health_check') %></dt>
+    <dd>
+      <%= link_to @site.name, account_site_path(@account, @site) %> /
+      <%= link_to @health_check.name, account_site_health_check_path(@account, @site, @health_check) %>
+    </dd>
+
     <dt><%= t('.status') %></dt>
     <dd><%= status_icon @check_run %> <%= t("status.#{@check_run.status}") %></dd>
 
@@ -10,12 +16,12 @@
     
     <% if @check_run.user %>
       <dt><%= t(".started_by") %></dt>
-      <dd><%= gravatar @check_run.user %> <%= link_to @check_run.user.full_name, user_path(@check_run.user) %>
+      <dd><%= gravatar @check_run.user %> <%= link_to @check_run.user.full_name, user_path(@check_run.user) %></dd>
     <% end %>
 
     <% if @check_run.deployment %>
       <dt><%= t(".deployment") %></dt>
-      <dd><%= link_to deployment_title(@check_run.deployment), account_site_deployment_path(@account, @site, @check_run.deployment) %>
+      <dd><%= link_to deployment_title(@check_run.deployment), account_site_deployment_path(@account, @site, @check_run.deployment) %></dd>
     <% end %>
 
     <% if @check_run.error_message %>

@@ -15,11 +15,9 @@
               </span>
 
               <div class="timeline-body no-padding">
-                <%= link_to check_run.health_check.site.name, account_site_health_checks_path(check_run.health_check.site.account, check_run.health_check.site) %>
+                <%= link_to check_run.health_check.site.name, account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %>
                 /
-                <%= link_to check_run.health_check.name, account_site_health_check_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check) %>
-                |
-                <%= link_to t('.info'), account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %>
+                <%= link_to check_run.health_check.name, account_site_health_check_check_run_path(check_run.health_check.site.account, check_run.health_check.site, check_run.health_check, check_run) %>
               </div>
             </div>
           </li>

@@ -31,18 +31,23 @@
       <% end %>
 
       <% if current_user.can_edit_health_checks?(@account) %>
-        <% if @health_check.enabled? %>
-          <dt><%= t('.check_is_enabled') %></dt>
-          <dd>
+        <dt>
+          <% if @health_check.enabled? %>
+            <%= t('.check_is_enabled') %>
+          <% else %>
+            <%= t('.check_is_disabled') %>
+          <% end %>
+        </dt>
+        <dd>
+          <% if @health_check.enabled? %>
             <%= link_to t('.disable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => false }), :class => 'btn btn-sm btn-warning btn-flat', :method => :put %>
-        <% else %>
-          <dt><%= t('.check_is_disabled') %></dt>
-          <dd>
+          <% else %>
             <%= link_to t('.enable'), account_site_health_check_path(@account, @site, @health_check, :health_check => { :enabled => true }), :class => 'btn btn-sm btn-success btn-flat', :method => :put %>
-        <% end %>
-            <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-primary btn-flat'  %>
-            <%= link_to t('.delete'), account_site_health_check_path(@account, @site, @health_check), :method => :delete, :class => "btn btn-sm btn-danger btn-flat", :data => { :confirm => t('.really_delete_health_check') } if current_user.can_delete_health_checks?(@account) %>
-          </dd>
+          <% end %>
+
+          <%= link_to t('.run'), account_site_health_check_check_runs_path(@account, @site, @health_check), :method => :post, :class => 'btn btn-sm btn-primary btn-flat'  %>
+          <%= link_to t('.delete'), account_site_health_check_path(@account, @site, @health_check), :method => :delete, :class => "btn btn-sm btn-danger btn-flat", :data => { :confirm => t('.really_delete_health_check') } if current_user.can_delete_health_checks?(@account) %>
+        </dd>
       <% end %>
     </dl>
 

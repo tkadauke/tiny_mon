@@ -273,14 +273,14 @@ de:
       status: Status
       time: Zeit
     index: 
-      check_runs_of_health_check_site: "Testläufe von Funktionstest %{health_check} (Site %{site})"
+      check_runs_of_health_check: "Testläufe von %{health_check}"
       filter: Filtern
       filter_active: "Filter aktiv"
       from: Von
       reset_filter: Zurücksetzen
       until: bis
     show: 
-      check_run_of_health_check_site: "Testlauf von %{health_check} (Site %{site})"
+      check_run_of_health_check: "Testlauf von %{health_check}"
   comment_mailer: 
     comment: 
       subject: "Neuer Kommentar für Funktionstest %{health_check}: %{title}"
@@ -527,7 +527,7 @@ de:
       site: Site
       status: Status
     edit: 
-      edit_health_check_for_site: "Funktionstest %{health_check} für Site %{site} bearbeiten"
+      edit_health_check: "%{health_check} bearbeiten"
     edit_multiple: 
       check_fields_you_want_to_change: "Wählen Sie die Felder an, die Sie ändern möchten."
       description: Beschreibung
@@ -662,7 +662,7 @@ de:
       previous: Vorheriges
   screenshots: 
     index: 
-      screenshots_of_health_check: "Bildschirmfotos von Funktionstest %{health_check}"
+      screenshots_of_health_check: "Bildschirmfotos von %{health_check}"
     list: 
       time_ago: "vor %{time}"
     show: 
@@ -816,7 +816,7 @@ de:
       name: Name
       no_steps_defined: "Keine Schritte definiert."
       options: Optionen
-      steps_for_health_check: "Schritte für Funktionstest %{health_check}"
+      steps_for_health_check: "Schritte für %{health_check}"
     page_must_be_loaded_before_this_step: "Vor diesem Schritt muss eine Seite geladen worden sein."
     run_script_step_form: 
       code: Code

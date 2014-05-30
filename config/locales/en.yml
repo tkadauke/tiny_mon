@@ -273,14 +273,14 @@ en:
       status: Status
       time: Time
     index: 
-      check_runs_of_health_check_site: "Check Runs of Health Check %{health_check} (Site %{site})"
+      check_runs_of_health_check: "Check Runs of %{health_check}"
       filter: Filter
       filter_active: "filter active"
       from: From
       reset_filter: "Reset filter"
       until: until
     show: 
-      check_run_of_health_check_site: "Check run of %{health_check} (site %{site})"
+      check_run_of_health_check: "Check run of %{health_check}"
   comment_mailer: 
     comment: 
       subject: "New Comment on Health Check %{health_check}: %{title}"
@@ -309,7 +309,7 @@ en:
       count_checks: 
         one: "1 check"
         other: "%{count} checks"
-      deployments_of_site: "Deployments of site %{site}"
+      deployments_of_site: "Deployments of Site %{site}"
       mark_deployment: "Mark site with deployment"
       no_deployments_found: "No deployments found for this site."
       revision: Revision
@@ -527,7 +527,7 @@ en:
       site: Site
       status: Status
     edit: 
-      edit_health_check_for_site: "Edit Health Check %{health_check} for Site %{site}"
+      edit_health_check: "Edit %{health_check}"
     edit_multiple: 
       check_fields_you_want_to_change: "Check the fields you want to change."
       description: Description
@@ -662,7 +662,7 @@ en:
       previous: Previous
   screenshots: 
     index: 
-      screenshots_of_health_check: "Screenshots of health check %{health_check}"
+      screenshots_of_health_check: "Screenshots of %{health_check}"
     list: 
       time_ago: "%{time} ago"
     show: 
@@ -816,7 +816,7 @@ en:
       name: Name
       no_steps_defined: "No steps defined."
       options: Options
-      steps_for_health_check: "Steps for Health Check %{health_check}"
+      steps_for_health_check: "Steps for %{health_check}"
     page_must_be_loaded_before_this_step: "A page must have been loaded before this step."
     run_script_step_form: 
       code: Code

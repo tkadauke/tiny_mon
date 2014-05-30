@@ -12,3 +12,4 @@ public/system
 public/stylesheets/*
 tmp/*
 .vagrant
+.bundle/config

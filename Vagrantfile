@@ -1,8 +1,9 @@
 require 'vagrant-berkshelf'
 
-ruby_version = File.read(".rvmrc")[/ruby-([^\s]+)/, 1]
+ruby_version = File.read("Gemfile")[/ruby '([^\s]+)'/, 1]
 
 Vagrant.configure("2") do |config|
+  config.omnibus.chef_version = "11.12.2" if Vagrant.has_plugin?("vagrant-omnibus")
   config.berkshelf.enabled = true
 
   config.vm.box = "precise64"
@@ -21,13 +22,17 @@ Vagrant.configure("2") do |config|
     
     chef.json = {
       :rvm => {
-        :version => '1.11.7',
-        :branch => "none",
         :user_installs => [{
           :user => 'vagrant',
+          :version => '1.25.19',
           :default_ruby => ruby_version,
-          :rubies => [ ruby_version ],
-        }]
+          :rubies => [
+            ruby_version
+          ]
+        }],
+        :vagrant => {
+          :system_chef_solo => '/usr/bin/chef-solo'
+        }
       },
       :mysql => {
         :server_root_password => '',
@@ -38,10 +43,12 @@ Vagrant.configure("2") do |config|
   end
   
   config.vm.provision :shell, :inline => <<-end
+    sudo apt-get install libmysqlclient-dev
+
     export HOME=/home/vagrant
     sudo -u vagrant bash --login -c '
       cd /vagrant
-      bundle install
+      bundle install --without vm
       rake db:create:all db:migrate
     '
   end

@@ -774,7 +774,7 @@ en:
     check_element_count_step_form: 
       maxcount: "Maximum count"
       mincount: "Minimum count"
-      selector: Selector
+      selector: "CSS selector for elements to be counted"
     check_email_step_form: 
       login: Login
       password: Password

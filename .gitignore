@@ -5,7 +5,7 @@ config/database.yml
 .DS_Store
 test/coverage
 Capfile
-config/deploy.rb
+config/deploy*
 config/deployments/production
 doc/TODO
 public/system

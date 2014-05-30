@@ -9,6 +9,9 @@
 
   <div class="box-body">
     <dl class="dl-horizontal well">
+      <dt><%= t('.health_check') %></dt>
+      <dd><%= link_to @site.name, account_site_path(@account, @site) %> / <%= @health_check.name %></dd>
+
       <% unless @health_check.description.blank? %>
         <dt><%= t('.description') %></dt>
         <dd>

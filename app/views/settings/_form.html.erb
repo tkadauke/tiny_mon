@@ -8,7 +8,7 @@
       <%= f.label option.key, translate_if_possible(option.name), :class => 'control-label' %>
 
       <% if option.values %>
-        <%= f.select option.key, option.values.sort %>
+        <%= f.select option.key, option.values.sort, {}, :class => 'form-control' %>
       <% elsif option.type != 'Boolean' %>
         <%= f.text_field option.key, :class => 'form-control' %>
       <% end %>

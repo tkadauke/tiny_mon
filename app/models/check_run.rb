@@ -75,6 +75,7 @@ protected
   end
 
   def truncate_values
-    self.last_response = self.last_response[0..65534] if self.last_response && self.last_response.length > 65534
+    self.last_response = self.last_response.truncate(65534) if self.last_response && self.last_response.length > 65534
+    self.error_message = self.error_message.truncate(254) if self.error_message && self.error_message.length > 254
   end
 end

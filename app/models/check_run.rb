@@ -14,6 +14,7 @@ class CheckRun < ActiveRecord::Base
   before_create :set_deployment
   after_update :update_health_check_status
   after_update :notify_subscribers, :if => :send_notification?
+  before_save :truncate_values
   
   scope :recent, lambda { order('check_runs.created_at DESC').limit(10) }
   scope :today, lambda { where(['created_at > ?', Date.today.to_time]) }
@@ -71,5 +72,9 @@ protected
   def previous_check_run
     runs = health_check.check_runs.where('status is not null').order('id desc').first(2)
     runs.last if runs.size == 2
+  end
+
+  def truncate_values
+    self.last_response = self.last_response[0..65534] if self.last_response && self.last_response.length > 65534
   end
 end

@@ -8,7 +8,7 @@
       <table class="table table-bordered dataTable">
         <thead>
           <tr>
-            <th class="hidden-xs"><%= t('.status') %></th>
+            <th class="status hidden-xs"><%= t('.status') %></th>
             <th><%= t('.name') %></th>
             <th><%= t('.options') %></th>
           </tr>
@@ -16,7 +16,7 @@
         <tbody>
           <% @accounts.each do |account| %>
             <tr class="<%= status_class account %>">
-              <td class="hidden-xs"><%= status_icon account %></td>
+              <td class="status hidden-xs"><%= status_icon account %></td>
               <td>
                 <% if current_user.can_switch_to_account?(account) %>
                   <%= link_to account.name, switch_account_path(account), :method => :post %>

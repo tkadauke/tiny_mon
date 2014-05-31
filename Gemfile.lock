@@ -50,9 +50,10 @@ GEM
       activerecord (>= 3.0)
     addressable (2.3.6)
     arel (4.0.2)
-    authlogic (3.3.0)
+    authlogic (3.4.0)
       activerecord (>= 3.2)
       activesupport (>= 3.2)
+      request_store (~> 1.0.5)
     background_lite (0.3.2)
     berkshelf (3.1.2)
       addressable (~> 2.3.4)
@@ -215,6 +216,7 @@ GEM
     redis-namespace (1.4.1)
       redis (~> 3.0.4)
     ref (1.0.5)
+    request_store (1.0.5)
     resque (1.25.2)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -311,7 +313,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
-  authlogic (~> 3.3.0)
+  authlogic (~> 3.4.0)
   background_lite (= 0.3.2)
   bootstrap-sass
   bootstrap-will_paginate

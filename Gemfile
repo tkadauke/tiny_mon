@@ -8,7 +8,7 @@ gem "acts_as_list"
 gem "capybara"
 gem "poltergeist", :require => 'capybara/poltergeist'
 gem "orderedhash"
-gem 'authlogic', '~> 3.3.0'
+gem 'authlogic', '~> 3.4.0'
 gem "background_lite", '0.3.2'
 gem "will_paginate"
 gem "permalink_fu"

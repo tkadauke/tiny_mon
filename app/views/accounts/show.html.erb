@@ -17,9 +17,7 @@
         <tr>
           <th></th>
           <th><%= t('.name') %></th>
-          <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
-            <th class="options"><%= t('.options') %></th>
-          <% end %>
+          <th class="options"><%= t('.options') %></th>
         </tr>
       </thead>
       <tbody>

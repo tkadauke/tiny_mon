@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130518150718) do
+ActiveRecord::Schema.define(version: 20140531091137) do
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 20130518150718) do
   add_index "check_runs", ["account_id", "created_at"], name: "index_check_runs_on_account_id_and_created_at", using: :btree
   add_index "check_runs", ["account_id"], name: "index_check_runs_on_account_id", using: :btree
   add_index "check_runs", ["created_at"], name: "index_check_runs_on_created_at", using: :btree
-  add_index "check_runs", ["deployment_id"], name: "index_check_runs_on_deployment_id", using: :btree
-  add_index "check_runs", ["health_check_id", "created_at"], name: "index_check_runs_on_health_check_id_and_created_at", using: :btree
+  add_index "check_runs", ["deployment_id"], name: "index_new_check_runs_on_deployment_id", using: :btree
+  add_index "check_runs", ["health_check_id", "created_at"], name: "index_new_check_runs_on_health_check_id_and_created_at", using: :btree
   add_index "check_runs", ["health_check_id"], name: "index_check_runs_on_health_check_id", using: :btree
 
   create_table "comments", force: true do |t|
@@ -166,27 +166,6 @@ ActiveRecord::Schema.define(version: 20130518150718) do
   add_index "health_checks", ["next_check_at"], name: "index_health_checks_on_next_check_at", using: :btree
   add_index "health_checks", ["site_id"], name: "index_health_checks_on_site_id", using: :btree
   add_index "health_checks", ["status"], name: "index_health_checks_on_status", using: :btree
-
-  create_table "lhma_2014_05_30_18_15_53_651_check_runs", force: true do |t|
-    t.integer  "health_check_id"
-    t.string   "status"
-    t.text     "log"
-    t.string   "error_message"
-    t.decimal  "started_at",      precision: 20, scale: 10
-    t.decimal  "ended_at",        precision: 20, scale: 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "account_id"
-    t.integer  "deployment_id"
-    t.integer  "user_id"
-  end
-
-  add_index "lhma_2014_05_30_18_15_53_651_check_runs", ["account_id", "created_at"], name: "index_check_runs_on_account_id_and_created_at", using: :btree
-  add_index "lhma_2014_05_30_18_15_53_651_check_runs", ["account_id"], name: "index_check_runs_on_account_id", using: :btree
-  add_index "lhma_2014_05_30_18_15_53_651_check_runs", ["created_at"], name: "index_check_runs_on_created_at", using: :btree
-  add_index "lhma_2014_05_30_18_15_53_651_check_runs", ["deployment_id"], name: "index_check_runs_on_deployment_id", using: :btree
-  add_index "lhma_2014_05_30_18_15_53_651_check_runs", ["health_check_id", "created_at"], name: "index_check_runs_on_health_check_id_and_created_at", using: :btree
-  add_index "lhma_2014_05_30_18_15_53_651_check_runs", ["health_check_id"], name: "index_check_runs_on_health_check_id", using: :btree
 
   create_table "screenshot_comparisons", force: true do |t|
     t.integer  "check_run_id"

@@ -9,14 +9,14 @@
         <thead>
           <tr>
             <th><%= t(".name") %></th>
-            <th><%= t(".options") %></th>
+            <th class="options"><%= t(".options") %></th>
           </tr>
         </thead>
         <tbody>
           <% @health_check_templates.each do |health_check_template| %>
             <tr>
               <td><%= link_to health_check_template.name, edit_health_check_template_path(health_check_template) %></td>
-              <td>
+              <td class="options">
                 <%= btn_group t(".edit"), edit_health_check_template_path(health_check_template) do |b| %>
                   <% b.link_to t(".delete"), health_check_template_path(health_check_template), :method => :delete, :data => { :confirm => t(".really_delete_template") } %>
                 <% end %>

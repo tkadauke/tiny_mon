@@ -64,21 +64,26 @@ aside.right-side {
   text-decoration: line-through;
 }
 
-th.check {
-  width: 20px;
-}
-
-th.status,
-td.status {
-  width: 45px;
-}
-
 .small-box > .inner {
   max-height: 90px;
 }
 
 table {
   margin-bottom: 20px !important;
+
+  th.check {
+    width: 20px;
+  }
+
+  th.status,
+  td.status {
+    width: 45px;
+  }
+
+  th.options,
+  td.options {
+    width: 130px;
+  }
 }
 
 textarea.enter-code {

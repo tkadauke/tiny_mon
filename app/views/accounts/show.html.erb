@@ -17,7 +17,9 @@
         <tr>
           <th></th>
           <th><%= t('.name') %></th>
-          <th><%= t('.options') %></th>
+          <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
+            <th class="options"><%= t('.options') %></th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -37,7 +39,7 @@
               <% end %>
             </td>
             <% if current_user.can_remove_user_from_account?(user_account.user, @account) %>
-              <td><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :data => { :confirm => t('.really_remove_user_from_account') }, :class => 'btn btn-default btn-sm btn-flat' %></td>
+              <td class="options"><%= link_to t('.remove'), account_user_account_path(@account, user_account), :method => :delete, :data => { :confirm => t('.really_remove_user_from_account') }, :class => 'btn btn-default btn-sm btn-flat' %></td>
             <% end %>
           </tr>
         <% end %>

@@ -4,7 +4,7 @@
       <th><%= t('.name') %></th>
       <th class="hidden-xs"><%= t('.email') %></th>
       <th><%= t('.accounts') %></th>
-      <th><%= t('.options') %></th>
+      <th class="options"><%= t('.options') %></th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +13,7 @@
         <td><%= link_to highlight(user.full_name, @search_filter.query), user_path(user) %></td>
         <td class="hidden-xs"><%= mail_to user.email, highlight(user.email, @search_filter.query) %></td>
         <td><%= user.accounts.count %></td>
-        <td><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-sm btn-default btn-flat' %></td>
+        <td class="options"><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-sm btn-default btn-flat' %></td>
       </tr>
     <% end %>
   </tbody>

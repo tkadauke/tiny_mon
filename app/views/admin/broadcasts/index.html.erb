@@ -10,7 +10,7 @@
           <tr>
             <th><%= t('.title') %></th>
             <th class="hidden-xs"><%= t('.sent_at') %></th>
-            <th><%= t('.options') %></th>
+            <th class="options"><%= t('.options') %></th>
           </tr>
         </thead>
         <tbody id="links">
@@ -18,7 +18,7 @@
             <tr>
               <td><%= link_to broadcast.title, admin_broadcast_path(broadcast) %></td>
               <td class="hidden-xs"><%= time_ago_in_words broadcast.sent_at if broadcast.sent_at %></td>
-              <td>
+              <td class="options">
                 <% if broadcast.sent_at %>
                   <%= link_to t('.remove'), admin_broadcast_path(broadcast), :method => :delete, :data => { :confirm => t('.really_remove_broadcast') }, :class => 'btn btn-default btn-sm btn-flat' %>
                 <% else %>

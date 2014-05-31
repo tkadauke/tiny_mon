@@ -18,7 +18,7 @@
             <th><%= t('.name') %></th>
             <th class="hidden-xs"><%= t('.details') %></th>
             <% if current_user.can_edit_health_checks?(@account) %>
-              <th><%= t('.options') %></th>
+              <th class="options"><%= t('.options') %></th>
             <% end %>
           </tr>
         </thead>
@@ -42,7 +42,7 @@
                   <div id="step_<%= step.id %>"><%= render_step_details(step) %></div>
                 </td>
                 <% if current_user.can_edit_health_checks?(@account) %>
-                  <td>
+                  <td class="options">
                     <%= btn_group t('.edit'), edit_account_site_health_check_step_path(@account, @site, @health_check, step), :remote => true do |b| %>
                       <% b.link_to t('.copy'), new_account_site_health_check_step_path(@account, @site, @health_check, :clone => step) %>
                       <% b.link_to t('.delete'), account_site_health_check_step_path(@account, @site, @health_check, step), :method => :delete, :data => { :confirm => t('.are_you_sure') } %>

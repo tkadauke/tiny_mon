@@ -10,7 +10,7 @@
           <tr>
             <th class="status hidden-xs"><%= t('.status') %></th>
             <th><%= t('.name') %></th>
-            <th><%= t('.options') %></th>
+            <th class="options"><%= t('.options') %></th>
           </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                   <%= account.name %>
                 <% end %>
               </td>
-              <td>
+              <td class="options">
                 <%= btn_group t('.details'), account_path(account) do |b| %>
                   <% b.link_to t('.edit'), edit_account_path(account) %>
                 <% end %>

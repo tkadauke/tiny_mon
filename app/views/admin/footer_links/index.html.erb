@@ -11,7 +11,7 @@
             <th>&nbsp;</th>
             <th><%= t('.name') %></th>
             <th class="hidden-xs"><%= t('.url') %></th>
-            <th><%= t('.options') %></th>
+            <th class="options"><%= t('.options') %></th>
           </tr>
         </thead>
         <tbody id="links">
@@ -20,7 +20,7 @@
               <td class="handle" title="<%= t('.drag_to_sort') %>">&nbsp;&#x2195;&nbsp;</td>
               <td><%= footer_link.text %></td>
               <td class="hidden-xs"><%= link_to footer_link.url, footer_link.url %></td>
-              <td>
+              <td class="options">
                 <%= btn_group t('.edit'), edit_admin_footer_link_path(footer_link) do |b| %>
                   <% b.link_to t('.remove'), admin_footer_link_path(footer_link), :method => :delete, :data => { :confirm => t('.really_remove_footer_link') } %>
                 <% end %>

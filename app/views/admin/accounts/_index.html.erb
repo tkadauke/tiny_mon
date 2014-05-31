@@ -3,7 +3,7 @@
     <tr>
       <th><%= t('.name') %></th>
       <th><%= t('.users') %></th>
-      <th><%= t('.options') %></th>
+      <th class="options"><%= t('.options') %></th>
     </tr>
   </thead>
   <tbody>
@@ -11,7 +11,7 @@
       <tr>
         <td><%= link_to highlight(account.name, @search_filter.query), admin_account_path(account) %></td>
         <td><%= account.users.count %></td>
-        <td><%= link_to 'Edit', edit_admin_account_path(account), :class => 'btn btn-sm btn-default btn-flat' %></td>
+        <td class="options"><%= link_to 'Edit', edit_admin_account_path(account), :class => 'btn btn-sm btn-default btn-flat' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -18,7 +18,7 @@
             <% end %>
             <th><%= t(".who") %></th>
             <th><%= t(".description") %></th>
-            <th><%= t(".options") %></th>
+            <th class="options"><%= t(".options") %></th>
           </tr>
         </thead>
         <tbody>
@@ -31,9 +31,9 @@
               <td><%= link_to health_check_import.user.full_name, user_path(health_check_import.user) %></td>
               <td><%= link_to health_check_import.description, health_check_import_path(health_check_import) unless health_check_import.description.blank? %></td>
               <% if @site.blank? %>
-                <td><%= link_to t('.delete'), health_check_import_path(health_check_import), :method => :delete, :data => { :confirm => t(".really_delete_import") }, :class => 'btn btn-default btn-sm btn-flat' %></td>
+                <td class="options"><%= link_to t('.delete'), health_check_import_path(health_check_import), :method => :delete, :data => { :confirm => t(".really_delete_import") }, :class => 'btn btn-default btn-sm btn-flat' %></td>
               <% else %>
-                <td><%= link_to t('.delete'), account_site_health_check_import_path(@account, @site, health_check_import), :method => :delete, :data => { :confirm => t(".really_delete_import") }, :class => 'btn btn-default btn-sm btn-flat' %></td>
+                <td class="options"><%= link_to t('.delete'), account_site_health_check_import_path(@account, @site, health_check_import), :method => :delete, :data => { :confirm => t(".really_delete_import") }, :class => 'btn btn-default btn-sm btn-flat' %></td>
               <% end %>
             </tr>
           <% end %>

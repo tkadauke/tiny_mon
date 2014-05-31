@@ -10,8 +10,7 @@ class StepsController < ApplicationController
   respond_to :html, :xml, :json, :js
   
   def index
-    @steps = @health_check.steps
-    respond_with @steps
+    respond_with @steps = @health_check.steps
   end
 
   def new
@@ -28,8 +27,7 @@ class StepsController < ApplicationController
   
   def edit
     can_edit_health_checks!(@account) do
-      @step = @health_check.steps.find(params[:id])
-      respond_with @step
+      respond_with @step = @health_check.steps.find(params[:id])
     end
   end
   
@@ -41,7 +39,7 @@ class StepsController < ApplicationController
       if @step.save
         respond_with @step, :location => account_site_health_check_steps_path(@account, @site, @health_check)
       else
-        index
+        @steps = @health_check.steps
         render :action => 'index'
       end
     end
@@ -51,7 +49,7 @@ class StepsController < ApplicationController
     can_edit_health_checks!(@account) do
       @step = @health_check.steps.find(params[:id])
       @step.update_attributes(step_update_params(@step.type))
-      respond_with @step do |format|
+      respond_with @step, :location => account_site_health_check_steps_path(@account, @site, @health_check) do |format|
         format.html { redirect_to :back }
       end
     end
@@ -78,11 +76,13 @@ class StepsController < ApplicationController
 
 protected
   def step_params
-    params.require(params[:type]+'_step').permit(:id, :url, :content, :negate, :name, :scope, :mincount, :maxcount)
+    klass = "#{params[:type]}_step".classify.constantize
+    params.require(klass.name.underscore).permit(klass.properties.keys)
   end
 
-  def step_update_params type
-    params.require(type.underscore.to_sym).permit(:id, :url, :content, :negate, :name, :scope, :mincount, :maxcount)
+  def step_update_params(type)
+    klass = type.constantize
+    params.require(klass.name.underscore).permit([:id] + klass.properties.keys)
   end
 
   def find_site

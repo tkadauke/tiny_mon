@@ -54,6 +54,6 @@ class Admin::BroadcastsController < ApplicationController
 
 private
   def broadcast_params
-   params.require(:broadcast).permit(:title, :text)
+    params.require(:broadcast).permit(:title, :text)
   end
 end

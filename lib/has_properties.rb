@@ -6,6 +6,8 @@ module HasProperties
       
       cattr_accessor :property_field
       self.property_field = options[:in]
+      class_attribute :properties
+      self.properties = {}
       
       serialize self.property_field, Hash
 
@@ -16,6 +18,8 @@ module HasProperties
   
   module ClassMethods
     def property(name, type)
+      self.properties = self.properties.merge(name => type)
+
       define_method name do
         convert_property(property_hash[name.to_s], type)
       end

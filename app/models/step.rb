@@ -13,23 +13,23 @@ class Step < ActiveRecord::Base
   
   def self.available_types
     [
-        'visit',
-        'check_content',
-        'check_current_url',
-        'fill_in',
-        'check_element_count',
-        'select_check_box',
-        'deselect_check_box',
-        'choose_radio_button',
-        'select_dropdown',
-        'click_button',
-        'click_link',
-        'wait',
-        'submit_form',
-        'check_email',
-        'click_email_link',
-        'take_screenshot',
-        'run_script'
+      'visit',
+      'check_content',
+      'check_current_url',
+      'fill_in',
+      'check_element_count',
+      'select_check_box',
+      'deselect_check_box',
+      'choose_radio_button',
+      'select_dropdown',
+      'click_button',
+      'click_link',
+      'wait',
+      'submit_form',
+      'check_email',
+      'click_email_link',
+      'take_screenshot',
+      'run_script'
     ]
   end
   

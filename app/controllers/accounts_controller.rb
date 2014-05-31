@@ -15,8 +15,9 @@ class AccountsController < ApplicationController
   
   def show
     @account = Account.find(params[:id])
-    can_see_account!(@account)
-    respond_with @account, :for => current_user
+    can_see_account!(@account) do
+      respond_with @account, :for => current_user
+    end
   end
   
   def edit

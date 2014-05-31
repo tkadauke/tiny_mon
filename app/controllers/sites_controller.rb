@@ -7,14 +7,12 @@ class SitesController < ApplicationController
   
   def index
     @search_filter = SearchFilter.new(params[:search_filter])
-    @sites = @account.sites.find_for_list(@search_filter)
-    respond_with @sites
+    respond_with @sites = @account.sites.find_for_list(@search_filter)
   end
   
   def new
     can_create_sites!(@account) do
-      @site = @account.sites.new
-      respond_with @site
+      respond_with @site = @account.sites.new
     end
   end
   
@@ -29,14 +27,12 @@ class SitesController < ApplicationController
   end
   
   def show
-    @site = @account.sites.find_by_permalink!(params[:id])
-    respond_with @site
+    respond_with @site = @account.sites.find_by_permalink!(params[:id])
   end
   
   def edit
     can_edit_sites!(@account) do
-      @site = @account.sites.find_by_permalink!(params[:id])
-      respond_with @site
+      respond_with @site = @account.sites.find_by_permalink!(params[:id])
     end
   end
   
@@ -61,6 +57,6 @@ class SitesController < ApplicationController
 
 private
   def site_params
-    params.require(:site).permit :name, :url
+    params.require(:site).permit(:name, :url)
   end
 end

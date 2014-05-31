@@ -13,7 +13,7 @@ class DeploymentsController < ApplicationController
   
   def new
     can_create_deployments!(@account) do
-      @deployment = @site.deployments.build
+      @deployment = @site.deployments.new
     end
   end
   
@@ -23,33 +23,36 @@ class DeploymentsController < ApplicationController
   end
   
   def create
-    @deployment = @site.deployments.build(params[:deployment])
-    if @deployment.save
-      @deployment.schedule_checks!
-      flash[:notice] = I18n.t("flash.notice.created_deployment")
-      redirect_to account_site_deployments_path(@account, @site)
-    else
-      render :action => 'new'
+    can_create_deployments!(@account) do
+      @deployment = @site.deployments.build(deployment_params)
+      if @deployment.save
+        @deployment.schedule_checks!
+        flash[:notice] = I18n.t("flash.notice.created_deployment")
+        redirect_to account_site_deployments_path(@account, @site)
+      else
+        render :action => 'new'
+      end
     end
+  end
+
+private
+  def deployment_params
+    params.require(:deployment).permit(:revision, :schedule_checks_in) if params[:deployment]
   end
 
 protected
   def find_site_by_token_or_login_required
     if params[:token].blank?
-      [:verify_authenticity_token, :login_required, :find_account, :find_site, :check_permissions].each do |filter|
+      [:verify_authenticity_token, :login_required, :find_account, :find_site].each do |filter|
         return false if send(filter) == false
       end
     else
-      @site = Site.find_by_deployment_token(params[:token])
+      @site = Site.find_by_deployment_token!(params[:token])
       @account = @site.account
     end
   end
   
   def find_site
     @site = @account.sites.find_by_permalink!(params[:site_id])
-  end
-  
-  def check_permissions
-    can_create_deployments!(@account)
   end
 end

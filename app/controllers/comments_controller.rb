@@ -11,14 +11,12 @@ class CommentsController < ApplicationController
       @comments = @health_check.comments
     elsif @user
       @comments = @user.comments_for_user(current_user)
-    else
-      raise ActiveRecord::RecordNotFound
     end
   end
   
   def new
     can_create_comments!(@account) do
-      @comment = @check_run.comments.build()
+      @comment = @check_run.comments.new
     end
   end
   
@@ -37,7 +35,7 @@ class CommentsController < ApplicationController
 
 private
   def comment_params
-    params.require(:comment).permit(:text, :user)
+    params.require(:comment).permit(:title, :text)
   end
 
 protected
@@ -69,6 +67,6 @@ protected
   end
   
   def find_check_run
-    @check_run = @health_check.check_runs.find_by_id(params[:check_run_id])
+    @check_run = @health_check.check_runs.find(params[:check_run_id]) if params[:check_run_id]
   end
 end

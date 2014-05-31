@@ -19,7 +19,7 @@ class HealthCheckTemplatesController < ApplicationController
   end
   
   def create
-    @health_check_template = HealthCheckTemplate.new(health_check_params)
+    @health_check_template = HealthCheckTemplate.new(health_check_template_params)
     @health_check_template.user = current_user
     @health_check_template.account = current_user.current_account
     if @health_check_template.save
@@ -33,11 +33,11 @@ class HealthCheckTemplatesController < ApplicationController
   def update
     @health_check_template = HealthCheckTemplate.find(params[:id])
     can_edit_health_check_template!(@health_check_template) do
-      if @health_check_template.update_attributes(health_check_params)
+      if @health_check_template.update_attributes(health_check_template_params)
         flash[:notice] = I18n.t("flash.notice.updated_health_check_template")
         redirect_to health_check_templates_path
       else
-        render :action => 'new'
+        render :action => 'edit'
       end
     end
   end
@@ -52,11 +52,20 @@ class HealthCheckTemplatesController < ApplicationController
   end
 
 protected
-  def health_check_params
-    params.require(:health_check_template).permit!
+  def health_check_template_params
+    params.require(:health_check_template).permit(
+      :name, :name_template, :description, :public, :interval,
+      { :variables_attributes => [ :id, :_destroy, :name, :display_name, :description, :type, :required, :position ] },
+      { :steps_attributes => [ :id, :_destroy, :step_type, ] }
+    ).tap do |whitelisted|
+      # Allow all keys for the step_data subhash
+      whitelisted[:steps_attributes].each do |index, attributes|
+        attributes[:step_data] = params[:health_check_template][:steps_attributes][index][:step_data]
+      end if whitelisted[:steps_attributes]
+    end
   end
 
   def check_account_permissions
-    deny_access unless current_user.can_create_health_check_templates?(@account)
+    can_create_health_check_templates!(@account)
   end
 end

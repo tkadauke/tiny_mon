@@ -40,16 +40,13 @@ class HealthChecksController < ApplicationController
   end
   
   def upcoming
-    @upcoming_health_checks = @account.health_checks.upcoming.limit(20).includes(:site)
-    respond_with @upcoming_health_checks
+    respond_with @account.health_checks.upcoming.limit(20).includes(:site)
   end
   
   def new
     can_create_health_checks!(@account) do
       find_templates
-      @health_check = @site.health_checks.build
-
-      respond_with @health_check
+      respond_with @health_check = @site.health_checks.build
     end
   end
   
@@ -79,17 +76,7 @@ class HealthChecksController < ApplicationController
   
   def edit
     can_edit_health_checks!(@account) do
-      @health_check = @site.health_checks.find_by_permalink!(params[:id])
-      respond_with @health_check
-    end
-  end
-  
-  def edit_multiple
-    redirect_to :back and return if params[:health_check_ids].blank?
-    
-    can_edit_health_checks!(@account) do
-      @health_checks = @account.health_checks.order('sites.name ASC, health_checks.name ASC').includes(:site).find(params[:health_check_ids])
-      respond_with @health_checks
+      respond_with @health_check = @site.health_checks.find_by_permalink!(params[:id])
     end
   end
   
@@ -104,11 +91,19 @@ class HealthChecksController < ApplicationController
     end
   end
   
+  def edit_multiple
+    redirect_to :back and return if params[:health_check_ids].blank?
+    
+    can_edit_health_checks!(@account) do
+      respond_with @health_checks = @account.health_checks.order('sites.name ASC, health_checks.name ASC').includes(:site).find(params[:health_check_ids])
+    end
+  end
+  
   def update_multiple
     can_edit_health_checks!(@account) do
       @health_checks = @account.health_checks.find(params[:health_check_ids])
       updated = @health_checks.map do |health_check|
-        health_check.bulk_update(health_check_params)
+        health_check.bulk_update(bulk_health_check_params)
       end
       
       flash[:notice] = I18n.t("flash.notice.bulk_updated_health_checks", :count => updated.count(true))
@@ -127,7 +122,17 @@ class HealthChecksController < ApplicationController
 
 private
   def health_check_params
-    params.require(:health_check).permit(:enabled, :name, :description, :interval, :bulk_update_interval)
+    params.require(:health_check).permit(:enabled, :name, :description, :interval).tap do |whitelisted|
+      # Allow all keys for the template_data subhash
+      whitelisted[:template_data] = params[:health_check][:template_data]
+    end
+  end
+
+  def bulk_health_check_params
+    params.require(:health_check).permit(
+      :enabled, :name, :description, :interval,
+      :bulk_update_interval, :bulk_update_description, :bulk_update_name, :bulk_update_enabled
+    )
   end
 
 protected

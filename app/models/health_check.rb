@@ -139,8 +139,8 @@ class HealthCheck < ActiveRecord::Base
   def as_json(options = {})
     attributes.merge(
       :site => site,
-      :next_check_at_to_now => next_check_at.seconds_to_now,
-      :last_checked_at_to_now => last_checked_at.seconds_to_now
+      :next_check_at_to_now => next_check_at.try(:seconds_to_now),
+      :last_checked_at_to_now => last_checked_at.try(:seconds_to_now)
     )
   end
   

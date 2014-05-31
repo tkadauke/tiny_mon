@@ -9,6 +9,6 @@ class HealthCheckTemplateStepDataController < ApplicationController
 
 protected
   def check_account_permissions
-    deny_access unless current_user.can_create_health_check_templates?(@account)
+    can_create_health_check_templates!(@account)
   end
 end

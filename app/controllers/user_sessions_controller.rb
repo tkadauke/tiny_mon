@@ -5,8 +5,7 @@ class UserSessionsController < ApplicationController
   respond_to :html, :xml, :json
 
   def new
-    @user_session = UserSession.new
-    respond_with @user_session
+    respond_with @user_session = UserSession.new
   end
 
   def create

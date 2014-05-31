@@ -8,7 +8,7 @@
   </ul>
 
   <div class="btn-group visible-xs">
-    <% active = tabs.find { |tab| tab[:name] == options[:selected] } %>
+    <% active = tabs.find { |tab| tab[:name] == options[:selected] } || tabs.first %>
 
     <%= link_to %{#{active[:text]} <span class="caret"></span>}.html_safe, '#', :class => 'btn btn-default btn-small btn-flat', 'data-toggle' => 'dropdown' %>
   

@@ -38,11 +38,20 @@ end
 
 group :development do
   gem 'i18n_tools'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'guard-rspec'
+  gem 'rb-fsevent'
+  gem 'terminal-notifier'
+  gem 'terminal-notifier-guard'
 end
 
 group :test do
   gem 'simplecov', '~> 0.7.1', :require => false
-  gem 'mocha'
+  gem 'mocha' #removeme
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do

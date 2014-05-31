@@ -59,7 +59,7 @@ class HealthCheckImportsController < ApplicationController
 
 private
   def health_check_import_params
-    params.require(:health_check_import).permit(:health_check_template_id, :csv_data)
+    params.require(:health_check_import).permit(:health_check_template_id, :description, :csv_data)
   end
 
 protected
@@ -86,6 +86,6 @@ protected
   end
   
   def check_account_permissions
-    deny_access unless current_user.can_create_health_check_imports?(@account)
+    can_create_health_check_imports!(@account)
   end
 end

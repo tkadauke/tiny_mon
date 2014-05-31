@@ -40,7 +40,7 @@ module Role::User
   end
   
   def can_edit_health_check_template?(template)
-    self == template.user || user_account_for(template.account).can_edit_health_check_template?
+    self == template.user || user_account_for(template.account).try(:can_edit_health_check_template?)
   end
   
   allow :edit_settings, :see_account_details

@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :check_run
   belongs_to :user
+  belongs_to :account
   
   before_save :set_account_id
   

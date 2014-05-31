@@ -18,11 +18,16 @@ class Admin::AccountsController < ApplicationController
   
   def update
     @account = Account.find(params[:id])
-    if @account.update_attributes_without_attr_protected(params[:account])
+    if @account.update_attributes(account_params)
       flash[:notice] = I18n.t("flash.notice.updated_account", :account => @account.name)
       redirect_to admin_accounts_path
     else
       render :action => 'edit'
     end
+  end
+
+private
+  def account_params
+    params.require(:account).permit(:name, :maximum_check_runs_per_day)
   end
 end

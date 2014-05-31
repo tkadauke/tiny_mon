@@ -1,4 +1,5 @@
 class UserAccountsController < ApplicationController
+  before_filter :login_required
   before_filter :find_account
   
   respond_to :html, :xml, :json
@@ -13,7 +14,7 @@ class UserAccountsController < ApplicationController
   
   def new
     can_add_user_to_account!(@account) do
-      @user_account = @account.user_accounts.build
+      @user_account = @account.user_accounts.new
     end
   end
   

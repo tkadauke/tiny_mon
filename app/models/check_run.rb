@@ -44,7 +44,7 @@ class CheckRun < ActiveRecord::Base
     attributes.merge(
       :duration => duration,
       :health_check => health_check,
-      :created_at_to_now => created_at.seconds_to_now
+      :created_at_to_now => created_at.try(:seconds_to_now)
     )
   end
   
@@ -66,7 +66,7 @@ protected
   end
   
   def send_notification?
-    user.blank? && health_check.enabled? && self.status != previous_check_run.status
+    user.blank? && health_check.enabled? && self.status != previous_check_run.try(:status)
   end
   
   def previous_check_run

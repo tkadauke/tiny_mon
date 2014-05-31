@@ -9,7 +9,6 @@ class CheckRunsController < ApplicationController
   respond_to :html, :xml, :json
   
   def index
-    @check_run_filter.health_check_id = @health_check.id if @health_check
     @check_runs = @health_check.check_runs.recent.where(@check_run_filter.conditions).includes(:health_check).paginate(:page => params[:page])
 
     respond_with @check_runs do |format|
@@ -68,5 +67,7 @@ protected
         @check_run_filter = CheckRunFilter.new
       end
     end
+
+    @check_run_filter.health_check_id = @health_check.id
   end
 end

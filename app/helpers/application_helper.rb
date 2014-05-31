@@ -62,10 +62,10 @@ module ApplicationHelper
         [parent_model, I18n.t("breadcrumb.#{elements[i]}")]
       end
 
-      if sofar == request.path
+      if sofar == request.fullpath
         items << "<strong>"  + link_text + '</strong>'
       else
-        items << "<a href='#{sofar}'>"  + link_text + '</a>'
+        items << %{<a href="#{sofar}">}  + link_text + '</a>'
       end
     end
     

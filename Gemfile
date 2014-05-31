@@ -41,6 +41,7 @@ group :development do
 end
 
 group :test do
+  gem 'simplecov', '~> 0.7.1', :require => false
   gem 'mocha'
 end
 

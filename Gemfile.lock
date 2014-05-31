@@ -255,6 +255,10 @@ GEM
       ffi-compiler (>= 0.0.2)
       rake
     semverse (1.1.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sinatra (1.4.4)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -346,6 +350,7 @@ DEPENDENCIES
   rinku
   sass-rails (~> 4.0.0)
   scrypt
+  simplecov (~> 0.7.1)
   therubyracer
   uglifier (>= 1.0.3)
   vagrant!

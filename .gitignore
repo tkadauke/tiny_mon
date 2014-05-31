@@ -11,5 +11,6 @@ doc/TODO
 public/system
 public/stylesheets/*
 tmp/*
+coverage
 .vagrant
 .bundle/config

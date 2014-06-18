@@ -78,11 +78,11 @@ class StepsController < ApplicationController
 
 protected
   def step_params
-    params.require(params[:type]+'_step').permit(:id, :url, :content, :negate, :name, :scope, :mincount, :maxcount)
+    params.require(params[:type]+'_step').permit(:id, :url, :duration, :content, :negate, :name, :scope, :mincount, :maxcount)
   end
 
   def step_update_params type
-    params.require(type.underscore.to_sym).permit(:id, :url, :content, :negate, :name, :scope, :mincount, :maxcount)
+    params.require(type.underscore.to_sym).permit(:id, :url, :duration, :content, :negate, :name, :scope, :mincount, :maxcount)
   end
 
   def find_site

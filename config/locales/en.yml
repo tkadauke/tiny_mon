@@ -741,7 +741,8 @@ en:
     one_or_more_checks_failed: "One or more checks failed"
     success: Success
   step: 
-    check_content: "Check content"
+    check_content: "Check content (HTML)"
+    check_text: "Check content (Text)"
     check_current_url: "Check current URL"
     check_element_count: "Check count"
     check_email: "Check email"

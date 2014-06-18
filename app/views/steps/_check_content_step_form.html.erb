@@ -2,10 +2,10 @@
   <%= f.label :content, t('.content'), :class => 'control-label required' %>
   <%= f.text_field :content, :class => 'form-control' %>
 </p>
-
+<%= render :partial => "/steps/scope_field", :locals => { :f => f } %>
 <p>
   <%= f.check_box :negate %>
   <%= f.label :negate, t('.negate'), :class => 'control-label required' %>
-</div>
+</p>
 
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

@@ -1,0 +1,10 @@
+<p>
+    <%= f.label :content, t('.content'), :class => 'control-label required' %>
+    <%= f.text_field :content, :class => 'form-control' %>
+</p>
+<p>
+    <%= f.check_box :negate %>
+    <%= f.label :negate, t('.negate'), :class => 'control-label required' %>
+</p>
+
+<p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

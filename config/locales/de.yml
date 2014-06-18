@@ -741,7 +741,8 @@ de:
     one_or_more_checks_failed: "Einer oder mehr Funktionstests fehlgeschlagen"
     success: Erfolg
   step: 
-    check_content: "Durchsuche Inhalt"
+    check_content: "Durchsuche Inhalt (HTML)"
+    check_text: "Durchsuche Inhalt (Text)"
     check_current_url: "Aktuelle URL prüfen"
     check_element_count: "Zähle Elemente"
     check_email: "Rufe E-Mail ab"

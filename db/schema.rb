@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140531091137) do
+ActiveRecord::Schema.define(version: 201340618213019) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20140531091137) do
     t.string   "title"
     t.text     "text"
     t.datetime "sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "check_runs", force: true do |t|
@@ -34,14 +37,15 @@ ActiveRecord::Schema.define(version: 20140531091137) do
     t.string   "status"
     t.text     "log"
     t.string   "error_message"
-    t.decimal  "started_at",      precision: 20, scale: 10
-    t.decimal  "ended_at",        precision: 20, scale: 10
+    t.decimal  "started_at",               precision: 20, scale: 10
+    t.decimal  "ended_at",                 precision: 20, scale: 10
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "account_id"
     t.integer  "deployment_id"
     t.integer  "user_id"
     t.text     "last_response"
+    t.boolean  "always_send_notification"
   end
 
   add_index "check_runs", ["account_id", "created_at"], name: "index_check_runs_on_account_id_and_created_at", using: :btree
@@ -152,13 +156,14 @@ ActiveRecord::Schema.define(version: 20140531091137) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-    t.integer  "interval",               default: 60
-    t.boolean  "enabled",                default: false
+    t.integer  "interval",                 default: 60
+    t.boolean  "enabled",                  default: false
     t.string   "permalink"
     t.datetime "last_checked_at"
     t.datetime "next_check_at"
     t.integer  "health_check_import_id"
     t.integer  "weather"
+    t.boolean  "always_send_notification"
   end
 
   add_index "health_checks", ["enabled"], name: "index_health_checks_on_enabled", using: :btree

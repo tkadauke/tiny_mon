@@ -47,7 +47,11 @@ class CheckRun < ActiveRecord::Base
       :created_at_to_now => created_at.seconds_to_now
     )
   end
-  
+
+  def status_has_changed?
+    self.status != previous_check_run.status
+  end
+
 protected
   def set_account
     self.account_id = health_check.site.account_id
@@ -66,9 +70,14 @@ protected
   end
   
   def send_notification?
+    if user.blank? && health_check.always_send_notification? &&health_check.enabled?
+      return true
+    end
     user.blank? && health_check.enabled? && self.status != previous_check_run.status
   end
-  
+
+
+
   def previous_check_run
     runs = health_check.check_runs.where('status is not null').order('id desc').first(2)
     runs.last if runs.size == 2

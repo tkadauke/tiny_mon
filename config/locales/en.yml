@@ -549,6 +549,7 @@ en:
       interval: "Check Interval"
       name: Name
       save_health_check: "Save health check"
+      send_notifications_always: "Send notifications on EVERY run"
     hash_variable: 
       add_more: "Add another mapping"
     index: 
@@ -591,6 +592,9 @@ en:
       interval_minutes: 
         one: "%{count} minute"
         other: "%{count} minutes"
+      notification: "Notification"
+      notification_on_every_run: "on every run"
+      notification_on_change: "on every status change"
       last_check_run: "Last check run"
       really_delete_health_check: "Do you really want to delete this health check including all check runs? This operation can not be undone."
       run: Run

@@ -22,7 +22,13 @@
       <dt><%= t('.interval') %></dt>
       <dd><%= t('.interval_minutes', :count => @health_check.interval) %></dd>
 
-      <% if @health_check.last_check_run %>
+      <dt><%= t('.notification') %></dt>
+      <dd>
+          <%= t('.notification_on_every_run')if @health_check.always_send_notification %>
+          <%= t('.notification_on_change')if !@health_check.always_send_notification %>
+      </dd>
+
+        <% if @health_check.last_check_run %>
         <dt><%= t('.last_check_run') %></dt>
         <dd>
           <%= status_icon(@health_check.last_check_run) %>

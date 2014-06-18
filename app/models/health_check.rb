@@ -87,7 +87,7 @@ class HealthCheck < ActiveRecord::Base
   def subscribers
     site.account.users
   end
-  
+
   def prepare_check!
     update_attribute(:next_check_at, nil)
   end

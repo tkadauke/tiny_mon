@@ -549,6 +549,7 @@ de:
       interval: Prüf-Intervall
       name: Name
       save_health_check: "Funktionstest speichern"
+      send_notifications_always: "Benachrichtigung bei JEDEM Durchgang schicken"
     hash_variable: 
       add_more: "Weitere Zuordnung hinzufügen"
     index: 
@@ -591,6 +592,9 @@ de:
       interval_minutes: 
         one: "%{count} Minute"
         other: "%{count} Minuten"
+      notification: "Benachrichtigung"
+      notification_on_every_run: "Bei jedem Durchlauf"
+      notification_on_change: "Bei jeder Status-Änderung"
       last_check_run: "Letzter Testlauf"
       really_delete_health_check: "Wollen Sie wirklich diesen Funktionstest inklusive aller Testläufe entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden."
       run: "Prüfen"

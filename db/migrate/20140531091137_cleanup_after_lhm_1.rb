@@ -1,8 +1,9 @@
 require 'lhm'
-
 class CleanupAfterLhm1 < ActiveRecord::Migration
   def up
-    Lhm.cleanup(true)
+    if ActiveRecord::Base.connection.adapter_name == 'MySQL'
+      Lhm.cleanup(true)
+    end
   end
 
   def down

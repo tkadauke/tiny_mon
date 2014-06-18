@@ -15,7 +15,12 @@
     <%= f.label :interval, t('.interval'), :class => 'control-label required' %><br/>
     <%= f.select :interval, HealthCheck.intervals_with_units, :class => 'form-control' %>
   </p>
-  
+
+  <p>
+    <%= f.label :always_send_notification, t('.send_notifications_always'), :class => 'control-label required' %><br/>
+    <%= f.check_box :always_send_notification, :class => 'form-control' %>
+  </p>
+
   <p>
     <%= f.submit t('.save_health_check'), :class => 'btn btn-primary btn-small btn-flat' %>
   </p>

@@ -23,7 +23,7 @@ class DeploymentsController < ApplicationController
   end
   
   def create
-    @deployment = @site.deployments.build(params[:deployment])
+    @deployment = @site.deployments.build(deployment_params)
     if @deployment.save
       @deployment.schedule_checks!
       flash[:notice] = I18n.t("flash.notice.created_deployment")
@@ -51,5 +51,9 @@ protected
   
   def check_permissions
     can_create_deployments!(@account)
+  end
+
+  def deployment_params
+    params.require(:deployment).permit(:revision, :schedule_checks_in)
   end
 end

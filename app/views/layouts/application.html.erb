@@ -11,7 +11,7 @@
 
   <body class="skin-blue">
     <header class="header">
-      <%= link_to 'TinyMon', root_path, :class => 'logo hidden-xs' %>
+      <%= link_to 'TinyMon', root_path, :class => 'logo' %>
       <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
         <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -55,9 +55,6 @@
               <li class="pull-right"><%= link_to t('layouts.signup'), new_user_path %></li>
             <% end %>
           </ul>
-        </div>
-        <div class="nav-logo visible-xs">
-          <%= link_to 'TinyMon', root_path %>
         </div>
       </nav>
     </header>

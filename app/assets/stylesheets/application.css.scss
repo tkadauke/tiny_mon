@@ -100,6 +100,14 @@ ul.pagination {
 }
 
 @media(max-width:767px) {
+  .health_check_overview_box {
+    a {
+      font-size:80%;
+    }
+    h4 {
+      font-size:90%;
+    }
+  }
   .content {
     padding: 0;
   }

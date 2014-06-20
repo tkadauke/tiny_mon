@@ -1,15 +1,15 @@
 <div class="clearfix"></div>
 <div class="row">
   <% @health_checks.each do |health_check| %>
-    <div class="col-lg-3 col-xs-6" style="min-height:120px">
+    <div class="col-lg-3 col-xs-6 health_check_overview_box" style="min-height:120px">
       <div style="cursor:pointer;" class="small-box bg-gray bg-<%= status_background(health_check) %>">
         <div class="inner<%= ' disabled' unless health_check.enabled %>" onclick="location.href='<%= account_site_health_check_path(health_check.site.account, health_check.site, health_check)  %>'">
           <h4>
             <%= health_check.name %>
           </h4>
-          <p>
+          <small>
             <%= health_check.site.name %>
-          </p>
+          </small>
         </div>
         <a href="<%= account_site_health_check_path(health_check.site.account, health_check.site, health_check)  %>" class="small-box-footer">
           <%= t('.more_info') %>&nbsp;<i class="fa fa-arrow-circle-right"></i>

@@ -11,4 +11,5 @@
 //= require jqplot/plugins/dateAxisRenderer
 //= require jqplot/plugins/highlighter
 //= require bootstrap
+//= require equal_heights
 //= require_tree .

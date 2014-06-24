@@ -46,7 +46,11 @@ class Account < ActiveRecord::Base
   def over_maximum_check_runs_per_day?
     !unlimited_check_runs? && check_runs_per_day > maximum_check_runs_per_day
   end
-  
+
+  def scheduled_check_runs_today
+    @scheduled_check_runs_today ||= check_runs.today.scheduled.count
+  end
+
   def over_maximum_check_runs_today?
     !unlimited_check_runs? && scheduled_check_runs_today > maximum_check_runs_per_day
   end
@@ -59,10 +63,6 @@ class Account < ActiveRecord::Base
   end
 
 protected
-  def scheduled_check_runs_today
-    @scheduled_check_runs_today ||= check_runs.today.scheduled.count
-  end
-
   def self.with_search_scope(filter)
     conditions = filter.empty? ? nil : ['accounts.name LIKE ?', "%#{filter.query}%"]
     where(conditions)

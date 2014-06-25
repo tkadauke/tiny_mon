@@ -756,6 +756,8 @@ de:
     click_link: "Klicke Link"
     deselect_check_box: "Check Box abwählen"
     fill_in: "Fülle Feld aus"
+    fill_in_date: "Fülle Datums-Feld aus"
+    go_back: "Gehe zurück"
     in_scope: "im Bereich %{scope_name}"
     run_script: "Script ausführen"
     select_check_box: "Wähle Check Box"

@@ -22,7 +22,7 @@
         </a>
         <div class="navbar-header navbar-right">
           <ul class="nav navbar-nav">
-            <li class="hidden-xs"><%= link_to t('layouts.help'), help_path, :method => :post %></li>
+            <li class=""><%= link_to t('layouts.help'), help_path, :method => :post %></li>
             <% if logged_in? %>
               <%= render '/layouts/language_dropdown' %>
               <% if current_user.can_see_account_details? %>

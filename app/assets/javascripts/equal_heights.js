@@ -38,6 +38,15 @@
         });
 
     });
+    $( document ).ajaxComplete(function() {
+        // auto-initialize plugin
+        $('[data-equal]').each(function(){
+            var $this = $(this),
+                target = $this.data('equal');
+            minwidth = $this.data('equal-minwidth');
+            $this.find(target).equalHeights(minwidth);
+        });
+    });
     $(window).on("resize", function(){
         $('[data-equal]').each(function(){
             var $this = $(this),

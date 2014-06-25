@@ -756,6 +756,8 @@ en:
     click_link: "Click link"
     deselect_check_box: "Deselect check box"
     fill_in: "Fill in field"
+    fill_in_date: "Fill in date-field"
+    go_back: "Go Back"
     in_scope: "in scope %{scope_name}"
     run_script: "Run script"
     select_check_box: "Select check box"

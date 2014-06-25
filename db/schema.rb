@@ -203,6 +203,9 @@ ActiveRecord::Schema.define(version: 201340618213019) do
     t.string   "permalink"
     t.integer  "account_id"
     t.string   "deployment_token"
+    t.boolean  "slack_enabled"
+    t.text     "slack_team"
+    t.text     "slack_token"
   end
 
   add_index "sites", ["deployment_token"], name: "index_sites_on_deployment_token", using: :btree

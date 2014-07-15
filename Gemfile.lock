@@ -167,7 +167,6 @@ GEM
     mono_logger (1.1.0)
     multi_json (1.10.1)
     multipart-post (2.0.0)
-    mysql2 (0.3.16)
     net-http-persistent (2.9.4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -179,6 +178,7 @@ GEM
       sawyer (~> 0.5.3)
     orderedhash (0.0.6)
     permalink_fu (1.0.0)
+    pg (0.17.1)
     poltergeist (1.5.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -263,6 +263,7 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
+    slack-notifier (0.5.0)
     solve (1.2.0)
       dep_selector (~> 1.0)
       semverse (~> 1.1)
@@ -338,9 +339,9 @@ DEPENDENCIES
   libv8
   mail
   mocha
-  mysql2
   orderedhash
   permalink_fu
+  pg
   poltergeist
   rails (~> 4.0.3)
   rails-i18n (~> 4.0.0)
@@ -351,6 +352,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   scrypt
   simplecov (~> 0.7.1)
+  slack-notifier
   therubyracer
   uglifier (>= 1.0.3)
   vagrant!

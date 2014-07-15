@@ -1,9 +1,9 @@
-ruby '2.1.1'
+ruby '2.1.2'
 source 'http://rubygems.org'
 gem 'rails', '~> 4.0.3'
 gem 'rake', '10.1.1'
-gem "mysql2"
-
+#gem "mysql2"
+gem 'pg'
 gem "acts_as_list"
 gem "capybara"
 gem "poltergeist", :require => 'capybara/poltergeist'
@@ -28,6 +28,8 @@ gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
 
 gem 'ionicons-rails'
 gem 'font-awesome-rails'
+
+gem 'slack-notifier'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'

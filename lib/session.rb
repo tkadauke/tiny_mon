@@ -14,7 +14,7 @@ class Session < Capybara::Session
     @log_entries = []
     
     Capybara.app_host = @url
-    
+    self.driver.add_headers("DNT" => "1")
     super(:poltergeist)
   end
   

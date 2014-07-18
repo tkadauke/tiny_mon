@@ -59,7 +59,4 @@ group :deploy do
   gem 'capistrano-rails'
 end
 
-group :vm do
-  gem 'vagrant', :git => 'git://github.com/mitchellh/vagrant.git', :ref => 'v1.2.2'
-  gem 'vagrant-berkshelf', '>= 2.0.1'
-end
+

@@ -6,7 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.sortable
+//= require jquery-ui/sortable
 //= require jqplot/index
 //= require jqplot/plugins/dateAxisRenderer
 //= require jqplot/plugins/highlighter

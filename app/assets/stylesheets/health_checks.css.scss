@@ -1,4 +1,15 @@
-@import "_retina";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require "_retina"
+ */
 
 .check-overview {
   margin: 0;
@@ -28,23 +39,23 @@ div.weather-icon {
     width: 30px;
     height: 30px;
 
-    &.icon-0 { @include at2x('/assets/icons/small/weather-0', png, 30px, 30px); }
-    &.icon-1 { @include at2x('/assets/icons/small/weather-1', png, 30px, 30px); }
-    &.icon-2 { @include at2x('/assets/icons/small/weather-2', png, 30px, 30px); }
-    &.icon-3 { @include at2x('/assets/icons/small/weather-3', png, 30px, 30px); }
-    &.icon-4 { @include at2x('/assets/icons/small/weather-4', png, 30px, 30px); }
-    &.icon-5 { @include at2x('/assets/icons/small/weather-5', png, 30px, 30px); }
+    &.icon-0 {  background-image: ('/assets/icons/small/weather-0', png, 30px, 30px); }
+    &.icon-1 {  background-image: ('/assets/icons/small/weather-1', png, 30px, 30px); }
+    &.icon-2 {  background-image: ('/assets/icons/small/weather-2', png, 30px, 30px); }
+    &.icon-3 {  background-image: ('/assets/icons/small/weather-3', png, 30px, 30px); }
+    &.icon-4 {  background-image: ('/assets/icons/small/weather-4', png, 30px, 30px); }
+    &.icon-5 {  background-image: ('/assets/icons/small/weather-5', png, 30px, 30px); }
   }
 
   &.large {
     width: 40px;
     height: 40px;
 
-    &.icon-0 { @include at2x('/assets/icons/large/weather-0', png, 40px, 40px); }
-    &.icon-1 { @include at2x('/assets/icons/large/weather-1', png, 40px, 40px); }
-    &.icon-2 { @include at2x('/assets/icons/large/weather-2', png, 40px, 40px); }
-    &.icon-3 { @include at2x('/assets/icons/large/weather-3', png, 40px, 40px); }
-    &.icon-4 { @include at2x('/assets/icons/large/weather-4', png, 40px, 40px); }
-    &.icon-5 { @include at2x('/assets/icons/large/weather-5', png, 40px, 40px); }
+    &.icon-0 {  background-image: ('/assets/icons/large/weather-0', png, 40px, 40px); }
+    &.icon-1 {  background-image: ('/assets/icons/large/weather-1', png, 40px, 40px); }
+    &.icon-2 {  background-image: ('/assets/icons/large/weather-2', png, 40px, 40px); }
+    &.icon-3 {  background-image: ('/assets/icons/large/weather-3', png, 40px, 40px); }
+    &.icon-4 {  background-image: ('/assets/icons/large/weather-4', png, 40px, 40px); }
+    &.icon-5 {  background-image: ('/assets/icons/large/weather-5', png, 40px, 40px); }
   }
 }

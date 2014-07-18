@@ -1,5 +1,5 @@
 ruby '2.1.2'
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 gem 'rails', '~> 4.0.3'
 gem 'rake', '10.1.1'
 #gem "mysql2"
@@ -24,7 +24,7 @@ gem 'rails-i18n', '~> 4.0.0'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'jqplot-rails', :git => 'git://github.com/eightbitraptor/jqplot-rails.git'
+gem 'jqplot-rails'
 
 gem 'ionicons-rails'
 gem 'font-awesome-rails'

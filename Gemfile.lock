@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/eightbitraptor/jqplot-rails.git
-  revision: b1932d3bafdc15c34f4ce220fec6965f0acd56db
-  specs:
-    jqplot-rails (0.3)
-      railties
-
-GIT
   remote: git://github.com/mitchellh/vagrant.git
   revision: 7e400d00a3c5a0fdf2809c8b5001a035415a607b
   ref: v1.2.2
@@ -20,7 +13,7 @@ GIT
       net-ssh (~> 2.6.6)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.0.4)
       actionpack (= 4.0.4)
@@ -142,6 +135,8 @@ GEM
       deep_merge
       ya2yaml
     ionicons-rails (1.4.1.0)
+    jqplot-rails (0.3)
+      railties
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -332,7 +327,7 @@ DEPENDENCIES
   font-awesome-rails
   i18n_tools
   ionicons-rails
-  jqplot-rails!
+  jqplot-rails
   jquery-rails
   jquery-ui-rails
   lhm

@@ -70,13 +70,11 @@ protected
   end
   
   def send_notification?
-    if user.blank? && health_check.always_send_notification? &&health_check.enabled?
+    if user.blank? && health_check.always_send_notification? && health_check.enabled?
       return true
     end
-    user.blank? && health_check.enabled? && self.status != previous_check_run.status
+    user.blank? && health_check.enabled? && self.status && self.status != previous_check_run.status
   end
-
-
 
   def previous_check_run
     runs = health_check.check_runs.where('status is not null').order('id desc').first(2)

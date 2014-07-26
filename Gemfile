@@ -25,7 +25,7 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jqplot-rails'
-
+gem 'nokogiri', '1.6.3.rc3'
 gem 'ionicons-rails'
 gem 'font-awesome-rails'
 

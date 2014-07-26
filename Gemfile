@@ -28,7 +28,7 @@ gem 'jqplot-rails'
 gem 'nokogiri', '1.6.3.rc3'
 gem 'ionicons-rails'
 gem 'font-awesome-rails'
-
+gem 'discover'
 gem 'slack-notifier'
 
 group :assets do

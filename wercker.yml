@@ -1,0 +1,60 @@
+box: wercker/rvm
+# Build definition
+# See the Rails section on the wercker devcenter:
+# http://devcenter.wercker.com/articles/languages/ruby/settingup-rails4.html
+# You will want to define your database as follows:
+# services:
+#   - wercker/postgresql
+# See more about services on our devcenter:
+# http://devcenter.wercker.com/articles/services/
+services:
+  - wercker/postgresql
+build:
+    steps:
+        # Uncomment this to force RVM to use a specific Ruby version
+        # - rvm-use:
+        #       version: 2.1.0
+
+        # A step that executes `bundle install` command
+        - bundle-install
+
+        # A step that prepares the database.yml using the database in services
+        # - rails-database-yml
+
+        # A custom script step, name value is used in the UI
+        # and the code value contains the command that get executed
+        - script:
+            name: echo ruby information
+            code: |
+                echo "ruby version $(ruby --version) running"
+                echo "from location $(which ruby)"
+                echo -p "gem list: $(gem list)"
+
+        # Add more steps here:
+        # - script:
+        #        name: rspec
+        #        code: bundle exec rspec
+deploy:
+  steps:
+    - add-to-known_hosts:
+        hostname: $SERVER_HOSTNAME
+    - add-ssh-key:
+        keyname: DOKKU
+    - script:
+        name: Initialize new repository
+        code: |
+            rm -rf .git
+          git init
+          git config --global user.name "wercker"
+          git config --global user.email "jan.renz@gmail.com"
+          git remote add dokku dokku@$SERVER_HOSTNAME:getting-started-nodejs
+    - script:
+        name: Add everything to the repository
+        code: |
+          git add .
+          git commit -m "Result of deploy $WERCKER_GIT_COMMIT"
+    - script:
+        name: Push to dokku
+        code: |
+          git push dokku master
+          git push dokku master

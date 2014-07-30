@@ -7,6 +7,8 @@ box: wercker/rvm
 #   - wercker/postgresql
 # See more about services on our devcenter:
 # http://devcenter.wercker.com/articles/services/
+services:
+  - wercker/postgresql
 build:
     steps:
         # Uncomment this to force RVM to use a specific Ruby version
@@ -42,6 +44,7 @@ deploy:
         name: Initialize new repository
         code: |
           rm -rf .git
+          rm -rf .gitignore
           git init
           git config --global user.name "tinymon ci"
           git config --global user.email "jan.renz@gmail.com"
@@ -54,4 +57,5 @@ deploy:
     - script:
         name: Push to dokku
         code: |
-          git push -f dokku master
+          git push dokku master
+          git push dokku master

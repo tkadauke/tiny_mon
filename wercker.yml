@@ -7,8 +7,6 @@ box: wercker/rvm
 #   - wercker/postgresql
 # See more about services on our devcenter:
 # http://devcenter.wercker.com/articles/services/
-services:
-  - wercker/postgresql
 build:
     steps:
         # Uncomment this to force RVM to use a specific Ruby version
@@ -56,5 +54,4 @@ deploy:
     - script:
         name: Push to dokku
         code: |
-          git push dokku master
-          git push dokku master
+          git push -f dokku master

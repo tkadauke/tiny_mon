@@ -8,7 +8,11 @@ module TinyMon
     
     def build
       @build ||= Dir.chdir Rails.root do
-        revision = ''#`git rev-parse HEAD`
+        begin
+          revision = 'git rev-parse HEAD'
+        rescue Exception=>e
+          revision = 'CI build'
+        end
         revision.blank? ? 'unknown' : revision
       end
     end

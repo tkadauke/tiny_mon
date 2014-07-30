@@ -1,8 +1,8 @@
 email_domain: gmail.com
 email_address: smtp.gmail.com
 email_port: 587
-email_user_name: jan.renz@gmail.com
-email_password: katze1234567
+email_user_name: <%= ENV['SMTP_USER'] %>
+email_password: <%= ENV['SMTP_PASS'] %>
 email_authentication: :login
 email_sender_address: jan.renz@gmail.com
 email_openssl_verify_mode: none

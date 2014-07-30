@@ -45,9 +45,9 @@ deploy:
         code: |
           rm -rf .git
           git init
-          git config --global user.name "wercker"
+          git config --global user.name "tinymon ci"
           git config --global user.email "jan.renz@gmail.com"
-          git remote add dokku dokku@$SERVER_HOSTNAME:getting-started-nodejs
+          git remote add dokku dokku@$SERVER_HOSTNAME:tinymon
     - script:
         name: Add everything to the repository
         code: |

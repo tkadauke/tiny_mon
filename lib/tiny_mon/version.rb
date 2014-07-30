@@ -8,7 +8,7 @@ module TinyMon
     
     def build
       @build ||= Dir.chdir Rails.root do
-        revision = `git rev-parse HEAD`
+        revision = ''#`git rev-parse HEAD`
         revision.blank? ? 'unknown' : revision
       end
     end

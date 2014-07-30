@@ -12,8 +12,8 @@ services:
 build:
     steps:
         # Uncomment this to force RVM to use a specific Ruby version
-        # - rvm-use:
-        #       version: 2.1.0
+        - rvm-use:
+            version: 2.1.0
 
         # A step that executes `bundle install` command
         - bundle-install
@@ -43,7 +43,7 @@ deploy:
     - script:
         name: Initialize new repository
         code: |
-            rm -rf .git
+          rm -rf .git
           git init
           git config --global user.name "wercker"
           git config --global user.email "jan.renz@gmail.com"

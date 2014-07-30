@@ -55,5 +55,4 @@ deploy:
     - script:
         name: Push to dokku
         code: |
-          git push dokku master
-          git push dokku master
+          git push -f dokku master

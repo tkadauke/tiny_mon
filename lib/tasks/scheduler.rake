@@ -3,5 +3,4 @@ namespace :scheduler do
   task start: :environment do
     Scheduler.run
   end
-
 end

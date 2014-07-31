@@ -9,8 +9,8 @@ class VisitStep < Step
     session.visit(self.url)
     #TODO Check if http response state != 200
     status_code = session.status_code
-    if status_code != 200   property :negate, :boolean
-      session.fail ContentCheckFailed, "Expected http status to be 200, but received #{status_code}"
-    end
+   # if status_code != 200  and property :negate, :boolean
+   #   session.fail ContentCheckFailed, "Expected http status to be 200, but received #{status_code}"
+   # end
   end
 end

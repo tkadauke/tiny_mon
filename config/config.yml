@@ -1,10 +1,10 @@
 email_domain: gmail.com
 email_address: smtp.gmail.com
 email_port: 587
-email_user_name: <%= ENV['SMTP_USER'] %>
-email_password: <%= ENV['SMTP_PASS'] %>
+email_user_name: <%= ENV['SMTP_USER'].to_s %>
+email_password: <%= ENV['SMTP_PASS'].to_s %>
 email_authentication: :login
-email_sender_address: <%= ENV['SMTP_SENDER'] %>
+email_sender_address: <%= ENV['SMTP_SENDER'].to_s %>
 email_openssl_verify_mode: none
 email_enable_starttls_auto: true
 config:

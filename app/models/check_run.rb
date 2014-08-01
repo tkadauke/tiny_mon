@@ -73,7 +73,10 @@ protected
     if user.blank? && health_check.always_send_notification? && health_check.enabled?
       return true
     end
-    user.blank? && health_check.enabled? && self && !self.status.nil?  && self.status != previous_check_run.status
+    if user.blank? && health_check.enabled? && previous_check_run &&  self.status != previous_check_run.status
+      return true
+    end
+    return false
   end
 
   def previous_check_run

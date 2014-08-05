@@ -18,6 +18,7 @@ class Runner
       @session.driver.quit
       raise()
       false
+    end   
   end
   
   delegate :log, :log_entries, :to => :session

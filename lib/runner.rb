@@ -7,15 +7,17 @@ class Runner
   end
   
   def run!
-    @session = Session.new(@health_check.site.url)
-    
-    @health_check.steps.each do |step|
-      step.run!(session, @check_run)
-    end
-    @session.driver.quit
-    true
-  # rescue
-  #   false
+    begin
+      @session = Session.new(@health_check.site.url)
+      @health_check.steps.each do |step|
+        step.run!(session, @check_run)
+      end
+      @session.driver.quit
+      true
+    rescue
+      @session.driver.quit
+      raise()
+      false
   end
   
   delegate :log, :log_entries, :to => :session

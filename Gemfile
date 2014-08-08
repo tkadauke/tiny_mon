@@ -49,6 +49,7 @@ end
 
 group :production do
   gem "resque"
+  gem 'unicorn'
   gem "rails_12factor"
 end
 

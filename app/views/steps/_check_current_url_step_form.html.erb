@@ -8,5 +8,8 @@
   <%= f.check_box :negate %>
   <%= f.label :negate, t('.negate'), :class => 'control-label required' %>
 </p>
-
+<p>
+    <%= f.check_box :check_http_code %>
+    <%= f.label :check_http_code, t('.check_http_status'), :class => 'control-label required' %>
+</p>
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

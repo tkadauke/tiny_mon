@@ -16,8 +16,8 @@ class CheckCurrentUrlStep < Step
     end
 
     status_code = session.status_code
-    session.log "Found http code #{status_code}"
     if status_code != 200 and self.check_http_code
+      session.log "Found http code #{status_code}"
       session.fail UrlCheckFailed, "Expected http status to be 200, but received #{status_code}"
     end
   end

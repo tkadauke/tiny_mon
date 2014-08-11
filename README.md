@@ -102,3 +102,4 @@ TinyMon was written by Thomas Kadauke.
 ## Getting it, License and Patches
 
 Get the complete source code through github.com/tkadauke/tiny_mon. For installation instructions, see above. License is MIT. That means that you can do whatever you want with the software, as long as the copyright statement stays intact. Please be a kind open source citizen, and give back your patches and extensions. Just fork the code on Github, and after you’re done, send us a pull request. Thanks for your help!
+ 

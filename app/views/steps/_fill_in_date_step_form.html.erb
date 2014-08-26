@@ -12,5 +12,9 @@
     <%= f.label :dateformat, t('.date_format'), :class => 'control-label' %>
     <%= f.text_field :dateformat, :class => 'form-control' %>
 </p>
-
+<p>
+    <%= f.check_box :set_value_direct,  :class => 'form-control' %>
+    <%= f.label :set_value_direct, t('.set_value'), :class => 'control-label' %>
+    <small><%= t('.set_value_for_hidden_fields') %></small>
+</p>
 <p><%= t('steps.page_must_be_loaded_before_this_step') %></p>

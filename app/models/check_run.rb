@@ -16,7 +16,7 @@ class CheckRun < ActiveRecord::Base
   after_update :notify_subscribers, :if => :send_notification?
   before_save :truncate_values
   
-  scope :recent, lambda { order('check_runs.created_at DESC').limit(10) }
+  scope :recent, lambda { order('check_runs.created_at DESC').limit(20) }
   scope :today, lambda { where(['created_at > ?', Date.today.to_time]) }
   scope :scheduled, lambda { where('user_id is null') }
   

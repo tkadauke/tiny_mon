@@ -16,7 +16,8 @@ gem 'rinku', :require => 'rails_rinku'
 gem 'mail'
 gem "dynamic_form"
 gem "lhm", :require => false
-gem "bootstrap-sass"
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem 'compass'
 gem 'bootstrap-will_paginate'
 gem 'scrypt'

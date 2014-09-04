@@ -32,6 +32,8 @@ GEM
       activerecord (>= 3.2)
       activesupport (>= 3.2)
       request_store (~> 1.0)
+    autoprefixer-rails (3.0.1.20140826)
+      execjs
     background_lite (0.3.2)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
@@ -233,6 +235,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_list
   authlogic (~> 3.4.0)
+  autoprefixer-rails
   background_lite (= 0.3.2)
   bootstrap-sass
   bootstrap-will_paginate

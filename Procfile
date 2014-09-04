@@ -5,3 +5,7 @@ worker: bundle exec rake scheduler:start
 worker: bundle exec rake scheduler:start
 worker: bundle exec rake scheduler:start
 worker: bundle exec rake scheduler:start
+worker: bundle exec rake scheduler:start
+worker: bundle exec rake scheduler:start
+worker: bundle exec rake scheduler:start
+worker: bundle exec rake scheduler:start

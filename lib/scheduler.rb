@@ -2,7 +2,7 @@ class Scheduler
   def self.run
     loop do
       check_all
-      sleep 1
+      sleep 0.1
     end
   end
 

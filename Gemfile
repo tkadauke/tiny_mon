@@ -1,6 +1,6 @@
 ruby '2.1.2'
 source 'https://rubygems.org'
-gem 'rails', '~> 4.0.3'
+gem 'rails', '~> 4.1.0'
 gem 'rake', '10.1.1'
 #gem "mysql2"
 gem 'pg'

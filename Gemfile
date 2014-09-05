@@ -13,7 +13,6 @@ gem "background_lite", '0.3.2'
 gem "will_paginate"
 gem "permalink_fu"
 gem 'rinku', :require => 'rails_rinku'
-gem 'mail'
 gem "dynamic_form"
 gem "lhm", :require => false
 gem 'bootstrap-sass'

@@ -255,7 +255,6 @@ DEPENDENCIES
   jquery-ui-rails
   lhm
   libv8
-  mail
   mocha
   nokogiri (= 1.6.3.rc3)
   orderedhash

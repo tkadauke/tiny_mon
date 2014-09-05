@@ -51,6 +51,7 @@ class Session < Capybara::Session
     log "taking screen shot of URL #{expand_url(driver.current_url)}"
     Dir.create_tmp_dir "renderer", "#{Rails.root}/tmp" do
       driver.render "#{Dir.pwd}/screenshot.png", :full => true
+      image_optim = ImageOptim.new
       image_optim.optimize_image!('screenshot.png')
       #system %{pngcrush screenshot.png crushed.png}
 

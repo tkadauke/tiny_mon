@@ -61,7 +61,8 @@ class HealthCheck < ActiveRecord::Base
   # This method reenables health checks that got accidentally disabled, for example when
   # a worker died while performing the check, thus leaving it in a permanently disabled state
   def self.recover_zombies
-    update_all ['next_check_at = ?', Time.now], ['next_check_at is null and last_checked_at < ?', 1.hour.ago]
+    query = "next_check_at = now()"
+    self.where('next_check_at is null and last_checked_at < ?', 1.hour.ago).update_all(query)
   end
 
   def steps_with_clone(clone_id)

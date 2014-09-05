@@ -93,6 +93,7 @@ GEM
     i18n_tools (0.1.6)
       deep_merge
       ya2yaml
+    image_optim_bin (0.0.5)
     ionicons-rails (1.4.1.0)
     jqplot-rails (0.3)
       railties
@@ -256,6 +257,7 @@ DEPENDENCIES
   dynamic_form
   font-awesome-rails
   i18n_tools
+  image_optim_bin
   ionicons-rails
   jqplot-rails
   jquery-rails

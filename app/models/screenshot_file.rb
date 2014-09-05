@@ -53,7 +53,7 @@ class ScreenshotFile
     checksum = Digest::MD5.hexdigest(File.read(source))
     relative_file_path = checksum.sub(/^(..)(.*)$/, '\1/\2')
     absolute_file_path = File.join(IMAGE_PATH, relative_file_path)
-    
+
     FileUtils.mkdir_p(File.dirname(absolute_file_path))
     FileUtils.mv source, absolute_file_path + '.png'
     

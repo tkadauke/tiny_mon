@@ -1,4 +1,5 @@
 class CheckRunMailer < ActionMailer::Base
+  default :from => ENV['SMTP_SENDER'] ? ENV['SMTP_SENDER'] : 'TinyMon Notification <notifications@tinymon.org>'
 
   def failure(check_run, user)
     @check_run = check_run

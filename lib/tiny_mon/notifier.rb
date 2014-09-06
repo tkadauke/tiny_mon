@@ -24,8 +24,9 @@ module TinyMon
         else
           color = '3c8dbc'
         end
-        msg_txt = @check_run.health_check.name + ' ' + @check_run.status
-        msg_link_txt = '<http://' + TinyMon::Config.host + Rails.application.routes.url_helpers.account_site_health_check_check_run_path(@check_run.health_check.site.account, @check_run.health_check.site, @check_run.health_check, @check_run, :locale => 'en')+'|Click here for more info>'
+        msg_txt = '<strong>' + @check_run.health_check.site.name + '</strong> ' + @check_run.health_check.name + ' ' + @check_run.status
+
+        msg_link_txt = TinyMon::Config.host + Rails.application.routes.url_helpers.account_site_health_check_check_run_path(@check_run.health_check.site.account, @check_run.health_check.site, @check_run.health_check, @check_run, :locale => 'en')+' | Click here for more info>'
 
         a_ok_note = {
             fallback: msg_txt, text: msg_txt + " " + msg_link_txt, color: color

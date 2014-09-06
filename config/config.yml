@@ -1,5 +1,5 @@
 
-host: "localhost:8199"
+host: "http://tinymon.appsane.de"
 language: de
 
 exception_recipients: tiny_mon@tinymon.org

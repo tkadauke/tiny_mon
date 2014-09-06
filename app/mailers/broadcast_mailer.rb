@@ -1,6 +1,6 @@
 class BroadcastMailer < ActionMailer::Base
-  default :from => "TinyMon <#{TinyMon::Config.email_sender_address}>"
-  
+  default :from => ENV['SMTP_SENDER'] ? ENV['SMTP_SENDER'] : 'TinyMon Notification <notifications@tinymon.org>'
+
   def broadcast(broadcast, user)
     @broadcast = broadcast
     

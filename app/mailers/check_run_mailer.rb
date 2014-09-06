@@ -1,6 +1,5 @@
 class CheckRunMailer < ActionMailer::Base
-  default :from => "TinyMon <#{TinyMon::Config.email_sender_address}>"
-  
+
   def failure(check_run, user)
     @check_run = check_run
     

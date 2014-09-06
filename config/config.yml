@@ -1,16 +1,4 @@
-email_domain: gmail.com
-email_address: smtp.gmail.com
-email_port: 587
-email_user_name: <%= ENV['SMTP_USER'] %>
-email_password: <%= ENV['SMTP_PASS'] %>
-email_authentication: :plain
-email_sender_address: <%= ENV['SMTP_SENDER'] %>
-email_openssl_verify_mode: none
-email_enable_starttls_auto: true
-config:
-  action_mailer:
-    perform_deliveries: true
-    raise_delivery_errors: true
+
 host: "localhost:8199"
 language: de
 

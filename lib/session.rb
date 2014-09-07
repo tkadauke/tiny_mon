@@ -24,6 +24,7 @@ class Session < Capybara::Session
   def fail(exception_class, message)
     log message
     raise exception_class, message
+    driver.quit
   end
   
   def visit(url)

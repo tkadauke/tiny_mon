@@ -9,8 +9,10 @@ class Scheduler
   def self.check_all
     HealthCheck.recover_zombies
     HealthCheck.due.each do |check|
-      check.prepare_check!
-      check.check!
+      Thread.new {
+        check.prepare_check!
+        check.check!
+      }
     end
   end
 end

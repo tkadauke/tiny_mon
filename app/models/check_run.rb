@@ -70,6 +70,7 @@ protected
   end
   
   def send_notification?
+    return true
     if user.blank? && health_check.always_send_notification? && health_check.enabled?
       return true
     end

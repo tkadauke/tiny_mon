@@ -21,7 +21,7 @@ gem 'compass'
 gem 'bootstrap-will_paginate'
 gem 'scrypt'
 gem 'rails-i18n', '~> 4.0.0'
-
+gem 'skylight'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jqplot-rails'

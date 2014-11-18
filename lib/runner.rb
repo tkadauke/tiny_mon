@@ -14,9 +14,9 @@ class Runner
       end
       @session.driver.quit
       true
-    rescue
+    ensure
       @session.driver.quit
-      false
+
       #  raise()
       #  false
     end

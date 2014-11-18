@@ -11,7 +11,7 @@ build:
     steps:
         # Uncomment this to force RVM to use a specific Ruby version
         - rvm-use:
-            version: 2.1.2
+            version: 2.1.5
 
         # A step that executes `bundle install` command
         - bundle-install

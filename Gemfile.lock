@@ -14,6 +14,9 @@ GEM
       activesupport (= 4.1.8)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    activemessaging (0.13.0)
+      activemessaging
+      activesupport (>= 2.3.11)
     activemodel (4.1.8)
       activesupport (= 4.1.8)
       builder (~> 3.1)
@@ -37,7 +40,8 @@ GEM
       scrypt (~> 1.2)
     autoprefixer-rails (4.0.0.1)
       execjs
-    background_lite (0.3.2)
+    background_lite (0.5.2)
+      activesupport (>= 2.3.0)
     bootstrap-sass (3.3.1.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
@@ -192,8 +196,6 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
-    skylight (0.4.3)
-      activesupport (>= 3.0.0)
     slack-notifier (1.0.0)
     sprockets (2.11.3)
       hike (~> 1.2)
@@ -238,10 +240,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activemessaging (~> 0.13.0)
   acts_as_list
   authlogic (~> 3.4.0)
   autoprefixer-rails
-  background_lite (= 0.3.2)
+  background_lite
   bootstrap-sass
   bootstrap-will_paginate
   capistrano
@@ -275,7 +278,6 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   scrypt
   simplecov (~> 0.7.1)
-  skylight
   slack-notifier
   therubyracer
   uglifier (>= 1.0.3)

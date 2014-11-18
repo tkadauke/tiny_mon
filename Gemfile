@@ -9,7 +9,7 @@ gem "capybara"
 gem "poltergeist", :require => 'capybara/poltergeist'
 gem "orderedhash"
 gem 'authlogic', '~> 3.4.0'
-gem "background_lite", '0.3.2'
+gem 'background_lite'
 gem "will_paginate"
 gem "permalink_fu"
 gem 'rinku', :require => 'rails_rinku'
@@ -21,7 +21,6 @@ gem 'compass'
 gem 'bootstrap-will_paginate'
 gem 'scrypt'
 gem 'rails-i18n', '~> 4.0.0'
-gem 'skylight'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jqplot-rails'
@@ -31,7 +30,7 @@ gem 'font-awesome-rails'
 gem 'discover'
 gem 'slack-notifier'
 gem 'rails_12factor'
-
+gem 'activemessaging', '~> 0.13.0'
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
   gem "therubyracer"

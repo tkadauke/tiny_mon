@@ -12,9 +12,13 @@ class Runner
       @health_check.steps.each do |step|
         step.run!(session, @check_run)
       end
-      true
-    ensure
       @session.driver.quit
+      true
+    rescue
+      @session.driver.quit
+      false
+      #  raise()
+      #  false
     end
   end
   

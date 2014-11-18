@@ -12,9 +12,8 @@ class Runner
       @health_check.steps.each do |step|
         step.run!(session, @check_run)
       end
-      @session.driver.quit
       true
-    rescue Exception => e
+    ensure
       @session.driver.quit
     end
   end

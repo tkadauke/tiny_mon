@@ -162,8 +162,10 @@ protected
       attrs[:error_message] = "#{e.class.name}: #{e.message}"
       attrs[:last_response] = runner.session.last_response
 
-      runner.session.take_screenshot('')
-      puts e.backtrace
+      screenshot = runner.session.take_screenshot('')
+      screenshot.check_run = check_run
+      screenshot.save
+      #puts e.backtrace
     end
     attrs[:ended_at] = Time.now.to_f
     attrs[:log] = runner.log_entries

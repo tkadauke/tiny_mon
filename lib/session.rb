@@ -12,6 +12,7 @@ class Session < Capybara::Session
   def initialize(url)
     @url = url
     @log_entries = []
+    Capybara.app_host = @url
     Capybara.register_driver :poltergeist do |app|
       Capybara::Poltergeist::Driver.new(app, {timeout: 300, js_errors: true  })
     end

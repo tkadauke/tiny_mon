@@ -30,6 +30,7 @@ gem 'ionicons-rails'
 gem 'font-awesome-rails'
 gem 'discover'
 gem 'slack-notifier'
+gem 'rails_12factor'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
@@ -47,10 +48,10 @@ group :test do
   gem 'mocha'
 end
 
+
 group :production do
   gem "resque"
   gem 'unicorn'
-  gem "rails_12factor"
 end
 
 group :deploy do

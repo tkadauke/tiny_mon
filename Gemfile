@@ -30,7 +30,7 @@ gem 'font-awesome-rails'
 gem 'discover'
 gem 'slack-notifier'
 gem 'rails_12factor'
-gem 'activemessaging', '~> 0.13.0'
+
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
   gem "therubyracer"

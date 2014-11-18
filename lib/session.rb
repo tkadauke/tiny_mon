@@ -13,7 +13,7 @@ class Session < Capybara::Session
     @url = url
     @log_entries = []
     Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, timeout: 300, js_errors: true)
+      Capybara::Poltergeist::Driver.new(app, {timeout: 300, js_errors: true  })
     end
     super(:poltergeist)
   end

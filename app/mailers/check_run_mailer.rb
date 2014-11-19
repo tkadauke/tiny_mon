@@ -3,7 +3,7 @@ class CheckRunMailer < ActionMailer::Base
 
   def failure(check_run, user)
     @check_run = check_run
-    attachments['screenshot.png'] = File.read(check_run.health_check.latest_screenshots.last.file_path)
+    #attachments['screenshot.png'] = File.read(check_run.health_check.latest_screenshots.last.file_path)
     mail :to => user.email, :subject => I18n.t("check_run_mailer.failure.subject", :health_check => check_run.health_check.name, :site => check_run.health_check.site.name)
   end
 

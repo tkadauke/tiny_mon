@@ -165,6 +165,7 @@ protected
       screenshot = runner.session.take_screenshot('')
       screenshot.check_run = check_run
       screenshot.save
+      runner.session.driver.quit
       #puts e.backtrace
     end
     attrs[:ended_at] = Time.now.to_f

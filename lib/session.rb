@@ -13,9 +13,6 @@ class Session < Capybara::Session
     @url = url
     @log_entries = []
     Capybara.app_host = @url
-    Capybara.register_driver :poltergeist do |app|
-      Capybara::Poltergeist::Driver.new(app, { :timeout => 9000 })
-    end
     super(:poltergeist)
   end
   
@@ -25,7 +22,6 @@ class Session < Capybara::Session
   
   def fail(exception_class, message)
     log message
-    driver.quit
     raise exception_class, message
   end
   

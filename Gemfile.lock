@@ -1,9 +1,9 @@
 GIT
-  remote: git://github.com/jprberlin/poltergeist/
-  revision: b7271f286b40fae6fdafb0f824e0acf1e212b105
+  remote: git://github.com/teampoltergeist/poltergeist/
+  revision: f394c984af7e6db72f284900b59c715975cb0621
   specs:
-    poltergeist (1.5.0)
-      capybara (~> 2.1)
+    poltergeist (1.5.1)
+      capybara (~> 2.4)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)

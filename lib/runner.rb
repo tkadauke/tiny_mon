@@ -15,8 +15,8 @@ class Runner
       @session.driver.quit
       true
     rescue Exception => e
-      @session.driver.quit
       raise(e)
+      @session.driver.quit
     end
   end
   

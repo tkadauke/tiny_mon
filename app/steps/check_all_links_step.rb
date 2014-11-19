@@ -7,7 +7,6 @@ class CheckAllLinksStep < ScopableStep
     currentUrl = session.driver.current_url
     with_optional_scope(session) do
       links = session.all('a', :visible => true)
-      link_count = links.count
       offset = 0
       links.each do |link|
         links = session.all('a', :visible => true)
@@ -16,15 +15,16 @@ class CheckAllLinksStep < ScopableStep
         session.log 'clicking link ' + link.text.to_s
         link.click
         if session.driver.browser.window_handles.size > 1
-          new_window=session.driver.browser.window_handles.last
+          new_window = session.driver.browser.window_handles.last
           session.within_window new_window do
             #code
             check_status session.status_code
-            session.log 'Visted (new window)' +  session.driver.current_url
+            session.log 'Visited (new window)' +  session.driver.current_url
             session.execute_script "window.close()"
           end
+
         else
-          session.log 'Visted ' +  session.driver.current_url
+          session.log 'Visited ' +  session.driver.current_url
           session.visit currentUrl
           check_status session.status_code
         end

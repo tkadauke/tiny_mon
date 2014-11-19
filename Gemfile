@@ -49,7 +49,7 @@ end
 
 
 group :production do
-  gem "resque"
+  gem 'resque'
   gem 'unicorn'
 end
 

@@ -36,7 +36,7 @@ class StepsController < ApplicationController
   def create
     can_edit_health_checks!(@account) do
       type_name = "#{params[:type]}_step"
-      @step = type_name.classify.constantize.new(step_params)
+      @step = type_name.classify.constantize.new(step_params(type_name))
       @step.health_check = @health_check
       if @step.save
         respond_with @step, :location => account_site_health_check_steps_path(@account, @site, @health_check)
@@ -77,8 +77,8 @@ class StepsController < ApplicationController
   end
 
 protected
-  def step_params
-    params.require(params[:type]+'_step').permit(:id, :url, :duration, :content, :count, :dateformat, :field, :value, :negate, :name, :scope, :check_http_code, :mincount, :maxcount, :set_value_direct)
+  def step_params type
+    params.require(type.underscore.to_sym).permit(:id, :url, :duration, :content, :count, :dateformat, :field, :value, :negate, :name, :scope, :check_http_code, :mincount, :maxcount, :set_value_direct)
   end
 
   def step_update_params type

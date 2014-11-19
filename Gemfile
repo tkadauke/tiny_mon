@@ -50,7 +50,7 @@ end
 
 group :production do
   gem 'resque'
-  gem 'unicorn'
+  gem 'puma'
 end
 
 group :deploy do

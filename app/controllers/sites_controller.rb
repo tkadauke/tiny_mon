@@ -61,6 +61,6 @@ class SitesController < ApplicationController
 
 private
   def site_params
-    params.require(:site).permit :name, :url, :slack_enabled, :slack_team, :slack_token
+    params.require(:site).permit :name, :url, :slack_enabled, :slack_webhook
   end
 end

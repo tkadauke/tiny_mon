@@ -14,8 +14,8 @@ module TinyMon
         end
       end
       #handle slack
-      if @check_run.health_check.site.slack_enabled && !@check_run.health_check.site.slack_team.empty? && !@check_run.health_check.site.slack_token.empty?
-        notifier = Slack::Notifier.new @check_run.health_check.site.slack_team, @check_run.health_check.site.slack_token
+      if @check_run.health_check.site.slack_enabled && !@check_run.health_check.site.slack_webhook.empty?
+        notifier = Slack::Notifier.new @check_run.health_check.site.slack_webhook
         notifier.username = 'TinyMon'
         if @check_run.status == 'success'
           color = 'good'

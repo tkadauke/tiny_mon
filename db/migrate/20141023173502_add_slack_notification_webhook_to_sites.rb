@@ -1,4 +1,4 @@
-class AddSlackNotificationToSites < ActiveRecord::Migration
+class AddSlackNotificationWebhookToSites < ActiveRecord::Migration
   def change
     add_column :sites, :slack_webhook, :text
     remove_column :sites, :slack_team, :text

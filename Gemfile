@@ -6,7 +6,7 @@ gem 'rake', '10.1.1'
 gem 'pg'
 gem "acts_as_list"
 gem "capybara"
-gem "poltergeist", :require => 'capybara/poltergeist'
+gem "poltergeist",  :git => 'git://github.com/jprberlin/poltergeist/', :require => 'capybara/poltergeist'
 gem "orderedhash"
 gem 'authlogic', '~> 3.4.0'
 gem 'background_lite'

@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/jprberlin/poltergeist/
+  revision: b7271f286b40fae6fdafb0f824e0acf1e212b105
+  specs:
+    poltergeist (1.5.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -126,11 +136,6 @@ GEM
     orderedhash (0.0.6)
     permalink_fu (1.0.0)
     pg (0.17.1)
-    poltergeist (1.5.1)
-      capybara (~> 2.1)
-      cliver (~> 0.3.1)
-      multi_json (~> 1.0)
-      websocket-driver (>= 0.2.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -264,7 +269,7 @@ DEPENDENCIES
   orderedhash
   permalink_fu
   pg
-  poltergeist
+  poltergeist!
   rails (~> 4.1.0)
   rails-i18n (~> 4.0.0)
   rails_12factor

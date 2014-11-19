@@ -59,3 +59,7 @@ div.weather-icon {
     &.icon-5 {  background-image: ('/assets/icons/large/weather-5', png, 40px, 40px); }
   }
 }
+
+.screenshots a img {
+  border: 1px solid gray;
+}

@@ -13,4 +13,5 @@ class Scheduler
       check.check!
     end
   end
+  background_method :check_all
 end

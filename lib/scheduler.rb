@@ -1,4 +1,5 @@
 class Scheduler
+
   def self.run
     loop do
       check_all
@@ -13,5 +14,5 @@ class Scheduler
       check.check!
     end
   end
-  background_method :check_all
+  #background_method self.check_all
 end

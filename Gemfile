@@ -1,8 +1,9 @@
 ruby '2.1.4'
 source 'https://rubygems.org'
 gem 'rails', '~> 4.1.0'
-gem 'rake', '10.1.1'
+gem 'rake'
 #gem "mysql2"
+gem "airbrake"
 gem 'pg'
 gem "acts_as_list"
 gem "capybara"

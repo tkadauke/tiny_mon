@@ -39,6 +39,9 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.5.0)
       activerecord (>= 3.0)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (5.0.1.20140414130214)
     authlogic (3.4.3)
       activerecord (>= 3.2)
@@ -165,7 +168,7 @@ GEM
       activesupport (= 4.1.8)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.1.1)
+    rake (10.4.0)
     redis (3.1.0)
     redis-namespace (1.5.1)
       redis (~> 3.0, >= 3.0.4)
@@ -239,6 +242,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_list
+  airbrake
   authlogic (~> 3.4.0)
   autoprefixer-rails
   background_lite
@@ -270,7 +274,7 @@ DEPENDENCIES
   rails (~> 4.1.0)
   rails-i18n (~> 4.0.0)
   rails_12factor
-  rake (= 10.1.1)
+  rake
   resque
   rinku
   sass-rails (~> 4.0.0)

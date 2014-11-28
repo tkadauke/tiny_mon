@@ -34,6 +34,7 @@ gem 'rails_12factor'
 gem 'rufus-scheduler'
 gem 'slim'
 
+
 group :assets do
   gem 'sass-rails', '~> 4.0.0'
   gem "therubyracer"
@@ -53,7 +54,7 @@ end
 
 group :production do
   gem 'resque'
-  gem 'puma'
+  gem 'thin'
 end
 
 group :deploy do

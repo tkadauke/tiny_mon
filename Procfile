@@ -1,2 +1,2 @@
 #!/bin/bash
-web: bundle exec puma -C config/puma.rb
+web: bundle exec thin start -p ENV['PORT'] -e ENV['RACK_ENV']

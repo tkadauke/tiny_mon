@@ -17,8 +17,15 @@
     <data-source source="LOCAL" name="Rails tiny_mon: production" uuid="94a9572c-c0fa-437f-b753-a33d13531ad5">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1/tiny_mon_production</jdbc-url>
-      <libraries />
+      <jdbc-url>jdbc:postgresql://127.0.0.1/tiny_mon_production</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea13/jdbc-drivers/postgresql-driver-license.txt</url>
+        </library>
+        <library>
+          <url>file://$USER_HOME$/Library/Preferences/IntelliJIdea13/jdbc-drivers/postgresql-9.3-1100.jdbc4.jar</url>
+        </library>
+      </libraries>
     </data-source>
     <data-source source="LOCAL" name="Rails tiny_mon: test" uuid="77c50dcf-107e-4ea5-9fbb-be9c2d406722">
       <driver-ref>mysql</driver-ref>

@@ -18,6 +18,7 @@ class CheckRun < ActiveRecord::Base
   
   scope :recent, lambda { order('check_runs.created_at DESC').limit(20) }
   scope :today, lambda { where(['created_at > ?', Date.today.to_time]) }
+  scope :last_day, lambda { where(['created_at > ?', 1.day.ago.to_time]) }
   scope :scheduled, lambda { where('user_id is null') }
   
   def duration

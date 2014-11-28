@@ -53,3 +53,12 @@
       de: "Gibt an, ob eine E-Mail an Sie geschickt werden soll, wenn jemand einen Testlauf kommentiert"
     type: Boolean
     default: true
+- send_daily_stats:
+    name:
+      en: "Send me a daily stat"
+      de: "Mir eine tägliche Statistikmail senden"
+    description:
+      en: "Whether or not to send an daily statistic email to youn"
+      de: "Gibt an, ob täglich eine E-Mail mit einer kumulierten Statistik an Sie geschickt werden soll"
+    type: Boolean
+    default: false

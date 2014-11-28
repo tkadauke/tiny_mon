@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 201340618213019) do
     t.integer  "user_id"
     t.text     "last_response"
     t.boolean  "always_send_notification"
+    t.datetime "started_at_date"
+    t.datetime "ended_at_date"
   end
 
   add_index "check_runs", ["account_id", "created_at"], name: "index_check_runs_on_account_id_and_created_at", using: :btree

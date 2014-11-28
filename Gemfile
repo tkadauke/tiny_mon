@@ -31,6 +31,8 @@ gem 'font-awesome-rails'
 gem 'discover'
 gem 'slack-notifier'
 gem 'rails_12factor'
+gem 'rufus-scheduler'
+gem 'slim'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'

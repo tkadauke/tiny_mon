@@ -1,6 +1,19 @@
-def call_rake (task, options = {})
-  options[:rails_env] ||= Rails.env
-  args = options.map { |n, v| "#{n.to_s.upcase}='#{v}'" }
-  system "rake #{task} #{args.join(' ')} --trace 2>&1 >> #{Rails.root}/log/rake.log &"
+require 'rufus-scheduler'
+
+scheduler = Rufus::Scheduler.new
+
+scheduler.every '10s' do
+  HealthCheck.recover_zombies
+  HealthCheck.due.each do |check|
+    check.prepare_check!
+    check.check!
+  end
 end
-#call_rake "scheduler:start" unless $run_from_rake
+
+scheduler.cron '5 0 * * *' do
+  # do something every day, five minutes after midnight
+  # (see "man 5 crontab" in your terminal)
+  StatisticMailer.daily_stats.deliver
+end
+
+scheduler.join

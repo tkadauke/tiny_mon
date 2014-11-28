@@ -16,4 +16,4 @@ scheduler.cron '5 0 * * *' do
   StatisticMailer.daily_stats.deliver
 end
 
-#scheduler.join
+scheduler.join

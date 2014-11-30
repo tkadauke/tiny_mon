@@ -7,7 +7,7 @@ gem "airbrake"
 gem 'pg'
 gem "acts_as_list"
 gem "capybara"
-gem "poltergeist",  :git => 'git://github.com/teampoltergeist/poltergeist/', :require => 'capybara/poltergeist'
+gem "poltergeist", :require => 'capybara/poltergeist'
 gem "orderedhash"
 gem 'authlogic', '~> 3.4.0'
 gem 'background_lite'
@@ -25,7 +25,7 @@ gem 'rails-i18n', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jqplot-rails'
-gem 'nokogiri', '1.6.3.rc3'
+gem 'nokogiri'
 gem 'ionicons-rails'
 gem 'font-awesome-rails'
 gem 'discover'
@@ -40,6 +40,7 @@ group :assets do
   gem "therubyracer"
   gem "libv8"
   gem 'uglifier', '>= 1.0.3'
+  gem 'premailer-rails'
 end
 
 group :development do

@@ -5,9 +5,8 @@ class StatisticMailer < ActionMailer::Base
   def daily_stats
     User.all.each do |user|
       if user.config.send_daily_stats
-        stats = get_stats_for_user(user)
-        puts stats.inspect
-        mail :to => user.email, :subject => 'TinyMon Stats', :stats => stats
+        @stats = get_stats_for_user(user)
+        mail :to => user.email, :subject => 'TinyMon Stats'
       end
     end
   end
@@ -19,7 +18,8 @@ class StatisticMailer < ActionMailer::Base
                :no_of_enabled_health_checks,
                :total_check_runs,
                :successfull_check_runs,
-               :failed_check_runs
+               :failed_check_runs,
+               :health_checks
     )
     Struct.new('HealthCheckReport',
                :account_name,
@@ -37,24 +37,25 @@ class StatisticMailer < ActionMailer::Base
       health_checks = []
       account.health_checks.each do |health_check|
         hc_total_check_runs  = total_check_runs.count
-        hc_successfull_check_runs = check_runs.where(:status => :success)
-        hc_failed_check_runs = check_runs.where(:status => :failure)
-        Struct::HealthCheckReport.new(
+        hc_successfull_check_runs = check_runs.where(:status => :success).count
+        hc_failed_check_runs = check_runs.where(:status => :failure).count
+        health_checks << Struct::HealthCheckReport.new(
             account.name,
             health_check.name,
-            hc_total_check_runs,
-            hc_successfull_check_runs,
-            hc_failed_check_runs
+            hc_total_check_runs.count,
+            hc_successfull_check_runs.count,
+            hc_failed_check_runs.count
         )
       end
       accounts <<  Struct::Report.new(
-          account.name,
-          account.health_checks.count,
-          account.health_checks.enabled.count,
-          total_check_runs.count,
-          successfull_check_runs.count,
-          failed_check_runs.count
-                )
+        account.name,
+        account.health_checks.count,
+        account.health_checks.enabled.count,
+        total_check_runs.count,
+        successfull_check_runs.count,
+        failed_check_runs.count,
+        health_checks
+              )
     end
 
     accounts

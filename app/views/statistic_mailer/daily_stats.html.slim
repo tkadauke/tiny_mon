@@ -1,4 +1,64 @@
+
+link rel="stylesheet" href="assets/styledmail.css"
 h1
   ' Daily Stats
 
-= @stats.inspect
+- @stats.each do |report|
+  hr
+  h2
+    = report.name
+  br
+  => report.no_of_health_checks
+  ' Health checks
+  br
+  => report.no_of_enabled_health_checks
+  ' enabled Health checks
+  br
+  => report.total_check_runs
+  ' check runs on the last 24 hours
+  br
+  => report.failed_check_runs
+  ' failed check runs on the last 24 hours
+  br
+  => report.successfull_check_runs
+  ' successfull check runs on the last 24 hours
+
+  h3
+    ' Health checks
+  table
+    tr
+      td
+        ' Name
+      td
+        ' No of check runs
+      td
+        ' Successfull
+      td
+        ' Failed
+
+  - report.health_checks.each do |hc|
+    tr
+      td
+        = hc.name
+      td
+        = hc.total_check_runs
+      td
+        = hc.successfull_check_runs
+      td
+        = hc.failed_check_runs
+
+
+
+
+/**
+  stats: #<struct Struct::Report name="test1", no_of_health_checks=2,
+   no_of_enabled_health_checks=1, total_check_runs=0, successfull_check_runs=0,
+   failed_check_runs=0, health_checks=[#<struct Struct::HealthCheckReport
+   account_name="test1", name="Test1", total_check_runs=0,
+   successfull_check_runs=#<ActiveRecord::AssociationRelation []>,
+   failed_check_runs=#<ActiveRecord::AssociationRelation []>>, #<struct
+   Struct::HealthCheckReport account_name="test1", name="Test1",
+   total_check_runs=0, successfull_check_runs=#<ActiveRecord::AssociationRelation
+   []>, failed_check_runs=#<ActiveRecord::AssociationRelation []>>]>
+
+

@@ -17,7 +17,7 @@ namespace :scheduler do
         end
 
       rescue => e
-        status e.inspect
+        puts e.inspect
       ensure
         ActiveRecord::Base.connection_pool.release_connection
       end

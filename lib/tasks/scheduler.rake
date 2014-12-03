@@ -13,6 +13,7 @@ namespace :scheduler do
         end
       rescue Rufus::Scheduler::TimeoutError
         #somehow mark this as failed
+        puts 'timeout'
       end
     end
 

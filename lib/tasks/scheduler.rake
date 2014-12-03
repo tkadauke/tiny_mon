@@ -4,11 +4,15 @@ namespace :scheduler do
 
     scheduler = Rufus::Scheduler.new
 
-    scheduler.every '10s' do
-      HealthCheck.recover_zombies
-      HealthCheck.due.each do |check|
-        check.prepare_check!
-        check.check!
+    scheduler.every '10s',  :timeout => '1h' do
+      begin
+        HealthCheck.recover_zombies
+        HealthCheck.due.each do |check|
+          check.prepare_check!
+          check.check!
+        end
+      rescue Rufus::Scheduler::TimeoutError
+        #somehow mark this as failed
       end
     end
 

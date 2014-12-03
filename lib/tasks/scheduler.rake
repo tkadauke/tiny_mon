@@ -6,15 +6,22 @@ namespace :scheduler do
 
     scheduler.every '10s',  :timeout => '1h' do
       begin
+        unless ActiveRecord::Base.connected?
+          ActiveRecord::Base.connection.verify!(0)
+        end
+
         HealthCheck.recover_zombies
         HealthCheck.due.each do |check|
           check.prepare_check!
           check.check!
         end
-      rescue Rufus::Scheduler::TimeoutError
-        #somehow mark this as failed
-        puts 'timeout'
+
+      rescue => e
+        status e.inspect
+      ensure
+        ActiveRecord::Base.connection_pool.release_connection
       end
+
     end
 
     scheduler.cron '5 0 * * *' do

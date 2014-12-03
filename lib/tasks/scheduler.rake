@@ -4,7 +4,7 @@ namespace :scheduler do
 
     scheduler = Rufus::Scheduler.new
 
-    scheduler.every '10s',  :timeout => '1h' do
+    scheduler.every '30s',  :timeout => '1h' do
       begin
         unless ActiveRecord::Base.connected?
           ActiveRecord::Base.connection.verify!(0)

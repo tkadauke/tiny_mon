@@ -4,6 +4,7 @@ gem 'rails', '~> 4.1.0'
 gem 'rake'
 #gem "mysql2"
 gem "airbrake"
+gem 'upmin-admin'
 gem 'pg'
 gem "acts_as_list"
 gem "capybara"

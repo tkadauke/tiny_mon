@@ -75,4 +75,6 @@ TinyMon::Application.routes.draw do
   end
   
   match '/:controller(/:action(/:id))', via: :get if Rails.env.test?
+
+  mount Upmin::Engine => '/myadmin'
 end

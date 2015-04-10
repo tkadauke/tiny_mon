@@ -20,7 +20,7 @@
 </p>
 
 <%= javascript_tag <<-JS
-  $('#add-more-#{array_id} %>').click(function() {
+  $('#add-more-#{array_id}').click(function() {
     element = '<p id="#{array_id}_' + #{array_id}_index + '">' +
       '<input type="text" id="health_check_template_data_#{variable.name}_' + #{array_id}_index + '" name="health_check[template_data][#{variable.name}][' + #{array_id}_index + ']" size="30" />' +
       '<a href="#" onclick="$(\\'##{array_id}_' + #{array_id}_index + '\\').remove()">[X]</a>' +

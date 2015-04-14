@@ -809,7 +809,7 @@ de:
     form: 
       cancel: Abbruch
       could_not_create_step: "Konnte Schritt nicht hinzufügen"
-      please_select: "Bitte wählen ..."
+      please_select: "Bitte wählen..."
       save_step: "Schritt Speichern"
       type: Typ
     index: 

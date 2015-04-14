@@ -127,7 +127,10 @@ class HealthChecksController < ApplicationController
 
 private
   def health_check_params
-    params.require(:health_check).permit(:enabled, :name, :description, :interval, :bulk_update_interval, :always_send_notification)
+    params.require(:health_check).permit(:enabled, :name, :description, :interval, :bulk_update_interval, :always_send_notification).tap do |whitelisted|
+      # Allow all keys for the template_data subhash
+      whitelisted[:template_data] = params[:health_check][:template_data]
+    end
   end
 
 protected

@@ -42,9 +42,9 @@ class StatisticMailer < ActionMailer::Base
         health_checks << Struct::HealthCheckReport.new(
             account.name,
             health_check.name,
-            hc_total_check_runs.count,
-            hc_successfull_check_runs.count,
-            hc_failed_check_runs.count
+            hc_total_check_runs,
+            hc_successfull_check_runs,
+            hc_failed_check_runs
         )
       end
       accounts <<  Struct::Report.new(
